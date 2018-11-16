@@ -1,0 +1,54 @@
+<ul class="sites-picker" name="International Sites">
+
+	{% if section.settings.site_picker_manifest != blank %}
+		{%- assign sites = section.settings.site_picker_manifest | split: ',' -%}
+		{% for item in sites %}
+			
+			{% comment %} 
+				:: FORMAT NOTES ::
+					Example: 
+						- US|United States|http://www.google.com, UK|United Kingdom... etc
+			{% endcomment %}
+			{%- assign siteData = item | split: '|' -%}
+			{%- assign flag = 'svg-icon-flag-' | append:siteData[0] -%}
+			<li class="site-picker-item">
+
+
+				{% comment %} ..:: FIRST SLOT ITEM ::.. {% endcomment %}
+				{% if item == sites[0] %}
+					<div class="inner-center">
+						<div class="site-flag">{% include flag %}</div>
+						<div class="site-name">
+							{% if showFullName == true %}
+								{{ siteData[1] }}
+							{% else %}
+								{{ siteData[0] }}
+							{% endif %}
+						</div>
+
+					{% comment %} Add arrow indicator to first item in list only {% endcomment %}
+						<div class="site-arrow">{% include 'svg-icon-caret-down' %}</div>
+					</div>
+
+
+				{% comment %} ..:: ALL SUBSEQUENT SLOTS ::.. {% endcomment %}
+				{% else %}
+					<a class="inner-center" href="{{ siteData[2] }}">
+						<div class="site-flag">{% include flag %}</div>
+						<div class="site-name">
+							{% if showFullName == true %}
+								{{ siteData[1] }}
+							{% else %}
+								{{ siteData[0] }}
+							{% endif %}
+						</div>
+					</a>
+				{% endif %}
+
+				
+			</li>
+
+		{% endfor %}
+  {% endif %}
+
+</ul>

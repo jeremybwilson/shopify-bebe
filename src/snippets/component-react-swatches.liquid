@@ -1,0 +1,43 @@
+{% comment %}
+  REACT - EXAMPLE #2:
+
+    Here, we use this snippet as a way to tie all relevant liquid & style pieces
+    to a single file so when we include it into our desired locations throughout
+    the site, its easy to move about and ensure it has all its necessary pieces.
+
+    Now, we are building an array of all product variant properties here in liquid, 
+    so it may look a bit wonky, but this generates an array of data into a liquid var.
+  
+  BREAKDOWN: Liquid Logic
+    - The "if forloop.last" helps find the end of each object, and appends a ',' after all but last one
+    - The "|" in there lets us use that as an 'end of data' identifier to build with in 'swatch_data'
+    - The "[ { swatch_data } ]" lets us make it a parseable aray in the "data-swatches" attribute
+    - Lastly, what you don't see here, the react component is doing a JSON.parse() on this data.
+
+    NEXT : Hop into "scripts/react-components/swatches/SwatchParent.js" to see how the react
+            component is being generated into this DIV.
+
+    NOTE: At one point, I had thought to try including the parent component as a tag
+          inside here, but you can't because it needs to compile sadly!
+{% endcomment %}
+
+{{ 'styles.react-swatches.scss.css' | asset_url | stylesheet_tag }}
+
+{% capture swatch_list %}
+  {% for variant in product.variants %}
+    { 
+      "available_quantity":"{{variant.inventory_quantity}}",
+      "color":"{{variant.option1}}",
+      "id":"{{variant.id}}",
+      "image_url":"{{variant.image.src | img_url: '500x'}}",
+      "price":"{{variant.price | money }}",
+      "product_id":"{{product.id}}",
+      "sku":"{{variant.sku}}",
+      "title":"{{variant.title}}",
+      "url":"{{variant.url}}"
+    }{% if forloop.last == false %},|{% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign swatch_data = swatch_list | split: '|' %}
+<h1 class="react-swatch-title">React Component: </h1>
+<div class="react-swatch-list" data-swatches='[ {{ swatch_data }} ]'></div>

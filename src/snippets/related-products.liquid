@@ -1,0 +1,38 @@
+<!-- Solution brought to you by Caroline Schnapp -->
+<!-- See this: http://wiki.shopify.com/Related_Products -->
+
+{% assign image_size = 'large' %}
+
+{% capture number_of_related_products_to_fetch %}{{ number_of_related_products_to_show | plus: 1 }}{% endcapture %}
+
+{% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+{% assign found_a_collection = false %}
+{% for c in product.collections %}
+{% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 %}
+{% assign found_a_collection = true %}
+{% assign collection = c %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if collection %}
+<h4 style="text-align: center;"><a href="{{ collection.url }}">{{ 'products.general.related' | t }}</a></h4>
+<ul class="related-products desktop-12">
+  {% assign current_product_found = false %}
+  {% for prod in collection.products limit: 5 %}
+  {% if prod.title == product.title %}
+  {% assign current_product_found = true %}
+  {% else %}
+  {% unless current_product_found == false and forloop.last %}
+  <li{% if section.settings.related_products == 'bottom' %} class="desktop-3 tablet-fourth mobile-half"{% endif %}>
+    <div class="image">
+      <a href="{{ prod.url | within: collection }}" title="{{ prod.title | escape }}">
+        {{ prod.featured_image | product_img_url: image_size | img_tag }}
+      </a>
+    </div>
+  </li>
+  {% endunless %}
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

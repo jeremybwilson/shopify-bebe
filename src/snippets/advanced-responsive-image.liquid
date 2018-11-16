@@ -1,0 +1,70 @@
+{% comment %} Check if Default / Desktop image is loaded {% endcomment %}
+
+{%- if default_image.size > 0 -%}
+  <div class="box-ratio" id="box-ratio--{{ block_id }}">
+    <picture>
+
+      {% comment %} :: MOBILE IMAGE :: {% endcomment %}
+
+      {%- if mobile_image.size > 0 -%}
+        {% assign mobile_img_url = mobile_image | img_url: '767x' %}
+        <source srcset="{{ mobile_img_url }}" media="(max-width: 767px)">
+      {%- endif -%}
+
+      {% comment %} :: DESKTOP IMAGE :: {% endcomment %}
+
+      {% assign desktop_img_url = default_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+      {%- if template == 'product' -%}
+        {% assign imageid = product.id %}
+      {%- else -%}
+        {% assign imageid = image.id %}
+      {%- endif -%}
+
+      <img class="lazyload lazyload-fade"
+        id="{{ imageid }}"
+        data-src="{{ img_url }}"
+        data-sizes="auto"
+        alt="{{ default_image.alt | escape }}">
+      
+    </picture>
+  </div>
+
+  {% comment %} Styling to accommodate the box ratio for lazy-loaded images {% endcomment %}
+
+  <style>
+
+    {% assign image_box_ratio = default_image.height | append: ".0" | times: 1 | divided_by: default_image.width | times: 100 | append: "%" %}
+
+    {% if mobile_image.size > 0 %}
+      {% assign mobile_image_box_ratio = mobile_image.height | append: ".0" | times: 1 | divided_by: mobile_image.width | times: 100 | append: "%" %}
+
+      /* Mobile */
+  
+      #box-ratio--{{ block.id }} {
+        padding-bottom: {{ mobile_image_box_ratio }};
+      }
+  
+    {% else %}
+
+      #box-ratio--{{ block.id }} {
+        padding-bottom: {{ image_box_ratio }};
+      }
+
+    {% endif %}
+
+    {% if default_image.size > 0 and mobile_image.size > 0 %}
+
+      /* Tablet and Up */
+
+      @media screen and (min-width: 768px) {
+        #box-ratio--{{ block.id }} {
+          padding-bottom: {{ image_box_ratio }};
+        }
+      }
+
+    {% endif %}
+    
+  </style>
+
+{%- endif -%}

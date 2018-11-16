@@ -1,0 +1,26 @@
+{% comment %} SIZE CHART {% endcomment %}
+
+{% for tag in product.tags %}
+  {% if tag contains 'audience' %}
+    {% assign audience = tag | remove: 'audience_' %}
+
+    {% case audience %}
+      {% when 'boys' %}
+        {% assign size_chart_type = 'kids' %}
+      {% when 'girls' %}
+        {% assign size_chart_type = 'kids' %}
+      {% when 'men' %}
+        {% assign size_chart_type = 'mens' %}
+      {% when 'women' %}
+        {% assign size_chart_type = 'womens' %}
+      {% when 'sale' %}
+        {% assign size_chart_type = 'all' %}
+      {% else %}
+        {% assign size_chart_type = 'all' %}
+    {% endcase %}
+  {% endif %}
+{% endfor %}
+
+<div id="size-chart--popup" class="product-page-popup" style="display: none" data-size-chart-type="{{ size_chart_type }}">
+  {{ pages[section.settings.size_chart_page].content }}
+</div>

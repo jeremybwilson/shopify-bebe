@@ -1,0 +1,23 @@
+{% if collection != blank %}
+<div class="product-collection-carousel desktop-12 tablet-6 mobile-3 owl-carousel">
+  {% for product in collection.products limit: prod_limit %}
+  <div class="product-car">
+    <div id="product-listing-{{ product.id }}" class="product-index" data-alpha="{{ product.title }}" data-price="{{ product.price }}">   
+      {% include 'product-listing-alternate' %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+{% include 'onboard-product' %}
+{% endif %}
+
+  <div class="product-carousel--nav">
+    <a class="product-carousel--prev">
+      {% include 'svg-icon-caret-left' %}
+    </a>
+    <a class="product-carousel--next">
+      {% include 'svg-icon-caret-right' %}
+    </a>
+  </div>

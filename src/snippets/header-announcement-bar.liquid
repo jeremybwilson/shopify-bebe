@@ -1,0 +1,59 @@
+<div id="top-bar-bg" {% if section.settings.num_of_promo_banners == "2" %} class="double-promo"{% endif %}>
+  <div id="bg-1"></div>
+  <div id="bg-2"></div>
+</div>
+
+<div id="top-bar" {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
+  {% if section.settings.full_width_header %}<div class="row">{% endif %}
+  <div class="row">
+
+    {% comment %} ..:: ONE PROMO BANNER ::.. {% endcomment %}
+    {%- if section.settings.num_of_promo_banners == "1" -%}
+      <div id="single-promo-wrapper" class="desktop-12 tablet-6 mobile-3">
+        
+        {%- if section.settings.announcement_link_one -%}
+          <a href="{{ section.settings.announcement_link_one }}">{{ section.settings.announcement_text_one }}</a>
+        {%- else -%}
+          {{ section.settings.announcement_text_one }}
+        {%- endif -%}
+
+      </div>
+    {%- endif -%}
+
+
+    {% comment %} ..:: TWO PROMO BANNER ::.. {% endcomment %}
+    {%- if section.settings.num_of_promo_banners == "2" -%}
+      <div id="double-promo-wrapper">
+
+        {% comment %} MOBILE : LEFT ARROW {% endcomment %}
+        <div id="promo-arrow-left">
+          {% include 'svg-icon-caret-left' %}
+        </div>
+
+        <div class="promo-banner one">
+          {%- if section.settings.announcement_link_one -%}
+            <a href="{{ section.settings.announcement_link_one }}">{{ section.settings.announcement_text_one }}</a>
+          {%- else -%}
+            {{ section.settings.announcement_text_one }}
+          {%- endif -%}
+        </div>
+
+        <div class="promo-banner two">
+          {%- if section.settings.announcement_link_two -%}
+            <a href="{{ section.settings.announcement_link_two }}">{{ section.settings.announcement_text_two }}</a>
+          {%- else -%}
+            {{ section.settings.announcement_text_two }}
+          {%- endif -%}
+        </div>
+
+        {% comment %} MOBILE : RIGHT ARROW {% endcomment %}
+        <div id="promo-arrow-right">
+          {% include 'svg-icon-caret-right' %}
+        </div>
+
+      </div>
+    {%- endif -%}
+
+  </div>
+  {% if section.settings.full_width_header %}</div>{% endif %}
+</div>

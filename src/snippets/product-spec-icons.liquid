@@ -1,0 +1,63 @@
+{% comment %}
+
+  ICONS
+  -----------------------------  
+{% endcomment %}
+
+<ul class="product-description--icons">
+
+{% for tag in product.tags %}
+  {% if tag contains 'feature_' %}
+    {% assign feature = tag | remove: 'feature_' %}
+    {% case feature %}
+      {% when '100% waterproof' %}
+        {% assign icon = 'Waterproof' %}
+        {% assign text = '100% Waterproof' %}
+      {% when 'steel toe' %}
+        {% assign icon = 'SteelToe' %}
+        {% assign text = 'Steel Toe' %}
+      {% when 'xpresscool™ lining' %}
+        {% assign icon = 'XpressCool' %}
+        {% assign text = 'XpressCool™ Lining' %}
+      {% when 'breathable mesh lining' %}
+        {% assign icon = 'BreathableMesh' %}
+        {% assign text = 'Breathable Mesh' %}
+      {% when 'composite toe' %}
+        {% assign icon = 'CompositeToe' %}
+        {% assign text = 'Composite Toe' %}
+      {% when 'warm fleece lining' %}
+        {% assign icon = 'Fleece' %}
+        {% assign text = 'Warm Fleece Lining' %}
+      {% when '100% fleece' %}
+        {% assign icon = 'Fleece' %}
+        {% assign text = '100% Fleece' %}
+      {% when 'oil resistant' %}
+        {% assign icon = 'OilResistant' %}
+        {% assign text = 'Oil Resistant' %}
+      {% when 'scent masking' %}
+        {% assign icon = 'ScentMasking' %}
+        {% assign text = 'Scent Masking' %}
+      {% when 'slip resistant' %}
+        {% assign icon = 'SlipResistant' %}
+        {% assign text = 'Slip Resistant' %}
+      {% when 'snake proof' %}
+        {% assign icon = 'SnakeProof' %}
+        {% assign text = 'Snake Proof' %}
+      {% else %}
+        {% assign icon = '' %}
+        {% assign text = '' %}
+    {% endcase %}
+
+    {% if icon != blank %}
+      {% assign icon_filename = icon  | prepend: 'SpecIcon_' | append: '.png' %}
+      <li>
+        <img src="{{ icon_filename | asset_url }}" alt="{{ text }}" />
+        <span>{{ text }}</span>
+      </li>
+    {% endif %}
+
+  {% endif %}
+{% endfor %}
+
+</ul><!-- .--icons -->
+

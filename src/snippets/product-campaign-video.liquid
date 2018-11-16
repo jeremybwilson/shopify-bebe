@@ -1,0 +1,137 @@
+{% comment %} Cycle through the tags to get what we need {% endcomment %}
+
+{% for tag in product.tags %}
+
+  {% comment %} Check to see if a product has a campaign video tag {% endcomment %}
+  {% if tag contains 'campaign_video_url' %}
+
+    
+    {% comment %} Splits up the tag into an array and grab the necessary vars {% endcomment %}
+
+    {% assign campaign_vid = tag | remove: 'campaign_video_url_' %}
+
+  {% endif %}
+
+  {% if tag contains 'campaign_video_image' %}
+
+    {% comment %} If an image URL exists for the Campaign Video, parse {% endcomment %}
+
+    {% if tag contains 'campaign_video_image_desktop' %}
+      {% assign campaign_image_desktop = tag | remove: 'campaign_video_image_desktop_' %}
+    {% endif %}
+    {% if tag contains 'campaign_video_image_mobile' %}
+      {% assign campaign_image_mobile = tag | remove: 'campaign_video_image_mobile_' %}
+    {% endif %}    
+  {% endif %}
+
+  {% comment %} Text for the Overlay {% endcomment %}
+
+  {% if tag contains 'campaign_video_subheadline' %}
+    {% assign campaign_subheadline = tag | remove: 'campaign_video_subheadline_' %}
+  {% endif %}
+  {% if tag contains 'campaign_video_headline' %}
+    {% assign campaign_headline = tag | remove: 'campaign_video_headline_' %}
+  {% endif %}  
+
+{% endfor %}
+
+{% if campaign_vid != blank %}
+
+  {% comment %}
+
+    COMPONENT RENDER
+    Using the 'capture'
+
+  {% endcomment %}
+
+  {% capture video %}
+
+    {% comment %}
+
+      ACTUAL VIDEO
+      -----------------------------  
+    {% endcomment %}
+
+    <div class="video-wrapper">
+      {% if campaign_vid == blank %}
+        <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+      {% else %}
+        {% if campaign_vid.type == "youtube" %}
+        <iframe src="//www.youtube.com/embed/{{ video_id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+        {% if campaign_vid.type == "vimeo" %}
+          <iframe src="//player.vimeo.com/video/{{ video_id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+      {% endif %}
+    </div>
+
+  {% endcapture %}
+
+  {% capture video_caption %}
+
+    {% comment %}
+
+      OVERLAY TEXT
+      -----------------------------  
+
+      Only show if subheadline or headline exists.
+
+    {% endcomment %}
+
+    {% if campaign_subheadline != blank or campaign_headline != blank %}
+
+    <div class="product-details--video-caption">
+      {% if campaign_subheadline != blank %}
+        <h3>{{ campaign_subheadline }}</h3>
+      {% endif %}
+      {% if campaign_headline != blank %}
+        <h2>The Muckster II Ankle Boot</h2>
+      {% endif %}
+
+      <button class="play-btn campaign-video--trigger" href="{{ campaign_vid }}">
+        <span>Play</span>
+      </button><!-- .product-details--video-caption -->
+    </div>     
+
+    {% endif %}
+
+  {% endcapture %}
+
+
+  <div class="product-details--section product-details--campaign-video">
+
+    {% comment %}
+
+      CAMPAIGN VIDEO IMAGE
+      -----------------------------  
+
+      If this exists, display, and have the video show as a popup. If it doesn't exist, just show the video in the space.
+    {% endcomment %}
+
+    {% if campaign_image_desktop != blank %}
+
+      <div class="campaign-video--image">
+        <a class="campaign-video--trigger" href="{{ campaign_vid }}"> 
+          <picture>
+            {% if campaign_image_mobile != blank %}
+            <source srcset="{{ campaign_image_mobile | file_url }}" media="(max-width: 767px)">
+            {% endif %}
+            <img src="{{ campaign_image_desktop | file_url }}" />
+          </picture>
+        </a>
+
+        {{ video_caption }}
+
+      </div><!-- .video-trigger -->
+
+    {% else %}
+
+      {{ video }}
+
+    {% endif %}
+
+ 
+
+  </div><!-- .product-details--campaign-video -->
+
+{% endif %}

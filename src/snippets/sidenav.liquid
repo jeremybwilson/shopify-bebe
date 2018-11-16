@@ -1,0 +1,25 @@
+<div class="left-nav">
+    <div class="desktop-left-nav">
+        <ul>
+            {% for link in linklists.side-menu.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+  <div class="left-nav--categories">
+    <div class="opener"><span>Select Options</span>{% include 'svg-icon-caret-down' %}</div>
+    <div class="dropdown">
+      {% for link in linklists.side-menu.links %}
+        <!-- <div class="category"> -->
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        <!-- </div> -->
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
