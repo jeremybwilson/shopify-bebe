@@ -1,0 +1,19 @@
+{%- layout none -%}
+
+{% comment %} :: BUILD JSON ARRAY of VARIANT OBJECTS :: {% endcomment %}
+{% capture variantData %}
+  {% for variant in product.variants %}
+    { 
+      "available_quantity":"{{variant.inventory_quantity}}",
+      "id":"{{variant.id}}",
+      "product_id":"{{product.id}}",
+      "sku":"{{variant.sku}}",
+      "title":"{{variant.title}}"
+    }{% if forloop.last == false %},|{% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign availableManifest = variantData | split: '|' %}
+
+
+{% comment %} :: VARIANT AVAILABILITIES (ARRAY) :: {% endcomment %}
+[ {{ availableManifest }} ]
