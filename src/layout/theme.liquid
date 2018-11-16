@@ -63,8 +63,8 @@
 	{% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  {% include 'script-zendesk' %}
-  {% include 'script-google-tag-head' %}
+  {% comment %}{% include 'script-zendesk' %}{% endcomment %}
+  {% comment %}{% include 'script-google-tag-head' %}{% endcomment %}
 
   <!-- Favicons
 ================================================== -->
@@ -83,7 +83,7 @@
 </head>
 
 <body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template }}{% endif %}">
-  {% include 'script-google-tag-body' %}
+  {% comment %}{% include 'script-google-tag-body' %}{% endcomment %}
   {% include 'timber-cart' %}
 
   <div class="shifter-page{% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
