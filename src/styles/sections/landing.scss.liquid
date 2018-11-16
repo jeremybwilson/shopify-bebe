@@ -1,0 +1,242 @@
+@charset "UTF-8";
+
+
+#subpage {
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(flex-end);
+
+  margin-right: 27px;
+  margin-left: 27px;
+
+  @include p;
+  @include fontDim(14px,24px,0);
+  @include fontSize(14px);
+
+  @include mq( 'lap-and-up' ) {
+    @include flex-direction(row);
+  }
+  @include mq( 'desk-and-up' ) {
+    padding-left: 15%;
+  }
+
+  // SUBPAGE : Left-nav
+
+  div.left-nav {
+    margin: 0 0 25px 0;
+    @include mq( 'lap-and-up' ) {
+      @include flex-basis(220px);
+      padding-right: 20px;
+    }
+    @include mq( 'desk-and-up' ) {
+      @include flex-basis(300px);
+    }
+
+    div.desktop-left-nav {
+      display: none;
+
+      @include mq( 'lap-and-up' ) {
+        display: block;
+      }
+
+      ul > li {
+        margin-bottom: 0px;
+
+        &:before {
+          content: " ";
+          margin-right: 0;
+        }
+
+        a {
+          color: $color--primary-2;
+        }
+      }
+    }
+  }
+
+  .left-nav--categories {
+    @include mq("lap-and-up") {
+      display: none;
+    }
+
+    .opener {
+      @include flexbox;
+      @include justify-content(space-between);
+      @include align-items(center);
+      width: 100%;
+      padding: 10px 15px;
+      background: $color--gray-1;
+      color: $color--white;
+      font-weight: $font-weight--book;
+      @include fontSize(14px);
+
+      svg {
+        width: 10px;
+        transition: transform .25s ease;
+        * {
+          fill: $color--white;
+        }
+      }
+
+      &.is-on {
+        svg {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    div.dropdown {
+      display: none;
+      float: left;
+      width: 100%;
+      background: $color--light-gray;
+      padding: 10px 15px;
+
+      a {
+        float: left;
+        width: 100%;
+        color: $color--primary-2;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  div.page-content-field {
+    @include mq( 'lap-and-up' ) {
+      @include flex-basis(100%);
+    }
+
+    a {
+      color: $color--accent-1;
+    }
+  }
+
+  p {
+    color: $color--primary-2;
+    @include fontDim(14px,24px,0);
+    margin-bottom: 20px;
+
+    @include mq( 'tablet-and-up' ) {
+      @include fontDim(16px,36px,0);
+    }
+  }
+  h1 {
+    @include h1;
+    color: $color--primary-1;
+    @include fontSize(22px);
+    text-transform: uppercase;
+    border-bottom: none;
+
+    @include mq("tablet-and-up") {
+      @include fontSize(30px);
+    }
+  }
+  h2 {
+    color: $color--primary-1;
+    font-weight: $font-weight--black;
+    @include fontSize(17px);
+
+    @include mq('tablet-and-up') {
+      @include fontSize(22px);
+    }
+  }
+  h3 {
+    color: $color--primary-1;
+    font-weight: $font-weight--black;
+    @include fontSize(14px);
+
+    @include mq('tablet-and-up') {
+      @include fontSize(18px);
+    }
+  }
+  h2 + h3 {
+    margin-top: 20px;
+  }
+  h4 {
+    @include fontSize(14px);
+    font-weight: $font-weight--black;
+    color: $color--primary-1;
+    text-transform: uppercase;
+
+    @include mq("tablet-and-up") {
+      @include fontSize(16px);
+    }
+  }
+  h5 {
+    @include fontDim(17px,24px,0);
+    color: $color--primary-2;
+    margin: 15px 0;
+    @include mq("tablet-and-up") {
+      @include fontDim(25px,34px,0);
+    }
+  }
+  table {
+    margin-bottom: 30px;
+  }
+  ul > li {
+    list-style: none;
+    color: $color--primary-2;
+    padding-bottom: 10px;
+    @include fontDim(14px,24px,0);
+
+    @include mq( 'tablet-and-up' ) {
+      @include fontDim(16px,36px,0);
+    }
+
+    &:before {
+      content: "•";
+      color: $color--primary-1;
+      margin-right: 10px;
+    }
+  }
+  ol > li {
+    list-style-type: decimal;
+    content: " ";
+    padding-bottom: 10px;
+    padding-left: 40px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  table {
+    tr:first-child {
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+    }
+  }
+  table table {
+    margin-bottom: 0;
+  }
+
+
+  // SUBPAGE : Content : Columns for Shipping
+
+  .shipping-guide-chart {
+
+    @include flexbox;
+    @include flex-direction(column);
+    margin: 10px 0 20px 0;
+
+    @include mq( 'tablet-and-up' ) {
+      @include flex-direction(row);
+    }
+
+    .col {
+      padding: 20px 30px;
+      border: 1px dotted $color--white;
+      background: $color--primary-1;
+      color: $color--white;   
+      text-align: center;
+
+      @include mq("tablet-and-up") {
+        width: 33%;
+        padding: 20px;
+      }
+    }
+  }
+
+}

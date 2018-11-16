@@ -1,0 +1,131 @@
+.size-chart--wrapper {
+  margin-bottom: 2rem;
+
+  h2 {
+    margin-bottom: 12px;
+    color: $color--primary-2;
+    font-weight: $font-weight--black;
+    @include fontSize(16px);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      margin-bottom: 12px;
+      @include fontSize(30px);
+      letter-spacing: .25em;         
+    }
+
+    &:after {
+      display: none;
+    }  
+  }
+}
+
+table.size-chart {
+  td, th {
+    padding: 8px;
+    text-align: center;
+
+    @include mq('lap-and-up') {
+      padding: 16px;
+    }
+  }
+  th {
+    font-weight: $font-weight--bold;
+    color: $color--white;
+    @include fontDim(8px,12px,.2em);
+    text-transform: uppercase;
+
+    @include mq('lap-and-up') {
+      @include fontSize(16px);
+    }
+  }
+  thead {
+    th {
+      background: $color--primary-1;
+    }
+  }
+  tbody {
+    .th-odd {
+      background-color: $color--accent-1;
+    }
+    .th-even {
+      background-color: $color--accent-2;
+    }
+    td {
+      border-right: solid 1px $color--border-gray;
+      color: $color--gray-1;
+      @include fontDim(12px,12px,.025em);
+
+      @include mq('lap-and-up') {
+        @include fontSize(16px);
+      }
+    }
+    td:last-of-type {
+      border-right: none;
+    }
+    tr:nth-child(odd) td {
+      background-color: $color--white;
+    }
+    tr:nth-child(even) td {
+      background-color: #f2f2f2;
+    }
+  }
+}
+
+// POPUP
+
+.size-chart--trigger {
+  color: $color--primary-2;
+  float: right;
+  font-weight: $font-weight--bold;
+  @include fontDim(16px,16px,.025em);
+  text-decoration: underline;
+}
+
+.product {
+  .fancybox-skin {
+    background: transparent;
+  }
+  .fancybox-close {
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+    color: $color--accent-1;
+    text-decoration: none;
+    @include mq('tablet-and-up') {
+      left: auto;
+      margin-left: 0;
+      top: 0;
+    }
+  }
+}
+
+#size-chart--popup {
+  max-height: 80vh;
+
+  @include mq('lap-and-up') {
+    max-width: 720px;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    overflow-y: scroll;
+  }
+
+  h2 {
+    color: $color--white;
+  }
+
+}
+
+// FAQ
+.faq-size-charts-wrapper {
+  position: relative;
+  margin: 15px 0 25px;
+
+  a {  
+    font-weight: $font-weight--medium;
+  }
+}
+

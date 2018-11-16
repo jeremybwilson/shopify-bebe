@@ -1,0 +1,285 @@
+@charset "UTF-8";
+
+// note: use @include fontSize(__px) to indicate all font sizes.
+html { 
+  font-size: 16px;
+  padding-bottom: 0 !important; // Cart drawer adds weird padding...
+}
+
+html, body {
+  height: 100%;
+}
+
+body { 
+	font-family: $font-stack--default;
+  color: {{ settings.text_color }};
+  background: {{ settings.background }};
+  @include p;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-stack--heading;
+}
+
+p {
+  color: $color--gray-1;
+}
+
+{% comment %} Prevent sidways scrolling past page bounds on old iOS devices (9 and earlier){% endcomment %}
+body > .page-wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.gridlock .row {
+  @include mq('phone') {
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;    
+  }
+}
+
+.homepage-section {
+  margin-bottom: 40px;
+}
+
+@mixin bgGradient {
+  background: {{ settings.background }};
+  background: -moz-linear-gradient(top, #f8f7f8 140px, {{ settings.background }} 200px);
+  background: -webkit-linear-gradient(top, #f8f7f8 140px,{{ settings.background }} 200px);
+  background: linear-gradient(to bottom, #f8f7f8 140px,{{ settings.background }} 200px);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f7f8', endColorstr='{{ settings.background }}', GradientType=0 );
+}
+
+// Page Background (Design wanted a gradient stylization)
+#PageContainer {
+  @include bgGradient;
+}
+
+#content {
+  position: relative;
+  //padding: 0 0 100px 0;
+  padding: 100px 0;
+
+  // special pages that don't need padding at the top
+
+  body.collection &,
+  body.product & {
+    padding-top: 0;
+  }
+  body.product & {
+    padding-bottom: 20px;
+  }
+}
+
+// Breadcrumbs 
+#breadcrumb {
+  @include h8;
+  @include fontSize( 16px );
+  position: relative;
+  top: 57px;
+  left: 0;
+  margin: 0 auto;
+  padding-left: 20px;
+  z-index: 30;
+
+  @include mq( 'phone' ) {
+    width: 100vw;
+  }
+
+  @include mq( 'tablet-and-up' ) {
+    padding-left: 0;
+  }
+
+  @include mq( 'lap-and-up' ) {
+    top: 38px;
+  }
+
+  a {
+    color: $color--gray-2;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+
+  .separator {
+    color: $color--gray-2;
+  }
+
+  .page-title {
+    @include h7;
+
+    color: $color--text-1;
+    font-weight: $font-weight--bold;
+  }
+}
+
+
+.animate25 { transition: all 0.25s ease-in-out; }
+.animate50 { transition: all 0.50s ease-in-out; }
+
+.errors {
+  color: $color--error;
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+
+.shopify-section:last-child {
+  margin-bottom: 0px !important;
+}
+
+
+
+
+/* GENERAL BUTTONS
+ *  Most of this is coiped from stylesheet.css,
+ *  so don't be nervous removing stuff no longer 
+ *  needed here.
+================================================== */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  @include mainButton;
+  @include fontSize( {{ settings.font-size }}px );
+
+  font-family: $font-stack--default;
+  font-weight: $font-weight--bold;
+  border: 0;
+  border-radius: 0;
+  transition: all .25s ease-in-out;
+  -webkit-appearance: none;
+  display: inline-block;
+  width: auto;
+  padding: 0 15px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  height: 44px;
+  line-height: 44px;
+}
+
+.secondary-button {
+  color: {{ settings.alt_button_text }};
+  background: {{ settings.alt_button_bg }};
+}
+
+.secondary-button:hover {
+  color: {{ settings.alt_button_text_hover }};
+  background: {{ settings.alt_button_bg_hover }};
+}
+
+a.button:visited {
+  background: {{ settings.button_bg }};
+  color: {{ settings.button_text }};
+}
+
+
+.product-modal {
+  display:none;
+  background: {{ settings.button_bg }};
+  color: {{ settings.button_text }};
+  padding: 10px 20px;
+  transition: all .25s ease-in-out;
+  position: absolute;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  margin-top: -15px;
+  margin-left: -30%;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.product-modal:hover {
+  color: {{ settings.button_text_hover }};
+  background: {{ settings.button_bg_hover }};
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.product-modal:visited {
+  background: {{ settings.button_bg }};
+  color: {{ settings.button_text }};
+}
+
+
+// Shopify Payment Button
+@media screen and ( min-width: 981px ) {
+   .shopify-payment-button {
+     margin-top: 0;
+     margin-left: 3%;
+   }
+}
+@media screen and ( max-width: 980px ) {
+  .add, .shopify-payment-button, .single-option-selector {
+    width: 100%;
+    margin-left: 0;
+    clear: left;
+  }
+}
+.shopify-payment-button.hide { display: none; }
+.shopify-payment-button__button--branded, .shopify-payment-button__button--unbranded {
+  border-radius: 3px !important;
+  line-height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  margin-bottom: 15px !important;
+}
+
+.shopify-payment-button__button--unbranded {
+    color: {{ settings.button_text }} !important;
+    background: {{ settings.button_bg }} !important;
+    font-size: {{ settings.font-size }}px !important;
+    font-weight: {{ main_font.weight }} !important;
+    font-family: {{ main_font.family }} !important;
+}
+
+.shopify-payment-button__button--unbranded:hover {
+    color: {{ settings.button_text }} !important;
+    background: {{ settings.button_bg_hover }} !important;
+}
+
+button.shopify-payment-button__more-options, button.shopify-payment-button__more-options:hover {
+    background: transparent !important;
+    color: #000 !important;
+    padding: 0 !important;
+
+}
+
+button.shopify-payment-button__more-options {
+    height: initial;
+    line-height: initial;
+}
+
+.readmore {
+  clear: left;
+  text-align: left;
+  margin: 20px auto 30px;
+}
+
+.readmore a {
+  background: {{ settings.button_bg }};
+  color: {{ settings.button_text }};
+  padding: 10px 20px;
+  transition: all .25s ease-in-out;
+  letter-spacing: 1px;
+  border-radius: 3px;
+}
+
+.readmore a:hover {
+  color: {{ settings.button_text_hover }};
+  background: {{ settings.button_bg_hover }};
+  text-decoration: none;
+}

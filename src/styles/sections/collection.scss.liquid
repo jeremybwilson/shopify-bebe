@@ -1,0 +1,117 @@
+// COLLECTION.SCSS
+// -- sections/collection-template.liquid
+
+
+/*  COLLECTION: Core Variables
+ * ---------------------------------------------- */
+$resultsTextColor: {{ settings.filter_text_color }};
+
+
+/*  COLLECTION : Main styling block
+ * ---------------------------------------------- */
+#shopify-section-collection-template {
+
+
+    /* COLLECTION : Product Grid + Item View
+     * ---------------------------------------------- */
+    .collection-template {
+        margin-top: 65px;
+
+        @include mq( 'lap-and-up' ) {
+            margin-top: 0;
+        }
+
+        @import url('../snippets/product-grid.scss.liquid');
+    }
+    
+
+    /* FILTERS : Styling for filter sets
+     * ---------------------------------------------- */
+    @import url('../snippets/filters.scss.liquid');
+}
+
+
+/* RESULTS COUNT : 
+ *    # of results on a collection page, only shown
+ *    when filters are present so only applies here.
+ *
+ *    (NOTE: #results-count in breadcrumbs.liquid)
+ * ---------------------------------------------- */
+#results-count {
+    @include h7;
+    @include fontSize( 16px );
+    position: static;
+    top: auto;
+    color: $resultsTextColor; //Imported from filters.scss.liquid
+    font-weight: $font-weight--bold;
+
+    @include mq( 'lap-and-up' ) {
+        position: absolute;
+        top: 0;
+        right: 2px;
+        left: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1035 @@
+// HEADER.SCSS
+// -- sections/header.liquid
+// -- snippets/header-announcement-bar.liquid
+
+
+/*  HEADER : Core Styles
+ * ---------------------------------------------- */
+$navBoxShadow: 0px 1px 9px #8d8d8d;
+$navShadowAni: box-shadow 0.25s ease-in-out;
+$navMobileBarGutter: 15px;
+$navMinorBorder: 1px solid {{ settings.nav_minor_border_color }};
+$zIndexBackingShadow: -1;
+$zIndexMobileMenu: 5;
+$zIndexBarBG: 25;
+$zIndexButtons: 50;
+$zIndexUserBtns: 65;
+$zIndexLogo: 75;
+$navBarDesktopHeight: 80px;
+$navHeaderColor: {{ settings.nav_header_color }};
+$navSubHeaderColor: {{ settings.nav_sub_header_color }};
+$navListItemColor: {{ settings.nav_list_item_color }};
+$navHoverColor: {{ settings.nav_hover_color }};
+
+#header-section {
+    position: relative;
+    margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it. 
+}
+
+
+
+/* SNIPPET : Header-Announcement-Bar 
+ *           (Promos bar on top of nav bar)
+ * ---------------------------------------------- */
+ @import url('../snippets/header-announcement-bar.scss.liquid');
+
+
+
+
+/*  NAV : Styles for the Nav-Bar portion
+ * ---------------------------------------------- */
+#nav-bar-wrapper {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    padding: 0;
+    z-index: 50; //entire wrapper, this relates to the header to rest of site so no need var
+    transition: $navShadowAni;
+
+    // SHADOW : When stick nav is active
+    &.isStuck {
+        box-shadow: $navBoxShadow; 
+
+        #nav-logo-backing {
+            box-shadow: $navBoxShadow;
+        }
+    }
+
+    @include mq( 'lap-and-up' ){
+        height: $navBarDesktopHeight;
+    }
+    
+    /* NAV BG :
+     * 
+     * Why? Because it lets use use rotated, box-shadows on logo
+     * to make a mobile sticky nav with a nice minor box shadow
+     * ---------------------------------------------- */
+    #nav-bar-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: $zIndexBarBG; // 25
+        background: {{ settings.header_background }};
+    }
+
+    #nav-bar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: 960px; //iPad
+        padding: 0;
+
+        // 1220px is bootstrap break apparently, not 1240 like we setup in our MQ include, might change it?
+        @media only screen and ( min-width: 1220px ) {
+            max-width: 1200px;
+        }
+
+        @include mq( 'wide-and-up' ){
+            max-width: 1400px;
+        }
+    }
+
+
+    /*  NAV : LOGO :
+     * ---------------------------------------------- */
+    #nav-logo,
+    #nav-logo-backing {
+        position: absolute;
+        @include flexbox;
+        @include justify-content( center );
+        @include align-items( center );
+        width: 160px;
+        height: 100%;
+        left: 50%;
+        transform: translateX( -50% );
+        top: 0;
+        z-index: $zIndexLogo;
+
+        a, svg {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        // DESKTOP ( 1024+ )
+        @include mq( 'lap-and-up' ) {
+            top: 0;
+            left: 0;
+            width: 160px;
+            transform: translateX( 0 );
+        }
+
+        @include mq( 'desk-and-up' ) {
+            left: 34px;
+        }
+    }
+
+    // SHADOW : This gives the sticky nav a box shadow on the logo point
+    #nav-logo-backing {
+        display: none !important; // Comment out to use this layer as a backing shadow for an over-the-bounds logo
+        transition: $navShadowAni;
+        transform: translateX( -50% ) rotateZ( 45deg );
+        background: {{ settings.header_background }};
+        z-index: $zIndexBackingShadow; // -1, Relative to #nav-bar-wrapper, so its -1 on inner layer of nav-bar.
+    }
+
+
+
+    /*  NAV : ACCOUNT + CART + SEARCH + SITE PICKER (Right Elements)
+     * ---------------------------------------------- */
+    #nav-user {
+
+        // Account / Cart / Site Picker List
+        ul#nav-user-list {
+            @include inline-flex;
+            @include justify-content( flex-end );
+            position: absolute;
+            right: $navMobileBarGutter;
+            height: 100%;
+            list-style: none;
+            text-align: right;
+            z-index: $zIndexUserBtns; //50
+
+            @include mq( 'lap-and-up' ) {
+                right: 0;
+            }
+
+            .nav-item {
+                @include inline-flex;
+                @include align-items( center );
+                @include justify-content( center );
+
+                a,
+                .inner-center {
+                    @include inline-flex;
+                    @include align-items( center );
+                    @include justify-content( center );
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 7px;
+                    text-decoration: none;
+                }
+
+                // Account, Cart, etc icons all congruent size
+                svg {
+                    width: 19px;
+                    height: 17px;
+                }
+
+                i {
+                    @include inline-flex;
+                    @include align-items( center );
+                    font-size: 20px;
+                    height: 100%;
+                }
+            }
+
+            // HIDE : MOBILE : Don't show sites, currency or search nav-items on mobile
+            .nav-sites,
+            .nav-search,
+            .nav-currency {
+                display: none;
+                @include justify-content( center );
+
+                @include mq( 'lap-and-up' ) {
+                    @include inline-flex;
+                }
+            }
+
+
+            // SITE PICKER : Dropdown selector for the other site pickers
+            .nav-sites {
+                @include align-items( flex-start );
+                position: relative;
+                margin-top: -15px;
+                top: 50%;
+
+                ul.sites-picker {
+                    width: 65px;
+                    height: 35px;
+                    list-style: none;
+                    overflow: hidden;
+                    background: {{ settings.header_background }};
+                    transition: height 0.25s ease-in-out;
+
+                    &:hover {
+                        height: auto;
+
+                        li:first-child {
+                            border-bottom: $navMinorBorder;
+                        }
+                    }
+
+                    li {
+                        width: 100%;
+                        height: 35px;
+                        cursor: pointer;
+                        background: {{ settings.header_background }};
+                        transition: background 0.25s ease-in-out;
+
+                        // BORDER : Border on all but first (till hovered) and last 
+                        &:not(:last-child) { border-bottom: $navMinorBorder; }
+                        &:first-child {
+                            border: none;
+
+                            // Hide top item country code, its obvious and makes nice spot for arrow indicator
+                            .site-name { opacity: 0; }
+                        }
+
+                        // HOVER : On a country option
+                        &:hover {
+                            background: $color--primary-2;
+
+                            .site-name  { 
+                                color: {{ settings.header_background }}; //Use bg color when swapping 
+                                background: $color--primary-2;
+                            }
+                            .site-arrow { opacity: 0; }
+
+                            &:first-child {
+                                .site-name { opacity: 1; }
+                            }
+                        }
+
+                        .site-flag {
+                            height: 17px;
+                            margin-right: 4px;
+                        }
+
+                        .site-name {
+                            background: {{ settings.header_background }};
+                            transition: all 0.25s ease-in-out;
+                            padding: 0 2px;
+                            z-index: 10; // appear on top of arrow
+                        }
+
+                        .site-arrow {
+                            position: absolute;
+                            width: 9px;
+                            height: 7px;
+                            right: 10px;
+                            top: 13px;
+                            z-index: 5;
+                            transition: opacity 0.25s ease-in-out;
+
+                            svg {    
+                                position: absolute;
+                                height: 100%;
+                                width: 100%;
+                                left: 0;
+                                top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            // ACCOUNT : User account item
+            .nav-account {
+                width: 46px;
+                
+                &:hover {
+                    .icon-account {
+                        fill: {{ settings.nav_links_hover }};
+                    }
+                }
+
+                .icon-account {
+                    transition: fill 0.35s ease-in-out;
+                    fill: {{ settings.nav_links }};
+                }
+            }
+
+
+            // CART 
+            .nav-cart {
+                color: {{ settings.nav_links }}; //Legacy font-icon support for "bag" font icon
+
+                &:hover {
+                    .fa-shopping-bag { color: {{ settings.nav_links_hover }}; }
+                    .icon-cart  { fill:  {{ settings.nav_links_hover }}; }
+                    .cart-count { color: {{ settings.nav_links_hover }}; }
+                }
+
+                i.fa, // Support bag font-icon for now..
+                .icon-cart {
+                    margin-right: 8px; // Space icon from cart #
+                    fill: {{ settings.nav_links }};
+                    color: {{ settings.nav_links }}; //For "Bag" insteaed of Cart icon (font icon)
+                    transition: fill 0.35s ease-in-out;
+                }
+
+                .cart-count {
+                    font-weight: bold;
+                    color: {{ settings.nav_links }};
+                    transition: color 0.35s ease-in-out;
+
+                    &.hidden-count {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // SEARCH : Input on mobile-navigation.liquid + header.liquid (desktop)
+    .nav-search {
+        position: relative;
+        margin-right: 20px;
+        width: 140px;
+
+        @include mq( 'desk-and-up' ) {
+            width: 200px;
+        }
+
+        form {
+            position: relative;
+        }
+
+        .nav-search-input {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            border: none;
+            border-bottom: $navMinorBorder;
+            padding-right: 23px;
+            outline: none;
+        }
+
+        .nav-search-icon-wrap {
+            position: absolute;
+            transform: translateY( -43% );
+            top: 50%;
+            right: 0;
+
+            // Hidden search button on top of the search Icon,
+            // so clicking it submits as well as enter.
+            .nav-search-submit {
+                position: absolute;
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            svg.icon-search {
+                width: 19px;
+                height: 17px;
+            }
+        }
+    }
+
+
+
+    /*  NAV : MOBILE MENU ICON
+     * ---------------------------------------------- */
+    .icon-nav-mobile-menu {
+        position: absolute;
+        left: $navMobileBarGutter;
+        width: 30px;
+        height: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: $zIndexButtons; // 50
+
+        @include mq( 'lap-and-up' ) {
+            display: none;
+        }
+
+        .bar {
+            position: absolute;
+            background: $color--primary-2;
+            width: 100%;
+            height: 2px;
+            transition: all 0.25s ease-in-out;
+
+            &.one   { top: 0; }
+            &.two   { 
+                top: 50%;  
+                transform: translateY( -50% ) 
+            }
+            &.three { 
+                width: 70%;
+                top: 100%; 
+                transform: translateY( -50% ) 
+            }
+        }
+    }
+
+
+
+
+    /*  NAV : MEGA-MENU + SUB-NAV LINKS
+     * ---------------------------------------------- */
+    nav#nav {
+        color: $color--text-1;
+        display: none;
+        height: $navBarDesktopHeight;
+
+        @include mq( 'lap-and-up' ) {
+            display: block;
+        }
+
+        // Nav-Category-Header
+        .nav-category-header {
+            @include h5;
+            height: 100%;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $navHeaderColor;
+        }
+    }
+    #nav-menu-desktop {
+        position: relative;
+        height: 100%;
+
+        #nav-menu-desktop-list {
+            @include inline-flex;
+            @include justify-content( space-around );
+            @include align-items( center );
+            position: absolute;
+            list-style: none;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            padding: 0 360px 0 180px;
+            z-index: $zIndexButtons;
+
+            @include mq( 'desk-and-up' ) {
+                padding: 0 530px 0 230px;
+            }
+
+            @include mq( 'wide-and-up' ) {
+                padding: 0 750px 0 210px;
+            }
+
+            .nav-primary-link {
+                @include inline-flex;
+                @include justify-content( center ); // Space links to better match mock
+                height: 100%;
+                width: auto;
+
+                &.nav-list-simple {
+                    position: relative;
+                }
+
+                .nav-category-header { //Center the nav link item vertically 
+                    @include inline-flex;
+                    @include align-items( center );
+                    @include fontSize( 14px );
+                    letter-spacing: 0.18em; 
+                    padding-top: 3px; // make up size for 3px bottom border on links
+                    border-bottom: 3px solid transparent;
+
+                    @include mq( 'desk-and-up' ) {
+                        @include fontSize( 16px );
+                    }
+                }
+
+                &:hover > a {
+                    border-bottom: 3px solid {{ settings.nav_links_hover }};
+                }
+
+                &:hover {
+                    .submenu {
+                        display: block;
+                    }
+                }
+
+                .submenu {
+                    position: absolute;
+                    top: 100%;
+                    left: 50%; 
+                    width: 200px;
+                    transform: translateX( -50% );
+                    text-align: center;
+                    list-style: none;
+                    background: {{ settings.header_background }};
+                    display: none;
+                    padding: 15px 20px 5px;
+
+                    li:hover a {
+                        color: $navHoverColor;
+                    }
+                }
+            }
+
+            .megamenu {
+                width: 100%; // so it doesn't obey the list width
+                max-width: 1400px;
+                position: absolute;
+                left: 50%; // scoot left distance (- spacing) #nav-menu-desktop-list elements over from edge
+                transform: translateX( -50% );
+                top: 80px;
+                z-index: 5;
+                padding: 0;
+                text-align: left;
+                list-style: none;
+
+                // Noticed that sherwin used a light shadow to create illusion of menus being diff color but sampler
+                //  points out that they're same and its a shading trick along the edge o.O (awesome work)
+                background: #f8f7f8;
+                background: -moz-linear-gradient(top, #f8f7f8 0%, {{ settings.header_background }} 12%);
+                background: -webkit-linear-gradient(top, #f8f7f8 0%,{{ settings.header_background }} 12%);
+                background: linear-gradient(to bottom, #f8f7f8 0%,{{ settings.header_background }} 12%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f7f8', endColorstr='{{ settings.header_background }}',GradientType=0 );
+            
+                .mega-container {
+                    width: 100%;
+                    height: 100%;
+                    left: 0px;
+                    padding-left: 40px;
+                    position: relative;
+                    @include flexbox;
+                    @include justify-content( space-between );
+
+                    @include mq( 'desk-and-up' ) {
+                        padding-left: 90px;
+                    }
+
+                    .mega-column-content {
+                        @include inline-flex;
+                        position: relative;
+                        width: 960px;
+                        margin-top: 35px;
+
+                        @include mq( 'desk-and-up' ) {
+                            margin-top: 65px;
+                            margin-bottom: 15px;
+                            width: 820px;
+                        }
+
+                        @include mq( 'wide-and-up' ) {
+                            margin-top: 65px;
+                            width: 970px;
+                        }
+
+                        .mega-stack {
+                          display: block;
+                          line-height: 30px;
+                          margin-bottom: 20px;
+
+                            li {
+                              display: block;
+                              width: 100%;
+                              line-height: 26px;
+                              overflow: hidden;
+                            }
+                        }
+                    }
+
+                    .mega-image {
+                        @include inline-flex;
+                        @include align-items( center );
+                        position: relative;
+                        width: 310px;
+
+                        @include mq( 'wide-and-up' ) {
+                            width: 320px;
+                        }
+
+                        a {
+                            top: 0;
+                            right: 0;
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
+                    }
+
+                    // Spaces in menu (entries named '-')
+                    .nav-list-space {
+                        height: 26px;
+                    }
+
+                    a { 
+                        text-decoration: none;
+                    }
+
+                    // Sub Menu items
+
+                    // Individual Sub-Sub-items (items inside nested lists)
+                    .nav-sub-sub-item {
+                        float: none;
+                        margin: 8px 0;
+
+                        // "Shop All >" Links in sub-nav
+                        &.shop-all a {
+                            @include h7;
+                            position: relative;
+
+                            // TRAINGLE : CLOSED : Downward arrow in css
+                            &:after {
+                                width: 0; 
+                                height: 0; 
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY( -50% );
+                                right: -20px;
+                                content: ""; // undo the preset arrow type
+                                border-top: 4px solid transparent;
+                                border-bottom: 4px solid transparent;
+                                border-left: 8px solid {{ settings.nav_links_hover }};
+                            }
+                        }  
+
+
+                        // SUB-NAV : Regular Links to sub-collection divisions
+                        a {
+                            @include h8;
+                            color: $navListItemColor;
+                            transition: color 0.25s ease-in-out;
+
+                            &:hover {
+                                color: {{ settings.nav_links_hover }};
+                            }
+                        }
+
+                        
+                        // SALE : Sale gets unique color var from settings
+                        {% if settings.enable_nav_name_styling %}
+                            &.sale a {
+                                color: {{ settings.nav_links_sale }};
+                                font-weight: $font-weight--medium;
+                            }
+                        {% endif %}
+
+                    }
+                }
+
+                .nav-sub-header,
+                .nav-sub-header a {
+                    @include h5;
+                    letter-spacing: 0; // Slightly thinner
+                    margin-bottom: 10px;
+                    text-transform: uppercase;
+                    color: $navSubHeaderColor;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+
+
+
+
+    /*  NAV : MOBILE NAV MENU STYLES 
+     *   (would have combined them, but its all already setup in theme)
+     * ---------------------------------------------- */
+    $navMobileMenuGutter: 35px;
+    $navMobileSitesHeight: 60px;
+
+    #nav-menu-mobile {
+        display: block;
+        pointer-events: none;
+        opacity: 0;
+        position: absolute;
+        color: $color--text-1;
+        top: -200vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: all 0.35s ease-in-out;
+        z-index: $zIndexMobileMenu; // 15
+        // NOTE : HEIGHT IS DONE IN HEADER STYLE BLOCK B/C IT READS PROMO SECTION HEIGHT!! (See: section/header.liquid)
+
+        &.mobile-nav-open {
+            display: block;
+            pointer-events: all;
+            opacity: 1;
+            top: 50px;
+            width: 100%;
+            background: {{ settings.header_background }};
+            z-index: 25; // logo is at 50
+            margin: 0;
+            padding: 70px 0;
+
+            @include mq( 'lap-and-up' ) {
+                display: none;
+            }
+        }
+
+        .nav-search {
+            width: 100%;
+            left: 50%;
+            transform: translateX( -50% );
+            margin-bottom: 20px; 
+            padding: 0 $navMobileMenuGutter;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        // ACCORDION : Top Level
+        #accordion {
+            text-align: left;
+            padding: 0 2px 60px; //Aligns the titles to the left edge matching search underline
+            @include fontSize( 16px );
+
+            li { 
+                position: relative;
+                border-bottom: none; 
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .accordion-header,
+            .link-header {
+                padding: 0;
+                font-weight: $font-weight--bold;
+                color: $color--text-1;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                padding-left: 35px;
+
+                a { 
+                    color: $color--text-1;
+                    padding: 0;
+                }
+            }
+
+            .accordion-header,
+            .accordion-sub-header {
+                // TRAINGLE : CLOSED : Downward arrow in css
+                &:after {
+                    width: 0; 
+                    height: 0; 
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY( -50% );
+                    right: $navMobileMenuGutter;
+                    content: ""; // undo the preset arrow type
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-top: 9px solid {{ settings.nav_links_hover }};
+                    transition: border 0.25s ease-in-out;
+                }
+
+                &.open:after {
+                    border-top: none;
+                    border-bottom: 9px solid {{ settings.nav_links_hover }};
+                }
+            }
+
+            .sub {
+                background: #F7F7F2;
+                padding: 0 0 0 35px;
+
+                .accordion-sub-header,
+                .link-sub-header {
+                    position: relative;
+                    text-decoration: none;
+                    color: $color--text-1;
+                    font-weight: $font-weight--medium;
+
+                    &.custom-sub-header {
+                        margin-top: 20px;
+                        font-weight: 600;
+                        margin-bottom: -10px;
+                    }
+
+                    a {
+                        color: $color--text-1;
+                    }
+
+                    &.open,
+                    &.open a {
+                        color: {{ settings.nav_links_hover }};
+                    }
+                }
+
+                li {
+                    @include flexbox;
+                    @include align-items( center );
+                    height: 40px;
+                    padding: 0;
+
+                    a {
+                        @include flexbox;
+                        @include align-items( center );
+                        color: $color--text-1;
+                        height: 100%;
+                    }
+
+                    &.shop-all {
+                        font-weight: $font-weight--bold;
+
+                        a {
+                            position: relative;
+
+                            // TRAINGLE : CLOSED : Rightward Arrow
+                            &:after {
+                                width: 0; 
+                                height: 0; 
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY( -50% );
+                                right: -20px;
+                                content: ""; // undo the preset arrow type
+                                border-top: 4px solid transparent;
+                                border-bottom: 4px solid transparent;
+                                border-left: 8px solid {{ settings.nav_links_hover }};
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #nav-sites-picker-mobile {
+            position: fixed;
+            width: 100%;
+            height: $navMobileSitesHeight;
+            bottom: 0;
+            left: 0;
+
+            // OPEN : Mobile Sites-Picker is open
+            &.open ul.sites-picker {
+                li.site-picker-item:first-child:after {
+                    transform: translateY( -50% ) rotateZ( -90deg );
+                }
+
+                li.site-picker-item:not(:first-child) {
+                    opacity: 1;
+                    height: $navMobileSitesHeight;
+                    pointer-events: all;
+                }
+            }
+
+            // SITES PICKER : Primary UL Styles
+            ul.sites-picker {
+                @include flexbox;
+                @include flex-direction( column-reverse );
+                @include align-items( center );
+                position: absolute;
+                width: 100%;
+                height: auto;
+                bottom: 0;
+                cursor: pointer;
+                background: {{ settings.header_background }};
+
+                li.site-picker-item {
+                    @include flexbox;
+                    @include justify-content( center );
+                    position: relative; // For :after arrow
+                    transition: all 0.25s ease-in-out;
+                    height: $navMobileSitesHeight;
+                    width: 100%;
+                    border-top: $navMinorBorder;
+
+                    &:first-child {
+                        // TRAINGLE : CLOSED : Rightward Arrow
+                        &:after {
+                            width: 0; 
+                            height: 0; 
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY( -50% );
+                            right: $navMobileMenuGutter;
+                            content: ""; // undo the preset arrow type
+                            border-top: 6px solid transparent;
+                            border-bottom: 6px solid transparent;
+                            border-left: 11px solid {{ settings.nav_links_hover }};
+                            transition: all 0.25s ease-in-out;
+                        }
+                    }
+
+                    &:not(:first-child) {
+                        opacity: 0;
+                        height: 0;
+                        pointer-events: none;
+                    }
+
+                    .inner-center {
+                        @include flexbox;
+                        @include align-items( center );
+                        width: 230px;
+                        height: 100%;
+                        text-decoration: none;
+
+                        .site-flag {
+                            width: 25px;
+                            padding-top: 7px; //Center flag-svg - flexbox doesn't do it quite right
+                            margin-right: 20px;
+                        }
+
+                        .site-name {
+                            @include fontSize( 16px );
+                            font-weight: $font-weight--book;
+                        }
+
+                        .site-arrow {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MOBILE MENU OPEN -- Become an X!
+.menu-open #icon-nav-mobile-menu-btn .bar {
+    &.one {
+        transform: rotateZ( 45deg );
+        top: 42%;
+    }
+    &.two {
+        transform: rotateZ( -45deg ) translateY( -50% );
+    }
+    &.three {
+        opacity: 0;
+    }
+}
+
+
+.shifter {
+    overflow-x: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

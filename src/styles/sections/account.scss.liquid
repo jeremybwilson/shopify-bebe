@@ -1,0 +1,85 @@
+.account-header {
+  position: relative;
+
+  h1 {
+    color: $color--primary-1;
+  }
+}
+
+#customer-wrapper {
+  h2 {
+    @include h3;
+    color: $color--primary-1;
+  }
+  h5 {
+    @include h5;
+    line-height: 1.6875em;
+    letter-spacing: .025em;
+    color: $color--primary-1;    
+    font-weight: 700;
+  }
+  label {
+    @include h7;
+    color: $color--gray-1;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    color: $color--gray-1;
+    font-family: $sans;
+  }
+  a {
+    color: $color--accent-1;
+  }
+
+  #sign_out {
+    @include h6;
+    @include fontSize( 13px );  
+    position: relative;
+    padding: 13px 16px;
+    top: 20px;
+    background: $color--accent-1;
+    color: $color--white;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+
+    &:hover {
+      background: $color--primary-1;
+    }
+}
+  .button {
+    background: $color--accent-1;
+    color: $color--white;
+
+    &:hover {
+      background: $color--primary-1;
+    }
+  }
+  #customer_orders {
+    @include mq('phone') {
+      margin-top: 50px;
+    }
+  }
+
+  #account-msg {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    h3 {
+      font-size: 1.375rem;
+      color: $color--accent-1;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    p {
+      font-size: 16px;
+    }
+    hr {
+       margin: 25px 0;
+    }
+  }
+}

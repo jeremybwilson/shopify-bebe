@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+.twin-promos {
+  @include mq('tablet-and-up') {
+    margin-top: 60px;
+  }
+  @include mq('lap-and-up') {
+    margin-top: 100px;
+  }
+
+  .single-promo {
+    margin-bottom: 40px;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      &:first-of-type { padding-right: 20px; }
+      &:last-of-type { padding-left: 20px; }
+      &:only-of-type { padding-left: 0; padding-right: 0;}
+    }
+    @include mq('lap-and-up') {
+      &:first-of-type { padding-right: 40px; }
+      &:last-of-type { padding-left: 40px; }
+      &:only-of-type { padding-left: 0; padding-right: 0;}
+    }
+
+    .text-promo-content {
+      margin-top: 24px;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      @include mq('tablet-and-up') {
+        width: 90%;
+        margin: 30px auto 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    h3 {
+      color: $color--primary-1;
+      font-weight: $font-weight--black;
+      @include fontDim(22px,26px,0);
+      text-transform: uppercase;
+
+      @include mq('tablet-and-up') {
+        @include fontSize(24px);
+      }
+    }
+    .copy {
+      @include mq('tablet-and-up') {
+        margin-top: 12px;
+      }
+      p {
+        font-weight: $font-weight--bold;
+        @include fontDim(14px,20px,0);
+
+        @include mq('tablet-and-up') {
+          @include fontDim(16px,24px,0);
+        }
+      }
+    }
+    .cta {
+      margin-top: 12px;
+      @include fontDim(13px,13px,0);
+      font-weight:  $font-weight--bold;
+      text-transform: uppercase;
+      display: block;
+
+      @include mq('tablet-and-up') {
+        margin-top: 15px;
+        @include fontSize(16px);
+      }
+
+      a {
+        color: $color--primary-2;
+        text-decoration: none;
+        letter-spacing: inherit;
+
+        &:hover {
+          color: $color--gray-1;
+        }
+      }
+
+      svg {
+        width: 10px;
+        height: 10px;
+        margin-left: 20px;
+
+        @include mq('tablet-and-up') {
+          width: 12px;
+          height: 12px;
+        }
+
+        * {
+          fill: $color--accent-1;
+        }
+      }
+      a:hover svg * {
+        fill: $color--accent-1;
+      }
+    }
+  }
+}

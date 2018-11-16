@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+.columns-carousel {
+  position: relative;
+
+  .columns-carousel--columns {
+    @include flexbox;
+    @include flex-wrap(wrap);
+    list-style: none;
+  }
+
+  .column-item {
+    position: relative;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #757575;
+    opacity: .5;
+    z-index: 2;
+    transition: opacity .3s ease;
+  }
+
+  .column-item.hovered .overlay {
+    opacity: .2;
+  }
+  .text-overlay {
+    position: absolute;
+    z-index: 3;
+    top: 33%;
+    left: 0;
+    width: 100%;  
+    padding-left: 30px;
+    padding-right: 30px;
+    color: $color--white;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      top: 42%;
+
+    }
+
+  }
+  .overlay-icon {
+    margin: 0 auto 20px;
+
+    svg {
+      max-height: 36px;
+
+      @include mq('tablet-and-up') {
+        max-height: 30px;
+      }    
+    }
+  }
+  h3 {
+    color: $color--white;
+    font-weight: $font-weight--black;
+    @include fontDim(22px,25px,0);
+    text-transform: uppercase;
+
+    @include mq('tablet-and-up') {
+      max-width: 200px;
+      margin: 0 auto;
+      @include fontDim(24px,29px,0);
+    }
+  }
+  .cta {
+    font-weight: $font-weight--bold;
+    @include fontDim(13px,13px,0);
+    text-transform: uppercase;
+
+    @include mq('tablet-and-up') {
+      @include fontDim(16px,16px,.06em);
+    }
+
+    svg {
+      width: 10px;
+      margin-left: 20px;
+
+      @include mq('tablet-and-up') {
+        width: 12px;
+      }
+
+      * {
+        fill: $color--white;
+      }
+    }
+  }
+  .owl-dots {
+    display: none;
+  }
+}
+
+.one-image-only .columns-carousel--nav {
+  display: none;
+}
+.columns-carousel--nav {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include align-items(center);
+
+  position: absolute;
+  z-index: 2;
+  bottom: 40px;
+  left: 50%;
+  width: 100%;
+  max-width: 220px;    
+  transform: translateX(-50%);
+  color: $color--white;
+
+  @include mq('lap-and-up') {
+    bottom: 55px;
+  }
+
+  .hide-pagination & {
+    @include mq('lap-and-up') {
+      display: none;
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+
+    * {
+      fill: $color--white;
+    }
+  }    
+
+  // pager
+
+  .pagination {
+    @include flexbox;
+    @include justify-content(center);
+    position: relative;
+    padding: 10px;
+    background: $color--white;
+    color: $color--accent-1;
+    font-weight: $font-weight--black;
+    @include fontDim(14px,14px,0);
+    text-align: center;
+
+    @include mq('lap-and-up') {
+      @include fontSize(14px);
+    }
+
+    span {
+      display: inline;
+      text-align: center;
+      margin: 0 2px;
+    }
+  }
+}

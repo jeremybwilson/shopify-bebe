@@ -1,0 +1,122 @@
+// Mini-Cart
+
+.drawer__header {
+  @include flexbox;
+  @include align-items(center);
+  @incldue justify-content(space-between);
+
+  h3 {
+    @include fontDim(18px,18px,0);
+    font-weight: $font-weight--black;
+    text-transform: uppercase;
+    color: $color--primary-1;
+  }
+}
+.drawer__close {
+  margin-left: auto;
+  color: $color--gray-1;
+
+  span {
+    display: none;
+    text-indent: -9999em;
+  }
+  &:hover {
+    color: $color--accent-1;
+  }
+  &:before {
+    @include h7;
+    @include fontSize(28px);
+    content: 'X';
+    font-weight: $font-weight--book;
+  }
+}
+
+// Product Item
+
+.ajaxcart__product {
+  p {
+    color: $color--primary-1;
+  }
+}
+.ajaxcart__product-name {
+  @include fontDim(14px,14px,0);
+  font-weight: $font-weight--black;
+  color: $color--primary-2;
+  text-transform: uppercase;
+}
+.ajaxcart__product-meta {
+  color: $color--primary-2;
+  display: block;
+}
+
+.quantity-increment {
+  margin-bottom: 12px;
+  color: $color--gray-1;
+  font-weight: $font-weight--bold;
+
+  &:hover {
+    background: $color--primary-1;
+    color: $color--white;
+  }
+}
+
+.ajaxcart__product.is-loading {
+  pointer-events: none;
+  position: relative;
+
+  &:after {
+    content: 'Updating...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 6px 8px;
+    background: $color--primary-1;
+    @include h7;
+    text-transform: uppercase;
+    color: $color--white;
+  }
+  
+  .ajaxcart.row {
+    opacity: .4;
+  }
+
+}
+
+.ajaxcart__remove {
+  display: block;
+  clear: both;
+  cursor: pointer;
+  color: $color--primary-2;
+  text-decoration: underline;
+  @include h7;
+}
+
+.ajaxcart__footer {
+  p {
+    @include fontDim(14px,14px,0);
+    font-weight: $font-weight--bold;
+    color: $color--primary-2;
+
+    strong {
+      font-weight: $font-weight--bold;
+    }
+  }
+}
+
+// Checkout
+
+button.cart__checkout {
+  background: $color--primary-1;
+  border-radius: 0 !important;
+  font-family: $font-stack--default;
+  font-weight: $font-weight--bold;
+  @include fontSize(14px);
+  letter-spacing: .125em;
+  text-transform: uppercase;
+  transition: background .25s ease-in-out;
+
+  &:hover {
+    background: $color--primary-1;
+  }
+}

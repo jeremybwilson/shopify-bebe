@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+#shopify-section-newsletter {
+  margin-bottom: 0 !important;
+}
+
+#newsletter-social {
+  @include flexbox;
+  @include flex-direction(column);
+
+  @include mq('phone') {
+    line-height: initial !important; //*  
+  }
+  @include mq('tablet-and-up') {
+  	@include flex-direction(row);
+  }
+}
+
+// newsletter
+
+.newsletter-wrapper {
+  background: {{ settings.newsletter_footer_background }};
+  text-transform: uppercase;
+  text-align: center;
+  padding: 44px 25px 43px;
+
+  @include mq('tablet-and-up') {
+    width: 50%;
+    padding: 69px 25px 73px;
+  }
+  .newsletter-inner {
+    width: 100%;
+    max-width: 325px;  
+    margin: 0 auto;
+  }
+  header {
+    padding-top: 0;
+    background: transparent;
+  }
+
+  // heading 
+  
+  h2 {
+    margin-bottom: 10px;
+    color: {{ settings.newsletter_footer_text }};
+    @include fontDim(16px,24px,0);
+    font-weight: $font-weight--black;
+  	text-transform: uppercase;
+
+    @include mq('tablet-and-up') {
+      margin-bottom: 4px;
+      @include fontSize(22px);
+      
+    }
+  }
+  .newsletter-subheading {
+    margin-bottom: 15px;
+    color: {{ settings.newsletter_footer_text }};
+    @include fontDim(14px,22px,0);
+  	font-weight: $font-weight--black;
+    text-transform: none;
+
+    @include mq('tablet-and-up') {
+      margin-bottom: 16px;
+      @include fontSize(16px);
+    }
+    p {
+      color: inherit;
+      margin-bottom: 0;
+      font-size: inherit;
+    }
+  }
+  form {
+    @include flexbox;
+    @include justify-content(space-between);
+    position: relative;
+    margin-bottom: 12px;
+    background: $color--white; 
+    border: solid 1px transparent;
+    transition: border .3s ease;
+  }
+  form.has-error {
+    border: solid 1px $color--error;
+  }
+  input[type="email"] {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 47px;
+    margin-bottom: 0;
+    padding: 15px 68px 15px 20px;
+    border: none;
+    border-radius: none;
+    color: $color--gray-2;
+    font-weight: $font-weight--bold;
+    @include fontSize(14px);
+    letter-spacing: .025em;
+    text-align: left;
+    line-height: 14px;
+
+    @include mq('tablet-and-up') {
+      height: 46px;
+      padding: 20px 68px 20px 20px;
+      @include fontSize(16px);
+      line-height: 16px;
+    }
+
+    &:focus {
+      color: $color--dark-gray;
+    }
+  }
+  form.has-error input[type="email"] {
+    color: $color--error;
+  }
+  #button-footer-newsletter-submit {
+    position: absolute;
+    z-index: 2;
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    top: 0;
+    right: 0;
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+
+    @include mq('tablet-and-up') {
+      width: 46px;
+      height: 46px;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+
+    }
+
+    &:hover {
+      svg * {
+        fill: $color--accent-2;
+      }
+    }
+  }
+  input[type="submit"] {
+    display: none;
+  }
+
+  // response messages
+
+  #newsletter-form--response {
+    color: $color--white;
+
+    #newsletter-error-response {
+      @include h7;
+    }  
+    #newsletter-success-response {
+      text-transform: none;
+
+      p {
+        color: inherit;
+        @include fontSize(16px);
+      }
+    }
+  }
+}
+
+// social
+
+.social-wrapper {
+  padding: 35px 50px 34px;
+	background: {{ settings.social_footer_background }};
+  text-align: center;
+
+  @include mq('tablet-and-up') {
+    @include flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    width: 50%;
+  }
+
+  .social-inner {
+    @include flexbox;
+    @include flex-direction(column);
+    margin: 0 auto;
+
+    @include mq('tablet-and-up') {
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+    }
+  }
+  .section-title {
+    margin-bottom: 0;
+    color: {{ settings.social_footer_header }};
+    @include fontDim(14px,14px,.2em);
+    font-weight: $font-weight--black;
+    text-transform: uppercase;
+                                                    
+    @include mq('tablet-and-up') {
+      @include fontDim(20px,20px,.04em);
+    }
+  }	
+  ul#social-icons {
+    margin-top: 16px;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(center);
+      margin-top: 0;
+      margin-left: 24px;
+    }
+    li {
+      display: inline-block;
+      padding: 0 20px;
+    }
+    a {
+      position: relative;
+      top: 2px;
+      color: {{ settings.icons }};
+
+      svg {
+        width: 22px;
+        height: 22px;
+
+        @include mq('tablet-and-up') {
+          width: 20px;
+          height: 20px;
+        }
+
+        * {
+          fill: {{ settings.icons }};
+        }
+      }
+
+      &:hover {
+        svg * {
+          fill: {{ settings.icons_hover }};
+        }
+      }
+    }
+  }
+}

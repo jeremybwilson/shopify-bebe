@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+
+#faq {
+	h1 {
+		padding: 0;
+		margin: 0;
+	}
+	h4 {
+		display: inline-block;
+		width: 90%;
+		line-height: 2;
+		margin: 0;
+	}
+	h5 {
+		margin: 0 0 15px 0;
+	}
+	p {
+		margin: 0;
+	}
+	.toggle .opener {
+		float: right;
+	}
+	.toggle .opener svg {
+		display: inline-block;
+		width: 10px;
+	    height: 10px;
+	    transition: transform .25s ease;
+	    transform-origin: center;
+	}
+	.toggle-title {
+		padding: 15px 0;
+		border-bottom: 1px solid #e5e5e5;
+	}
+	.toggle-title.active {
+		border-bottom: none;
+	}
+	.toggle-title.active h4 {
+		color: $color--accent-2;
+	}
+	.toggle-title.active svg {
+		transform: rotate(180deg);
+	}
+	.toggle-inner {
+		display: none;
+		margin: 10px 0;
+	}
+
+	.fineprint {
+    	margin-top: 30px;
+    	p {
+    		font-size: 11px;
+    	}
+	}
+}

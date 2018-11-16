@@ -1,0 +1,428 @@
+//Sample :  $sample-color: {{ settings.dotted_color }};
+
+// BRAND COLORS
+$color--primary-1: #0a56a4;  // Main Coloration of Primary Elements
+$color--primary-2: #000000;  // Second Main Color (Lets use this for Headers?)
+$color--accent-1: #e41c39;   // Color For Arrows, Buttons, etc
+$color--accent-2: #e41c39;   // Alternative accent in some cases (still working this one out)
+
+// TEXT 
+$color--text-1: #000000;  // Text Color (Ex: Muck is Dark Green)
+
+// BACKGROUND + GREYS
+$color--gray-1: #616365;
+$color--gray-2: #757575;
+$color--gray-3: #5b5b5b;
+$color--dark-gray: #3e3e3e;
+$color--light-gray: #e6e6e6;
+$color--border-gray: #d7d7d7;
+
+// DARK BACKGROUND
+$color--white: #ffffff;
+$color--light-primary-1: #e63e57; // Primary color for areas with dark background
+
+// UTILITY + ERROR
+$color--error: {{ settings.error_text }};
+
+// TYPOGRAPHY
+$sans: "Museo Sans", sans-serif;
+$font-stack--default: $sans;
+$font-stack--heading: $sans;
+
+// FONT WEIGHTS
+// $font-weight--book: 400; 
+$font-weight--book: 500; // Museo's 500 serves the same function as 400 for other fonts, so instead of replacing variables we'll just switch out the value
+$font-weight--medium: 500;
+$font-weight--bold: 700;
+//$font-weight--black: 800; 
+$font-weight--black: 900; // Museo's 900 is equivalent to 800
+
+
+// BUTTONS -- Main
+$button--main-bg: {{ settings.button_bg }};
+$button--main-bg-hover: {{ settings.button_bg_hover }};
+$button--main-text: {{ settings.button_text }};
+$button--main-text-hover: {{ settings.button_text_hover }};
+$button--main-border: {{ settings.button_border_width }}px solid {{ settings.button_border_color }};
+$button--main-border-hover: {{ settings.button_border_width }}px solid {{ settings.button_border_color_hover }};
+// BUTTONS -- Alt
+$button--alt-bg: {{ settings.alt_button_bg }};
+$button--alt-bg-hover: {{ settings.alt_button_bg_hover }};
+$button--alt-text: {{ settings.alt_button_text }};
+$button--alt-text-hover: {{ settings.alt_button_text_hover }};
+$button--alt-border: {{ settings.alt_button_border_width }}px solid {{ settings.alt_button_border_color }};
+$button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ settings.alt_button_border_color_hover }};
+
+
+/* MIXIN : BUTTONS
+ *    EX : @include mainButton;
+ *    EX : @include altButton;
+ * ------------------------------------------------------------------------- */
+@mixin mainButton {
+  background: $button--main-bg;
+  color: $button--main-text;
+  border: $button--main-border;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: $button--main-bg-hover;
+    color: $button--main-text-hover;
+    border: $button--main-border-hover;
+  }
+}
+
+@mixin altButton {
+  background: $button--alt-bg;
+  color: $button--alt-text;
+  border: $button--alt-border;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: $button--alt-bg-hover;
+    color: $button--alt-text-hover;
+    border: $button--alt-border-hover;
+  }
+}
+
+
+/* MIXIN : FONT SIZES
+ *    EX : @include fontSize( 16px )
+ * ------------------------------------------------------------------------- */
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+@mixin fontDim($size,$lineHeight,$lts) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+  line-height: $lineHeight / $size * 1em;
+  letter-spacing: $lts;
+}
+
+
+
+/* MIXIN : TYPOGRAPHY
+ *    EX : @include h1;
+ * ------------------------------------------------------------------------- */
+@mixin p {
+  font-weight: $font-weight--bold;
+  line-height: 26px / 16px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(16px);
+}
+@mixin p-small {
+  font-weight: $font-weight--bold;
+  line-height: 16px / 12px * 1em;
+  letter-spacing: 0;
+}
+
+@mixin h1 {
+  font-weight: $font-weight--black;
+  line-height: 55px / 46px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(46px);
+}
+
+@mixin h1-alt {
+  font-weight: $font-weight--black;
+  line-height: 38px / 30px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(38px);
+}
+
+@mixin h2 {
+  font-weight: $font-weight--black;
+  line-height: 50px / 42px * 1em;
+  letter-spacing: 0em;
+
+  @include fontSize(42px);
+}
+@mixin h3 {
+  font-weight: $font-weight--black;
+  line-height: 38px / 30px * 1em;
+  letter-spacing: 0em;
+
+  @include fontSize(30px);
+}
+
+@mixin h4 {
+  font-weight: $font-weight--black;
+  line-height: 28px / 22px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(22px);
+}
+@mixin h5 {
+  font-weight: $font-weight--black;
+  line-height: 20px / 16px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(16px);
+}
+@mixin h6 {
+  font-weight: $font-weight--bold;
+  line-height: 22px / 16px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(16px); 
+}
+@mixin h7 {
+  font-weight: $font-weight--bold;
+  line-height: 20px / 14px * 1em;
+  letter-spacing: 0;
+}
+
+@mixin h8 {
+  font-weight: $font-weight--bold;
+  line-height: 24px / 14px * 1em;
+  letter-spacing: 0;
+
+  @include fontSize(14px);
+}
+
+
+
+
+/* MIXIN : FLEXBOX
+ *    EX : @include flexbox;
+ *    EX : @include flex-direction( value );
+ * ------------------------------------------------------------------------- */
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: reverse;
+    -moz-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: reverse;
+    -moz-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit/FF Box fallback.
+  -webkit-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+@mixin flex-flow($values: (row nowrap)) {
+  // No Webkit/FF Box fallback.
+  -webkit-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+@mixin order($int: 0) {
+  -webkit-box-ordinal-group: $int + 1;
+  -moz-box-ordinal-group: $int + 1;
+  -webkit-order: $int;
+  -ms-flex-order: $int;
+  order: $int;
+}
+@mixin flex-grow($int: 1) {
+  -webkit-box-flex: $int;
+  -moz-box-flex: $int;
+  -webkit-flex-grow: $int;
+  -ms-flex: $int;
+  flex-grow: $int;
+}
+@mixin flex-shrink($int: 0) {
+  -webkit-flex-shrink: $int;
+  -moz-flex-shrink: $int;
+  -ms-flex: $int;
+  flex-shrink: $int;
+}
+@mixin flex-basis($value: auto) {
+  -webkit-flex-basis: $value;
+  flex-basis: $value;
+}
+@mixin flex($fg: 1, $fs: 0, $fb: auto) {
+
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so lets grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box: $fg-boxflex;
+  -moz-box: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -ms-flexbox: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -moz-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+@mixin align-self($value: auto) {
+  -webkit-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+@mixin align-content($value: stretch) {
+  -webkit-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
+
+
+
+/* MIXIN : MEDIA QUERIES
+ *    EX : @include mq( 'lap-and-up' ) { CODE }
+ * ------------------------------------------------------------------------- */
+$phone:            "screen and (max-width: 767px)";
+$tablet:           "screen and (min-width: 768px) and (max-width: 1023px)";
+$tablet-and-up:    "screen and (min-width: 768px)";
+$tablet-portrait:  "screen and (min-width: 768px) and (max-width: 959px)";
+$tablet-landscape: "screen and (min-width: 960px) and (max-width: 1023px)";
+$lap:              "screen and (min-width: 1024px) and (max-width: 1219px)";
+$lap-and-up:       "screen and (min-width: 1024px)";
+$desk-and-up:      "screen and (min-width: 1220px)";
+$lap-and-desk:     "screen and (min-width: 1024px) and (max-width: 1679px)";
+$wide-and-up:      "screen and (min-width: 1680px)";
+$retina:           "(-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi)";
+
+@mixin mq($alias) {
+  @if $alias == "phone" {
+    @media #{$phone} {
+      @content;
+    }
+  } @else if $alias == "tablet" {
+    @media #{$tablet} {
+      @content;
+    }
+  } @else if $alias == "tablet-and-up" {
+    @media #{$tablet-and-up} {
+      @content;
+    }
+  } @else if $alias == "tablet-portrait" {
+    @media #{$tablet-portrait} {
+      @content;
+    }    
+  } @else if $alias == "tablet-landscape" {
+    @media #{$tablet-landscape} {
+      @content;
+    }        
+  } @else if $alias == "lap" {
+    @media #{$lap} {
+      @content;
+    }
+  } @else if $alias == "lap-and-up" {
+    @media #{$lap-and-up} {
+      @content;
+    }
+  } @else if $alias == "desk-and-up" {
+    @media #{$desk-and-up} {
+      @content;
+    }
+  } @else if $alias == "lap-and-desk" {
+    @media #{$lap-and-desk} {
+      @content;
+    }
+  } @else if $alias == "wide-and-up" {
+    @media #{$wide-and-up} {
+      @content;
+    }
+  } @else if $alias == "retina" {
+    @media #{$retina} {
+      @content;
+    }
+  }
+}
+
+
+

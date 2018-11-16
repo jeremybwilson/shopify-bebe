@@ -1,0 +1,249 @@
+body.cart {
+  #content {
+    max-width: 1200px;
+    padding-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include mq('tablet-and-up') {
+      padding-top: 100px;
+    }
+  }
+  #breadcrumb {
+    display: none;
+
+    @include mq('tablet-and-up') {
+      display: inherit;
+    }
+  }
+}
+#shopping-cart {
+  h2 {
+    @include h2;
+    color: $color--primary-1;
+    @include fontSize(20px);
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      text-align: left;
+      @include fontSize(24px);
+    }
+  }
+}
+
+#cartform {
+  margin-top: 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+
+      @include mq('phone') {
+        display: none;
+      }
+      th {
+        padding: 0;
+        @include mq('tablet-and-up') {
+          padding: 10px;
+          border-bottom: solid 1px $color--border-gray;
+        }
+
+        label {
+          color: $color--primary-1;
+          @include fontDim(14px,14px,.025em);
+          font-weight: $font-weight--bold;
+          text-transform: uppercase;
+
+        }
+      }
+    }
+    tbody {
+      tr {
+        @include mq('phone') {
+          @include flexbox;
+          @include flex-wrap(wrap);
+          @include justify-content(flex-start); 
+          padding-bottom: 20px;
+          border-bottom: solid 1px $color--border-gray;
+        }
+      }
+      td {
+        padding: 10px;
+        @include mq('phone') {
+          border-bottom: none;
+          padding: 0;
+        }
+        @include mq('tablet-and-up') {
+          border-bottom: solid 1px $color--border-gray;
+        }
+      }
+    }
+  }   
+}
+th.cart--remove {
+  label {
+    display: none;
+  }
+}
+
+.cart-item {
+  @include flexbox;
+  @include align-items(center);
+
+  @include mq('phone') {
+    @include justify-content(space-between);
+    width: 100%;
+    border-bottom: none;    
+  }
+  @include mq('tablet-and-up') {
+    @include justify-content(flex-start);
+  }
+}
+.cart-image {
+  margin-left: -15px;
+  margin-right: 10px;
+
+  @include mq('tablet-and-up') {
+    margin-right: 20px;
+  }
+}
+.cart-title {
+  color: $color--primary-1;
+  @include fontDim(14px,18px,.025em);
+  font-weight: $font-weight--black;
+  text-align: left;
+  width: 90%;
+
+  @include mq('tablet-and-up') {
+    @include fontSize(16px);
+    width: auto;
+    text-align: center;
+    
+  }
+}
+.cart-remove {
+  @include h7;
+  color: $color--primary-1;
+  text-transform: uppercase;
+
+  @include mq('phone') {
+    @include flexbox;
+    @include justify-content(flex-start);
+    @include order(5);
+    width: 100%;
+    @include fontSize(9px);
+  }
+
+  a {
+    @include mq('phone') {
+      margin-left: auto;
+      margin-right: auto;      
+    }
+  }
+
+  &:hover {
+    color: $color--accent-1;
+  }
+
+  i.fa {
+    display: none;
+  }
+}
+.cart-price,
+.cart-quantity,
+.cart--total-price {
+  color: $color--primary-2;
+  @include fontDim(14px,14px,.025em);
+
+  @include mq('phone') {
+    @include flexbox;
+    @include align-items(center);    
+  }
+
+  @include mq('tablet-and-up') {
+    @include fontSize(16px);
+  }
+}
+.cart-price {
+  @include mq('phone') {
+    width: 40%;
+    text-align: left;
+  }
+  @include mq('tablet-and-up') {
+    text-align: center;
+  }
+
+  & > div {
+    display: inline;
+  }
+  .onsale {
+    color: {{ settings.sale_color }};
+  }
+  .was {
+    color: $color--primary-2;
+  }   
+
+}
+
+.cart-quantity {
+  @include mq('phone') {
+    width: 20%;
+  }
+  margin-left: auto;
+
+  input {
+    margin-bottom: 0;
+    text-indent: 0;
+    text-align: center;
+  }
+}
+
+.cart--total-price {
+  @include mq('phone') {
+    width: 40%;
+  }
+  margin-left: auto;
+  text-align: right;
+
+  span {
+    margin-left: auto;
+  }
+
+  label {
+    text-align: right;
+  }
+}
+
+#basket-right {
+  h4 {
+    color: $color--primary-1;
+
+    .subtotal-header {
+      margin-right: 5em;
+      font-weight: $font-weight--medium;
+    }
+    .money {
+      @include fontSize(20px);
+
+      @include mq('tablet-and-up') {
+        @include fontSize(22px);
+      }
+    }
+  }
+}
+
+.button#update-cart {
+  background-color: $color--primary-1;
+
+  &:hover {
+    background-color: $color--primary-1;
+  }
+}
+.button#checkout {
+  background-color: $color--accent-1;
+
+  &:hover {
+    background-color: $color--primary-1;
+  }
+}

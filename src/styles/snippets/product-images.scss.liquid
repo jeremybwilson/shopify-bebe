@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+/* 
+  MOBILE PRODUCT PHOTOS 
+  -----------------------------
+*/
+
+.mobile-product-photos--wrapper {
+  @include mq('tablet-and-up') {
+    display: none;
+  }
+}
+
+#mobile-product-photos {
+  width: 100%;
+
+  @include mq('tablet-and-up') {
+    display: none;
+  }
+
+  .owl-nav {
+    display: block;
+
+    button {
+      position: absolute;
+      top: 50%; 
+      transform: translateY(-50%);
+
+      &.disabled {
+        opacity: .3;
+      }
+    }
+    svg {
+      width: 18px;
+
+      @include mq('tablet-and-up') {
+        width: 20px;
+      }
+    }
+  }
+  .owl-prev {
+    left: 20px;
+  }
+  .owl-next {
+    right: 20px;
+  }
+
+  .owl-next:before {
+    display: none;
+  }
+  .owl-prev:before {
+    display: none;
+  }
+
+  img {
+
+  }
+}
+
+.mobile-product-carousel--prev,
+.mobile-product-carousel--next {
+  svg {
+    width: 18px; 
+
+    * {
+      fill: $color--primary-1;
+    }
+  }
+}
+
+/* 
+  PRODUCT PHOTOS 
+  -----------------------------
+*/
+
+#product-photos {
+  width: 856 / 1350 * 100%
+}
+.product-main-images {
+  width: 724 / 856 * 100%;
+}
+#thumbnail-gallery {
+  position: relative;
+  width: 76 / 856 * 100%;
+  
+  @include mq('tablet-and-up') {
+    margin-top: 35px;
+  }
+  @include mq('lap-and-up') {
+    margin-top: 70px;
+  }
+}
+
+// item 
+.product-thumbnail {
+  cursor: pointer;
+  display: inline-block;  
+  width: 100%;
+  opacity: .5;
+
+  &.selected,
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.product-video-thumbnail {
+  position: relative;
+}
+.play-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: $color--white;
+  @include fontDim(8px,8px,.2em);
+  font-weight: $font-weight--black;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 3;
+
+}
+.play-overlay-box {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  background: $color--accent-1;  
+  z-index: 2;
+  transform-origin: top left;
+  transform: rotate(45deg) translate(-50%,-50%);
+}
+
+.product-video {
+  position: relative;
+  padding-bottom: 100%;
+
+  .video-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+}
+
+
+.product__image {
+  max-width: 600px;
+}
