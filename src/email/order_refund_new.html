@@ -1,0 +1,382 @@
+{% if refund_line_items.size == item_count %}
+  {% capture email_subtitle %}{% endcapture %}
+  {% capture email_title %}Your order has been refunded{% endcapture %}
+{% elsif refund_line_items.size == 0 %}
+  {% capture email_subtitle %}{% endcapture %}
+  {% capture email_title %}You have received a refund{% endcapture %}
+{% else %}
+  {% capture email_subtitle %}Some items in your order have been refunded{% endcapture %}
+  {% capture email_title %}Your order has been refunded{% endcapture %}
+{% endif %}
+{% capture email_body %}Your order has been refunded<br>Total amount refunded: <strong style="color:#e41c39">{{ amount | money_with_currency }}</strong>{% endcapture %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>{{ email_title }}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+</head>
+<body>
+
+<table class="full-container" style="background: #eeeeee; width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="text-align: center" align="center">
+      <!-- LAYOUT -->
+
+      <table class="main-layout" style="width: 500px; min-width: 500px; max-width: 500px; background-color: #ffffff; margin: 20px auto; border-collapse: collapse;">
+          
+        <!-- HEADER -->
+
+        <tr>
+          <td align="center" style="padding-top: 25px; padding-bottom: 25px; padding-left: 0; padding-right: 0; text-align: center; background-color: #ffffff; width: 100%;">
+
+            <!-- LOGO  -->
+
+            <a href="{{ shop.url }}" target="_blank" title="{{ shop.name }}">
+              <img class="center fixedwidth" align="center" border="0" src="https://cdn.shopify.com/s/files/1/0053/3194/3522/files/email_logo.gif?7953218545083095441" alt="{{ shop.name }}" title="{{ shop.name }}" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 150px" width="150">
+            </a>
+
+          </td>
+        </tr>
+
+        <!-- BODY -->
+
+        <tr>
+          <td style="padding: 0">
+
+            <table class="body-layout" style="width: 100%; border-collapse: collapse;">
+
+              <!-- BODY :: INTRO -->
+
+              <tr>
+                <td style="background-color: #fafafa; padding: 20px;">
+
+                  <div style="border: solid 6px #fafafa; padding: 40px 20px 30px">
+
+                    <!-- SUBHEADLINE -->
+
+                    {% if email_subtitle != blank %}
+
+                    <div style="color:#e41c39;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
+                      <div style="font-size:12px;line-height:14px;font-family:inherit;color:#e41c39;text-align:center;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><strong><span style="font-size: 14px; line-height: 25px; letter-spacing: .25em;"><span style="font-size: 14px; line-height: 25px; text-transform:uppercase;">{{ email_subtitle }}</span><br></span></strong></p></div>  
+                    </div>
+
+                    {% endif %}
+
+                    <!-- HEADLINE -->
+
+                    <div style="color:#0a56a4;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
+                      <div style="font-size:12px;line-height:14px;font-family:inherit;color:#0a56a4;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><strong><span style="font-size: 28px; line-height: 33px; letter-spacing: 0; text-transform: uppercase;">{{ email_title }}</span></p></div>  
+                    </div>
+
+                    <!-- COPY -->
+
+                    <div style="color:#000000;line-height:180%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
+                      <div style="font-size:14px;line-height:25px;font-family:inherit;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">{{ email_body }}</p></div> 
+                    </div>                             
+
+                  </div>
+
+                </td>
+              </tr>
+
+              <!-- BODY :: TABLE -->
+
+              <tr>
+                <td style="padding: 60px 40px 50px">
+
+                  <!-- TITLE -->
+
+                  <div style="color:#164632;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
+                    <div style="font-size:12px;line-height:14px;color:#0a56a4;font-family:'Museo Sans', 'Verdana', sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center;"><span style="font-size: 18px; line-height: 21px; letter-spacing: 0;"><strong>ORDER SUMMARY</strong></span></p></div> 
+                  </div>
+
+                  <!-- TABLE -->
+
+
+                  <!-- 
+                  PRODUCT ITEM
+                  -->
+
+                  <table class="row" style="border-collapse: collapse; width: 100%;">
+                    {% for line in subtotal_line_items %}
+                    <tr class="order-list__item">
+                      <td style="border-bottom: solid 1px #e8e8e8; width: 45%;">
+                        {% if line.image %}
+                          <img src="{{ line | img_url: '180x180' }}" align="left"/>
+                        {% endif %}
+                      </td>
+                      <td class="order-list__product-description-cell" style="vertical-align: middle; width: 35%; padding-left: 40px; padding-right: 10px; border-bottom: solid 1px #e8e8e8;">
+                        {% if line.product.title %}
+                          {% assign line_title = line.product.title %}
+                        {% else %}
+                          {% assign line_title = line.title %}
+                        {% endif %}
+
+                        {% if line.quantity < line.quantity %}
+                          {% capture line_display %} {{ line.quantity }} of {{ line.quantity }} {% endcapture %}
+                        {% else %}
+                          {% assign line_display = line.quantity  %}
+                        {% endif %}
+
+                        <span style="font-weight: bold; font-size: 14px; color: #000000; font-family:'Museo Sans', 'Verdana', sans-serif;" class="order-list__item-title">{{ line_title }} × {{ line_display }}</span>
+
+                        {% if line.variant.title != 'Default Title' %}
+                          <br/><span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;" class="order-list__item-variant">{{ line.variant.title }}</span>
+                        {% endif %}
+
+                        {% if line.refunded_quantity > 0 %}
+                          <br/><span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;" class="order-list__item-refunded">Refunded</span>
+                        {% endif %}
+                      </td>
+                      <td class="order-list__price-cell" style="vertical-align: middle; text-align: right; width: 20%; border-bottom: solid 1px #e8e8e8;">
+                        {% if line.original_line_price != line.line_price %}
+                          <p style="font-size: 14px; color: #bc0000; font-family:'Museo Sans', 'Verdana', sans-serif;" class="order-list__item-price">{{ line.line_price | money }} 
+                            <del style="font-size: 14px; color: #000000; font-family:'Museo Sans', 'Verdana', sans-serif;" class="order-list__item-original-price">{{ line.original_line_price | money }}</del>
+                          </p>
+                        {% else %}
+                          <p style="font-size: 14px; color: #000000; font-family:'Museo Sans', 'Verdana', sans-serif;" class="order-list__item-price">{{ line.line_price | money }}</p>
+                        {% endif %}
+                        
+                      </td>
+                    </tr>{% endfor %}
+                  </table>
+
+                  <!-- SUBTOTALS -->
+
+                  <table style="color: #000000; font-size: 14px; vertical-align: bottom; width: 100%; margin-top: 12px; border-collapse: collapse;" class="row subtotal-table">
+                    {% if discounts %}
+                      {% capture discount_title %}
+                        {% if discounts.first.code %}
+                          Discount ({{ discounts.first.code }})
+                        {% else %}
+                          Discount
+                        {% endif %}
+                      {% endcapture %}
+                      
+                      <tr class="subtotal-line">
+                        <td class="subtotal-line__title" style="vertical-align: bottom;">        
+                          <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ discount_title }}</span>
+                        </td>
+                        <td class="subtotal-line__value" style="vertical-align: bottom; width: 40%; text-align: right;">
+                          <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ discounts_savings | money }}</span>
+                        </td>
+                      </tr>
+
+                    {% endif %}
+
+                    
+                    <tr class="subtotal-line">
+                      <td class="subtotal-line__title" style="vertical-align: bottom;">
+                        <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">Subtotal</span>
+                      </td>
+                      <td style="color: #000000; vertical-align: bottom; width: 40%; text-align: right;" class="subtotal-line__value">
+                        <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ subtotal_price | money }}</span>
+                      </td>
+                    </tr>
+
+                    <tr class="subtotal-line">
+                      <td class="subtotal-line__title" style="vertical-align: bottom;">
+                        <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">Shipping</span>
+                      </td>
+                      <td style="color: #000000; vertical-align: bottom; width: 40%; text-align: right;" class="subtotal-line__value">
+                        <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ shipping_price | money }}</span>
+                      </td>
+                    </tr>
+
+                    {% for line in tax_lines %}
+                      
+                      <tr class="subtotal-line">
+                        <td class="subtotal-line__title" style="vertical-align: bottom;">
+                          <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ line.title }}</span>
+                        </td>
+                        <td style="color: #000000; vertical-align: bottom; width: 40%; text-align: right;" class="subtotal-line__value">
+                          <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ line.price | money }}</span>
+                        </td>
+                      </tr>
+
+                    {% endfor %}
+
+
+                    <!-- GRAND TOTALS -->
+                    
+                    <tr class="subtotal-line">
+                      <td class="subtotal-line__title" style="vertical-align: bottom;">
+                        <p>
+                          <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">Total</span>
+                        </p>
+                      </td>
+                      <td style="color: #0A56A4; vertical-align: bottom; width: 40%; text-align: right;" class="subtotal-line__value">
+                        <p><strong style="color: #0A56A4; font-size: 20px; font-family:'Museo Sans', 'Verdana', sans-serif;">{{ total_price | money_with_currency }}</strong></p>
+                      </td>
+                    </tr>
+
+                    {% assign transaction_size = 0 %}
+                    {% assign transaction_amount = 0 %}
+                    {% for transaction in transactions %}
+                      {% unless transaction.kind == "capture" or transaction.kind == "void" %}
+                        {% assign transaction_size = transaction_size | plus: 1 %}
+                        {% assign transaction_amount = transaction_amount | plus: transaction.amount %}
+                      {% endunless %}
+                    {% endfor %}
+
+                    {% if transaction_size > 1 or transaction_amount < total_price %}
+
+                      {% for transaction in transactions %}
+                        {% if transaction.status == "success" and transaction.kind == "authorization" or transaction.kind == "sale" %}
+                          {% if transaction.payment_details.credit_card_company %}
+                            {% capture transaction_name %}{{ transaction.payment_details.credit_card_company }} (ending in {{ transaction.payment_details.credit_card_last_four_digits }}){% endcapture %}
+                          {% else %}
+                            {% capture transaction_name %}{{ transaction.gateway | replace: "_", " " | capitalize }}{% endcapture %}
+                          {% endif %}
+
+                          <tr class="subtotal-line">
+                            <td class="subtotal-line__title" style="vertical-align: bottom;">
+                              <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;" >{{transaction_name}}</span>
+                            </td>
+                            <td style="color: #000000; vertical-align: bottom; width: 40%; text-align: right; font-family:'Museo Sans', 'Verdana', sans-serif;" class="subtotal-line__value">
+                              <span style="color: #000000;">{{ transaction.amount | money }}</span>
+                            </td>
+                          </tr>
+
+                        {% endif %}
+                        {% if transaction.kind == 'refund' %}
+                          {% if transaction.payment_details.credit_card_company %}
+                            {% assign refund_method_title = transaction.payment_details.credit_card_company %}
+                          {% else %}
+                            {% assign refund_method_title = transaction.gateway %}
+                          {% endif %}
+
+                          <tr class="subtotal-line">
+                            <td class="subtotal-line__title" style="vertical-align: bottom;">
+                              <span style="color: #000000; font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;">Refund</span> <small style="font-size: 14px; font-family:'Museo Sans', 'Verdana', sans-serif;color: #e41c39;">{{ refund_method_title | capitalize }}</small>
+                            </td>
+                            <td style="color: #000000; vertical-align: bottom; width: 40%; text-align: right;" class="subtotal-line__value">
+                              <span style="color: #000000; font-family:'Museo Sans', 'Verdana', sans-serif;">-{{ transaction.amount | money }}</span>
+                            </td>
+                          </tr>
+
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  </table>        
+
+                </td>
+              </tr>
+
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+
+        <tr>
+          <td style="background: #2D2D2D; padding: 40px 40px 20px;">
+            <table style="width: 100%;">
+
+              <!-- SOCIAL -->
+
+              <tr>
+                <td>
+
+                  <div align="center" style="padding-right: 10px; padding-left: 10px; padding-bottom: 10px; opacity: .5" class="">
+                  <div style="line-height:10px;font-size:1px">&#160;</div>
+                  <div style="display: table; max-width:181px;">
+                  <!--[if (mso)|(IE)]><table width="161" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse; padding-right: 10px; padding-left: 10px; padding-bottom: 10px;"  align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:161px;"><tr><td width="32" style="width:32px; padding-right: 20px;" valign="top"><![endif]-->
+                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 20px">
+                      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+                        <a href="https://www.facebook.com/XtraTuf/" title="Facebook" target="_blank">
+                          <img src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/facebook_2x_af60cbec-cd0a-4a73-a7b6-c929538ac6ad.png?9131003845000148457" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                        </a>
+                      <div style="line-height:5px;font-size:1px">&#160;</div>
+                      </td></tr>
+                    </tbody></table>
+                      <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 20px;" valign="top"><![endif]-->
+                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 20px">
+                      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+                        <a href="https://instagram.com/xtratufboots" title="Instagram" target="_blank">
+                          <img src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/instagram_2x_631ec28e-2aa5-405c-a1b2-42b3280cb039.png?9131003845000148457" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                        </a>
+                      <div style="line-height:5px;font-size:1px">&#160;</div>
+                      </td></tr>
+                    </tbody></table>
+                      <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 0;" valign="top"><![endif]-->
+                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 0">
+                      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+                        <a href="https://www.youtube.com/channel/UCbLKFCrAzj4U2OTsiX0HK2g" title="YouTube" target="_blank">
+                          <img src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/youtube_2x_90c5b067-99c2-4489-a649-307a3283c97f.png?9131003845000148457" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                        </a>
+                      <div style="line-height:5px;font-size:1px">&#160;</div>
+                      </td></tr>
+                    </tbody></table>
+                    <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+                  </div>
+                </div>
+
+                </td>
+              </tr>
+
+              <!-- CONTACT -->
+
+              <tr>
+                <td>
+
+                  <div style="color:#848484;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
+                    <div style="font-size:12px;line-height:14px;color:#848484;font-family:'Museo Sans', 'Verdana', sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 14px;"><a style="color:#848484;text-decoration: none;" title="Contact Us" href="https://www.xtratuf.com/pages/contact-us" target="_blank" rel="noopener">CONTACT US</a>&#160;&#160;&#160;&#160; <a style="color:#848484;text-decoration: none;" title="Contact Us" href="tel:18553772668" target="_blank" rel="noopener">855-377-BOOT (2668)</a><br></span></p></div>  
+                  </div>
+
+                </td>
+              </tr>
+
+              <!-- DIVIDER -->
+
+              <tr>
+                <td>
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="divider " style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                      <tbody>
+                          <tr style="vertical-align: top">
+                              <td class="divider_inner" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-right: 0px;padding-left: 0px;padding-top: 15px;padding-bottom: 10px;min-width: 100%;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                  <table class="divider_content" height="0px" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;border-top: 1px solid #666;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                      <tbody>
+                                          <tr style="vertical-align: top">
+                                              <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                  <span>&#160;</span>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                </td>
+              </tr>
+
+              <!-- TERMS -->
+
+              <tr>
+                <td>
+
+                  <div style="color:#848484;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
+                    <div style="font-size:12px;line-height:14px;color:#848484;font-family:'Museo Sans', 'Verdana', sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 14px;"><a style="color:#848484;text-decoration: none;" href="https://www.xtratuf.com/pages/terms-conditions" target="_blank" rel="noopener">Terms &amp; <span style="line-height: 14px; font-size: 12px;">Conditions</span></a> | <a style="color:#848484;text-decoration: none;" href="https://www.honeywell.com/privacy-statement" target="_blank" rel="noopener">Privacy Policy</a></span><span style="font-size: 12px; line-height: 14px;"><br></span></p></div>  
+                  </div>
+
+                </td>
+              </tr>
+
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
