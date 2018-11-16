@@ -1,0 +1,404 @@
+<div class="about-container">
+
+	{% for block in section.blocks %}
+
+		{% comment %} CONTENT MODULE - Paired text & images {% endcomment %}
+
+		{% if block.type == 'text_block' %}
+
+		<div class="content-module layout-desk--{{ block.settings.module_image_position_desktop }} layout-mob--{{ block.settings.module_image_position_mobile }} color-scheme--{{ block.settings.module_image_color_scheme }}">
+
+			<div class="text-box">
+				{{ block.settings.module_html }}
+			</div>
+
+			<div class="image-box">
+				<img src="{{ block.settings.module_image | img_url: '800x' }}" />
+
+			</div>
+		</div><!-- .content-module -->
+
+		{% else %}
+
+			{% comment %} ALL OTHER BLOCKS {% endcomment %}
+
+		  <div class="block {% if block.type == 'image_picker' %}image-block{% endif %}{% if block.type == 'video_url' %}video-url{% endif %} " style="order:{{ block.settings.block_order }}; {% if block.type == 'html' %}background-color:{{ block.settings.html_block_color }}{% elsif block.type == 'image_picker' %}margin-top:{{ block.settings.image_offset }}{% endif %}">
+		   	{% if block.type == 'image_picker' %}
+		    <img src="{{ block.settings.image_picker_block | img_url: '800x' }}" />
+		  	{% elsif block.type == 'html' %}
+		  	{{ block.settings.html_block }}
+		  	{% else %} 
+		      {% if block.settings.video_url_block.type == "youtube" %}
+		        <a class="fancybox" data-type="iframe" href="//www.youtube.com/embed/{{ block.settings.video_url_block.id }}?rel=0&showinfo=0&vq=720" title="youtube">
+			  		<img src="{{ block.settings.video_image_block | img_url: '800x' }}" />
+				  	<div class="columns-carousel--nav">
+				      <div class="pagination">
+				        PLAY
+				      </div>
+				    </div>
+			    </a>
+		      {% elsif block.settings.video_url_block.type == "vimeo" %}
+		      <a class="fancybox" data-type="iframe" href="//player.vimeo.com/video/{{ block.settings.video_url_block.id }}?byline=0&portrait=0&badge=0" title="youtube">
+			  		<img src="{{ block.settings.video_image_block | img_url: '800x' }}" />
+				  	<div class="columns-carousel--nav">
+				      <div class="pagination">
+				        PLAY
+				      </div>
+				    </div>		  		
+			  	</a>      
+		      {% endif %}	  	
+		  	{% endif %}
+		  </div>
+
+		{% endif %}		  
+	{% endfor %}
+
+</div>
+
+<div class="about-block" style="background-color:{{ section.settings.about_text_color }}">
+	{{ section.settings.about_text }}
+</div>
+
+
+<style>
+	#content.row {
+		width: 100%;
+	}
+	.video-url {
+		position: relative;
+	}
+	#breadcrumb {
+		display: none;
+	}	
+	#content {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.homepage-section  {
+		margin-bottom: 0;
+	}
+	.caption-inners {
+		margin: 0 auto;
+	}
+	.about-container {
+	  display: flex;
+	  flex-wrap: wrap; 
+	}
+	.about-block {
+		width: 100%;
+	}
+	.block {
+	  width: 40%;
+	}
+	.fancybox img {
+		margin-bottom: -6px;
+	}
+
+	@media screen and ( min-width: 741px ) {
+		.block {
+			order: inherit !important;
+		}	
+		.block:nth-of-type(even) {
+			margin-left: 10%;
+		}
+		.block:nth-of-type(odd) {
+			margin-right: 10%;
+		}
+	}
+
+	@media screen and ( max-width: 740px ) {
+		.about-container {
+			flex-direction: column;
+	  		align-items: flex-start; 
+		}
+	    .block {
+			  width: 100%;
+			}
+		.image-block {
+			margin-top: 0 !important;
+		}
+  	}
+
+	.block img {
+	  width: 100%;
+	  height: 100%;
+	}  
+</style>
+
+<script>
+	jQuery(document).ready(function($){
+	    $(".fancybox").on("click", function(){
+	        $.fancybox({
+	          href: this.href,
+	          type: $(this).data("type")
+	        }); // fancybox
+	        return false   
+	    }); // on
+	}); // ready
+</script>
+
+{% schema %}  
+  {
+    "name": "Collection page", 
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "html",
+        "id": "about_text",
+        "label": "About Text"
+      },
+      {
+        "type": "color",
+        "id": "about_text_color",
+        "label": "About Text Background Color"     	
+      }   
+    ],
+    "blocks":[
+    {
+      "type": "text_block",
+      "name": "Content Module",
+      "settings":[
+      	{
+      		 "type": "image_picker",
+      		   "id": "module_image",
+					"label": "Image"
+      	},
+      	{
+      		 "type": "html",
+      		   "id": "module_html",
+      		"label": "HTML Content"
+      	},
+      	{
+	  		   "type": "select",
+	  		     "id": "module_image_color_scheme",
+	  		  "label": "Color Scheme",
+	  		"options": [
+	  			{
+	  				"value": "light",
+	  				"label": "Light Background"
+	  			},
+	  			{
+	  				"value": "dark",
+	  				"label": "Dark Background"
+	  			}
+	  		]
+      	},      	
+      	{
+	  		   "type": "select",
+	  		     "id": "module_image_position_desktop",
+	  		  "label": "Image Position (Desktop)",
+	  		"options": [
+	  			{
+	  				"value": "image_left",
+	  				"label": "Image Left"
+	  			},
+	  			{
+	  				"value": "image_right",
+	  				"label": "Image Right"
+	  			}
+	  		]
+      	},
+      	{
+      		   "type": "select",
+        		 "id": "module_image_position_mobile",
+      		  "label": "Image Position (Mobile)",
+      		"options": [
+      			{
+      				"value": "image_top",
+      				"label": "Image Top"
+      			},
+      			{
+      				"value": "image_bottom",
+      				"label": "Image Bottom"
+      			}
+      		]
+      	}
+      ]
+    },
+    {
+      "type":"html",
+      "name":"HTML Block",
+      "settings":[
+        {
+         "type": "html",
+         "id": "html_block",
+         "label": "HTML Block"
+        },
+	    {
+	      "type": "color",
+	      "id": "html_block_color",	
+	      "label": "HTML Block Background Color"     	
+	    },
+		{
+		   "type": "select",
+		   "id": "block_order",
+		   "label": "Mobile Block Order",
+		   "options": [
+		     {
+		       "value": "initial",
+		       "label": "None"
+		     },		   
+		     {
+		       "value": "1",
+		       "label": "1st"
+		     },
+		     {
+		       "value": "2",
+		       "label": "2nd"
+		     },
+		     {
+		       "value": "3",
+		       "label": "3rd"
+		     },
+		     {
+		       "value": "4",
+		       "label": "4th"
+		     },
+		     {
+		       "value": "5",
+		       "label": "5th"
+		     },
+		     {
+		       "value": "6",
+		       "label": "6th"
+		     },
+		     {
+		       "value": "7",
+		       "label": "7th"
+		     },	
+		     {
+		       "value": "8",
+		       "label": "8th"
+		     }
+		   ],
+		   "default": "initial",
+		   "info": "None"
+		}
+      ]
+    },
+    {
+      "type":"image_picker",
+      "name":"Image Block",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "image_picker_block",
+          "label": "Image Block"
+        },
+        {
+        	"type": "text",
+        	"id": "image_offset",
+        	"label": "Image Offset Top (In Percent)"
+        },
+		{
+		   "type": "select",
+		   "id": "block_order",
+		   "label": "Mobile Block Order",
+		   "options": [
+		     {
+		       "value": "initial",
+		       "label": "None"
+		     },		   
+		     {
+		       "value": "1",
+		       "label": "1st"
+		     },
+		     {
+		       "value": "2",
+		       "label": "2nd"
+		     },
+		     {
+		       "value": "3",
+		       "label": "3rd"
+		     },
+		     {
+		       "value": "4",
+		       "label": "4th"
+		     },
+		     {
+		       "value": "5",
+		       "label": "5th"
+		     },
+		     {
+		       "value": "6",
+		       "label": "6th"
+		     },
+		     {
+		       "value": "7",
+		       "label": "7th"
+		     },	
+		     {
+		       "value": "8",
+		       "label": "8th"
+		     }
+		   ],
+		   "default": "initial",
+		   "info": "None"
+		} 
+      ]
+    },
+    {
+      "type":"video_url",
+      "name":"Lightbox Video Block",
+      "settings":[
+  	  	{
+		    "type": "video_url",
+		    "id": "video_url_block",
+		    "label": "YouTube or Vimeo link",
+		    "accept": ["youtube", "vimeo"]
+		},      
+        {
+          "type": "image_picker",
+          "id": "video_image_block",
+          "label": "Image Block"
+        },
+		{
+		   "type": "select",
+		   "id": "block_order",
+		   "label": "Mobile Block Order",
+		   "options": [
+		     {
+		       "value": "initial",
+		       "label": "None"
+		     },		   
+		     {
+		       "value": "1",
+		       "label": "1st"
+		     },
+		     {
+		       "value": "2",
+		       "label": "2nd"
+		     },
+		     {
+		       "value": "3",
+		       "label": "3rd"
+		     },
+		     {
+		       "value": "4",
+		       "label": "4th"
+		     },
+		     {
+		       "value": "5",
+		       "label": "5th"
+		     },
+		     {
+		       "value": "6",
+		       "label": "6th"
+		     },
+		     {
+		       "value": "7",
+		       "label": "7th"
+		     },	
+		     {
+		       "value": "8",
+		       "label": "8th"
+		     }
+		   ],
+		   "default": "initial",
+		   "info": "None"
+		}
+      ]
+    }
+    ]
+  }
+{% endschema %}

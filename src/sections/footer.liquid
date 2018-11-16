@@ -1,0 +1,248 @@
+<div class="footer-section" data-section-id="{{ section.id }}" data-section-type="footer-section">
+  <footer class="site-footer">
+    
+    {% comment %} :: ROW #1 -- Footer Menu + Brand Links :: {% endcomment %}
+    <div class="row">
+
+      {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
+      {% if section.blocks %}
+        <div class="footer-blocks">
+          
+          {% for block in section.blocks %}
+            {% assign menu = linklists[block.settings.menu_id] %} 
+            <div class="footer-nav">
+              <nav>
+
+                {% comment %} :: TITLE : Basic title if no nested menus inside footer :: {% endcomment %}
+                {% if menu.levels < 2 and block.settings.show_headings %}
+                  <h4 class="nav-sub-header">{{ menu.title }}</h4>
+                {% endif %}
+
+
+                {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
+                <ul>
+                  {% for link in menu.links %}
+                    
+                    {% comment %} :: NESTED MENU :: {% endcomment %}
+                    {% if link.levels > 0 %}
+                      <li class="footer-sub-nav-wrapper" data-link-size="{{ link.links.size }}">
+                        
+                        {% comment %} :: SUB-NAV HEADER :: {% endcomment %}
+                        {% if block.settings.show_headings %}
+                          <h4 class="nav-sub-header">{{ link.title }}</h4>
+                        {% endif %}
+
+                        {% comment %} :: SUB-NAV MENU LINKS :: {% endcomment %}
+                        <ul class="footer-sub-nav">
+                          {% for sub_link in link.links %}
+                            <li>{{ sub_link.title | link_to: sub_link.url }}</li>
+                          {% endfor %}
+                        </ul>
+
+                      </li>
+
+                    {% comment %} :: ELSE, REGULAR SINGLE LINK :: {% endcomment %}
+                    {% else %}
+                       <li>{{ link.title | link_to: link.url }}</li>
+                    {% endif %}
+
+                  {% endfor %}
+                </ul>
+
+              </nav>
+            </div><!-- .footer-nav -->
+          {% endfor %}
+
+        </div><!--.footer-blocks-->      
+      {% endif %}
+
+
+      {% comment %} :: VISIT OUR BRANDS :: {% endcomment %}
+      <div class="visit-our-brands">
+        <div class="section-title">
+          <h4>Visit Our Brands</h4>
+        </div>
+
+        <div class="brands--list">
+
+          {% unless section.settings.visit_brand_link_one == blank %}
+            <a href="{{ section.settings.visit_brand_link_one }}" title="{{ section.settings.visit_brand_image_one.alt }}"><img src="{{ section.settings.visit_brand_image_one | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_one.alt }}"></a>
+          {% endunless %}
+
+          {% unless section.settings.visit_brand_link_two == blank %}
+            <a href="{{ section.settings.visit_brand_link_two }}" title="{{ section.settings.visit_brand_image_two.alt }}"><img src="{{ section.settings.visit_brand_image_two | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_two.alt }}"></a>
+          {% endunless %}
+
+          {% unless section.settings.visit_brand_link_three == blank %}
+            <a href="{{ section.settings.visit_brand_link_three }}" title="{{ section.settings.visit_brand_image_three.alt }}"><img src="{{ section.settings.visit_brand_image_three | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_three.alt }}"></a>
+          {% endunless %}                
+
+        </div><!-- .brands--list -->
+      </div><!-- .visit-our-brands -->
+    </div>
+
+
+    {% comment %} :: ROW #2 -- Telephone, Payment and Trust Icons :: {% endcomment %}
+    <div class="row footer--bottom-row">
+      <div class="brands--telephone">
+        <a href="tel:{{ section.settings.tel_number }}"><h4>TEL</h4><span>{{ section.settings.tel_text }}</span></a>
+      </div><!-- .brands--telephone -->
+
+      <div id="payment" >
+        {% if section.settings.show_credit_cards %}
+          <div class="section-title">
+            <h4>We Accept</h4>
+          </div>
+          <div class="payment-methods">
+            {% include 'svg-icon-visa' %}
+            {% include 'svg-icon-mastercard' %}
+            {% include 'svg-icon-amex' %}
+            {% include 'svg-icon-paypal' %}
+          </div><!-- .payment-methods -->
+              
+          {% comment %}
+            // PENDING - figure out how to actually alter the output SVGs
+            {% for type in shop.enabled_payment_types %}
+              {{ type | payment_type_svg_tag: class:'payment-icon' }}
+            {% endfor %}
+          {% endcomment %}
+
+        {% endif %}
+      </div><!-- #payment -->
+
+      <div id="trust-icons">
+        {% unless section.settings.trust_icon_image_one == blank %}
+          <img src="{{ section.settings.trust_icon_image_one | img_url }}" alt="{{ section.settings.trust_icon_image_one.alt }}" />
+        {% endunless %}
+        {% unless section.settings.trust_icon_image_two == blank %}
+          <img src="{{ section.settings.trust_icon_image_two | img_url }}" alt="{{ section.settings.trust_icon_image_two.alt }}" />
+        {% endunless %}
+        {% unless section.settings.trust_icon_image_three == blank %}
+          <img src="{{ section.settings.trust_icon_image_three | img_url }}" alt="{{ section.settings.trust_icon_image_three.alt }}" />
+        {% endunless %}
+      </div><!-- #trust-icons -->
+    </div><!-- .footer--bottom-row -->
+
+  </footer>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+     {
+       "type": "header",
+       "content": "Phone Number"
+     },
+     {
+       "type": "text",
+       "id": "tel_text",
+       "label": "Display Text",
+       "default": "855-377-BOOT (2668)",
+       "info": "This is the text that will be displayed on the site."
+     },
+     {
+      "type": "text",
+      "id": "tel_number",
+      "label": "Actual Number",
+      "default": "18553772668",
+      "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
+     },   
+
+     {
+       "type": "header",
+       "content": "Payment Methods"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_credit_cards",
+       "label": "Show credit card icons",
+       "default": true,
+       "info": "The icons that show are determined by your store's payment settings."
+     },
+     {
+       "type": "header",
+       "content": "Visit Our Brands - #1"
+     },
+     {
+      "type": "url",
+      "id": "visit_brand_link_one",
+      "label": "URL"
+     },
+     {
+      "type": "image_picker",
+      "id": "visit_brand_image_one",
+      "label": "Logo"
+     },  
+     {
+       "type": "header",
+       "content": "Visit Our Brands - #2"
+     },
+     {
+      "type": "url",
+      "id": "visit_brand_link_two",
+      "label": "URL"
+     },
+     {
+      "type": "image_picker",
+      "id": "visit_brand_image_two",
+      "label": "Logo"
+     },  
+     {
+       "type": "header",
+       "content": "Visit Our Brands - #3"
+     },
+     {
+      "type": "url",
+      "id": "visit_brand_link_three",
+      "label": "URL"
+     },
+     {
+      "type": "image_picker",
+      "id": "visit_brand_image_three",
+      "label": "Logo"
+     },  
+     {
+       "type": "header",
+       "content": "Trust Icons"
+     },
+     {
+      "type": "image_picker",
+      "id": "trust_icon_image_one",
+      "label": "Logo #1"
+     },  
+     {
+      "type": "image_picker",
+      "id": "trust_icon_image_two",
+      "label": "Logo #2"
+     },  
+     {
+      "type": "image_picker",
+      "id": "trust_icon_image_three",
+      "label": "Logo #3"
+     }  
+    ],
+    "blocks":[
+      {
+        "type":"link_list",
+        "name":"Menu",
+        "settings":[
+          {
+            "type": "link_list",
+            "id": "menu_id",
+            "label": "Footer Menu"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_headings",
+            "label": "Show Footer Menu Headers",
+            "default": false,
+            "info": "(Hidden by default)"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

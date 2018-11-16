@@ -1,0 +1,84 @@
+{% comment %} CONTENT :: Before Questions {% endcomment %}
+
+{% if section.settings.before_content != blank %}
+    {{ section.settings.before_content }}
+{% endif %}
+
+{% comment %} FAQ :: Block loop {% endcomment %}
+
+{% for block in section.blocks %}
+    <div class="toggle">
+        <div class="toggle-title">
+            <h4>{{ block.settings.title }}</h4>
+            <span class="opener">{% include 'svg-icon-caret-down' %}
+            </span>
+        </div>
+        <div class="toggle-inner">
+            {% if block.settings.anchor != blank %}
+            <a id="{{ block.settings.anchor | escape }}" style="display: block; position: relative; top: {{ section.settings.anchor_top_offset }}px; visibility: hidden;"></a>
+            {% endif %}
+
+            {{ block.settings.answer }}
+        </div>
+    </div>
+
+{% endfor %}
+
+{% comment %} CONTENT :: After Questions {% endcomment %}
+
+{% if section.settings.after_content != blank %}
+    {{ section.settings.after_content }}
+{% endif %}
+
+{% schema %}
+  {
+    "name": "FAQ page",
+    "settings": [
+    {
+        "type": "range",
+        "id": "anchor_top_offset",
+        "min": -300,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Anchor - Top offset",
+        "default": -100
+    },
+    {
+        "type": "html",
+        "id": "before_content",
+        "label": "Pre-questions content (HTML)"
+    },
+    {
+        "type": "html",
+        "id": "after_content",
+        "label": "Post-questions content (HTML)"
+    }   
+    ], 
+    "blocks": [ 
+    {
+        "type": "html",
+        "name": "FAQ Question",
+        "settings":[
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Question"
+            },
+            {
+                "type": "html",
+                "id": "answer",
+                "label": "Answer"
+            },
+            {
+                "type": "text",
+                "id": "anchor",
+                "label": "Anchor ID"
+            }
+        ]
+    }
+    ]
+  }
+
+{% endschema %}
+

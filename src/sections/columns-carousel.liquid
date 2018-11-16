@@ -1,0 +1,226 @@
+<div class="homepage-section columns-carousel-section no-fouc index-section" data-section-id="{{ section.id }}" data-section-type="columns-carousel-section">
+
+  {% comment %} :: WRAPPER :: {% endcomment %}
+  {% if section.blocks.size > 0 %}
+
+  <div class="columns-carousel">
+
+    <ul class="owl-carousel columns-carousel--columns">
+
+      {% comment %} :: THE LOOP :: {% endcomment %}
+      {% for block in section.blocks %}
+
+      <li id="column--{{ block.id }}" data-block-id="{{ block.id }}" class="column-item" {{ block.shopify_attributes }}>
+
+        {% if block.settings.link != blank %}
+
+        <a href="{{ block.settings.link }}" class="image-link">
+          {% endif %}
+
+          {% comment %} :: IMAGES :: {% endcomment %}
+          {% if block.settings.image != blank %}
+
+            <div class="box-ratio">
+              <picture>
+                
+                {% comment %} :: MOBILE IMAGE :: {% endcomment %}
+                {% if block.settings.mobile_image != blank %}
+                  {% assign mobile_img_url = block.settings.mobile_image | img_url: '767x' %}
+
+                  <source srcset="{{ mobile_img_url }}" media="(max-width: 767px)">
+
+                {% endif %}
+
+                {% assign desktop_img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+                <img class="slideshow__image slideshow__image__{{ block.id }} lazyload lazyload-fade" 
+                  data-src="{{ desktop_img_url }}" 
+                  data-sizes="auto"
+                  data-parent-fit="cover"
+                  alt="{{ block.settings.image.alt | escape }}">
+              </picture>
+
+              <noscript>
+                <img src="{{ block.settings.image | img_url: '1024x' }}" alt="{{ block.settings.image.alt | escape }}" class="slideshow__image slideshow__image--{{ block.id }}">
+              </noscript>
+
+            </div><!-- .box-ratio -->
+
+            {% comment %} Styling to accommodate the box ratio for lazy-loaded images {% endcomment %}
+            <style>
+
+              {% assign image_box_ratio = block.settings.image.height | append: ".0" | times: 1 | divided_by: block.settings.image.width | times: 100 | append: "%" %}
+
+              {% if block.settings.mobile_image != blank %}
+                {% assign mobile_image_box_ratio = block.settings.mobile_image.height | append: ".0" | times: 1 | divided_by: block.settings.mobile_image.width | times: 100 | append: "%" %}
+
+                /* Mobile */
+                #column--{{ block.id }} .box-ratio {
+                  padding-bottom: {{ mobile_image_box_ratio }};
+                }
+
+              {% else %}
+
+                #column--{{ block.id }} .box-ratio {
+                  padding-bottom: {{ image_box_ratio }};
+                }
+
+              {% endif %}
+
+              {% if block.settings.image != blank and block.settings.mobile_image != blank %}
+
+                /* Tablet and up */
+                @media screen and (min-width: 768px) {
+                  #column--{{ block.id }} .box-ratio {
+                    padding-bottom: {{ image_box_ratio }};
+                  }
+                }
+
+              {% endif %}
+
+            </style>            
+
+          {% endif %}
+
+          {% comment %} :: NO IMAGE - PLACEHOLDER :: {% endcomment %}
+          {% if block.settings.image == blank %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {%- assign placeholder = 'lifestyle-' | append: current -%}
+            {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+          {% comment %} :: TEXT & ICON OVERLAY :: {% endcomment %}
+          <div class="overlay"></div>
+
+          <div class="text-overlay" id="overlay-{{ block.id }}">
+
+            {% comment %} :: ICON :: {% endcomment %}
+            {% if block.settings.png_icon != blank or block.settings.svg_icon != block %}
+
+            <div class="overlay-icon">
+              {% if block.settings.svg_icon != blank %}
+                {{ block.settings.svg_icon }}
+              {% elsif block.settings.png_icon != blank %}
+                <img src="{{ block.settings.png_icon | img_url: '200x' }}" />
+              {% endif %}
+            </div><!-- .icon -->
+
+            {% endif %}
+
+            {% comment %} :: TEXT :: {% endcomment %}
+            {% if block.settings.heading != blank %}
+            <h3>{{ block.settings.heading }}</h3>
+            {% endif %}
+
+            {% if block.settings.cta_text != blank %}
+            <div class="cta">
+              {{ block.settings.cta_text | escape }}
+              {% include 'svg-icon-caret-right' %}
+            </div>
+            {% endif %}
+              
+          </div><!-- .text-overlay -->
+
+        {% if block.settings.link != blank %}
+        </a>
+        {% endif %}
+
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% comment %} :: PAGINATION :: {% endcomment %}
+    {% if section.blocks.size > 1 %}
+
+    <div class="columns-carousel--nav">
+      <a class="columns-carousel--prev">
+        {% include 'svg-icon-caret-left' %}
+      </a>
+      <div class="pagination">
+        <span class="columns-carousel--current-slide"></span>
+        <span class="slash">/</span>
+        <span class="columns-carousel--total-slides"></span>
+      </div>
+      <a class="columns-carousel--next">
+        {% include 'svg-icon-caret-right' %}
+      </a>
+    </div><!-- .slider--nav -->
+
+    {% endif %}  
+
+  </div><!-- .columns-carousel -->
+
+  {% endif %}
+</div><!-- .columns-carousel-section -->
+
+{% schema %}
+{
+  "name": "Columns Carousel",
+
+  "max_blocks": 10,
+
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Column",
+      "settings": [
+        {
+           "type": "image_picker",
+             "id": "image",
+          "label": "Background Image"
+        },
+        {
+           "type": "image_picker",
+             "id": "mobile_image",
+          "label": "Background Image (Mobile)"
+        },
+        {
+           "type": "text",
+             "id": "heading",
+          "label": "Heading",
+        "default": "Add a title"
+        },
+        {
+           "type": "html",
+             "id": "svg_icon",
+          "label": "SVG Icon HTML",
+           "info": "Copy and paste SVG code"
+        },        
+        {
+           "type": "image_picker",
+             "id": "png_icon",
+          "label": "Icon Image (Fallback)",
+           "info": "Only use as fallback if you don't have SVG code"
+        },
+        {
+           "type": "url",
+             "id": "link",
+          "label": "Link"
+        },
+        {
+           "type": "text",
+             "id": "cta_text",
+          "label": "CTA text",
+        "default": "Shop Now"
+        }
+      ]
+    }
+  ],
+  "settings": [
+
+  ],
+  "presets": [{
+    "name": "Columns Carousel",
+    "category": "Image",
+    "blocks": [
+      { "type": "image" },
+      { "type": "image" },
+      { "type": "image" },
+      { "type": "image" },
+      { "type": "image" },
+      { "type": "image" }
+    ]
+  }]
+}
+{% endschema %}

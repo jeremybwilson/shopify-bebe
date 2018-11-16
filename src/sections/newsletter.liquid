@@ -1,0 +1,95 @@
+<div id="newsletter-social" class="newsletter-{{ section.id }}" data-section-id="{{ section.id }}" 
+  data-section-type="newsletter-social">
+  
+  <div class="newsletter-wrapper">
+    <div class="newsletter-inner">
+      <header>
+        {% unless section.settings.heading == blank %}
+          <h2 class="newsletter-heading">{{ section.settings.heading }}</h2>
+        {% endunless %}
+        {% unless section.settings.newsletter_subheading == blank %}
+          <h3 class="newsletter-subheading">
+            {{ section.settings.newsletter_subheading }}
+          </h3>
+        {% endunless %}
+      </header>
+
+      <form id="footer-newsletter">
+        <input class="form-control" type="email" id="email" name="email" placeholder="{{ section.settings.newsletter_placeholder }}">
+        <label id="button-footer-newsletter-submit" for="footer-newsletter-submit">
+          <input id="footer-newsletter-submit" type="submit" value="Subscribe">
+          {% include 'svg-icon-caret-right-submit' %}
+        </label>
+      </form>
+      <div id="newsletter-form--response">
+        <span id="newsletter-error-response" style="display:none;">{{ section.settings.newsletter_error }}</span>
+        <span id="newsletter-success-response" style="display:none;">
+        {{ section.settings.newsletter_success }}</span>
+      </div>
+
+    </div><!-- .newsletter-inner -->
+  </div><!-- .newsletter-wrapper -->
+
+  <div class="social-wrapper">
+    <div class="social-inner">
+      {% unless section.settings.social_heading == blank %}
+        <h4 class="section-title">{{ section.settings.social_heading }}</h4>
+      {% endunless %}
+      <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
+        {% include 'social-icons' %}
+      </ul><!-- #social-icons -->
+    </div><!-- .social-inner -->    
+  </div><!-- .social-wrapper -->
+
+</div><!-- #newsletter-social -->
+{% schema %}
+{
+   "name":"Newsletter & Social",
+   "settings":[
+    {
+     "type": "paragraph",
+     "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_subheading",
+      "label": "Subheading",
+      "default": "<p>Signup for our newsletter to stay up to date on sales and events.</p>"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Placeholder Text",
+      "default": "Enter Your Email Address"
+    },
+    { 
+      "type": "text",
+      "id": "newsletter_error",
+      "label": "Error Text",
+      "default": "Please enter a valid e-mail address"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_success",
+      "label": "Success Text",
+      "default": "<p>You have successfully joined our newsletter</p>"
+    },
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Social - Heading",
+      "default": "Connect With Us"
+    }
+   ],
+   "presets": [{
+      "name": "Newsletter & Social",
+      "category": "Promotional"
+    }]
+}
+{% endschema %}
