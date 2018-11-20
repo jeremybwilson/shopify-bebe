@@ -1,20 +1,22 @@
 {
-  "presets": {},
+  "presets": {
+  },
   "current": {
     "international_store_version": "US",
     "favicon": "shopify:\/\/shop_images\/favicon.png",    
-    "announcement_text_color": "#ffffff",
-    "announcement_bg_one": "#0153a6",
-    "announcement_bg_two": "#757575",
-    "header_background": "#fefffe",
+    "google_tag_manager_id": "",
+    "announcement_text_color": "#000",
+    "announcement_bg_one": "#fff",
+    "announcement_bg_two": "#fff",
+    "header_background": "#fff",
     "logo_color": "#000000",
-    "nav_links": "#0153a6",
-    "nav_links_hover": "#e61533",
-    "nav_links_sale": "#aa5131",
+    "nav_links": "#000000",
     "nav_header_color": "#000000",
-    "nav_sub_header_color": "#0153a6",
+    "nav_sub_header_color": "#000000",
     "nav_list_item_color": "#000000",
-    "nav_minor_border_color": "#cccccc",
+    "nav_links_hover": "#000000",
+    "nav_links_sale": "#aa5131",
+    "nav_minor_border_color": "#333333",
     "social_links": "#000000",
     "social_links_hover": "#000000",
     "background": "#fefffe",
@@ -22,70 +24,67 @@
     "text_color": "#000000",
     "link_color": "#000000",
     "link_hover_color": "#000000",
-    "sale_color": "#bc0000",
-    "dotted_color": "#e5e5e5",
+    "sale_color": "#9d6d31",
+    "dotted_color": "#333333",
     "error_text": "#f00",
-    "google_tag_manager_id": "GTM-PM9T3KW",
-    "button_bg": "#e41c39",
-    "button_bg_hover": "#a6041c",
+    "button_bg": "#000000",
+    "button_bg_hover": "#000000",
     "button_text": "#ffffff",
     "button_text_hover": "#ffffff",
-    "button_border_color": "transparent",
-    "button_border_color_hover": "transparent",
+    "button_border_color": "rgba(0,0,0,0)",
+    "button_border_color_hover": "rgba(0,0,0,0)",
     "button_border_width": 0,
-    "alt_button_bg": "#ffffff",
-    "alt_button_bg_hover": "#dddddd",
-    "alt_button_text": "#0b56a3",
-    "alt_button_text_hover": "#0b56a3",
-    "alt_button_border_color": "transparent",
-    "alt_button_border_color_hover": "transparent",
+    "alt_button_bg": "#8a8a8a",
+    "alt_button_bg_hover": "#8a8a8a",
+    "alt_button_text": "#ffffff",
+    "alt_button_text_hover": "#ffffff",
+    "alt_button_border_color": "rgba(0,0,0,0)",
+    "alt_button_border_color_hover": "rgba(0,0,0,0)",
     "alt_button_border_width": 0,
-
-    "homepage_instagram_header": "#fff",
-    "homepage_instagram_text": "#fff",
+    "homepage_instagram_header": "#000000",
+    "homepage_instagram_text": "#000000",
     "filter_bg": "#ffffff",
-    "filter_text_color": "#000000",
-    "filter_arrow_color": "#0153a6",
+    "filter_text_color": "#9d6d31",
+    "filter_arrow_color": "#000000",
     "filter_checkbox_bg": "#ffffff",
-    "filter_divider_color": "#d8d8d8",
-    "filter_button_main_bg": "#0153a6",
+    "filter_divider_color": "#333333",
+    "filter_button_main_bg": "#000000",
     "filter_button_main_text": "#fefffe",
     "filter_button_alt_bg": "#ffffff",
-    "filter_button_alt_text": "#0153a6",
-    "filter_bar_border_color": "#0153a6",
-    "filter_bar_border_width": 3,
+    "filter_button_alt_text": "#9d6d31",
+    "filter_bar_border_color": "#333333",
+    "quickview_button_bg": "#b7b7b7",
+    "quickview_button_text": "#747474",
     "catalog_item_text_color": "#000000",
-    "catalog_item_price_color": "#525252",
-    "catalog_item_accent_color": "#e61533",
-    "collection_seo_footer_bg": "#e6e6e6",
+    "catalog_item_price_color": "#000000",
+    "catalog_item_accent_color": "#9d6d31",
+    "collection_seo_footer_bg": "#ffffff",
     "collection_seo_footer_text": "#161616",
-    "collection_load_more_text": "#fefffe",
-    "collection_load_more_bg": "#757575",
-    "collection_load_more_bg_hover": "#0153a6",
-    "product_badge_square_bg": "#757575",
-    "product_badge_circle_bg": "#0153a6",
-    "product_badge_diamond_bg": "#0152a6",
+    "collection_load_more_text": "#000000",
+    "collection_load_more_bg": "#000000",
+    "collection_load_more_bg_hover": "#000000",
+    "product_badge_square_bg": "#000000",
+    "product_badge_circle_bg": "#000000",
+    "product_badge_diamond_bg": "#000000",
     "product_badge_text_color": "#fefffe",
-    "react_swatch_outline_color": "#0153a6",
-    "quickview_button_bg": "#e41c39",
-    "quickview_button_text": "#FEFFFE",
-    "fancybox_overlay_bg": "0,0,0,0.8",
-    "fancybox_close_color": "#5b5b5b",
-    "fancybox_close_hover_color": "#9b492b",
-    "gdpr_bg": "#e6e6e6",
+    "react_swatch_outline_color": "#000000",
+    "fancybox_overlay_bg": "0,0,0,0.6",
+    "fancybox_close_color": "#000000",
+    "fancybox_close_hover_color": "#000000",
+    "gdpr_bg": "#ffffff",
     "gdpr_text": "#000000",
-    "gdpr_border_color": "#0b56a3",
+    "gdpr_border_color": "rgba(0,0,0,0)",
     "gdpr_border_width": 0,
-    "gdpr_button_bg": "#0b56a3",
-    "gdpr_button_text":"#ffffff",
-    "gdpr_button_bg_hover":"#0e4781",
-    "gdpr_alt_button_bg":"#ffffff",
-    "gdpr_alt_button_text":"0b56a3",
-    "gdpr_alt_button_bg_hover":"#d6d6d6",
+    "gdpr_button_bg": "#000000",
+    "gdpr_button_text": "#ffffff",
+    "gdpr_button_bg_hover": "#000000",
+    "gdpr_alt_button_bg": "#8a8a8a",
+    "gdpr_alt_button_text": "#ffffff",
+    "gdpr_alt_button_bg_hover": "#8a8a8a",
     "navigation": "#000000",
     "nav_color": "#ffffff",
-    "nav_hover_color": "#e61533",
-    "nav_hover_link_color": "#e61533",
+    "nav_hover_color": "#000000",
+    "nav_hover_link_color": "#ffffff",
     "dropdown_background_color": "#000000",
     "nav_dropdown_color": "#ffffff",
     "dropdown_hover_background_color": "#282828",
@@ -102,22 +101,22 @@
     "swatch_selected_border": "#000000",
     "new_background": "#222",
     "new_text": "#ffffff",
-    "sale_background": "#af0000",
+    "sale_background": "#9d6d31",
     "sale_text": "#ffffff",
     "soldout_background": "#222",
     "soldout_text": "#ffffff",
     "icons": "#333333",
     "icons_hover": "#333333",
-    "newsletter_footer_background": "#e41c39",
-    "newsletter_footer_text": "#ffffff",
-    "social_footer_background": "#ffffff",
-    "social_footer_header": "#0d57a3",
-    "footer_background": "#333333",
-    "footer_color": "#ffffff",
-    "footer_border": "#ccd7d2",
-    "main_font": "karla_n4",
-    "nav_font": "karla_n4",
-    "heading_font": "montserrat_n7",
+    "newsletter_footer_background": "#ffffff",
+    "newsletter_footer_text": "#000000",
+    "social_footer_background": "#e7e7e7",
+    "social_footer_header": "#000000",
+    "footer_background": "#ffffff",
+    "footer_color": "#000000",
+    "footer_border": "#333333",
+    "main_font": "source_sans_pro_n4",
+    "nav_font": "source_sans_pro_n4",
+    "heading_font": "source_sans_pro_n4",
     "announcement_text_size": 18,
     "font_size": 13,
     "h1_size": 24,
@@ -137,19 +136,20 @@
     "quickview": true,
     "vendor": false,
     "show_collection_seo_block": true,
+    "filter_bar_border_width": 3,
     "details_align": "center",
     "secondary_images_hover": "image_flip",
     "cart_notes_enable": false,
     "ajax_cart_method": "drawer",
     "ajax_cart_remove_text": "This will remove the item from your cart. Continue?",
     "ajax_cart_low_stock_text": "This item does not have enough stock to add to your cart.",
-    "twittername": "",
-    "facebook_url": "\/\/www.facebook.com\/XtraTuf\/",
-    "pinterest_url": "",
+    "twittername": "http:\/\/www.twitter.com\/bebe_Stores",
+    "facebook_url": "http:\/\/www.facebook.com\/bebe",
+    "pinterest_url": "http:\/\/www.pinterest.com\/bebestores",
     "tumblr_url": "",
-    "youtube_url": "\/\/www.youtube.com\/channel\/UCbLKFCrAzj4U2OTsiX0HK2g",
+    "youtube_url": "https:\/\/www.youtube.com\/user\/bebestores",
     "googleplus_url": "",
-    "instagram_id": "xtratufboots",
+    "instagram_id": "\/bebe_stores",
     "popup": true,
     "email_image": "",
     "email_popup_title": "Signup Up & Get 10% Off Your First Order!",
@@ -168,7 +168,7 @@
     "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
     "default_currency": "USD",
     "checkout_header_image": "",
-    "checkout_logo_image": "shopify:\/\/shop_images\/checkout-logo.png",
+    "checkout_logo_image": "",
     "checkout_logo_position": "left",
     "checkout_logo_size": "large",
     "checkout_body_background_image": "",
@@ -181,6 +181,7 @@
     "checkout_accent_color": "#e41c39",
     "checkout_button_color": "#0a56a4",
     "checkout_error_color": "#ff6d6d",
+    "international_store_version": "US",
     "cart_links": "#000000",
     "cart_links_hover": "#000000",
     "newsletter_color": "#ffffff",
@@ -223,7 +224,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Men",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-1.jpg",
+              "nav_image": "",
               "nav_promo_link": "shopify:\/\/collections\/men"
             }
           },
@@ -231,16 +232,14 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Women",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-2.jpg",
+              "nav_image": "",
               "nav_promo_link": "shopify:\/\/collections\/women"
             }
           },
           "1535652979932": {
             "type": "simple_menu",
             "settings": {
-              "menu_item": "Kids",
-              "nav_image": "",
-              "nav_promo_link": ""
+              "menu_item": "Kids"
             }
           },
           "1535653033501": {
@@ -298,17 +297,14 @@
           "tel_number": "18553772668",
           "show_credit_cards": true,
           "visit_brand_link_one": "http:\/\/www.xtratuf.com",
-          "visit_brand_image_one": "shopify:\/\/shop_images\/visit-brand-image-1.png",
+          "visit_brand_image_one": "",
           "visit_brand_link_two": "",
           "visit_brand_image_two": "",
           "visit_brand_link_three": "http:\/\/www.howardleight.com",
-          "visit_brand_image_three": "shopify:\/\/shop_images\/visit-brand-image-3.png",
+          "visit_brand_image_three": "",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
-          "trust_icon_image_three": "",
-          "show_payment_icons": false,
-          "color_footer_bg": "#f5f5f5",
-          "color_footer_text": "#3d4246"
+          "trust_icon_image_three": ""
         }
       },
       "collection-template": {
@@ -344,7 +340,7 @@
           "free_shipping_header_text": "Free Shipping & Returns",
           "free_shipping_text": "<p>FREE Shipping and FREE Returns for all ground orders. Orders placed before 2PM EST Monday &ndash; Friday will ship next day. For additional information, visit our <a href=\"\/pages\/shipping-returns\" title=\"Shipping and Return\">Shipping page<\/a>.<\/p>",
           "show_social": false,
-          "size_chart_page": "size-chart"
+          "size_chart_page": ""
         }
       },
       "blog-template": {
@@ -408,8 +404,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-hero-desktop-slide-1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-hero-mobile-slide-1.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "Proud To Be The Alaskan Sneaker",
               "subheading": "",
               "cta_one_link": "\/collections\/legacy\/audience_men",
@@ -434,90 +430,29 @@
           "slider_speed": 3
         }
       },
-      "1536068961071": {
-        "type": "columns-carousel",
-        "blocks": {
-          "1536068961071-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-1.jpg",
-              "heading": "Commercial Fishing",
-              "svg_icon": "",
-              "png_icon": "",
-              "link": "shopify:\/\/collections\/commercial-fishing",
-              "cta_text": "Shop Now"
-            }
-          },
-          "1536068961071-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-2.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-2.jpg",
-              "heading": "Sport Fishing",
-              "svg_icon": "",
-              "png_icon": "",
-              "link": "shopify:\/\/collections\/sport-fishing",
-              "cta_text": "Shop Now"
-            }
-          },
-          "1536068961071-2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-3.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-3.jpg",
-              "heading": "Water Sports",
-              "svg_icon": "",
-              "png_icon": "",
-              "link": "shopify:\/\/collections\/water-sports",
-              "cta_text": "Shop Now"
-            }
-          },
-          "1536068961071-3": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-4.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-4.jpg",
-              "heading": "Lifestyle",
-              "svg_icon": "",
-              "png_icon": "",
-              "link": "shopify:\/\/collections\/lifestyle",
-              "cta_text": "Shop Now"
-            }
-          }
-        },
-        "block_order": [
-          "1536068961071-0",
-          "1536068961071-1",
-          "1536068961071-2",
-          "1536068961071-3"
-        ],
-        "settings": {
-        }
-      },
       "1536251685211": {
         "type": "twin-promos",
         "blocks": {
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-twin-promo-desktop-1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-twin-promo-mobile-1.jpg",
-              "link": "\/collections\/mid-tall-boots\/audience_women",
-              "heading_text": "Tougher than the Rest",
+              "image": "",
+              "mobile_image": "",
+              "link": "#",
+              "heading_text": "Sparly Things",
               "text": "",
-              "cta_text": "Shop Women's Boots"
+              "cta_text": "Shop Now"
             }
           },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-twin-promo-desktop-2.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-twin-promo-mobile-2.jpg",
-              "link": "shopify:\/\/collections\/kids",
-              "heading_text": "Keep Tradition Alive",
+              "image": "",
+              "mobile_image": "",
+              "link": "#",
+              "heading_text": "No Need To Freeze",
               "text": "",
-              "cta_text": "Shop Kids"
+              "cta_text": "Shop Jackets & Coats"
             }
           }
         },
@@ -535,8 +470,8 @@
           "1536252750894-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-about-promo-desktop-1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-about-promo-mobile-1.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "Made for Alaska, Fit for Everyone",
               "subheading": "",
               "cta_one_link": "shopify:\/\/pages\/about",
@@ -571,23 +506,13 @@
           "instagram_access_token": "1022365975.1677ed0.a29a97191f864ee0afeb65ef0024312b"
         }
       },
-      "1536353642475": {
-        "type": "featured-collection",
-        "settings": {
-          "heading": "Best Sellers",
-          "homepage_collection": "best-sellers",
-          "homepage_product_limit": 8,
-          "homepage_product_display": "carousel",
-          "products_per_row": 4
-        }
-      },
       "page-about-template": {
         "type": "page-about-template",
         "blocks": {
           "1539644589684": {
             "type": "text_block",
             "settings": {
-              "module_image": "shopify:\/\/shop_images\/about-image-1.jpg",
+              "module_image": "",
               "module_html": "<p>We've earned the <strong>Respect, Loyalty and trust<\/strong> of people who can't afford to take trust lightly.<\/p>",
               "module_image_color_scheme": "light",
               "module_image_position_desktop": "image_right",
@@ -597,7 +522,7 @@
           "1539646800597": {
             "type": "text_block",
             "settings": {
-              "module_image": "shopify:\/\/shop_images\/about-image-2.jpg",
+              "module_image": "",
               "module_html": "<p>We make essential gear <strong>engineered to withstand the world's toughest conditions<\/strong> and to protect people who put their lives on the line to live and work on the water.<\/p>",
               "module_image_color_scheme": "dark",
               "module_image_position_desktop": "image_left",
@@ -607,7 +532,7 @@
           "1539646807998": {
             "type": "text_block",
             "settings": {
-              "module_image": "shopify:\/\/shop_images\/about-image-3.jpg",
+              "module_image": "",
               "module_html": "<p> We're part of a marine lifestyle that values <strong>authenticity, performance and hard work<\/strong> whether you \nfish to live or live to fish.<\/p>",
               "module_image_color_scheme": "light",
               "module_image_position_desktop": "image_right",
@@ -617,7 +542,7 @@
           "1539646813012": {
             "type": "text_block",
             "settings": {
-              "module_image": "shopify:\/\/shop_images\/about-image-4.jpg",
+              "module_image": "",
               "module_html": "<p><strong>XTRATUF<\/strong> is chosen not only by fisherman on the Bering Sea, but by commercial, sport and water-enthusiasts everywhere.<\/p>",
               "module_image_color_scheme": "light",
               "module_image_position_desktop": "image_left",
@@ -636,15 +561,14 @@
           "about_text_color": "#e6e6e6"
         }
       },
-
       "slideshow": {
         "type": "slideshow",
         "blocks": {
           "1537562942330": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/about-hero-desktop-slide-1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/about-hero-mobile-slide-1.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "We Come From Alaska",
               "subheading": "Where nothing is forgiven and no compromise goes unpunished. <br> Where 50-foot seas swallow the slightest missteps.",
               "cta_one_link": "",
@@ -675,8 +599,8 @@
           "1539638126458": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-1.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "Commercial Fishing",
               "svg_icon": "",
               "png_icon": "",
@@ -687,8 +611,8 @@
           "1539642501764": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-2.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-2.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "Sport Fishing",
               "svg_icon": "",
               "png_icon": "",
@@ -699,8 +623,8 @@
           "1539642513779": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-3.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-3.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "Water Sports",
               "svg_icon": "",
               "png_icon": "",
@@ -711,8 +635,8 @@
           "1539642524127": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/home-column-carousel-desktop-slide-4.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/home-column-carousel-mobile-slide-4.jpg",
+              "image": "",
+              "mobile_image": "",
               "heading": "Lifestyle",
               "svg_icon": "",
               "png_icon": "",
@@ -871,8 +795,6 @@
     },
     "content_for_index": [
       "1535728526385",
-      "1536353642475",
-      "1536068961071",
       "1536251685211",
       "1536252750894",
       "1536266098177"
