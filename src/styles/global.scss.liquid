@@ -10,30 +10,19 @@ html, body {
   height: 100%;
 }
 
-body { 
-	font-family: $font-stack--default;
-  color: {{ settings.text_color }};
-  background: {{ settings.background }};
-  @include p;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
-}
+/* 
+  Typography
+  ----------
+  All type styles can be found here
+================================================== */
+  @import url('./global/global-typography.scss.liquid');
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-stack--heading;
-}
 
-p {
-  color: $color--gray-1;
-}
-
-{% comment %} Prevent sidways scrolling past page bounds on old iOS devices (9 and earlier){% endcomment %}
+// Prevent sidways scrolling past page bounds on old iOS devices (9 and earlier)
 body > .page-wrap {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-
 .gridlock .row {
   @include mq('phone') {
     width: 100%;
@@ -133,54 +122,19 @@ body > .page-wrap {
   margin-bottom: 0px !important;
 }
 
-
-
-
-/* GENERAL BUTTONS
- *  Most of this is coiped from stylesheet.css,
- *  so don't be nervous removing stuff no longer 
- *  needed here.
+/* 
+  Forms
+  ----------
+  Form styles are imported
 ================================================== */
-.button,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  @include mainButton;
-  @include fontSize( {{ settings.font-size }}px );
+  @import url('./global/global-forms.scss.liquid');
 
-  font-family: $font-stack--default;
-  font-weight: $font-weight--bold;
-  border: 0;
-  border-radius: 0;
-  transition: all .25s ease-in-out;
-  -webkit-appearance: none;
-  display: inline-block;
-  width: auto;
-  padding: 0 15px;
-  letter-spacing: .125em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  margin-bottom: 10px;
-  height: 44px;
-  line-height: 44px;
-}
-
-.secondary-button {
-  color: {{ settings.alt_button_text }};
-  background: {{ settings.alt_button_bg }};
-}
-
-.secondary-button:hover {
-  color: {{ settings.alt_button_text_hover }};
-  background: {{ settings.alt_button_bg_hover }};
-}
-
-a.button:visited {
-  background: {{ settings.button_bg }};
-  color: {{ settings.button_text }};
-}
+/* 
+  Forms
+  ----------
+  Form styles are imported
+================================================== */
+  @import url('./global/global-buttons.scss.liquid');
 
 
 .product-modal {
