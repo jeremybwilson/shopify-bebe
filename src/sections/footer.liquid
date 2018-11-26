@@ -1,15 +1,16 @@
 <div class="footer-section" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <footer class="site-footer">
-    
+
     {% comment %} :: ROW #1 -- Footer Menu + Brand Links :: {% endcomment %}
+    {% comment %} :: Manually removing this while building out new footer :: {% endcomment %}
     <div class="row">
 
       {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
       {% if section.blocks %}
-        <div class="footer-blocks">
-          
+        <div class="footer-blocks" style="display:none;">
+
           {% for block in section.blocks %}
-            {% assign menu = linklists[block.settings.menu_id] %} 
+            {% assign menu = linklists[block.settings.menu_id] %}
             <div class="footer-nav">
               <nav>
 
@@ -22,11 +23,11 @@
                 {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
                 <ul>
                   {% for link in menu.links %}
-                    
+
                     {% comment %} :: NESTED MENU :: {% endcomment %}
                     {% if link.levels > 0 %}
                       <li class="footer-sub-nav-wrapper" data-link-size="{{ link.links.size }}">
-                        
+
                         {% comment %} :: SUB-NAV HEADER :: {% endcomment %}
                         {% if block.settings.show_headings %}
                           <h4 class="nav-sub-header">{{ link.title }}</h4>
@@ -53,79 +54,137 @@
             </div><!-- .footer-nav -->
           {% endfor %}
 
-        </div><!--.footer-blocks-->      
+        </div><!--.footer-blocks-->
       {% endif %}
 
+      {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
+      {% if section.blocks %}
+        <div class="footer-blocks">
+          <div class="footer-nav">
+            <nav>
+              <ul>
+                <li class="footer-sub-nav-wrapper" data-link-size>
+                  <h4 class="nav-sub-header">ABOUT US</h4>
+                  <ul class="footer-sub-nav">
+                    <li>
+                        <a href="#" title="">ABOUT BEBE</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">INVESTOR RELATIONS</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">CAREERS</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">STORE LOCATOR</a>
+                    </li>
+                  </ul>
+                </li><!-- .footer-sub-nav-wrapper -->
+                <li class="footer-sub-nav-wrapper" data-link-size>
+                  <h4 class="nav-sub-header">CONTACT US</h4>
+                  <ul class="footer-sub-nav">
+                    <li>
+                        <a href="#" title="">ABOUT BEBE</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">INVESTOR RELATIONS</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">CAREERS</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">STORE LOCATOR</a>
+                    </li>
+                  </ul>
+                </li><!-- .footer-sub-nav-wrapper -->
+                <li class="footer-sub-nav-wrapper" data-link-size>
+                  <h4 class="nav-sub-header">QUICK LINKS</h4>
+                  <ul class="footer-sub-nav">
+                    <li>
+                        <a href="#" title="">ABOUT BEBE</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">INVESTOR RELATIONS</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">CAREERS</a>
+                    </li>
+                    <li>
+                        <a href="#" title="">STORE LOCATOR</a>
+                    </li>
+                  </ul>
+                </li><!-- .footer-sub-nav-wrapper -->
+              </ul>
+            </nav>
+          </div><!-- .footer-nav -->
+        </div><!-- .footer-blocks -->
+        {% endif %}
+      </div><!-- .row -->
 
-      {% comment %} :: VISIT OUR BRANDS :: {% endcomment %}
-      <div class="visit-our-brands">
-        <div class="section-title">
-          <h4>Visit Our Brands</h4>
-        </div>
+    {% comment %} :: ROW #2 -- Newsletter signup :: {% endcomment %}
+    <div class="row">
+      <div class="container">
+        <div class="email-text">
+          <div class="foot-sub-emailtext fl-inline">
+            <span>STAY IN TOUCH &amp; GET 20% OFF</span>
+            {% comment %} :: JS from live site related to newsletter form :: {% endcomment %}
+            {% comment %} <script type="text/blzscript">$(document).ready(function(){if(("#egcForm").length){$("#eGiftFormContent .scheduleDelivery span").html("(If today's date is selected, e-gift card will be sent the following day. Weekend orders will be sent by end of day on Monday.)");}});</script> {% endcomment %}
+          </div><!-- .foot-sub-emailtext -->
+          <div class="foot-sub-emailform fl-inline">
+            <form id="emailOrMobileForm" class="fl-inline">
+              <input type="text" id="emailOrMobileNumber" value="EMAIL">
+              <a class="formButton" id="submitEmailOrMobile" href="#">ENTER</a>
+            </form>
+            {% comment %} :: Hidden link text related to email and sms notification (sign up forms) ::  {% endcomment %}
+            {% comment %} <a style="display:none;" class="openAjaxLayer" id="jsLauchEmailLayer" href="/user/subscribe_layer.jsp">Email Sign Up</a>
+            <a style="display:none;" class="openAjaxLayer" id="jsLauchTextLayer" href="/user/text_subscribe_layer.jsp">Text Sign Up</a> {% endcomment %}
+          </div><!-- .foot-sub-emailform -->
 
-        <div class="brands--list">
-
-          {% unless section.settings.visit_brand_link_one == blank %}
-            <a href="{{ section.settings.visit_brand_link_one }}" title="{{ section.settings.visit_brand_image_one.alt }}"><img src="{{ section.settings.visit_brand_image_one | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_one.alt }}"></a>
-          {% endunless %}
-
-          {% unless section.settings.visit_brand_link_two == blank %}
-            <a href="{{ section.settings.visit_brand_link_two }}" title="{{ section.settings.visit_brand_image_two.alt }}"><img src="{{ section.settings.visit_brand_image_two | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_two.alt }}"></a>
-          {% endunless %}
-
-          {% unless section.settings.visit_brand_link_three == blank %}
-            <a href="{{ section.settings.visit_brand_link_three }}" title="{{ section.settings.visit_brand_image_three.alt }}"><img src="{{ section.settings.visit_brand_image_three | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_three.alt }}"></a>
-          {% endunless %}                
-
-        </div><!-- .brands--list -->
-      </div><!-- .visit-our-brands -->
+        </div><!-- .email-text -->
+      </div><!-- .container -->
     </div>
 
-
-    {% comment %} :: ROW #2 -- Telephone, Payment and Trust Icons :: {% endcomment %}
-    <div class="row footer--bottom-row">
-      <div class="brands--telephone">
-        <a href="tel:{{ section.settings.tel_number }}"><h4>TEL</h4><span>{{ section.settings.tel_text }}</span></a>
-      </div><!-- .brands--telephone -->
-
-      <div id="payment" >
-        {% if section.settings.show_credit_cards %}
-          <div class="section-title">
-            <h4>We Accept</h4>
-          </div>
-          <div class="payment-methods">
-            {% include 'svg-icon-visa' %}
-            {% include 'svg-icon-mastercard' %}
-            {% include 'svg-icon-amex' %}
-            {% include 'svg-icon-paypal' %}
-          </div><!-- .payment-methods -->
-              
-          {% comment %}
-            // PENDING - figure out how to actually alter the output SVGs
-            {% for type in shop.enabled_payment_types %}
-              {{ type | payment_type_svg_tag: class:'payment-icon' }}
-            {% endfor %}
-          {% endcomment %}
-
-        {% endif %}
-      </div><!-- #payment -->
-
-      <div id="trust-icons">
-        {% unless section.settings.trust_icon_image_one == blank %}
-          <img src="{{ section.settings.trust_icon_image_one | img_url }}" alt="{{ section.settings.trust_icon_image_one.alt }}" />
-        {% endunless %}
-        {% unless section.settings.trust_icon_image_two == blank %}
-          <img src="{{ section.settings.trust_icon_image_two | img_url }}" alt="{{ section.settings.trust_icon_image_two.alt }}" />
-        {% endunless %}
-        {% unless section.settings.trust_icon_image_three == blank %}
-          <img src="{{ section.settings.trust_icon_image_three | img_url }}" alt="{{ section.settings.trust_icon_image_three.alt }}" />
-        {% endunless %}
-      </div><!-- #trust-icons -->
-    </div><!-- .footer--bottom-row -->
+    {% comment %} :: ROW #3 -- Privacy Policy + Terms + Site Map :: {% endcomment %}
+    <div class="row"><!-- style="font-family:SourceSansProRegular,Arial,Helvetica,sans-serif;" -->
+      <div class="foot-subfoot">
+        <div class="subfoot-links">
+          <span class="raf-wrapper">
+            <a class="raf-footer" href="#">
+              <span class="raf-text">
+                  REFER A FRIEND &amp; GET
+                  <span class="strong">200 POINTS</span>
+              </span>
+              <span class="raf-separator"></span>
+              <span class="fo-how">FIND OUT HOW ►</span>
+            </a>
+          </span><!-- .raf-wrapper -->
+          <span>
+            <span class="link-wrap strong">
+              <a href="#" title="PRIVACY POLICY">PRIVACY POLICY</a>
+            </span>
+            <span class="link-wrap">
+              <a href="#" title="CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT">CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT</a>
+            </span>
+            <span class="link-wrap">
+                <a href="#" title="OUR CALIFORNIA PRIVACY RIGHTS">OUR CALIFORNIA PRIVACY RIGHTS</a>
+            </span>
+            <span class="link-wrap">
+              <a href="#" title="TERMS OF USE">TERMS OF USE</a>
+            </span>
+            <span class="link-wrap">
+              <a href="#" title="">SITE MAP</a>
+            </span>
+          </span>
+        </div><!-- .subfoot-links -->
+        <div class="copyright">
+          <span class="copyright-wrapper">&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;<span>
+        </span>
+        </div>
+      </div><!-- .foot-subfoot -->
+    </div>
 
   </footer>
 </div>
-
 
 
 {% schema %}
@@ -149,7 +208,7 @@
       "label": "Actual Number",
       "default": "18553772668",
       "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
-     },   
+     },
 
      {
        "type": "header",
@@ -175,7 +234,7 @@
       "type": "image_picker",
       "id": "visit_brand_image_one",
       "label": "Logo"
-     },  
+     },
      {
        "type": "header",
        "content": "Visit Our Brands - #2"
@@ -189,7 +248,7 @@
       "type": "image_picker",
       "id": "visit_brand_image_two",
       "label": "Logo"
-     },  
+     },
      {
        "type": "header",
        "content": "Visit Our Brands - #3"
@@ -203,7 +262,7 @@
       "type": "image_picker",
       "id": "visit_brand_image_three",
       "label": "Logo"
-     },  
+     },
      {
        "type": "header",
        "content": "Trust Icons"
@@ -212,17 +271,17 @@
       "type": "image_picker",
       "id": "trust_icon_image_one",
       "label": "Logo #1"
-     },  
+     },
      {
       "type": "image_picker",
       "id": "trust_icon_image_two",
       "label": "Logo #2"
-     },  
+     },
      {
       "type": "image_picker",
       "id": "trust_icon_image_three",
       "label": "Logo #3"
-     }  
+     }
     ],
     "blocks":[
       {
