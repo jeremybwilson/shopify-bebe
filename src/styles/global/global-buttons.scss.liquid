@@ -1,0 +1,45 @@
+/* GENERAL BUTTONS
+ *  Most of this is coiped from stylesheet.css,
+ *  so don't be nervous removing stuff no longer 
+ *  needed here.
+================================================== */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  @include mainButton;
+  @include fontSize( {{ settings.font-size }}px );
+
+  font-family: $font-stack--default;
+  font-weight: $font-weight--bold;
+  border: 0;
+  border-radius: 0;
+  transition: all .25s ease-in-out;
+  -webkit-appearance: none;
+  display: inline-block;
+  width: auto;
+  padding: 0 15px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  height: 44px;
+  line-height: 44px;
+}
+
+.secondary-button {
+  color: {{ settings.alt_button_text }};
+  background: {{ settings.alt_button_bg }};
+}
+
+.secondary-button:hover {
+  color: {{ settings.alt_button_text_hover }};
+  background: {{ settings.alt_button_bg_hover }};
+}
+
+a.button:visited {
+  background: {{ settings.button_bg }};
+  color: {{ settings.button_text }};
+}

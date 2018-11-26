@@ -10,8 +10,6 @@
   margin-left: 27px;
 
   @include p;
-  @include fontDim(14px,24px,0);
-  @include fontSize(14px);
 
   @include mq( 'lap-and-up' ) {
     @include flex-direction(row);
@@ -105,113 +103,7 @@
     @include mq( 'lap-and-up' ) {
       @include flex-basis(100%);
     }
-
-    a {
-      color: $color--accent-1;
-    }
   }
-
-  p {
-    color: $color--primary-2;
-    @include fontDim(14px,24px,0);
-    margin-bottom: 20px;
-
-    @include mq( 'tablet-and-up' ) {
-      @include fontDim(16px,36px,0);
-    }
-  }
-  h1 {
-    @include h1;
-    color: $color--primary-1;
-    @include fontSize(22px);
-    text-transform: uppercase;
-    border-bottom: none;
-
-    @include mq("tablet-and-up") {
-      @include fontSize(30px);
-    }
-  }
-  h2 {
-    color: $color--primary-1;
-    font-weight: $font-weight--black;
-    @include fontSize(17px);
-
-    @include mq('tablet-and-up') {
-      @include fontSize(22px);
-    }
-  }
-  h3 {
-    color: $color--primary-1;
-    font-weight: $font-weight--black;
-    @include fontSize(14px);
-
-    @include mq('tablet-and-up') {
-      @include fontSize(18px);
-    }
-  }
-  h2 + h3 {
-    margin-top: 20px;
-  }
-  h4 {
-    @include fontSize(14px);
-    font-weight: $font-weight--black;
-    color: $color--primary-1;
-    text-transform: uppercase;
-
-    @include mq("tablet-and-up") {
-      @include fontSize(16px);
-    }
-  }
-  h5 {
-    @include fontDim(17px,24px,0);
-    color: $color--primary-2;
-    margin: 15px 0;
-    @include mq("tablet-and-up") {
-      @include fontDim(25px,34px,0);
-    }
-  }
-  table {
-    margin-bottom: 30px;
-  }
-  ul > li {
-    list-style: none;
-    color: $color--primary-2;
-    padding-bottom: 10px;
-    @include fontDim(14px,24px,0);
-
-    @include mq( 'tablet-and-up' ) {
-      @include fontDim(16px,36px,0);
-    }
-
-    &:before {
-      content: "•";
-      color: $color--primary-1;
-      margin-right: 10px;
-    }
-  }
-  ol > li {
-    list-style-type: decimal;
-    content: " ";
-    padding-bottom: 10px;
-    padding-left: 40px;
-
-    &:last-child {
-      padding-bottom: 0;
-    }
-  }
-
-  table {
-    tr:first-child {
-    }
-    td {
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-    }
-  }
-  table table {
-    margin-bottom: 0;
-  }
-
 
   // SUBPAGE : Content : Columns for Shipping
 
