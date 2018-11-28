@@ -4,11 +4,12 @@
 
 // PROMO : BG : Background setup for one and two promos
 #top-bar-bg {
-    width: 100%;
-    height: 40px;
+    //width: 100%;
+    //height: 40px;
     z-index: 100;
     position: absolute;
-    @include inline-flex;
+    //@include inline-flex;
+    display: none;
 
     #bg-1,
     #bg-2 {
@@ -33,29 +34,32 @@
     }
 }
 
-
 // PROMO : CORE : General style that apply regardless of one or two slots
 #top-bar {
-    text-align: center;
+    text-align: left;
     line-height: 30px;
     padding: 5px;
     font-family: $sans;
     font-weight: $font-weight--book;
+    font-size: 9pt;
+    letter-spacing: 2px;
     position: relative;
     z-index: 200;
+    text-transform: uppercase;
     color: {{ settings.announcement_text_color }};
+    font-weight: $font-weight--black;
 
     .row {
-        height: 100%;
-        width: 100%;
-        max-width: 1400px;
         position: relative;
+        height: 100%;
+        width: 50%;
+        margin: 0;
     }
 
     a {
         text-decoration: none;
         cursor: pointer;
-        width: 100%;
+        width: auto;
         color: {{ settings.announcement_text_color }};
     }
 
@@ -108,21 +112,30 @@
 
     .promo-banner {
         opacity: 0;
+        @include flexbox;
+        @include align-items( center );
         width: 100%;
+        height: 100%;
         position: absolute; 
         transition: 0.5s all ease-in-out;
-        padding: 0 36px;
+        padding: 0 16px;
         left: 0;
 
         &.one { opacity: 1; }
 
         div { display: inline-block; }//So any "bold" sections sit inline with the rest of unbolded text
+
+        .details-link {
+            font-weight: $font-weight--book;
+            text-decoration: underline;
+        }
     }
 
     #promo-arrow-left,
     #promo-arrow-right {
         position: absolute;
-        @include flexbox;
+        display: none;
+        //@include flexbox;
         @include align-items( center );
         cursor: pointer;
         height: 100%;
@@ -158,7 +171,7 @@
     }
 
     // TABLET + HIGHER
-    @include mq( 'tablet-and-up' ) {
+/*     @include mq( 'tablet-and-up' ) {
         @include flex-flow( row nowrap );
 
         // DISABLE : Animation on Tablet + since both are displayed at same time
@@ -184,7 +197,7 @@
             &.one { opacity: 1; }
             &.two { opacity: 1; }
         }
-    }
+    } */
 }
 
 // MOBILE : Fade animation for promo banners when 2 are displayed
@@ -201,3 +214,22 @@
     45% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+#announcement-popups {
+    display: none;
+}
+
+.fancybox-promo-popup {
+
+    .fancybox-inner {
+        box-sizing: border-box;
+    }
+    
+    .fancybox-inner > div {
+        padding: 20px !important;
+        box-sizing: border-box;
+        width: 100%;
+        border: solid 1px #8a8a8a;
+    }
+}
+

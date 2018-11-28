@@ -698,7 +698,7 @@ animateIn:!1},e.prototype.swap=function(){if(1===this.core.settings.items&&a.sup
 
  /**
  * ----------------------------------------------------------------------------------------------------
- * FANCYBOX
+ * FANCYBOX V2.1.*
  * ----------------------------------------------------------------------------------------------------
  */
   (function(r,G,f,v){var J=f("html"),n=f(r),p=f(G),b=f.fancybox=function(){b.open.apply(this,arguments)},I=navigator.userAgent.match(/msie/i),B=null,s=G.createTouch!==v,t=function(a){return a&&a.hasOwnProperty&&a instanceof f},q=function(a){return a&&"string"===f.type(a)},E=function(a){return q(a)&&0<a.indexOf("%")},l=function(a,d){var e=parseInt(a,10)||0;d&&E(a)&&(e*=b.getViewport()[d]/100);return Math.ceil(e)},w=function(a,b){return l(a,b)+"px"};f.extend(b,{version:"2.1.5",defaults:{padding:15,margin:20,
@@ -946,7 +946,8 @@ theme.Header = (function() {
       mobileSitesPicker: $( '#nav-sites-picker-mobile' ),
       mobileSubHeaders: $('#accordion').find('.accordion-sub-header'),
       swapRate: $container.attr('data-swap-rate'),
-      promoWrap: $( '#double-promo-wrapper' ) 
+      promoWrap: $( '#double-promo-wrapper' ),
+      promoTrigger: $( '.promo-banner > a' )
     }
     const self = this;
 
@@ -1043,7 +1044,17 @@ theme.Header = (function() {
       start();
     }
 
+    // EVENT : CLICK : Launches modal that displays extra info
 
+    ui.promoTrigger.on('click', this, function(e) {
+      e.preventDefault();
+      $(this).fancybox({
+        href: $(this).attr('href'),
+        wrapCSS: 'fancybox-promo-popup',
+        openEffect: 'none',
+        closeEffect: 'none'
+      });
+    });
   }
   Header.prototype = _.assignIn({}, Header.prototype, {});
   return Header;
