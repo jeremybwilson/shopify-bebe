@@ -40,7 +40,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
     width: 100%;
     padding: 0;
     z-index: 50; //entire wrapper, this relates to the header to rest of site so no need var
-    transition: $navShadowAni;
+    //transition: $navShadowAni;
 
     & > .row {
         width: 100%;
@@ -48,13 +48,13 @@ $navHoverColor: {{ settings.nav_hover_color }};
     }
 
     // SHADOW : When stick nav is active
-    &.isStuck {
+    /* &.isStuck {
         box-shadow: $navBoxShadow; 
 
         #nav-logo-backing {
             box-shadow: $navBoxShadow;
         }
-    }
+    } */
 
     @include mq( 'lap-and-up' ){
         height: $navBarDesktopHeight;
@@ -506,10 +506,9 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             .megamenu {
-                //width: 100%; // so it doesn't obey the list width
-                width: 100vw;
+                width: 100vw; // spans full width
+                max-height: 160px;
                 margin: 0;
-                //max-width: 1400px;
                 position: absolute;
                 left: 50%; // scoot left distance (- spacing) #nav-menu-desktop-list elements over from edge
                 transform: translateX( -50% );
@@ -522,35 +521,32 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 background: #fff;
 
                 .mega-container {
-                    width: 100%;
-                    max-width: 1400px;
                     margin: 0 auto;
                     height: 100%;
                     left: 0px;
-                    padding-left: 40px;
                     position: relative;
                     @include flexbox;
-                    @include justify-content( space-between );
-
-                    @include mq( 'desk-and-up' ) {
-                        padding-left: 90px;
-                    }
+                    @include justify-content( center );
 
                     .mega-column-content {
-                        @include inline-flex;
                         position: relative;
-                        width: 960px;
-                        margin-top: 35px;
+                        @include flexbox;
+                        height: 100%;
+                        width: 280px;
+                        max-height: 160px;
 
-                        @include mq( 'desk-and-up' ) {
-                            margin-top: 65px;
-                            margin-bottom: 15px;
-                            width: 820px;
+                        @include mq( 'tablet-and-up' ) {
+                            @include flex-direction( column );
+                            @include justify-content( flex-start );
+                            @include flex-wrap( wrap );
                         }
 
-                        @include mq( 'wide-and-up' ) {
-                            margin-top: 65px;
-                            width: 970px;
+                        li {
+                            float: none;
+                            height: 20%;
+                            width: 148px;
+                            box-sizing: border-box;
+                            @include flex-grow( 1 );
                         }
 
                         .mega-stack {
@@ -571,10 +567,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         @include inline-flex;
                         @include align-items( center );
                         position: relative;
-                        width: 310px;
+                        width: 246px;
 
                         @include mq( 'wide-and-up' ) {
-                            width: 320px;
+                            width: 246px;
                         }
 
                         a {
@@ -584,7 +580,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             height: 100%;
                             position: absolute;
                             background-repeat: no-repeat;
-                            background-size: cover;
+                            //background-size: cover;
+                            background-size: contain;
                         }
                     }
 
@@ -627,7 +624,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
                         // SUB-NAV : Regular Links to sub-collection divisions
                         a {
-                            @include h8;
+                            @include fontSize(13px);    
                             color: $navListItemColor;
                             transition: color 0.25s ease-in-out;
 
@@ -650,12 +647,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
                 .nav-sub-header,
                 .nav-sub-header a {
-                    @include h5;
+                    @include fontSize(13px);
                     letter-spacing: 0; // Slightly thinner
-                    margin-bottom: 10px;
                     text-transform: uppercase;
                     color: $navSubHeaderColor;
-                    pointer-events: none;
                 }
             }
         }

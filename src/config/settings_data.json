@@ -206,7 +206,7 @@
     "mega_4_show": false,
     "mega_4_links": "",
     "nav_center": true,
-    "nav_height": "20",
+    "nav_height": "40",
     "linklist_breakpoint": "8",
     "main_nav": "main-menu",
     "password_bg": "no_password_bg",
@@ -316,11 +316,12 @@
           "full_width_header": true,
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
-          "announcement_text_one": "Free Shipping over $100",
-          "announcement_popup_one_content": "",
-          "announcement_link_one": "\/pages\/shipping-returns",
-          "announcement_text_two": "<div class=\"bold\">40% OFF YOUR PURCHASE.<\/div> NO CODE NEEDED.",
-          "announcement_link_two": "http:\/\/google.com",
+          "announcement_text_one": "Free Shipping with no Minimum",
+          "announcement_popup_one_content": "announcement-1",
+          "announcement_link_one": "#",
+          "announcement_text_two": "SIGN UP FOR CLUBBEBE REWARDS & GET 20% OFF",
+          "announcement_popup_two_content": "announcement-2",
+          "announcement_link_two": "#",
           "announcement_height": 40,
           "announcement_swap_rate": 5,
           "logo_size": 24,
@@ -332,7 +333,7 @@
           "show_search": true,
           "main_nav": "main-menu",
           "nav_center": true,
-          "nav_height": 60,
+          "nav_height": 30,
           "linklist_breakpoint": 5
         }
       },
@@ -558,11 +559,11 @@
       "1536266098177": {
         "type": "instagram",
         "settings": {
-          "heading": "@xtratufboots",
-          "text": "<p>Tag your photos with <strong>#XTRATUFBOOTS<\/strong> to be featured on our feed<\/p>",
-          "link": "http:\/\/www.instagram.com\/xtratufboots",
+          "heading": "Shop Our Instagram",
+          "text": "<p>Tap the looks below for details. Follow @bebe_stores &amp; tag your looks with #bebebabe for a chance to be featured.<\/p>",
+          "link": "",
           "cta_text": "View all",
-          "instagram_access_token": "1022365975.1677ed0.a29a97191f864ee0afeb65ef0024312b"
+          "instagram_access_token": ""
         }
       },
       "page-about-template": {
