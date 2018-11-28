@@ -4,10 +4,8 @@
 - You cannot use native CSS/Sass @imports in this file without a build script
 ==============================================================================*/
 
-
 /*=========== VARIABLES + CORE =============*/
 @import url('variables.scss.liquid');
-@import url('typography.scss.liquid');
 @import url('global.scss.liquid');
 
 /*================ Sections ================*/

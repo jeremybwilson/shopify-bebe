@@ -85,10 +85,10 @@
   },
   "cart": {
     "general": {
-      "title": "My Cart",
+      "title": "My Shopping Bag",
       "close_cart": "Close",
       "shipping_at_checkout": "Shipping calculated at check out",
-      "empty": "Your cart is currently empty.",
+      "empty": "Your bag is currently empty.",
       "product": "Product",
       "price": "Price",
       "qty": "Qty",
@@ -96,7 +96,7 @@
       "total": "Total",
       "subtotal": "Subtotal",
       "continue": "Continue Shopping",
-      "update": "Update Cart",
+      "update": "Update Bag",
       "checkout": "Check Out",
       "note": "Please leave special instructions below:",
       "recently_viewed": "You also Viewed"
@@ -266,7 +266,7 @@
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
-      "add_to_cart": "Add to Cart",
+      "add_to_cart": "Add to Bag",
       "pre_order": "Pre Order",
       "quantity": "Quantity",
       "sku": "SKU",
@@ -275,12 +275,12 @@
       "next_product_html": "Next Product",
       "adding": "Adding...",
       "thank_you": "Thank You!",
-      "added": "Added to Cart",
-      "view_cart": "View Cart",
+      "added": "Added to Bag",
+      "view_cart": "View Bag",
       "or": "or",
       "continue": "Continue Shopping",
       "popup_question": "Ask us a question",
-      "add_to_cart_success_link": "View Cart and Check out!",
+      "add_to_cart_success_link": "View Bag and Check out!",
       "add_to_cart_success_html": "Item Added {{ link }}"
     }
   },

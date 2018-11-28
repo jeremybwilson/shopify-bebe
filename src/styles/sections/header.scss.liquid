@@ -15,7 +15,7 @@ $zIndexBarBG: 25;
 $zIndexButtons: 50;
 $zIndexUserBtns: 65;
 $zIndexLogo: 75;
-$navBarDesktopHeight: 80px;
+$navBarDesktopHeight: 110px;
 $navHeaderColor: {{ settings.nav_header_color }};
 $navSubHeaderColor: {{ settings.nav_sub_header_color }};
 $navListItemColor: {{ settings.nav_list_item_color }};
@@ -26,14 +26,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
     margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it. 
 }
 
-
-
 /* SNIPPET : Header-Announcement-Bar 
  *           (Promos bar on top of nav bar)
  * ---------------------------------------------- */
  @import url('../snippets/header-announcement-bar.scss.liquid');
-
-
 
 
 /*  NAV : Styles for the Nav-Bar portion
@@ -44,16 +40,21 @@ $navHoverColor: {{ settings.nav_hover_color }};
     width: 100%;
     padding: 0;
     z-index: 50; //entire wrapper, this relates to the header to rest of site so no need var
-    transition: $navShadowAni;
+    //transition: $navShadowAni;
+
+    & > .row {
+        width: 100%;
+        margin: 0;
+    }
 
     // SHADOW : When stick nav is active
-    &.isStuck {
+    /* &.isStuck {
         box-shadow: $navBoxShadow; 
 
         #nav-logo-backing {
             box-shadow: $navBoxShadow;
         }
-    }
+    } */
 
     @include mq( 'lap-and-up' ){
         height: $navBarDesktopHeight;
@@ -75,11 +76,16 @@ $navHoverColor: {{ settings.nav_hover_color }};
     }
 
     #nav-bar {
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include align-items(center);
         position: relative;
         width: 100%;
-        height: 100%;
         max-width: 960px; //iPad
         padding: 0;
+        margin-left: auto;
+        margin-right: auto;
 
         // 1220px is bootstrap break apparently, not 1240 like we setup in our MQ include, might change it?
         @media only screen and ( min-width: 1220px ) {
@@ -96,14 +102,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
      * ---------------------------------------------- */
     #nav-logo,
     #nav-logo-backing {
-        position: absolute;
-        @include flexbox;
-        @include justify-content( center );
-        @include align-items( center );
-        width: 160px;
-        height: 100%;
-        left: 50%;
-        transform: translateX( -50% );
+        width: 150px;
         top: 0;
         z-index: $zIndexLogo;
 
@@ -112,25 +111,13 @@ $navHoverColor: {{ settings.nav_hover_color }};
             height: 100%;
             position: relative;
         }
-
-        // DESKTOP ( 1024+ )
-        @include mq( 'lap-and-up' ) {
-            top: 0;
-            left: 0;
-            width: 160px;
-            transform: translateX( 0 );
-        }
-
-        @include mq( 'desk-and-up' ) {
-            left: 34px;
-        }
     }
 
     // SHADOW : This gives the sticky nav a box shadow on the logo point
     #nav-logo-backing {
         display: none !important; // Comment out to use this layer as a backing shadow for an over-the-bounds logo
         transition: $navShadowAni;
-        transform: translateX( -50% ) rotateZ( 45deg );
+        //transform: translateX( -50% ) rotateZ( 45deg );
         background: {{ settings.header_background }};
         z-index: $zIndexBackingShadow; // -1, Relative to #nav-bar-wrapper, so its -1 on inner layer of nav-bar.
     }
@@ -140,6 +127,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
     /*  NAV : ACCOUNT + CART + SEARCH + SITE PICKER (Right Elements)
      * ---------------------------------------------- */
     #nav-user {
+        display: none;
 
         // Account / Cart / Site Picker List
         ul#nav-user-list {
@@ -431,7 +419,6 @@ $navHoverColor: {{ settings.nav_hover_color }};
     nav#nav {
         color: $color--text-1;
         display: none;
-        height: $navBarDesktopHeight;
 
         @include mq( 'lap-and-up' ) {
             display: block;
@@ -439,7 +426,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
         // Nav-Category-Header
         .nav-category-header {
-            @include h5;
+            //@include h5;
             height: 100%;
             text-decoration: none;
             text-transform: uppercase;
@@ -454,27 +441,21 @@ $navHoverColor: {{ settings.nav_hover_color }};
             @include inline-flex;
             @include justify-content( space-around );
             @include align-items( center );
-            position: absolute;
+            position: relative;
             list-style: none;
             height: 100%;
             width: 100%;
             left: 0;
-            padding: 0 360px 0 180px;
+            padding: 0;
+            margin: 0;
             z-index: $zIndexButtons;
-
-            @include mq( 'desk-and-up' ) {
-                padding: 0 530px 0 230px;
-            }
-
-            @include mq( 'wide-and-up' ) {
-                padding: 0 750px 0 210px;
-            }
 
             .nav-primary-link {
                 @include inline-flex;
                 @include justify-content( center ); // Space links to better match mock
                 height: 100%;
                 width: auto;
+                margin: 0 2px;
 
                 &.nav-list-simple {
                     position: relative;
@@ -483,9 +464,12 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 .nav-category-header { //Center the nav link item vertically 
                     @include inline-flex;
                     @include align-items( center );
-                    @include fontSize( 14px );
-                    letter-spacing: 0.18em; 
+                    @include fontSize( 16px );
+                    letter-spacing: .5px; 
                     padding-top: 3px; // make up size for 3px bottom border on links
+                    padding-bottom: 3px;
+                    padding-left: 12px;
+                    padding-right: 12px;
                     border-bottom: 3px solid transparent;
 
                     @include mq( 'desk-and-up' ) {
@@ -494,7 +478,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 }
 
                 &:hover > a {
-                    border-bottom: 3px solid {{ settings.nav_links_hover }};
+                    color: $color--primary-2;
                 }
 
                 &:hover {
@@ -522,53 +506,47 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             .megamenu {
-                width: 100%; // so it doesn't obey the list width
-                max-width: 1400px;
+                width: 100vw; // spans full width
+                max-height: 160px;
+                margin: 0;
                 position: absolute;
                 left: 50%; // scoot left distance (- spacing) #nav-menu-desktop-list elements over from edge
                 transform: translateX( -50% );
-                top: 80px;
+                top: 30px;
                 z-index: 5;
                 padding: 0;
                 text-align: left;
                 list-style: none;
 
-                // Noticed that sherwin used a light shadow to create illusion of menus being diff color but sampler
-                //  points out that they're same and its a shading trick along the edge o.O (awesome work)
-                background: #f8f7f8;
-                background: -moz-linear-gradient(top, #f8f7f8 0%, {{ settings.header_background }} 12%);
-                background: -webkit-linear-gradient(top, #f8f7f8 0%,{{ settings.header_background }} 12%);
-                background: linear-gradient(to bottom, #f8f7f8 0%,{{ settings.header_background }} 12%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f7f8', endColorstr='{{ settings.header_background }}',GradientType=0 );
-            
+                background: #fff;
+
                 .mega-container {
-                    width: 100%;
+                    margin: 0 auto;
                     height: 100%;
                     left: 0px;
-                    padding-left: 40px;
                     position: relative;
                     @include flexbox;
-                    @include justify-content( space-between );
-
-                    @include mq( 'desk-and-up' ) {
-                        padding-left: 90px;
-                    }
+                    @include justify-content( center );
 
                     .mega-column-content {
-                        @include inline-flex;
                         position: relative;
-                        width: 960px;
-                        margin-top: 35px;
+                        @include flexbox;
+                        height: 100%;
+                        width: 280px;
+                        max-height: 160px;
 
-                        @include mq( 'desk-and-up' ) {
-                            margin-top: 65px;
-                            margin-bottom: 15px;
-                            width: 820px;
+                        @include mq( 'tablet-and-up' ) {
+                            @include flex-direction( column );
+                            @include justify-content( flex-start );
+                            @include flex-wrap( wrap );
                         }
 
-                        @include mq( 'wide-and-up' ) {
-                            margin-top: 65px;
-                            width: 970px;
+                        li {
+                            float: none;
+                            height: 20%;
+                            width: 148px;
+                            box-sizing: border-box;
+                            @include flex-grow( 1 );
                         }
 
                         .mega-stack {
@@ -589,10 +567,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         @include inline-flex;
                         @include align-items( center );
                         position: relative;
-                        width: 310px;
+                        width: 246px;
 
                         @include mq( 'wide-and-up' ) {
-                            width: 320px;
+                            width: 246px;
                         }
 
                         a {
@@ -602,7 +580,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             height: 100%;
                             position: absolute;
                             background-repeat: no-repeat;
-                            background-size: cover;
+                            //background-size: cover;
+                            background-size: contain;
                         }
                     }
 
@@ -645,7 +624,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
                         // SUB-NAV : Regular Links to sub-collection divisions
                         a {
-                            @include h8;
+                            @include fontSize(13px);    
                             color: $navListItemColor;
                             transition: color 0.25s ease-in-out;
 
@@ -668,20 +647,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
                 .nav-sub-header,
                 .nav-sub-header a {
-                    @include h5;
+                    @include fontSize(13px);
                     letter-spacing: 0; // Slightly thinner
-                    margin-bottom: 10px;
                     text-transform: uppercase;
                     color: $navSubHeaderColor;
-                    pointer-events: none;
                 }
             }
         }
     }
-
-
-
-
 
     /*  NAV : MOBILE NAV MENU STYLES 
      *   (would have combined them, but its all already setup in theme)
@@ -696,6 +669,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         position: absolute;
         color: $color--text-1;
         top: -200vh;
+        left: 0;
         overflow-x: hidden;
         overflow-y: auto;
         transition: all 0.35s ease-in-out;

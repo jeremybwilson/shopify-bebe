@@ -3,10 +3,16 @@
 // BRAND COLORS
 $color--primary-1: #000000;  // Main Coloration of Primary Elements
 $color--primary-2: #000000;  // Second Main Color (Lets use this for Headers?)
+$color--primary-3: #666666;
 $color--accent-1: #9d6d31;   // Color For Arrows, Buttons, etc
 $color--accent-2: #9d6d31;   // Alternative accent in some cases (still working this one out)
 
-// TEXT
+// FIELD COLORS (BACKGROUNDS, ETC);
+$color--field-1: #ddd;
+$color--field-2: #e6e6e6;
+$color--field-3: #eee;
+
+// TEXT 
 $color--text-1: #000000;  // Text Color (Ex: Muck is Dark Green)
 
 // BACKGROUND + GREYS
@@ -25,18 +31,16 @@ $color--light-primary-1: #9d6d31; // Primary color for areas with dark backgroun
 $color--error: {{ settings.error_text }};
 
 // TYPOGRAPHY
-$sans: "Source Sans Pro", sans-serif;
-$sans-regular: SourceSansProRegular, Arial, Helvetica, sans-serif;
+$sans: "Source Sans Pro", Helvetica Neue, Helvetica, Arial, sans-serif;
 $font-stack--default: $sans;
 $font-stack--heading: $sans;
-$font-stack--footer: $sans-regular;
 
 // FONT WEIGHTS
-$font-weight--book: 400;
-$font-weight--medium: 500;
-$font-weight--bold: 700;
-//$font-weight--black: 800;
-$font-weight--black: 900; // Museo's 900 is equivalent to 800
+$font-weight--book: 400; 
+$font-weight--medium: 400;
+$font-weight--bold: 600; 
+//$font-weight--black: 800; 
+$font-weight--black: 700; 
 
 
 // BUTTONS -- Main
@@ -108,92 +112,110 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
   letter-spacing: $lts;
 }
 
-
-
 /* MIXIN : TYPOGRAPHY
  *    EX : @include h1;
  * ------------------------------------------------------------------------- */
 @mixin p {
-  font-weight: $font-weight--bold;
-  line-height: 26px / 16px * 1em;
-  letter-spacing: 0;
+  color: $color--primary-1;
+  font-weight: $font-weight--book;
+  line-height: 22px / 12px * 1em;
+  letter-spacing: normal;
 
-  @include fontSize(16px);
+  @include fontSize(12px);
 }
-@mixin p-small {
-  font-weight: $font-weight--bold;
-  line-height: 16px / 12px * 1em;
-  letter-spacing: 0;
-}
+  @mixin p-alt {
+    color: $color--primary-1;
+    font-weight: $font-weight--book;
+    line-height: 22px / 12px * 1em;
+    letter-spacing: normal;
+
+    @include fontSize(10px);
+  }
 
 @mixin h1 {
-  font-weight: $font-weight--black;
-  line-height: 55px / 46px * 1em;
-  letter-spacing: 0;
-
-  @include fontSize(46px);
-}
-
-@mixin h1-alt {
-  font-weight: $font-weight--black;
-  line-height: 38px / 30px * 1em;
-  letter-spacing: 0;
-
-  @include fontSize(38px);
-}
-
-@mixin h2 {
-  font-weight: $font-weight--black;
-  line-height: 50px / 42px * 1em;
-  letter-spacing: 0em;
-
-  @include fontSize(42px);
-}
-@mixin h3 {
-  font-weight: $font-weight--black;
-  line-height: 38px / 30px * 1em;
-  letter-spacing: 0em;
-
-  @include fontSize(30px);
-}
-
-@mixin h4 {
-  font-weight: $font-weight--black;
-  line-height: 28px / 22px * 1em;
-  letter-spacing: 0;
-
-  @include fontSize(22px);
-}
-@mixin h5 {
-  font-weight: $font-weight--black;
-  line-height: 20px / 16px * 1em;
-  letter-spacing: 0;
-
-  @include fontSize(16px);
-}
-@mixin h6 {
+  // as seen in: About Us, Contact Us;
+  margin-bottom: 10px;
+  color: $color--primary-2;
   font-weight: $font-weight--bold;
   line-height: 22px / 16px * 1em;
-  letter-spacing: 0;
-
+  letter-spacing: 2px;
+  text-transform: uppercase;
   @include fontSize(16px);
 }
+  @mixin h1-alt {
+    // as seen in: Collection Pages;
+    margin-bottom: 10px;
+    color: $color--primary-2;
+    font-weight: $font-weight--bold;
+    line-height: 23px / 20px * 1em;
+    letter-spacing: 2px;
+    @include fontSize(20px);
+  }
+
+@mixin h2 {
+  // as seen in Ordering Page
+
+  margin-top: 20px;
+  color: $color--primary-3;
+  font-weight: $font-weight--bold;
+  line-height: 50px / 42px * 1em;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  @include fontSize(12px);
+}
+  @mixin h2-alt {
+    color: $color--primary-2;
+    font-weight: $font-weight--bold;
+    line-height: 20px / 14px * 1em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    @include fontSize(14px);
+  }
+@mixin h3 {
+  color: $color--primary-2;
+  font-weight: $font-weight--bold;
+  line-height: 22px / 12px * 1em;
+  letter-spacing: normal;
+  @include fontSize(12px);
+}
+
+// 11/23/2018 Note - The following styles are identical unless specified
+
+@mixin h4 {
+  font-weight: $font-weight--book;
+  line-height: 14px / 10px * 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include fontSize(10px);
+}
+@mixin h5 {
+  font-weight: $font-weight--book;
+  line-height: 14px / 10px * 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include fontSize(10px);
+}
+@mixin h6 {
+  font-weight: $font-weight--book;
+  line-height: 14px / 10px * 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include fontSize(10px);
+}
 @mixin h7 {
-  font-weight: $font-weight--bold;
-  line-height: 20px / 14px * 1em;
-  letter-spacing: 0;
+  font-weight: $font-weight--book;
+  line-height: 14px / 10px * 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include fontSize(10px);
 }
-
 @mixin h8 {
-  font-weight: $font-weight--bold;
-  line-height: 24px / 14px * 1em;
-  letter-spacing: 0;
-
-  @include fontSize(14px);
+  font-weight: $font-weight--book;
+  line-height: 14px / 10px * 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include fontSize(10px);
 }
-
-
-
 
 /* MIXIN : FLEXBOX
  *    EX : @include flexbox;
@@ -393,11 +415,11 @@ $retina:           "(-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi)
   } @else if $alias == "tablet-portrait" {
     @media #{$tablet-portrait} {
       @content;
-    }
+    }    
   } @else if $alias == "tablet-landscape" {
     @media #{$tablet-landscape} {
       @content;
-    }
+    }        
   } @else if $alias == "lap" {
     @media #{$lap} {
       @content;
