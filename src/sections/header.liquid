@@ -2,11 +2,6 @@
   data-section-id="{{ section.id }}" 
   data-section-type="header-section" 
   data-swap-rate="{{ section.settings.announcement_swap_rate }}">
-  
-  {% comment %} ..:: PROMO BANNER PORTION ("Announcements") ::.. {% endcomment %}
-  {%- if section.settings.show_announcement_text -%}
-    {% include 'header-announcement-bar' %}
-  {%- endif -%}
 
   {% comment %}
     REMOVED THINGS :
@@ -22,19 +17,12 @@
   <header id="nav-bar-wrapper" {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
     {% if section.settings.full_width_header %}<div class="row">{% endif %}
 
-    {% comment %} ..:: NAV-BAR : BG + NAV-ITEMS WRAPPER ::.. {% endcomment %}
-    <div id="nav-bar-bg"></div>
-    <div id="nav-bar" class="row">
+    <div id="nav-aux">
 
-
-      {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
-      <div id="nav-logo">
-          <a href="/">
-            {% include 'svg-icon-header-logo' %}
-          </a>
-      </div>
-      <div id="nav-logo-backing"></div>
-
+      {% comment %} ..:: PROMO BANNER PORTION ("Announcements") ::.. {% endcomment %}
+      {%- if section.settings.show_announcement_text -%}
+        {% include 'header-announcement-bar' %}
+      {%- endif -%}
 
       {% comment %} ..:: NAV : ACCOUNT + CART + SEARCH (Right Elements) ::.. {% endcomment %}
       <div id="nav-user">
@@ -87,6 +75,21 @@
 
         </ul>
       </div>
+    </div>
+
+    {% comment %} ..:: NAV-BAR : BG + NAV-ITEMS WRAPPER ::.. {% endcomment %}
+    <div id="nav-bar-bg"></div>
+    <div id="nav-bar" class="row">
+
+
+      {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
+      <div id="nav-logo">
+          <a href="/">
+            {% include 'svg-icon-header-logo' %}
+          </a>
+      </div>
+      <div id="nav-logo-backing"></div>
+
       
 
       {% comment %} ..:: NAV : SITE-COLLECTIONS (Left Elements) ::.. {% endcomment %}
@@ -188,10 +191,19 @@
         ]
       },
       {
+        "type": "header",
+        "content": "Announcement #1"
+      },      
+      {
         "type": "text",
         "id": "announcement_text_one",
         "label": "Announcement Text - #1",
         "default": "<div class='bold'>FREE SHIPPING</div> ON ORDERS $50 OR MORE"
+      },
+      {
+        "type": "page",
+        "id": "announcement_popup_one_content",
+        "label": "Announcement #1 - Popup Content"
       },
       {
         "type": "url",
@@ -199,11 +211,20 @@
         "label": "Announcement Link - #1"
       },
       {
+        "type": "header",
+        "content": "Announcement #2"
+      },            
+      {
         "type": "text",
         "id": "announcement_text_two",
         "label": "Announcement Text - #2",
         "default": "<div class='bold'>40% OFF YOUR PURCHASE.</div>NO CODE NEEDED."
       },
+      {
+        "type": "page",
+        "id": "announcement_popup_two_content",
+        "label": "Announcement #2 - Popup Content"
+      },      
       {
         "type": "url",
         "id": "announcement_link_two",

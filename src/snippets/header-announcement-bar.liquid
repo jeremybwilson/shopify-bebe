@@ -5,7 +5,6 @@
 
 <div id="top-bar" {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
   {% if section.settings.full_width_header %}<div class="row">{% endif %}
-  <div class="row">
 
     {% comment %} ..:: ONE PROMO BANNER ::.. {% endcomment %}
     {%- if section.settings.num_of_promo_banners == "1" -%}
@@ -32,7 +31,7 @@
 
         <div class="promo-banner one">
           {%- if section.settings.announcement_link_one -%}
-            <a href="{{ section.settings.announcement_link_one }}">{{ section.settings.announcement_text_one }}</a>
+            <a href="#announcement-popup-content--one">{{ section.settings.announcement_text_one }} <span class="details-link">Details</a>
           {%- else -%}
             {{ section.settings.announcement_text_one }}
           {%- endif -%}
@@ -40,10 +39,24 @@
 
         <div class="promo-banner two">
           {%- if section.settings.announcement_link_two -%}
-            <a href="{{ section.settings.announcement_link_two }}">{{ section.settings.announcement_text_two }}</a>
+            <a href="#announcement-popup-content--two">{{ section.settings.announcement_text_two }} <span class="details-link">Details</a>
           {%- else -%}
             {{ section.settings.announcement_text_two }}
           {%- endif -%}
+        </div>
+
+        <div id="announcement-popups">
+          {% if section.settings.announcement_popup_one_content != blank %}
+            <div id="announcement-popup-content--one">
+              {{ pages[section.settings.announcement_popup_one_content].content }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.announcement_popup_two_content != blank %}
+            <div id="announcement-popup-content--two">
+              {{ pages[section.settings.announcement_popup_two_content].content }}
+            </div>
+          {% endif %}
         </div>
 
         {% comment %} MOBILE : RIGHT ARROW {% endcomment %}
@@ -54,6 +67,5 @@
       </div>
     {%- endif -%}
 
-  </div>
   {% if section.settings.full_width_header %}</div>{% endif %}
 </div>
