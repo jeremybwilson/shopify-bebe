@@ -13,6 +13,12 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
 
 
 
+
+
+
+
+
+
 // CATALOG : Wrapper to the catalog items
 #product-loop {
     position: relative;
@@ -122,6 +128,53 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
         }
     }
 }
+
+.prod-container {
+
+
+    .icn {
+      line-height: 12px;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 11px;
+      padding: 5px 8px;
+      font-weight: bold;
+      font-size: 11px;
+      min-width: 60px;
+    }
+
+    .new {
+      z-index: 3;
+      background: {{ settings.new_background }};
+      color: {{ settings.new_text }};
+    }
+
+    .sale-item {
+      z-index: 3;
+      background: {{ settings.sale_background }};
+      color: {{ settings.sale_text }};
+    }
+
+    .so {
+      z-index: 4;
+      background: {{ settings.soldout_background }};
+      color: {{ settings.soldout_text }};
+    }
+
+    .pre-order {
+      z-index: 2;
+      background: {{ settings.soldout_background }};
+      color: {{ settings.soldout_text }};
+    }
+    
+}
+
+
+
+
 
 .bc-sf-filter-load-more-button {
     @include h6;
