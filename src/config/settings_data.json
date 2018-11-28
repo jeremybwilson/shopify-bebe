@@ -2,8 +2,7 @@
   "presets": {
   },
   "current": {
-    "international_store_version": "US",
-    "favicon": "shopify:\/\/shop_images\/favicon.png",    
+    "favicon": "",
     "google_tag_manager_id": "",
     "announcement_text_color": "#000",
     "announcement_bg_one": "#fff",
@@ -117,7 +116,7 @@
     "main_font": "source_sans_pro_n4",
     "nav_font": "source_sans_pro_n4",
     "heading_font": "source_sans_pro_n4",
-    "announcement_text_size": 18,
+    "announcement_text_size": 12,
     "font_size": 13,
     "h1_size": 24,
     "h2_size": 20,
@@ -207,7 +206,7 @@
     "mega_4_show": false,
     "mega_4_links": "",
     "nav_center": true,
-    "nav_height": "40",
+    "nav_height": "20",
     "linklist_breakpoint": "8",
     "main_nav": "main-menu",
     "password_bg": "no_password_bg",
@@ -223,59 +222,118 @@
           "1535652898841": {
             "type": "mega_menu",
             "settings": {
-              "menu_item": "Men",
-              "nav_image": "",
-              "nav_promo_link": "shopify:\/\/collections\/men"
+              "menu_item": "New",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-1.jpg",
+              "nav_promo_link": "#"
             }
           },
           "1522184323686": {
             "type": "mega_menu",
             "settings": {
-              "menu_item": "Women",
-              "nav_image": "",
-              "nav_promo_link": "shopify:\/\/collections\/women"
+              "menu_item": "Dresses",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-2.jpg",
+              "nav_promo_link": "#"
             }
           },
-          "1535652979932": {
-            "type": "simple_menu",
+          "1542668952241": {
+            "type": "mega_menu",
             "settings": {
-              "menu_item": "Kids"
+              "menu_item": "Jumpsuits",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-3.jpg",
+              "nav_promo_link": "#"
             }
           },
-          "1535653033501": {
-            "type": "simple_menu",
+          "1542668973870": {
+            "type": "mega_menu",
             "settings": {
-              "menu_item": "Activities"
+              "menu_item": "Tops",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-4.jpg",
+              "nav_promo_link": "#"
+            }
+          },
+          "1542668979700": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Bottoms",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-5.jpg",
+              "nav_promo_link": "#"
+            }
+          },
+          "1542668985601": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Jackets & Coats",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-6.jpg",
+              "nav_promo_link": "#"
+            }
+          },
+          "1542669004635": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Logo",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-7.jpg",
+              "nav_promo_link": "#"
+            }
+          },
+          "1542669012588": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Shoes",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-10.jpg",
+              "nav_promo_link": "#"
+            }
+          },
+          "1542669019789": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Accessories",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-9.jpg",
+              "nav_promo_link": "#"
+            }
+          },
+          "1542669025513": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Sale",
+              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-8.jpg",
+              "nav_promo_link": "#"
             }
           }
         },
         "block_order": [
           "1535652898841",
           "1522184323686",
-          "1535652979932",
-          "1535653033501"
+          "1542668952241",
+          "1542668973870",
+          "1542668979700",
+          "1542668985601",
+          "1542669004635",
+          "1542669012588",
+          "1542669019789",
+          "1542669025513"
         ],
         "settings": {
-          "full_width_header": false,
+          "full_width_header": true,
           "show_announcement_text": true,
-          "num_of_promo_banners": "1",
-          "announcement_text_one": "<div class=\"bold\">FREE SHIPPING & FREE RETURNS<\/div>",
+          "num_of_promo_banners": "2",
+          "announcement_text_one": "Free Shipping over $100",
+          "announcement_popup_one_content": "",
           "announcement_link_one": "\/pages\/shipping-returns",
           "announcement_text_two": "<div class=\"bold\">40% OFF YOUR PURCHASE.<\/div> NO CODE NEEDED.",
           "announcement_link_two": "http:\/\/google.com",
-          "announcement_height": 60,
+          "announcement_height": 40,
           "announcement_swap_rate": 5,
           "logo_size": 24,
           "logo_transform": "uppercase",
           "logo_weight": "bold",
-          "cart_icon": "cart",
+          "cart_icon": "bag",
           "show_site_picker": false,
           "site_picker_manifest": "US|United States|https:\/\/xtratuf.com,EU|European Union|https:\/\/www.muckbootcompany.eu,UK|United Kingdom|https:\/\/www.muckbootcompany.co.uk",
           "show_search": true,
           "main_nav": "main-menu",
           "nav_center": true,
           "nav_height": 60,
-          "linklist_breakpoint": 10
+          "linklist_breakpoint": 5
         }
       },
       "footer": {
@@ -284,8 +342,8 @@
           "1480972996114": {
             "type": "link_list",
             "settings": {
-              "menu_id": "footer",
-              "show_headings": true
+              "menu_id": "",
+              "show_headings": false
             }
           }
         },
@@ -296,15 +354,16 @@
           "tel_text": "855-377-BOOT (2668)",
           "tel_number": "18553772668",
           "show_credit_cards": true,
-          "visit_brand_link_one": "http:\/\/www.xtratuf.com",
+          "visit_brand_link_one": "",
           "visit_brand_image_one": "",
           "visit_brand_link_two": "",
           "visit_brand_image_two": "",
-          "visit_brand_link_three": "http:\/\/www.howardleight.com",
+          "visit_brand_link_three": "",
           "visit_brand_image_three": "",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
-          "trust_icon_image_three": ""
+          "trust_icon_image_three": "",
+          "sample_footer_text": "Hello World"
         }
       },
       "collection-template": {
