@@ -49,14 +49,14 @@
     color: {{ settings.announcement_text_color }};
     font-weight: $font-weight--black;
 
+    @include mq( 'lap-and-up' ) {
+        width: 50%;
+    }
+
     .row {
         position: relative;
         height: 100%;
         margin: 0;
-
-        @include mq( 'lap-and-up' ) {
-            width: 50%;
-        }
     }
 
     a {

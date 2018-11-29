@@ -52,9 +52,9 @@
           {% if shop.customer_accounts_enabled %}
             <li class="nav-item nav-account">
               {% if customer %}
-                <a href="/account">{% include 'svg-icon-account' %}</a>
+                <a href="/account"><img src="{{ 'ico_user.png' | asset_url }}" /></a>
               {% else %}
-                <a href="/account/login">{% include 'svg-icon-account' %}</a>
+                <a href="/account/login"><img src="{{ 'ico_user.png' | asset_url }}" /></a>
               {% endif %}
             </li>
           {% endif %}
@@ -67,10 +67,14 @@
               {% if section.settings.cart_icon == 'cart' %}
                 {% include 'svg-icon-cart' %}
               {% elsif section.settings.cart_icon == 'bag' %}
-                {% include 'svg-icon-shopping-bag' %}
+                <img src="{{ 'ico_bag.png' | asset_url }}" />
               {% endif %}
               <span class="cart-count {% if cart.item_count == 0 %}hidden-count{% endif %}">{{ cart.item_count }}</span>
             </a>
+          </li>
+
+          <li class="nav-item loyalty-stub">
+            {% include 'loyalty-stub' %}
           </li>
 
         </ul>
