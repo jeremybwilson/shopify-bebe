@@ -38,7 +38,7 @@
 #top-bar {
     text-align: left;
     line-height: 30px;
-    padding: 5px;
+    padding: 0;
     font-family: $sans;
     font-weight: $font-weight--book;
     font-size: 9pt;
@@ -49,10 +49,13 @@
     color: {{ settings.announcement_text_color }};
     font-weight: $font-weight--black;
 
+    @include mq( 'lap-and-up' ) {
+        width: 50%;
+    }
+
     .row {
         position: relative;
         height: 100%;
-        width: 50%;
         margin: 0;
     }
 
@@ -60,12 +63,19 @@
         text-decoration: none;
         cursor: pointer;
         width: auto;
-        color: {{ settings.announcement_text_color }};
+        color: $color--reverse-1;
+        text-align: center;
+        margin: 0 auto;
+
+        @include mq( 'lap-and-up' ) {
+            margin: 0;
+            text-align: left;
+            color: {{ settings.announcement_text_color }};
+        }
     }
 
     .bold { font-weight: $font-weight--bold; }
 }
-
 
 
 
@@ -83,7 +93,6 @@
         display: inline-block; 
     }
 }
-
 
 
 
@@ -117,11 +126,20 @@
         width: 100%;
         height: 100%;
         position: absolute; 
+        background: $color--primary-1;
         transition: 0.5s all ease-in-out;
         padding: 0 16px;
         left: 0;
+        text-align: center;
+
+        @include mq( 'lap-and-up' ) {
+            padding: 0;
+            background: $color--reverse-1;
+            text-align: left;
+        }   
 
         &.one { opacity: 1; }
+        &.two { pointer-events: none; }
 
         div { display: inline-block; }//So any "bold" sections sit inline with the rest of unbolded text
 
@@ -166,38 +184,10 @@
 
     // Static Classes so user can manually swap the banners using arrows. (Arrow click removes auto-swap class)
     &.show-promo-two .promo-banner {
-        &.one { opacity: 0; }
-        &.two { opacity: 1; }
+        &.one { opacity: 0; pointer-events: none; }
+        &.two { opacity: 1; pointer-events: auto;}
     }
 
-    // TABLET + HIGHER
-/*     @include mq( 'tablet-and-up' ) {
-        @include flex-flow( row nowrap );
-
-        // DISABLE : Animation on Tablet + since both are displayed at same time
-        &.auto-swap {
-            .one { animation: none; }
-            .two { animation: none; }
-        }
-
-        // DISABLE : Arrows on Tablet & Greater
-        #promo-arrow-left,
-        #promo-arrow-right {
-            display: none;
-        }
-
-        .promo-banner.one,
-        .promo-banner.two {
-            opacity: 1;
-            width: 50%;
-            padding: 0;
-            position: relative;
-        }
-        &.show-promo-two .promo-banner {
-            &.one { opacity: 1; }
-            &.two { opacity: 1; }
-        }
-    } */
 }
 
 // MOBILE : Fade animation for promo banners when 2 are displayed
@@ -219,7 +209,12 @@
     display: none;
 }
 
+
+// ANNOUNCEMENT POPUP
 .fancybox-promo-popup {
+
+    .fancybox-outer {
+    }
 
     .fancybox-inner {
         box-sizing: border-box;
@@ -230,6 +225,11 @@
         box-sizing: border-box;
         width: 100%;
         border: solid 1px #8a8a8a;
+
+        @include fontSize(12px);
+    }
+    p {
+        font-size: inherit;
     }
 }
 
