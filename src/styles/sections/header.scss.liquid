@@ -127,15 +127,24 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
 
     #nav-aux {
-        @include flexbox;
-        @include justify-content( center );
+        @include mq( 'lap-and-up' ) {
+            @include flexbox;
+            @include justify-content( center );
+            padding: 0 16px;    
+        }
+        
+        
     }
 
 
     /*  NAV : ACCOUNT + CART + SEARCH + SITE PICKER (Right Elements)
      * ---------------------------------------------- */
     #nav-user {
-        width: 50%;
+        @include mq( 'lap-and-up' ) {
+            position: relative;
+            width: 50%;
+        }
+
 
         // Account / Cart / Site Picker List
         ul#nav-user-list {
@@ -156,6 +165,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 @include inline-flex;
                 @include align-items( center );
                 @include justify-content( center );
+                margin-left: 0;
 
                 a,
                 .inner-center {
@@ -330,20 +340,28 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             // LOYALTY STUB
-            .loyalty-stub {
-                @include flexbox;
-                @include flex-direction( column );
-                @include align-items( center );
-                @include justify-content ( flex-start );
-                padding: 7px 7px 0;
-                background: #d3d3d3;
+            .loyalty-stub a {
+                display: none;
 
-                span {
-                    color: $color--primary-1;
-
-                    @include fontSize(13px);
-                    line-height: 11px;
-                    text-transform: uppercase;
+                @include mq( 'lap-and-up' ) {
+                    @include flexbox;
+                    @include flex-direction( column );
+                    @include align-items( center );
+                    @include justify-content ( flex-start );
+                    padding: 7px 10px 5px;
+                    background: $color--field-1;
+    
+                    span {
+                        color: $color--primary-1;
+    
+                        @include fontSize(13px);
+                        line-height: 11px;
+                        text-transform: uppercase;
+    
+                        &.line-2 {
+                            color: $color--accent-1;
+                        }
+                    }
                 }
             }
         }
@@ -353,27 +371,40 @@ $navHoverColor: {{ settings.nav_hover_color }};
     // SEARCH : Input on mobile-navigation.liquid + header.liquid (desktop)
     .nav-search {
         position: relative;
-        margin-right: 20px;
+        @include align-items( flex-start );
+
         width: 140px;
+        padding-right: 23px;
 
         @include mq( 'desk-and-up' ) {
-            width: 200px;
+            width: 160px;
         }
-
+        
         form {
-            position: relative;
+            @include flexbox;
+            @include align-items( center );
+            @include justify-content( flex-end );
         }
 
         .nav-search-input {
             position: relative;
             width: 100%;
             max-width: 100%;
+            min-height: 0;
+            height: 20px;
+            padding: 3px 0 5px;
+            margin-right: 5px;
             margin-bottom: 0;
             border: none;
             border-bottom: $navMinorBorder;
             border-radius: 0;
-            padding-right: 23px;
             outline: none;
+
+            font-family: $sans;
+            @include fontSize(14px);
+            line-height: auto;
+            text-indent: 0;
+            text-transform: uppercase;
 
             &:focus {
                 outline: none;
@@ -383,9 +414,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
         .nav-search-icon-wrap {
             position: absolute;
-            transform: translateY( -43% );
-            top: 50%;
+            top: 7px;
             right: 0;
+            padding-left: 4px;
+            padding-right: 10px;
 
             // Hidden search button on top of the search Icon,
             // so clicking it submits as well as enter.
@@ -402,6 +434,11 @@ $navHoverColor: {{ settings.nav_hover_color }};
             svg.icon-search {
                 width: 19px;
                 height: 17px;
+            }
+
+            img {
+                width: 20px;
+                height: 20px;
             }
         }
     }
@@ -444,9 +481,6 @@ $navHoverColor: {{ settings.nav_hover_color }};
         }
     }
 
-
-
-
     /*  NAV : MEGA-MENU + SUB-NAV LINKS
      * ---------------------------------------------- */
     nav#nav {
@@ -488,7 +522,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 @include justify-content( center ); // Space links to better match mock
                 height: 100%;
                 width: auto;
-                margin: 0 2px;
+                margin: 0 4px;
 
                 &.nav-list-simple {
                     position: relative;
@@ -499,7 +533,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     @include align-items( center );
                     @include fontSize( 16px );
                     letter-spacing: .5px; 
-                    padding-top: 3px; // make up size for 3px bottom border on links
+                    padding-top: 1px; // make up size for 3px bottom border on links
                     padding-bottom: 3px;
                     padding-left: 12px;
                     padding-right: 12px;
@@ -510,8 +544,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     }
                 }
 
-                &:hover > a {
-                    color: $color--primary-2;
+                &:hover a {
+                    color: $color--accent-3;
                 }
 
                 &:hover {
@@ -540,14 +574,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
             .megamenu {
                 width: 100vw; // spans full width
-                height: 160px;
+                height: 180px;
                 margin: 0;
                 position: absolute;
                 left: 50%; // scoot left distance (- spacing) #nav-menu-desktop-list elements over from edge
                 transform: translateX( -50% );
                 top: 30px;
                 z-index: 5;
-                padding: 0;
+                padding: 20px 0 0;
                 text-align: left;
                 list-style: none;
 
@@ -581,6 +615,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             width: 148px;
                             box-sizing: border-box;
                             @include flex-grow( 1 );
+
+                            &:hover a {
+                                color: $navHoverColor;
+                            }
                         }
 
                         .mega-stack {
@@ -663,7 +701,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             transition: color 0.25s ease-in-out;
 
                             &:hover {
-                                color: {{ settings.nav_links_hover }};
+                                color: {{ settings.nav_hover_color }};
                             }
                         }
 
