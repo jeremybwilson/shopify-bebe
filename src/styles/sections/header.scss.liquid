@@ -36,11 +36,15 @@ $navHoverColor: {{ settings.nav_hover_color }};
  * ---------------------------------------------- */
 #nav-bar-wrapper {
     position: relative;
-    height: 125px;
+    height: 100px;
     width: 100%;
     padding: 0;
     z-index: 50; //entire wrapper, this relates to the header to rest of site so no need var
     //transition: $navShadowAni;
+
+    @include mq( 'lap-and-up' ) {
+        height: 125px;
+    }
 
     & > .row {
         width: 100%;
@@ -105,9 +109,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
      * ---------------------------------------------- */
     #nav-logo,
     #nav-logo-backing {
-        width: 150px;
-        top: 0;
+        width: 120px;
+        margin-top: 5px;
         z-index: $zIndexLogo;
+
+        @include mq( 'lap-and-up' ) {
+            width: 150px;
+            margin-top: 0;
+        }
 
         a, svg {
             width: 100%;
@@ -132,25 +141,24 @@ $navHoverColor: {{ settings.nav_hover_color }};
             @include justify-content( center );
             padding: 0 16px;    
         }
-        
-        
     }
 
 
     /*  NAV : ACCOUNT + CART + SEARCH + SITE PICKER (Right Elements)
      * ---------------------------------------------- */
     #nav-user {
+        position: relative;
+
         @include mq( 'lap-and-up' ) {
-            position: relative;
             width: 50%;
         }
-
 
         // Account / Cart / Site Picker List
         ul#nav-user-list {
             @include inline-flex;
             @include justify-content( flex-end );
             position: absolute;
+            top: 20px;
             right: $navMobileBarGutter;
             margin: 0;
             list-style: none;
@@ -158,6 +166,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             z-index: $zIndexUserBtns; //50
 
             @include mq( 'lap-and-up' ) {
+                top: 0;
                 right: 0;
             }
 
@@ -406,6 +415,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
             text-indent: 0;
             text-transform: uppercase;
 
+            @include mq( 'lap-and-up' ) {
+                @include fontSize(16px);                
+            }
+
             &:focus {
                 outline: none;
                 box-shadow: none;
@@ -414,10 +427,15 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
         .nav-search-icon-wrap {
             position: absolute;
-            top: 7px;
-            right: 0;
+            top: -6px;
+            right: 30px;
             padding-left: 4px;
             padding-right: 10px;
+
+            @include mq( 'lap-and-up' ) {
+                top: 7px;
+                right: 0;
+            }
 
             // Hidden search button on top of the search Icon,
             // so clicking it submits as well as enter.
@@ -752,7 +770,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             display: block;
             pointer-events: all;
             opacity: 1;
-            top: 50px;
+            top: 0px;
             width: 100%;
             background: {{ settings.header_background }};
             z-index: 25; // logo is at 50
@@ -783,6 +801,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         // ACCORDION : Top Level
         #accordion {
             text-align: left;
+            margin-left: 0;
             padding: 0 2px 60px; //Aligns the titles to the left edge matching search underline
             @include fontSize( 16px );
 
@@ -834,7 +853,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             .sub {
-                background: #F7F7F2;
+                background: $color--field-2;
                 padding: 0 0 0 35px;
 
                 .accordion-sub-header,
@@ -997,6 +1016,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         top: 42%;
     }
     &.two {
+        margin-top: -1px;
         transform: rotateZ( -45deg ) translateY( -50% );
     }
     &.three {
