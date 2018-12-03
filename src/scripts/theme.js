@@ -1044,17 +1044,23 @@ theme.Header = (function() {
       start();
     }
 
-    // EVENT : CLICK : Launches modal that displays extra info
+    // POPUP : Activate popup
 
-    ui.promoTrigger.on('click', this, function(e) {
-      e.preventDefault();
+    ui.promoTrigger.each(function() {
+      
       $(this).fancybox({
         href: $(this).attr('href'),
         wrapCSS: 'fancybox-promo-popup',
         openEffect: 'none',
-        closeEffect: 'none'
+        closeEffect: 'none',
+        autoHeight: true,
+        maxWidth: 400,
+        maxHeight: 400,
+        padding: 30,
+        live: true
       });
     });
+    
   }
   Header.prototype = _.assignIn({}, Header.prototype, {});
   return Header;

@@ -36,15 +36,20 @@ $navHoverColor: {{ settings.nav_hover_color }};
  * ---------------------------------------------- */
 #nav-bar-wrapper {
     position: relative;
-    height: 50px;
+    height: 100px;
     width: 100%;
     padding: 0;
     z-index: 50; //entire wrapper, this relates to the header to rest of site so no need var
     //transition: $navShadowAni;
 
+    @include mq( 'lap-and-up' ) {
+        height: 125px;
+    }
+
     & > .row {
         width: 100%;
         margin: 0;
+        padding: 0;
     }
 
     // SHADOW : When stick nav is active
@@ -84,11 +89,13 @@ $navHoverColor: {{ settings.nav_hover_color }};
         width: 100%;
         max-width: 960px; //iPad
         padding: 0;
+        margin-top: 12px;
         margin-left: auto;
         margin-right: auto;
 
         // 1220px is bootstrap break apparently, not 1240 like we setup in our MQ include, might change it?
         @media only screen and ( min-width: 1220px ) {
+            margin-top: 0;
             max-width: 1200px;
         }
 
@@ -102,9 +109,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
      * ---------------------------------------------- */
     #nav-logo,
     #nav-logo-backing {
-        width: 150px;
-        top: 0;
+        width: 120px;
+        margin-top: 5px;
         z-index: $zIndexLogo;
+
+        @include mq( 'lap-and-up' ) {
+            width: 150px;
+            margin-top: 0;
+        }
 
         a, svg {
             width: 100%;
@@ -123,24 +135,38 @@ $navHoverColor: {{ settings.nav_hover_color }};
     }
 
 
+    #nav-aux {
+        @include mq( 'lap-and-up' ) {
+            @include flexbox;
+            @include justify-content( center );
+            padding: 0 16px;    
+        }
+    }
+
 
     /*  NAV : ACCOUNT + CART + SEARCH + SITE PICKER (Right Elements)
      * ---------------------------------------------- */
     #nav-user {
-        display: none;
+        position: relative;
+
+        @include mq( 'lap-and-up' ) {
+            width: 50%;
+        }
 
         // Account / Cart / Site Picker List
         ul#nav-user-list {
             @include inline-flex;
             @include justify-content( flex-end );
             position: absolute;
+            top: 20px;
             right: $navMobileBarGutter;
-            height: 100%;
+            margin: 0;
             list-style: none;
             text-align: right;
             z-index: $zIndexUserBtns; //50
 
             @include mq( 'lap-and-up' ) {
+                top: 0;
                 right: 0;
             }
 
@@ -148,6 +174,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 @include inline-flex;
                 @include align-items( center );
                 @include justify-content( center );
+                margin-left: 0;
 
                 a,
                 .inner-center {
@@ -320,6 +347,32 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     }
                 }
             }
+
+            // LOYALTY STUB
+            .loyalty-stub a {
+                display: none;
+
+                @include mq( 'lap-and-up' ) {
+                    @include flexbox;
+                    @include flex-direction( column );
+                    @include align-items( center );
+                    @include justify-content ( flex-start );
+                    padding: 7px 10px 5px;
+                    background: $color--field-1;
+    
+                    span {
+                        color: $color--primary-1;
+    
+                        @include fontSize(13px);
+                        line-height: 11px;
+                        text-transform: uppercase;
+    
+                        &.line-2 {
+                            color: $color--accent-1;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -327,32 +380,62 @@ $navHoverColor: {{ settings.nav_hover_color }};
     // SEARCH : Input on mobile-navigation.liquid + header.liquid (desktop)
     .nav-search {
         position: relative;
-        margin-right: 20px;
+        @include align-items( flex-start );
+
         width: 140px;
+        padding-right: 23px;
 
         @include mq( 'desk-and-up' ) {
-            width: 200px;
+            width: 160px;
         }
-
+        
         form {
-            position: relative;
+            @include flexbox;
+            @include align-items( center );
+            @include justify-content( flex-end );
         }
 
         .nav-search-input {
             position: relative;
             width: 100%;
             max-width: 100%;
+            min-height: 0;
+            height: 20px;
+            padding: 3px 0 5px;
+            margin-right: 5px;
+            margin-bottom: 0;
             border: none;
             border-bottom: $navMinorBorder;
-            padding-right: 23px;
+            border-radius: 0;
             outline: none;
+
+            font-family: $sans;
+            @include fontSize(14px);
+            line-height: auto;
+            text-indent: 0;
+            text-transform: uppercase;
+
+            @include mq( 'lap-and-up' ) {
+                @include fontSize(16px);                
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
         }
 
         .nav-search-icon-wrap {
             position: absolute;
-            transform: translateY( -43% );
-            top: 50%;
-            right: 0;
+            top: -6px;
+            right: 30px;
+            padding-left: 4px;
+            padding-right: 10px;
+
+            @include mq( 'lap-and-up' ) {
+                top: 7px;
+                right: 0;
+            }
 
             // Hidden search button on top of the search Icon,
             // so clicking it submits as well as enter.
@@ -369,6 +452,11 @@ $navHoverColor: {{ settings.nav_hover_color }};
             svg.icon-search {
                 width: 19px;
                 height: 17px;
+            }
+
+            img {
+                width: 20px;
+                height: 20px;
             }
         }
     }
@@ -411,9 +499,6 @@ $navHoverColor: {{ settings.nav_hover_color }};
         }
     }
 
-
-
-
     /*  NAV : MEGA-MENU + SUB-NAV LINKS
      * ---------------------------------------------- */
     nav#nav {
@@ -455,7 +540,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 @include justify-content( center ); // Space links to better match mock
                 height: 100%;
                 width: auto;
-                margin: 0 2px;
+                margin: 0 4px;
 
                 &.nav-list-simple {
                     position: relative;
@@ -466,7 +551,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     @include align-items( center );
                     @include fontSize( 16px );
                     letter-spacing: .5px; 
-                    padding-top: 3px; // make up size for 3px bottom border on links
+                    padding-top: 1px; // make up size for 3px bottom border on links
                     padding-bottom: 3px;
                     padding-left: 12px;
                     padding-right: 12px;
@@ -477,8 +562,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     }
                 }
 
-                &:hover > a {
-                    color: $color--primary-2;
+                &:hover a {
+                    color: $color--accent-3;
                 }
 
                 &:hover {
@@ -507,14 +592,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
             .megamenu {
                 width: 100vw; // spans full width
-                max-height: 160px;
+                height: 180px;
                 margin: 0;
                 position: absolute;
                 left: 50%; // scoot left distance (- spacing) #nav-menu-desktop-list elements over from edge
                 transform: translateX( -50% );
                 top: 30px;
                 z-index: 5;
-                padding: 0;
+                padding: 20px 0 0;
                 text-align: left;
                 list-style: none;
 
@@ -538,6 +623,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         @include mq( 'tablet-and-up' ) {
                             @include flex-direction( column );
                             @include justify-content( flex-start );
+                            @include align-items( flex-start );
                             @include flex-wrap( wrap );
                         }
 
@@ -547,6 +633,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             width: 148px;
                             box-sizing: border-box;
                             @include flex-grow( 1 );
+
+                            &:hover a {
+                                color: $navHoverColor;
+                            }
                         }
 
                         .mega-stack {
@@ -629,7 +719,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             transition: color 0.25s ease-in-out;
 
                             &:hover {
-                                color: {{ settings.nav_links_hover }};
+                                color: {{ settings.nav_hover_color }};
                             }
                         }
 
@@ -680,7 +770,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             display: block;
             pointer-events: all;
             opacity: 1;
-            top: 50px;
+            top: 0px;
             width: 100%;
             background: {{ settings.header_background }};
             z-index: 25; // logo is at 50
@@ -711,6 +801,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         // ACCORDION : Top Level
         #accordion {
             text-align: left;
+            margin-left: 0;
             padding: 0 2px 60px; //Aligns the titles to the left edge matching search underline
             @include fontSize( 16px );
 
@@ -762,7 +853,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             .sub {
-                background: #F7F7F2;
+                background: $color--field-2;
                 padding: 0 0 0 35px;
 
                 .accordion-sub-header,
@@ -925,6 +1016,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         top: 42%;
     }
     &.two {
+        margin-top: -1px;
         transform: rotateZ( -45deg ) translateY( -50% );
     }
     &.three {
