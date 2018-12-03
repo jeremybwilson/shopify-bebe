@@ -391,6 +391,8 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
  *    EX : @include mq( 'lap-and-up' ) { CODE }
  * ------------------------------------------------------------------------- */
 $phone:            "screen and (max-width: 767px)";
+$phone-portrait:   "screen and (max-width: 479px)";
+$phone-landscape:  "screen and (min-width: 480px) and (max-width: 767px)";
 $tablet:           "screen and (min-width: 768px) and (max-width: 1023px)";
 $tablet-and-up:    "screen and (min-width: 768px)";
 $tablet-portrait:  "screen and (min-width: 768px) and (max-width: 959px)";
@@ -407,6 +409,14 @@ $retina:           "(-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi)
     @media #{$phone} {
       @content;
     }
+  } @else if $alias == "phone-portrait" {
+    @media #{$phone-portrait} {
+      @content;
+    }
+  } @else if $alias == "phone-landscape" {
+    @media #{$phone-landscape} {
+      @content;
+    }        
   } @else if $alias == "tablet" {
     @media #{$tablet} {
       @content;
