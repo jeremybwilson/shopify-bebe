@@ -11,6 +11,17 @@ $resultsTextColor: {{ settings.filter_text_color }};
  * ---------------------------------------------- */
 #shopify-section-collection-template {
 
+    /* COLLECTION : Sidebar
+     * ---------------------------------------------- */
+    @import url('../snippets/collection-nav.scss.liquid');
+
+    /* COLLECTION : Main
+     * ---------------------------------------------- */
+
+    h1 {
+        border: none;
+        @include fontDim(21px,21px,.04em);         
+    }
 
     /* COLLECTION : Product Grid + Item View
      * ---------------------------------------------- */
