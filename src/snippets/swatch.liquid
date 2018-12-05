@@ -21,6 +21,8 @@
 
   </div><!-- .swatch-header-->
 
+  {% assign current_sku = current_variant.sku | split: '-' | first %}
+
   {% comment %} Swatch Loop {% endcomment %}
 
   {% comment %} Herein is the second level and third levels of a three-tiered cycling of product variants and options to determine the actual render of swatches. The "current_option" is determined by this snippet's parent loop.
@@ -29,7 +31,11 @@
 
   {% for value in option.values %}
 
-    {% assign image_url = value | handle | prepend: 'swatch_' | append: '.png' | asset_url %}
+    {% assign color_value_words = value | handle | split: '-' %}
+    {% capture color_value_caps %}{% for word in color_value_words %}{{ word | capitalize }} {% endfor %}{% endcapture %}
+    {% assign color_value = color_value_caps | split: ' ' | join: '_' %}
+
+    {% assign image_url = color_value | prepend: '_' | prepend: current_sku | prepend: 'sw_' | append: '.jpg' | file_url %}
 
     {% assign css_color = value | split: ' ' | last | handle %}
 

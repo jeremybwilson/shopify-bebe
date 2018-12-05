@@ -92,8 +92,8 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
     var itemGridWidthClass = '';
     switch (bcSfFilterConfig.custom.products_per_row) {
         case 2: itemGridWidthClass = 'desktop-6 tablet-3 mobile-half'; break;
-        case 3: itemGridWidthClass = 'desktop-4 tablet-2 mobile-half'; break;
-        case 4: itemGridWidthClass = 'desktop-3 tablet-2 mobile-half'; break;
+        case 3: itemGridWidthClass = 'desktop-3 contained tablet-2 mobile-half'; break;
+        case 4: itemGridWidthClass = 'desktop-3 contained tablet-2 mobile-half'; break;
         default: break;
     }
     itemHtml = itemHtml.replace(/{{itemGridWidthClass}}/g, itemGridWidthClass);
@@ -198,7 +198,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
                 }
 
                 // SWATCH IMAGE : Build swatch image, fallback to color setting in case that fails
-                var swatchImgUrl = bcSfFilterConfig.general.asset_url.replace('bc-sf-filter.js', 'swatch_' + this.slugify(option['title']) + '.png');
+                var swatchImgUrl = bcSfFilterConfig.general.file_url.replace('swatch_url_source_do_not_remove.png', 'swatch_' + this.slugify(option['title']) + '.png');
 
                 // SWATCH OBJ: Single swatch object for manifest
                 var colorValueName = this.slugify( option['title'] );

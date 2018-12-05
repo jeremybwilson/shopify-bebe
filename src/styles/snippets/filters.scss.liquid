@@ -8,7 +8,8 @@ $filterBtnMainBg: {{ settings.filter_button_main_bg }};
 $filterBtnMainText: {{ settings.filter_button_main_text }};
 $filterBtnAltBg: {{ settings.filter_button_alt_bg }};
 $filterBtnAltText: {{ settings.filter_button_alt_text }};
-$filterBorder: 1px solid {{ settings.filter_divider_color }};
+// $filterBorder: 1px solid {{ settings.filter_divider_color }};
+$filterBorder: none;
 $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.filter_bar_border_color }};
 
 
@@ -26,16 +27,6 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
     margin: 0 auto 20px;
     border-top: $filterBarBorder;
     border-bottom: $filterBarBorder;
-
-
-    @include mq( 'lap-and-up' ){
-        margin: 65px 0 55px;
-    }
-
-    @include mq( 'desk-and-up' ) {
-        padding: 15px 30px;
-    }
-
 
     // FILTERS : LABEL : "Filter" on desktop
     .filter-label {
@@ -255,7 +246,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
     // SORT : Sorting option dropdown (shows up on mobile too)
     .sort-options {
         position: absolute;
-        right: 0;
+        left: 0;
         top: 0;
         height: 100%;
 
@@ -272,7 +263,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
         }
 
         @include mq( 'desk-and-up' ) {
-            right: 10px;
+            //right: 10px;
         }
 
         #bc-sf-filter-top-sorting {
