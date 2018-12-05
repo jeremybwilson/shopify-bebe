@@ -3,6 +3,12 @@ $grid--columns-total--tablet:   6;
 $grid--columns-total--desktop:  12;
 $grid--gutter: 	   1.0416666666666667%;
 
+// max widths
+$grid--site-width--tablet: 720px;
+$grid--site-width--lap:    960px;
+$grid--site-width--desk:  1200px;
+$grid--site-width--wide:  1440px;
+
 // COLUMN BUILDER MIXINS
 
 @mixin columnBuilderUtility($class-slug) {
@@ -82,23 +88,23 @@ $grid--gutter: 	   1.0416666666666667%;
             visibility: hidden
         }
 
-        // GLOBAL :: min widths
+        // GLOBAL :: row widths
 
         @include mq( 'tablet-and-up' ) {
-            width: 720px; }
+            width: $grid--site-width--tablet; }
         @include mq( 'lap-and-up' ) {
-            width: 960px; }
+            width: $grid--site-width--lap; }
         @include mq( 'desk-and-up' ) {
-            width: 1200px; }
+            width: $grid--site-width--desk; }
         @include mq( 'wide-and-up' ) {
-            width: 1400px; }
+            width: $grid--site-width--wide; }
 
         // nested rows 
 
         .row {
             width: 102.08333333%;
-            margin-left: -1.04166667%;
-            margin-right: -1.04166667%;
+            margin-left: -#{$grid--gutter};
+            margin-right: -#{$grid--gutter};
         }
         .contained .row {
             width: 100%;

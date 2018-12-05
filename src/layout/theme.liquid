@@ -34,6 +34,7 @@
   <!-- Typography
 ================================================== -->
  {% comment %} {% include 'google-fonts' %} {% endcomment %}
+  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6183294/6547012/css/fonts.css" />
 
   <!-- JS
 ================================================== -->
@@ -116,7 +117,7 @@
       {% else %}
 
         {% comment %} :: BREADCRUMBS :: {% endcomment %}
-        {% if template != 'index' %}
+        {% if template != 'index' or template != 'collection' %}
           {% if settings.breadcrumb %}
             {% include 'breadcrumb' %}
           {% endif %}
