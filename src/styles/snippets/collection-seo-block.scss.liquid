@@ -11,19 +11,20 @@ $seoTextColor: {{ settings.collection_seo_footer_text }};
 #collection-seo-wrap {
     @include flexbox;
     @include flex-direction( column );
-    @include align-items( center );
+    @include align-items( flex-start );
     background: $seoFooterBg;
-    padding: 50px 0;
+    width: 100%;
 
-    @include mq( 'lap-and-up' ) {
-        padding: 100px 0;
+    h3 {
+        @include fontDim( 32px,42px,.01em );
+        font-weight: $font-weight--book;
+        text-align: left;
     }
 
     // CONTENT : Box that holds each content block (above x below button fold)
     .collection-seo-content {
         @include fontSize( 16px );
         font-weight: $font-weight--book;
-        font-size: 16px;
         line-height: 40px;
         text-align: center;
         color: $seoTextColor;

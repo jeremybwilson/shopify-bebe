@@ -1,34 +1,106 @@
 // COLLECTION :: Sidebar
 
-// But first, globals
-
+// COLLECTION :: SIDEBAR :: Global styles for nav
 #collection--sidebar {
     font-family: $font-stack--heading;
+    width: 100%;
+
+    @include mq( 'lap-and-up' ) {
+        width: 12.5%;
+    }
 
     ul {
-        margin: 0;
+        width: 100%;
+        margin: 0 0 10px;
         list-style: none;
+        @include fontSize( 16px );
+
+        @include mq( 'lap-and-up' ) {
+            @include fontSize( 13px );
+        }
 
         li {
             margin-left: 0;
         }
         a {
+            display: block;
+            padding: 5px 0;
             color: $color--primary-1;
+
+            @include mq( 'lap-and-up' ) {
+                display: inline-block;
+                padding: 0;
+            }
         }
         li.active a {
             font-weight: $font-weight--bold;
         }
     }
     h3 {
-        @include fontDim(13px,42px,.04em);
+        @include fontDim(16px,20px,.04em);
         font-weight: $font-weight--bold;
         text-transform: uppercase;
+
+        @include mq( 'lap-and-up' ) {
+            @include fontSize( 13px );
+        }
     }
 }
 
-#collection--nav {
+// COLLECTION : SIDEBAR : Dropdown nav trigger
 
-    .nav-link {
+#collection-nav--mobile-trigger {
+    @include flexbox;
+    @include justify-content( space-between );
+    width: 100%;
+    margin-bottom: 0;
+    border: solid 1px $color--primary-1;
+    background: $color--reverse-1;
+    font-family: $font-stack--heading;
+    outline: 0;
+    -moz-outline: 0;
 
+    @include mq( 'lap-and-up' ) {
+        display: none;
+    }
+
+    span {
+        color: $color--primary-1;
+    }
+    svg {
+        width: 10px;
+        height: 10px;
+        transition: transform .2s ease;
+
+        * {
+            fill: $color--primary-1;
+        }
+    }
+    &.is-open svg {
+        transform: rotate( 180deg );
+    }
+}
+
+// COLLECTION : Sidebar : Dropdown nav for mobile
+
+#collection-nav--mobile-dropdown {
+    display: none;
+    
+    @include mq( 'lap-and-up' ) {
+        display: block;
+    }
+}
+
+#collection-nav--mobile-wrap {
+    @include flexbox;
+    @include flex-direction( column );
+    width: 100%;
+    padding: 12px 12px 0;
+    border: solid 1px $color--primary-1;
+    border-top: none;
+
+    @include mq( 'lap-and-up' ) {
+        padding: 0;
+        border: none;
     }
 }

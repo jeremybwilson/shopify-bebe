@@ -17,7 +17,11 @@ $resultsTextColor: {{ settings.filter_text_color }};
 
     /* COLLECTION : Main
      * ---------------------------------------------- */
-
+    #collection--main {
+        @include mq( 'lap-and-up' ) {
+            width: 82.5%; // [FPO] number
+        }
+    }
     h1 {
         border: none;
         @include fontDim(21px,21px,.04em);         
@@ -26,11 +30,6 @@ $resultsTextColor: {{ settings.filter_text_color }};
     /* COLLECTION : Product Grid + Item View
      * ---------------------------------------------- */
     .collection-template {
-        margin-top: 65px;
-
-        @include mq( 'lap-and-up' ) {
-            margin-top: 0;
-        }
 
         @import url('../snippets/product-grid.scss.liquid');
     }

@@ -2895,6 +2895,8 @@ theme.Collection = (function() {
   function Collection(container) {
     const ui = {
       collectionWrap: $( '#shopify-section-collection-template' ), //Can store these b/c they are unaffected by the filter app JS re-renders
+      collectionNavMobileWrap: $( '#collection-nav--mobile-dropdown' ),
+      collectionNavMobileBtn: $( '#collection-nav--mobile-trigger' ),
       mobileFilterBtn: $( '#filter-button-mobile' ),
       seoBlockWrap: $( '#collection-seo-wrap' ),
       seoReadMoreBtn: $( '#collection-seo-read-more' )
@@ -2902,6 +2904,14 @@ theme.Collection = (function() {
     
     // EVENTS : Bind DOM events when ready
     $(document).ready( () => {
+      
+      // COLLECTION NAV : OPEN / CLOSE
+      ui.collectionNavMobileBtn.click( ()=> {
+        ui.collectionNavMobileWrap.slideToggle(250, function() {
+            ui.collectionNavMobileBtn.toggleClass( 'is-open' );
+          }
+        )
+      });
 
       // FILTER MENU : OPEN / CLOSE : Indicator for the whole filter menu
       ui.mobileFilterBtn.click( () => {
