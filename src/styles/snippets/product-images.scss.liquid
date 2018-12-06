@@ -1,10 +1,13 @@
 @charset "UTF-8";
+$arrowColorThumbnails: $color--primary-1;
+$arrowColorMobile: $color--dark-gray;
+
+
+
 
 /* 
-  MOBILE PRODUCT PHOTOS 
-  -----------------------------
-*/
-
+  PRODUCT PHOTOS - MOBILE 
+-------------------------------*/
 .mobile-product-photos--wrapper {
   @include mq('tablet-and-up') {
     display: none;
@@ -18,76 +21,143 @@
     display: none;
   }
 
-  .owl-nav {
-    display: block;
-
-    button {
-      position: absolute;
-      top: 50%; 
-      transform: translateY(-50%);
-
-      &.disabled {
-        opacity: .3;
-      }
+  &.owl-carousel {
+    .owl-item img {
+      margin: 0 auto;
     }
-    svg {
-      width: 18px;
 
-      @include mq('tablet-and-up') {
-        width: 20px;
+    // NAV : Mobile arrows
+    .owl-nav {
+      display: block;
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY( -50% );
+        height: 65px;
+        width: 22px;
+        margin-bottom: 0;
+        outline: none;
+        transition: all 0.25s ease-in-out;
+
+        &.disabled {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &.owl-next:before,
+        &.owl-prev:before {
+          display: none;
+        }
+
+        &.owl-prev {
+          left: 20px;
+        }
+
+        &.owl-next {
+          right: 20px;
+        }
+
+        a {
+          outline: none;
+
+          svg {
+            width: 20px;
+
+            path {
+              stroke: $arrowColorMobile;
+            }
+          }
+        }
       }
-    }
-  }
-  .owl-prev {
-    left: 20px;
-  }
-  .owl-next {
-    right: 20px;
-  }
-
-  .owl-next:before {
-    display: none;
-  }
-  .owl-prev:before {
-    display: none;
-  }
-
-  img {
-
-  }
+    } // END : .owl-nav
+  } // END : .owl-carousel
 }
 
-.mobile-product-carousel--prev,
-.mobile-product-carousel--next {
-  svg {
-    width: 18px; 
-
-    * {
-      fill: $color--primary-1;
-    }
-  }
-}
 
 /* 
-  PRODUCT PHOTOS 
-  -----------------------------
-*/
-
+  PRODUCT PHOTOS - DESKTOP
+------------------------------- */
 #product-photos {
-  width: 856 / 1350 * 100%
+  width: 856 / 1350 * 100%;
+  max-height: 858px;
 }
 .product-main-images {
   width: 724 / 856 * 100%;
-}
-#thumbnail-gallery {
-  position: relative;
-  width: 76 / 856 * 100%;
-  
-  @include mq('tablet-and-up') {
-    margin-top: 35px;
+
+  .product-main-image img {
+    margin: 0; // Don't center so we get that nice alignment with thumbnail slider
   }
+}
+
+#thumbnail-gallery {
+  position: absolute;
+  float: none; //Override slickslider
+  height: 100%;
+  width: 11%;
+  margin-top: 0;
+  
   @include mq('lap-and-up') {
-    margin-top: 70px;
+    width: 14%;
+  }
+
+  // THUMBNAILS : List wrapper
+  .thumbnail-slider {
+    height: 100%;
+
+    // THUMBNAILS : Inner List;
+    .slick-list {
+      height: 100% !important; // needed to override slick-slider inline styling set via js
+    }
+
+    // THUMBNAILS : Nav Arrows (vertically)
+    .slick-arrow {
+      position: absolute;
+      height: 20px;
+      z-index: 10;
+      background: transparent;
+      color: $arrowColorThumbnails;
+      font-size: 4rem;
+      outline: none;
+      width: 100%;
+      padding: 0;
+
+      &.slick-disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .bar-left,
+      .bar-right {
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        width: 1px;
+        height: 20px;
+        background: $arrowColorThumbnails;
+        transform: rotate(65deg) translate( -10px, 5px );
+      }
+
+      .bar-right {
+        transform: rotate(-65deg) translate( 10px, 5px );
+      }
+
+      &.slick-prev {
+        top: -20px;
+      }
+
+      &.slick-next {
+        transform: rotate( 180deg );
+      }
+    }
+
+    .slick-slide {
+      outline: none;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
   }
 }
 
