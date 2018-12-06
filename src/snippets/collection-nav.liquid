@@ -1,81 +1,97 @@
-{% assign main_nav = 'main-menu' %}
+{% comment %} :: COLLECTION SIDEBAR :: DROPDOWN {% endcomment %}
+<button id="collection-nav--mobile-trigger">
+    <span class="current-page">
+        {{ collection.title }}
+    </span>
+    <span class="opener">{% include 'svg-icon-caret-down' %}</span>
+</button>
 
-{% comment %} 
-    FEATURED NAVS
+<div id="collection-nav--mobile-dropdown">
 
-    - These are embedded inside the main subcats.
-    - Their link titles are preceded with "_": "_Featured". This hides them from the main nav and displays them in their own nav below.
-    - Only one Featured Nav per subcat (for now).
+    <div id="collection-nav--mobile-wrap">
 
- {% endcomment %}
+        {% assign main_nav = 'main-menu' %}
 
-{% assign featured_nav = '' %}
+        {% comment %} 
+            FEATURED NAVS
 
-{% assign menu = linklists[main_nav] %}
+            - These are embedded inside the main subcats.
+            - Their link titles are preceded with "_": "_Featured". This hides them from the main nav and displays them in their own nav below.
+            - Only one Featured Nav per subcat (for now).
 
-<ul id="collection--nav" class="sidebar-nav collection--sidebar-nav">
-    {% for link in menu.links %}
+        {% endcomment %}
 
-        {% comment %} HEADER {% endcomment %}
-        {% comment %} Only pull the active nav item {% endcomment %}
+        {% assign featured_nav = '' %}
 
-        {% if link.active %}
+        {% assign menu = linklists[main_nav] %}
 
-        <li class="nav-link">
-            <h3>{{ link.title }}</h3>
+        <ul id="collection--nav" class="sidebar-nav collection--sidebar-nav">
+            {% for link in menu.links %}
 
-            <ul id="collection--subnav">
+                {% comment %} HEADER {% endcomment %}
+                {% comment %} Only pull the active nav item {% endcomment %}
 
-                {% comment %} SUB-LINKS {% endcomment %}
+                {% if link.active %}
 
-                {% for sub_link in link.links %}
+                <li class="nav-link">
+                    <h3>{{ link.title }}</h3>
 
-                    {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+                    <ul id="collection--subnav">
 
-                    {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
+                        {% comment %} SUB-LINKS {% endcomment %}
 
-                    {% if hidden_nav_check != '_' %}
+                        {% for sub_link in link.links %}
 
-                        <li class="collection--sub-link{% if sub_link.active %} active{% endif %}">
-                            <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
-                        </li>
+                            {% assign hidden_nav_check = sub_link.title | slice: 0 %}
 
-                    {% else %}
+                            {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
 
-                        {% comment %} Construct the Featured Nav here {% endcomment %}
+                            {% if hidden_nav_check != '_' %}
 
-                        {% capture featured_nav %}
-
-                            <ul id="collection--featured-nav" class="sidebar-nav collection--sidebar-nav">
-                                <li>
-                                   <h3>{{ sub_link.title | remove_first: '_' }}</h3> 
-
-                                   <ul id="collection--featured-subnav">
-                                        {% for sub_sub_link in sub_link.links %}
-
-                                            <li class="collection--sub-sub-link{% if sub_sub_link.active %} active{% endif %}">
-                                                <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
-                                            </li>
-
-                                        {% endfor %}
-                                   </ul>
+                                <li class="collection--sub-link{% if sub_link.active %} active{% endif %}">
+                                    <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
                                 </li>
-                            </ul>
 
-                        {% endcapture %}
+                            {% else %}
 
-                    {% endif %}
+                                {% comment %} Construct the Featured Nav here {% endcomment %}
 
-                {% endfor %}
+                                {% capture featured_nav %}
 
-            </ul>
-            
-        </li>
+                                    <ul id="collection--featured-nav" class="sidebar-nav collection--sidebar-nav">
+                                        <li>
+                                        <h3>{{ sub_link.title | remove_first: '_' }}</h3> 
 
-        {% endif %}
+                                        <ul id="collection--featured-subnav">
+                                                {% for sub_sub_link in sub_link.links %}
 
-    {% endfor %}
+                                                    <li class="collection--sub-sub-link{% if sub_sub_link.active %} active{% endif %}">
+                                                        <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                                    </li>
 
-</ul>
+                                                {% endfor %}
+                                        </ul>
+                                        </li>
+                                    </ul>
 
-{{ featured_nav }}
+                                {% endcapture %}
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </ul>
+                    
+                </li>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </ul>
+
+        {{ featured_nav }}
+
+    </div>
+
+</div>
