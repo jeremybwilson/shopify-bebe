@@ -1,84 +1,108 @@
 <div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-template">
+
+  <div class="row">
+
+    {% comment %} :: COLLECTION SIDEBAR :: {% endcomment %}
+    <div id="collection--sidebar" class="desktop-2">
+
+      {% include 'collection-nav' %}
+
+      <h3>Filter By</h3>
+
+      <div id="bc-sf-filter-tree" class="filter-list-desktop" style="display: block !important"></div>
+      
+    </div><!--#collection--sidebar-->
+
+    {% comment %} :: COLLECTION MAIN :: {% endcomment %}
+    <div id="collection--main" class="desktop-10">
+
+      <h1 class="collection--title">
+        {{ collection.title }}
+      </h1>
+
+      {% if settings.breadcrumb %}
+        {% include 'breadcrumb' %}
+      {% endif %}
+
   
-  {% case section.settings.grid %}
-  {% when '2' or 2 %}
-  {%- assign grid_item_width = 'desktop-6 tablet-3 mobile-half' -%}
-  {% when '3' or 3 %}
-  {%- assign grid_item_width = 'desktop-4 tablet-2 mobile-half' -%}
-  {% when '4' or 4 %}
-  {%- assign grid_item_width = 'desktop-3 tablet-2 mobile-half' -%}
-  {% endcase %} 
+      {% case section.settings.grid %}
+        {% when '2' or 2 %}
+        {%- assign grid_item_width = 'desktop-6 tablet-3 mobile-half' -%}
+        {% when '3' or 3 %}
+        {%- assign grid_item_width = 'desktop-4 tablet-2 mobile-half' -%}
+        {% when '4' or 4 %}
+        {%- assign grid_item_width = 'desktop-3 tablet-2 mobile-half' -%}
+      {% endcase %} 
 
-  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}   
-  {% paginate collection.products by product_limit %}
+      {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}   
 
-    {% comment %} :: DESCRIPTION - HIDE FOR NOW :: 
-      <div id="collection-description" class="desktop-12 mobile-3">
-        <h1 id="bc-sf-filter-collection-header">{{ collection.title }}</h1>
-        <div class="rte" id="bc-sf-filter-collection-description">{{ collection.description | remove: "[banner]" }}</div> 
-      </div>
-    {% endcomment %}
+      {% paginate collection.products by product_limit %}
 
-
-    {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
-    <div id="full-width-filter" class="filter-wrap-desktop">
-      <h4 class="filter-label">FILTER</h4>
-      <div id="bc-sf-filter-tree-h" class="filter-list-desktop"></div>
-      <ul id="sortme" class="sort-options animate25">
-        {% if section.settings.sort_by %} 
-          <li id="bc-sf-filter-top-sorting" class="clearfix filter"></li>
-        {% endif %}
-      </ul>
-    </div>
-    
-
-
-    {% comment %} :: FILTER - Mobile Component :: {% endcomment %}
-    <div id="filter-list-mobile-wrap">
-      <div id="filter-list-button-wrap">
-        
-        {% comment %} FILTER BUTTON {% endcomment %}
-        <div id="filter-button-mobile">
-          <div id="bc-sf-filter-tree-mobile"></div>
-          <div id="filter-button-arrow"></div>
-        </div>
-      </div>
-
-      {% comment %} FILTERS LIST {% endcomment %}
-      <div id="bc-sf-filter-tree"></div>
-    </div>
-    
-
-
-    {% comment %} :: PRODUCT LIST :: {% endcomment %}
-    <div id="product-loop" data-bc-sort="{{ collection.sort_by }}">
-      {% comment %} :: ORIGINAL TEMPLATE TRIGGER (bc-sf-filter.js Overwrites this) :: 
-
-      {% assign products-per-row = section.settings.products-per-row %}
-        {% if collection.image %}
-          <div class="product-index {{ grid_item_width }}" data-alpha="{{ collection.title }}">     
-            {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}     
-          </div>  
-        {% endif %}
-
-        {% for product in collection.products %}
-          <div class="product-index {{ grid_item_width }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">     
-            {% include 'product-listing' %}
+        {% comment %} :: DESCRIPTION - HIDE FOR NOW :: 
+          <div id="collection-description" class="desktop-12 mobile-3">
+            <h1 id="bc-sf-filter-collection-header">{{ collection.title }}</h1>
+            <div class="rte" id="bc-sf-filter-collection-description">{{ collection.description | remove: "[banner]" }}</div> 
           </div>
-        {% endfor %}
+        {% endcomment %}
 
-      {% endcomment %}
-    </div>
+        {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
+        <div id="full-width-filter" class="filter-wrap-desktop">
+            <ul id="sortme" class="sort-options animate25">
+            {% if section.settings.sort_by %} 
+              <li id="bc-sf-filter-top-sorting" class="clearfix filter"></li>
+            {% endif %}
+          </ul>
+        </div>
+      
+        {% comment %} :: FILTER - Mobile Component :: {% endcomment %}
+        <div id="filter-list-mobile-wrap">
+          <div id="filter-list-button-wrap">
+            
+            {% comment %} FILTER BUTTON {% endcomment %}
+            <div id="filter-button-mobile">
+              <div id="bc-sf-filter-tree-mobile"></div>
+              <div id="filter-button-arrow"></div>
+            </div>
+          </div>
+
+          {% comment %} FILTERS LIST {% endcomment %}
+          {% comment %} <div id="bc-sf-filter-tree"></div> {% endcomment %}
+        </div>
+      
+
+        {% comment %} :: PRODUCT LIST :: {% endcomment %}
+        <div id="product-loop" data-bc-sort="{{ collection.sort_by }}">
+          {% comment %} :: ORIGINAL TEMPLATE TRIGGER (bc-sf-filter.js Overwrites this) :: 
+
+          {% assign products-per-row = section.settings.products-per-row %}
+            {% if collection.image %}
+              <div class="product-index {{ grid_item_width }}" data-alpha="{{ collection.title }}">     
+                {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}     
+              </div>  
+            {% endif %}
+
+            {% for product in collection.products %}
+              <div class="product-index {{ grid_item_width }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">     
+                {% include 'product-listing' %}
+              </div>
+            {% endfor %}
+
+          {% endcomment %}
+        </div>
 
 
-    {% comment %} :: PAGINATION :: {% endcomment %}
-    <div id="pagination" class="desktop-12 tablet-6 mobile-3">
-      <div id="bc-sf-filter-bottom-pagination"></div>
-    </div>
-  	<div id="bc-sf-filter-load-more"></div>
+        {% comment %} :: PAGINATION :: {% endcomment %}
+        <div id="pagination" class="desktop-12 tablet-6 mobile-3">
+          <div id="bc-sf-filter-bottom-pagination"></div>
+        </div>
+        <div id="bc-sf-filter-load-more"></div>
 
-  {% endpaginate %}
-</div>
+      {% endpaginate %}
+    </div><!--#collection-main-->
+
+  </div><!--.row-->
+
+</div><!--.collection-template-->
 
 
 

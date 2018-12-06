@@ -52,7 +52,7 @@
     "filter_button_main_text": "#fefffe",
     "filter_button_alt_bg": "#ffffff",
     "filter_button_alt_text": "#9d6d31",
-    "filter_bar_border_color": "#333333",
+    "filter_bar_border_color": "rgba(0,0,0,0)",
     "quickview_button_bg": "#b7b7b7",
     "quickview_button_text": "#747474",
     "catalog_item_text_color": "#000000",

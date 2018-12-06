@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+*, :after, :before {
+  box-sizing: border-box
+}
+
+
 // note: use @include fontSize(__px) to indicate all font sizes.
 html { 
   font-size: 16px;
@@ -9,6 +14,12 @@ html {
 html, body {
   height: 100%;
 }
+
+/* 
+  Grid
+  ----------
+================================================== */
+@import url('./global/global-grid.scss.liquid');
 
 /* 
   Typography
@@ -45,7 +56,7 @@ body > .page-wrap {
 
 // Page Background (Design wanted a gradient stylization)
 #PageContainer {
-  @include bgGradient;
+  //@include bgGradient;
 }
 
 #content {
@@ -66,14 +77,12 @@ body > .page-wrap {
 
 // Breadcrumbs 
 #breadcrumb {
-  @include h8;
-  @include fontSize( 16px );
-  position: relative;
-  top: 57px;
-  left: 0;
+  @include fontDim( 10px, 10px, .04em );
+  color: $color--accent-1;
+  text-transform: uppercase;
+
   margin: 0 auto;
   padding-left: 20px;
-  z-index: 30;
 
   @include mq( 'phone' ) {
     width: 100vw;
@@ -88,21 +97,12 @@ body > .page-wrap {
   }
 
   a {
-    color: $color--gray-2;
-    text-transform: capitalize;
-    text-decoration: none;
+    color: $color--accent-1;
   }
 
-  .separator {
-    color: $color--gray-2;
-  }
+  .separator {}
 
-  .page-title {
-    @include h7;
-
-    color: $color--text-1;
-    font-weight: $font-weight--bold;
-  }
+  .page-title {}
 }
 
 

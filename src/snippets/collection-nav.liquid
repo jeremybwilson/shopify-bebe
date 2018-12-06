@@ -1,0 +1,81 @@
+{% assign main_nav = 'main-menu' %}
+
+{% comment %} 
+    FEATURED NAVS
+
+    - These are embedded inside the main subcats.
+    - Their link titles are preceded with "_": "_Featured". This hides them from the main nav and displays them in their own nav below.
+    - Only one Featured Nav per subcat (for now).
+
+ {% endcomment %}
+
+{% assign featured_nav = '' %}
+
+{% assign menu = linklists[main_nav] %}
+
+<ul id="collection--nav" class="sidebar-nav collection--sidebar-nav">
+    {% for link in menu.links %}
+
+        {% comment %} HEADER {% endcomment %}
+        {% comment %} Only pull the active nav item {% endcomment %}
+
+        {% if link.active %}
+
+        <li class="nav-link">
+            <h3>{{ link.title }}</h3>
+
+            <ul id="collection--subnav">
+
+                {% comment %} SUB-LINKS {% endcomment %}
+
+                {% for sub_link in link.links %}
+
+                    {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+
+                    {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
+
+                    {% if hidden_nav_check != '_' %}
+
+                        <li class="collection--sub-link{% if sub_link.active %} active{% endif %}">
+                            <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                        </li>
+
+                    {% else %}
+
+                        {% comment %} Construct the Featured Nav here {% endcomment %}
+
+                        {% capture featured_nav %}
+
+                            <ul id="collection--featured-nav" class="sidebar-nav collection--sidebar-nav">
+                                <li>
+                                   <h3>{{ sub_link.title | remove_first: '_' }}</h3> 
+
+                                   <ul id="collection--featured-subnav">
+                                        {% for sub_sub_link in sub_link.links %}
+
+                                            <li class="collection--sub-sub-link{% if sub_sub_link.active %} active{% endif %}">
+                                                <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                            </li>
+
+                                        {% endfor %}
+                                   </ul>
+                                </li>
+                            </ul>
+
+                        {% endcapture %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </ul>
+            
+        </li>
+
+        {% endif %}
+
+    {% endfor %}
+
+</ul>
+
+{{ featured_nav }}

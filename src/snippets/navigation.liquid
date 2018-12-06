@@ -40,42 +40,50 @@
 
                       {% comment %} :: SUB-NAV - LINKS :: {% endcomment %}
                       {% for sub_link in link.links %}
-                        <li class="nav-sub-item  {{ sub_link.title | replace: ' ', '-' | downcase }} {{ column_width }}">
-                          <h5 class="nav-sub-header"><a href="{{ sub_link.url }}">{{ sub_link.title }}</a></h4>
-                          
-                          {% if sub_link.links != blank %}
-                            <ul class="mega-stack">
-                              {% for sub_sub_link in sub_link.links %}
-                                {% comment %} 
-                                  HEADINGS : Account for..
-                                    1. '-' (Entry in menu means make a gap)
-                                    2. 'SUB-HEADER_Somethin' (A Nested Sub-Header in the "sub-sub" list)
-                                    3. Regular Sub-Sub-List links
-                                {% endcomment %}
+                        {% assign hidden_nav_check = sub_link.title | slice: 0 %}
 
-                                {% comment %} :: #1 - Space Entry :: {% endcomment %}
-                                {% if sub_sub_link.title == '-' %}
-                                  <li class="nav-list-space"></li>
+                        {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
 
-                                {% comment %} :: #2 - Nested Sub-Sub Header :: {% endcomment %}
-                                {% elsif sub_sub_link.title contains 'SUB-HEADER_' %}  
-                                  <h5 class="nav-sub-header inline-sub-header {{ sub_sub_link.title | replace: ' ', '-' | downcase }}">
-                                    <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title | replace:  'SUB-HEADER_', '' }}</a>
-                                  </h5>
+                        {% if hidden_nav_check != '_' %}
 
-                                {% comment %} :: #3 - Regular Sub-Sub Link (notice 'Shop All' Case in this also) :: {% endcomment %}
-                                {% else %}
-                                  <li class="nav-sub-sub-item {{ sub_sub_link.title | replace: ' ', '-' | downcase }}">
+                          <li class="nav-sub-item  {{ sub_link.title | replace: ' ', '-' | downcase }} {{ column_width }}">
+                            <h5 class="nav-sub-header"><a href="{{ sub_link.url }}">{{ sub_link.title }}</a></h4>
+                            
+                            {% if sub_link.links != blank %}
+                              <ul class="mega-stack">
+                                {% for sub_sub_link in sub_link.links %}
+                                  {% comment %} 
+                                    HEADINGS : Account for..
+                                      1. '-' (Entry in menu means make a gap)
+                                      2. 'SUB-HEADER_Somethin' (A Nested Sub-Header in the "sub-sub" list)
+                                      3. Regular Sub-Sub-List links
+                                  {% endcomment %}
 
-                                    <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
-                                  </li>
-                                {% endif %} 
+                                  {% comment %} :: #1 - Space Entry :: {% endcomment %}
+                                  {% if sub_sub_link.title == '-' %}
+                                    <li class="nav-list-space"></li>
 
-                              {% endfor %}
-                            </ul>
-                          {% endif %}
+                                  {% comment %} :: #2 - Nested Sub-Sub Header :: {% endcomment %}
+                                  {% elsif sub_sub_link.title contains 'SUB-HEADER_' %}  
+                                    <h5 class="nav-sub-header inline-sub-header {{ sub_sub_link.title | replace: ' ', '-' | downcase }}">
+                                      <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title | replace:  'SUB-HEADER_', '' }}</a>
+                                    </h5>
 
-                        </li>
+                                  {% comment %} :: #3 - Regular Sub-Sub Link (notice 'Shop All' Case in this also) :: {% endcomment %}
+                                  {% else %}
+                                    <li class="nav-sub-sub-item {{ sub_sub_link.title | replace: ' ', '-' | downcase }}">
+
+                                      <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                    </li>
+                                  {% endif %} 
+
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+
+                          </li>
+
+                        {% endif %}
                       {% endfor %}
                     </span>
 
