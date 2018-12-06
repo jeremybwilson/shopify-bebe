@@ -96,7 +96,7 @@
         <div id="example-global-react" data-info-passed-to-react='{ "name": "greg" }'></div>
       {% endcomment %}
 
-
+      
       {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
       {% if template contains 'collection' %}
         {% if collection.description contains '[banner]' %}
@@ -117,10 +117,10 @@
       {% else %}
 
         {% comment %} :: BREADCRUMBS :: {% endcomment %}
-        {% if template != 'index' or template != 'collection' %}
-          {% if settings.breadcrumb %}
+        {% if settings.breadcrumb %}
+          {% unless template contains 'index' or template contains 'collection' %}
             {% include 'breadcrumb' %}
-          {% endif %}
+          {% endunless %}
         {% endif %}
 
         {% comment %} :: PAGE CONTENT :: {% endcomment %}
@@ -129,19 +129,12 @@
           {{ content_for_layout }}
         </div>
 
-        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
-          {% if collection.description != blank %}
-            {% include 'collection-seo-block' %}
-          {% endif %}
-        {% endif %}
-
-      {% endif %}
+      {% endif %} 
       {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
     </div>  <!-- close the page-wrap class -->
 
-    {% comment %} :: Moved Social Media Icons out of Newletter section and into Footer - Disabling newsletter section here :: {% endcomment %}
-    {% comment %} {% section 'newsletter' %} {% endcomment %}
+    
+    {% section 'newsletter' %}
     {% section 'footer' %}
   </div> <!-- close the shifter-page class -->
 

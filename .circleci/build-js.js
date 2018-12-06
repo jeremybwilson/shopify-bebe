@@ -1,5 +1,9 @@
 'use strict';
 
+// TO DISABLE MINIFICATION:
+//  -> Change 'minifyBuild' below to false
+var minifyBuild = true;
+
 var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var babel = require('gulp-babel');
@@ -16,10 +20,10 @@ function processThemeJs() {
   messages.logProcessFiles('build:js');
   return gulp.src([config.roots.js, '!' + config.roots.vendorJs])
   .pipe(plumber(utils.errorHandler))
-  .pipe(babel({presets:['env','react']}))
+  .pipe(babel({presets:['env','react'], "compact": minifyBuild}))
   .pipe(include())
   .pipe(browserify({transform: ['reactify']}))
-  .pipe(babel({presets:['env','react']})) //Compiles the js from imported react components
+  .pipe(babel({presets:['env','react'], "compact": minifyBuild})) //Compiles the js from imported react components
   .pipe(gulp.dest(config.dist.assets));
 }
 
@@ -29,8 +33,8 @@ function processVendorJs() {
     .pipe(plumber(utils.errorHandler))
     .pipe(include())
     .pipe(uglify({
-      mangle: true,
-      compress: true,
+      mangle: minifyBuild,
+      compress: minifyBuild,
       preserveComments: 'license'
     }))
     .pipe(gulp.dest(config.dist.assets));

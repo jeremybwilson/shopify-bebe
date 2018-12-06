@@ -249,6 +249,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
         left: 0;
         top: 0;
         height: 100%;
+        margin-left: 0;
 
         // Mobile styles
         width: 50%;
@@ -281,7 +282,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
             .sort-label {
                 @include inline-flex;
                 text-transform: uppercase;
-                color: $filterTextColor;
+                color: $color--primary-1;
 
                 &:after {
                     position: absolute;
@@ -290,7 +291,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                     border-bottom: none;
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;
-                    border-top: 8px solid $filterArrowColor;
+                    border-top: 5px solid $filterArrowColor;
                     transition: all 0.25s ease-in-out;
                     margin-top: -5px;
                     content: ' ';
@@ -316,7 +317,9 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 left: 0;
                 top: 0;
 
-                font-family: $font-stack--default;
+                background: none;
+
+                //font-family: $font-stack--default;
                 font-weight: $font-weight--medium;
                 text-transform: uppercase;
                 color: $filterTextColor;
@@ -402,6 +405,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
  *    Filter layout and setup on Mobile
  * ---------------------------------------------- */
 #filter-list-mobile-wrap {
+    position: relative;
 
     // FILTER : BUTTON - MOBILE : Filter open button for mobile sizes
     #filter-list-button-wrap {
@@ -637,39 +641,133 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
     }
 }
 
-
-
 /* FILTERS : GLOBAL (All Resolutions)
  *    Congruent styles, Iconography, etc.
  * ---------------------------------------------- */
-// FILTER CHECKBOX MARK : Mark that appears when selecting filters
-.bc-sf-filter-block-content ul li input[type=checkbox]+a.selected>span:first-child {
-    &:before,
-    &:after {
-        position: absolute;
-        display: block;
-        content: '';
-        top: 7px;
-        right: -1px;
-        width: 16px;
-        height: 1px;
-        background: $filterArrowColor;
-    }
 
-    &:before {
-        transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-    }
+#bc-sf-filter-tree {
 
-    &:after {
-        transform: rotate(-45deg);
-        -moz-transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-        -o-transform: rotate(-45deg);
+    // FILTER : Options
+    .bc-sf-filter-option-block {
+        border-top: none;
+
+        .bc-sf-filter-block-title {
+            position: relative;
+            border-bottom: solid 1px $color--field-1;
+        
+            h3 {
+                span {       
+                    &:before {
+                        // plus and minus
+                        content: '-';
+                        position: absolute;
+                        right: 0;
+                        border: none;
+
+                        font-size: 20px;
+                        font-weight: $font-weight--book;
+                    }
+
+                    &.up:before {
+                        content: '+';
+                    }
+                }
+            }
+        }        
+
+        .bc-sf-filter-block-content {
+
+            // OPTIONS :: Checkbox (Default)
+
+            ul {
+                li {
+                    input[type=checkbox] {
+
+                        & + a {
+                            padding-left: 15px;
+
+                            & > span {
+
+                                // Checkbox
+                                &:first-child {
+                                    top: auto;
+                                    bottom: 8px;
+                                    width: 6px;
+                                    height: 6px;
+                                    box-shadow: 0 0 0 1px $color--primary-1;
+                                }
+                            }
+                            // Checkbox Mark
+                            &.selected  > span {
+                                &:first-child {
+                                    &:before,
+                                    &:after {
+                                        position: absolute;
+                                        display: block;
+                                        content: '';
+                                        top: 3px;
+                                        right: -1px;
+                                        width: 8px;
+                                        height: 1px;
+                                        background: $filterArrowColor;
+                                    }
+                                
+                                    &:before {
+                                        transform: rotate(45deg);
+                                        -moz-transform: rotate(45deg);
+                                        -webkit-transform: rotate(45deg);
+                                        -o-transform: rotate(45deg);
+                                    }
+                                
+                                    &:after {
+                                        transform: rotate(-45deg);
+                                        -moz-transform: rotate(-45deg);
+                                        -webkit-transform: rotate(-45deg);
+                                        -o-transform: rotate(-45deg);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // OPTIONS :: Swatches
+
+            .bc-sf-filter-option-swatch {
+
+                li {
+                    a {
+                        .bc-sf-filter-option-swatch-image {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+
+            // OPTIONS :: Range Slider
+
+            .bc-sf-filter-option-range-slider {
+                width: 85%;
+            }
+            .noUi-connect { // active range - background color
+                background: $color--field-1;
+            }
+            .noUi-horizontal { // slider handles
+                .noUi-origin {
+                    .noUi-handle {
+                        border: solid 2px $color--field-1;
+
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
     }
 }
+
+
 
 // FILTER COUNT : # that goes next to the filter header
 .bc-sf-filter-block-title span {
