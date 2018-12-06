@@ -2426,7 +2426,6 @@ theme.ProductGallery = function (context, events) {
   (function product_video() {
 
     var $video_thumbnail = $('.product-video-thumbnail', context);
-
     if ( !$video_thumbnail.length ) {
       return false;
     }
@@ -2436,18 +2435,16 @@ theme.ProductGallery = function (context, events) {
         video_play,
         video_pause;
 
+    //  INIT : Vimeo Setup
     (function vimeo_player() {
 
       var $vimeo_thumbnail = $('.vimeo-thumbnail');
-
       if ( !$vimeo_thumbnail.length ) {
         return false;
       }
-
       video_type = 'vimeo';
 
       /* Because Vimeo doesn't just allow for thumbnail URLs, we'll need to pull it from its API */
-
       var vimeo_id = $vimeo_thumbnail.data('src');
 
       $.ajax({
@@ -2464,28 +2461,24 @@ theme.ProductGallery = function (context, events) {
       });
 
       /* Call vimeo */
-
       var Vimeo = require('@vimeo/player');  
       var options = {
         id: vimeo_id,
         width: 850
       }
       video_player = new Vimeo('product-video--vimeo', options);
-
     })(); 
 
+    // INIT : Youtube Setup
     (function youtube_player() {
 
       var $youtube_thumbnail = $('.youtube-thumbnail'); 
-
       if ( !$youtube_thumbnail.length ) {
         return false;
       }
 
       video_type = 'youtube';
-
       var youtube_id = $('#product-video--youtube').data('src');
-
       var YouTubeIframeLoader = require('youtube-iframe');
 
       YouTubeIframeLoader.load(function(YT) {
@@ -2508,11 +2501,9 @@ theme.ProductGallery = function (context, events) {
 
     function video_controls(id) {
       if ( typeof video_player !== 'undefined' ) {
-
         if ( id == 'video_thumbnail_id' ) {
 
           /* PLAY */
-
           if ( video_type == 'vimeo' ) {
             video_player.play();
           } else if ( video_type == 'youtube' ) {
@@ -2520,8 +2511,8 @@ theme.ProductGallery = function (context, events) {
           }
 
         } else {
-          /* pause */
 
+          /* PAUSE */
           if ( video_type == 'vimeo' ) {
             video_player.pause();
           } else if ( video_type == 'youtube' ) {
@@ -2664,7 +2655,6 @@ theme.ProductGallery = function (context, events) {
   (function thumbnail_slider() {
 
     var initThumbSlider = function(prodSlideshow) {
-
       var slider_type = $('#thumbnail-gallery').attr("data-slider-type");
       var $slideshow = $(prodSlideshow);
 
@@ -2680,14 +2670,27 @@ theme.ProductGallery = function (context, events) {
           responsive: true,
           addClassActive: false
         });
+
       } else {
         $slideshow.slick({
+          arrows: true,
+          infinite: false,
+          nextArrow: '<button type="button" class="slick-next"><div class="bar-left"></div><div class="bar-right"></div></button>',
+          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"></div><div class="bar-right"></div></button>',
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          slide: '.product-thumbnail',
           vertical: true,
-          arrows: false,
           verticalSwiping: true,
-          slidesToShow: 7,
-          slidesToScroll: 1,
-          slide: '.product-thumbnail'
+          responsive: [
+            {
+              breakpoint: 1024, //slickslider does responsive backwards... this means 1023 and BELOW...
+              settings: {
+                slidesToShow: 7,
+                slidesToScroll: 7
+              }
+            }
+          ]
         });
       }
 
