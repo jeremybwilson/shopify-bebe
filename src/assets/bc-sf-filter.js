@@ -28,14 +28,14 @@ var bcSfFilterTemplate = {
                                 '</div>' +
 
                                 '<div class="product-info">' +
-                                    '{{itemSwatch}}' +
+                                    '{{itemQuickview}}' +
                                     '<a class="product-title-wrap" href="{{itemUrl}}"> ' +
                                         '{{itemVendor}}' +
                                         '<h3 class="product-title">{{itemTitle}}</h3>' +
                                     '</a>' +
                                     '<div class="product-price-wrap">{{itemPrice}}</div>' +
+                                    '{{itemSwatch}}' +
                                 '</div>' +
-                                '{{itemQuickview}}' +
                             '</div>',
 
     // Badge Template
@@ -197,8 +197,12 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
                     variantImgUrl = this.optimizeImage(data['images'][imageIndex]['src']);
                 }
 
+                // PRODUCT SKU
+                var productSku = data.selected_or_first_available_variant.sku.split('-');
+                productSku = productSku[0];
+
                 // SWATCH IMAGE : Build swatch image, fallback to color setting in case that fails
-                var swatchImgUrl = bcSfFilterConfig.general.file_url.replace('swatch_url_source_do_not_remove.png', 'swatch_' + this.slugify(option['title']) + '.png');
+                var swatchImgUrl = bcSfFilterConfig.general.swatch_replace_url.replace('swatch_url_source_do_not_remove.png', 'swatch-' + productSku + '-' + this.slugify(option['title']) + '.jpg');
 
                 // SWATCH OBJ: Single swatch object for manifest
                 var colorValueName = this.slugify( option['title'] );

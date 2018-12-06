@@ -11,22 +11,20 @@ $loadMoreTextColor: {{ settings.collection_load_more_text }};
 $loadMoreBg: {{ settings.collection_load_more_bg }};
 $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
 
-
-
-
-
-
-
-
-
 // CATALOG : Wrapper to the catalog items
 #product-loop {
     position: relative;
-    padding-top: 40px;
     //width: 110%; //Design has this wider than page edges, but the max-width will prevent page bound breakage
     left: 50%;
     transform: translateX( -50% );
     max-width: 99vw; // Prevent breaking viewport bounds
+
+    // ITEM 
+    .product-index {
+        padding-left: 6px;
+        padding-right: 6px;
+        text-align: center;
+    }
 
     // IMAGE : Product Image containment and layers
     .prod-container {
@@ -46,7 +44,7 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
         }
 
         @include mq( 'desk-and-up' ) {
-            height: 370px;
+            height: 432px;
         }
 
         // IMAGE WRAPPER - OUTER : Extra layers to power some of UI features
@@ -61,7 +59,9 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
                 height: 100%;
 
                 img {
-                    max-height: 100%;
+                    display: block;
+                    //max-height: 100%;
+                    margin: 0 auto;
                 }
             }
         }
@@ -69,14 +69,26 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
 
     // QUICKVIEW BUTTON : Button to show the quickview
     .product-index {
+        .product-info {
+            position: relative;
+            text-align: {{ settings.details_align }};
+        }
+        
         .product-modal {
-            @include h7;
-            @include fontSize( 16px );
+            position: absolute;
+            top: -50px;
+            left: auto;
+            right: 8px;
+            width: 43px;
+            height: 40px;
+            padding: 9px 0;
+            box-sizing: border-box;
+            border-radius: 0;
             background: $quickviewBtnBg;
             color: $quickviewBtnText;
+            @include fontDim( 9px, 11px, 0em );
+            font-family: $font-stack--heading;
             opacity: 0;
-            border-radius: 0;
-            transition: opacity 0.25s ease-in-out;
         }
 
         @include mq( 'lap-and-up' ) {
@@ -94,15 +106,21 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
         text-decoration: none;
 
         .product-title {
-            @include h6;
             @include fontSize( 14px );
-            letter-spacing: 0.1em;
             color: $catalogItemTextColor;
-            text-transform: uppercase;
+            font-weight: $font-weight--book;
+            line-height: 1.2em;
 
             @include mq( 'lap-and-up' ) {
-                @include fontSize( 16px );
+                @include fontSize( 15px );
             }
+
+        }
+    }
+
+    .product-index:hover .product-title {
+        @include mq( 'lap-and-up' ) {
+            color: $color--accent-1;
         }
     }
 
