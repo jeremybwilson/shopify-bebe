@@ -3,18 +3,16 @@
   <div class="row">
 
     {% comment %} :: COLLECTION SIDEBAR :: {% endcomment %}
-    <div id="collection--sidebar" class="desktop-2">
+    <div id="collection--sidebar" class="mobile-3 desktop-2">
 
       {% include 'collection-nav' %}
-
-      <h3>Filter By</h3>
 
       <div id="bc-sf-filter-tree" class="filter-list-desktop" style="display: block !important"></div>
       
     </div><!--#collection--sidebar-->
 
     {% comment %} :: COLLECTION MAIN :: {% endcomment %}
-    <div id="collection--main" class="desktop-10">
+    <div id="collection--main" class="mobile-3 desktop-10">
 
       <h1 class="collection--title">
         {{ collection.title }}
@@ -98,6 +96,14 @@
         <div id="bc-sf-filter-load-more"></div>
 
       {% endpaginate %}
+
+      {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
+      {% if settings.show_collection_seo_block == true %}
+        {% if collection.description != blank %}
+          {% include 'collection-seo-block' %}
+        {% endif %}
+      {% endif %}
+
     </div><!--#collection-main-->
 
   </div><!--.row-->

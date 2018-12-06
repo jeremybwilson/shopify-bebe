@@ -117,10 +117,10 @@
       {% else %}
 
         {% comment %} :: BREADCRUMBS :: {% endcomment %}
-        {% if template != 'index' or template != 'collection' %}
-          {% if settings.breadcrumb %}
+        {% if settings.breadcrumb %}
+          {% unless template contains 'index' or template contains 'collection' %}
             {% include 'breadcrumb' %}
-          {% endif %}
+          {% endunless %}
         {% endif %}
 
         {% comment %} :: PAGE CONTENT :: {% endcomment %}
@@ -128,13 +128,6 @@
         <div id="content" {% if template !='product' %}class="row"{% endif %} />
           {{ content_for_layout }}
         </div>
-
-        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
-          {% if collection.description != blank %}
-            {% include 'collection-seo-block' %}
-          {% endif %}
-        {% endif %}
 
       {% endif %} 
       {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
