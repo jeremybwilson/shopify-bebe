@@ -5,8 +5,7 @@
 
 .site-footer {
   background: {{ settings.footer_background }};
-  //  font-family: {{ settings.footer_font_family }};
-  font-family: Verdana, sans-serif;
+  color: gray;
   padding: 0 0 39px;
 
   @include mq('tablet-and-up') {
@@ -16,6 +15,7 @@
   // repeating elements
 
   .row {
+
     width: 100%;
 
     @include mq('tablet-and-up') {
@@ -42,7 +42,7 @@
     margin: 0 10px;
 
     @include mq('tablet-and-up') {
-      margin: 0 18px;
+      margin: 0 5px;
     }
   }
   button, input, select {
@@ -70,289 +70,381 @@
     margin-top: 28px;
   }
 
+  input[type="email"] {
+    width: 100%;
+    height: 46px;
+    margin-bottom: 0;
+    padding: 15px 68px 15px 20px;
+    border: 1px solid black;
+    border-radius: 0;
+
+    @include mq('tablet-and-up') {
+      height: 46px;
+      padding: 20px 68px 20px 20px;
+      @include fontSize(16px);
+      line-height: 16px;
+    }
+  }
+
   .email-text {
     @include fontSize(14px);
-    // font-size: 0.875rem;
-    margin-bottom: 11px;
+    @include flex-wrap(wrap);
+    margin: 0 auto;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    @include mq('phone') {
-      @include flex-wrap(wrap);
-      margin: 0 auto;
-      width: 90%;
-    }
-
-
-    @include mq('phone') {
-      .foot-sub-emailtext, .foot-sub-emailform {
-        display: block;
-        width: 100%;
-      }
+    @include mq('tablet-and-up') {
+      width: 95%;
+      margin-bottom: 11px;
     }
 
     .foot-sub-emailtext {
-      span {
-        letter-spacing: 1px;
+      @include flexbox;
+      width: 100%;
+
+      h3.newsletter-subheading {
+        @include fontSize(16px);
+        @include justify-content(flex-start);
+        @include align-items(flex-start);
         font-weight: $font-weight--bold;
-        margin-right: 5px;
-      }
-      @include mq('phone'){
-
-      }
-    }
-
-    #emailOrMobileNumber {
-      border-radius: 0;
-      display: inline-block;
-      @include fontSize(14px);
-      margin: 0;
-
-      @include mq('phone') {
-        margin-bottom: 5px;
-      }
-    }
-
-    input[type="text"] {
-      border: 1px solid #b2b2b2;
-      border-radius: 0px;
-      color: #000000;
-      height: 29px;
-      line-height: 40px;
-      letter-spacing: 3px;
-      padding: 6px;
-      text-indent: 0;
-      width: 300px;
-
-      @include mq('phone') {
+        letter-spacing: 1px;
+        margin: 10px 0;
         width: 100%;
+
+        @include mq('tablet-and up') {
+          @include justify-content(center);
+        }
+      }
+    }
+
+    .foot-sub-emailform {
+      margin-bottom: 25px;
+      // width: 100%;
+
+      @include mq('tablet-and-up') {
+        @include flexbox;
       }
 
-    }
+      form#footer-newsletter {
+        border: 0;
+        margin-bottom: 0;
+        width: 100%;
 
-    #submitEmailOrMobile {
-      color: $color--white;
-      font-weight: $font-weight--book;
-      margin-left: 10px;
-      padding: 4px 15px;
-    }
+        @include mq('tablet-and-up'){
+          @include justify-content(flex-start);
+          width: 90%;
+        }
 
-    .formButton {
-      @include fontSize(15px);
-      background-color: #000000;
-      border: 0;
-      display: inline-block;
-      letter-spacing: 1px;
-      line-height: 1.625em;
-      overflow: visible;
-      padding: 4px 15px;
-      -webkit-appearance: none;
-      -webkit-border-radius: 0;
-      border-radius: 0;
+        input.subscribe-form {
+          @include flexbox;
+          @include justify-content(flex-start);
+          width: 70%;
 
-      @include mq('phone') {
+          @include mq('tablet-and-up'){
+            @include justify-content(flex-start);
+          }
+        }
 
+        #button-footer-newsletter-submit {
+          @include flexbox;
+          @include justify-content(flex-start);
+          @include fontSize(15px);
+          background-color: #000000;
+          border: 0;
+          border-radius: 0;
+          color: $color--white;
+          font-weight: $font-weight--book;
+          height: 46px;
+          padding: 4px 15px;
+          margin-left: 0;
+          width: 30%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(center);
+          }
+
+          input[type="submit"] {
+            @include flexbox;
+            @include justify-content(center);
+            height: 46px;
+            margin-bottom: 0;
+            width: auto;
+          }
+        }
       }
     }
   }
 
   .foot-subfoot {
-    clear: both;
     @include fontSize(12px);
     font-weight: $font-weight--book;
     color: #989798;
     letter-spacing: 2px;
-    margin: 0 auto;
-    padding-bottom: 38px;
-    text-align: center;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+    width: 100%;
+    // margin: 0 auto;
+    // padding: 20px 0;
+    // text-align: center;
   }
 
   .subfoot-links {
-    // font-family: SourceSansProRegular, Arial, Helvetica, sans-serif;
     font-family: $font-stack--default;
-    padding-bottom: 10px;
-  }
+    margin-bottom: 10px;
 
-  .subfoot-links span {
-    font-family: Verdana, sans-serif;
-  }
+    .copyright {
+      @include flexbox;
+      @include justify-content(center);
 
-  .subfoot-links span.link-wrap {
-    font-size: .6rem;
-  }
-
-  .subfoot-links a.raf-footer {
-    margin: 0 5px;
-
-    @include mq('phone'){
-      margin: 0;
-    }
-  }
-
-  .raf-footer {
-    text-align: center;
-    border-bottom: 1px solid #000;
-    padding-bottom: 20px;
-    margin-bottom: 20px 0;
-    display: block;
-    color: #000;
-
-    span.raf-text {
-      display: inline-block;
-
-      span {
-        display: inline-block;
-
-        // @include mq('phone'){
-        //   @include flex-wrap(wrap);
-        //   // width: 100%;
-        // }
+      span.copyright-wrapper {
+        font-weight: $font-weight--bold;
+        color: $color--text-1;
       }
     }
 
-    @include mq('phone'){
-      span.fo-how {
-        display: block;
+    span {
+      .link-wrap {
+        @include fontSize(12px);
+        text-transform: uppercase;
+
+        @include mq('tablet-and-up') {
+          margin: 0 10px;
+          word-spacing: 2px;
+        }
       }
-    }
 
-    .raf-separator {
-      display: inline-block;
-      width: 1px;
-      background: black;
-      height: 17px;
-      margin: 0 13px;
-      vertical-align: middle;
-
-      @include mq('phone'){
+      .raf-footer {
+        margin: 0 5px;
+        text-align: center;
+        padding-bottom: 20px;
+        margin-bottom: 20px 0;
         display: none;
-      }
-    }
-  }
+        color: #000;
 
-  .copyright span {
-    font-weight: $font-weight--book;
-    font-size: .64rem;
-  }
-
-  .copyright-wrapper {
-    color: $color--text-1;
-  }
-}
-
-.footer-blocks {
-  width: 100%;
-  margin-top: 28px;
-}
-
-// SINGLE BLOCKS : Individual menu blocks (should only need one with nesting support, but left as an option)
-.footer-nav {
-  width: 100%;
-  // padding: 50px 45px 46px;
-  // border-bottom: solid 1px $color--accent-1;
-
-  @include mq('tablet-and-up') {
-    width: 100%;
-    border-bottom: none;
-  }
-
-  .section-title {
-    display: none;
-  }
-
-  nav {
-    background: transparent;
-    font-family: $font-stack--default;
-    @include fontSize(14px);
-    line-height: initial;
-    text-align: center;
-
-    @include mq('tablet-and-up') {
-      @include fontSize(14px);
-    }
-
-    ul {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      @include fontSize(14px);
-
-      @include mq('phone') {
-        @include flexbox;
-        @include flex-direction(column);
-        @include justify-content(flex-start);
-        @include align-items(flex-start);
-        margin-bottom: 0;
-
-        li {
-          position: relative;
-          width: 220px;
-          left: 50%;
-          transform: translateX( -50% );
+        @include mq('phone'){
+          margin: 0;
         }
 
-        // NESTED : Spacing for Nested Nav Sets when headers are turned on
-        .footer-sub-nav-wrapper:not( :first-child ) {
-          .nav-sub-header {
-            margin-top: 25px;
+        span.raf-text {
+          display: inline-block;
+          span {
+            display: inline-block;
           }
         }
-      }
 
-      @include mq('tablet-and-up') {
-        display: block;
-        margin: 0;
-
-        .footer-sub-nav-wrapper {
-          // position: relative;
-          width: 20%;
-          display: inline-block;
-          padding-top: 25px;
-          text-align: center;
+        @include mq('phone'){
+          span.fo-how {
+            display: block;
+          }
         }
 
-        h4.nav-sub-header {
-          font-weight: $font-weight--bold;
-          margin-bottom: 20px;
-          padding: 0;
-          width: 100%;
+        .raf-separator {
+          display: inline-block;
+          width: 1px;
+          background: black;
+          height: 17px;
+          margin: 0 13px;
+          vertical-align: middle;
 
           @include mq('phone'){
-            font-weight: $font-weight--bold;
+            display: none;
           }
         }
-
-        &.footer-sub-nav {
-          columns: 1;
-          list-style: none;
-        }
-
-        .footer-sub-nav li {
-          font-weight: $font-weight--book;
-        }
-      }
-    }
-
-    a {
-      display: inline-block;
-      padding: 0;
-      // padding: 7px 12px 7px 0;
-      color: $color--primary-1;
-
-      @include mq('phone'){
-        font-weight: $font-weight--book;
-      }
-
-      @include mq('tablet-and-up') {
-        display: inline-block;
-        // padding: 9.5px 12px 9.5px 0;
-      }
-      @include mq('lap-and-up') {
       }
     }
   }
+
+  .newsletter-footer {
+    padding: 10px 0;
+
+    .newsletter-wrapper {
+      width: 100%;
+
+      @include mq('tablet-and-up') {
+        padding: 0px;
+        background: transparent;
+        text-align: left;
+        width: 69%;
+      }
+    }
+  }
+
+  .social-wrapper {
+    background:transparent;
+    display:flex;
+    @include align-items(flex-start);
+    @include justify-content(center);
+    padding: 10px;
+    margin: 0;
+
+    @include mq('tablet-and-up'){
+      @include justify-content(flex-start);
+    }
+
+    .social-inner {
+      @include flexbox;
+      @include flex-wrap(wrap);
+
+      @include mq('tablet-and-up'){
+        @include justify-content(center);
+      }
+
+      .section-title {
+        @include flexbox;
+        @include justify-content(flex-start);
+        @include fontSize(16px);
+        width: 100%;
+
+        @include mq('tablet-and-up'){
+
+        }
+      }
+
+      .social-image img {
+        border: 0;
+        margin: 0;
+      }
+
+      ul#social-icons {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(space-evenly);
+        margin: 10px 0 0;
+        padding: 0;
+        width: 100%;
+
+        @include mq('tablet-and-up'){
+
+        }
+
+        li {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+
+  .footer-blocks {
+    width: 100%;
+
+    @include mq('tablet-and-up'){
+      margin-top: 28px;
+    }
+
+    // SINGLE BLOCKS : Individual menu blocks (should only need one with nesting support, but left as an option)
+    .footer-nav {
+      width: 100%;
+
+      @include mq('tablet-and-up') {
+        width: 100%;
+        border-bottom: none;
+      }
+
+      .section-title {
+        display: none;
+      }
+
+      nav {
+        background: transparent;
+        font-family: $font-stack--default;
+        @include fontSize(14px);
+        line-height: initial;
+        text-align: center;
+
+        @include mq('tablet-and-up') {
+          text-align: left;
+        }
+
+        ul {
+          @include flexbox;
+          justify-content: center;
+          align-items: center;
+          @include fontSize(14px);
+          margin: 0;
+
+          @include mq('phone') {
+            @include flex-direction(column);
+            @include justify-content(flex-start);
+            @include align-items(flex-start);
+          }
+
+          li.footer-sub-nav-wrapper {
+            // position: relative;
+            // width: 220px;
+            // left: 50%;
+            // transform: translateX( -50% );
+            @include flex-direction(column);
+            @include justify-content(center);
+            @include align-items(center);
+            margin: 0;
+            width: 100%;
+            border-top: 2px solid black;
+
+            @include mq('tablet-and-up') {
+              @include flexbox;
+              border-top: 0px;
+              padding-top: 25px;
+              width: 32%;
+            }
+
+            h4.nav-sub-header {
+              @include fontSize(16px);
+              font-weight: $font-weight--bold;
+              padding: 10px 0;
+
+              @include mq('tablet-and-up') {
+                width: 100%;
+              }
+            }
+
+            ul.footer-sub-nav {
+              display: none;
+              @include align-items(center);
+
+              @include mq('tablet-and-up'){
+                @include flexbox;
+                @include align-items(flex-start);
+                @include flex-direction(column);
+                margin-left: 0;
+                padding-bottom: 20px;
+                width: 100%;
+              }
+
+              li {
+                columns: 1;
+                list-style-type: none;
+
+                @include mq('tablet-and-up'){
+                  font-weight: $font-weight--book;
+                  margin-left: .25rem;
+                }
+              }
+            }
+          }
+        }
+
+        a {
+          display: inline-block;
+          padding: 0;
+          // padding: 7px 12px 7px 0;
+          color: $color--primary-1;
+
+          @include mq('phone'){
+            font-weight: $font-weight--book;
+          }
+
+          @include mq('tablet-and-up') {
+            display: inline-block;
+            // padding: 9.5px 12px 9.5px 0;
+          }
+          @include mq('lap-and-up') {
+          }
+        }
+      }
+    }
+  }
+
 }
 
 .visit-our-brands {
@@ -401,6 +493,7 @@
     }
   }
 }
+
 .row.footer--bottom-row {
   @include mq('tablet-and-up') {
     @include flex-direction(column);
@@ -496,6 +589,7 @@
     }
   }
 }
+
 #trust-icons {
   padding-top: 18px;
 

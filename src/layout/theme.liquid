@@ -96,7 +96,7 @@
         <div id="example-global-react" data-info-passed-to-react='{ "name": "greg" }'></div>
       {% endcomment %}
 
-      
+
       {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
       {% if template contains 'collection' %}
         {% if collection.description contains '[banner]' %}
@@ -136,12 +136,12 @@
           {% endif %}
         {% endif %}
 
-      {% endif %} 
+      {% endif %}
       {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
     </div>  <!-- close the page-wrap class -->
 
-    
-    {% section 'newsletter' %}
+    {% comment %} :: Moved Social Media Icons out of Newletter section and into Footer - Disabling newsletter section here :: {% endcomment %}
+    {% comment %} {% section 'newsletter' %} {% endcomment %}
     {% section 'footer' %}
   </div> <!-- close the shifter-page class -->
 

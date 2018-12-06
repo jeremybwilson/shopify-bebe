@@ -749,13 +749,13 @@
         "type": "color",
         "id": "newsletter_footer_text",
         "label": "Newsletter - Text",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "social_footer_background",
         "label": "Social - Background",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
@@ -772,13 +772,13 @@
         "type": "color",
         "id": "footer_background",
         "label": "Background",
-        "default": "#333333"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "footer_color",
         "label": "Text",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",

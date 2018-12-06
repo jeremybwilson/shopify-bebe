@@ -3,11 +3,11 @@
 
     {% comment %} :: ROW #1 -- Footer Menu + Brand Links :: {% endcomment %}
     {% comment %} :: Manually removing this while building out new footer :: {% endcomment %}
-    <div class="row">
+    <div class="row" style="display:none;">
 
       {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
       {% if section.blocks %}
-        <div class="footer-blocks" style="display:none;">
+        <div class="footer-blocks">
 
           {% for block in section.blocks %}
             {% assign menu = linklists[block.settings.menu_id] %}
@@ -56,6 +56,39 @@
 
         </div><!--.footer-blocks-->
       {% endif %}
+    </div><!-- .row -->
+
+    {% comment %} :: ROW #2 -- Newsletter signup :: {% endcomment %}
+    <div id="newsletter-social" class="newsletter-{{ section.id }}" data-section-id="{{ section.id }}"
+      data-section-type="newsletter-social">
+      <div class="newsletter-wrapper">
+
+        <div class="newsletter">
+          <div class="email-text">
+            <div class="foot-sub-emailtext">
+              <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
+              {% comment %} :: JS from live site related to newsletter form :: {% endcomment %}
+              {% comment %} <script type="text/blzscript">$(document).ready(function(){if(("#egcForm").length){$("#eGiftFormContent .scheduleDelivery span").html("(If today's date is selected, e-gift card will be sent the following day. Weekend orders will be sent by end of day on Monday.)");}});</script> {% endcomment %}
+            </div><!-- .foot-sub-emailtext -->
+            <div class="foot-sub-emailform fl-inline">
+              <form id="footer-newsletter">
+                <input class="form-control subscribe-form" type="email" id="email" name="email" placeholder="{{ section.settings.newsletter_placeholder }}">
+                <label id="button-footer-newsletter-submit" for="footer-newsletter-submit">
+                  <input id="footer-newsletter-submit" type="submit" value="{{ section.settings.newsletter_submit_button }}">
+                  {% comment %} {% include 'svg-icon-caret-right-submit' %} {% endcomment %}
+                </label>
+              </form>
+              <div id="newsletter-form--response">
+                <span id="newsletter-error-response" style="display:none;">{{ section.settings.newsletter_error }}</span>
+                <span id="newsletter-success-response" style="display:none;">
+                {{ section.settings.newsletter_success }}</span>
+              </div>
+              {% comment %} :: Hidden link text related to email and sms notification (sign up forms) ::  {% endcomment %}
+              {% comment %} <a style="display:none;" class="openAjaxLayer" id="jsLauchEmailLayer" href="/user/subscribe_layer.jsp">Email Sign Up</a>
+              <a style="display:none;" class="openAjaxLayer" id="jsLauchTextLayer" href="/user/text_subscribe_layer.jsp">Text Sign Up</a> {% endcomment %}
+            </div><!-- .foot-sub-emailform -->
+          </div><!-- .email-text -->
+        </div><!-- .newsletter -->
 
       {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
       {% if section.blocks %}
@@ -119,36 +152,41 @@
           </div><!-- .footer-nav -->
         </div><!-- .footer-blocks -->
         {% endif %}
-      </div><!-- .row -->
+      </div><!-- .newsletter-wrapper -->
 
-    {% comment %} :: ROW #2 -- Newsletter signup :: {% endcomment %}
-    <div class="row">
-      <div class="container">
-        <div class="email-text">
-          <div class="foot-sub-emailtext fl-inline">
-            <span>STAY IN TOUCH &amp; GET 20% OFF</span>
-            {% comment %} :: JS from live site related to newsletter form :: {% endcomment %}
-            {% comment %} <script type="text/blzscript">$(document).ready(function(){if(("#egcForm").length){$("#eGiftFormContent .scheduleDelivery span").html("(If today's date is selected, e-gift card will be sent the following day. Weekend orders will be sent by end of day on Monday.)");}});</script> {% endcomment %}
-          </div><!-- .foot-sub-emailtext -->
-          <div class="foot-sub-emailform fl-inline">
-            <form id="emailOrMobileForm" class="fl-inline">
-              <input type="text" id="emailOrMobileNumber" value="EMAIL">
-              <a class="formButton" id="submitEmailOrMobile" href="#">ENTER</a>
-            </form>
-            {% comment %} :: Hidden link text related to email and sms notification (sign up forms) ::  {% endcomment %}
-            {% comment %} <a style="display:none;" class="openAjaxLayer" id="jsLauchEmailLayer" href="/user/subscribe_layer.jsp">Email Sign Up</a>
-            <a style="display:none;" class="openAjaxLayer" id="jsLauchTextLayer" href="/user/text_subscribe_layer.jsp">Text Sign Up</a> {% endcomment %}
-          </div><!-- .foot-sub-emailform -->
-
-        </div><!-- .email-text -->
-      </div><!-- .container -->
-    </div>
+    {% comment %} :: Social Media Navigation :: {% endcomment %}
+    {% if section.blocks %}
+      <div class="social-wrapper">
+        <div class="social-inner">
+        {% comment %} {% unless section.settings.social_heading == blank %}
+          <h4 class="section-title">{{ section.settings.social_heading }}</h4>
+        {% endunless %} {% endcomment %}
+        {% unless section.settings.social_insta_hashtag == blank %}
+          <h4 class="section-title">{{ section.settings.social_insta_hashtag }}</h4>
+        {% endunless %}
+          <div class="social-image">
+            {% if section.settings.instagram_footer_image != blank %}
+              {% assign insta_img_url = section.settings.instagram_footer_image | img_url: '542x' %}
+              {% if section.settings.instagram_footer_link != blank %}<a href="{{ section.settings.instagram_footer_link }}" target="_blank">{% endif %}
+                <img src="{{ insta_img_url }}" alt="Placeholder Image" />
+              {% if section.settings.link != blank %}</a>{% endif %}
+            {% endif %}
+            {% comment %} <img src="https://via.placeholder.com/545.png" alt="Placeholder Image" /> {% endcomment %}
+          </div>
+          <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
+            {% include 'social-icons' %}
+          </ul><!-- #social-icons -->
+        </div><!-- .social-inner -->
+      </div><!-- .social-wrapper -->
+    {% endif %}
+    </div><!-- .newsletter-social-->
 
     {% comment %} :: ROW #3 -- Privacy Policy + Terms + Site Map :: {% endcomment %}
     <div class="row"><!-- style="font-family:SourceSansProRegular,Arial,Helvetica,sans-serif;" -->
       <div class="foot-subfoot">
         <div class="subfoot-links">
-          <span class="raf-wrapper">
+          {% comment %} :: RAF Section hidden in footer comps :: {% endcomment %}
+          {% comment %}  <span class="raf-wrapper">
             <a class="raf-footer" href="#">
               <span class="raf-text">
                   REFER A FRIEND &amp; GET
@@ -157,16 +195,16 @@
               <span class="raf-separator"></span>
               <span class="fo-how">FIND OUT HOW ►</span>
             </a>
-          </span><!-- .raf-wrapper -->
+          </span><!-- .raf-wrapper --> {% endcomment %}
+          <div class="copyright">
+            <span class="copyright-wrapper">&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;</span>
+          </div>
           <span>
-            <span class="link-wrap strong">
-              <a href="#" title="PRIVACY POLICY">PRIVACY POLICY</a>
-            </span>
             <span class="link-wrap">
               <a href="#" title="CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT">CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT</a>
             </span>
             <span class="link-wrap">
-                <a href="#" title="OUR CALIFORNIA PRIVACY RIGHTS">OUR CALIFORNIA PRIVACY RIGHTS</a>
+                <a href="#" title="OUR CALIFORNIA PRIVACY RIGHTS">YOUR CALIFORNIA PRIVACY RIGHTS</a>
             </span>
             <span class="link-wrap">
               <a href="#" title="TERMS OF USE">TERMS OF USE</a>
@@ -176,10 +214,6 @@
             </span>
           </span>
         </div><!-- .subfoot-links -->
-        <div class="copyright">
-          <span class="copyright-wrapper">&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;<span>
-        </span>
-        </div>
       </div><!-- .foot-subfoot -->
     </div>
 
@@ -191,97 +225,152 @@
   {
     "name": "Footer",
     "settings": [
-     {
-       "type": "header",
-       "content": "Phone Number"
-     },
-     {
-       "type": "text",
-       "id": "tel_text",
-       "label": "Display Text",
-       "default": "855-377-BOOT (2668)",
-       "info": "This is the text that will be displayed on the site."
-     },
-     {
+      {
+        "type": "header",
+        "content": "Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "tel_text",
+        "label": "Display Text",
+        "default": "855-377-BOOT (2668)",
+        "info": "This is the text that will be displayed on the site."
+      },
+      {
       "type": "text",
       "id": "tel_number",
       "label": "Actual Number",
       "default": "18553772668",
       "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
-     },
-
-     {
-       "type": "header",
-       "content": "Payment Methods"
-     },
-     {
-       "type": "checkbox",
-       "id": "show_credit_cards",
-       "label": "Show credit card icons",
-       "default": true,
-       "info": "The icons that show are determined by your store's payment settings."
-     },
-     {
-       "type": "header",
-       "content": "Visit Our Brands - #1"
-     },
-     {
-      "type": "url",
-      "id": "visit_brand_link_one",
-      "label": "URL"
-     },
-     {
-      "type": "image_picker",
-      "id": "visit_brand_image_one",
-      "label": "Logo"
-     },
-     {
-       "type": "header",
-       "content": "Visit Our Brands - #2"
-     },
-     {
-      "type": "url",
-      "id": "visit_brand_link_two",
-      "label": "URL"
-     },
-     {
-      "type": "image_picker",
-      "id": "visit_brand_image_two",
-      "label": "Logo"
-     },
-     {
-       "type": "header",
-       "content": "Visit Our Brands - #3"
-     },
-     {
-      "type": "url",
-      "id": "visit_brand_link_three",
-      "label": "URL"
-     },
-     {
-      "type": "image_picker",
-      "id": "visit_brand_image_three",
-      "label": "Logo"
-     },
-     {
-       "type": "header",
-       "content": "Trust Icons"
-     },
-     {
-      "type": "image_picker",
-      "id": "trust_icon_image_one",
-      "label": "Logo #1"
-     },
-     {
-      "type": "image_picker",
-      "id": "trust_icon_image_two",
-      "label": "Logo #2"
-     },
-     {
-      "type": "image_picker",
-      "id": "trust_icon_image_three",
-      "label": "Logo #3"
-     }
+      },
+      {
+        "type": "header",
+        "content": "Payment Methods"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_credit_cards",
+        "label": "Show credit card icons",
+        "default": true,
+        "info": "The icons that show are determined by your store's payment settings."
+      },
+      {
+        "type": "header",
+        "content": "Visit Our Brands - #1"
+      },
+      {
+        "type": "url",
+        "id": "visit_brand_link_one",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "visit_brand_image_one",
+        "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Visit Our Brands - #2"
+      },
+      {
+        "type": "url",
+        "id": "visit_brand_link_two",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "visit_brand_image_two",
+        "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Visit Our Brands - #3"
+      },
+      {
+        "type": "url",
+        "id": "visit_brand_link_three",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "visit_brand_image_three",
+        "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Instagram Footer Image"
+      },
+      {
+        "type": "url",
+        "id": "instagram_footer_link",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "instagram_footer_image",
+        "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Trust Icons"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_one",
+        "label": "Logo #1"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_two",
+        "label": "Logo #2"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_three",
+        "label": "Logo #3"
+      },
+      {
+        "type": "text",
+        "id": "social_heading",
+        "label": "Social - Heading",
+        "default": "Connect With Us"
+      },
+      {
+        "type": "text",
+        "id": "social_insta_hashtag",
+        "label": "Social - Heading",
+        "default": "#BEBEBABES"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_subheading",
+        "label": "Placeholder Text",
+        "default": "STAY IN TOUCH & GET 20% OFF"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_placeholder",
+        "label": "Placeholder Text",
+        "default": "Enter Email"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_submit_button",
+        "label": "Placeholder Text",
+        "default": "ENTER"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_error",
+        "label": "Error Text",
+        "default": "Please enter a valid e-mail address"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_success",
+        "label": "Success Text",
+        "default": "<p>You have successfully joined our newsletter</p>"
+      }
     ],
     "blocks":[
       {
