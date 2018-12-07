@@ -77,11 +77,20 @@ table.size-chart {
 // POPUP
 
 .size-chart--trigger {
-  color: $color--primary-2;
-  float: right;
-  font-weight: $font-weight--bold;
-  @include fontDim(16px,16px,.025em);
-  text-decoration: underline;
+  width: 100%;
+  text-align: center;
+  color: $color--accent-1;
+  font-weight: 600; // Inbetween according to
+  @include fontDim( 16px, 16px, .025em );
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 18px;
+
+  &:hover,
+  &:visited {
+    text-decoration: none;
+    color: $color--primary-2;
+  }
 }
 
 .product {

@@ -1,5 +1,5 @@
 {% assign width = '44px' %}
-{% assign height = '37px' %}
+{% assign height = '34px' %}
 
 
 .swatch {
@@ -10,30 +10,34 @@
   // swatch header
   .swatch-header {
     width: 100%;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    text-align:center;
   }
 
   h5, 
   .current-option {
     display: inline;
-    color: $color--primary-2;    
-    @include fontDim(16px,16px,0);
+    color: $color--dark-gray;    
+    @include fontDim(14px,16px,0);
     text-transform: uppercase;
-
-    @include mq('tablet-and-up') {
-      @include fontSize(16px);
-    }
   }
 
   // swatch main label
   h5 { 
-    font-weight: $font-weight--black;
+    font-weight: $font-weight--medium;
   }
+
+  .swatch-element-list {
+    @include flexbox;
+    @include justify-content( center );
+    @include align-items( center );
+    width: 100%;
+}
 
   // swatch current option 
   .current-option { 
     margin-left: .5em;
-    font-weight: $font-weight--bold;
+    font-weight: $font-weight--medium;
   }
 
   // SIZE SQUARES : Improve size alignment for small and large size squares so they map cleanly into the spacing
@@ -49,6 +53,29 @@
     .swatch-element.long-label label {
       width: 97px; //So half sizes = whole size boxes
     }
+
+    // BEBE Mock hides the text value, size square indicates it clear enough already
+    .swatch-header {
+      .current-option {
+        display: none;
+      }
+    }
+
+      // soldout 
+    .swatch-element.soldout {
+      label,
+      label:hover,
+      input:checked + label {
+        background-color: {{ settings.size_bg_soldout }};
+        border-color: {{ settings.size_border_soldout }};
+        color: {{ settings.size_text_soldout }};
+      }
+
+      label:hover,
+      input:checked + label {
+        border-color: {{ settings.size_border_selected }};
+      }
+    }
   }
 
   // swatch loop
@@ -56,7 +83,8 @@
     display: inline-block;
     -webkit-transform:translateZ(0); /* webkit flicker fix */
     -webkit-font-smoothing:antialiased; /* webkit text rendering fix */
-    position:relative;    
+    position:relative;  
+    cursor: pointer;  
 
     input {
       display: none;
@@ -66,32 +94,32 @@
       display:-moz-inline-stack;
       display:inline-block;
       zoom:1;
-      *display:inline;
       position: relative;
       min-width: {{ width }};
       height: {{ height }};
-      margin: 0 5px 5px 0;
+      margin: 0 10px 5px 0;
       padding:0;
-      border: solid 1px $color--primary-2;
-      color: $color--primary-2;
-      @include fontDim(16px,16px,.025em);
+      border: solid 3px {{ settings.size_border }};
+      color: {{ settings.size_text }};
+      background: {{ settings.size_bg }};
+      @include fontDim( 16px, 16px, .025em );
       font-weight: $font-weight--bold;
-      line-height: {{ height }};
+      line-height: calc( {{ height }} - 5px );
       text-align: center;
       text-transform: uppercase;
       white-space: nowrap;
+      transition: all 0.25s ease-in-out;
     }
     label:hover,
     input:checked + label {
-      background-color: $color--primary-1;
-      border-color: $color--primary-1;
-      color: $color--white;
+      background-color: {{ settings.size_bg_selected }};
+      border-color: {{ settings.size_border_selected }};
+      color: {{ settings.size_text_selected }};
     }
 
   }
 
   // soldout 
-
   .swatch-element.soldout {
     label,
     label:hover,
@@ -103,21 +131,24 @@
   }
 
   // Color Swatches
-
   .swatch-element.color {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+
     & > label {
       position: relative;
       width: 30px;
       height: 30px;
       min-width: 0;
-      border: solid 2px $color--white;
+      border: solid 2px {{ settings.swatch_border }};
       border-radius: 50%;
       background-color: $color--light-gray; // shows a default color until we get swatch images up
-      margin-right: 16px;
-      margin-bottom: 16px;
+      margin: 0;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
+      transition: border-color 0.25s ease-in-out;
 
       &:after {
         content: '';
@@ -129,28 +160,29 @@
         left: -4px;
         top: -4px;
         border: solid 2px transparent;
+        transition: border-color 0.25s ease-in-out;
       }
     }
     label:hover {
-      border-color: $color--white;
+      border-color: {{ settings.swatch_selected_border }};
       background-color: inherit;
       box-shadow: none;
 
       &:after {
-        border-color: $color--primary-1;
+        border-color: {{ settings.swatch_selected_border }};
       }
     }
     input:checked + label {
-      border-color: $color--white;
+      border-color: {{ settings.swatch_selected_border }};
       background-color: none;
       box-shadow: none;
 
       &:after {
-        border-color: $color--primary-1;  
+        border-color: {{ settings.swatch_selected_border }};  
       }
     }
   }
-  .swatch-element.color[data-swatch-value="White"],
+
   .swatch-element.color[data-swatch-value="white"] {
     label {
       border-color: $color--border-gray;
@@ -158,7 +190,6 @@
   }
 
   // image with cross
-
   .crossed-out {
     display: none;
     position: absolute;
@@ -168,11 +199,10 @@
     top: 0;
   }  
   .swatch-element.soldout .crossed-out {
-    display: block;
+    display: none;
   }
 
   // error state 
-
   &.error {
     background-color: #E8D2D2 !important;
     color: #333 !important;
@@ -194,7 +224,6 @@
   }
 
   // Tooltip
-
   .tooltip {
     display:block;
     position:absolute;
@@ -281,13 +310,16 @@
   margin-top: 0;
 }
 input.add {
+  @include fontSize( 24px );
   width: 100%;
   height: 48px;
   margin-top: 0;
+  font-weight: $font-weight--medium;
   background: $color--primary-1;
 
   @include mq('tablet-and-up') {
     height: 55px;
+    transition: all 0.25s ease-in-out;
   }
 
   &:hover {
