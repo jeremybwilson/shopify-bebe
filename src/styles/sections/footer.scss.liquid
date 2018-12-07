@@ -99,26 +99,28 @@
 
     .foot-sub-emailtext {
       @include flexbox;
+      @include justify-content(center);
       width: 100%;
 
-      h3.newsletter-subheading {
-        @include fontSize(16px);
+      @include mq('tablet-and-up') {
         @include justify-content(flex-start);
-        @include align-items(flex-start);
+      }
+
+      h3.newsletter-subheading {
+        @include fontSize(14px);
         font-weight: $font-weight--bold;
         letter-spacing: 1px;
         margin: 10px 0;
-        width: 100%;
+        width: auto;
 
         @include mq('tablet-and up') {
-          @include justify-content(center);
+          width: 100%;
         }
       }
     }
 
     .foot-sub-emailform {
       margin-bottom: 25px;
-      // width: 100%;
 
       @include mq('tablet-and-up') {
         @include flexbox;
@@ -203,13 +205,22 @@
     }
 
     span {
-      .link-wrap {
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-wrap(wrap);
+
+      @include mq('tablet-and-up'){
+
+      }
+
+      span.link-wrap {
         @include fontSize(12px);
         text-transform: uppercase;
+        word-spacing: 1px;
+        margin: 0 10px;
 
         @include mq('tablet-and-up') {
-          margin: 0 10px;
-          word-spacing: 2px;
+          margin: 0 15px;
         }
       }
 
@@ -256,13 +267,19 @@
 
   .newsletter-footer {
     padding: 10px 0;
+    width: 100%;
+
+    // @include mq('tablet-and-up') {
+
+    // }
 
     .newsletter-wrapper {
+      background: transparent;
+      padding: 20px 25px;
       width: 100%;
 
       @include mq('tablet-and-up') {
         padding: 0px;
-        background: transparent;
         text-align: left;
         width: 69%;
       }
@@ -292,7 +309,7 @@
       .section-title {
         @include flexbox;
         @include justify-content(flex-start);
-        @include fontSize(16px);
+        @include fontSize(14px);
         width: 100%;
 
         @include mq('tablet-and-up'){
@@ -329,6 +346,8 @@
     width: 100%;
 
     @include mq('tablet-and-up'){
+      @include flexbox;
+      @include justify-content(center);
       margin-top: 28px;
     }
 
@@ -337,43 +356,40 @@
       width: 100%;
 
       @include mq('tablet-and-up') {
-        width: 100%;
         border-bottom: none;
-      }
-
-      .section-title {
-        display: none;
+        width: 95%;
       }
 
       nav {
         background: transparent;
         font-family: $font-stack--default;
+        @include flexbox;
+        @include justify-content(center);
         @include fontSize(14px);
         line-height: initial;
-        text-align: center;
+        width: 100%;
 
         @include mq('tablet-and-up') {
+          @include justify-content(flex-start);
           text-align: left;
         }
 
         ul {
           @include flexbox;
-          justify-content: center;
-          align-items: center;
+          @include flex-direction(column);
+          @include justify-content(center);
+          @include align-items(center);
           @include fontSize(14px);
           margin: 0;
+          width: 100%;
 
-          @include mq('phone') {
-            @include flex-direction(column);
+          @include mq('tablet-and-up') {
+            @include flex-direction(row);
             @include justify-content(flex-start);
             @include align-items(flex-start);
           }
 
           li.footer-sub-nav-wrapper {
-            // position: relative;
-            // width: 220px;
-            // left: 50%;
-            // transform: translateX( -50% );
             @include flex-direction(column);
             @include justify-content(center);
             @include align-items(center);
@@ -385,11 +401,11 @@
               @include flexbox;
               border-top: 0px;
               padding-top: 25px;
-              width: 32%;
+              width: 33.333%;
             }
 
             h4.nav-sub-header {
-              @include fontSize(16px);
+              @include fontSize(14px);
               font-weight: $font-weight--bold;
               padding: 10px 0;
 
@@ -399,14 +415,15 @@
             }
 
             ul.footer-sub-nav {
-              display: none;
               @include align-items(center);
+              margin-bottom: 15px;
 
               @include mq('tablet-and-up'){
                 @include flexbox;
                 @include align-items(flex-start);
                 @include flex-direction(column);
                 margin-left: 0;
+                margin-bottom: 0;
                 padding-bottom: 20px;
                 width: 100%;
               }
@@ -418,6 +435,13 @@
                 @include mq('tablet-and-up'){
                   font-weight: $font-weight--book;
                   margin-left: .25rem;
+                }
+              }
+              &.hide {
+                display: none;
+
+                @include mq('tablet-and-up') {
+                  display: block;
                 }
               }
             }
@@ -444,8 +468,8 @@
       }
     }
   }
-
 }
+
 
 .visit-our-brands {
   padding: 45px 20px 33px;
