@@ -681,6 +681,60 @@
         "label": "Swatch selected border",
         "default": "#000000"
       },
+      {
+        "type": "color",
+        "id": "size_text",
+        "label": "Size swatch text",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "size_border",
+        "label": "Size swatch border",
+        "default": "#C4C6CA"
+      },
+      {
+        "type": "color",
+        "id": "size_bg",
+        "label": "Size swatch BG",
+        "default": "transparent"
+      },
+      {
+        "type": "color",
+        "id": "size_text_soldout",
+        "label": "Size swatch text (soldout)",
+        "default": "#5b5b5b"
+      },
+      {
+        "type": "color",
+        "id": "size_border_soldout",
+        "label": "Size swatch border (soldout)",
+        "default": "#C4C6CA"
+      },
+      {
+        "type": "color",
+        "id": "size_bg_soldout",
+        "label": "Size swatch BG (soldout)",
+        "default": "#C4C6CA"
+      },
+      {
+        "type": "color",
+        "id": "size_text_selected",
+        "label": "Size swatch text (selected)",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "size_border_selected",
+        "label": "Size swatch border (selected)",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "size_bg_selected",
+        "label": "Size swatch BG (selected)",
+        "default": "transparent"
+      },
 
 
       {
