@@ -24,7 +24,7 @@
 
 .product--mobile-header {
   position: relative;
-  padding: 12px 20px 12px;
+  padding: 12px 10px 12px;
   margin-top: 15px;
   margin-bottom: 25px;
 
@@ -48,16 +48,22 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d9d9', endColorstr='#ffffff',GradientType=0 );    
   }
 
+
   .mobile-header--top {
     @include flexbox;
     @include justify-content(space-between);
     @include align-items(center);
+
+    .header-text {
+      padding-right: 10px;  
+    }
   }  
 
   .product-title {
     color: $color--primary-2;
-    @include fontDim(15px,16px,0);
-    font-weight: $font-weight--black;
+    @include fontDim(16px,16px,0);
+    font-family: $sans--2;
+    font-weight: $font-weight--medium;
     text-transform: uppercase;
   }
   .money {
@@ -65,13 +71,14 @@
   }
 
   .add {
-    margin-left: 40px;
+    margin: 0;
     max-width: 92px;
     padding: 6px 8px;
-    margin-right: 0;
     @include fontSize(12px);
     line-height: 14px / 12px * 1em;
+    outline: none;
     white-space: normal;
+    @include align-self( flex-start );
   }
   .add[disabled] {
     @include fontSize(8px);
@@ -82,10 +89,10 @@
 }
 
 #shopify-section-product-template {
-  margin-top: 60px;
+  margin-top: 0;
 
   @include mq('tablet-and-up') {
-    margin-top: 55px;
+    margin-top: 40px;
   }
 }
 
@@ -107,18 +114,20 @@
     h1 {
       color: $color--primary-2;
       @include fontDim(15px,16px,0);
-      font-weight: $font-weight--black;
+      font-weight: $font-weight--medium;
       text-align: center;
       text-transform: uppercase;
+
+      &.product-name {
+        padding-top: 0;
+      }
 
       @include mq('phone') {
         display: none;
       }
 
       @include mq('tablet-and-up') {
-        max-width: 400px;
-        @include fontDim(25px,34px,0);
-        text-align: left;
+        @include fontDim(22px,32px,0);
       }
     }
   }
@@ -129,20 +138,22 @@
 
 @import url('../snippets/product-images.scss.liquid');
 
+
 #product-price {
   border-bottom: none;
   color: $color--primary-2;
-  font-weight: $font-weight--bold;
-  @include fontDim(16px,16px,0);
+  font-weight: $font-weight--book;
+  @include fontDim( 16px, 16px, 0 );
   text-align: center;
+  font-family: $sans--2;
+  margin-bottom: 18px;
 
   @include mq('phone') {
     display: none;
   }
 
   @include mq('tablet-and-up') {
-    @include fontSize(18px);
-    text-align: left;
+    @include fontSize(22px);
   }
 
   &.has-compare-price {
@@ -168,11 +179,7 @@
   margin-right: 0;
 
   @include mq('tablet-and-up') {
-    max-width: 365px;
-    margin-top: 35px;
-  }
-  @include mq('lap-and-up') {
-    margin-top: 70px;
+    max-width: 500px;
   }
 }
 
@@ -189,9 +196,10 @@
   @include flex-direction(column);
   width: 100%;
   margin-bottom: 40px;
+  padding: 10px 0;
+  border-top: 1px solid $color--light-gray;
 
   // header & accordion trigger
-
   dt {
     @include flexbox;
     @include justify-content(space-between);
@@ -217,7 +225,7 @@
       margin-top: 3px;
       color: $color--primary-1;
       @include fontDim(14px,14px,0);
-      font-weight: $font-weight--black;
+      font-weight: $font-weight--medium;
       text-transform: uppercase;
 
       @include mq('tablet-and-up') {
@@ -227,6 +235,9 @@
     }
     .opener {
       margin-left: auto;
+      background: $color--primary-1;
+      width: 15px;
+      height: 3px;
 
       svg {
         width: 10px;
