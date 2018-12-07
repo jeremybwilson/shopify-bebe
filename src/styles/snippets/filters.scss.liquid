@@ -28,6 +28,10 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
     border-top: $filterBarBorder;
     border-bottom: $filterBarBorder;
 
+    @include mq( 'lap-and-up') {
+        display: block !important
+    }
+
     // FILTERS : LABEL : "Filter" on desktop
     .filter-label {
         color: $filterTextColor;
@@ -249,11 +253,11 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
         left: 0;
         top: 0;
         height: 100%;
-        margin-left: 0;
+        margin: 0;
 
         // Mobile styles
-        width: 50%;
-        padding-left: 20px;
+        width: 100%;
+        padding-left: 0px;
         border-left: $filterBorder;
         border-bottom: 0px solid transparent;
 
@@ -283,10 +287,16 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 @include inline-flex;
                 text-transform: uppercase;
                 color: $color--primary-1;
+                font-weight: $font-weight--bold;
+                @include fontSize( 13px );
+
+                @include mq( 'lap-and-up' ) {
+                    @include fontSize( 10px );
+                }
 
                 &:after {
                     position: absolute;
-                    right: 20px;
+                    right: 12px;
                     top: 50%;
                     border-bottom: none;
                     border-left: 5px solid transparent;
@@ -321,11 +331,11 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
 
                 //font-family: $font-stack--default;
                 font-weight: $font-weight--medium;
+                @include fontSize( 13px );
                 text-transform: uppercase;
                 color: $filterTextColor;
                 border: none;
                 float: none;
-                padding: 0 10px;
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
@@ -336,6 +346,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                     position: relative;
                     opacity: 1;
                     padding-right: 32px;
+                    @include fontSize( 10px ); 
                 }
             }
         }
@@ -409,9 +420,9 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
 
     // FILTER : BUTTON - MOBILE : Filter open button for mobile sizes
     #filter-list-button-wrap {
-        position: absolute;
+        //position: absolute;
         z-index: 25;
-        width: 50%;
+        width: 100%;
         left: 0;
         top: {{ settings.filter_bar_border_width }}px; //Adjust top position for border settings
         height: 47px;
@@ -422,12 +433,11 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
         }
 
         #filter-button-mobile {
-            position: absolute;
+            position: relative;
             height: 100%;
             width: 100%;
             top: 0;
             background: $filterBg;
-            padding-left: 20px;
 
             // BUTTON WRAP - JS Wrap for just the button, it does an innerHTML replacement so had to work around it
             #bc-sf-filter-tree-mobile {
@@ -438,7 +448,6 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
 
             // BUTTON
             #bc-sf-filter-tree-mobile-button {
-                @include h6;
                 margin: 0;
                 height: 100%;
                 outline: none;
@@ -446,7 +455,9 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 text-align: left;
                 color: $filterTextColor;
                 text-transform: uppercase;
+                font-family: $font-stack--heading;
                 font-weight: $font-weight--bold;
+                @include fontSize( 13px );
             }
 
             // FILTER : BUTTON ARROW : (can't do ':after' on above elm as its innerHTML changes via the app js code)
@@ -458,7 +469,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 border-bottom: none;
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
-                border-top: 8px solid $filterArrowColor;
+                border-top: 5px solid $filterArrowColor;
                 transition: all 0.25s ease-in-out;
                 pointer-events: none; // so it doesn't become an unclickable area
             }
@@ -646,10 +657,20 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
  * ---------------------------------------------- */
 
 #bc-sf-filter-tree {
+    padding: 20px;
+    border: solid 1px $color--primary-1;
+    margin: 0;
+
+    @include mq( 'lap-and-up' ) {
+        display: block !important; // need to override with ! for desktop due to specialized CSS hiding this
+        padding: 0;
+        border: none;
+    }
 
     // FILTER : Options
     .bc-sf-filter-option-block {
         border-top: none;
+        padding: 0 0 8px;
 
         .bc-sf-filter-block-title {
             position: relative;
@@ -674,6 +695,10 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 }
             }
         }        
+        .bc-sf-filter-clear {
+            float: none;
+            margin-left: 12px;
+        }
 
         .bc-sf-filter-block-content {
 
@@ -691,10 +716,14 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                                 // Checkbox
                                 &:first-child {
                                     top: auto;
-                                    bottom: 8px;
+                                    bottom: 12px;
                                     width: 6px;
                                     height: 6px;
                                     box-shadow: 0 0 0 1px $color--primary-1;
+
+                                    @include mq( 'lap-and-up' ) {
+                                        bottom: 8px;
+                                    }
                                 }
                             }
                             // Checkbox Mark
@@ -764,6 +793,9 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 }
             }
         }
+    }
+    .mobile-apply-button {
+        display: none;
     }
 }
 
