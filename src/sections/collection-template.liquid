@@ -7,7 +7,22 @@
 
       {% include 'collection-nav' %}
 
-      <div id="bc-sf-filter-tree" class="filter-list-desktop" style="display: block !important"></div>
+      {% comment %} :: FILTER - Mobile Component :: {% endcomment %}
+      <div id="filter-list-mobile-wrap">
+        <div id="filter-list-button-wrap">
+          
+          {% comment %} FILTER BUTTON {% endcomment %}
+          <div id="filter-button-mobile">
+            <div id="bc-sf-filter-tree-mobile"></div>
+            <div id="filter-button-arrow"></div>
+          </div>
+        </div>
+
+        {% comment %} FILTERS LIST {% endcomment %}
+        {% comment %} <div id="bc-sf-filter-tree"></div> {% endcomment %}
+      </div>
+
+      <div id="bc-sf-filter-tree" class="filter-list-desktop"></div>
       
     </div><!--#collection--sidebar-->
 
@@ -51,21 +66,7 @@
             {% endif %}
           </ul>
         </div>
-      
-        {% comment %} :: FILTER - Mobile Component :: {% endcomment %}
-        <div id="filter-list-mobile-wrap">
-          <div id="filter-list-button-wrap">
-            
-            {% comment %} FILTER BUTTON {% endcomment %}
-            <div id="filter-button-mobile">
-              <div id="bc-sf-filter-tree-mobile"></div>
-              <div id="filter-button-arrow"></div>
-            </div>
-          </div>
-
-          {% comment %} FILTERS LIST {% endcomment %}
-          {% comment %} <div id="bc-sf-filter-tree"></div> {% endcomment %}
-        </div>
+    
       
 
         {% comment %} :: PRODUCT LIST :: {% endcomment %}
@@ -98,20 +99,20 @@
       {% endpaginate %}
 
       {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-      {% if settings.show_collection_seo_block == true %}
+      {% if template contains 'collection' and settings.show_collection_seo_block == true %}
         {% if collection.description != blank %}
-          {% include 'collection-seo-block' %}
+          {% unless collection.description contains "banner--only" %}
+            {% include 'collection-seo-block' %}
+          {% endunless %}
         {% endif %}
       {% endif %}
+
 
     </div><!--#collection-main-->
 
   </div><!--.row-->
 
 </div><!--.collection-template-->
-
-
-
 
 <script>
   // Declare bcSfFilterConfig variable
