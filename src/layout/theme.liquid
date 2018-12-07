@@ -99,8 +99,7 @@
       
       {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
       {% if template contains 'collection' %}
-        {% if collection.description contains '[banner]' %}
-          {% capture banner %}{{ collection.handle }}.jpg{% endcapture %}
+        {% if collection.description contains 'has--category-banner' %}
           <div class="collection-banner">
             {% include 'collection-banner-image' %}
           </div>

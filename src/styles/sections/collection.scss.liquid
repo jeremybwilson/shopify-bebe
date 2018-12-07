@@ -7,6 +7,42 @@
 $resultsTextColor: {{ settings.filter_text_color }};
 
 
+/*  COLLECTION: Banner
+ * ---------------------------------------------- */
+.collection-banner {
+    margin-top: 0;
+    
+    img {
+        width: 100%;
+    }
+
+    .asset-desk {
+        display: none;
+    }
+
+    @include mq( 'lap-and-up' ) {
+        .asset-mob {
+            display: none;
+        }
+        .asset-desk {
+            display: block;
+        }
+    }    
+}
+.has--category-banner {
+    display: none;
+}
+.collection-banner + #breadcrumb {
+  @include mq( 'lap-and-up' ) {
+    padding-left: 0px;
+  }
+
+  @include mq( 'desk-and-up' ) {
+    padding-left: 0px;
+  }    
+}
+
+
 /*  COLLECTION : Main styling block
  * ---------------------------------------------- */
 #shopify-section-collection-template {
@@ -23,8 +59,21 @@ $resultsTextColor: {{ settings.filter_text_color }};
         }
     }
     h1 {
+        display: none;
         border: none;
-        @include fontDim(21px,21px,.04em);         
+        @include fontDim(21px,21px,.04em);
+
+        @include mq( 'lap-and-up' ) {
+            display: block;
+        }
+    }
+
+    #breadcrumb {
+        display: none;
+
+        @include mq( 'lap-and-up' ) {
+            display: block;
+        }
     }
 
     /* COLLECTION : Product Grid + Item View
@@ -48,6 +97,7 @@ $resultsTextColor: {{ settings.filter_text_color }};
  *    (NOTE: #results-count in breadcrumbs.liquid)
  * ---------------------------------------------- */
 #results-count {
+    display: none;
     @include h7;
     @include fontSize( 16px );
     position: static;
