@@ -50,15 +50,28 @@
     @include fontDim(30px,36px,.04em);
     text-transform: uppercase;
 
+    @include mq('phone') {
+      text-transform: none;
+    }
     @include mq('tablet') {
       @include fontSize(38px);
-    }    
+    }
     @include mq('lap-and-up') {
       @include fontDim(48px,57px,0);
+
+      &.hide-desktop {
+        display: none;
+      }
     }
 
     &:after {
       display: none !important;
+    }
+  }
+
+  li.slide_image {
+    @include mq('phone') {
+      margin-left: 0;
     }
   }
   
