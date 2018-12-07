@@ -1,10 +1,24 @@
-{% capture banner %}{{ collection.handle }}.jpg{% endcapture %}
+{% comment %}
+	
+	FILES : Pull banners from collection handles
 
-{% assign img_url = banner | file_img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+{% endcomment%}
 
-<div class="collection-banner box-ratio" style="padding-bottom: 33%;">
+{% capture banner %}collection-banner-{{ collection.handle }}-desktop.jpg{% endcapture %}
+{% capture banner_mobile %}collection-banner-{{ collection.handle }}-mobile.jpg{% endcapture %}
+
+{% comment %} Desktop Image {% endcomment%}
+
+<div class="asset-desk">
   <img class="lazyload lazyload-fade"
-    data-src="{{ img_url }}"
-    data-sizes="auto"
+    data-src="{{ banner | file_img_url: '2000x' }}"
+    alt="{{ collection.title | escape }}">
+</div>
+
+{% comment %} Mobile Image {% endcomment%}
+
+<div class="asset-mob">
+  <img class="lazyload lazyload-fade"
+    data-src="{{ banner_mobile | file_img_url: '800x' }}"
     alt="{{ collection.title | escape }}">
 </div>

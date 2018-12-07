@@ -16,9 +16,13 @@ $seoTextColor: {{ settings.collection_seo_footer_text }};
     width: 100%;
 
     h3 {
-        @include fontDim( 32px,42px,.01em );
+        @include fontDim( 16px,20px,.01em );
         font-weight: $font-weight--book;
         text-align: left;
+
+        @include mq( 'lap-and-up' ) {
+            @include fontDim( 32px,42px,.01em );    
+        }
     }
 
     // CONTENT : Box that holds each content block (above x below button fold)
