@@ -21,10 +21,11 @@
   <div class="swatch-element-list">
     {% for value in option.values %}
 
-      {% assign color_value_words = value | handle | split: '-' %}
-      {% capture color_value_caps %}{% for word in color_value_words %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-      {% assign color_value = color_value_caps | split: ' ' | join: '_' %}
-      {% assign image_url = color_value | prepend: '_' | prepend: current_sku | prepend: 'sw_' | append: '.jpg' | file_url %}
+      {% comment %} :: SWATCH IMG URL :: {% endcomment %}
+      {% assign color_slugified = value | replace: ' ', '-' | downcase %}
+      {% assign image_url = "swatch_" | append: current_sku | append: '-' | append: color_slugified | append: '.jpg' | file_url %}
+
+      {% comment %} :: SWATCH IDENTIFIERS :: {% endcomment %}
       {% assign css_color = value | split: ' ' | last | handle %}
       {% capture id %}swatch-{{ option.position }}-{{ value | handle }}{% endcapture %}
       {% assign available = false %}
