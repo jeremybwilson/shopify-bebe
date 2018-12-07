@@ -12,7 +12,7 @@
           {%- assign feat_page = pages[section.settings.page] -%}
           {{ feat_page.content }}
         {% else %}
-          <div class="rte text-center">
+          <div class="rte text-{{ section.settings.rich_text_horizontal }} {{ section.settings.rich_text_columns }}">
             {{ section.settings.rich_text }}
           </div>
         {% endif %}
@@ -33,24 +33,65 @@
       "label": "Heading",
       "default": "Welcome"
     },
-      {
-        "type": "richtext",
-        "id": "rich_text",
-        "label": "Text",
-        "info": "Use basic HTML to format text",
-        "default": "<p>Use this section to tell customers about your store or add content from one of your pages which makes it easy to add images, video or any other content.</p>"
-      },
+    {
+      "type": "richtext",
+      "id": "rich_text",
+      "label": "Text",
+      "info": "Use basic HTML to format text",
+      "default": "<p>Use this section to tell customers about your store or add content from one of your pages which makes it easy to add images, video or any other content.</p>"
+    },
+    {
+      "type": "select",
+      "id": "rich_text_columns",
+      "label": "Number of text columns",
+      "info": "Choose the number of columns for the text to display in",
+      "options": [
+        {
+          "value": "col1",
+          "label": "One"
+        },
+        {
+          "value": "col2",
+          "label": "Two"
+        },
+        {
+          "value": "col3",
+          "label": "Three"
+        }
+      ],
+      "default": "col1"
+    },
+    {
+      "type": "select",
+      "id": "rich_text_horizontal",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
     {
       "type": "page",
       "id": "page",
 	   "label": "Or Show content from a page"
     }
-   ],
-   "presets":[
-      {
-       "name":"Rich text",
-       "category":"Text"
-      }
-   ]
+  ],
+  "presets":[
+    {
+      "name":"Rich text",
+      "category":"Text"
+    }
+  ]
 }
 {% endschema %}
