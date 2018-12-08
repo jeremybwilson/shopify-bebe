@@ -6,20 +6,20 @@
   </li>
 {% endif %}
 
+{% if settings.pinterest_url != blank %}
+  <li>
+    <a href="{{ settings.pinterest_url }}" target="_blank">
+      <i class="fa fa-pinterest fa-2x"></i>
+    </a>
+  </li>
+{% endif %}
+
 {% if settings.instagram_id != blank %}
     <li>
       <a href="//instagram.com/{{ settings.instagram_id }}" target="_blank">
         {% include 'svg-icon-instagram' %}
       </a>
     </li>
-{% endif %}
-
-{% if settings.youtube_url != blank %}
-  <li>
-    <a href="{{ settings.youtube_url }}" target="_blank">
-      {% include 'svg-icon-youtube' %}
-    </a>
-  </li>
 {% endif %}
 
 {% if settings.twittername != blank %}
@@ -30,10 +30,10 @@
   </li>
 {% endif %}
 
-{% if settings.pinterest_url != blank %}
+{% if settings.youtube_url != blank %}
   <li>
-    <a href="{{ settings.pinterest_url }}" target="_blank">
-      <i class="fa fa-pinterest fa-2x"></i>
+    <a href="{{ settings.youtube_url }}" target="_blank">
+      {% include 'svg-icon-youtube' %}
     </a>
   </li>
 {% endif %}

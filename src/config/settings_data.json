@@ -101,13 +101,13 @@
     "swatch_selected_border": "#DFDFDF",
     "size_text": "#000000",
     "size_border": "#DFDFDF",
-    "size_bg": "transparent",
+    "size_bg": "rgba(0,0,0,0)",
     "size_text_soldout": "#5b5b5b",
     "size_border_soldout": "#DFDFDF",
     "size_bg_soldout": "#DFDFDF",
     "size_text_selected": "#000000",
     "size_border_selected": "#000000",
-    "size_bg_selected": "transparent",
+    "size_bg_selected": "rgba(0,0,0,0)",
     "new_background": "#222",
     "new_text": "#ffffff",
     "sale_background": "#9d6d31",
@@ -408,7 +408,7 @@
           "related_products": "none",
           "shipping_header_text": "Shipping & Returns",
           "shipping_text": "<p>NEED THE TEXT COPY THAT SHOULD GO HERE PLEASE! <a href=\"\/pages\/shipping-returns\" title=\"Shipping and Return\">Shipping Page<\/a>.<\/p>",
-          "show_social": false,
+          "show_social": true,
           "size_chart_page": ""
         }
       },
@@ -649,7 +649,7 @@
               "custom_slide_alt_color": "#164732",
               "caption_horizontal": "left",
               "caption_vertical": 50,
-              "caption_background": "transparent",
+              "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
           }

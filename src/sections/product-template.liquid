@@ -80,14 +80,6 @@
         <h1 class="product-name" itemprop="name">
           {{ product.title }}
         </h1>
-        
-        {% comment %}
-          REACT EXAMPLE #2:
-              Here, we use our snippet to include the DOM Node we'll need to render our 
-              react-swatches component setup in theme.js's theme.product block.
-
-              {% include 'component-react-swatches' %}
-        {% endcomment %}
 
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -107,15 +99,15 @@
           {% include 'product-form' %}
 
 
-          {% comment %} :: PRODUCT DESCRIPTION :: {% endcomment %}
-          <div id="product-description">
-
-          </div>
-
+          {% comment %} :: DESCRIPTION + SHIPPING + SOCIAL :: Prevent display on quickview since space is limited there {% endcomment %}
           {% unless template == 'product.quick' %}
-            {% comment %}
-              SHIPPING & RETURNS
-              ----------------------------- {% endcomment %}
+
+            {% comment %} :: PRODUCT DESCRIPTION :: {% endcomment %}
+            <div id="product-description-body">
+              {{ product.description }}
+            </div>
+
+            {% comment %} :: SHIPPING & RETURNS :: {% endcomment %}
             {% if section.settings.shipping_text != blank %}
               <dl id="free-shipping--accordion">
                 <dt id="free-shipping--accordion-header">
@@ -124,24 +116,26 @@
                 </dt>
                 <dd id="free-shipping--accordion-content">{{ section.settings.shipping_text }}</dd>
               </dl>
-              <!-- .free-shipping--accordion -->
             {% endif %}
-          {% endunless %}
 
+            {% comment %} :: SOCIAL LINKS :: {% endcomment %}
+            {% if section.settings.show_social %}
+              <ul id="product-description-social">
+                {% include 'social-icons' %}
+              </ul>
+            {% endif %}
+
+          {% endunless %}
         </div>
 
         {% if section.settings.zoom_image_position == 'zoom_on_right' %}
           <div class="zoom-box"></div>
         {% endif %}
 
-        {% if section.settings.show_social %}
-          <div class="desc">
-            {% include 'social' with product %}
-          </div>
-        {% endif %}
         {% if template == 'product.quick' %}
           <a href="{{ product.url | within_collection }}" class="full-click">{{ 'products.general.view_full' | t }}</a>
         {% endif %}
+
       </div>
       {% unless template == 'product.quick' %}
         {% if section.settings.related_products == 'right' %}
@@ -152,55 +146,7 @@
       {% endunless %}
     </div>
 
-  </div><!-- .row -->
-
-  {% comment %} BIG GREEN DESCRIPTION {% endcomment %}
-
-  <div class="clear"></div>
-  
-  {% unless template == 'product.quick' %}
-    <div class="product-description--area">
-      <div class="row">
-        <h3>Description</h3>
-
-        <div class="product-description--left">
-          <div class="rte">
-          {{ product.description }}
-          </div>
-
-          {% include 'product-spec-icons' %}
-
-        </div><!-- .--left -->
-
-        <div id="product-description--mobile-dropdown">
-          {% include 'product-spec-icons' %}
-
-          {% comment %}
-            PRODUCT SPECS (BULLETS)
-            ----------------------------- {% endcomment %}
-          <div class="product-description--specs">
-
-            <div class="rte">
-              {{ product.description }}
-
-              <ul>
-                <li>SKU <span class="product-sku">{{ product.variants.first.sku }}</span></li>
-              </ul>
-
-            </div><!-- .rte -->
-            
-          </div><!-- .--specs -->
-
-
-        </div><!-- .--mobile-dropdown -->
-
-        <div id="product-description--mobile-dropdown-trigger">
-          <span class="closed-text">More Details</span><span class="open-text">Less Details</span>{% include 'svg-icon-caret-down' %}
-        </div>
-
-      </div><!-- .row -->
-    </div>
-  {% endunless %}    
+  </div><!-- .row -->  
 
   <div class="clear"></div>
   {% unless template == 'product.quick' %}
@@ -228,6 +174,7 @@
   {% endunless %}
 </div>
 
+{% comment %} :: SIZE CHART MODAL :: {% endcomment %}
 {% include 'product-size-chart' %}
 
 <style>
