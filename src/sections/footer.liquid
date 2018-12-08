@@ -14,11 +14,6 @@
             <div class="footer-nav">
               <nav>
 
-                {% comment %} :: TITLE : Basic title if no nested menus inside footer :: {% endcomment %}
-                {% if menu.levels < 2 and block.settings.show_headings %}
-                  <h4 class="nav-sub-header">{{ menu.title }}</h4>
-                {% endif %}
-
               </nav>
             </div><!-- .footer-nav -->
           {% endfor %}
@@ -140,7 +135,13 @@
           <div class="copyright">
             <span class="copyright-wrapper">&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;</span>
           </div>
+          {% comment %} :: LINKS : Copyright / privacy footer links :: {% endcomment %}
+          {% assign privacy_menu = linklists[section.settings.footer_privacy_nav] %}
           <span>
+          <h1>{{ section.settings.privacy_menu | json }}<h1>
+          {% for links in privacy_menu.links %}
+            <span class="link-wrap">{{ link.title | link_to: link.url }}</span>
+          {% endfor %}
             <span class="link-wrap">
               <a href="#" title="CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT">CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT</a>
             </span>
@@ -178,11 +179,11 @@
         "info": "This is the text that will be displayed on the site."
       },
       {
-      "type": "text",
-      "id": "tel_number",
-      "label": "Actual Number",
-      "default": "18553772668",
-      "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
+        "type": "text",
+        "id": "tel_number",
+        "label": "Actual Number",
+        "default": "18553772668",
+        "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
       },
       {
         "type": "header",
@@ -194,6 +195,46 @@
         "label": "Show credit card icons",
         "default": true,
         "info": "The icons that show are determined by your store's payment settings."
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_subheading",
+        "label": "Newsletter sub-heading",
+        "default": "STAY IN TOUCH & GET 10% OFF"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_placeholder",
+        "label": "Form field placeholder",
+        "default": "Enter Email"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_submit_button",
+        "label": "Submit button text",
+        "default": "ENTER"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_error",
+        "label": "Error Text",
+        "default": "Please enter a valid e-mail address"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_success",
+        "label": "Success Text",
+        "default": "<p>You have successfully joined our newsletter</p>"
       },
       {
         "type": "header",
@@ -242,38 +283,18 @@
       },
       {
         "type": "text",
-        "id": "newsletter_subheading",
-        "label": "Placeholder Text",
-        "default": "STAY IN TOUCH & GET 20% OFF"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_placeholder",
-        "label": "Placeholder Text",
-        "default": "Enter Email"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_submit_button",
-        "label": "Placeholder Text",
-        "default": "ENTER"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_error",
-        "label": "Error Text",
-        "default": "Please enter a valid e-mail address"
-      },
-      {
-        "type": "richtext",
-        "id": "newsletter_success",
-        "label": "Success Text",
-        "default": "<p>You have successfully joined our newsletter</p>"
+        "id": "copyright_footer_text",
+        "label": "Footer - Copyright text"
       },
       {
         "type": "link_list",
         "id": "footer_nav",
         "label": "Main Footer Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_privacy_nav",
+        "label": "Copyright Footer Navigation"
       }
     ],
     "blocks":[
