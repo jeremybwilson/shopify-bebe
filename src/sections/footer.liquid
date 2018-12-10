@@ -1,30 +1,9 @@
 <div class="footer-section" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <footer class="site-footer">
 
-    {% comment %} :: ROW #1 -- Footer Menu + Brand Links :: {% endcomment %}
-    {% comment %} :: Manually removing this while building out new footer :: {% endcomment %}
-    <div class="row" style="display:none;">
-
-      {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
-      {% if section.blocks %}
-        <div class="footer-blocks">
-
-          {% for block in section.blocks %}
-            {% assign menu = linklists[block.settings.menu_id] %}
-            <div class="footer-nav">
-              <nav>
-
-              </nav>
-            </div><!-- .footer-nav -->
-          {% endfor %}
-
-        </div><!--.footer-blocks-->
-      {% endif %}
-    </div><!-- .row -->
-
     <div class="row">
 
-      {% comment %} :: ROW #2 -- Newsletter signup :: {% endcomment %}
+      {% comment %} :: ROW #1 -- Newsletter signup :: {% endcomment %}
       <div id="newsletter-social" class="newsletter-{{ section.id }}" data-section-id="{{ section.id }}"
         data-section-type="newsletter-social">
         <div class="newsletter-wrapper">
@@ -56,7 +35,7 @@
             </div><!-- .email-text -->
           </div><!-- .newsletter -->
 
-        {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
+        {% comment %} :: ROW #2 -- FOOTER NAVIGATION :: {% endcomment %}
         {% if section.blocks %}
           <div class="footer-blocks">
             {% assign menu = linklists[section.settings.footer_nav] %}
@@ -148,7 +127,6 @@
 
   </footer>
 </div>
-
 
 {% schema %}
   {

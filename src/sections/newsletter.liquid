@@ -1,6 +1,8 @@
 <div id="newsletter-social" class="newsletter-{{ section.id }}" data-section-id="{{ section.id }}"
   data-section-type="newsletter-social">
 
+  {% assign newsletter_signup_flag = section.settings.show_newsletter_section %}
+  {% if newsletter_signup_flag != false  %}
     <div class="newsletter-wrapper">
       <div class="newsletter-inner">
         <header>
@@ -29,7 +31,10 @@
 
       </div><!-- .newsletter-inner -->
     </div><!-- .newsletter-wrapper -->
+  {% endif %}
 
+  {% assign social_media_signup_flag = section.settings.show_social_media_section %}
+  {% if social_media_signup_flag != false  %}
    <div class="social-wrapper">
     <div class="social-inner">
       {% unless section.settings.social_heading == blank %}
@@ -40,13 +45,20 @@
       </ul><!-- #social-icons -->
     </div><!-- .social-inner -->
   </div><!-- .social-wrapper -->
-
+  {% endif %}
 
 </div><!-- #newsletter-social -->
 {% schema %}
 {
    "name":"Newsletter & Social",
    "settings":[
+    {
+      "type": "checkbox",
+      "id": "show_newsletter_section",
+      "label": "Show newsletter signup in newsletter section",
+      "default": false,
+      "info": "(Hidden by default)"
+    },
     {
      "type": "paragraph",
      "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
@@ -82,15 +94,24 @@
       "default": "<p>You have successfully joined our newsletter</p>"
     },
     {
+      "type": "checkbox",
+      "id": "show_social_media_section",
+      "label": "Show social media in the newsletter section",
+      "default": false,
+      "info": "(Hidden by default)"
+    },
+    {
       "type": "text",
       "id": "social_heading",
       "label": "Social - Heading",
       "default": "Connect With Us"
     }
    ],
-   "presets": [{
+   "presets": [
+     {
       "name": "Newsletter & Social",
       "category": "Promotional"
-    }]
+    }
+  ]
 }
 {% endschema %}
