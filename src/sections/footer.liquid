@@ -133,27 +133,14 @@
             </a>
           </span><!-- .raf-wrapper --> {% endcomment %}
           <div class="copyright">
-            <span class="copyright-wrapper">&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;</span>
+            <span class="copyright-wrapper">{{ section.settings.copyright_footer_text }}</span>
           </div>
           {% comment %} :: LINKS : Copyright / privacy footer links :: {% endcomment %}
           {% assign privacy_menu = linklists[section.settings.footer_privacy_nav] %}
           <span>
-          <h1>{{ section.settings.privacy_menu | json }}<h1>
-          {% for links in privacy_menu.links %}
+          {% for link in privacy_menu.links %}
             <span class="link-wrap">{{ link.title | link_to: link.url }}</span>
           {% endfor %}
-            <span class="link-wrap">
-              <a href="#" title="CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT">CALIFORNIA TRANSPARENCY IN SUPPLY CHAINS ACT</a>
-            </span>
-            <span class="link-wrap">
-                <a href="#" title="OUR CALIFORNIA PRIVACY RIGHTS">YOUR CALIFORNIA PRIVACY RIGHTS</a>
-            </span>
-            <span class="link-wrap">
-              <a href="#" title="TERMS OF USE">TERMS OF USE</a>
-            </span>
-            <span class="link-wrap">
-              <a href="#" title="">SITE MAP</a>
-            </span>
           </span>
         </div><!-- .subfoot-links -->
       </div><!-- .foot-subfoot -->
@@ -284,7 +271,8 @@
       {
         "type": "text",
         "id": "copyright_footer_text",
-        "label": "Footer - Copyright text"
+        "label": "Footer - Copyright text",
+        "default": "&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;"
       },
       {
         "type": "link_list",
