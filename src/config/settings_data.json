@@ -120,7 +120,7 @@
     "newsletter_footer_text": "#000000",
     "social_footer_background": "#e7e7e7",
     "social_footer_header": "#000000",
-    "footer_background": "#ffffff",
+    "footer_background": "#d3d3d3",
     "footer_color": "#000000",
     "footer_border": "#333333",
     "main_font": "source_sans_pro_n4",
@@ -159,6 +159,9 @@
     "youtube_url": "https:\/\/www.youtube.com\/user\/bebestores",
     "googleplus_url": "",
     "instagram_id": "\/bebe_stores",
+    "snapchat_url": "https:\/\/www.snapchat.com\/add\/bebe_stores",
+    "iphone_app_url": "http:\/\/www.bebe.com\/content.jsp?pageName=apps",
+    "android_app_url": "http:\/\/www.bebe.com\/content.jsp?pageName=apps",
     "popup": true,
     "email_image": "",
     "email_popup_title": "Signup Up & Get 10% Off Your First Order!",
@@ -202,6 +205,7 @@
     "alternate_colors": true,
     "image_flip": true,
     "font-size": 13,
+    "transparent_color": "rgba(0,0,0,0)",
     "email_popup_image": false,
     "megadropdown_link": "",
     "nav_promo_image": false,
@@ -355,7 +359,7 @@
             "type": "link_list",
             "settings": {
               "menu_id": "",
-              "show_headings": false
+              "show_headings": true
             }
           }
         },
@@ -366,16 +370,22 @@
           "tel_text": "855-377-BOOT (2668)",
           "tel_number": "18553772668",
           "show_credit_cards": true,
-          "visit_brand_link_one": "",
-          "visit_brand_image_one": "",
-          "visit_brand_link_two": "",
-          "visit_brand_image_two": "",
-          "visit_brand_link_three": "",
-          "visit_brand_image_three": "",
+          "heading": "Subscribe to our newsletter",
+          "newsletter_subheading": "STAY IN TOUCH & GET 10% OFF",
+          "newsletter_placeholder": "Enter Email",
+          "newsletter_submit_button": "SUBSCRIBE",
+          "newsletter_error": "Please enter a valid e-mail address",
+          "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
+          "instagram_footer_link": "",
+          "instagram_footer_image": "shopify:\/\/shop_images\/bebe-desktop-bebebabes.jpg",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
           "trust_icon_image_three": "",
-          "sample_footer_text": "Hello World"
+          "social_heading": "Connect With Us",
+          "social_insta_hashtag": "#BEBEBABES",
+          "copyright_footer_text": "&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED",
+          "footer_nav": "footer",
+          "footer_privacy_nav": "footer-copyright-menu"
         }
       },
       "collection-template": {
@@ -461,11 +471,13 @@
       "newsletter": {
         "type": "newsletter",
         "settings": {
+          "show_newsletter_section": false,
           "heading": "Join Our Newsletter",
           "newsletter_subheading": "<p>Sign up now for exclusive offers<\/p>",
           "newsletter_placeholder": "Enter Email Address",
           "newsletter_error": "Please enter a valid e-mail address",
           "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
+          "show_social_media_section": false,
           "social_heading": "Connect With Us"
         }
       },
