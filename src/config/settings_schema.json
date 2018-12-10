@@ -29,7 +29,7 @@
         "default": "GTM-NONE"
       }
     ]
-  },  
+  },
   {
     "name": "Colors",
     "settings": [
@@ -803,20 +803,20 @@
         "type": "color",
         "id": "newsletter_footer_text",
         "label": "Newsletter - Text",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "social_footer_background",
         "label": "Social - Background",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "social_footer_header",
         "label": "Social - Header",
         "default": "#0a56a4"
-      },   
+      },
 
       {
         "type": "header",
@@ -826,13 +826,13 @@
         "type": "color",
         "id": "footer_background",
         "label": "Background",
-        "default": "#333333"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "footer_color",
         "label": "Text",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
@@ -1172,7 +1172,7 @@
         "id": "ajax_cart_low_stock_text",
         "label": "Low stock alert text",
         "default": "This item does not have enough stock to add to your cart."
-      }      
+      }
     ]
   },
   {
@@ -1188,13 +1188,13 @@
         "type": "text",
         "id": "facebook_url",
         "label": "Your facebook url",
-        "info": "Example: //facebook.com/shopify"
+        "info": "Example: //www.facebook.com/bebe"
       },
       {
         "type": "text",
         "id": "pinterest_url",
         "label": "Your Pinterest url",
-        "info": "Example: //pinterest.com/shopify"
+        "info": "Example: //www.pinterest.com/bebestores"
       },
       {
         "type": "text",
@@ -1206,19 +1206,37 @@
         "type": "text",
         "id": "youtube_url",
         "label": "Your YouTube url",
-        "info": "Example: //youtube.com/shopify"
+        "info": "Example: //youtube.com/user/bebestores"
       },
       {
         "type": "text",
         "id": "googleplus_url",
         "label": "Your Google+ url",
-        "info": "Example: //plus.google.com/shopify"
+        "info": "Example: //plus.google.com/117181157292509095379"
       },
       {
         "type": "text",
         "id": "instagram_id",
         "label": "Your Instagram ID",
-        "info": "Example: shopify"
+        "info": "Example: //bebe_stores"
+      },
+      {
+        "type": "text",
+        "id": "snapchat_url",
+        "label": "Your Snapchat url",
+        "info": "Example: //www.snapchat.com/add/bebe_stores"
+      },
+      {
+        "type": "text",
+        "id": "iphone_app_url",
+        "label": "Your Iphone App download url",
+        "info": "Example: //www.bebe.com/content.jsp?pageName=apps"
+      },
+      {
+        "type": "text",
+        "id": "android_app_url",
+        "label": "Your Iphone App download url",
+        "info": "Example: //www.bebe.com/content.jsp?pageName=apps"
       }
     ]
   },
@@ -1253,14 +1271,14 @@
         "id": "email_popup_input_placeholder",
         "label": "Email popup placeholder text",
         "default": "Enter Your Email Address"
-      },      
+      },
       {
         "type": "html",
         "id": "email_popup_bottom_text",
         "label": "Fine print",
         "default": "<p>By providing your email address, you agree to our <a href=\"https://www.honeywell.com/privacy-statement\">Privacy Policy</a> & <a href=\"/pages/terms-and-conditions\">Terms of Service</a>.</p>"
       },
-      { 
+      {
         "type": "text",
         "id": "email_popup_error",
         "label": "Error Text",

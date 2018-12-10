@@ -3,7 +3,7 @@
   },
   "current": {
     "international_store_version": "US",
-    "favicon": "shopify:\/\/shop_images\/favicon.png",   
+    "favicon": "shopify:\/\/shop_images\/favicon.png",
     "google_tag_manager_id": "",
     "announcement_text_color": "#000",
     "announcement_bg_one": "#fff",
@@ -152,7 +152,7 @@
     "ajax_cart_method": "drawer",
     "ajax_cart_remove_text": "This will remove the item from your cart. Continue?",
     "ajax_cart_low_stock_text": "This item does not have enough stock to add to your cart.",
-    "twittername": "http:\/\/www.twitter.com\/bebe_Stores",
+    "twittername": "",
     "facebook_url": "http:\/\/www.facebook.com\/bebe",
     "pinterest_url": "http:\/\/www.pinterest.com\/bebestores",
     "tumblr_url": "",
