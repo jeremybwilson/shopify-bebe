@@ -36,21 +36,18 @@
 
 // PROMO : CORE : General style that apply regardless of one or two slots
 #top-bar {
-    text-align: left;
+    text-align: center;
     line-height: 30px;
     padding: 0;
-    font-family: $sans;
-    font-weight: $font-weight--book;
-    font-size: 9pt;
-    letter-spacing: 2px;
     position: relative;
     z-index: 200;
-    text-transform: uppercase;
     color: {{ settings.announcement_text_color }};
-    font-weight: $font-weight--black;
+    @include fontDim( 12px, 12px, .04em );
+    font-weight: $font-weight--medium;
+    text-transform: uppercase;
 
     @include mq( 'lap-and-up' ) {
-        width: 50%;
+        width: 60%;
     }
 
     .row {
@@ -68,8 +65,6 @@
         margin: 0 auto;
 
         @include mq( 'lap-and-up' ) {
-            margin: 0;
-            text-align: left;
             color: {{ settings.announcement_text_color }};
         }
     }
@@ -129,13 +124,11 @@
         background: $color--primary-1;
         transition: 0.5s all ease-in-out;
         padding: 0 16px;
-        left: 0;
         text-align: center;
 
         @include mq( 'lap-and-up' ) {
             padding: 0;
             background: $color--reverse-1;
-            text-align: left;
         }   
 
         &.one { opacity: 1; }
