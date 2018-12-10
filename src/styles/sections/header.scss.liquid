@@ -40,6 +40,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
     height: 100px;
     width: 100%;
     padding: 0;
+    background: $color--reverse-1;
     z-index: 50; //entire wrapper, this relates to the header to rest of site so no need var
     //transition: $navShadowAni;
 
@@ -134,7 +135,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             @include justify-content( flex-end );
             position: absolute;
             height: 100%;
-            top: 20px;
+            top: 30px;
             right: $navMobileBarGutter;
             margin: 0;
             list-style: none;
@@ -158,10 +159,16 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     @include inline-flex;
                     @include align-items( center );
                     @include justify-content( center );
-                    width: 100%;
-                    height: 100%;
-                    padding: 0 7px;
+                    width: 40px;
+                    height: 40px;
+                    padding: 7px;
                     text-decoration: none;
+
+                    @include mq( 'lap-and-up' ) {
+                        width: 100%;
+                        height: 100%;
+                        padding: 0 7px;    
+                    }
                 }
 
                 // Account, Cart, etc icons all congruent size
@@ -301,34 +308,59 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 }
 
                 .icon-account {
-                    width: 18px;
+                    width: 22px;
+                    height: auto;
                     transition: fill 0.35s ease-in-out;
                     fill: {{ settings.nav_links }};
+
+                    @include mq( 'lap-and-up' ) {
+                        width: 18px;
+                    }
                 }
             }
 
 
             // CART 
             .nav-cart {
+                position: relative;
                 color: {{ settings.nav_links }}; //Legacy font-icon support for "bag" font icon
 
                 &:hover {
                     .fa-shopping-bag { color: {{ settings.nav_links_hover }}; }
                     .icon-cart  { fill:  {{ settings.nav_links_hover }}; }
-                    .cart-count { color: {{ settings.nav_links_hover }}; }
+                    //.cart-count { color: {{ settings.nav_links_hover }}; }
                 }
 
                 i.fa, // Support bag font-icon for now..
                 .icon-cart {
+                    height: 22px;
                     margin-right: 8px; // Space icon from cart #
                     fill: {{ settings.nav_links }};
                     color: {{ settings.nav_links }}; //For "Bag" insteaed of Cart icon (font icon)
                     transition: fill 0.35s ease-in-out;
                 }
+                svg {
+                    width: auto;
+                    height: 23px;
+
+                    @include mq( 'lap-and-up' ) {
+                        height: 21px;
+                    }
+                }
 
                 .cart-count {
-                    font-weight: bold;
-                    color: {{ settings.nav_links }};
+                    position: absolute;
+                    top: 5px;
+                    right: 0;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50%;
+                    background: $color--primary-1;
+                    color: $color--reverse-1;
+                    @include fontDim( 11px, 14px, .04em );
+                    font-weight: $font-weight--medium;
+                    text-align: center;
+                    
                     transition: color 0.35s ease-in-out;
 
                     &.hidden-count {
@@ -398,7 +430,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             border-radius: 0;
             outline: none;
 
-            color: $color--field-1;
+            color: #bbb;
             font-family: $sans--2;
             @include fontSize(12px);
             font-weight: $font-weight--medium;
@@ -413,6 +445,19 @@ $navHoverColor: {{ settings.nav_hover_color }};
             &:focus {
                 outline: none;
                 box-shadow: none;
+                color: $color--primary-1;
+                border-bottom-color: $color--primary-1;
+            }            
+
+            &::placeholder {
+                color: #bbb;
+                opacity: 1;
+            }
+            &:-ms-input-placeholder {
+                color: #bbb;
+            }
+            &::ms-input-placeholder {
+                color: #bbb;
             }
         }
 
@@ -475,14 +520,19 @@ $navHoverColor: {{ settings.nav_hover_color }};
         @include align-items(center);
         position: relative;
         width: 100%;
+        height: 36px;
         max-width: 960px; //iPad
         padding: 0;
         margin-top: 12px;
         margin-left: auto;
         margin-right: auto;
 
-        // 1220px is bootstrap break apparently, not 1240 like we setup in our MQ include, might change it?
-        @media only screen and ( min-width: 1220px ) {
+        @include mq( 'lap-and-up' ) {
+            margin-top: 32px;
+        }
+
+        @include mq( 'desk-and-up' ) {
+            height: auto;
             margin-top: 18px;
             max-width: 1200px;
         }
@@ -618,7 +668,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     padding-right: 12px;
                     border-bottom: 3px solid transparent;
 
-                    @include mq( 'desk-and-up' ) {
+                    @include mq( 'lap-and-up' ) {
                         @include fontSize( 13px );
                         font-weight: $font-weight--medium;
                     }
@@ -843,7 +893,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
             opacity: 1;
             top: 0px;
             width: 100%;
-            background: {{ settings.header_background }};
+            //background: {{ settings.header_background }};
+            background: $color--reverse-1;
             z-index: 25; // logo is at 50
             margin: 0;
             padding: 70px 0;
@@ -924,7 +975,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             .sub {
-                background: $color--field-2;
+                //background: $color--field-2;
                 padding: 0 0 0 35px;
 
                 .accordion-sub-header,
