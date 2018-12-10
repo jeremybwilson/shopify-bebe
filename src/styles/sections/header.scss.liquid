@@ -87,8 +87,11 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
         @include mq('lap-and-up') {
             @include flexbox;
-            width: 20%;
+            width: 25%;
             height: 100%;
+        }
+        @include mq('desk-and-up') {
+            width: 20%;
         }
 
         a {
@@ -124,9 +127,12 @@ $navHoverColor: {{ settings.nav_hover_color }};
         position: relative;
 
         @include mq( 'lap-and-up' ) {
-            width: 20%;
+            width: 25%;
             height: 100%;
             margin-left: auto;
+        }
+        @include mq( 'desk-and-up' ) {
+            width: 20%;
         }
 
         // Account / Cart / Site Picker List
@@ -1146,8 +1152,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
     }
 }
 
-
 .shifter {
     overflow-x: hidden;
 }
 
+/* SNIPPET : Enhanced Search Module
+ * ---------------------------------------------- */
+ @import url('../snippets/enhanced-search.scss.liquid');
