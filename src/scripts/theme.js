@@ -1710,10 +1710,17 @@ $(document).ready(function() {
     });
 
     // Footer mobile menu accordion
-    $('.nav-sub-header').on('click', () => {
-      $this = $(this);
-      $this.parent().find('.footer-sub-nav').toggleClass('hide');
+    $('.nav-sub-header').click(function() {
+      if($(this).length) {
+        $(this).parent().find('.footer-sub-nav').slideToggle('hide', $(window).width() > 768);
+      }
     });
+
+    // Footer mobile menu accordion
+    // $('.nav-sub-header').on('click', () => {
+    //   $this = $(this);
+    //   $this.parent().find('.footer-sub-nav').toggleClass('hide');
+    // });
 
     // CONTENT PAGES - Sidebar navigation
 

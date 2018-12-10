@@ -56,8 +56,6 @@
   }
 
   .fl-inline {
-    display: inline-block;
-
     @include mq('phone') {
       display: block;
       margin: 0;
@@ -94,7 +92,6 @@
 
     @include mq('tablet-and-up') {
       width: 95%;
-      margin-bottom: 11px;
     }
 
     .foot-sub-emailtext {
@@ -120,10 +117,11 @@
     }
 
     .foot-sub-emailform {
-      margin-bottom: 25px;
+      margin-bottom: 10px;
 
       @include mq('tablet-and-up') {
         @include flexbox;
+        margin-bottom: 0;
       }
 
       form#footer-newsletter {
@@ -167,11 +165,25 @@
           input[type="submit"] {
             @include flexbox;
             @include justify-content(center);
+            @include fontSize(11px);
             height: 46px;
             margin-bottom: 0;
             width: auto;
+
+            @include mq('tablet-and-up'){
+              @include fontSize(13px);
+            }
           }
         }
+      }
+    }
+    // response messages
+    #newsletter-form--response {
+      color: $color--text-1;
+      margin-bottom: 15px;
+
+      @include mq('tablet-and-up'){
+
       }
     }
   }
@@ -349,7 +361,6 @@
     @include mq('tablet-and-up'){
       @include flexbox;
       @include justify-content(center);
-      margin-top: 28px;
     }
 
     // SINGLE BLOCKS : Individual menu blocks (should only need one with nesting support, but left as an option)
