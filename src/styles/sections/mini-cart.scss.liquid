@@ -29,6 +29,10 @@
   width: 50%;
 }
 
+.ajaxcart {
+  font-family: $sans--2;
+}
+
 .ajaxcart__inner {
   margin-bottom: 30px;
 }
@@ -117,7 +121,7 @@ textarea#CartSpecialInstructions {
   max-width: 95%;
   z-index: 22;
   color: {{ settings.text_color }};
-  background-color: $color--field-2;
+  background-color: $color--reverse-1;
   transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
 }
 
@@ -134,7 +138,7 @@ textarea#CartSpecialInstructions {
 
   h3 {
     margin-bottom: 0;
-    @include fontDim(18px,18px,0);
+    @include fontDim(16px,16px,0);
     font-weight: $font-weight--bold;
     text-transform: uppercase;
     color: $color--primary-1;
@@ -199,9 +203,8 @@ textarea#CartSpecialInstructions {
 
 .ajaxcart__product-name {
   @include fontDim(14px,14px,0);
-  font-weight: $font-weight--black;
+  font-weight: $font-weight--medium;
   color: $color--primary-2;
-  text-transform: uppercase;
 }
 .ajaxcart__product-meta {
   color: $color--primary-2;
@@ -258,8 +261,8 @@ textarea#CartSpecialInstructions {
   display: block;
   clear: both;
   cursor: pointer;
-  color: $color--primary-2;
-  text-decoration: underline;
+  color: $color--accent-1;
+  text-decoration: none;
   @include h7;
 }
 
@@ -271,6 +274,9 @@ textarea#CartSpecialInstructions {
     }
     .text-center {
       clear: left;
+      @include fontSize(11px);
+      font-weight: $font-weight--book;
+      text-transform: uppercase;
     }
   } 
 
@@ -291,7 +297,7 @@ button.cart__checkout {
   width: 100%;
   background: $color--primary-1;
   border-radius: 0 !important;
-  font-family: $font-stack--default;
+  font-family: $sans--2;
   font-weight: $font-weight--bold;
   @include fontSize(14px);
   letter-spacing: .125em;
@@ -299,6 +305,6 @@ button.cart__checkout {
   transition: background .25s ease-in-out;
 
   &:hover {
-    background: $color--primary-1;
+    background: $color--accent-1;
   }
 }

@@ -18,6 +18,16 @@
     {% if section.settings.full_width_header %}<div class="row">{% endif %}
 
     <div id="nav-aux">
+    
+      {% comment %} ..:: TOP LEFT ::.. {% endcomment %}      
+      <div class="header--top-left--highlight">
+        {% if section.settings.top_left_highlight_link != blank %}
+        <a href="{{ section.settings.top_left_highlight_link }}" target="_blank">
+          {% include 'svg-icon-instagram' %}
+          <span>{{ section.settings.top_left_highlight_text }}</span>
+        </a>
+        {% endif %}
+      </div>
 
       {% comment %} ..:: PROMO BANNER PORTION ("Announcements") ::.. {% endcomment %}
       {%- if section.settings.show_announcement_text -%}
@@ -52,9 +62,9 @@
           {% if shop.customer_accounts_enabled %}
             <li class="nav-item nav-account">
               {% if customer %}
-                <a href="/account"><img src="{{ 'ico_user.png' | asset_url }}" /></a>
+                <a href="/account">{% include 'svg-icon-account' %}<span>My Account</span></a>
               {% else %}
-                <a href="/account/login"><img src="{{ 'ico_user.png' | asset_url }}" /></a>
+                <a href="/account/login">{% include 'svg-icon-account' %}<span>Login</span></a>
               {% endif %}
             </li>
           {% endif %}
@@ -67,14 +77,10 @@
               {% if section.settings.cart_icon == 'cart' %}
                 {% include 'svg-icon-cart' %}
               {% elsif section.settings.cart_icon == 'bag' %}
-                <img src="{{ 'ico_bag.png' | asset_url }}" />
+                {% include 'svg-icon-shopping-bag' %}
               {% endif %}
               <span class="cart-count {% if cart.item_count == 0 %}hidden-count{% endif %}">{{ cart.item_count }}</span>
             </a>
-          </li>
-
-          <li class="nav-item loyalty-stub">
-            {% include 'loyalty-stub' %}
           </li>
 
         </ul>
@@ -82,7 +88,7 @@
     </div>
 
     {% comment %} ..:: NAV-BAR : BG + NAV-ITEMS WRAPPER ::.. {% endcomment %}
-    <div id="nav-bar-bg"></div>
+    {% comment %} <div id="nav-bar-bg"></div> {% endcomment %}
     <div id="nav-bar" class="row">
 
 
@@ -237,12 +243,12 @@
       {
         "type":      "range",
         "id":        "announcement_height",
-        "min":       40,
+        "min":       30,
         "max":       60,
         "step":      1,
         "unit":      "px",
         "label":     "Announcement Height",
-        "default":   60
+        "default":   36
       },
       {
         "type":      "range",
@@ -255,7 +261,21 @@
         "default":   5
       },
 
-
+      {
+        "type": "header",
+        "content": "Top left Instagram highlight (Desktop Only)"
+      },
+      {
+        "type": "url",
+        "id": "top_left_highlight_link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "top_left_highlight_text",
+        "label": "Text",
+        "default": "#Bebebabes"
+      },
       {
         "type": "header",
         "content": "Logo"
