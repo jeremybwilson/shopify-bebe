@@ -21,10 +21,12 @@
     
       {% comment %} ..:: TOP LEFT ::.. {% endcomment %}      
       <div class="header--top-left--highlight">
-        <a href="/" target="_blank">
+        {% if section.settings.top_left_highlight_link != blank %}
+        <a href="{{ section.settings.top_left_highlight_link }}" target="_blank">
           {% include 'svg-icon-instagram' %}
-          <span>#BebeBabes</span>
-        </a>      
+          <span>{{ section.settings.top_left_highlight_text }}</span>
+        </a>
+        {% endif %}
       </div>
 
       {% comment %} ..:: PROMO BANNER PORTION ("Announcements") ::.. {% endcomment %}
@@ -259,7 +261,21 @@
         "default":   5
       },
 
-
+      {
+        "type": "header",
+        "content": "Top left Instagram highlight (Desktop Only)"
+      },
+      {
+        "type": "url",
+        "id": "top_left_highlight_link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "top_left_highlight_text",
+        "label": "Text",
+        "default": "#Bebebabes"
+      },
       {
         "type": "header",
         "content": "Logo"
