@@ -86,6 +86,7 @@
   "cart": {
     "general": {
       "title": "My Shopping Bag",
+      "view_cart": "View Bag",
       "close_cart": "Close",
       "shipping_at_checkout": "Shipping calculated at check out",
       "empty": "Your bag is currently empty.",

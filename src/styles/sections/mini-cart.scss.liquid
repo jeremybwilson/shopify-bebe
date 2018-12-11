@@ -131,10 +131,9 @@ textarea#CartSpecialInstructions {
   @include flexbox;
   @include align-items(center);
   @include justify-content(space-between);
-  height: 70px;
+  height: 40px;
   width: 100%;
   margin-bottom: 15px;
-  border-bottom: 1px solid {{ settings.dotted_color }};
 
   h3 {
     margin-bottom: 0;
@@ -187,6 +186,17 @@ textarea#CartSpecialInstructions {
     -o-transform:rotate(45deg);
     -ms-transform:rotate(45deg);
   }
+}
+
+// View Cart Link
+
+.ajaxcart__view-cart-link {
+  width: 100%;
+  border-bottom: 1px solid {{ settings.dotted_color }};
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  margin-top: -15px;
+  text-transform: uppercase;
 }
 
 // Product Item
