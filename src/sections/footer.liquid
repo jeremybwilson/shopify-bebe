@@ -48,8 +48,10 @@
                   {% comment %} :: NESTED MENU :: {% endcomment %}
                   {% if link.levels > 0 %}
                     <li class="footer-sub-nav-wrapper" data-link-size="{{ link.links.size }}">
+                    {% comment %} nav-sub-header => accordion-header {% endcomment %}
                     <h4 class="nav-sub-header">{{ link.title }}</h4>
-                      <ul class="footer-sub-nav hide">
+                      {% comment %} footer-sub-nav => accordion-content{% endcomment %}
+                      <ul class="footer-sub-nav slide">
                       {% for sub_link in link.links %}
                         <li>{{ sub_link.title | link_to: sub_link.url }}</li>
                       {% endfor %}
