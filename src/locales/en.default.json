@@ -86,14 +86,18 @@
   "cart": {
     "general": {
       "title": "My Shopping Bag",
+      "view_cart": "View Bag",
       "close_cart": "Close",
       "shipping_at_checkout": "Shipping calculated at check out",
       "empty": "Your bag is currently empty.",
       "product": "Product",
+      "unit_price": "Price",
+      "sku": "SKU",
       "price": "Price",
       "qty": "Qty",
       "remove": "Remove",
       "total": "Total",
+      "order_summary": "Order Summary",
       "subtotal": "Subtotal",
       "continue": "Continue Shopping",
       "update": "Update Bag",

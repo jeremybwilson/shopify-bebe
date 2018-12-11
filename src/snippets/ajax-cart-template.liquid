@@ -9,6 +9,10 @@
   <script id="CartTemplate" type="text/template">
 
   {% raw %}
+    <div class="ajaxcart__view-cart-link">
+      <a href="/cart">{% endraw %}{{ 'cart.general.view_cart' | t }}{% raw %}</a>
+    </div>
+
     <form action="/cart" method="post" novalidate class="cart ajaxcart">
       <div class="ajaxcart__inner">
         {{#items}}
