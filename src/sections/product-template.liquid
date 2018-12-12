@@ -82,7 +82,7 @@
         </h1>
 
 
-        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <div id="product-details--wrapper" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           <meta itemprop="priceCurrency" content="{{ shop.currency }}">
           <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
           {% capture product_form_config %}
@@ -107,14 +107,25 @@
               {{ product.description }}
             </div>
 
+            {% comment %} :: SIZE CHART :: {% endcomment %}
+            {% assign productOptions = product.options | downcase %}
+            {% if productOptions contains 'size' %}
+              <dl id="size-chart--accordion" class="product-accordion">
+                <a id="size-chart--accordion-header" class="product-accordion--header" href="/pages/size-chart" target="_blank">
+                  <h3>{{ section.settings.size_chart_header_text }}</h3>
+                  <span class="opener"></span>
+                </a>
+              </dl>
+            {% endif %}
+
             {% comment %} :: SHIPPING & RETURNS :: {% endcomment %}
             {% if section.settings.shipping_text != blank %}
-              <dl id="free-shipping--accordion">
-                <dt id="free-shipping--accordion-header">
+              <dl id="shipping--accordion" class="product-accordion">
+                <dt id="shipping--accordion-header" class="product-accordion--header">
                   <h3>{{ section.settings.shipping_header_text }}</h3>
                   <span class="opener"></span>
                 </dt>
-                <dd id="free-shipping--accordion-content">{{ section.settings.shipping_text }}</dd>
+                <dd id="shipping--accordion-content" class="product-accordion--content">{{ section.settings.shipping_text }}</dd>
               </dl>
             {% endif %}
 
@@ -174,7 +185,7 @@
   {% endunless %}
 </div>
 
-{% comment %} :: SIZE CHART MODAL :: {% endcomment %}
+{% comment %} :: SIZE CHART MODAL :: (not in use as its a nightmare to style) {% endcomment %}
 {% include 'product-size-chart' %}
 
 <style>
@@ -404,7 +415,7 @@
       },
       {
         "type": "header",
-        "content": "Free Shipping Accordion"
+        "content": "Shipping Accordion"
       },      
       {
         "type": "text",
@@ -426,6 +437,12 @@
       {
         "type": "header",
         "content": "Size Chart"
+      },
+      {
+        "type": "text",
+        "id": "size_chart_header_text",
+        "label": "Size Chart Header Text",
+        "default": "Size Chart"
       },
       {
         "type": "page",
