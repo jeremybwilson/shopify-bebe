@@ -1,6 +1,31 @@
 @charset "UTF-8";
 
 .twin-promos {
+  @include mq('phone') {
+    margin-bottom: 0;
+
+    .row.homepage-section {
+      margin-bottom: 0;
+      padding: 0;
+
+      .single-promo.mobile-3 {
+        position: relative;
+        margin-top: 5px;
+        margin-right: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        width: 100%;
+
+        .text-promo-content {
+          position: absolute;
+          bottom: 100px;
+          left: 50%;
+          width: calc(100% - 64px);
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
   @include mq('tablet-and-up') {
     margin-top: 60px;
   }
@@ -30,19 +55,21 @@
 
       @include mq('tablet-and-up') {
         width: 90%;
-        margin: 30px auto 0;
+        margin: 16px auto 0;
         padding-left: 0;
         padding-right: 0;
       }
     }
 
     h3 {
-      color: $color--primary-1;
+      margin-bottom: 16px;
+      color: $color--white;
       font-weight: $font-weight--black;
-      @include fontDim(22px,26px,0);
-      text-transform: uppercase;
+      @include fontDim(30px,36px,.04em);
+      // text-transform: uppercase;
 
       @include mq('tablet-and-up') {
+        color: $color--primary-1;
         @include fontSize(24px);
       }
     }
@@ -60,14 +87,14 @@
       }
     }
     .cta {
-      margin-top: 12px;
+      margin-top: 0;
       @include fontDim(13px,13px,0);
       font-weight:  $font-weight--bold;
       text-transform: uppercase;
       display: block;
 
       @include mq('tablet-and-up') {
-        margin-top: 15px;
+        margin-top: 0;
         @include fontSize(16px);
       }
 
@@ -78,6 +105,26 @@
 
         &:hover {
           color: $color--gray-1;
+        }
+
+        span.button {
+          display: inline-block;
+          padding: 15px 25px;
+          height: auto;
+          border: none;
+          border-radius: 0;
+          color: $color--white;
+          @include fontDim(16px,16px,.04em);
+          font-weight: $font-weight--black;
+          text-transform: uppercase;
+    
+          @include mq('lap-and-up') {
+            padding: 20px 60px;
+            @include fontDim(20px,20px,0);
+          }
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
 

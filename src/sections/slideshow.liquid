@@ -111,7 +111,7 @@
             <div class="flex-caption slide-{{ block.id }} caption-align-{{ block.settings.caption_horizontal }}">
               <div class="caption-inners">
                 {% if block.settings.heading != blank %}
-                <h2 class="slide-title">{{ block.settings.heading }}</h2>
+                <h2 class="slide-title{% if block.settings.hide_header_desktop %} hide-desktop{% endif %}">{{ block.settings.heading }}</h2>
                 {% endif %}
                 {% if block.settings.subheading != blank %}
                 <p class="caption">{{ block.settings.subheading }}</p>
@@ -149,8 +149,12 @@
             .flex-caption.slide-{{ block.id }} {
               top: {{ block.settings.caption_vertical }}%;
             }
+            @media screen and (max-width: 767px) {
+              .flex-caption.slide-{{ block.id }} {
+                top: {{ block.settings.caption_vertical_mobile }}%;
+              }
+            }
             .flex-caption.slide-{{ block.id }} .caption-inners {
-
               {% assign bg_color = block.settings.caption_background %}
               {% assign caption_opacity = block.settings.caption_opacity | plus: 0 %}
               {% if block.settings.caption_background == 'rgba(0,0,0,0)' %}
@@ -262,6 +266,11 @@
           "default": "Add a title to your image"
         },
         {
+          "type": "checkbox",
+          "id": "hide_header_desktop",
+          "label": "Hide Heading on Desktop"
+        },
+        {
           "type": "text",
           "id": "subheading",
           "label": "Subheading",
@@ -362,10 +371,20 @@
           "type": "range",
           "id": "caption_vertical",
           "min": 5,
-          "max": 50,
+          "max": 70,
           "step": 5,
           "unit": "%",
           "label": "Vertical position",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "caption_vertical_mobile",
+          "min": 5,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Vertical position (mobile)",
           "default": 50
         },
         {
