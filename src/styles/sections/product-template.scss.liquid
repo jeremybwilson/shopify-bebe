@@ -297,12 +297,16 @@
  * ---------------------------------------------- */
 #product-description-social {
   @include flexbox;
-  @include justify-content( flex-end );
+  @include justify-content( center );
   position: relative;
   width: 100%;
   list-style: none;
   margin: 20px 0;
-  right: -2px; //Slight alignment for visual 
+
+  @include mq( 'tablet-and-up' ) {
+    @include justify-content( flex-end );
+    right: -2px; //Slight alignment for visual 
+  }
 
   > li {
     width: 25px;
