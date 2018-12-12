@@ -1,21 +1,27 @@
 // Globals
 
-#customer-wrapper {
+.customers-login,
+.customers-account,
+.customers-orders,
+.customers-addresses {
+  #content {
+    padding: 25px 0;
+  }
+}
 
+#customer-wrapper {
+  min-height: 300px;
+
+  h1 {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .account-header {
+    padding-bottom: 20px;
+    border-bottom: solid 1px {{ settings.dotted_color }};
+  }
   p {
     margin: 0;
-  }
-
-  h2 {
-    @include h3;
-    color: $color--primary-1;
-  }
-  h5 {
-    @include h5;
-    line-height: 1.6875em;
-    letter-spacing: .025em;
-    color: $color--primary-1;    
-    font-weight: 700;
   }
   input[type="text"],
   input[type="email"],
@@ -24,11 +30,20 @@
   }
 }
 
+// Global Sidebar 
+
+#customer_sidebar {
+  h5 {
+    @include h2;
+  }
+  #sign_out {
+    margin-top: 20px;
+  }
+}
+
+
 // Login Page 
 .customers-login {
-  #content {
-    padding: 25px 0;
-  }
 
   // LOGIN : Header
   #login-msg {
@@ -38,7 +53,6 @@
     text-align: center;
 
     h1 {
-      border-bottom: none;
       @include fontSize( 18px );
     }
   }
@@ -46,6 +60,9 @@
   // LOGIN :: Forms 
   #customer--signup-options {
     margin-bottom: 40px;
+  }
+  label {
+    display: none;
   }
 
   #customer,
@@ -66,6 +83,19 @@
 @import url('../snippets/login-loyalty.scss.liquid');
 
 // Account Dashboard
+.customers-account {
+
+  #customer_orders {
+    h5 {
+      @include p;
+      text-transform: none;
+
+      &.name {
+        @include h2;
+      }
+    }
+  }
+}
 
 // Addresses
 
@@ -77,87 +107,37 @@
 
 // Reset Password
 
-#customer-wrapper {
-
-  #sign_out {
-    @include h6;
-    @include fontSize( 13px );  
-    position: relative;
-    padding: 13px 16px;
-    top: 20px;
-    background: $color--accent-1;
-    color: $color--white;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-
-    &:hover {
-      background: $color--primary-1;
-    }
-}
-
-  #customer_orders {
-    @include mq('phone') {
-      margin-top: 50px;
-    }
-  }
-
-  label {
-    display: none;
-  }
-}
-
-
 /* =============== */
 /* = Customer Accounts = */
 /* =============== */
 
-
 #customer_orders table {
   text-align: left;
 }
-
-#customer-wrapper form {
-  margin-top: 20px;
-}
-
-#admin_header {
-  margin-bottom: 30px;
-}
-
 .view_address p {
   margin: 0;
 }
-
 #customer_detail p {
   margin: 0;
 }
-
 .address_table {
   margin-bottom: 20px;
 }
-
 #order_address {
   clear: both;
   float: left;
   width: 100%;
   margin-bottom: 20px;
 }
-
 #order_details {
   float: left;
 }
-
 #create-customer, #customer {
   margin-top: 30px;
 }
-
 div#recover-password {
   margin-top: 30px;
 }
-
 .action_link {
   display: inline-block;
   margin-bottom: 10px;
