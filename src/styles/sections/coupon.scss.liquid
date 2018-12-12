@@ -1,9 +1,22 @@
 .coupon-section {
   margin: 16px 0;
 
+  .blocks2 {
+    display: flex;
+    justify-content: space-between;
+
+    .coupon {
+      width: 50%;
+
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+
   .coupon {
     padding: 2%;
-    width: 96%;
+    width: 100%;
 
     &.medium-gray {
       background-color: #dadada;

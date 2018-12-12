@@ -2,7 +2,7 @@
 
   {% if section.settings.full_width %}<div class="gridlock-fluid"><div class="row">{% endif %}
 
-  <div class="row no-fouc">
+  <div class="row no-fouc blocks{{ section.blocks.size }}">
     {% comment %} THE LOOP {% endcomment %}
 
     {% for block in section.blocks %}
@@ -50,16 +50,6 @@
     {% comment %} END LOOP {% endcomment %}
   </div>
 
-  <script>
-    $(document).ready(function(){
-      $('.coupon-section .coupon .details label').on('click',function(e){
-        if (e.handled !== true) {
-          $(this).next('div').slideToggle().toggleClass('open');
-          e.handled = true;
-        }
-      });
-    });
-  </script>
   {% if section.settings.full_width %}</div></div>{% endif %}
 
   {% if section.blocks.size == 0 %}
@@ -72,7 +62,7 @@
 {% schema %}
 {
   "name": "Coupon",
-  "max_blocks": 1,
+  "max_blocks": 2,
   "settings": [
     {
       "type": "checkbox",

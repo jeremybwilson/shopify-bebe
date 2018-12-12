@@ -2017,6 +2017,17 @@ $(document).ready(function() {
     });
   };
 
+  /*============================================================================
+   Coupon & Discounts - "Details" expand/contract
+  ==============================================================================*/
+
+  $('.coupon-section .details label').on('click',function(e){
+    if (e.handled !== true) {
+      $(this).next('div').slideToggle().toggleClass('open');
+      e.handled = true;
+    }
+  });
+
 });
 
 /*============================================================================
