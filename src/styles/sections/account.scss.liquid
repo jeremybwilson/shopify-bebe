@@ -7,9 +7,12 @@
 }
 
 #customer-wrapper {
+  max-width: 1200px;
+
   h2 {
     @include h3;
     color: $color--primary-1;
+
   }
   h5 {
     @include h5;
@@ -20,13 +23,14 @@
   }
   label {
     @include h7;
-    color: $color--gray-1;
+    color: $color--primary-3;
   }
   input[type="text"],
   input[type="email"],
   input[type="password"] {
-    color: $color--gray-1;
-    font-family: $sans;
+    margin-bottom: 8px;
+    color: $color--primary-3;
+    font-family: $sans--2;
   }
   a {
     color: $color--accent-1;
@@ -51,11 +55,11 @@
     }
 }
   .button {
-    background: $color--accent-1;
-    color: $color--white;
+    background: $color--primary-1;
+    color: $color--reverse-1;
 
     &:hover {
-      background: $color--primary-1;
+      background: $color--accent-1;
     }
   }
   #customer_orders {
@@ -64,22 +68,166 @@
     }
   }
 
-  #account-msg {
-    display: block;
-    width: 100%;
+  label {
+    display: none;
+  }
+}
+
+.customers-login {
+  #content {
+    padding: 25px 0;
+  }
+}
+
+// LOGIN : Header
+#account-msg {
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    border-bottom: none;
+    @include fontSize( 18px );
+  }
+  hr {
+      margin: 25px 0;
+  }
+}
+
+#customer,#create-customer {
+  margin-top: 0;
+}
+
+.clubrowcon {
+  @include flexbox;
+  @include justify-content( center );
+
+  span{
+    display:block;
+  }
+  table { 
+    border-collapse: collapse;
+    width: 95%;
+    margin: 8% 5%;
+
+    tr {
+      border: none; 
+      height:50px;
+    }    
+    td {
+      border-right: solid 1px {{ settings.dotted_color }}; 
+      border-left: solid 1px {{ settings.dotted_color }};
+      font-size: 13px;
+      text-align: center;
+      vertical-align: middle;
+
+      &:first-child {
+        text-align: left;
+        border-left: 0;
+        width:25%;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+  
+      span{
+        display: block; 
+      }
+    }    
+  }
+  .clubfirstrow {
+    vertical-align: top;
+    height:25px;
+
+    span {
+      line-height: 18px;
+    }    
+  }
+  .perks{
+    flex-basis: 130px;
+    margin: 2% 5%;
+    font-size: 12px;
     text-align: center;
 
-    h3 {
-      font-size: 1.375rem;
-      color: $color--accent-1;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+    .perks-pts{
+      font-size: 48px;
+      line-height: 35px;
     }
-    p {
-      font-size: 16px;
+    .perk-sub-copy{
+      font-size: 13px;
+      font-weight: bold;
     }
-    hr {
-       margin: 25px 0;
+    .pt-line{
+      border-bottom: 1px solid {{ settings.dotted_color }};
+      width: 35%;
+      margin: 10px auto;
     }
   }
 }
+
+.clubrowbox {
+  width: 165px;
+  flex-basis: auto;
+  text-align: center;
+
+  h2 {
+    letter-spacing: 2px;
+    @include fontSize( 24px );
+    text-align:center;
+    margin-bottom: 2%;
+  }
+  p {
+    text-align:center;
+    font-size: 12px;
+  }
+  hr{
+    margin-top:30%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid {{ settings.dotted_color }};
+  }  
+}
+.clubiconimg{
+  width:60%;
+  height:auto;
+}
+.clubicons{
+  margin-top: 2%;
+}
+.tb-txt-lg{
+  font-size: 15px;
+}
+.clubdot{
+  color: $color--accent-1;
+}
+.club-title{
+  font-weight: $font-weight--medium;
+  @include fontSize( 18px );
+}
+.clubsubcopy-con{
+  width:50%;
+  margin:0 auto 5%;
+
+  h3{
+    text-align: center;
+    border-top: 1px solid $color--field-1;
+    line-height: 0;
+    padding: 0;
+
+    span{
+      background: $color--reverse-1;
+      padding: 0 5%;
+      font-size: 3em;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--light;
+    }
+  }
+}
+.club-dis{
+  margin:2% auto;
+  width:50%;
+  text-align:center;
+  font-size:11px;
+}
+.row-dt{display: flex;}
