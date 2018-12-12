@@ -1,228 +1,267 @@
 <div class="footer-section" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <footer class="site-footer">
-    
-    {% comment %} :: ROW #1 -- Footer Menu + Brand Links :: {% endcomment %}
+
     <div class="row">
 
-      {% comment %} :: FOOTER NAVIGATION :: {% endcomment %}
-      {% if section.blocks %}
-        <div class="footer-blocks">
-          
-          {% for block in section.blocks %}
-            {% assign menu = linklists[block.settings.menu_id] %} 
+      {% comment %} :: ROW #1 -- Newsletter signup :: {% endcomment %}
+      <div id="newsletter-social" class="newsletter-{{ section.id }}" data-section-id="{{ section.id }}"
+        data-section-type="newsletter-social">
+        <div class="newsletter-wrapper">
+
+          <div class="newsletter">
+            <div class="email-text">
+              <div class="foot-sub-emailtext">
+                <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
+                {% comment %} :: JS from live site related to newsletter form :: {% endcomment %}
+                {% comment %} <script type="text/blzscript">$(document).ready(function(){if(("#egcForm").length){$("#eGiftFormContent .scheduleDelivery span").html("(If today's date is selected, e-gift card will be sent the following day. Weekend orders will be sent by end of day on Monday.)");}});</script> {% endcomment %}
+              </div><!-- .foot-sub-emailtext -->
+              <div class="foot-sub-emailform">
+                <form id="footer-newsletter">
+                  <input class="form-control subscribe-form" type="email" id="email" name="email" placeholder="{{ section.settings.newsletter_placeholder }}">
+                  <label id="button-footer-newsletter-submit" for="footer-newsletter-submit">
+                    <input id="footer-newsletter-submit" type="submit" value="{{ section.settings.newsletter_submit_button }}">
+                    {% comment %} {% include 'svg-icon-caret-right-submit' %} {% endcomment %}
+                  </label>
+                </form>
+              </div><!-- .foot-sub-emailform -->
+              <div id="newsletter-form--response">
+                <span id="newsletter-error-response" style="display:none;">{{ section.settings.newsletter_error }}</span>
+                <span id="newsletter-success-response" style="display:none;">
+                {{ section.settings.newsletter_success }}</span>
+              </div>
+              {% comment %} :: Hidden link text related to email and sms notification (sign up forms) ::  {% endcomment %}
+              {% comment %} <a style="display:none;" class="openAjaxLayer" id="jsLauchEmailLayer" href="/user/subscribe_layer.jsp">Email Sign Up</a>
+              <a style="display:none;" class="openAjaxLayer" id="jsLauchTextLayer" href="/user/text_subscribe_layer.jsp">Text Sign Up</a> {% endcomment %}
+            </div><!-- .email-text -->
+          </div><!-- .newsletter -->
+
+        {% comment %} :: ROW #2 -- FOOTER NAVIGATION :: {% endcomment %}
+        {% if section.blocks %}
+          <div class="footer-blocks">
+            {% assign menu = linklists[section.settings.footer_nav] %}
+
             <div class="footer-nav">
               <nav>
-
-                {% comment %} :: TITLE : Basic title if no nested menus inside footer :: {% endcomment %}
-                {% if menu.levels < 2 and block.settings.show_headings %}
-                  <h4 class="nav-sub-header">{{ menu.title }}</h4>
-                {% endif %}
-
-
-                {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
+              {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
                 <ul>
-                  {% for link in menu.links %}
-                    
-                    {% comment %} :: NESTED MENU :: {% endcomment %}
-                    {% if link.levels > 0 %}
-                      <li class="footer-sub-nav-wrapper" data-link-size="{{ link.links.size }}">
-                        
-                        {% comment %} :: SUB-NAV HEADER :: {% endcomment %}
-                        {% if block.settings.show_headings %}
-                          <h4 class="nav-sub-header">{{ link.title }}</h4>
-                        {% endif %}
+                {% for link in menu.links %}
+                  {% comment %} :: NESTED MENU :: {% endcomment %}
+                  {% if link.levels > 0 %}
+                    <li class="footer-sub-nav-wrapper" data-link-size="{{ link.links.size }}">
+                    <h4 class="nav-sub-header">{{ link.title }}</h4>
+                      <ul class="footer-sub-nav hide">
+                      {% for sub_link in link.links %}
+                        <li>{{ sub_link.title | link_to: sub_link.url }}</li>
+                      {% endfor %}
+                      </ul>
+                    </li><!-- .footer-sub-nav-wrapper -->
+                  {% comment %} :: ELSE, REGULAR SINGLE LINK :: {% endcomment %}
+                  {% else %}
+                    <li>{{ link.title | link_to: link.url }}</li>
+                  {% endif %}
 
-                        {% comment %} :: SUB-NAV MENU LINKS :: {% endcomment %}
-                        <ul class="footer-sub-nav">
-                          {% for sub_link in link.links %}
-                            <li>{{ sub_link.title | link_to: sub_link.url }}</li>
-                          {% endfor %}
-                        </ul>
-
-                      </li>
-
-                    {% comment %} :: ELSE, REGULAR SINGLE LINK :: {% endcomment %}
-                    {% else %}
-                       <li>{{ link.title | link_to: link.url }}</li>
-                    {% endif %}
-
-                  {% endfor %}
+                {% endfor %}
                 </ul>
-
               </nav>
             </div><!-- .footer-nav -->
-          {% endfor %}
+          </div><!-- .footer-blocks -->
+          {% endif %}
+        </div><!-- .newsletter-wrapper -->
 
-        </div><!--.footer-blocks-->      
+      {% comment %} :: Social Media Navigation :: {% endcomment %}
+      {% if section.blocks %}
+        <div class="social-wrapper">
+          <div class="social-inner">
+          {% comment %} {% unless section.settings.social_heading == blank %}
+            <h4 class="section-title">{{ section.settings.social_heading }}</h4>
+          {% endunless %} {% endcomment %}
+          {% unless section.settings.social_insta_hashtag == blank %}
+            <h4 class="section-title">{{ section.settings.social_insta_hashtag }}</h4>
+          {% endunless %}
+            <div class="social-image">
+              {% if section.settings.instagram_footer_image != blank %}
+                {% assign insta_img_url = section.settings.instagram_footer_image | img_url: '542x' %}
+                {% if section.settings.instagram_footer_link != blank %}<a href="{{ section.settings.instagram_footer_link }}" target="_blank">{% endif %}
+                  <img src="{{ insta_img_url }}" alt="Placeholder Image" />
+                {% if section.settings.link != blank %}</a>{% endif %}
+              {% endif %}
+              {% comment %} <img src="https://via.placeholder.com/545.png" alt="Placeholder Image" /> {% endcomment %}
+            </div>
+            <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
+              {% include 'social-icons' %}
+            </ul><!-- #social-icons -->
+          </div><!-- .social-inner -->
+        </div><!-- .social-wrapper -->
       {% endif %}
-
-
-      {% comment %} :: VISIT OUR BRANDS :: {% endcomment %}
-      <div class="visit-our-brands">
-        <div class="section-title">
-          <h4>Visit Our Brands</h4>
-        </div>
-
-        <div class="brands--list">
-
-          {% unless section.settings.visit_brand_link_one == blank %}
-            <a href="{{ section.settings.visit_brand_link_one }}" title="{{ section.settings.visit_brand_image_one.alt }}"><img src="{{ section.settings.visit_brand_image_one | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_one.alt }}"></a>
-          {% endunless %}
-
-          {% unless section.settings.visit_brand_link_two == blank %}
-            <a href="{{ section.settings.visit_brand_link_two }}" title="{{ section.settings.visit_brand_image_two.alt }}"><img src="{{ section.settings.visit_brand_image_two | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_two.alt }}"></a>
-          {% endunless %}
-
-          {% unless section.settings.visit_brand_link_three == blank %}
-            <a href="{{ section.settings.visit_brand_link_three }}" title="{{ section.settings.visit_brand_image_three.alt }}"><img src="{{ section.settings.visit_brand_image_three | img_url: 'x100' }}" alt="{{ section.settings.visit_brand_image_three.alt }}"></a>
-          {% endunless %}                
-
-        </div><!-- .brands--list -->
-      </div><!-- .visit-our-brands -->
+      </div><!-- .newsletter-social-->
     </div>
 
-
-    {% comment %} :: ROW #2 -- Telephone, Payment and Trust Icons :: {% endcomment %}
-    <div class="row footer--bottom-row">
-      <div class="brands--telephone">
-        <a href="tel:{{ section.settings.tel_number }}"><h4>TEL</h4><span>{{ section.settings.tel_text }}</span></a>
-      </div><!-- .brands--telephone -->
-
-      <div id="payment" >
-        {% if section.settings.show_credit_cards %}
-          <div class="section-title">
-            <h4>We Accept</h4>
+    {% comment %} :: ROW #3 -- Privacy Policy + Terms + Site Map :: {% endcomment %}
+    <div class="row"><!-- style="font-family:SourceSansProRegular,Arial,Helvetica,sans-serif;" -->
+      <div class="foot-subfoot">
+        <div class="subfoot-links">
+          {% comment %} :: RAF Section hidden in footer comps :: {% endcomment %}
+          {% comment %}  <span class="raf-wrapper">
+            <a class="raf-footer" href="#">
+              <span class="raf-text">
+                  REFER A FRIEND &amp; GET
+                  <span class="strong">200 POINTS</span>
+              </span>
+              <span class="raf-separator"></span>
+              <span class="fo-how">FIND OUT HOW ►</span>
+            </a>
+          </span><!-- .raf-wrapper --> {% endcomment %}
+          <div class="copyright">
+            <span class="copyright-wrapper">{{ section.settings.copyright_footer_text }}</span>
           </div>
-          <div class="payment-methods">
-            {% include 'svg-icon-visa' %}
-            {% include 'svg-icon-mastercard' %}
-            {% include 'svg-icon-amex' %}
-            {% include 'svg-icon-paypal' %}
-          </div><!-- .payment-methods -->
-              
-          {% comment %}
-            // PENDING - figure out how to actually alter the output SVGs
-            {% for type in shop.enabled_payment_types %}
-              {{ type | payment_type_svg_tag: class:'payment-icon' }}
-            {% endfor %}
-          {% endcomment %}
-
-        {% endif %}
-      </div><!-- #payment -->
-
-      <div id="trust-icons">
-        {% unless section.settings.trust_icon_image_one == blank %}
-          <img src="{{ section.settings.trust_icon_image_one | img_url }}" alt="{{ section.settings.trust_icon_image_one.alt }}" />
-        {% endunless %}
-        {% unless section.settings.trust_icon_image_two == blank %}
-          <img src="{{ section.settings.trust_icon_image_two | img_url }}" alt="{{ section.settings.trust_icon_image_two.alt }}" />
-        {% endunless %}
-        {% unless section.settings.trust_icon_image_three == blank %}
-          <img src="{{ section.settings.trust_icon_image_three | img_url }}" alt="{{ section.settings.trust_icon_image_three.alt }}" />
-        {% endunless %}
-      </div><!-- #trust-icons -->
-    </div><!-- .footer--bottom-row -->
+          {% comment %} :: LINKS : Copyright / privacy footer links :: {% endcomment %}
+          {% assign privacy_menu = linklists[section.settings.footer_privacy_nav] %}
+          <span>
+          {% for link in privacy_menu.links %}
+            <span class="link-wrap">{{ link.title | link_to: link.url }}</span>
+          {% endfor %}
+          </span>
+        </div><!-- .subfoot-links -->
+      </div><!-- .foot-subfoot -->
+    </div>
 
   </footer>
 </div>
-
-
 
 {% schema %}
   {
     "name": "Footer",
     "settings": [
-     {
-       "type": "header",
-       "content": "Phone Number"
-     },
-     {
-       "type": "text",
-       "id": "tel_text",
-       "label": "Display Text",
-       "default": "855-377-BOOT (2668)",
-       "info": "This is the text that will be displayed on the site."
-     },
-     {
-      "type": "text",
-      "id": "tel_number",
-      "label": "Actual Number",
-      "default": "18553772668",
-      "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
-     },   
-
-     {
-       "type": "header",
-       "content": "Payment Methods"
-     },
-     {
-       "type": "checkbox",
-       "id": "show_credit_cards",
-       "label": "Show credit card icons",
-       "default": true,
-       "info": "The icons that show are determined by your store's payment settings."
-     },
-     {
-       "type": "header",
-       "content": "Visit Our Brands - #1"
-     },
-     {
-      "type": "url",
-      "id": "visit_brand_link_one",
-      "label": "URL"
-     },
-     {
-      "type": "image_picker",
-      "id": "visit_brand_image_one",
-      "label": "Logo"
-     },  
-     {
-       "type": "header",
-       "content": "Visit Our Brands - #2"
-     },
-     {
-      "type": "url",
-      "id": "visit_brand_link_two",
-      "label": "URL"
-     },
-     {
-      "type": "image_picker",
-      "id": "visit_brand_image_two",
-      "label": "Logo"
-     },  
-     {
-       "type": "header",
-       "content": "Visit Our Brands - #3"
-     },
-     {
-      "type": "url",
-      "id": "visit_brand_link_three",
-      "label": "URL"
-     },
-     {
-      "type": "image_picker",
-      "id": "visit_brand_image_three",
-      "label": "Logo"
-     },  
-     {
-       "type": "header",
-       "content": "Trust Icons"
-     },
-     {
-      "type": "image_picker",
-      "id": "trust_icon_image_one",
-      "label": "Logo #1"
-     },  
-     {
-      "type": "image_picker",
-      "id": "trust_icon_image_two",
-      "label": "Logo #2"
-     },  
-     {
-      "type": "image_picker",
-      "id": "trust_icon_image_three",
-      "label": "Logo #3"
-     }  
+      {
+        "type": "header",
+        "content": "Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "tel_text",
+        "label": "Display Text",
+        "default": "855-377-BOOT (2668)",
+        "info": "This is the text that will be displayed on the site."
+      },
+      {
+        "type": "text",
+        "id": "tel_number",
+        "label": "Actual Number",
+        "default": "18553772668",
+        "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
+      },
+      {
+        "type": "header",
+        "content": "Payment Methods"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_credit_cards",
+        "label": "Show credit card icons",
+        "default": true,
+        "info": "The icons that show are determined by your store's payment settings."
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_subheading",
+        "label": "Newsletter sub-heading",
+        "default": "STAY IN TOUCH & GET 10% OFF"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_placeholder",
+        "label": "Form field placeholder",
+        "default": "Enter Email"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_submit_button",
+        "label": "Submit button text",
+        "default": "ENTER"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_error",
+        "label": "Error Text",
+        "default": "Please enter a valid e-mail address"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_success",
+        "label": "Success Text",
+        "default": "<p>You have successfully joined our newsletter</p>"
+      },
+      {
+        "type": "header",
+        "content": "Instagram Footer Image"
+      },
+      {
+        "type": "url",
+        "id": "instagram_footer_link",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "instagram_footer_image",
+        "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Trust Icons"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_one",
+        "label": "Logo #1"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_two",
+        "label": "Logo #2"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_three",
+        "label": "Logo #3"
+      },
+      {
+        "type": "text",
+        "id": "social_heading",
+        "label": "Social - Heading",
+        "default": "Connect With Us"
+      },
+      {
+        "type": "text",
+        "id": "social_insta_hashtag",
+        "label": "Social - Heading",
+        "default": "#BEBEBABES"
+      },
+      {
+        "type": "text",
+        "id": "copyright_footer_text",
+        "label": "Footer - Copyright text",
+        "default": "&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_nav",
+        "label": "Main Footer Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_privacy_nav",
+        "label": "Copyright Footer Navigation"
+      }
     ],
     "blocks":[
       {

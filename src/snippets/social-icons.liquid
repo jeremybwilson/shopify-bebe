@@ -1,56 +1,86 @@
 {% if settings.facebook_url != blank %}
   <li>
-    <a href="{{ settings.facebook_url }}" target="_blank">
-      {% include 'svg-icon-facebook' %}
-    </a>
-  </li>
-{% endif %}
-
-{% if settings.pinterest_url != blank %}
-  <li>
-    <a href="{{ settings.pinterest_url }}" target="_blank">
-      <i class="fa fa-pinterest fa-2x"></i>
+    <a href="{{ settings.facebook_url }}" target="_blank" title="Facebook">
+      {% comment %} {% include 'svg-icon-facebook' %} {% endcomment %}
+      {% include 'svg-icon-facebook2' %}
     </a>
   </li>
 {% endif %}
 
 {% if settings.instagram_id != blank %}
     <li>
-      <a href="//instagram.com/{{ settings.instagram_id }}" target="_blank">
+      <a href="//instagram.com/{{ settings.instagram_id }}" target="_blank" title="Instagram">
         {% include 'svg-icon-instagram' %}
+      </a>
+    </li>
+{% endif %}
+
+{% if settings.snapchat_url != blank %}
+    <li>
+      <a href="{{ settings.snapchat_url }}" target="_blank" title="Snapchat">
+        {% comment %} <i class="fa fa-snapchat fa-2x"></i> {% endcomment %}
+        {% include 'svg-icon-snapchat2' %}
       </a>
     </li>
 {% endif %}
 
 {% if settings.twittername != blank %}
   <li>
-    <a href="{{ settings.twittername }}" target="_blank">
-      <i class="fa fa-twitter fa-2x"></i>
-    </a>
-  </li>
-{% endif %}
-
-{% if settings.youtube_url != blank %}
-  <li>
-    <a href="{{ settings.youtube_url }}" target="_blank">
-      {% include 'svg-icon-youtube' %}
-    </a>
-  </li>
-{% endif %}
-
-{% if settings.tumblr_url != blank %}
-  <li>
-    <a href="{{ settings.tumblr_url }}" target="_blank">
-      <i class="fa fa-tumblr fa-2x"></i>
+    <a href="{{ settings.twittername }}" target="_blank" title="Twitter">
+      {% comment %} <i class="fa fa-twitter fa-2x"></i> {% endcomment %}
+      {% include 'svg-icon-twitter' %}
     </a>
   </li>
 {% endif %}
 
 {% if settings.googleplus_url != blank %}
   <li>
-    <a href="{{ settings.googleplus_url }}" target="_blank">
-      <i class="fa fa-google-plus fa-2x"></i>
+    <a href="{{ settings.googleplus_url }}" target="_blank" title="Google Plus">
+      {% comment %} <i class="fa fa-google-plus fa-2x"></i> {% endcomment %}
+      {% include 'svg-icon-googleplus' %}
     </a>
   </li>
 {% endif %}
 
+{% if settings.youtube_url != blank %}
+  <li>
+    <a href="{{ settings.youtube_url }}" target="_blank" title="Youtube">
+      {% include 'svg-icon-youtube2' %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.pinterest_url != blank %}
+  <li>
+    <a href="{{ settings.pinterest_url }}" target="_blank" title="Pinterest">
+      {% comment %} <i class="fa fa-pinterest fa-2x"></i> {% endcomment %}
+      {% include 'svg-icon-pinterest' %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.tumblr_url != blank %}
+  <li>
+    <a href="{{ settings.tumblr_url }}" target="_blank" title="Tumblr">
+      <i class="fa fa-tumblr fa-2x"></i>
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.iphone_app_url != blank %}
+  <li>
+    <a href="{{ settings.iphone_app_url }}" target="_blank">
+      {% include 'svg-icon-mobile' %}
+      {% comment %} <i class="fa fa-android fa-2x"></i> {% endcomment %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.android_app_url != blank %}
+  <li>
+    <a href="{{ settings.android_app_url }}" target="_blank">
+      {% include 'svg-icon-android' %}
+      {% comment %} <i class="fa fa-apple fa-2x"></i> {% endcomment %}
+    </a>
+  </li>
+{% endif %}

@@ -28,8 +28,8 @@
   {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
   {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
   {{ 'queries.css' | asset_url | stylesheet_tag }}
+  {{ 'bc-sf-filter.scss.css' | asset_url | stylesheet_tag }} {% comment %} Filter App Styling {% endcomment %}  
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'bc-sf-filter.scss.css' | asset_url | stylesheet_tag }} {% comment %} Filter App Styling {% endcomment %}
 
   <!-- Typography
 ================================================== -->
@@ -124,7 +124,17 @@
 
         {% comment %} :: PAGE CONTENT :: {% endcomment %}
         {% comment %} Note : PRODUCT DETAILS has breadcrumbs but custom wrappers {% endcomment %}
-        <div id="content" {% if template !='product' %}class="row"{% endif %} />
+        {% assign row_class = false %}
+        {% case template %}
+          {% when 'product' %}
+            {% assign row_class = false %}
+          {% when 'cart' %}
+            {% assign row_class = false %}
+          {% else %}
+            {% assign row_class = true %}
+        {% endcase %}
+
+        <div id="content" {% if row_class %}class="row"{% endif %} >
           {{ content_for_layout }}
         </div>
 

@@ -1,0 +1,34 @@
+// ENHANCED SEARCH :: Wrapper
+.bc-sf-search-suggestion-wrapper {
+    font-family: $sans--2;    
+}
+.bc-sf-search-suggestion-popover {
+
+    &:after {
+        background-color: {{ settings.dotted_color }};
+        box-shadow: none;
+    }
+}
+
+// ENHANCED SEARCH :: Mobile :: Top Panel {
+.bc-sf-search-suggestion-mobile-top-panel {
+    font-family: $sans--2;
+}
+
+// ENHANCED SEARCH :: Content 
+.bc-sf-search-suggestion {
+    box-shadow: none;
+    border-radius: 0;
+    border: solid 1px {{ settings.dotted_color }};
+
+    // No Result
+    .bc-sf-search-suggestion-no-result {
+        text-align: center;
+    }
+    // Header
+    .bc-sf-search-suggestion-header {
+        background: $color--reverse-1;
+        color: $color--primary-1;
+        font-weight: $font-weight--medium;
+    }    
+}

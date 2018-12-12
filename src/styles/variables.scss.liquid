@@ -37,7 +37,7 @@ $color--error: {{ settings.error_text }};
 $sans: "Source Sans Pro", Helvetica Neue, Helvetica, Arial, sans-serif;
 $sans--2: "Gotham A", "Gotham B", Helvetica Neue, Helvetica, Arial, sans-serif;
 
-$font-stack--default: $sans;
+$font-stack--default: $sans--2;
 $font-stack--heading: $sans--2;
 
 // FONT WEIGHTS
@@ -188,7 +188,7 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
 @mixin h4 {
   font-weight: $font-weight--book;
   line-height: 14px / 10px * 1em;
-  letter-spacing: 2px;
+  letter-spacing: .04em;
   text-transform: uppercase;
   @include fontSize(10px);
 }

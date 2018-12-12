@@ -9,7 +9,7 @@
   @include flex-direction(column);
 
   @include mq('phone') {
-    line-height: initial !important; //*  
+    line-height: initial !important; //*
   }
   @include mq('tablet-and-up') {
   	@include flex-direction(row);
@@ -25,12 +25,12 @@
   padding: 44px 25px 43px;
 
   @include mq('tablet-and-up') {
-    width: 50%;
+    width: 69%;
     padding: 69px 25px 73px;
   }
   .newsletter-inner {
     width: 100%;
-    max-width: 325px;  
+    max-width: 325px;
     margin: 0 auto;
   }
   header {
@@ -38,8 +38,8 @@
     background: transparent;
   }
 
-  // heading 
-  
+  // heading
+
   h2 {
     margin-bottom: 10px;
     color: {{ settings.newsletter_footer_text }};
@@ -50,7 +50,7 @@
     @include mq('tablet-and-up') {
       margin-bottom: 4px;
       @include fontSize(22px);
-      
+
     }
   }
   .newsletter-subheading {
@@ -75,7 +75,7 @@
     @include justify-content(space-between);
     position: relative;
     margin-bottom: 12px;
-    background: $color--white; 
+    background: $color--white;
     border: solid 1px transparent;
     transition: border .3s ease;
   }
@@ -153,7 +153,7 @@
 
     #newsletter-error-response {
       @include h7;
-    }  
+    }
     #newsletter-success-response {
       text-transform: none;
 
@@ -166,18 +166,19 @@
 }
 
 // social
-
 .social-wrapper {
-  padding: 35px 50px 34px;
-	background: {{ settings.social_footer_background }};
+  // padding: 35px 50px 34px;
+  padding: 10px 50px;
+  background: {{ settings.social_footer_background }};
   text-align: center;
+  margin: 10px 0;
 
   @include mq('tablet-and-up') {
     @include flexbox;
     @include flex-direction(row);
     @include align-items(center);
     @include justify-content(center);
-    width: 50%;
+    width: 30%;
   }
 
   .social-inner {
@@ -197,11 +198,11 @@
     @include fontDim(14px,14px,.2em);
     font-weight: $font-weight--black;
     text-transform: uppercase;
-                                                    
+
     @include mq('tablet-and-up') {
       @include fontDim(20px,20px,.04em);
     }
-  }	
+  }
   ul#social-icons {
     margin-top: 16px;
     text-align: center;
