@@ -1,18 +1,14 @@
-.account-header {
-  position: relative;
-
-  h1 {
-    color: $color--primary-1;
-  }
-}
+// Globals
 
 #customer-wrapper {
-  max-width: 1200px;
+
+  p {
+    margin: 0;
+  }
 
   h2 {
     @include h3;
     color: $color--primary-1;
-
   }
   h5 {
     @include h5;
@@ -21,20 +17,67 @@
     color: $color--primary-1;    
     font-weight: 700;
   }
-  label {
-    @include h7;
-    color: $color--primary-3;
-  }
   input[type="text"],
   input[type="email"],
   input[type="password"] {
     margin-bottom: 8px;
-    color: $color--primary-3;
-    font-family: $sans--2;
   }
-  a {
-    color: $color--accent-1;
+}
+
+// Login Page 
+.customers-login {
+  #content {
+    padding: 25px 0;
   }
+
+  // LOGIN : Header
+  #login-msg {
+    display: block;
+    width: 100%;
+    border-bottom: solid 1px {{ settings.dotted_color }};
+    text-align: center;
+
+    h1 {
+      border-bottom: none;
+      @include fontSize( 18px );
+    }
+  }
+
+  // LOGIN :: Forms 
+  #customer--signup-options {
+    margin-bottom: 40px;
+  }
+
+  #customer,
+  #create-customer {
+    margin-top: 0;
+  }
+  // LOGIN :: FORMS :: Customer
+  #customer {
+    width: 100%;
+  }
+
+  #forgot_password {
+    margin-bottom: 15px;
+  }
+}
+
+// LOGIN :: Loyalty Content
+@import url('../snippets/login-loyalty.scss.liquid');
+
+// Account Dashboard
+
+// Addresses
+
+// Activate Account Page
+
+// Order Status
+
+// Register
+
+// Reset Password
+
+#customer-wrapper {
 
   #sign_out {
     @include h6;
@@ -54,14 +97,7 @@
       background: $color--primary-1;
     }
 }
-  .button {
-    background: $color--primary-1;
-    color: $color--reverse-1;
 
-    &:hover {
-      background: $color--accent-1;
-    }
-  }
   #customer_orders {
     @include mq('phone') {
       margin-top: 50px;
@@ -73,161 +109,68 @@
   }
 }
 
-.customers-login {
-  #content {
-    padding: 25px 0;
-  }
+
+/* =============== */
+/* = Customer Accounts = */
+/* =============== */
+
+
+#customer_orders table {
+  text-align: left;
 }
 
-// LOGIN : Header
-#account-msg {
-  display: block;
+#customer-wrapper form {
+  margin-top: 20px;
+}
+
+#admin_header {
+  margin-bottom: 30px;
+}
+
+.view_address p {
+  margin: 0;
+}
+
+#customer_detail p {
+  margin: 0;
+}
+
+.address_table {
+  margin-bottom: 20px;
+}
+
+#order_address {
+  clear: both;
+  float: left;
   width: 100%;
-  text-align: center;
-
-  h1 {
-    border-bottom: none;
-    @include fontSize( 18px );
-  }
-  hr {
-      margin: 25px 0;
-  }
+  margin-bottom: 20px;
 }
 
-#customer,#create-customer {
-  margin-top: 0;
+#order_details {
+  float: left;
 }
 
-.clubrowcon {
-  @include flexbox;
-  @include justify-content( center );
-
-  span{
-    display:block;
-  }
-  table { 
-    border-collapse: collapse;
-    width: 95%;
-    margin: 8% 5%;
-
-    tr {
-      border: none; 
-      height:50px;
-    }    
-    td {
-      border-right: solid 1px {{ settings.dotted_color }}; 
-      border-left: solid 1px {{ settings.dotted_color }};
-      font-size: 13px;
-      text-align: center;
-      vertical-align: middle;
-
-      &:first-child {
-        text-align: left;
-        border-left: 0;
-        width:25%;
-      }
-      &:last-child {
-        border-right: 0;
-      }
-  
-      span{
-        display: block; 
-      }
-    }    
-  }
-  .clubfirstrow {
-    vertical-align: top;
-    height:25px;
-
-    span {
-      line-height: 18px;
-    }    
-  }
-  .perks{
-    flex-basis: 130px;
-    margin: 2% 5%;
-    font-size: 12px;
-    text-align: center;
-
-    .perks-pts{
-      font-size: 48px;
-      line-height: 35px;
-    }
-    .perk-sub-copy{
-      font-size: 13px;
-      font-weight: bold;
-    }
-    .pt-line{
-      border-bottom: 1px solid {{ settings.dotted_color }};
-      width: 35%;
-      margin: 10px auto;
-    }
-  }
+#create-customer, #customer {
+  margin-top: 30px;
 }
 
-.clubrowbox {
-  width: 165px;
-  flex-basis: auto;
-  text-align: center;
+div#recover-password {
+  margin-top: 30px;
+}
 
-  h2 {
-    letter-spacing: 2px;
-    @include fontSize( 24px );
-    text-align:center;
-    margin-bottom: 2%;
-  }
-  p {
-    text-align:center;
-    font-size: 12px;
-  }
-  hr{
-    margin-top:30%;
-    border: 0;
-    height: 0;
-    border-top: 1px solid {{ settings.dotted_color }};
-  }  
+.action_link {
+  display: inline-block;
+  margin-bottom: 10px;
 }
-.clubiconimg{
-  width:60%;
-  height:auto;
-}
-.clubicons{
-  margin-top: 2%;
-}
-.tb-txt-lg{
-  font-size: 15px;
-}
-.clubdot{
-  color: $color--accent-1;
-}
-.club-title{
-  font-weight: $font-weight--medium;
-  @include fontSize( 18px );
-}
-.clubsubcopy-con{
-  width:50%;
-  margin:0 auto 5%;
 
-  h3{
-    text-align: center;
-    border-top: 1px solid $color--field-1;
-    line-height: 0;
-    padding: 0;
+.action_edit {
+  padding: 0 10px;
+  border-left: 1px solid {{ settings.dotted_color }};
+  border-right: 1px solid {{ settings.dotted_color }};
+  margin: 0 10px;
+}
 
-    span{
-      background: $color--reverse-1;
-      padding: 0 5%;
-      font-size: 3em;
-      font-family: $serif;
-      font-style: italic;
-      font-weight: $font-weight--light;
-    }
-  }
+a#view_address {
+  display: block;
+  margin-top: 10px;
 }
-.club-dis{
-  margin:2% auto;
-  width:50%;
-  text-align:center;
-  font-size:11px;
-}
-.row-dt{display: flex;}

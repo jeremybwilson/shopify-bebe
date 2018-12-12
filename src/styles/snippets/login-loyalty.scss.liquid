@@ -1,0 +1,133 @@
+.clubrowcon {
+  @include flexbox;
+  @include justify-content( center );
+
+  span{
+    display:block;
+  }
+  table { 
+    border-collapse: collapse;
+    width: 95%;
+    margin: 8% 5%;
+
+    tr {
+      border: none; 
+      height:50px;
+    }    
+    td {
+      border-right: solid 1px {{ settings.dotted_color }}; 
+      border-left: solid 1px {{ settings.dotted_color }};
+      font-size: 13px;
+      text-align: center;
+      vertical-align: middle;
+
+      &:first-child {
+        text-align: left;
+        border-left: 0;
+        width:25%;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+  
+      span{
+        display: block; 
+      }
+    }    
+  }
+  .clubfirstrow {
+    vertical-align: top;
+    height:25px;
+
+    span {
+      line-height: 18px;
+    }    
+  }
+  .perks{
+    flex-basis: 130px;
+    margin: 2% 5%;
+    font-size: 12px;
+    text-align: center;
+
+    .perks-pts{
+      font-size: 48px;
+      line-height: 35px;
+    }
+    .perk-sub-copy{
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .pt-line{
+      border-bottom: 1px solid {{ settings.dotted_color }};
+      width: 35%;
+      margin: 10px auto;
+    }
+  }
+}
+
+.clubrowbox {
+  width: 165px;
+  flex-basis: auto;
+  text-align: center;
+
+  h2 {
+    letter-spacing: 2px;
+    @include fontSize( 24px );
+    text-align:center;
+    margin-bottom: 2%;
+  }
+  p {
+    text-align:center;
+    font-size: 12px;
+  }
+  hr{
+    margin-top:30%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid {{ settings.dotted_color }};
+  }  
+}
+.clubiconimg{
+  width:60%;
+  height:auto;
+}
+.clubicons{
+  margin-top: 2%;
+}
+.tb-txt-lg{
+  font-size: 15px;
+}
+.clubdot{
+  color: $color--accent-1;
+}
+.club-title{
+  font-weight: $font-weight--medium;
+  @include fontSize( 18px );
+}
+.clubsubcopy-con{
+  width:50%;
+  margin:0 auto 5%;
+
+  h3{
+    text-align: center;
+    border-top: 1px solid $color--field-1;
+    line-height: 0;
+    padding: 0;
+
+    span{
+      background: $color--reverse-1;
+      padding: 0 5%;
+      font-size: 3em;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--light;
+    }
+  }
+}
+.club-dis{
+  margin:2% auto;
+  width:50%;
+  text-align:center;
+  font-size:11px;
+}
+.row-dt{display: flex;}
