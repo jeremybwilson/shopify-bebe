@@ -1,24 +1,41 @@
 <div class="left-nav">
-    <div class="desktop-left-nav">
-        <ul>
-            {% for link in linklists.side-menu.links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+  <div class="desktop-left-nav">
+    {% assign menu_faq = linklists[section.settings.landing_page_faq_nav] %}
+      <ul>
+          {% for link in menu_faq.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {% comment %} {{ link.title | link_to: link.url }} {% endcomment %}
+          </li>
+          {% endfor %}
+      </ul>
 
+  </div><!-- .desktop-left-nav -->
 
-  <div class="left-nav--categories">
-    <div class="opener"><span>Select Options</span>{% include 'svg-icon-caret-down' %}</div>
+  <div class="left-nav--landing-page">
+    {% comment %} <div class="opener"><span>Select Options</span>{% include 'svg-icon-caret-down' %}</div> {% endcomment %}
+    {% assign menu_about = linklists[section.settings.landing_page_about_nav] %}
+    {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
     <div class="dropdown">
-      {% for link in linklists.side-menu.links %}
-        <!-- <div class="category"> -->
-          <a href="{{ link.url }}">{{ link.title }}</a>
-        <!-- </div> -->
-      {% endfor %}
-    </div>
-  </div>
+      {% comment %} :: NESTED MENU :: {% endcomment %}
+      <ul>
+        {% for link in menu_about.links %}
+          {% comment %} :: NESTED MENU :: {% endcomment %}
+          {% if link.levels > 0 %}
+          <!-- <div class="category"> -->
+            <li data-link-size="{{ link.links.size }}">
+            <h4 class="landing-page-heading">{{ link.title }}</h4>
+              <ul>
+              {% for sub_link in link.links %}
+                <li>{{ sub_link.title | link_to: sub_link.url }}</li>
+              {% endfor %}
+              </ul>
+            </li>
 
-</div>
+          <!-- </div> -->
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div><!-- .left-nav--categories -->
+</div><!-- .left-nav -->
