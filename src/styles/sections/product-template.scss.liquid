@@ -193,22 +193,27 @@
 
 
 
-/* Free Shipping
+/* Product Accordions (Shipping / Size Chart)
  * ---------------------------------------------- */
-#free-shipping--accordion {
+.product-accordion {
   @include flexbox;
   @include flex-direction(column);
   width: 100%;
   padding: 10px 0;
-  margin-bottom: 20px;
+  margin: 0;
   border-top: 1px solid $color--light-gray;
 
   // header & accordion trigger
-  dt {
+  .product-accordion--header {
     @include flexbox;
     @include justify-content(space-between);
     @include align-items(center);
     cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
 
     & > svg {
       width: 21px;
@@ -225,6 +230,7 @@
         fill: $color--primary-1;
       }
     }
+
     h3 {
       margin-top: 3px;
       color: $color--primary-1;
@@ -237,6 +243,7 @@
         @include fontDim(16px,16px,0);
       }
     }
+
     .opener {
       margin-left: auto;
       background: $color--primary-1;
@@ -245,7 +252,9 @@
       transition: all 0.25s ease-in-out;
     }
   }
-  dt.open {
+
+
+  .product-accordion--header.open {
     .opener {
       width: 3px;
       height: 15px;
@@ -253,7 +262,7 @@
   }
 
   // content
-  dd {
+  .product-accordion--content {
     display: none;
     margin-top: 16px;
     padding-right: 10px;
@@ -288,18 +297,26 @@
  * ---------------------------------------------- */
 #product-description-social {
   @include flexbox;
-  @include justify-content( flex-end );
+  @include justify-content( center );
   position: relative;
   width: 100%;
   list-style: none;
-  margin: 0 0 20px;
-  right: -2px; //Slight alignment for visual 
+  margin: 20px 0;
+
+  @include mq( 'tablet-and-up' ) {
+    @include justify-content( flex-end );
+    right: -2px; //Slight alignment for visual 
+  }
 
   > li {
     width: 25px;
 
     &:not(:last-child) {
       margin-right: 20px;
+    }
+
+    .icon-android {
+      margin-top: -4px;
     }
 
     path, i {

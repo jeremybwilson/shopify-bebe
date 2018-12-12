@@ -113,6 +113,10 @@
 
   {% comment %} :: SIZE CHART LINK :: {% endcomment %}
   {% if option_name contains 'size' and template != 'product.quick' %}
-    <a href="#size-chart--popup" class="fancybox size-chart--trigger">Size Chart</a>
+
+    {% comment %}
+      REPLACE WTIH A FIT-PREDICTOR APP WHEN READY (If thats still the plan)
+        Backup Popup Version: <a href="#size-chart--popup" class="fancybox size-chart--trigger">Size Chart</a>
+    {% endcomment %}
   {% endif %}
 </div>

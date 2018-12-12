@@ -17,17 +17,10 @@
     {% assign compare_price = current_variant.compare_at_price | money %}
   {%- endif -%}
 
-  {% comment %}
-
-  PRICE
-  -------------------
-
-  {% endcomment %}
-
+  {% comment %} :: PRICE :: {% endcomment %}
   {% if current_variant.compare_at_price > current_variant.price %}
 
-  {% comment %} Sale price formatting {% endcomment %}
-
+  {% comment %} :: SALE PRICE - FORMATTING :: {% endcomment %}
   <div id="product-price" class="has-compare-price">
     <span class="product-price" itemprop="price">
       <span class="money">{{ price }}</span>
@@ -39,8 +32,7 @@
 
   {% else %}
 
-  {% comment %} Regular price {% endcomment %}
-
+  {% comment %} :: REGULAR PRICE :: {% endcomment %}
   <div id="product-price">
     <span class="product-price" itemprop="price">
       <span class="money">{{ price }}</span>
@@ -54,14 +46,10 @@
   {% comment %} REVIEWS - STAR RATING {% endcomment %}
 
   {% comment %}
-
   SWATCHES 
   -------------------
-
-  CONDITION #1 - If there are more than one set of product options (Color AND Size). This condition also renders the different variants under said options (Red S, Blue L).
-
+    CONDITION #1 - If there are more than one set of product options (Color AND Size). This condition also renders the different variants under said options (Red S, Blue L).
   {% endcomment %}
-
   {% if product.options.size > 1 %}
 
     <div class="select" {% if product.variants.size == 1 or section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
@@ -75,12 +63,9 @@
     </div><!-- .select -->
     {% if section.settings.product_variants == 'swatches' %}
 
-      {% comment %} Option Loop 
-
-      This is the first of 3 sets of loops that determine the render of the product swatches. See 'swatch.liquid' for the other two.
-
-      CYCLE #1 - Cycle through the available options {% endcomment %}
-
+      {% comment %} 
+      :: CYCLE #1 :: (Cycle through the available options )
+        - This is the first of 3 sets of loops that determine the render of the product swatches. See 'swatch.liquid' for the other two. {% endcomment %}
       {% for option in product.options_with_values %}
         {% include "swatch" %}
       {% endfor %}
@@ -88,11 +73,8 @@
     {% endif %}
 
   {% comment %}
-
-  CONDITION #2 - If there is only one product option (Color), but multiple variants under that option (Red, Blue, Green).
-
+    CONDITION #2 - If there is only one product option (Color), but multiple variants under that option (Red, Blue, Green).
   {% endcomment %}
-
   {% elsif product.options.size == 1 and product.variants.size > 1 %}
 
     <div class="select" {% if section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>

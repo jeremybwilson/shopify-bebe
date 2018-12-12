@@ -2783,12 +2783,11 @@ theme.Product = (function () {
     events.trigger = events.emit; // alias
 
     const ui = {
-       sizeChartPopup: $( '#size-chart--popup' ),
-       freeShippingAccordionHeader: $( '#free-shipping--accordion-header' ),
-       freeShippingAccordionContent: $( '#free-shipping--accordion-content'),
-       descriptionMobileTrigger: $( '#product-description--mobile-dropdown-trigger' ),
-       descriptionMobileContent: $( '#product-description--mobile-dropdown' ),
-       campaignVideoTrigger: $( '.campaign-video--trigger' )
+      campaignVideoTrigger: $( '.campaign-video--trigger' ),
+      shippingAccordionHeader: $( '#shipping--accordion-header' ),
+      shippingAccordionContent: $( '#shipping--accordion-content'),
+      sizeChartAccordionHeader: $( 'size-chart--accordion-header' ),
+      sizeChartPopup: $( '#size-chart--popup' )
     }
 
     theme.ProductMobileGallery(events);
@@ -2803,32 +2802,30 @@ theme.Product = (function () {
 
     // BADGES : BUILD : Method to build react-badges component on collection updates (rebuilt in JS)
     const buildBadges = require('./react-components/badges/BadgeParent.js');
-
     $(document).ready( () => {
+      
       // BADGES : Generate badge in div slot if present
       buildBadges();
 
-      // FREE SHIPPING : Accordion
-
-      if ( ui.freeShippingAccordionContent.length > 0 ) {
-        ui.freeShippingAccordionHeader.click( () => {
-          ui.freeShippingAccordionHeader.toggleClass( 'open' );
-          ui.freeShippingAccordionContent.slideToggle(250);
+      // SHIPPING : Accordion
+      if ( ui.shippingAccordionContent.length > 0 ) {
+        ui.shippingAccordionHeader.click( () => {
+          ui.shippingAccordionHeader.toggleClass( 'open' );
+          ui.shippingAccordionContent.slideToggle(250);
         });
       }
 
-      // DESCRIPTION : Accordion
+      // SIZE CHART : Accordion (really opens popup, but lets follow same pattern since ui is an accordion-esque element)
+      // if ( ui.sizeChartAccordionHeader.length > 0 && ui.sizeChartPopup.length > 0 ) {
+      //   ui.sizeChartAccordionHeader.click( ()=> {
+      //     var chartType = ui.sizeChartPopup.data( 'size-chart-type' );
 
-      if ( ui.descriptionMobileContent.length > 0 ) {
-        ui.descriptionMobileTrigger.click( () => {
-          ui.descriptionMobileTrigger.toggleClass( 'open' );
-          ui.descriptionMobileContent.slideToggle(350);
-        });
-      }
-
+      //     ui.sizeChartPopup.find( '.size-chart--wrapper' ).hide();
+      //     ui.sizeChartPopup.find( '#size-chart--' + chartType ).show();
+      //   });
+      // }
 
       // CAMPAIGN VIDEO
-
       if ( ui.campaignVideoTrigger.length > 0 ) {
         ui.campaignVideoTrigger.fancybox({
           width: 900,
@@ -2843,48 +2840,17 @@ theme.Product = (function () {
           }
         });
       }
-
-      // SIZE CHART
-
-      if ( ui.sizeChartPopup.length > 0 ) {
-        var size_chart_type = ui.sizeChartPopup.data('size-chart-type');
-        if ( size_chart_type != 'all' ) {
-          ui.sizeChartPopup.find('.size-chart--wrapper').hide();
-          ui.sizeChartPopup.find('#size-chart--' + size_chart_type).show();
-        }
-      }
     });
-
-    /* REACT - EXAMPLE #2
-     *
-     * PAGE-SPECIFIC COMPONENT :
-     *     Swatch-Picker react component that appears only on the product template
-     *     if given the proper DOM Nodes to render into ( see 'SwatchParent.js' for
-     *     the node name being rendered into)
-     *
-     * RELATED FILES :
-     *    / scripts / react-components / swatches / SwatchParent.js <-- Parent, renders React component root into DOM Node
-     *    / scripts / react-components / swatches / SwatchList.js <---- List Container for Swatch Circles
-     *    / scripts / react-components / swatches / SwatchItem.js <---- Actual swatch circle single template
-     *    / snippets / component-react-swatches.liquid <-- DOM Node 'include'-able snippet
-     *    / sections / product-template.liquid <---------- Template we include snippet into
-     *
-     *  Here, we require in the parent component for our "React-Swatches" feature.
-     *  React components will always have a single root parent built via invoking
-     *  ReactDOM.render() into a DOM Node. Open 'SwatchParent.js' to learn more.
-     *****************************************************************************/
-    // require('./react-components/swatches/SwatchParent.js');
-
   }
 
   Product.prototype = _.assignIn({}, Product.prototype, {});
-
   return Product;
 })();
 
 Events.on("quickview:load", function (container) {
   theme.Product(container);
 });
+
 
 // CURRENCY CONVERSION NOT UTILIZED
 // Events.on("quickview:load", function (container) {
