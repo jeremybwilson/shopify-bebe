@@ -46,7 +46,11 @@
           {% if block.settings.cta_text != blank %}
           <div class="cta">
             {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
-              <span>{{ block.settings.cta_text }}</span> {% include 'svg-icon-caret-right' %}
+              {% if block.settings.cta_style == "button" %}
+                <span class="button">{{ block.settings.cta_text }}</span>
+              {% else %}
+                <span>{{ block.settings.cta_text }}</span> {% include 'svg-icon-caret-right' %}
+              {% endif %}
             {% if block.settings.link != blank %}</a>{% endif %}
           </div>
           {% endif %}
@@ -115,6 +119,22 @@
         "id": "cta_text",
         "label": "CTA Text",
         "default": "Shop Now"
+      },
+      {
+        "type": "select",
+        "id": "cta_style",
+        "label": "CTA Style",
+        "info": "Choose a button style for the CTA",
+        "options": [
+          {
+            "value": "caret",
+            "label": "Caret"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          }
+        ] 
       }
       ]
     }
