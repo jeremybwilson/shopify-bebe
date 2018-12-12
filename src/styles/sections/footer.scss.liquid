@@ -402,9 +402,12 @@
             @include flex-direction(column);
             @include justify-content(center);
             @include align-items(center);
-            margin: 0;
-            width: 100%;
             border-top: 2px solid black;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            transition: all 0.3s ease-in-out;
 
             @include mq('tablet-and-up') {
               @include flexbox;
@@ -413,10 +416,52 @@
               width: 33.333%;
             }
 
+            @include mq('phone') {
+              height: 39px;
+
+              &.slide {
+                height: auto;
+                ul.footer-sub-nav {
+                  transform: translateY(0%);
+
+                  @include mq('tablet-and-up') {
+                    display: block;
+                  }
+                }
+
+                h4.nav-sub-header:after {
+                  padding-bottom: 5px;
+                  border-top: none;
+                  border-bottom: 9px solid {{ settings.nav_links_hover }};
+                }
+              }
+            }
+
             h4.nav-sub-header {
               @include fontSize(14px);
+              background-color: #d3d3d3;
               font-weight: $font-weight--bold;
-              padding: 10px 0;
+              position: relative;
+              margin: 0 5px 5px 5px;
+              padding: 10px 5px;
+              z-index: 1000;
+
+              @include mq('phone') {
+                // TRIANGLE : CLOSED : Downward arrow in css
+                &:after {
+                  width: 0;
+                  height: 0;
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY( -50% );
+                  right: 35px;
+                  content: ""; // undo the preset arrow type
+                  border-left: 6px solid transparent;
+                  border-right: 6px solid transparent;
+                  border-top: 9px solid {{ settings.nav_links_hover }};
+                  transition: border 0.25s ease-in-out;
+                }
+              }
 
               @include mq('tablet-and-up') {
                 width: 100%;
@@ -426,6 +471,11 @@
             ul.footer-sub-nav {
               @include align-items(center);
               margin-bottom: 15px;
+              position: relative;
+              @include mq('phone') {
+                transform: translateY(-110%);
+              }
+              transition: all 0.3s ease-in-out;
 
               @include mq('tablet-and-up'){
                 @include flexbox;
@@ -444,13 +494,6 @@
                 @include mq('tablet-and-up'){
                   font-weight: $font-weight--book;
                   margin-left: .25rem;
-                }
-              }
-              &.hide {
-                display: none;
-
-                @include mq('tablet-and-up') {
-                  display: block;
                 }
               }
             }

@@ -967,7 +967,6 @@ theme.Header = (function() {
       })
     }
 
-
     // MOBILE NAV : LEVEL 1 HEADER ACCORDION : Accordion Functionality
     ui.mobileHeaders.click( function(){
       const header = $(this);
@@ -1710,17 +1709,9 @@ $(document).ready(function() {
     });
 
     // Footer mobile menu accordion
-    $('.nav-sub-header').click(function() {
-      if($(this).length) {
-        $(this).parent().find('.footer-sub-nav').slideToggle('hide', $(window).width() > 768);
-      }
+    $('h4.nav-sub-header').on('click', function(){
+      $(this).parent().toggleClass('slide');
     });
-
-    // Footer mobile menu accordion
-    // $('.nav-sub-header').on('click', () => {
-    //   $this = $(this);
-    //   $this.parent().find('.footer-sub-nav').toggleClass('hide');
-    // });
 
     // CONTENT PAGES - Sidebar navigation
 
