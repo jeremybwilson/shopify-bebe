@@ -419,8 +419,9 @@
           "zoom_image_position": "zoom_over_main",
           "related_products": "none",
           "shipping_header_text": "Shipping & Returns",
-          "shipping_text": "<p>Bebe ships to addresses and P.O. boxes in the 48 contiguous states, Guam and Saipan via standard shipping only. At this time, we do not ship to P.O. boxes in Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and U.S. Territories other than Guam and Saipan. Eligible ShopRunner orders enjoy free 2 business day shipping to physical addresses in the 48 contiguous states only.<br><br>Please see our <a href=\"\/pages\/shipping#canadaShippingSection\" title=\"Canada Shipping\">Canada<\/a> and <a href=\"\/pages\/shipping#internationalShippingSection\" title=\"International Shipping\">International<\/a> sections for shipping info specific to these locations.<BR><BR><span>Learn More:<\/span> <a href=\"\/pages\/shipping\" title=\"Shipping\">Shipping<\/a> / <a href=\"\/pages\/returns\" title=\"Returns\">Returns<\/a><\/p>",
+          "shipping_text": "<p>Bebe ships to addresses and P.O. boxes in the 48 contiguous states, Guam and Saipan via standard shipping only. At this time, we do not ship to P.O. boxes in Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and U.S. Territories other than Guam and Saipan. Eligible ShopRunner orders enjoy free 2 business day shipping to physical addresses in the 48 contiguous states only.<br><br>Please see our <a href=\"\/pages\/shipping#canadaShippingSection\" title=\"Canada Shipping\">Canada<\/a> and <a href=\"\/pages\/shipping#internationalShippingSection\" title=\"International Shipping\">International<\/a> sections for shipping info specific to these locations.<BR><BR><span>Learn More:<\/span> <a href=\"\/pages\/shipping\" title=\"Shipping\">Shipping<\/a> \/ <a href=\"\/pages\/returns\" title=\"Returns\">Returns<\/a><\/p>",
           "show_social": true,
+          "size_chart_header_text": "Size Chart",
           "size_chart_page": "size-chart"
         }
       },
@@ -847,6 +848,13 @@
           "rich_text_columns": "col3",
           "rich_text_horizontal": "left",
           "page": ""
+        }
+      },
+      "customer-login": {
+        "type": "customer-login",
+        "settings": {
+          "above_form_block": "<h1>Sign In<\/h1>",
+          "login_content": "login-content"
         }
       }
     },
