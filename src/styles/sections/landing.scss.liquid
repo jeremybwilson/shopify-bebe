@@ -121,13 +121,30 @@
       padding: 20px 30px;
       border: 1px dotted $color--white;
       background: $color--primary-1;
-      color: $color--white;   
+      color: $color--white;
       text-align: center;
 
       @include mq("tablet-and-up") {
         width: 33%;
         padding: 20px;
       }
+    }
+  }
+
+  .career-button, .return-button {
+    background-color: $color--primary-1;
+    color: $color--white;
+    text-decoration: none;
+    @include fontSize(12px);
+    font-weight: $font-weight--book;
+    @include flexbox;
+    @include justify-content(flex-start);
+
+    @include mq('tablet-and-up'){
+      @include fontSize(15px);
+      padding: 15px 30px;
+      margin: 20px 0;
+      width: 190px;
     }
   }
 
