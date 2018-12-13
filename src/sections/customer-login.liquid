@@ -1,0 +1,162 @@
+<div id="customer-wrapper" class="desktop-12 mobile-3 centered">
+
+  {% comment %} :: LOGIN : Header :: {% endcomment %}
+  {% if section.settings.above_form_block != blank %}
+    <div id="login-msg">
+      {{ section.settings.above_form_block }}
+    </div>
+  {% endif %}
+
+  <div id="customer--signup-options" class="row">
+
+    {% comment %} :: LOGIN : Left :: {% endcomment %}
+    <div id="template" class="desktop-5 desktop-push-1 tablet-3 mobile-3">
+
+      {% comment %} :: LEFT : Guest Checkout Login {% endcomment %}
+      {% if shop.checkout.guest_login %}
+        <div id="guest">
+          <div class="template_header">
+            <h2>{{ 'customer.login.guest_title' | t }}</h2>
+            {% form 'guest_login' %}
+            <input class="secondary button" type="submit" value="{{ 'customer.login.guest_continue' | t }}" />
+            {% endform %}
+          </div>
+        </div>
+      {% endif %}	
+
+      {% comment %} :: LEFT : Login {% endcomment %}
+      <div id="customer">
+        <div class="template_header">
+          <h2>{{ 'customer.login.title' | t }}</h2>
+        </div>
+        
+        {% form 'customer_login' %}
+          {{ form.errors | default_errors }}
+
+          <div id="login_email" class="clearfix large_form">
+            <label for="customer_email" class="login">{{ 'customer.login.email' | t }}</label>
+            <input type="email" value="" name="customer[email]" id="customer_email" class="large" size="30" placeholder="{{ 'customer.login.email' | t }}" />
+          </div>
+          
+          {% if form.password_needed %}
+
+            <div id="login_password" class="clearfix large_form">
+              <label for="customer_password" class="login">{{ 'customer.login.password' | t }}</label>
+              <input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" placeholder="{{ 'customer.login.password' | t }}" />
+              <div id="forgot_password">
+                <a href="#" onclick="showRecoverPasswordForm();return false;">{{ 'customer.login.forgot_password' | t }}</a>
+              </div>
+            </div>
+          
+          {% endif %}
+          
+          <div class="action_bottom">
+            <input class="secondary button" type="submit" value="{{ 'customer.login.sign_in' | t }}" />
+          </div>
+        
+        {% endform %}
+      </div>
+
+      {% comment %} :: LEFT : Passsword Recovery {% endcomment %}
+      <div id="recover-password" style='display:none'>
+
+        <div class="template_header">
+          <h2>{{ 'customer.recover_password.title' | t }}</h2>
+          <p class="note">{{ 'customer.recover_password.subtext' | t }}</p>
+        </div>
+        
+        {% form 'recover_customer_password' %}
+        
+          {{ form.errors | default_errors }}
+          
+          <div id="recover_email" class="clearfix large_form">
+            <label for="email" class="large">{{ 'customer.recover_password.email' | t }}</label>
+            <input type="email" value="" size="30" name="email" id="recover-email" class="large" placeholder="{{ 'customer.recover_password.email' | t }}" />
+          </div>
+          
+          <div class="action_bottom">
+            <input class="secondary button" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
+            <span class="note"><a href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.recover_password.cancel' | t }}</a></span>
+          </div>
+        
+        {% endform %}
+      </div>
+    </div>
+
+    {% comment %} :: LOGIN : Right / Create Customer Form :: {% endcomment %}
+    <div id="create-customer-template" class="desktop-5 tablet-3 mobile-3">
+      <div id="create-customer">
+        <div class="template_header">
+          <h2 class="title">{{ 'customer.register.title' | t }}</h2>
+        </div>
+
+        {% form 'create_customer' %}
+
+          {{ form.errors | default_errors }}
+
+          <div id="first_name" class="clearfix large_form">
+            <label for="first_name" class="login">{{ 'customer.register.first_name' | t }}</label>
+            <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30" placeholder="{{ 'customer.register.first_name' | t }}" />
+          </div>
+
+          <div id="last_name" class="clearfix large_form">
+            <label for="last_name" class="login">{{ 'customer.register.last_name' | t }}</label>
+            <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30" placeholder="{{ 'customer.register.last_name' | t }}" />
+          </div>
+
+          <div id="email" class="clearfix large_form">
+            <label for="email" class="login">{{ 'customer.register.email' | t }}</label>
+            <input type="email" value="" name="customer[email]" id="email" class="large" size="30" placeholder="{{ 'customer.register.email' | t }}" />
+          </div>
+
+          <div id="password" class="clearfix large_form">
+            <label for="password" class="login">{{ 'customer.register.password' | t }}</label>
+            <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" placeholder="{{ 'customer.register.password' | t }}" />
+          </div>
+
+          <div class="action_bottom">
+            <input class="secondary button" type="submit" value="{{ 'customer.register.submit' | t }}"/>
+          </div>
+
+        {% endform %}   
+
+      </div> 
+    </div>
+  </div>
+   
+  {% comment %} :: LOGIN : Login Page Content :: {% endcomment %}
+  {{ pages[section.settings.login_content].content }}
+
+</div>
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'inline-block';
+    document.getElementById('customer').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('customer').style.display = 'inline-block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+</script>
+
+{% schema %}
+  {
+    "name": "Login",
+    "settings": [
+      {
+        "type": "html",
+        "id": "above_form_block",
+        "label": "HTML - Above Form"
+      },
+      {
+        "type": "page",
+        "id": "login_content",
+        "label": "Login Content Page"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,3 +1,51 @@
+{% comment %} 
+
+  TEMPLATE CODE :: ASSIGNMENTS
+
+{% endcomment %}
+
+{% comment %} Simple Layout : No Wrapper or Breadcrumbs {% endcomment %}
+{% assign simple_layout = false %} 
+{% assign has_breadcrumb = true %}
+{% assign content_row_wrapper = true %}
+
+{% case template %}
+  {% when 'index' %}
+    {% assign simple_layout = true %}
+
+  {% when 'product' %}
+    {% assign has_breadcrumb = false %}
+    {% assign content_row_wrapper = false %}
+
+  {% when 'cart' %}
+    {% assign has_breadcrumb = false %}
+    {% assign content_row_wrapper = false %}
+
+  {% when 'collection' %}
+    {% assign has_breadcrumb = false %}
+
+  {% when 'list-collections' %}
+    {% assign simple_layout = true %}  
+
+  {% when 'blog' %}
+    {% assign simple_layout = true %}
+
+  {% when 'customers/login' %}
+    {% assign has_breadcrumb = false %}
+
+  {% when 'customers/account' %}
+    {% assign has_breadcrumb = false %}    
+
+  {% when 'customers/order' %}
+    {% assign has_breadcrumb = false %} 
+
+  {% when 'customers/addresses' %}
+    {% assign has_breadcrumb = false %}        
+
+{% endcase %}
+
+{% comment %} THEME :: START CODE {% endcomment %}
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -8,7 +56,6 @@
 
   <!-- Add any tracking or verification meta content below this line -->
   <!-- Facebook or Google Analytics tracking should be placed in your Online store > Preferences and not your theme -->
-
 
   <!-- Meta content
 ================================================== -->
@@ -81,7 +128,7 @@
 
 </head>
 
-<body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template }}{% endif %}">
+<body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
   {% comment %}{% include 'script-google-tag-body' %}{% endcomment %}
   {% include 'timber-cart' %}
 
@@ -95,7 +142,6 @@
         REACT : EXAMPLE #1
         <div id="example-global-react" data-info-passed-to-react='{ "name": "greg" }'></div>
       {% endcomment %}
-
       
       {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
       {% if template contains 'collection' %}
@@ -106,44 +152,31 @@
         {% endif %}
       {% endif %}
 
+      {% comment %} :: Simple Layout :: {% endcomment %}
+      {% if simple_layout %}
 
-      {% comment %} :: HOME / BLOG / LIST-COLLECTIONS - No Wrapper or Breadcrumbs :: {% endcomment %}
-      {% if template == 'index' or template contains 'blog' or template contains 'list-collections' %}
         {{ content_for_layout }}
-
 
       {% comment %} :: ALL OTHER PAGES :: {% endcomment %}
       {% else %}
 
         {% comment %} :: BREADCRUMBS :: {% endcomment %}
-        {% if settings.breadcrumb %}
-          {% unless template contains 'index' or template contains 'collection' %}
-            {% include 'breadcrumb' %}
-          {% endunless %}
+        {% if settings.breadcrumb and has_breadcrumb %}
+          {% include 'breadcrumb' %}
         {% endif %}
 
         {% comment %} :: PAGE CONTENT :: {% endcomment %}
-        {% comment %} Note : PRODUCT DETAILS has breadcrumbs but custom wrappers {% endcomment %}
-        {% assign row_class = false %}
-        {% case template %}
-          {% when 'product' %}
-            {% assign row_class = false %}
-          {% when 'cart' %}
-            {% assign row_class = false %}
-          {% else %}
-            {% assign row_class = true %}
-        {% endcase %}
+        <div id="content" {% if content_row_wrapper %}class="row"{% endif %} >
 
-        <div id="content" {% if row_class %}class="row"{% endif %} >
           {{ content_for_layout }}
+
         </div>
 
       {% endif %} 
       {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
+
     </div>  <!-- close the page-wrap class -->
 
-    
-    {% section 'newsletter' %}
     {% section 'footer' %}
   </div> <!-- close the shifter-page class -->
 

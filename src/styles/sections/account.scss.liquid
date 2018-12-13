@@ -1,85 +1,198 @@
-.account-header {
-  position: relative;
+// CUSTOMERS :: Globals
+.customers-login,
+.customers-account,
+.customers-order,
+.customers-addresses {
+  #content {
+    padding: 0;
 
-  h1 {
-    color: $color--primary-1;
+    @include mq( 'lap-and-up' ) {
+      padding: 25px 0;
+    }
   }
 }
 
 #customer-wrapper {
-  h2 {
-    @include h3;
-    color: $color--primary-1;
+  min-height: 300px;
+  @include flexbox;
+  @include flex-wrap( wrap );
+
+  h1 {
+    margin-bottom: 0;
+    border-bottom: none;
   }
-  h5 {
-    @include h5;
-    line-height: 1.6875em;
-    letter-spacing: .025em;
-    color: $color--primary-1;    
-    font-weight: 700;
+  .account-header {
+    padding-bottom: 20px;
+    border-bottom: solid 1px {{ settings.dotted_color }};
   }
-  label {
-    @include h7;
-    color: $color--gray-1;
+  p {
+    margin: 0;
   }
   input[type="text"],
   input[type="email"],
   input[type="password"] {
-    color: $color--gray-1;
-    font-family: $sans;
+    margin-bottom: 8px;
   }
-  a {
-    color: $color--accent-1;
-  }
-
-  #sign_out {
-    @include h6;
-    @include fontSize( 13px );  
-    position: relative;
-    padding: 13px 16px;
-    top: 20px;
-    background: $color--accent-1;
-    color: $color--white;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-
-    &:hover {
-      background: $color--primary-1;
-    }
 }
-  .button {
-    background: $color--accent-1;
-    color: $color--white;
 
-    &:hover {
-      background: $color--primary-1;
-    }
-  }
-  #customer_orders {
-    @include mq('phone') {
-      margin-top: 50px;
-    }
+// :: CUSTOMERS :: GLOBAL :: Sidebar 
+#customer_sidebar {
+  @include order( 2 );
+
+  @include mq( 'lap-and-up' ) {
+    @include order( 1 );
   }
 
-  #account-msg {
+  & + div {
+    @include order( 1 );
+
+    @include mq( 'lap-and-up' ) {
+      @include order ( 2 );
+    }
+  }
+  h5 {
+    @include h2;
+  }
+  #sign_out {
+    margin-top: 20px;
+    text-decoration: none;
+  }
+}
+
+// :: CUSTOMERS :: Login
+.customers-login {
+
+  // :: CUSTOMERS :: LOGIN : Header
+  #login-msg {
     display: block;
     width: 100%;
+    border-bottom: solid 1px {{ settings.dotted_color }};
     text-align: center;
 
-    h3 {
-      font-size: 1.375rem;
-      color: $color--accent-1;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+    h1 {
+      @include fontSize( 18px );
     }
-    p {
-      font-size: 16px;
+  }
+
+  // :: CUSTOMERS :: LOGIN :: Forms 
+  #customer--signup-options {
+    margin-bottom: 40px;
+  }
+  label {
+    display: none;
+  }
+  #customer,
+  #create-customer,
+  #recover-password {  
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  #forgot_password {
+    margin-bottom: 15px;
+  }
+}
+
+// LOGIN :: Loyalty Content
+@import url('../snippets/login-loyalty.scss.liquid');
+
+// :: CUSTOMERS :: ACCOUNT :: Dashboard
+.customers-account {
+
+  #customer_orders {
+    h5 {
+      @include p;
+      text-transform: none;
+
+      &.name {
+        @include h2;
+      }
     }
-    hr {
-       margin: 25px 0;
+
+    table {
+      @include mq( 'phone' ) {
+        thead {
+          display: none;
+        }
+        tr {
+          display: block;
+          padding: 25px;
+
+          &:nth-child(odd) {
+            background: $color--field-1;
+
+            td {
+              background: none;
+            }
+          }
+        }
+        td {
+          display: block;
+          padding: 0;
+        }
+      }
     }
   }
 }
+
+// :: CUSTOMERS :: Addresses
+.address_table {
+  margin-bottom: 20px;
+}
+.address_title {
+  @include h3;
+}
+.action_link {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.action_edit {
+  padding: 0 10px;
+  border-left: 1px solid {{ settings.dotted_color }};
+  border-right: 1px solid {{ settings.dotted_color }};
+  margin: 0 10px;
+}
+a#view_address {
+  display: block;
+  margin-top: 10px;
+}
+
+// :: CUSTOMER :: ADDRESSES :: Edit Address
+#add_address_title {
+  @include h2;
+}
+.customer_address_table {
+  border: solid 1px {{ settings.dotted_color }};
+  tbody tr:nth-child(odd) td {
+    background: none;
+  }
+}
+
+// :: CUSTOMER :: Order Status Page
+.order_date {
+  padding: 20px 4px; 
+  @include h2;
+
+  @include mq( 'lap-and-up' ) {
+    padding: 20px 8px;
+  }
+}
+.order_section_title {
+  @include h3;
+}
+#order_payment,
+#order_shipping {
+  margin-bottom: 20px;
+}
+#order_details {
+  float: left;
+  
+  td {
+    vertical-align: top;
+  }
+
+  .order_summary .label {
+    text-align: right;
+  }
+}
+

@@ -1,31 +1,15 @@
-<div class="section-title account-header desktop-12 mobile-3">
-  <h1>{{ 'customer.account.title' | t }}</h1>
-</div>
+<div id="customer-wrapper" class="desktop-12 mobile-3 centered">
 
-
-<div id="customer-wrapper" class="desktop-12 mobile-3">
-
-  <div id="customer_sidebar" class="desktop-3 mobile-3">
-    <div id="customer_detail" class="group">
-      <h5 class="name">{{ customer.name }}</h5>
-      <p class="email note">{{ customer.email }}</p>
-      <div class="address note">
-        {% if customer.default_address != nil %}
-        <p>{{ customer.default_address.address1 }}</p>
-        {% if customer.default_address.address2 != "" %}
-        <p>{{ customer.default_address.address2 }}</p>
-        {% endif %}
-        <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
-        <p>{{ customer.default_address.zip}}</p>
-        <p>{{ customer.default_address.phone }}</p>
-        {% endif %}
-        <a id="view_address" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
-      </div>
-      <a id="sign_out" href="{{ shop.url }}/account/logout">{{ 'customer.account.sign_out' | t }}</a>
-    </div>
-  </div>
+  {% include 'customer-sidebar' %}
 
   <div id="customer_orders" class="desktop-9 mobile-3">
+    <div class="section-title account-header desktop-12 mobile-3 centered">
+      <h1>{{ 'customer.account.title' | t }}</h1>
+      {% if settings.breadcrumb %}
+        {% include 'breadcrumb' %}
+      {% endif %}
+    </div>
+
     <h5 class="name">{{ 'customer.orders.title' | t }}</h5>
     {% if customer.orders.size != 0 %}
     <table>
