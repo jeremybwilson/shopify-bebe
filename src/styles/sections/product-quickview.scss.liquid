@@ -63,7 +63,26 @@
 
 			.product-main-images {
 				position: relative;
-				top: 50px;
+				height: 100vh;
+				max-height: 470px;
+
+				.product-image-container {
+					height: 100%;
+					padding-bottom: 0 !important; // Override inline styles, plugin is rendering images in an ancient manner
+
+					.product-main-image {
+						width: 100%;
+						height: 100%;
+					}
+
+					.product__image {
+						max-height: 100%;
+						width: 100%;
+					    height: 100%;
+					    background-repeat: no-repeat;
+					    background-size: contain;
+					}
+				}
 			}
 
 			#thumbnail-gallery {
@@ -75,7 +94,7 @@
 
 		// DESCRIPTION : RIGHT SIDE : Right side of UI that houses product info and cart buttons
 		#product-right {
-			max-width: 301px; // 46px * 6 Size squares with 5px * 5 right margins (last doesn't have one)
+			max-width: 340px;
 			margin-top: 20px;
 
 			#product-description {
@@ -84,12 +103,11 @@
 				border: none;
 
 				h1 {
-					@include h6;
-					@include fontSize( 26px );
-					font-weight: $font-weight--black;
+					@include fontDim( 22px, 24px, 0 );
+					font-weight: $font-weight--medium;
 					color: $color--primary-1;
 				    text-transform: uppercase;
-					letter-spacing: 0.2em; //Matches mock, seems big but what they approved lol
+				    text-align: center;
 				}
 
 				.desc {
@@ -98,9 +116,14 @@
 					margin: 0;
 				}
 
-				// SIZE SQUARES : Needed so it sits flush on right edge, 
-				// lots of important tags in stylesheet.css so don't wanna hurt anything potentially on PDP
+				form {
+					float: none;
+				}
+
+				// PRODUCT FORM
 				#AddToCartForm {
+
+					// SIZE SQUARES : 
 					.swatch.size {
 						width: calc( 100% + 5px ); // 100% + 5 so we can cheat the right margin to account for long and short size tags ("Youth 6" vs "5.5")
 
@@ -123,6 +146,9 @@
 					color: $color--primary-1;
 					text-decoration: underline;
 					transition: color 0.25s ease-in-out;
+					text-align: center;
+					display: block;
+					margin-top: 20px;
 
 					&:hover {
 						color: $color--accent-1;

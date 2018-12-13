@@ -2619,19 +2619,20 @@ theme.ProductGallery = function (context, events) {
     }
 
     /* elemental loop */
-
     elements.forEach(function (element) {
 
-      /* check to see if element is a video */
-
+      // CHECK : Has Video? 
       if ( element.classList.contains('product-video') ) {
         return false;
       }
-      if ( !element.querySelector('img').getAttribute('data-zoom-src') ) {
+
+      // CHECK : Has Zoom Src? 
+      if ( !element.querySelector('.product__image').getAttribute('data-zoom-src') ) {
         return false;
       }
 
-      var src = element.querySelector("img"),
+      // BUILD : Compose the zoom img src
+      var src = element.querySelector('.product__image'),
           src = src.getAttribute("data-zoom-src"),
           src = src.replace("{width}", "1000");
 
@@ -2682,7 +2683,7 @@ theme.ProductGallery = function (context, events) {
           nextArrow: '<button type="button" class="slick-next"><div class="bar-left"></div><div class="bar-right"></div></button>',
           prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"></div><div class="bar-right"></div></button>',
           slidesToShow: 5,
-          slidesToScroll: 5,
+          slidesToScroll: 3,
           slide: '.product-thumbnail',
           vertical: true,
           verticalSwiping: true,
@@ -2690,8 +2691,8 @@ theme.ProductGallery = function (context, events) {
             {
               breakpoint: 1024, //slickslider does responsive backwards... this means 1023 and BELOW...
               settings: {
-                slidesToShow: 7,
-                slidesToScroll: 7
+                slidesToShow: 5,
+                slidesToScroll: 3
               }
             }
           ]
