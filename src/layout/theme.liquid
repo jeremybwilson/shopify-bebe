@@ -40,7 +40,10 @@
     {% assign has_breadcrumb = false %} 
 
   {% when 'customers/addresses' %}
-    {% assign has_breadcrumb = false %}        
+    {% assign has_breadcrumb = false %}  
+
+  {% when '404' %}        
+    {% assign has_breadcrumb = false %}
 
 {% endcase %}
 
