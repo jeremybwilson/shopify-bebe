@@ -44,6 +44,12 @@
   &.size {
     width: calc( 100% + 5px ); // 100% + 5 so we can cheat the right margin to account for long and short size tags ("Youth 6" vs "5.5")
 
+    // Size List Wrap
+    .swatch-element-list {
+      @include flex-wrap( wrap );
+      @include justify-content( center );
+    }
+
     // Size : "5" or "5.5" or "10.5"
     .swatch-element.short-label label {
       width: 46px; //So half sizes = whole size boxes
