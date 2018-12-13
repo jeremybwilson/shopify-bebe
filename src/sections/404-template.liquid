@@ -1,0 +1,19 @@
+<div id="page" class="desktop-12 tablet-6 mobile-3 page-404">
+
+  {% comment %} :: LOGIN : Login Page Content :: {% endcomment %}
+  {{ pages[section.settings.fourohfour_content].content }}
+
+</div>
+
+{% schema %}
+  {
+    "name": "404",
+    "settings": [
+      {
+        "type": "page",
+        "id": "fourohfour_content",
+        "label": "404 Content Page"
+      }
+    ]
+  }
+{% endschema %}
