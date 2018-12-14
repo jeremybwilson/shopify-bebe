@@ -47,10 +47,10 @@
     text-transform: uppercase;
 
     @include mq( 'lap-and-up' ) {
-        width: 50%;
-    }
-    @include mq( 'desk-and-up' ) {
-        width: 60%;
+        width: 40%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .row {

@@ -27,31 +27,24 @@ body.search {
 /* SEARCH: Page-specific styles for search.liquid
  * ------------------------------------------------- */ 
 #search-template {
-    position: relative;
-    width: 100%;
-    margin: 75px 0 0;
-    float: none;
-
-    @include mq( 'lap-and-up' ) {
-        margin-top: 95px;
-    }
-
 
     /* TITLE + SEARCH BAR : Header content w/ search bar
      * ------------------------------------------------- */ 
-    .search-title, 
-    .bc-sf-search-result-number {
-        @include h6;
-        color: $color--primary-1;
-        position: relative;
-        left: $searchMobileGutter;
-    }
 
     .search-title {
         @include fontSize( 20px );
     }
 
+    .search--sidebar-title {
+        @include h1;
+
+        @include mq( 'lap-and-up') {
+            display: none;
+        }   
+    }
+
     #search-bar {
+        display: none;
         position: relative;
         width: calc( 100% - ( #{$searchMobileGutter} * 2 ) );
         margin: 0 $searchMobileGutter;
@@ -59,6 +52,7 @@ body.search {
         float: none;
 
         @include mq( 'lap-and-up' ) {
+            display: block;
             position: absolute;
             width: 320px;
             top: 13px;
@@ -78,39 +72,11 @@ body.search {
             width: 16px;
             position: absolute;
             right: 10px;
-            top: 8px;
+            top: 12px;
         }
     }
 
 
-    /* COLLECTION : Product Grid + Item View
-     * ------------------------------------------------- */  
-    @import url('../snippets/product-grid.scss.liquid');
-    
-
-
-    /* FILTERS : Filter layout styles
-     * ------------------------------------------------- */
-    @import url('../snippets/filters.scss.liquid');
-
-
-
-    /* LAYOUT : Overrides for filter / collection styles
-     * ------------------------------------------------- */
-    #filter-list-mobile-wrap {
-        position: relative;
-        margin-top: -69px;
-    }
-
-    .filter-wrap-desktop {
-        @include mq( 'lap-and-up' ) {
-            margin-top: 5px;
-        }
-    }
-
-    #product-loop {
-        padding-top: 100px;
-    }
 }
 
 
