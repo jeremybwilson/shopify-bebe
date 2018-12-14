@@ -73,7 +73,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
     #nav-aux {
         @include mq( 'lap-and-up' ) {
             @include flexbox;
-            @include justify-content( center );
+            @include justify-content( space-between );
             height: 36px;
             padding: 0 10px;    
             border-bottom: solid 1px $color--field-1;
@@ -127,12 +127,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
         position: relative;
 
         @include mq( 'lap-and-up' ) {
-            width: 25%;
             height: 100%;
             margin-left: auto;
-        }
-        @include mq( 'desk-and-up' ) {
-            width: 20%;
         }
 
         // Account / Cart / Site Picker List
