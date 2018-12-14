@@ -1,0 +1,121 @@
+#preview-bar-iframe { display: none; }
+
+/*  YOTPO REVIEWS : VARIABLES
+ * ---------------------------------------------- */
+$starColor: #000;
+$textColor: #000;
+
+
+
+/* YOTPO REVIEWS : CORE STYLES
+ * ---------------------------------------------- */
+#yotpo-reviews.yotpo-main-widget { // Larger heirachy to override their nested styles
+    padding-top: 15px;
+    
+    // Yotpo Logo on widget
+    .yotpo-label {
+        display: none;
+    }
+
+    // ICON : Stars
+    .yotpo-icon-star.rating-star {
+        color: $starColor;
+    }
+
+    // CONTENT BLOCKS : Blocks of various types of content in Yotpo's rendering
+    .yotpo-regular-box {
+        border-top: none;
+
+        // SUMMARY : Reviews summary block at top
+        &.yotpo-bottomline {
+            @include flexbox;
+            @include align-items( center );
+
+            // SUMMARY HEADER : Use pseudo element to add the header
+            &:before {
+                position: absolute;
+                width: 100%;
+                left: 50%;
+                top: 0;
+                transform: translateX( -50% );
+                content: 'OVERALL RATING';
+                @include fontSize( 20px );
+                font-family: $sans--2;
+                font-weight: $font-weight--medium;
+                text-align: center;
+                color: $textColor;
+            }
+
+            .yotpo-stars-and-sum-reviews {
+                @include flexbox;
+                @include justify-content( center );
+                @include align-items( center );
+                margin: 0 auto;
+                left: 50%;
+                transform: translateX( -50% );
+
+                // SUMMARY COUNT : Text has some strange padding, lets negate it
+                .yotpo-sum-reviews {
+                    padding: 0 0 2px;
+
+                    .based-on {
+                        padding-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

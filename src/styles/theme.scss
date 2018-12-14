@@ -31,11 +31,12 @@
 @import url('./sections/about.scss.liquid');
 
 /*================ Snippets ================*/
+@import url('./snippets/collection-seo-block.scss.liquid');
 @import url('./snippets/cookie-banner.scss.liquid');
 @import url('./snippets/newsletter-popup.scss.liquid');
 @import url('./snippets/product-carousel.scss.liquid');
-@import url('./snippets/collection-seo-block.scss.liquid');
 @import url('./snippets/size-chart.scss.liquid');
+@import url('./snippets/yotpo-reviews.scss.liquid');
 
 /*============= ReactComponents ============*/
 @import url('./react-components/react-swatches.scss.liquid');
