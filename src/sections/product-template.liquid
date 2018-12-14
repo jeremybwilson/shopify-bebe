@@ -177,10 +177,11 @@
     {% comment %} CAMPAIGN VIDEO {% endcomment %}
     {% include 'product-campaign-video' %}
 
-    {% comment %} REVIEWS {% endcomment %}
-
-    {% comment %} RECENTLY VIEWED {% endcomment %}
+    {% comment %} :: RECENTLY VIEWED :: {% endcomment %}
     {% include 'recently-viewed' %}
+
+    {% comment %} :: REVIEWS :: {% endcomment %}
+    {% include 'yotpo-reviews' %}
     
   {% endunless %}
 </div>
