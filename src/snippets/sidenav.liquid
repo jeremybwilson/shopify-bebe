@@ -1,68 +1,24 @@
 <div class="left-nav">
-  <div class="desktop-left-nav">
-    {% assign menu_faq = linklists[section.settings.landing_page_faq_nav] %}
-      <ul class="menu-faq">
-          {% for link in menu_faq.links %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title }}</a>
-            {% comment %} {{ link.title | link_to: link.url }} {% endcomment %}
-          </li>
-          {% endfor %}
-      </ul>
-
-      {% assign menu_about = linklists[section.settings.landing_page_about_nav] %}
-      {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
-      <div>
-        {% comment %} :: NESTED MENU :: {% endcomment %}
-        <ul class="menu-about">
-          {% for link in menu_about.links %}
-            {% if link.levels > 0 %}
-              <li data-link-size="{{ link.links.size }}">
-              <h4 class="landing-page-heading">{{ link.title }}</h4>
-                <ul class="menu-about-sub">
-                {% for sub_link in link.links %}
-                  <li>{{ sub_link.title | link_to: sub_link.url }}</li>
-                {% endfor %}
-                </ul>
-              </li>
-            {% endif %}
-          {% endfor %}
+    <div class="desktop-left-nav">
+        <ul>
+            {% for link in linklists.side-menu.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+            {% endfor %}
         </ul>
-      </div>
-  </div><!-- .desktop-left-nav -->
+    </div>
+
 
   <div class="left-nav--categories">
     <div class="opener"><span>Select Options</span>{% include 'svg-icon-caret-down' %}</div>
-    {% assign menu_about = linklists[section.settings.landing_page_about_nav] %}
-    {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
     <div class="dropdown">
-      <ul class="menu-faq">
-        {% for link in menu_faq.links %}
-        <li>
+      {% for link in linklists.side-menu.links %}
+        <!-- <div class="category"> -->
           <a href="{{ link.url }}">{{ link.title }}</a>
-          {% comment %} {{ link.title | link_to: link.url }} {% endcomment %}
-        </li>
-        {% endfor %}
-      </ul>
-
-      <ul class="menu-about">
-        {% for link in menu_about.links %}
-          {% comment %} :: NESTED MENU :: {% endcomment %}
-          {% if link.levels > 0 %}
-          <!-- <div class="category"> -->
-            <li data-link-size="{{ link.links.size }}">
-            <h4 class="landing-page-heading">{{ link.title }}</h4>
-              <ul class="menu-about-sub">
-              {% for sub_link in link.links %}
-                <li>{{ sub_link.title | link_to: sub_link.url }}</li>
-              {% endfor %}
-              </ul>
-            </li>
-
-          <!-- </div> -->
-          {% endif %}
-        {% endfor %}
-      </ul>
+        <!-- </div> -->
+      {% endfor %}
     </div>
-  </div><!-- .left-nav--categories -->
-</div><!-- .left-nav -->
+  </div>
+
+</div>

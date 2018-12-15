@@ -1,23 +1,15 @@
-{% comment %} CONTENT :: Page Title - removing from Pre Questions field {% endcomment %}
-{% if section.settings.section_title_top != blank %}
-    <h1 class="faq-title">{{ section.settings.section_title_top }}</h1>
-{% endif %}
-
 {% comment %} CONTENT :: Before Questions {% endcomment %}
 
 {% if section.settings.before_content != blank %}
     {{ section.settings.before_content }}
 {% endif %}
 
-
 {% comment %} FAQ :: Block loop {% endcomment %}
 
 {% for block in section.blocks %}
     <div class="toggle">
         <div class="toggle-title">
-            {% if block.settings.title != blank %}<h2 class="heading">{{ block.settings.heading }}</h2>{% endif %}
             <h4>{{ block.settings.title }}</h4>
-            {% comment %} <h4>{{ block.settings.title }}</h4> {% endcomment %}
             <span class="opener">{% include 'svg-icon-caret-down' %}
             </span>
         </div>
@@ -25,6 +17,7 @@
             {% if block.settings.anchor != blank %}
             <a id="{{ block.settings.anchor | escape }}" style="display: block; position: relative; top: {{ section.settings.anchor_top_offset }}px; visibility: hidden;"></a>
             {% endif %}
+
             {{ block.settings.answer }}
         </div>
     </div>
@@ -42,10 +35,6 @@
     "name": "FAQ page",
     "settings": [
     {
-        "type": "header",
-        "content": "FAQ Page Content"
-    },
-    {
         "type": "range",
         "id": "anchor_top_offset",
         "min": -300,
@@ -54,11 +43,6 @@
         "unit": "px",
         "label": "Anchor - Top offset",
         "default": -100
-    },
-    {
-        "type": "text",
-        "id": "section_title_top",
-        "label": "Sectional Title for Questions (text)"
     },
     {
         "type": "html",
@@ -76,11 +60,6 @@
         "type": "html",
         "name": "FAQ Question",
         "settings":[
-            {
-                "type": "text",
-                "id": "heading",
-                "label": "FAQ Section Heading (optional)"
-            },
             {
                 "type": "text",
                 "id": "title",
