@@ -2,14 +2,21 @@
   margin: 16px 0;
 
   .blocks2 {
-    display: flex;
-    justify-content: space-between;
+    .coupon:first-child {
+      margin-bottom: 16px;
+    }
 
-    .coupon {
-      width: 50%;
+    @include mq('tablet-and-up') {
+      display: flex;
+      justify-content: space-between;
 
-      &:first-child {
-        margin-right: 16px;
+      .coupon {
+        width: 50%;
+
+        &:first-child {
+          margin-right: 16px;
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -17,6 +24,30 @@
   .coupon {
     padding: 2%;
     width: 100%;
+
+    @include mq('phone') {
+      padding: 4%;
+
+      h3 {
+        text-align: center;
+      }
+
+      div.copy {
+        text-align: center;
+      }
+
+      div.cta {
+        text-align: center;
+
+        a {
+          width: 100%;
+        }
+      }
+
+      div.details label {
+        text-align: center;
+      }
+    }
 
     &.medium-gray {
       background-color: #dadada;
@@ -27,7 +58,8 @@
     }
 
     &.white {
-      background-color: #fff;
+      width: calc(100% - 4px);
+      background-color: $color--white;
       border: 1px solid #eee;
       box-shadow: 2px 2px 3px #888888;
     }
@@ -37,6 +69,7 @@
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 1px;
+      line-height: 1.5;
       margin-bottom: 10px;
     }
 
@@ -46,7 +79,7 @@
     }
 
     div.cta a {
-      color: #fff;
+      color: $color--white;
       font-size: 15px;
       font-style: normal;
       letter-spacing: 1px;
