@@ -22,37 +22,75 @@
 
   div.left-nav {
     margin: 0 0 25px 0;
+
     @include mq( 'lap-and-up' ) {
       @include flex-basis(220px);
       padding-right: 20px;
     }
-    @include mq( 'desk-and-up' ) {
-      @include flex-basis(300px);
+
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include flex-direction(column);
+      @include flex-wrap(wrap);
+      @include justify-content(flex-start);
+    //   @include flex-basis(300px);
     }
 
     div.desktop-left-nav {
       display: none;
 
-      @include mq( 'lap-and-up' ) {
-        display: block;
+      @include mq('lap-and-up') {
+        @include flexbox;
+        @include flex-direction(column);
+        // width: auto;
       }
 
-      ul > li {
+      ul.menu-faq, ul.menu-about, ul.menu-about-sub {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.menu-faq > li, ul.menu-about > li {
+        color: $color--primary-1;
+        cursor: pointer;
         margin-bottom: 0px;
+        text-decoration: none;
+
+        @include mq('tablet-and-up'){
+          padding-top: 17px;
+          letter-spacing: 2px;
+        }
 
         &:before {
           content: " ";
           margin-right: 0;
         }
 
+        h4 {
+          @include mq('lap-and-up'){
+            @include fontSize(14px);
+            font-weight:  $font-weight--bold;
+            border-bottom: 1px solid $color--primary-1;
+          }
+        }
+
         a {
-          color: $color--primary-2;
+          color: $color--primary-1;
+          cursor: pointer;
+          text-decoration: none;
+
+          @include mq('tablet-and-up'){
+            letter-spacing: 2px;
+          }
         }
       }
     }
   }
 
   .left-nav--categories {
+    display: block;
+
     @include mq("lap-and-up") {
       display: none;
     }
@@ -90,18 +128,38 @@
       background: $color--light-gray;
       padding: 10px 15px;
 
-      a {
-        float: left;
-        width: 100%;
-        color: $color--primary-2;
-        margin-bottom: 15px;
+      ul.menu-faq, ul.menu-about {
+        list-style-type: none;
+        padding: 0;
+
+        h4 {
+          font-weight:  $font-weight--bold;
+        //   border-bottom: 1px solid $color--primary-1;
+        }
+
+        a {
+          float: left;
+          width: 100%;
+          color: $color--primary-2;
+          margin-bottom: 15px;
+        }
+
+        ul.menu-about-sub {
+          list-style-type: none;
+        }
       }
+
+      
     }
   }
 
   div.page-content-field {
-    @include mq( 'lap-and-up' ) {
+    @include mq('lap-and-up') {
       @include flex-basis(100%);
+    }
+
+    p {
+      @include flexbox;
     }
   }
 
@@ -136,16 +194,35 @@
     color: $color--white;
     text-decoration: none;
     @include fontSize(12px);
-    font-weight: $font-weight--book;
+    font-weight: $font-weight--bold;
     @include flexbox;
-    @include justify-content(flex-start);
+    @include justify-content(center);
+    width: 190px;
+    padding: 15px 30px;
+    margin: 20px 0;
 
     @include mq('tablet-and-up'){
       @include fontSize(15px);
-      padding: 15px 30px;
-      margin: 20px 0;
-      width: 190px;
     }
   }
 
+  .glassdoor-icon {
+    margin-top: 3px;
+  }
+
+  .li-connect-widget .li-connect-mark {
+    background:url(https://static.licdn.com/scds/common/u/images/apps/connect/sprites/sprite_connect_v14.png) -92px -42px no-repeat !important;
+    display:inline-block !important;
+    height:16px !important;
+    text-decoration:none !important;
+    width:16px !important;
+    vertical-align:middle !important;
+  }
+  .IN-widget .hovered .li-connect-mark {
+    cursor:pointer !important;
+  }
+  .li-connect-widget.pending .li-connect-mark {
+    background:url(data:image/gif;base64,R0lGODlhEAAQAKIAAP///+bm5s7OzpycnGNjYwAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAADgAQAAADNAi6MMNQOReBEG0CQta92cZ11seMZBlxClh55lu6Mi23GBQEsL3vOBDwx8MBiMei7ndLQhIAIfkEBQoAAAAsAgAAAA4ADgAAAyUIqiL7rzUIpRuDsouzVp33AdgIEYQJoKjJpi4cBOo8mzaN62MCACH5BAUKAAAALAAAAgAQAAwAAAMmCLoMIi2q92Sj0LK6QtDAMACeZ4li+UnoaGoiqBCEPNO1jOc6nwAAIfkEBQoAAAAsAgACAA4ADgAAAyUIEdD+ajH45KRu4Y2F4I3ngeJHmtswgICqYgTRulQcz7DN3lQCACH5BAUKAAAALAIAAAAMABAAAAMmCKoR+6w5GBtd9urNu/8XQVCCAIjiU5boOAzAaqbvG5tPDWv2kwAAIfkEBQoAAAAsAAACAA4ADgAAAyUIugwRLb4X2YR1UUBIXl33ceFImsswmKo6tqsgZK4sj/aM60sCACH5BAUKAAAALAAAAgAQAAwAAAMmCEqk/o8xSIFsFc7sxuBAEACel4li+VXoaHLiIwigM881cNM5DiYAIfkECQoAAAAsAAAAABAAEAAAAygIukDEkDkX1xhtVnBv3lwHMt4ICIKpoKjKpi6sjkEw17WK2zo//5EEADs=) no-repeat !important;
+    cursor:wait !important;
+  }
 }
