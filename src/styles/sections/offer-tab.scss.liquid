@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
 .offer-tab {
+  @include fontSize(15px);
   height: initial;
   line-height: 1;
   background-color: $color--primary-1;
-  color: $color--white;
+  color: $color--reverse-1;
   position: fixed;
   text-align: center;
   transform: rotate(-90deg);
@@ -12,7 +13,6 @@
   margin-bottom: 0;
   top: 50%;
   right: 0%;
-  font-size: 15px;
   z-index: 1000;
   display: block;
   font-family: $sans--2;
@@ -30,7 +30,7 @@ a.offer-tab__label {
 
   &:hover {
     text-decoration: none;
-    color: $color--white;
+    color: $color--reverse-1;
   }
 }
 
@@ -40,12 +40,12 @@ a.offer-tab__label {
   position: relative;
   display: inline-block;
   line-height: 0;
-  color: $color--white;
+  color: $color--reverse-1;
   
   svg {
     width: 1em;
     height: 1em;
-    stroke: $color--white;
+    stroke: $color--reverse-1;
     color: inherit;
     stroke-width: 2px;
   }
