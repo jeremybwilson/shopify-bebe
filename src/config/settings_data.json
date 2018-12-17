@@ -2,7 +2,6 @@
   "presets": {
   },
   "current": {
-    "international_store_version": "US",
     "favicon": "shopify:\/\/shop_images\/favicon.png",
     "google_tag_manager_id": "",
     "announcement_text_color": "#000",
@@ -95,16 +94,16 @@
     "directional_hover_color": "#000000",
     "swatch_color": "#000000",
     "swatch_background": "#ffffff",
-    "swatch_border": "#FFFFFF",
+    "swatch_border": "#ffffff",
     "swatch_selected_color": "#ffffff",
     "swatch_selected_background": "#000000",
-    "swatch_selected_border": "#DFDFDF",
+    "swatch_selected_border": "#dfdfdf",
     "size_text": "#000000",
-    "size_border": "#DFDFDF",
+    "size_border": "#dfdfdf",
     "size_bg": "rgba(0,0,0,0)",
     "size_text_soldout": "#5b5b5b",
-    "size_border_soldout": "#DFDFDF",
-    "size_bg_soldout": "#DFDFDF",
+    "size_border_soldout": "#dfdfdf",
+    "size_bg_soldout": "#dfdfdf",
     "size_text_selected": "#000000",
     "size_border_selected": "#000000",
     "size_bg_selected": "rgba(0,0,0,0)",
@@ -170,6 +169,10 @@
     "email_popup_bottom_text": "<p>By providing your email address, you agree to our <a target=\"_blank\" href=\"https:\/\/www.honeywell.com\/privacy-statement\">Privacy Policy<\/a> &amp; <a href=\"\/pages\/terms-conditions\" target=\"_blank\">Terms of Service<\/a>.<\/p>",
     "email_popup_error": "Please enter a valid e-mail address",
     "email_popup_success": "<p>You have successfully joined our newsletter<\/p>",
+    "newsletter_popup_title": "LET'S STAY IN TOUCH",
+    "newsletter_popup_promotion": "ENJOY 20% OFF",
+    "newsletter_popup_body": "YOUR NEXT REGULAR-PRICED PURCHASE WHEN YOU SIGN UP FOR EXCLUSIVE OFFERS, NEW ARRIVALS, & MORE.*",
+    "newsletter_popup_fine_print": "*SEE SIGN-UP CONFIRMATION EMAIL FOR DETAILS.",
     "cookie_banner_mobile_text": "<p>We use cookies.<\/p>",
     "cookie_banner_mobile_button": "http:\/\/www.honeywell.com\/privacy-statement",
     "cookie_banner_mobile_button_text": "More Info",
@@ -193,6 +196,8 @@
     "checkout_accent_color": "#9d6d31",
     "checkout_button_color": "#000000",
     "checkout_error_color": "#ff6d6d",
+    "body": "YOUR NEXT REGULAR-PRICED PURCHASE WHEN YOU SIGN UP FOR EXCLUSIVE OFFERS, NEW ARRIVALS, & MORE.*",
+    "international_store_version": "US",
     "cart_links": "#000000",
     "cart_links_hover": "#000000",
     "newsletter_color": "#ffffff",
@@ -855,6 +860,14 @@
         "settings": {
           "above_form_block": "<h1>Sign In<\/h1>",
           "login_content": "login-content"
+        }
+      },
+      "offer-tab": {
+        "type": "offer-tab",
+        "settings": {
+          "show": true,
+          "homepage_only": false,
+          "label": "GET 20% OFF"
         }
       }
     },
