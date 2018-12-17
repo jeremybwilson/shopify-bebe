@@ -2955,6 +2955,28 @@ theme.Search = (function() {
 })();
 
 
+/*============================================================================
+  Offer Tab
+==============================================================================*/
+theme.OfferTab = (function () {
+  function OfferTab(container) {
+    $('.js-offer-tab').fancybox({
+      hideContentOnClick: true,
+    });
+
+    $('.js-offer-tab').on('click', function () {
+      $(this).parent().fadeOut();
+    });
+
+    $('.js-offer-tab-close').on('click', function (e) {
+      e.preventDefault();
+      $(this).parent().fadeOut();
+    });
+  }
+
+  return OfferTab;
+})();
+
 
 /*============================================================================
   Registering Sections
@@ -2975,6 +2997,7 @@ $(document).ready(function() {
   sections.register('mobile-navigation', theme.mobileNav);
   sections.register('product-section', theme.Product);
   sections.register('search-template', theme.Search);
+  sections.register('offer-tab-section', theme.OfferTab);
 });
 
 /*============================================================================

@@ -1,0 +1,52 @@
+<div id="newsletter-modal" class="newsletter-modal" style="display:none;">
+
+  <div class="newsletter-modal__head">
+    {%- if settings.newsletter_popup_title != blank -%}
+      <h3 class="newsletter-modal__heading">{{ settings.newsletter_popup_title }}</h3>
+    {%- endif -%}
+
+    {%- if settings.newsletter_popup_promotion != blank -%}
+      <h2 class="newsletter-modal__promotion">{{ settings.newsletter_popup_promotion }}</h2>
+    {%- endif -%}
+
+    {%- if settings.newsletter_popup_body != blank -%}
+      <p class="newsletter-modal__body">{{ settings.newsletter_popup_body }}</p>
+    {%- endif -%}
+  </div>
+
+  <form id="email_signup"
+        class="klaviyo_gdpr_embed_{{ settings.newsletter_popup_klaviyo_id }} newsletter-modal__form"
+        action="//manage.kmail-lists.com/subscriptions/subscribe"
+        data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+        method="GET"
+        target="_blank"
+        novalidate="novalidate">
+    <input type="hidden" name="g" value="{{ settings.newsletter_popup_klaviyo_id }}">
+    <input type="hidden" name="$fields" value="$consent">
+    <input type="hidden" name="$list_fields" value="$consent">
+    <div class="klaviyo_field_group">
+      <input type="email"
+              value="{% if customer %}{{ customer.email }}{% endif %}"
+              name="email"
+              id="k_id_email"
+              aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}"
+              placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}"
+              class="newsletter-modal__input"
+              autocorrect="off"
+              autocapitalize="off">
+      <span class="newsletter-modal__btn-group">
+        <button type="submit" class="button newsletter-modal__btn" name="commit" id="Subscribe">
+          {{ 'general.newsletter_form.submit' | t }}
+        </button>
+      </span>
+    </div>
+    <div class="klaviyo_messages">
+      <div class="success_message newsletter-modal__success" style="display:none;"></div>
+      <div class="error_message newsletter-modal__error" style="display:none;"></div>
+    </div>
+  </form>
+
+  {%- if settings.newsletter_popup_fine_print != blank -%}
+    <p class="newsletter-modal__fine-print">{{ settings.newsletter_popup_fine_print }}</p>
+  {%- endif -%}
+</div>
