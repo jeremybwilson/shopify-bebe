@@ -1307,22 +1307,26 @@
       {
         "type": "text",
         "label": "Title",
-        "id": "newsletter_popup_title"
+        "id": "newsletter_popup_title",
+        "default": "LET'S STAY IN TOUCH"
       },
       {
         "type": "text",
         "label": "Promotion",
-        "id": "newsletter_popup_promotion"
+        "id": "newsletter_popup_promotion",
+        "default": "ENJOY 20% OFF"
       },
       {
         "type": "textarea",
         "id": "newsletter_popup_body",
-        "label": "Body"
+        "label": "Body",
+        "default": "YOUR NEXT REGULAR-PRICED PURCHASE WHEN YOU SIGN UP FOR EXCLUSIVE OFFERS, NEW ARRIVALS, & MORE.*"
       },
       {
         "type": "textarea",
         "id": "newsletter_popup_fine_print",
-        "label": "Fine print"
+        "label": "Fine print",
+        "default": "*SEE SIGN-UP CONFIRMATION EMAIL FOR DETAILS."
       }  
     ]
   },
