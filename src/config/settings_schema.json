@@ -199,8 +199,12 @@
         "label": "Error text",
         "default": "#f00"
       },
-
-
+      {
+        "type": "color",
+        "id": "success_text",
+        "label": "Success text",
+        "default": "#4AB064"
+      },
       {
         "type": "header",
         "content": "Buttons"
@@ -1305,6 +1309,40 @@
         "label": "Success Text",
         "default": "<p>You have successfully joined our newsletter</p>"
       }
+    ]
+  },
+  {
+    "name": "Newsletter popup",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Klaviyo ID",
+        "id": "newsletter_popup_klaviyo_id"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "newsletter_popup_title",
+        "default": "LET'S STAY IN TOUCH"
+      },
+      {
+        "type": "text",
+        "label": "Promotion",
+        "id": "newsletter_popup_promotion",
+        "default": "ENJOY 20% OFF"
+      },
+      {
+        "type": "textarea",
+        "id": "newsletter_popup_body",
+        "label": "Body",
+        "default": "YOUR NEXT REGULAR-PRICED PURCHASE WHEN YOU SIGN UP FOR EXCLUSIVE OFFERS, NEW ARRIVALS, & MORE.*"
+      },
+      {
+        "type": "textarea",
+        "id": "newsletter_popup_fine_print",
+        "label": "Fine print",
+        "default": "*SEE SIGN-UP CONFIRMATION EMAIL FOR DETAILS."
+      }  
     ]
   },
   {

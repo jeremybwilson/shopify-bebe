@@ -1,0 +1,37 @@
+<div id="coupons">
+  {% comment %} {% section 'slideshow' %} {% endcomment %}
+
+  {{ page.content }}
+</div>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome"
+    },
+      {
+        "type": "richtext",
+        "id": "rich_text",
+        "label": "Text",
+        "info": "Use basic HTML to format text",
+        "default": "<p>Use this section to tell customers about your store or add content from one of your pages which makes it easy to add images, video or any other content.</p>"
+      },
+    {
+      "type": "page",
+      "id": "page",
+	   "label": "Or Show content from a page"
+    }
+   ],
+   "presets":[
+      {
+       "name":"Rich text",
+       "category":"Text"
+      }
+   ]
+}
+{% endschema %}
