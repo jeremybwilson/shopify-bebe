@@ -32,8 +32,7 @@
         "type": "text",
         "id": "yotpo_id",
         "label": "Yotpo Account ID",
-        "info": "(Ex: ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt)",
-        "default": ""
+        "info": "(Ex: ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt)"
       }
     ]
   },
