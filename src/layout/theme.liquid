@@ -135,6 +135,7 @@
 </head>
 
 <body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
+  {% section 'offer-tab' %}
   {% comment %}{% include 'script-google-tag-body' %}{% endcomment %}
   {% include 'timber-cart' %}
 
