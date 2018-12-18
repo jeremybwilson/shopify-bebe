@@ -1,0 +1,300 @@
+#preview-bar-iframe { display: none; }
+
+/*  YOTPO REVIEWS : VARIABLES
+ * ---------------------------------------------- */
+$starColor: $color--text-1;     // #000
+$textColor: $color--text-1;     // #000
+$avatarBg: $color--primary-1;   // #000
+$reviewNameWidth: 180px;        // Username section on each review, 768+
+    
+
+/* YOTPO REVIEWS : CORE STYLES
+ * ---------------------------------------------- */
+#yotpo-reviews.yotpo-main-widget { // Larger heirachy to override their nested styles
+    padding: 15px 0 25px;
+    max-width: 1220px;
+    
+    // Yotpo Logo on widget
+    .yotpo-label {
+        display: none;
+    }
+
+    // ICON : Stars
+    .yotpo-icon.rating-star, 
+    .yotpo-icon.review-star,
+    .yotpo-icon.yotpo-icon-star {
+        color: $starColor;
+    }
+
+    // LABELS : Font family setting assistant
+    label {
+        font-family: $sans--2;
+    }
+
+    // BASE AREA BLOCK : Overall block of content, applies to several sections usually
+    .yotpo-regular-box {
+        border-top: none;
+    }
+
+    // LINKS
+    a {
+        color: $textColor !important; // Yotpo important flag on styling
+        transition: color 0.25s ease-in-out;
+
+        &:hover {
+            color: $color--accent-1 !important; // Yotpo important flag on styling
+        }
+    }
+
+
+    // SUMMARY : Reviews summary block at top
+    .yotpo-bottomline {
+        @include flexbox;
+        @include align-items( center );
+        padding-bottom: 50px;
+
+        // SUMMARY HEADER : Use pseudo element to add the header
+        &:before {
+            position: absolute;
+            width: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX( -50% );
+            content: 'OVERALL RATING';
+            @include fontSize( 20px );
+            font-family: $sans--2;
+            font-weight: $font-weight--medium;
+            text-align: center;
+            color: $textColor;
+        }
+
+        // SUMMARY STARS + REVIEW COUNT
+        .yotpo-stars-and-sum-reviews {
+            @include flexbox;
+            @include justify-content( center );
+            @include align-items( center );
+            margin: 0;
+            left: 50%;
+            transform: translateX( -50% );
+
+            // SUMMARY COUNT : Text has some strange padding, lets negate it
+            .yotpo-sum-reviews {
+                padding: 0 0 2px;
+
+                .based-on {
+                    padding-top: 0;
+                }
+            }
+
+            // SECOND WRITE REVIEW BUTTON : No clue why this is also in here, hiding so we can show button on mobile size..
+            .write-review-button {
+                display: none;
+            }
+        }
+
+        // WRITE A REVIEW BUTTON
+        .write-review-button {
+            top: 62px;
+            left: 50%;
+            width: 180px;
+            display: inline;
+            background: $button--main-bg;
+            transform: translateX( -50% );
+
+            &:hover {
+                background: $button--main-bg-hover;
+            }
+
+            .yotpo-icon-button-text {
+                display: inline; // override the hide it does on mobile..
+            }
+        }
+    }
+
+
+    // WRITE A REVIEW : Section for adding your own review
+    .write-review {
+        input {
+            outline: none;
+
+            // POST BUTTON (Post your review)
+            &.yotpo-submit {
+                background: $button--main-bg;
+                font-family: $sans--2;
+                @include fontSize( 18px );
+                transition: all 0.25s ease-in-out;
+
+                &:hover {
+                    background: $button--main-bg-hover !important; // yotpo has important on its hover style oddly..
+                }
+
+                &.yotpo-disabled {
+                    pointer-events: none;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+
+    // NAV MENU ("Reviews" Tab Hiding)
+    .yotpo-nav {
+        display: none;
+    }
+
+
+    // MESSAGES PANE (Shows when you submit review, says thanks and things like that)
+    .yotpo-messages {
+        border: none;
+
+        .yotpo-thank-you {
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+
+    // REVIEWS LIST
+    .yotpo-reviews {
+        margin-bottom: 20px;
+
+        // REVIEW : Single Review in the list
+        .yotpo-review {
+            width: 100%;
+            margin: 0 auto;
+            padding: 25px 10px 22px;
+
+            // Borders for mobile arrangement
+            &:not(:last-child) {
+                border-bottom: 1px solid $color--light-gray;
+            }
+
+            @include mq( 'tablet-and-up' ) {
+                @include inline-flex;
+                @include flex-wrap( wrap );
+                @include align-items( center );
+                padding: 25px 20px;
+            }
+
+                
+            // REVIEW : HEADER : Username, rating, date for the review
+            .yotpo-header {
+                font-family: $sans--2;
+
+                // ICON : Avatar Backing (1st Letter in a circle basically)
+                .yotpo-icon-profile {
+                    background: $avatarBg;
+                    display: none;
+                }
+
+                // USERNAME : name of the user posting the review
+                .yotpo-user-name {
+                    font-family: $sans--2;
+                }
+
+                // DATE LABEL (sorry for their weird naming..)
+                @include mq( 'tablet-and-up' ) {
+                    width: $reviewNameWidth;
+
+                    .yotpo-header-actions {
+                        float: none;
+                        display: block;
+                        position: relative;
+                        height: 20px;
+                        left: 2px;
+                        top: 3px;
+                        max-width: 150px;
+
+                        .yotpo-review-date {
+                            float: none;
+                        }
+                    }
+                }
+
+            }
+
+            // REVIEW : CONTENT : Actual body of the review (title, content body)
+            .yotpo-main {
+                margin-left: 0;
+
+                @include mq( 'tablet-and-up' ) {
+                    width: calc( 100% - #{$reviewNameWidth} );
+                    max-width: 970px;
+                }
+
+                .content-title {
+                    color: $textColor;
+                }
+
+                .content-title,
+                .content-review,
+                .yotpo-read-more,
+                .rest-content-collapsed {
+                    font-family: $sans--2;
+                }
+
+            }
+
+            // REVIEW : FOOTER : Bottom buttons for "Share" and Thumbs up or Down
+            .yotpo-footer {
+                margin-left: 0;
+                font-family: $sans--2;
+                @include flex-basis( 100% );
+
+                @include mq( 'tablet-and-up' ) {
+                    margin-left: $reviewNameWidth;
+                    max-width: 970px;
+                }
+
+                // UI HIDE : Line next to "share" is always there, even if no comments.. looks strange
+                .yotpo-icon-seperator {
+                    opacity: 0;
+                }
+            }
+
+            // REVIEW : COMMENTS : Nested comments on a review (like store owner comments)
+            .yotpo-comments-box {
+                border-left-color: $color--primary-1;
+            }
+        }
+    }
+
+
+    // NO REVIEWS YET HANDLING
+    .yotpo-no-reviews {
+
+        // HIDE : Usual submit review button since we have a special "Be first to write review" button available
+        .yotpo-bottomline {
+            .write-review-button {
+                display: none;
+            }
+        }
+
+        // FIRST REVIEW BUTTON
+        .yotpo-first-review {
+            margin-top: 0;
+
+            // STARS : This extra set is pointless, doesn't indicate anything, doesn't let you use it as the fill in gauge.. 
+            .yotpo-first-review-stars {
+                display: none;
+            }
+
+            // BUTTON : "write your first review" button
+            .write-first-review-button {
+                font-family: $sans--2;
+                background: $button--main-bg;
+                transition: background 0.25s ease-in-out;
+
+                &:hover {
+                    background: $button--main-bg-hover;
+                }
+            }
+        }
+
+        // HIDE : First Review Button once user opens the write review panel (looks cleaner)
+        .write-review-wrapper.visible ~ .yotpo-nav-content .yotpo-first-review {
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+    }
+}

@@ -19,14 +19,29 @@
     ]
   },
   {
-    "name": "Analytics + Marketing",
+    "name": "Accounts + Marketing",
     "settings": [
+      {
+        "type": "header",
+        "content": "Google Tag Manager"
+      },
       {
         "type": "text",
         "id": "google_tag_manager_id",
         "label": "Google Tag Manger ID",
         "info": "(Ex: GTM-PM9T3KW)",
         "default": "GTM-NONE"
+      },
+
+      {
+        "type": "header",
+        "content": "Yotpo Reviews"
+      },
+      {
+        "type": "text",
+        "id": "yotpo_id",
+        "label": "Yotpo Account ID",
+        "info": "(Ex: ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt)"
       }
     ]
   },
