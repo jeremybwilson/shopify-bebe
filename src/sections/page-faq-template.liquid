@@ -69,6 +69,10 @@ $( document).ready(function() {
     "name": "FAQ page",
     "settings": [
     {
+        "type": "header",
+        "content": "FAQ Page Content"
+    },
+    {
         "type": "range",
         "id": "anchor_top_offset",
         "min": -300,
@@ -109,6 +113,11 @@ $( document).ready(function() {
         "type": "html",
         "name": "FAQ Question",
         "settings":[
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "FAQ Section Heading (optional)"
+            },
             {
                 "type": "text",
                 "id": "title",

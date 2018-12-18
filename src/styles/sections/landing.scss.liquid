@@ -27,25 +27,35 @@
       @include flex-basis(250px);
       padding-right: 20px;
     }
-    @include mq( 'desk-and-up' ) {
-      @include flex-basis(300px);
+
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include flex-direction(column);
+      @include flex-wrap(wrap);
+      @include justify-content(flex-start);
+    //   @include flex-basis(300px);
     }
 
     div.desktop-left-nav {
       display: none;
       margin-bottom: 40px;
 
-      @include mq( 'lap-and-up' ) {
+      @include mq('lap-and-up') {
         @include flexbox;
         @include flex-direction(column);
       }
 
       ul {
-        display: block;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
       }
 
-      ul > li {
+      ul.menu-faq > li, ul.menu-about > li {
+        color: $color--primary-1;
+        cursor: pointer;
         margin-bottom: 0px;
+        text-decoration: none;
 
         @include mq('tablet-and-up'){
           padding-top: 17px;
@@ -74,13 +84,21 @@
         }
 
         a {
-          color: $color--primary-2;
+          color: $color--primary-1;
+          cursor: pointer;
+          text-decoration: none;
+
+          @include mq('tablet-and-up'){
+            letter-spacing: 2px;
+          }
         }
       }
     }
   }
 
   .left-nav--categories {
+    display: block;
+
     @include mq("lap-and-up") {
       display: none;
     }
@@ -134,17 +152,16 @@
           margin-bottom: 15px;
         }
 
-      a {
-        float: left;
-        width: 100%;
-        color: $color--primary-2;
-        margin-bottom: 15px;
+        ul.menu-about-sub {
+          list-style-type: none;
+        }
       }
+
     }
   }
 
   div.page-content-field {
-    @include mq( 'lap-and-up' ) {
+    @include mq('lap-and-up') {
       @include flex-basis(100%);
     }
 
