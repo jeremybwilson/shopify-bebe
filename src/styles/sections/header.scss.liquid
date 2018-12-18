@@ -870,6 +870,50 @@ $navHoverColor: {{ settings.nav_hover_color }};
         }
     }
 
+    #nav-search-mobile {
+        position: absolute;
+        top: 50%;
+        left: 60px;
+        width: 35px;
+        height: 35px;
+        transform: translateY(-50%);
+        z-index: 30;
+
+        @include mq( 'lap-and-up' ) {
+            display: none;
+        }
+        label {
+            position: relative;
+            width: 35px;
+            height: 35px;
+        }
+        svg {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 20px;
+            height: 20px;
+
+            * { 
+                fill: $color--primary-1;
+            }
+        }
+        input { // Placed over the label to trigger the search bar via the plugin
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            padding: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+
     /*  NAV : MOBILE NAV MENU STYLES 
      *   (would have combined them, but its all already setup in theme)
      * ---------------------------------------------- */
