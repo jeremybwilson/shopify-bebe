@@ -109,6 +109,20 @@
         {% include 'mobile-navigation' %}
       </div>
 
+      {% comment %} ..:: MOBLE SEARCH ::.. {% endcomment %}
+      {% if section.settings.show_search %}
+        <div id="nav-search-mobile">
+          <div class="search">
+            <form action="/search" method="get">
+              <label for="mob-search-q">
+                {% include 'svg-icon-search' %}
+                <input type="text" name="q" id="mob-search-q" placeholder="{{ 'general.search.placeholder' | t }}" />
+              </label>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+
     </div>
 
     {% if section.settings.full_width_header %}</div>{% endif %}
