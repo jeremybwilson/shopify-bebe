@@ -151,6 +151,7 @@
       }
     }
 
+    // New responsive layout for FAQ :: How do I earn points? section
     .rewards-table {
       width: 100%;
       margin-top: 30px;
@@ -165,6 +166,8 @@
             @include flexbox;
           }
           .rewards-cell {
+            padding: 10px;
+
             span.rewards-mob-text {
               display: none;
             }
@@ -190,6 +193,8 @@
         .rewards-cell {
           @include flexbox;
           width: 100%;
+          padding-top: 10px 0 2px 0;
+
           & > span {
             display: block;
           

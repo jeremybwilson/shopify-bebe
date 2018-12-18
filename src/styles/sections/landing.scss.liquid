@@ -92,7 +92,7 @@
       width: 100%;
       padding: 10px 15px;
       background: $color--gray-1;
-      color: $color--white;
+      color: $color--reverse-1;
       font-weight: $font-weight--book;
       @include fontSize(14px);
 
@@ -100,7 +100,7 @@
         width: 10px;
         transition: transform .25s ease;
         * {
-          fill: $color--white;
+          fill: $color--reverse-1;
         }
       }
 
@@ -117,6 +117,22 @@
       width: 100%;
       background: $color--light-gray;
       padding: 10px 15px;
+
+      ul.menu-faq, ul.menu-about {
+        list-style-type: none;
+        padding: 0;
+
+        h4 {
+          font-weight:  $font-weight--bold;
+        //   border-bottom: 1px solid $color--primary-1;
+        }
+
+        a {
+          float: left;
+          width: 100%;
+          color: $color--primary-2;
+          margin-bottom: 15px;
+        }
 
       a {
         float: left;
@@ -161,7 +177,7 @@
 
       th {
         background-color: #303030;
-        color: $color--white;
+        color: $color--reverse-1;
         padding: 10px 20px;
       }
       td {
@@ -185,13 +201,13 @@
         background: #dadada;
       }
 
-      tr:nth-child(odd) td {
-        // background: inherit;
+      tbody tr:nth-child(odd) td, tbody tr:nth-child(2n+1) td {
+        background: none;
       }
 
       th {
         // background-color: #303030;
-        // color: $color--white;
+        // color: $color--reverse-1;
         padding: 10px 20px;
         border-style: solid;
         border-width: 0;
@@ -227,9 +243,9 @@
 
     .col {
       padding: 20px 30px;
-      border: 1px dotted $color--white;
+      border: 1px dotted $color--reverse-1;
       background: $color--primary-1;
-      color: $color--white;   
+      color: $color--reverse-1;
       text-align: center;
 
       @include mq("tablet-and-up") {
@@ -241,7 +257,7 @@
 
   .career-button, .return-button {
     background-color: $color--primary-1;
-    color: $color--white;
+    color: $color--reverse-1;
     text-decoration: none;
     @include fontSize(12px);
     font-weight: $font-weight--bold;
@@ -261,6 +277,7 @@
     margin-top: 3px;
   }
 
+  // CSS pulled from existing Bebe site to display LI icon using sprite image. 
   .li-connect-widget .li-connect-mark {
     background:url(https://cdn.shopify.com/s/files/1/0033/7939/6672/files/sprite_li_connect_v14.png) -92px -42px no-repeat !important;
     display:inline-block !important;
@@ -270,7 +287,7 @@
     vertical-align:middle !important;
   }
   .IN-widget .hovered .li-connect-mark {
-    cursor:pointer !important;
+      cursor:pointer !important;
   }
   .li-connect-widget.pending .li-connect-mark {
     background:url(data:image/gif;base64,R0lGODlhEAAQAKIAAP///+bm5s7OzpycnGNjYwAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAADgAQAAADNAi6MMNQOReBEG0CQta92cZ11seMZBlxClh55lu6Mi23GBQEsL3vOBDwx8MBiMei7ndLQhIAIfkEBQoAAAAsAgAAAA4ADgAAAyUIqiL7rzUIpRuDsouzVp33AdgIEYQJoKjJpi4cBOo8mzaN62MCACH5BAUKAAAALAAAAgAQAAwAAAMmCLoMIi2q92Sj0LK6QtDAMACeZ4li+UnoaGoiqBCEPNO1jOc6nwAAIfkEBQoAAAAsAgACAA4ADgAAAyUIEdD+ajH45KRu4Y2F4I3ngeJHmtswgICqYgTRulQcz7DN3lQCACH5BAUKAAAALAIAAAAMABAAAAMmCKoR+6w5GBtd9urNu/8XQVCCAIjiU5boOAzAaqbvG5tPDWv2kwAAIfkEBQoAAAAsAAACAA4ADgAAAyUIugwRLb4X2YR1UUBIXl33ceFImsswmKo6tqsgZK4sj/aM60sCACH5BAUKAAAALAAAAgAQAAwAAAMmCEqk/o8xSIFsFc7sxuBAEACel4li+VXoaHLiIwigM881cNM5DiYAIfkECQoAAAAsAAAAABAAEAAAAygIukDEkDkX1xhtVnBv3lwHMt4ICIKpoKjKpi6sjkEw17WK2zo//5EEADs=) no-repeat !important;
