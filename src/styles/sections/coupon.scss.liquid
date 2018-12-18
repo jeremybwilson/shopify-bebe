@@ -7,8 +7,8 @@
     }
 
     @include mq('tablet-and-up') {
-      display: flex;
-      justify-content: space-between;
+      @include flexbox;
+      @include justify-content(space-between);
 
       .coupon {
         width: 50%;
