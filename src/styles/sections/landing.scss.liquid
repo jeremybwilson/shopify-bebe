@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 #subpage {
   @include flexbox;
   @include flex-direction(column);
@@ -22,37 +21,84 @@
 
   div.left-nav {
     margin: 0 0 25px 0;
+
+
     @include mq( 'lap-and-up' ) {
-      @include flex-basis(220px);
+      @include flex-basis(250px);
       padding-right: 20px;
     }
-    @include mq( 'desk-and-up' ) {
-      @include flex-basis(300px);
+
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include flex-direction(column);
+      @include flex-wrap(wrap);
+      @include justify-content(flex-start);
+    //   @include flex-basis(300px);
     }
 
     div.desktop-left-nav {
       display: none;
+      margin-bottom: 40px;
 
-      @include mq( 'lap-and-up' ) {
-        display: block;
+      @include mq('lap-and-up') {
+        @include flexbox;
+        @include flex-direction(column);
       }
 
-      ul > li {
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.menu-faq > li, ul.menu-about > li {
+        color: $color--primary-1;
+        cursor: pointer;
         margin-bottom: 0px;
+        text-decoration: none;
+
+        @include mq('tablet-and-up'){
+          padding-top: 17px;
+          letter-spacing: 2px;
+        }
 
         &:before {
           content: " ";
           margin-right: 0;
         }
 
+        ul.menu-about-sub > li {
+            padding-top: 17px;
+        }
+
+        h4 {
+          @include mq('lap-and-up'){
+            @include fontSize(18px);
+            border-bottom: 1px solid $color--primary-1;
+            font-weight:  $font-weight--book;
+            letter-spacing: 4px;
+            margin: 15px 0 10px 0;
+            padding: 10px 0;
+            text-transform: uppercase;
+          }
+        }
+
         a {
-          color: $color--primary-2;
+          color: $color--primary-1;
+          cursor: pointer;
+          text-decoration: none;
+
+          @include mq('tablet-and-up'){
+            letter-spacing: 2px;
+          }
         }
       }
     }
   }
 
   .left-nav--categories {
+    display: block;
+
     @include mq("lap-and-up") {
       display: none;
     }
@@ -64,7 +110,7 @@
       width: 100%;
       padding: 10px 15px;
       background: $color--gray-1;
-      color: $color--white;
+      color: $color--reverse-1;
       font-weight: $font-weight--book;
       @include fontSize(14px);
 
@@ -72,7 +118,7 @@
         width: 10px;
         transition: transform .25s ease;
         * {
-          fill: $color--white;
+          fill: $color--reverse-1;
         }
       }
 
@@ -90,25 +136,119 @@
       background: $color--light-gray;
       padding: 10px 15px;
 
-      a {
-        float: left;
-        width: 100%;
-        color: $color--primary-2;
-        margin-bottom: 15px;
+      ul.menu-faq, ul.menu-about {
+        list-style-type: none;
+        padding: 0;
+
+        h4 {
+          font-weight:  $font-weight--bold;
+        }
+
+        a {
+          float: left;
+          width: 100%;
+          color: $color--primary-2;
+          margin-bottom: 15px;
+        }
+
+        ul.menu-about-sub {
+          list-style-type: none;
+        }
       }
+
     }
   }
 
   div.page-content-field {
-    @include mq( 'lap-and-up' ) {
+    @include mq('lap-and-up') {
       @include flex-basis(100%);
+    }
+
+    h1 {
+      @include h1;
+    }
+
+    p {
+      @include p;
+    }
+
+    .us-ship-table {
+      display: none;
+      background-color: #eaeaea;
+      font-family: $sans;
+      @include fontSize(14px);
+  
+      @include mq('tablet-and-up'){
+        display: table;
+        width: 100%;
+      }
+      
+      .table-row-dark {
+        background: #dadada;
+      }
+
+      tr:nth-child(odd) td {
+        background: none;
+      }
+
+      th {
+        background-color: #303030;
+        color: $color--reverse-1;
+        padding: 10px 20px;
+      }
+      td {
+        padding: 10px 20px;
+      }
+    }
+    
+    .us-ship-table-mobile {
+      display: block;
+      border-collapse: collapse;
+      border-spacing: 0;
+      background: #303030;
+      font-family: $sans;
+      @include fontSize(14px);
+
+      @include mq('tablet-and-up'){
+        display: none;
+      }
+
+      .table-row-dark {
+        background: #dadada;
+      }
+
+      tbody tr:nth-child(odd) td, tbody tr:nth-child(2n+1) td {
+        background: none;
+      }
+
+      th {
+        // background-color: #303030;
+        // color: $color--reverse-1;
+        padding: 10px 20px;
+        border-style: solid;
+        border-width: 0;
+        border-color: #484848;
+        overflow: hidden;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      td {
+        width: 100%;
+        padding: 10px 20px;
+        border-style: solid;
+        border-width: 0;
+        border-color: #eaeaea;
+        background: #eaeaea;
+        overflow: hidden;
+        word-break: normal;
+      }
     }
   }
 
+
   // SUBPAGE : Content : Columns for Shipping
-
   .shipping-guide-chart {
-
     @include flexbox;
     @include flex-direction(column);
     margin: 10px 0 20px 0;
@@ -119,9 +259,9 @@
 
     .col {
       padding: 20px 30px;
-      border: 1px dotted $color--white;
+      border: 1px dotted $color--reverse-1;
       background: $color--primary-1;
-      color: $color--white;   
+      color: $color--reverse-1;
       text-align: center;
 
       @include mq("tablet-and-up") {
@@ -131,4 +271,42 @@
     }
   }
 
+  .career-button, .return-button {
+    background-color: $color--primary-1;
+    color: $color--reverse-1;
+    text-decoration: none;
+    @include fontSize(12px);
+    font-weight: $font-weight--bold;
+    @include flexbox;
+    @include justify-content(center);
+    width: 100%;
+    padding: 15px 30px;
+    margin: 20px 0;
+
+    @include mq('tablet-and-up'){
+      @include fontSize(15px);
+      width: calc(240px - 5%);
+    }
+  }
+
+  .glassdoor-icon {
+    margin-top: 3px;
+  }
+
+  // CSS pulled from existing Bebe site to display LI icon using sprite image. 
+  .li-connect-widget .li-connect-mark {
+    background:url(https://cdn.shopify.com/s/files/1/0033/7939/6672/files/sprite_li_connect_v14.png) -92px -42px no-repeat !important;
+    display:inline-block !important;
+    height:16px !important;
+    text-decoration:none !important;
+    width:16px !important;
+    vertical-align:middle !important;
+  }
+  .IN-widget .hovered .li-connect-mark {
+      cursor:pointer !important;
+  }
+  .li-connect-widget.pending .li-connect-mark {
+    background:url(data:image/gif;base64,R0lGODlhEAAQAKIAAP///+bm5s7OzpycnGNjYwAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAADgAQAAADNAi6MMNQOReBEG0CQta92cZ11seMZBlxClh55lu6Mi23GBQEsL3vOBDwx8MBiMei7ndLQhIAIfkEBQoAAAAsAgAAAA4ADgAAAyUIqiL7rzUIpRuDsouzVp33AdgIEYQJoKjJpi4cBOo8mzaN62MCACH5BAUKAAAALAAAAgAQAAwAAAMmCLoMIi2q92Sj0LK6QtDAMACeZ4li+UnoaGoiqBCEPNO1jOc6nwAAIfkEBQoAAAAsAgACAA4ADgAAAyUIEdD+ajH45KRu4Y2F4I3ngeJHmtswgICqYgTRulQcz7DN3lQCACH5BAUKAAAALAIAAAAMABAAAAMmCKoR+6w5GBtd9urNu/8XQVCCAIjiU5boOAzAaqbvG5tPDWv2kwAAIfkEBQoAAAAsAAACAA4ADgAAAyUIugwRLb4X2YR1UUBIXl33ceFImsswmKo6tqsgZK4sj/aM60sCACH5BAUKAAAALAAAAgAQAAwAAAMmCEqk/o8xSIFsFc7sxuBAEACel4li+VXoaHLiIwigM881cNM5DiYAIfkECQoAAAAsAAAAABAAEAAAAygIukDEkDkX1xhtVnBv3lwHMt4ICIKpoKjKpi6sjkEw17WK2zo//5EEADs=) no-repeat !important;
+    cursor:wait !important;
+  }
 }
