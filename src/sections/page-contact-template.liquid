@@ -1,34 +1,38 @@
-<div id="contact-muck">
-	<div id="subpage">
-	  	{% include 'sidenav' %}
-		<div class="page-content-field">
-			{{ page.content }}
+<div id="contact-bebe">
+  <div id="subpage">
+      {% include 'sidenav' %}
+    <div class="page-content-field">
+      {{ page.content }}
 
-			<div id="bebe-form">
-				{% include 'contact' %}
-			</div>
+    {% if section.settings.show_contact_form %}
+      {% if section.settings.show_contact_form != false %}
+      <div id="bebe-form">
+        {% include 'contact' %}
+      </div>
+      {% endif %}
+    {% endif %}
 
-			<div id="honeywell-updates">
-				<h5>Honeywell Updates</h5>
-				<div>
-					<a href="https://pages1.honeywell.com/2018-GDPR-Program_GDPR-Opt-In-supplement-contact-us_1.html" target="_blank">Subscribe</a>
-					<span class="opener"><svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.01 6">
-    				<path fill="#ab5232" fill-rule="evenodd" d="M8,0,4,6,0,0Z"></path></svg></span>
-				</div>
+    <div id="honeywell-updates">
+      <h5>Honeywell Updates</h5>
+      <div>
+        <a href="https://pages1.honeywell.com/2018-GDPR-Program_GDPR-Opt-In-supplement-contact-us_1.html" target="_blank">Subscribe</a>
+        <span class="opener"><svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.01 6">
+          <path fill="#ab5232" fill-rule="evenodd" d="M8,0,4,6,0,0Z"></path></svg></span>
+      </div>
 
-				<div>
-					<a href="https://pages1.honeywell.com/2018-GDPR-Program_Custom-Opt-out-FORM_1.html" target="_blank">Unsubscribe</a>
-					<span class="opener"><svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.01 6">
-    				<path fill="#ab5232" fill-rule="evenodd" d="M8,0,4,6,0,0Z"></path></svg></span>
-    			</div>
-				<div>
-					<a href="https://pages1.honeywell.com/GlobalHoneywellUnsubscribe.html" target="_blank">Global Unsubscribe</a>
-					<span class="opener"><svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.01 6">
-    				<path fill="#ab5232" fill-rule="evenodd" d="M8,0,4,6,0,0Z"></path></svg></span>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div>
+        <a href="https://pages1.honeywell.com/2018-GDPR-Program_Custom-Opt-out-FORM_1.html" target="_blank">Unsubscribe</a>
+        <span class="opener"><svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.01 6">
+          <path fill="#ab5232" fill-rule="evenodd" d="M8,0,4,6,0,0Z"></path></svg></span>
+        </div>
+      <div>
+        <a href="https://pages1.honeywell.com/GlobalHoneywellUnsubscribe.html" target="_blank">Global Unsubscribe</a>
+        <span class="opener"><svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.01 6">
+          <path fill="#ab5232" fill-rule="evenodd" d="M8,0,4,6,0,0Z"></path></svg></span>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 {% schema %}
@@ -36,8 +40,19 @@
   "name": "Contact Us Page Template",
   "settings": [
     {
-        "type": "header",
-        "content": "Contact Us Page Content"
+      "type": "header",
+      "content": "Contact Us Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_form",
+      "label": "Show contact us form",
+      "default": true,
+      "info": "Check this box to enable/disable the contact us form."
+    },
+    {
+      "type": "header",
+      "content": "Contact Us Page Content"
     },
     {
       "type": "link_list",
