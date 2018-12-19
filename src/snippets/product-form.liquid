@@ -3,8 +3,6 @@
   {% assign use_swatches = true %}
 {% endif %}
 
-<script>console.log({{use_swatches|json}})</script>
-
 {% assign call_to_action = 'products.product.add_to_cart' | t %}
 
 {% unless current_variant.available %}
