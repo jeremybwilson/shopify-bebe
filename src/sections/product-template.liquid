@@ -1,4 +1,7 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
+{% if section.settings.product_variants == 'swatches' and product.type != 'Gift Card' %}
+  {% assign use_swatches = true %}
+{% endif %}
 
 <div itemscope itemtype="http://schema.org/Product"
   id="product-{{ product.id }}"
@@ -111,7 +114,7 @@
 
             {% comment %} :: SIZE CHART :: {% endcomment %}
             {% assign productOptions = product.options | downcase %}
-            {% if productOptions contains 'size' %}
+            {% if productOptions contains 'size' and product.type != 'Gift Card' %}
               <dl id="size-chart--accordion" class="product-accordion">
                 <a id="size-chart--accordion-header" class="product-accordion--header" href="/pages/size-chart" target="_blank">
                   <h3>{{ section.settings.size_chart_header_text }}</h3>
@@ -121,7 +124,7 @@
             {% endif %}
 
             {% comment %} :: SHIPPING & RETURNS :: {% endcomment %}
-            {% if section.settings.shipping_text != blank %}
+            {% if section.settings.shipping_text != blank and product.type != 'Gift Card' %}
               <dl id="shipping--accordion" class="product-accordion">
                 <dt id="shipping--accordion-header" class="product-accordion--header">
                   <h3>{{ section.settings.shipping_header_text }}</h3>
@@ -240,7 +243,7 @@
       display: none;
     }
   {% endif %}
-  {% if section.settings.product_variants == 'swatches' %}
+  {% if use_swatches %}
     .selector-wrapper {
       display: none;
     }
