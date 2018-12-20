@@ -1,4 +1,4 @@
-#preview-bar-iframe { display: none; }
+// #preview-bar-iframe { display: none; }   // commented out to re-enable preview in Customizer UI
 
 /*  YOTPO REVIEWS : VARIABLES
  * ---------------------------------------------- */
@@ -6,21 +6,21 @@ $starColor: $color--text-1;     // #000
 $textColor: $color--text-1;     // #000
 $avatarBg: $color--primary-1;   // #000
 $reviewNameWidth: 180px;        // Username section on each review, 768+
-    
+
 
 /* YOTPO REVIEWS : CORE STYLES
  * ---------------------------------------------- */
 #yotpo-reviews.yotpo-main-widget { // Larger heirachy to override their nested styles
     padding: 15px 0 25px;
     max-width: 1220px;
-    
+
     // Yotpo Logo on widget
     .yotpo-label {
         display: none;
     }
 
     // ICON : Stars
-    .yotpo-icon.rating-star, 
+    .yotpo-icon.rating-star,
     .yotpo-icon.review-star,
     .yotpo-icon.yotpo-icon-star {
         color: $starColor;
@@ -176,7 +176,7 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
                 padding: 25px 20px;
             }
 
-                
+
             // REVIEW : HEADER : Username, rating, date for the review
             .yotpo-header {
                 font-family: $sans--2;
@@ -274,7 +274,7 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
         .yotpo-first-review {
             margin-top: 0;
 
-            // STARS : This extra set is pointless, doesn't indicate anything, doesn't let you use it as the fill in gauge.. 
+            // STARS : This extra set is pointless, doesn't indicate anything, doesn't let you use it as the fill in gauge..
             .yotpo-first-review-stars {
                 display: none;
             }

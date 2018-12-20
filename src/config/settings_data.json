@@ -1053,6 +1053,13 @@
           "homepage_only": false,
           "label": "GET 20% OFF"
         }
+      },
+      "page-contact-template": {
+        "type": "page-contact-template",
+        "settings": {
+          "landing_page_faq_nav": "side-menu-faq",
+          "landing_page_about_nav": "side-menu-about"
+        }
       }
     },
     "content_for_index": [
