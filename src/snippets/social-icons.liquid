@@ -7,9 +7,9 @@
   </li>
 {% endif %}
 
-{% if settings.instagram_id != blank %}
+{% if settings.instagram_url != blank %}
     <li>
-      <a href="//instagram.com/{{ settings.instagram_id }}" target="_blank" title="Instagram">
+      <a href="{{ settings.instagram_url }}" target="_blank" title="Instagram">
         {% include 'svg-icon-instagram' %}
       </a>
     </li>

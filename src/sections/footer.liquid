@@ -74,9 +74,6 @@
       {% if section.blocks %}
         <div class="social-wrapper">
           <div class="social-inner">
-          {% comment %} {% unless section.settings.social_heading == blank %}
-            <h4 class="section-title">{{ section.settings.social_heading }}</h4>
-          {% endunless %} {% endcomment %}
           {% unless section.settings.social_insta_hashtag == blank %}
             <h4 class="section-title">{{ section.settings.social_insta_hashtag }}</h4>
           {% endunless %}
@@ -84,10 +81,9 @@
               {% if section.settings.instagram_footer_image != blank %}
                 {% assign insta_img_url = section.settings.instagram_footer_image | img_url: '542x' %}
                 {% if section.settings.instagram_footer_link != blank %}<a href="{{ section.settings.instagram_footer_link }}" target="_blank">{% endif %}
-                  <img src="{{ insta_img_url }}" alt="Placeholder Image" />
+                  <img src="{{ insta_img_url }}" alt="{{ section.settings.social_insta_hashtag }}" />
                 {% if section.settings.link != blank %}</a>{% endif %}
               {% endif %}
-              {% comment %} <img src="https://via.placeholder.com/545.png" alt="Placeholder Image" /> {% endcomment %}
             </div>
             <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
               {% include 'social-icons' %}
@@ -246,7 +242,7 @@
         "type": "text",
         "id": "social_insta_hashtag",
         "label": "Social - Heading",
-        "default": "#BEBEBABES"
+        "default": "#Bebebabes"
       },
       {
         "type": "text",

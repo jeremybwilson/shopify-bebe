@@ -144,28 +144,29 @@
         #button-footer-newsletter-submit {
           @include flexbox;
           @include justify-content(flex-start);
-          @include fontSize(15px);
           background-color: #000000;
           border: 0;
           border-radius: 0;
           color: $color--white;
           font-weight: $font-weight--book;
           height: 46px;
-          padding: 4px 15px;
+          padding: 4px 0;
           margin-left: 0;
           width: 30%;
 
           @include mq('tablet-and-up'){
             @include justify-content(center);
+            @include fontSize(15px);
           }
 
           input[type="submit"] {
             @include flexbox;
             @include justify-content(center);
-            @include fontSize(11px);
+            @include fontSize(10px);
             height: 46px;
             margin-bottom: 0;
-            width: auto;
+            padding: 0;
+            width: calc(100% - 5px);
 
             @include mq('tablet-and-up'){
               @include fontSize(13px);
