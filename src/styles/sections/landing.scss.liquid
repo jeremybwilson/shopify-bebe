@@ -13,8 +13,8 @@
   @include mq( 'lap-and-up' ) {
     @include flex-direction(row);
   }
-  @include mq( 'desk-and-up' ) {
-    padding-left: 15%;
+  @include mq( 'tablet-and-up' ) {
+    padding-left: 0;
   }
 
   // SUBPAGE : Left-nav
@@ -58,7 +58,7 @@
         text-decoration: none;
 
         @include mq('tablet-and-up'){
-          padding-top: 17px;
+          padding-top: 5px;
           letter-spacing: 2px;
         }
 
@@ -67,18 +67,20 @@
           margin-right: 0;
         }
 
-        ul.menu-about-sub > li {
-            padding-top: 17px;
+        ul.menu-about-sub > li, ul.menu-faq-sub > li {
+          list-style-type: none;
+          margin-left: 0;
         }
 
         h4 {
           @include mq('lap-and-up'){
-            @include fontSize(18px);
-            border-bottom: 1px solid $color--primary-1;
-            font-weight:  $font-weight--book;
-            letter-spacing: 4px;
-            margin: 15px 0 10px 0;
-            padding: 10px 0;
+            @include fontSize(12px);
+            // border-bottom: 1px solid $color--primary-1;
+            font-weight:  $font-weight--bold;
+            // letter-spacing: 1px;
+            // margin: 15px 0 10px 0;
+            margin-top: 10px;
+            padding: 0;
             text-transform: uppercase;
           }
         }
@@ -145,17 +147,17 @@
         }
 
         a {
-          float: left;
+          // float: left;
           width: 100%;
           color: $color--primary-2;
           margin-bottom: 15px;
         }
 
-        ul.menu-about-sub {
+        ul.menu-about-sub > li, ul.menu-faq-sub > li {
           list-style-type: none;
+          margin-left: 0;
         }
       }
-
     }
   }
 

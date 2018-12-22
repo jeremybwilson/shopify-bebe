@@ -1,215 +1,296 @@
 @charset "UTF-8";
 
 #faq {
-    // SUBPAGE : Left-nav
-    div.left-nav {
-      margin: 0 0 25px 0;
+  // SUBPAGE : Left-nav
+  div.left-nav {
+    margin: 0 0 25px 0;
 
-      @include mq( 'lap-and-up' ) {
-        @include flex-basis(250px);
-        padding-right: 20px;
-      }
+    @include mq( 'lap-and-up' ) {
+      @include flex-basis(250px);
+      padding-right: 20px;
+    }
 
-      @include mq('tablet-and-up') {
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include flex-direction(column);
+      @include flex-wrap(wrap);
+      @include justify-content(flex-start);
+      //   @include flex-basis(300px);
+    }
+
+    div.desktop-left-nav {
+      display: none;
+
+      @include mq('lap-and-up') {
         @include flexbox;
         @include flex-direction(column);
-        @include flex-wrap(wrap);
-        @include justify-content(flex-start);
-        //   @include flex-basis(300px);
       }
 
-      div.desktop-left-nav {
-        display: none;
-
-        @include mq('lap-and-up') {
-          @include flexbox;
-          @include flex-direction(column);
-        }
-
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        ul.menu-faq > li, ul.menu-about > li {
-            color: $color--primary-1;
-            cursor: pointer;
-            margin-bottom: 0px;
-            text-decoration: none;
-
-            @include mq('tablet-and-up'){
-            padding-top: 17px;
-            letter-spacing: 2px;
-            }
-
-            &:before {
-            content: " ";
-            margin-right: 0;
-            }
-
-            ul.menu-about-sub > li {
-                padding-top: 17px;
-            }
-
-            h4 {
-              @include mq('lap-and-up'){
-                @include fontSize(18px);
-                border-bottom: 1px solid $color--primary-1;
-                font-weight:  $font-weight--book;
-                letter-spacing: 4px;
-                margin: 15px 0 10px 0;
-                padding: 10px 0;
-                text-transform: uppercase;
-              }
-            }
-
-            a {
-              color: $color--primary-1;
-              cursor: pointer;
-              text-decoration: none;
-
-              @include mq('tablet-and-up'){
-                letter-spacing: 2px;
-              }
-            }
-        }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
       }
-    }
-    h1 {
-      padding: 0;
-      margin: 0;
 
-      &.faq-title {
-        @include fontSize(16px);
-        margin-bottom: 10px;
+      ul.menu-faq > li, ul.menu-about > li {
         color: $color--primary-1;
-        font-weight: $font-weight--bold;
-        line-height: 1.375em;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 10px 0 14px;
-        border-bottom: dotted 1px #000;
+        cursor: pointer;
+        margin-bottom: 0px;
+        text-decoration: none;
 
+        @include mq('tablet-and-up'){
+        padding-top: 5px;
+        letter-spacing: 2px;
+        }
+
+        &:before {
+        content: " ";
+        margin-right: 0;
+        }
+
+        ul.menu-about-sub > li, ul.menu-faq-sub > li {
+          list-style-type: none;
+          margin-left: 0;
+        }
+
+        h4 {
+          @include mq('lap-and-up'){
+            @include fontSize(12px);
+            // border-bottom: 1px solid $color--primary-1;
+            font-weight:  $font-weight--bold;
+            // letter-spacing: 1px;
+            // margin: 15px 0 10px 0;
+            margin-top: 10px;
+            padding: 0;
+            text-transform: uppercase;
+          }
+        }
+
+        a {
+          color: $color--primary-1;
+          cursor: pointer;
+          text-decoration: none;
+
+          @include mq('tablet-and-up'){
+            letter-spacing: 2px;
+          }
+        }
       }
     }
-    h2 {
-        &.heading {
-            margin-top: 0;
-            @include fontSize(12px);
-            color: $color--primary-1;
-            margin-bottom: 20px;
-        }
+  }
+
+  .left-nav--categories {
+    display: block;
+
+    @include mq("lap-and-up") {
+      display: none;
     }
-    h4 {
-        display: inline-block;
-        margin: 0;
-    }
-    p {
-        margin: 0;
-    }
-    h3>a {
+
+    .opener {
+      @include flexbox;
+      @include justify-content(space-between);
+      @include align-items(center);
+      width: 100%;
+      padding: 10px 15px;
+      background: $color--gray-1;
+      color: $color--reverse-1;
       font-weight: $font-weight--book;
-      color: $color--accent-1;
+      @include fontSize(14px);
+
+      svg {
+        width: 10px;
+        transition: transform .25s ease;
+        * {
+          fill: $color--reverse-1;
+        }
+      }
+
+      &.is-on {
+        svg {
+          transform: rotate(-180deg);
+        }
+      }
     }
-    .toggle .opener {
-        float: right;
+
+    div.dropdown {
+      display: none;
+      float: left;
+      width: 100%;
+      background: $color--light-gray;
+      padding: 10px 15px;
+
+      ul.menu-faq > li, ul.menu-about > li {
+        list-style-type: none;
+        padding: 0;
+
+        h4 {
+          font-weight:  $font-weight--bold;
+        }
+
+        a {
+          // float: left;
+          width: 100%;
+          color: $color--primary-2;
+          margin-bottom: 15px;
+        }
+
+        ul.menu-about-sub > li, ul.menu-faq-sub > li {
+          list-style-type: none;
+          margin-left: 0;
+        }
+      }
     }
-    .toggle .opener svg {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      transition: transform .25s ease;
-      transform-origin: center;
-    }
-    .toggle-title {
-      padding: 15px 0;
-      border-bottom: 1px solid #e5e5e5;
+  }
+
+  div.page-content-field {
+      @include mq('lap-and-up') {
+        @include flex-basis(100%);
+      }
+
+      h1 {
+        @include h1;
+        &.faq-title {
+          @include fontSize(16px);
+          margin-bottom: 10px;
+          color: $color--primary-1;
+          font-weight: $font-weight--bold;
+          line-height: 1.375em;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          padding: 10px 0 14px;
+          border-bottom: dotted 1px #000;
+        }
+      }
+
+      h2 {
+          &.heading {
+              margin-top: 0;
+              @include fontSize(12px);
+              color: $color--primary-1;
+              margin-bottom: 20px;
+          }
+      }
 
       h4 {
-        width: calc(100% - 20px);
+          display: inline-block;
+          margin: 0;
       }
-    }
-    .toggle-title.active {
-      border-bottom: none;
-    }
-    .toggle-title.active h4 {
-      color: $color--accent-2;
-    }
-    .toggle-title.active svg {
-      transform: rotate(180deg);
-    }
-    .toggle-inner {
-      display: none;
-      margin: 10px 0;
-    }
 
-    .fineprint {
-      margin-top: 30px;
       p {
-        font-size: 11px;
+        @include p;
       }
+
+      ul {
+          .custfaq{
+              margin: 0.25rem 0;
+          }
+      }
+  }
+
+  h3>a {
+    font-weight: $font-weight--book;
+    color: $color--accent-1;
+  }
+  .toggle .opener {
+      float: right;
+  }
+  .toggle .opener svg {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    transition: transform .25s ease;
+    transform-origin: center;
+  }
+  .toggle-title {
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    h4 {
+      width: calc(100% - 20px);
     }
+  }
+  .toggle-title.active {
+    border-bottom: none;
+  }
+  .toggle-title.active h4 {
+    color: $color--accent-2;
+  }
+  .toggle-title.active svg {
+    transform: rotate(180deg);
+  }
+  .toggle-inner {
+    display: none;
+  //   margin: 10px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+  }
 
-    // New responsive layout for FAQ :: How do I earn points? section
-    .rewards-table {
-      width: 100%;
-      margin-top: 30px;
+  .fineprint {
+    margin-top: 30px;
+    p {
+      font-size: 11px;
+    }
+  }
 
-      @include mq('tablet-and-up'){
+  // New responsive layout for FAQ :: How do I earn points? section
+  .rewards-table {
+    width: 100%;
+    margin-top: 30px;
 
-        .rewards-row {
-          @include flexbox;
-          justify-content: flex-start;
-    
-          &.rewards-row-first {
-            @include flexbox;
-          }
-          .rewards-cell {
-            padding: 10px;
+    @include mq('tablet-and-up'){
 
-            span.rewards-mob-text {
-              display: none;
-            }
-            
-            &:nth-child(1) {
-              width: 20%;
-            }
-            &:nth-child(2) {
-              width: 12%;
-            }
-            &:nth-child(3) {
-              width: 15%;
-            }
-            &:nth-child(4) {
-              width: 53%;
-            }
-          }
-        }
-      }
       .rewards-row {
-        border-bottom: 1px solid #000;
-    
-        .rewards-cell {
+        @include flexbox;
+        justify-content: flex-start;
+  
+        &.rewards-row-first {
           @include flexbox;
-          width: 100%;
-          padding-top: 10px 0 2px 0;
+        }
+        .rewards-cell {
+          padding: 10px;
 
-          & > span {
-            display: block;
+          span.rewards-mob-text {
+            display: none;
+          }
           
-            &:nth-child(1) {
-              width: 20%;
-              min-width: 100px;
-            }
-            &:nth-child(2) {
-              width: 80%;
-            }
+          &:nth-child(1) {
+            width: 20%;
+          }
+          &:nth-child(2) {
+            width: 12%;
+          }
+          &:nth-child(3) {
+            width: 15%;
+          }
+          &:nth-child(4) {
+            width: 53%;
           }
         }
       }
-      .rewards-row-first {
-        display: none;
+    }
+    .rewards-row {
+      border-bottom: 1px solid #000;
+  
+      .rewards-cell {
+        @include flexbox;
+        width: 100%;
+        padding-top: 10px 0 2px 0;
+
+        & > span {
+          display: block;
+        
+          &:nth-child(1) {
+            width: 20%;
+            min-width: 100px;
+          }
+          &:nth-child(2) {
+            width: 80%;
+          }
+        }
       }
     }
+    .rewards-row-first {
+      display: none;
+    }
+  }
 }
