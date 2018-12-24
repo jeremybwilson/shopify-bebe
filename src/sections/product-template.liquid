@@ -186,7 +186,9 @@
     {% include 'recently-viewed' %}
 
     {% comment %} :: RECOMMENDED PRODUCTS :: {% endcomment %}
-    {% include 'nosto-element' with 'productpage-nosto-2' %}
+    <div class="row">
+      {% include 'nosto-element' with 'productpage-nosto-2' %}
+    </div>
 
     {% comment %} :: REVIEWS :: {% endcomment %}
     {% include 'yotpo-reviews' %}
