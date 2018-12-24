@@ -27,6 +27,7 @@
     "sale_color": "#9d6d31",
     "dotted_color": "#b5b5b5",
     "error_text": "#f00",
+    "success_text": "#4ab064",
     "button_bg": "#000000",
     "button_bg_hover": "#616365",
     "button_text": "#ffffff",
@@ -158,7 +159,8 @@
     "tumblr_url": "",
     "youtube_url": "https:\/\/www.youtube.com\/user\/bebestores",
     "googleplus_url": "",
-    "instagram_id": "\/bebe_stores",
+    "instagram_id": "\/bebebabes",
+    "instagram_url": "http:\/\/www.instagram.com\/explore\/tags\/bebebabes",
     "snapchat_url": "https:\/\/www.snapchat.com\/add\/bebe_stores",
     "iphone_app_url": "http:\/\/www.bebe.com\/content.jsp?pageName=apps",
     "android_app_url": "http:\/\/www.bebe.com\/content.jsp?pageName=apps",
@@ -170,6 +172,7 @@
     "email_popup_bottom_text": "<p>By providing your email address, you agree to our <a target=\"_blank\" href=\"https:\/\/www.honeywell.com\/privacy-statement\">Privacy Policy<\/a> &amp; <a href=\"\/pages\/terms-conditions\" target=\"_blank\">Terms of Service<\/a>.<\/p>",
     "email_popup_error": "Please enter a valid e-mail address",
     "email_popup_success": "<p>You have successfully joined our newsletter<\/p>",
+    "newsletter_popup_klaviyo_id": "",
     "newsletter_popup_title": "LET'S STAY IN TOUCH",
     "newsletter_popup_promotion": "ENJOY 20% OFF",
     "newsletter_popup_body": "YOUR NEXT REGULAR-PRICED PURCHASE WHEN YOU SIGN UP FOR EXCLUSIVE OFFERS, NEW ARRIVALS, & MORE.*",
@@ -381,7 +384,7 @@
           "newsletter_submit_button": "SUBSCRIBE",
           "newsletter_error": "Please enter a valid e-mail address",
           "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
-          "instagram_footer_link": "",
+          "instagram_footer_link": "http:\/\/www.instagram.com\/explore\/tags\/bebebabes",
           "instagram_footer_image": "shopify:\/\/shop_images\/bebe-desktop-bebebabes.jpg",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
@@ -1058,6 +1061,14 @@
         "type": "nosto-element",
         "settings": {
           "nosto_id": "frontpage-nosto-2"
+        }
+      },
+      "page-contact-template": {
+        "type": "page-contact-template",
+        "settings": {
+          "show_contact_form": true,
+          "landing_page_faq_nav": "side-menu-faq",
+          "landing_page_about_nav": "side-menu-about"
         }
       }
     },
