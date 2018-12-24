@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#contact-muck {
+#contact-bebe {
   td {
     vertical-align: top;
   }
@@ -51,10 +51,10 @@
     }
     @include mq( 'tablet' ) {
       display: none;
-    }    
+    }
   }
   table {
-    
+
     td {
       float: left;
       border: none;
@@ -80,7 +80,7 @@
 
 }
 
-#muck-form {
+#bebe-form {
   margin: 0 -28px 20px;
   background-color: $color--light-gray;
 
@@ -101,12 +101,12 @@
       @include fontSize(22px);
     }
   }
-  
+
   form {
     width: 80%;
     margin: 0 auto;
     padding: 15px 0;
-      
+
     @include mq('tablet-and-up') {
       width: 90%;
       padding: 50px;
@@ -130,7 +130,7 @@
       background: $color--white;
       border-radius: 0;
     }
-    input::placeholder { 
+    input::placeholder {
       color: transparent;
       opacity: 0;
     }
@@ -138,7 +138,7 @@
       background-color: $color--white;
       border-radius: 0;
     }
-    textarea::-webkit-input-placeholder { 
+    textarea::-webkit-input-placeholder {
       color: transparent;
     }
     p.form-phone {
@@ -172,6 +172,7 @@
 }
 
 #honeywell-updates {
+  display: none;
   float: left;
   width: 100%;
 
@@ -205,7 +206,7 @@
     height: 10px;
     transition: transform .25s ease;
     transform: rotate(-90deg);
-    
+
     * {
       fill: $color--accent-1;
     }

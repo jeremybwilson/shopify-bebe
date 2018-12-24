@@ -1235,9 +1235,15 @@
       },
       {
         "type": "text",
-        "id": "instagram_id",
+        "id": "instagram_url",
         "label": "Your Instagram ID",
-        "info": "Example: //bebe_stores"
+        "info": "Example: //instagram.com/explore/tags/bebebabes"
+      },
+      {
+        "type": "text",
+        "id": "instagram_id",
+        "label": "Instagram Url",
+        "info": "Example: /bebe_stores"
       },
       {
         "type": "text",
@@ -1342,7 +1348,7 @@
         "id": "newsletter_popup_fine_print",
         "label": "Fine print",
         "default": "*SEE SIGN-UP CONFIRMATION EMAIL FOR DETAILS."
-      }  
+      }
     ]
   },
   {

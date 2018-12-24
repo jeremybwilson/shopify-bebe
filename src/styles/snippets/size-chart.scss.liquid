@@ -266,9 +266,52 @@ body[class*='size-chart'] #content {
 #size-chart--popup {
   max-height: 80vh;
   background: $color--white;
+  padding: 0;
+
+  #size-chart--wrapper {
+    padding: 15px;
+    background-color: $color--white;
+  }
 
   #measure-guide--wrapper {
-    display: none;
+    @include flex(0, 0, 35%);
+    position: static;
+    margin-top: 0;
+    width: 35%;
+    height: 470px;
+
+    #measure-guide {
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+  .chart-wrapper {
+    @include flexbox;
+    @include flex-direction(row-reverse);
+    @include flex-wrap(nowrap);
+    padding-top: 15px;
+  }
+
+  .size-chart--table {
+    @include flex(0, 0, 65%);
+    width: 65%;
+    overflow: auto;
+    height: 470px;
+  }
+  
+  table th,
+  .size-chart--table #chart-dress-jumpsuits--us td,
+  .size-chart--table #chart-dress-jumpsuits--eu td {
+    padding: 8px;
+  }
+
+  table th {
+    @include fontSize(12px);
+  }
+
+  table td {
+    @include fontSize(10px);
   }
 
   @include mq('lap-and-up') {

@@ -2724,6 +2724,7 @@ theme.ProductGallery = function (context, events) {
         $slideshow.find('.product-video-thumbnail').addClass('active');
         $slideshow.find('[data-color-var="' + color + '"]').addClass('active');
         $slideshow.slick('slickFilter','.active');
+        $slideshow.find('[data-color-var="' + color + '"]').eq(0).trigger('click');
       }
     };
 
