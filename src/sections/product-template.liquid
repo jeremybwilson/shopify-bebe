@@ -185,6 +185,13 @@
     {% comment %} :: RECENTLY VIEWED :: {% endcomment %}
     {% include 'recently-viewed' %}
 
+    {% comment %} :: RECOMMENDED PRODUCTS :: {% endcomment %}
+    {% if section.settings.nosto_rec_show and section.settings.nosto_rec_id != blank %}
+      <div class="row">
+        {% include 'nosto-element' with 'productpage-nosto-2' %}
+      </div>
+    {% endif %}
+
     {% comment %} :: REVIEWS :: {% endcomment %}
     {% include 'yotpo-reviews' %}
     
@@ -454,6 +461,22 @@
         "type": "page",
         "id": "size_chart_page",
         "label": "Size Chart Page"
+      },
+      {
+        "type": "header",
+        "content": "Nosto recommended products"
+      },
+      {
+        "type": "checkbox",
+        "id": "nosto_rec_show",
+        "label": "Show section",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "nosto_rec_id",
+        "label": "Nosto ID",
+        "default": "productpage-nosto-2"
       }
     ]
   }
