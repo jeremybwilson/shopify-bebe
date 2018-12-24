@@ -3,13 +3,11 @@
 
   {% include 'customer-sidebar' %}
 
-  <div id="customer_orders" class="desktop-9 mobile-3">
+  <div id="customer_orders" class="desktop-10 tablet-6 mobile-3">
     {% comment %} HEADER {% endcomment %}
-    <div class="section-title account-header desktop-12 mobile-3">
+    <div class="section-title account-header desktop-12 tablet-6 mobile-3">
       <h1>{{ 'customer.order.title' | t }} {{ order.name }}</h1>
-      {% if settings.breadcrumb %}
-        {% include 'breadcrumb' %}
-      {% endif %}      
+
     </div>  
 
     {% if order.cancelled %}

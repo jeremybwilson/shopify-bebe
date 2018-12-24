@@ -128,6 +128,462 @@
   margin:2% auto;
   width:50%;
   text-align:center;
-  font-size:11px;
+  @include fontSize( 11px );
 }
 .row-dt{display: flex;}
+
+// DASHBOARD
+
+#club--dashboard {
+  @include flexbox;
+  @include align-items( flex-start );
+  @include flex-wrap( wrap );
+  width: 100%;
+}
+#club--main-info {
+  width: 100%;
+  
+  @include mq('lap-and-up') {
+    width: 75%;
+    border-right: solid 1px $color--field-1;
+  }
+}
+#club--points-panel {
+  @include flexbox;
+  @include align-items( stretch );
+  @include flex-wrap( wrap );
+  @include justify-content( stretch );
+  width: 100%;
+
+  & > div {
+    @include flexbox;
+    @include align-items( center );
+    @include justify-content( center );
+    @include flex-direction( column );
+    @include flex-grow( 1 );
+
+    @include mq('lap-and-up') {
+      border-right: solid 1px $color--field-1;
+    }
+
+    &:last-child {
+      border-right: none;
+    } 
+  }
+}
+.club--big-number {
+  margin-bottom: 0.25em;
+  color: $color--accent-1;
+  font-weight: $font-weight--bold;
+  @include fontSize( 24px );
+  
+}
+.club--desc {
+  max-width: 100px;
+  @include fontDim( 10px, 11px, 0em );
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#club--points-to-next-reward {
+  width: 100%;
+}
+
+// Points To Next Reward (AKA the circle)
+.progress-circle {
+  // the outer circle
+  font-size: 20px;
+  margin: 20px;
+  position: relative;
+  padding: 0;
+  width: 180px;
+  height: 180px;
+  background-color: $color--field-1;
+  border-radius: 50%;
+
+  &:after {
+    // the inner circle
+    border: none;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    background-color: #fff;
+    content: " ";
+  }
+  span {
+  }
+
+  .left-half-clipper {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    clip: rect(0,180px,180px,90px); 
+  }
+    &.over50 .left-half-clipper {
+      clip: rect(auto,auto,auto,auto)
+    }
+  
+  .points-info {
+    // magic numbers
+    @include flexbox;
+    @include flex-direction( column );
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+  }
+  .value-bar {
+    // the shape that shows progress
+    position: absolute;
+    clip: rect(0,90px,180px,0);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 40px solid $color--accent-1;
+    box-sizing: border-box;
+  }
+  
+  &.over50 .first50-bar {
+    // when the progress is over 50, show a duplicate shape to denote the first half
+    position: absolute;
+    clip: rect(0,180px,180px,90px);
+    background-color: $color--accent-1;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+  }
+  &:not(.over50) .first50-bar {
+    display: none;
+  }
+  &.p0 .value-bar {
+    display: none;
+  }
+  
+  @for $i from 1 through 100 {
+    &.p#{$i} .value-bar {
+      transform: rotate( ( $i / 100 ) * 360deg );
+    }
+  }  
+}
+
+// VIP TIERS BREAKDOWN
+
+#club--vip-tiers {
+  margin-top: 2em; 
+
+  @include mq('lap-and-up') {
+    margin-top: 5em;
+  }
+
+  #club--vip-tiers--mobile-chart {
+    @include flexbox;
+    @include flex-wrap( wrap );
+    list-style: none;
+
+    @include mq('lap-and-up') {
+      display: none;
+    }
+
+    & > li {
+      position: relative;
+      width: 50%;
+      padding: 20px 10px;
+      text-align: center;
+      color: $color--field-1;
+
+      &.club--tier-active {
+
+        color: $color--accent-1;
+        border: solid 1px $color--accent-1;
+        border-bottom-width: 4px;
+
+        &:after {
+          content: 'Current';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          padding: 3px;
+          background: $color--accent-1;
+          @include fontDim( 9px, 9px, 0em );
+          font-weight: $font-weight--bold;
+          text-transform: uppercase;
+          color: $color--reverse-1;
+        }
+      }
+
+      h4 {
+        color: inherit;
+        text-transform: none;
+      }
+
+      span {
+        display: block;
+      }
+
+      dt {
+        display: block;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        text-transform: uppercase;
+        @include fontDim( 10px, 12px, 0em );
+      }
+      dd {
+        font-style: normal;
+        @include fontSize( 26px );
+      }
+    }
+  }
+
+  table {
+    display: none;
+    line-height: 1.4em;
+    border-bottom: none;
+
+    @include mq('lap-and-up') {
+      display: inherit;      
+    }
+
+
+    th, td {
+      background: none;
+      border-right: solid 1px $color--field-1;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    thead {
+      th {
+        text-align: center;
+
+        span {
+          color: $color--field-1;
+          font-weight: $font-weight--book;
+        }
+
+        &.club--tier-active span {
+          color: $color--accent-1;
+        }
+
+        .club-title {
+          display: block;
+          font-weight: $font-weight--medium;
+        }
+      }
+    }
+
+    tbody {
+
+      th {
+        width: 25%;
+
+        span {
+          @include fontDim( 11px, 12px, 0 );
+          font-weight: $font-weight--book;
+        }
+      }
+
+      td {
+        text-align: center;
+        @include fontSize( 14px );
+
+        span {
+          color: $color--field-1;
+        }
+
+        &.club--tier-active span {
+          color: $color--accent-1;
+        }
+      }
+
+    }
+  }
+}
+
+// MORE PERKS
+
+#club--more-perks {
+  margin-top: 5em;
+}
+
+// RIGHT SIDE
+
+#club--sidebar {
+  width: 100%;
+
+  @include mq('lap-and-up') {
+    width: 25%;
+  }
+  & > div {
+    padding: 20px;
+    border-bottom: solid 1px $color--field-1;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+#club--level--container {
+  @include flexbox;
+  @include flex-wrap( wrap );
+  @include justify-content( center );
+}
+#club--mini-vip-tier {
+  list-style: none;
+  margin: 20px 0 40px;
+
+  li {
+    color: $color--field-1;
+    text-transform: uppercase;
+
+    &:before {
+      border-left: 5px solid #9e6c30;
+      border-top: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      display: inline-block;
+      content: '';      
+      opacity: 0;
+    }
+
+    &.club--tier-active {
+      color: $color--accent-1;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}
+#club--vip-unlock-message {
+  width: 100%;
+  text-align: center;
+  
+  .unlock-points {
+    color: $color--accent-1;
+  }
+  #next-membership-level {
+    text-transform: uppercase;
+  }
+}
+#club--view-rewards-history {
+  text-align: center;
+}
+
+#club--how-to-score-points {
+  text-align: center;
+
+  dl {
+    padding-bottom: 20px;
+    border-bottom: solid 1px $color--field-1;
+  }
+
+  dt {
+    position: relative;
+
+    &:before {
+      display: block;
+      position: absolute;
+      content: ' ';
+      width: 100%;
+      top: 50%;
+      border-top: solid 1px $color--field-1;
+      z-index: 1;
+    }
+
+    .club--big-number {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      background: $color--reverse-1;
+      margin-bottom: 0.05em;
+      padding: 5px 10px 0;
+    }
+    .club--desc {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  dd {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    @include fontDim( 10px, 10px, 0em );
+
+    strong {
+      display: block;
+      font-weight: $font-weight--medium;
+      text-transform: uppercase;
+    }
+
+    .i-con {
+      position: absolute;
+      bottom: -12px;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      color: $color--primary-1;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--bold;
+      @include fontSize( 10px );
+      line-height: 20px;
+      z-index: 2;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      color: $color--accent-1;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--book;
+      @include fontSize( 18px );
+    }
+  }
+  #club--connect--icons {
+    @include flexbox;
+    @include justify-content( space-between );
+    padding: 0 10px;
+
+    a {
+      position: relative;
+
+      &:after {
+        content: '+';
+        position: absolute;
+        bottom: 0;
+        right: -4px;
+        color: $color--primary-1;
+        font-weight: $font-weight--bold;
+        @include fontSize( 18px );
+        text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+
+      }
+    }
+
+    svg {
+      height: 25px;
+
+      * {
+        fill: $color--accent-1;
+      }
+    }
+  }
+}
+#club--hidden-popups {
+  display: none;
+}

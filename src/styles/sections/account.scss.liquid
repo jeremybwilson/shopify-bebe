@@ -2,7 +2,8 @@
 .customers-login,
 .customers-account,
 .customers-order,
-.customers-addresses {
+.customers-addresses,
+.customers-account-orders {
   #content {
     padding: 0;
 
@@ -22,7 +23,6 @@
     border-bottom: none;
   }
   .account-header {
-    padding-bottom: 20px;
     border-bottom: solid 1px {{ settings.dotted_color }};
   }
   p {
@@ -37,25 +37,24 @@
 
 // :: CUSTOMERS :: GLOBAL :: Sidebar 
 #customer_sidebar {
-  @include order( 2 );
 
-  @include mq( 'lap-and-up' ) {
-    @include order( 1 );
-  }
-
-  & + div {
-    @include order( 1 );
-
-    @include mq( 'lap-and-up' ) {
-      @include order ( 2 );
-    }
-  }
   h5 {
-    @include h2;
+    @include h3;
   }
-  #sign_out {
-    margin-top: 20px;
-    text-decoration: none;
+
+  #account-nav {
+    list-style: none;
+    margin-left: 0;
+
+    li {
+      margin-left: 0;
+      text-transform: uppercase;
+
+      a {
+        margin: 0;
+        padding: 5px 0;
+      }
+    }
   }
 }
 
