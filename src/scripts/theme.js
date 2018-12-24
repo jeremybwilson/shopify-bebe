@@ -2632,12 +2632,12 @@ theme.ProductGallery = function (context, events) {
     /* elemental loop */
     elements.forEach(function (element) {
 
-      // CHECK : Has Video? 
+      // CHECK : Has Video?
       if ( element.classList.contains('product-video') ) {
         return false;
       }
 
-      // CHECK : Has Zoom Src? 
+      // CHECK : Has Zoom Src?
       if ( !element.querySelector('.product__image').getAttribute('data-zoom-src') ) {
         return false;
       }
@@ -2816,7 +2816,7 @@ theme.Product = (function () {
     // BADGES : BUILD : Method to build react-badges component on collection updates (rebuilt in JS)
     const buildBadges = require('./react-components/badges/BadgeParent.js');
     $(document).ready( () => {
-      
+
       // BADGES : Generate badge in div slot if present
       buildBadges();
 

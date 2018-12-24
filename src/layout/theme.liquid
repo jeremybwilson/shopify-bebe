@@ -129,6 +129,8 @@
 
   {{ content_for_header }}
 
+  {% include 'nosto-script' with 'shopify-3379396672' %}
+
 </head>
 
 <body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
@@ -262,5 +264,6 @@
 <!--begin-bc-sf-filter-js-->
   {% include 'bc-sf-filter' %}
 <!--end-bc-sf-filter-js-->
+  {% include 'nosto-tagging' %}
 </body>
 </html>

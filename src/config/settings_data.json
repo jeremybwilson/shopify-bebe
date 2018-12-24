@@ -1057,6 +1057,12 @@
           "label": "GET 20% OFF"
         }
       },
+      "1545264907890": {
+        "type": "nosto-element",
+        "settings": {
+          "nosto_id": "frontpage-nosto-2"
+        }
+      },
       "page-contact-template": {
         "type": "page-contact-template",
         "settings": {
@@ -1069,7 +1075,8 @@
     "content_for_index": [
       "1535728526385",
       "1536251685211",
-      "1544343478271"
+      "1544343478271",
+      "1545264907890"
     ]
   }
 }
