@@ -33,7 +33,7 @@
         padding: 0;
       }
 
-      ul.menu-faq > li, ul.menu-about > li {
+      ul.menu-cust-service > li {
         color: $color--primary-1;
         cursor: pointer;
         margin-bottom: 0px;
@@ -49,7 +49,7 @@
         margin-right: 0;
         }
 
-        ul.menu-about-sub > li, ul.menu-faq-sub > li {
+        ul.menu-cust-service-sub > li {
           list-style-type: none;
           margin-left: 0;
 
@@ -61,10 +61,7 @@
         h4 {
           @include mq('lap-and-up'){
             @include fontSize(12px);
-            // border-bottom: 1px solid $color--primary-1;
             font-weight:  $font-weight--bold;
-            // letter-spacing: 1px;
-            // margin: 15px 0 10px 0;
             margin-top: 10px;
             padding: 0;
             text-transform: uppercase;
@@ -124,7 +121,7 @@
       background: $color--light-gray;
       padding: 10px 15px;
 
-      ul.menu-faq > li, ul.menu-about > li {
+      ul.menu-cust-service > li {
         list-style-type: none;
         padding: 0;
 
@@ -139,7 +136,7 @@
           margin-bottom: 15px;
         }
 
-        ul.menu-about-sub > li, ul.menu-faq-sub > li {
+        ul.menu-cust-service-sub > li {
           list-style-type: none;
           margin-left: 0;
         }
@@ -169,10 +166,9 @@
 
     h2 {
       &.heading {
-        margin-top: 0;
+        margin-top: 20px;
         @include fontSize(12px);
         color: $color--primary-1;
-        margin-bottom: 20px;
       }
     }
 
@@ -180,6 +176,10 @@
       @include fontSize(12px);
       display: inline-block;
       margin: 0;
+    }
+    
+    .faq-header {
+      text-transform: none;
     }
 
     p {
@@ -198,7 +198,7 @@
     color: $color--accent-1;
   }
   .toggle .opener {
-      float: right;
+    float: right;
   }
   .toggle .opener svg {
     display: inline-block;
@@ -226,13 +226,14 @@
   }
   .toggle-inner {
     display: none;
-  //   margin: 10px 0;
+    //  margin: 10px 0;
     padding-bottom: 15px;
     border-bottom: 1px solid #e5e5e5;
   }
 
   .fineprint {
     margin-top: 30px;
+
     p {
       font-size: 11px;
     }
@@ -299,4 +300,6 @@
       display: none;
     }
   }
+
+  .holReturnTable{width:48%;max-width:350px;margin:20px auto;padding:0;border-bottom:1px solid #ddd;position:relative;display:inline-block;vertical-align:top;margin-left:4%}.holReturnTable div.holReturnTableTitle{width:94%;background:#c3934a;padding:3%;color:#fff;font-weight:700;text-transform:uppercase}.holReturnTable div.holTableRow{padding:1.5% 3%;width:94%;display:block}.holReturnTable div.holTableRow:nth-child(odd){background:#eee}.holReturnTable div.holTableRow div.holTableCol{display:inline-block}.holReturnTable div.holTableRow div.holTableCol.col1{width:30%}.holReturnTable div.holTableRow div.holTableCol.col2{width:65%}body.mobile .holReturnTable{width:100%;max-width:none;margin-right:0;text-align:center}.returnTable{width:48%;max-width:350px;margin:20px auto;padding:0;border-bottom:1px solid #ddd;position:relative;display:inline-block;vertical-align:top}.returnTable div.returnTableTitle{width:94%;background:#ddd;padding:3%;text-transform:uppercase}.returnTable div.tableRow{padding:1.5% 3%;width:94%;display:block}.returnTable div.tableRow:nth-child(odd){background:#eee}.returnTable div.tableRow div.tableCol{display:inline-block}.returnTable div.tableRow div.tableCol.col1{width:40%}.returnTable div.tableRow div.tableCol.col1.col1Full{width:100%}.returnTable div.tableRow div.tableCol.col2{width:55%}body.mobile .returnTable{width:100%;max-width:none;text-align:center;}
 }

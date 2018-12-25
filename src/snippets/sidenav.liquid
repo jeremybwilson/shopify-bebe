@@ -1,16 +1,16 @@
 <div class="left-nav">
   <div class="desktop-left-nav">
-  {% assign menu_faq = linklists[section.settings.landing_page_cs_nav] %}
-    <ul class="menu-faq">
+  {% assign menu_cs = linklists[section.settings.landing_page_cs_nav] %}
+    <ul class="menu-cust-service">
 
-    {% for link in menu_faq.links %}
+    {% for link in menu_cs.links %}
     {% comment %} :: NESTED MENU :: {% endcomment %}
 
       {% if link.levels > 0 %}
 
       <li data-link-size="{{ link.links.size }}">
         <h4 class="landing-page-heading">{{ link.title }}</h4>
-        <ul class="menu-faq-sub">
+        <ul class="menu-cust-service-sub">
 
         {% for sub_link in link.links %}
 
@@ -26,73 +26,25 @@
     {% endfor %}
 
     </ul>
-
-    {% assign menu_about = linklists[section.settings.landing_page_about_nav] %}
-    {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
-    <div>
-    {% comment %} :: NESTED MENU :: {% endcomment %}
-      <ul class="menu-about">
-
-      {% for link in menu_about.links %}
-
-        {% if link.levels > 0 %}
-
-          <li data-link-size="{{ link.links.size }}">
-            <h4 class="landing-page-heading">{{ link.title }}</h4>
-            <ul class="menu-about-sub">
-
-            {% for sub_link in link.links %}
-
-              <li class="{% if sub_link.active %}active{% endif %}">{{ sub_link.title | link_to: sub_link.url }}</li>
-
-            {% endfor %}
-
-            </ul>
-          </li>
-
-        {% endif %}
-
-      {% endfor %}
-
-      </ul>
-    </div>
   </div><!-- .desktop-left-nav -->
 
   <div class="left-nav--categories">
     <div class="opener"><span>Select Options</span>{% include 'svg-icon-caret-down' %}</div>
-    {% assign menu_about = linklists[section.settings.landing_page_about_nav] %}
+    {% assign menu_cs_mobile = linklists[section.settings.landing_page_cs_nav] %}
     {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
     <div class="dropdown">
-      <ul class="menu-faq">
-      {% for link in menu_faq.links %}
+      <ul class="menu-cust-service">
+      {% for link in menu_cs_mobile.links %}
       {% comment %} :: NESTED MENU :: {% endcomment %}
         {% if link.levels > 0 %}
         <li data-link-size="{{ link.links.size }}">
           <h4 class="landing-page-heading">{{ link.title }}</h4>
-          <ul class="menu-faq-sub">
+          <ul class="menu-cust-service-sub">
           {% for sub_link in link.links %}
             <li>{{ sub_link.title | link_to: sub_link.url }}</li>
           {% endfor %}
           </ul>
         </li>
-        {% endif %}
-      {% endfor %}
-      </ul>
-
-      <ul class="menu-about">
-      {% for link in menu_about.links %}
-      {% comment %} :: NESTED MENU :: {% endcomment %}
-        {% if link.levels > 0 %}
-        <!-- <div class="category"> -->
-          <li data-link-size="{{ link.links.size }}">
-          <h4 class="landing-page-heading">{{ link.title }}</h4>
-            <ul class="menu-about-sub">
-            {% for sub_link in link.links %}
-              <li>{{ sub_link.title | link_to: sub_link.url }}</li>
-            {% endfor %}
-            </ul>
-          </li>
-        <!-- </div> -->
         {% endif %}
       {% endfor %}
       </ul>

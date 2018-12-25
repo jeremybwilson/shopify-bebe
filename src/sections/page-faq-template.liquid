@@ -3,48 +3,59 @@
     {% include 'sidenav' %}
 
     <div class="page-content-field">
-    {% comment %} CONTENT :: Page Title - removing from Pre Questions field {% endcomment %}
-    {% if section.settings.section_title_top != blank %}
-        <h1 class="faq-title">{{ section.settings.section_title_top }}</h1>
-    {% endif %}
-        
+      {% comment %} CONTENT :: Page Title - removing from Pre Questions field {% endcomment %}
+      {% if section.settings.section_title_top != blank %}
+          <h1 class="faq-title">{{ section.settings.section_title_top }}</h1>
+      {% endif %}
+
         {{ page.content }}
 
-    {% comment %} CONTENT :: Before Questions {% endcomment %}
-    {% if section.settings.before_content != blank %}
-        {{ section.settings.before_content }}
-    {% endif %}
+        {% comment %} CONTENT :: Before Questions {% endcomment %}
+        {% if section.settings.before_content != blank %}
+            {{ section.settings.before_content }}
+        {% endif %}
 
-    {% comment %} FAQ :: Block loop {% endcomment %}
-    {% for block in section.blocks %}
-      <div class="toggle">
-        <div class="toggle-title">
+        <h2>FAQs</h2>
+        {% for block in section.blocks %}
+          {% if block.settings.heading_only == true %}
+            <h3 class="faq-header"><a href="#{{ block.settings.anchor | escape }}">{{ block.settings.title }}</a></h3>
+          {% endif %}
+        {% endfor %}
+
+        <h2 class="heading">Customer Service</h2>
+        {% comment %} FAQ :: Block loop {% endcomment %}
+        {% for block in section.blocks %}
+
           {% if block.settings.heading_only != false %}
 
-          <h2 class="heading">{{ block.settings.title }}</h2>
-          <h4>{{ block.settings.title }}</h4>
-          <span class="opener">{% include 'svg-icon-caret-down' %}</span>
+            <h2 class="heading">{{ block.settings.title }}</h2>
 
           {% else %}
 
-          <h4>{{ block.settings.title }}</h4>
-          <span class="opener">{% include 'svg-icon-caret-down' %}</span>
+          <div class="toggle">
+            <div class="toggle-title">
 
+              <h4>{{ block.settings.title }}</h4>
+              <span class="opener">{% include 'svg-icon-caret-down' %}</span>
+
+            </div><!-- .toggle-title -->
+
+            {% if block.settings.anchor != blank %}
+            <a id="{{ block.settings.anchor | escape }}" style="display: block; position: relative; top: {{ section.settings.anchor_top_offset }}px; visibility: hidden;"></a>
+            {% endif %}
+
+            <div class="toggle-inner">
+                {{ block.settings.answer }}
+            </div><!-- .toggle-inner -->
+          </div><!-- .toggle -->
+      
           {% endif %}
-        </div>
-        {% if block.settings.anchor != blank %}
-        <a id="{{ block.settings.anchor | escape }}" style="display: block; position: relative; top: {{ section.settings.anchor_top_offset }}px; visibility: hidden;"></a>
-        {% endif %}
-        <div class="toggle-inner">
-            {{ block.settings.answer }}
-        </div><!-- .toggle-title -->
-      </div><!-- .toggle -->
-    {% endfor %}
+        {% endfor %}
 
-    {% comment %} CONTENT :: After Questions {% endcomment %}
-    {% if section.settings.after_content != blank %}
-        {{ section.settings.after_content }}
-    {% endif %}
+        {% comment %} CONTENT :: After Questions {% endcomment %}
+        {% if section.settings.after_content != blank %}
+            {{ section.settings.after_content }}
+        {% endif %}
 
     </div><!-- .page-content-field -->
   </div><!-- .subpage -->
@@ -112,12 +123,7 @@ $( document).ready(function() {
         "type": "link_list",
         "id": "landing_page_cs_nav",
         "label": "FAQ Page Navigation Customer Service Links"
-    },
-    {
-        "type": "link_list",
-        "id": "landing_page_about_nav",
-        "label": "FAQ Page Navigation About links"
-    } 
+    }
     ], 
     "blocks": [ 
     {
@@ -132,7 +138,7 @@ $( document).ready(function() {
             {
                 "type": "text",
                 "id": "title",
-                "label": "Question"
+                "label": "Question (FAQ section title if above box is checked)"
             },
             {
                 "type": "html",
