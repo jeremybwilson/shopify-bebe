@@ -7,6 +7,7 @@
 
   margin-right: 27px;
   margin-left: 27px;
+  // width: 100%;
 
   @include p;
 
@@ -70,6 +71,10 @@
         ul.menu-about-sub > li, ul.menu-faq-sub > li {
           list-style-type: none;
           margin-left: 0;
+
+          &.active {
+            text-decoration: underline;
+          }
         }
 
         h4 {
@@ -91,7 +96,7 @@
           text-decoration: none;
 
           @include mq('tablet-and-up'){
-            letter-spacing: 2px;
+            letter-spacing: 1px;
           }
         }
       }

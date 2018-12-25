@@ -65,9 +65,11 @@ $( document).ready(function() {
     $(".toggle .toggle-title").click(function(){
       if( $(this).hasClass('active') ){
         $(this).removeClass("active").closest('.toggle').find('.toggle-inner').slideUp(200);
+        // console.log(`you opened this`, this);
       }
       else{
         $(this).addClass("active").closest('.toggle').find('.toggle-inner').slideDown(200);
+        // console.log(`you opened this`, this);
       }
     });
 });
@@ -108,8 +110,8 @@ $( document).ready(function() {
     },
     {
         "type": "link_list",
-        "id": "landing_page_faq_nav",
-        "label": "FAQ Page Navigation FAQ links"
+        "id": "landing_page_cs_nav",
+        "label": "FAQ Page Navigation Customer Service Links"
     },
     {
         "type": "link_list",

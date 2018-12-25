@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 #faq {
+
   // SUBPAGE : Left-nav
   div.left-nav {
     margin: 0 0 25px 0;
@@ -51,6 +52,10 @@
         ul.menu-about-sub > li, ul.menu-faq-sub > li {
           list-style-type: none;
           margin-left: 0;
+
+          &.active {
+            text-decoration: underline;
+          }
         }
 
         h4 {
@@ -72,7 +77,7 @@
           text-decoration: none;
 
           @include mq('tablet-and-up'){
-            letter-spacing: 2px;
+            letter-spacing: 1px;
           }
         }
       }
@@ -143,48 +148,49 @@
   }
 
   div.page-content-field {
-      @include mq('lap-and-up') {
-        @include flex-basis(100%);
-      }
+    @include mq('lap-and-up') {
+      @include flex-basis(100%);
+    }
 
-      h1 {
-        @include h1;
-        &.faq-title {
-          @include fontSize(16px);
-          margin-bottom: 10px;
-          color: $color--primary-1;
-          font-weight: $font-weight--bold;
-          line-height: 1.375em;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          padding: 10px 0 14px;
-          border-bottom: dotted 1px #000;
-        }
+    h1 {
+      @include h1;
+      &.faq-title {
+        @include fontSize(16px);
+        margin-bottom: 10px;
+        color: $color--primary-1;
+        font-weight: $font-weight--bold;
+        line-height: 1.375em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 10px 0 14px;
+        border-bottom: dotted 1px #000;
       }
+    }
 
-      h2 {
-          &.heading {
-              margin-top: 0;
-              @include fontSize(12px);
-              color: $color--primary-1;
-              margin-bottom: 20px;
-          }
+    h2 {
+      &.heading {
+        margin-top: 0;
+        @include fontSize(12px);
+        color: $color--primary-1;
+        margin-bottom: 20px;
       }
+    }
 
-      h4 {
-          display: inline-block;
-          margin: 0;
-      }
+    h4 {
+      @include fontSize(12px);
+      display: inline-block;
+      margin: 0;
+    }
 
-      p {
-        @include p;
-      }
+    p {
+      @include p;
+    }
 
-      ul {
-          .custfaq{
-              margin: 0.25rem 0;
-          }
+    ul {
+      .custfaq{
+        margin: 0.25rem 0;
       }
+    }
   }
 
   h3>a {
