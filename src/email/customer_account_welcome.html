@@ -1,5 +1,9 @@
-{% capture email_title %}Welcome to XtraTuf{% endcapture %}
+{% capture email_title %}Welcome to {{ shop.name }}!{% endcapture %}
 {% capture email_body %}You've activated your customer account. Next time you shop with us, log in for faster checkout.{% endcapture %}
+
+{% capture email_body %}
+  <p>{{ email_body }}</p>
+{% endcapture %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,194 +11,142 @@
   <title>{{ email_title }}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width">
-  
+  <link rel="stylesheet" type="text/css" href="/assets/notifications/styles.css">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial;
+      font-size: 14px;
+    }
+
+    p, strong, a {
+      font-size: 1em;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #9d6d31;
+    }
+
+    a:visited {
+      color: #9d6d31;
+    }
+
+    .disclaimer__subtext,
+    .disclaimer__subtext a {
+      font-size: 10px;
+    }
+
+  </style>
 </head>
+
 <body>
+  <table class="body">
+    <tr>
+      <td>
 
-<table class="full-container" style="background: #eeeeee; width: 100%; border-collapse: collapse;">
-  <tr>
-    <td style="text-align: center" align="center">
-      <!-- LAYOUT -->
+        {% comment %}{- LOGO -}{% endcomment %}
+        <table class="row">
+          <tr>
+            <td class="header__cell">
+              <center>
+                <table class="container" style="text-align:center;">
+                  <tr>
+                    <td style="padding:35px 0">
+                      <table class="row">
+                        <tr>
+                          <td class="shop-name__cell">
+                            {%- if shop.email_logo_url %}
+                              <img src="{{shop.email_logo_url}}" alt="{{ shop.name }}" width="{{ shop.email_logo_width }}">
+                            {%- else %}
+                              <h1 class="shop-name__text">
+                                <a href="{{shop.url}}">{{ shop.name }}</a>
+                              </h1>
+                            {%- endif %}
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+            </td>
+          </tr>
+        </table>{% comment %}{- END LOGO -}{% endcomment %}
 
-      <table class="main-layout" style="width: 500px; min-width: 500px; max-width: 500px; background-color: #ffffff; margin: 20px auto; border-collapse: collapse;">
-          
-        <!-- HEADER -->
+        {% comment %}{- BODY -}{% endcomment %}
+        <table class="row content" style="border-top: 1px solid #d3dbe2;">
+          <tr>
+            <td class="content__cell" style="padding-top:40px;">
+              <center>
+                <table class="container">
+                  <tr>
+                    <td>
+                      <p><strong>Hi {{ customer.name }},</strong></p>
+                      {% if custom_message != blank %}
+                        <p>{{ custom_message }}</p>
+                      {% else %}
+                        {{ email_body }}
+                      {% endif %}
+                      <p>
+                        Have a question or concern?
+                        Please <a href="mailto:{{ shop.email }}">Contact Us.</a>
+                        We're always happy to assist you.
+                      </p>
+                      <p>Fashionably yours,</p>
+                      <p>
+                        The bebe Team <br>
+                        877-bebe-777 (<a href="tel:877-232-3777">877-232-3777</a>) <br>
+                        <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+            </td>
+          </tr>
+        </table> {% comment %}{- END BODY -}{% endcomment %}
 
-        <tr>
-          <td align="center" style="padding-top: 25px; padding-bottom: 25px; padding-left: 0; padding-right: 0; text-align: center; background-color: #ffffff; width: 100%;">
+        {% comment %}{- FOOTER -}{% endcomment %}
+        <table class="row footer">
+          <tr>
+            <td class="footer__cell">
+              <center>
+                <table class="container" style="text-align:center;margin-bottom:40px;">
+                  <tr>
+                    <td><a href="#" style="color:#777;text-decoration:none;">FIND A STORE</a></td>
+                    <td><a href="#" style="color:#777;text-decoration:none;">MY ACCOUNT</a></td>
+                    <td><a href="#" style="color:#777;text-decoration:none;">CLUBBEBE</a></td>
+                  </tr>
+                </table>
+              </center>
+              <center>
+                <table class="container" style="text-align:center;">
+                  <tr>
+                    <td>
+                      <p class="disclaimer__subtext">
+                        Have a question? Call us at 877-bebe-777 (<a href="tel:877-232-37777">877-232-37777</a>).
+                      </p>
+                      <p class="disclaimer__subtext">
+                        To continue to receive <a href="{{ shop.url }}">bebe.com</a> email,
+                        please add <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                        to your address book.
+                      </p>
+                      <p class="disclaimer__subtext">
+                        bebe Stores, Inc., 400 Valley Drive, Brisbane, CA 94005 <br>
+                        Copyright &copy; {{ 'now' | date: "%Y" }} bebe Stores, Inc. All rights reserved.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+            </td>
+          </tr>
+        </table> {% comment %}{- END FOOTER =}{% endcomment %}
 
-            <!-- LOGO  -->
-
-            <a href="{{ shop.url }}" target="_blank" title="{{ shop.name }}">
-              <img class="center fixedwidth" align="center" border="0" src="https://cdn.shopify.com/s/files/1/0053/3194/3522/files/email_logo.gif?7953218545083095441" alt="{{ shop.name }}" title="{{ shop.name }}" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 150px" width="150">
-            </a>
-
-          </td>
-        </tr>
-
-        <!-- BODY -->
-
-        <tr>
-          <td style="padding: 0;">
-
-            <table class="body-layout" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; border: none; width: 100%;">
-              <tr>
-                <td background="https://cdn.shopify.com/s/files/1/0053/3194/3522/files/Welcome_email_image.jpg?4405285247504229691" bgcolor="#7bceeb" valign="top" style="background-image: url(https://cdn.shopify.com/s/files/1/0053/3194/3522/files/Welcome_email_image.jpg?4405285247504229691); background-position: top center; background-size: cover; background-repeat: no-repeat; border: none;">
-                  <!--[if gte mso 9]>
-                  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
-                    <v:fill type="tile" src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/customer_bg.jpg?11449928135548836919" color="#7bceeb" />
-                    <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
-                  <![endif]-->
-                  <div>
-                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top: 100px; margin-bottom: 100px;">
-                      <tr>
-                        <td style="width: 45%;">&nbsp;</td>
-                        <td style="width: 55%; background: #fff; padding: 30px 20px;">
-                          
-                          <!-- HEADLINE -->
-
-                          <div style="color:#0a56a4;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
-                            <div style="font-size:12px;line-height:14px;font-family:inherit;color:#0a56a4;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><strong><span style="font-size: 28px; line-height: 33px; text-transform: uppercase;">{{ email_title }}</span></strong></p></div>  
-                          </div>
-
-                          <!-- BODY COPY -->
-
-                          <div style="color:#000000;line-height:180%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
-                            <div style="font-size:14px;line-height:25px;font-family:inherit;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 25px;text-align: center">{{ email_body }}</p></div> 
-                          </div>     
-
-
-                          <!-- BUTTON -->
-
-                          <div align="center" class="button-container center " style="padding-right: 10px; padding-left: 10px; padding-top:10px; padding-bottom:0px;">
-                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:10px; padding-bottom:10px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="view_your_order_link" style="height:31pt; v-text-anchor:middle; width:121pt;" arcsize="0%" strokecolor="#e41c39" fillcolor="#e41c39"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Museo Sans', 'Verdana', sans-serif; font-size:16px;"><![endif]-->
-                              <a href="{{ shop.url }}" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #e41c39; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; max-width: 162px; width: 132px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 15px; padding-bottom: 5px; padding-left: 15px; font-family: 'Museo Sans', 'Verdana', sans-serif;mso-border-alt: none">
-                                <span style="font-family:'Museo Sans', 'Verdana', sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 12px; line-height: 24px; letter-spacing: .125em; text-transform: uppercase;"><strong>VISIT OUR STORE</strong></span></span>
-                              </a>
-                            <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-                          </div>                                                   
-
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                  <!--[if gte mso 9]>
-                    </v:textbox>
-                  </v:rect>
-                  <![endif]-->
-                </td>
-              </tr>
-            </table>            
-
-          </td>
-        </tr>
-
-        <!-- FOOTER -->
-
-        <tr>
-          <td style="background: #2D2D2D; padding: 40px 40px 20px;">
-            <table style="width: 100%;">
-
-              <!-- SOCIAL -->
-
-              <tr>
-                <td>
-
-                  <div align="center" style="padding-right: 10px; padding-left: 10px; padding-bottom: 10px; opacity: .5" class="">
-                  <div style="line-height:10px;font-size:1px">&#160;</div>
-                  <div style="display: table; max-width:181px;">
-                  <!--[if (mso)|(IE)]><table width="161" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse; padding-right: 10px; padding-left: 10px; padding-bottom: 10px;"  align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:161px;"><tr><td width="32" style="width:32px; padding-right: 20px;" valign="top"><![endif]-->
-                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 20px">
-                      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                        <a href="https://www.facebook.com/XtraTuf/" title="Facebook" target="_blank">
-                          <img src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/facebook_2x_af60cbec-cd0a-4a73-a7b6-c929538ac6ad.png?9131003845000148457" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                        </a>
-                      <div style="line-height:5px;font-size:1px">&#160;</div>
-                      </td></tr>
-                    </tbody></table>
-                      <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 20px;" valign="top"><![endif]-->
-                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 20px">
-                      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                        <a href="https://instagram.com/xtratufboots" title="Instagram" target="_blank">
-                          <img src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/instagram_2x_631ec28e-2aa5-405c-a1b2-42b3280cb039.png?9131003845000148457" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                        </a>
-                      <div style="line-height:5px;font-size:1px">&#160;</div>
-                      </td></tr>
-                    </tbody></table>
-                      <!--[if (mso)|(IE)]></td><td width="32" style="width:32px; padding-right: 0;" valign="top"><![endif]-->
-                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;Margin-right: 0">
-                      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                        <a href="https://www.youtube.com/channel/UCbLKFCrAzj4U2OTsiX0HK2g" title="YouTube" target="_blank">
-                          <img src="https://cdn.shopify.com/s/files/1/0015/2525/2190/files/youtube_2x_90c5b067-99c2-4489-a649-307a3283c97f.png?9131003845000148457" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                        </a>
-                      <div style="line-height:5px;font-size:1px">&#160;</div>
-                      </td></tr>
-                    </tbody></table>
-                    <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-                  </div>
-                </div>
-
-                </td>
-              </tr>
-
-              <!-- CONTACT -->
-
-              <tr>
-                <td>
-
-                  <div style="color:#848484;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
-                    <div style="font-size:12px;line-height:14px;color:#848484;font-family:'Museo Sans', 'Verdana', sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 14px;"><a style="color:#848484;text-decoration: none;" title="Contact Us" href="https://www.xtratuf.com/pages/contact-us" target="_blank" rel="noopener">CONTACT US</a>&#160;&#160;&#160;&#160; <a style="color:#848484;text-decoration: none;" title="Contact Us" href="tel:18553772668" target="_blank" rel="noopener">855-377-BOOT (2668)</a><br></span></p></div>  
-                  </div>
-
-                </td>
-              </tr>
-
-              <!-- DIVIDER -->
-
-              <tr>
-                <td>
-
-                  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="divider " style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                      <tbody>
-                          <tr style="vertical-align: top">
-                              <td class="divider_inner" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-right: 0px;padding-left: 0px;padding-top: 15px;padding-bottom: 10px;min-width: 100%;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                                  <table class="divider_content" height="0px" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;border-top: 1px solid #666;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                                      <tbody>
-                                          <tr style="vertical-align: top">
-                                              <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                                                  <span>&#160;</span>
-                                              </td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-
-                </td>
-              </tr>
-
-              <!-- TERMS -->
-
-              <tr>
-                <td>
-
-                  <div style="color:#848484;line-height:120%;font-family:'Museo Sans', 'Verdana', sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"> 
-                    <div style="font-size:12px;line-height:14px;color:#848484;font-family:'Museo Sans', 'Verdana', sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 14px;"><a style="color:#848484;text-decoration: none;" href="https://www.xtratuf.com/pages/terms-conditions" target="_blank" rel="noopener">Terms &amp; <span style="line-height: 14px; font-size: 12px;">Conditions</span></a> | <a style="color:#848484;text-decoration: none;" href="https://www.honeywell.com/privacy-statement" target="_blank" rel="noopener">Privacy Policy</a></span><span style="font-size: 12px; line-height: 14px;"><br></span></p></div>  
-                  </div>
-
-                </td>
-              </tr>
-
-            </table>
-          </td>
-        </tr>
-
-      </table>
-    </td>
-  </tr>
-</table>
-
+        <img src="{{ 'notifications/spacer.png' | shopify_asset_url }}" class="spacer" height="1" />
+      </td>
+    </tr>
+  </table>
 </body>
+
 </html>
