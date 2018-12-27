@@ -51,6 +51,9 @@
   {% when '404' %}        
     {% assign has_breadcrumb = false %}
 
+  {% when 'page.landing' %}
+    {% assign has_breadcrumb = false %}    
+
 {% endcase %}
 
 {% comment %} THEME :: START CODE {% endcomment %}

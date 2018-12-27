@@ -19,11 +19,17 @@
 
     </div>
 
+    {% assign main_nav = 'account-sidebar' %}
+    {% assign menu = linklists[main_nav] %}  
+
+
+
     <ul id="account-nav">
-      <li><a id="view_my_account" href="/account">{{ 'customer.account.dashboard' | t }}</a></li>
-      <li><a id="view_address" href="/account/addresses">{{ 'customer.account.address_book' | t }} ({{ customer.addresses_count }})</a></li>
-      <li><a href="/account?view=orders" title="Order History">Order History</a></li>
-      <li><a id="sign_out" href="{{ shop.url }}/account/logout">{{ 'customer.account.sign_out' | t }}</a></li>
+      {% for link in menu.links %}
+          <li class="nav-link">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+      {% endfor %}
     </ul>
-    
+  
   </div>

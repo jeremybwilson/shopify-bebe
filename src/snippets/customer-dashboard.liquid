@@ -158,10 +158,10 @@
             </div>
 
             <div class="club-dis">
-                <p>*One-time use. **50 United States only. ***Limit twice per month. Referred friends must be new clubbebe customers. 200-point reward only valid if friend makes purchase on bebe.com &amp; not valid if friend's purchase is returned. #Limit twice per month. Must connect with bebe on Instagram via clubbebe account dashboard on bebe.com to earn points. µFacebook, Instagram &amp; Twitter. Must connect via clubbebe account dashboard on bebe.com. ¶Limit once per day. §Limit three times per month. Review must be for an item you have purchased.</p>
+                <p><sup>*</sup>One-time use. <sup>**</sup>50 United States only. <sup>***</sup>Limit twice per month. Referred friends must be new clubbebe customers. 200-point reward only valid if friend makes purchase on bebe.com &amp; not valid if friend's purchase is returned. <sup>#</sup>Limit twice per month. Must connect with bebe on Instagram via clubbebe account dashboard on bebe.com to earn points. <sup>µ</sup>Facebook, Instagram &amp; Twitter. Must connect via clubbebe account dashboard on bebe.com. <sup>¶</sup>Limit once per day. <sup>§</sup>Limit three times per month. Review must be for an item you have purchased.</p>
             </div>
 
-            <a id="cbbTClink" style="display:block;text-align:center;" href="/custserv/custserv.jsp?pageName=RewardsConditions" target="_blank">CLUBBEBE TERMS &amp; CONDITIONS</a>
+            <a id="cbbTClink" style="display:block;text-align:center;" href="/pages/rewards-conditions" target="_blank">CLUBBEBE TERMS &amp; CONDITIONS</a>
         
         </div>
 
@@ -269,73 +269,6 @@
 
 
 </div>
-
-
-
-
-
-
-<script>
-    $(document).on('swell:setup', function() {
-
-        // Inits
-        const customerDetails = swellAPI.getCustomerDetails(),
-              vipTiers = swellAPI.getVipTiers();        
-
-        console.log(vipTiers);
-        console.log(customerDetails);
-
-        // mark the current tier 
-        $( '.club-tier--' + customerDetails.vipTier.name ).addClass( 'club--tier-active' );
-
-
-        // show points to next tier 
-
-        var currentPoints = customerDetails.pointsBalance,
-            currentTier = customerDetails.vipTier.id;
-
-        var tierCounter = 0;
-        vipTiers.forEach(function(tier){
-
-            if (tier.id == currentTier) {
-                var nextTier = vipTiers[tierCounter + 1],
-                    nextTierPoints = nextTier.swellrequiredPointsEarned,
-                    currentTierPoints = tier.swellrequiredPointsEarned,
-                    pointsLeft = nextTierPoints - currentPoints,
-                    progressPercentage = ( (currentPoints - currentTierPoints) / (nextTierPoints - currentTierPoints) ) * 100,
-                    progressInt = Math.round(progressPercentage),
-                    progressClass = "p" + progressInt;
-
-                // if the progress percentage is above 50%, add this class (for the circle);
-                if ( progressInt > 50 ) progressClass += " over50";
-
-                $('.points-left').html(pointsLeft);
-                $('#next-membership-level').html(nextTier.name);
-                $('#progress-circle').addClass(progressClass);
-
-            }
-            tierCounter++;
-        });
-
-        $('#club--how-to-score-points a.i-con').each(function() {
-
-            $(this).fancybox({
-                href: $(this).attr('href'),
-                wrapCSS: 'fancybox-promo-popup',
-                openEffect: 'none',
-                closeEffect: 'none',
-                autoHeight: true,
-                maxWidth: 400,
-                maxHeight: 400,
-                padding: 30,
-                live: true
-            });
-        });
-
-    });
-
-</script>
-
 
 
 
