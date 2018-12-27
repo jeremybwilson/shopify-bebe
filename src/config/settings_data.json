@@ -1070,6 +1070,11 @@
           "landing_page_faq_nav": "side-menu-faq",
           "landing_page_about_nav": "side-menu-about"
         }
+      },
+      "404-template": {
+      "type": "404-template",
+      "settings": {
+        "fourohfour_content": "404-content"
       }
     },
     "content_for_index": [
