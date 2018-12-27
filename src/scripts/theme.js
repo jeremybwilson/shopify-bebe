@@ -2952,6 +2952,12 @@ Events.on("quickview:load", function (container) {
 ==============================================================================*/
 theme.Collection = (function() {
   function Collection(container) {
+    const self = this;
+    this.minWidth = 1024;
+    this.prevWidth = window.innerWidth;
+    this.positionSortElement();
+    $(window).on('resize', this.positionSortElement.bind(self));
+
     const ui = {
       collectionWrap: $( '#shopify-section-collection-template' ), //Can store these b/c they are unaffected by the filter app JS re-renders
       collectionNavMobileWrap: $( '#collection-nav--mobile-dropdown' ),
@@ -3012,7 +3018,26 @@ theme.Collection = (function() {
   // UPDATES : SUB : Subscribe to collection updates to re-render react-components
   $(document).on("collectionUpdated", updateTemplate);
 
-  Collection.prototype = _.assignIn({}, Collection.prototype, {});
+  Collection.prototype = _.assignIn({}, Collection.prototype, {
+    positionSortElement: function () {
+      const { minWidth, prevWidth } = this;
+      const innerWidth = window.innerWidth;
+      const isMatchMin = innerWidth < minWidth && prevWidth >= innerWidth;
+      const isUnmatchMin = innerWidth >= minWidth && prevWidth < innerWidth;
+
+      if (!isMatchMin && !isUnmatchMin) {
+        return null;
+      }
+
+      this.prevWidth = innerWidth;
+      const $element = $('#full-width-filter').detach();
+      const $parent = isMatchMin
+        ? $('#mobile-sort-wrapper')
+        : $('#desktop-sort-wrapper');
+      $parent.append($element);
+    },
+  });
+
   return Collection;
 })();
 

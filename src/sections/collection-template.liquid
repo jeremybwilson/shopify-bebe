@@ -19,6 +19,7 @@
         </div>
 
         {% comment %} FILTERS LIST {% endcomment %}
+        <div id="mobile-sort-wrapper"></div>
         {% comment %} <div id="bc-sf-filter-tree"></div> {% endcomment %}
       </div>
 
@@ -59,12 +60,14 @@
         {% endcomment %}
 
         {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
-        <div id="full-width-filter" class="filter-wrap-desktop">
-            <ul id="sortme" class="sort-options animate25">
-            {% if section.settings.sort_by %} 
-              <li id="bc-sf-filter-top-sorting" class="clearfix filter"></li>
-            {% endif %}
-          </ul>
+        <div id="desktop-sort-wrapper">
+          <div id="full-width-filter" class="filter-wrap-desktop">
+              <ul id="sortme" class="sort-options animate25">
+              {% if section.settings.sort_by %} 
+                <li id="bc-sf-filter-top-sorting" class="clearfix filter"></li>
+              {% endif %}
+            </ul>
+          </div>
         </div>
     
       
