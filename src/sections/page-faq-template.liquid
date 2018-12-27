@@ -18,7 +18,7 @@
         <h2>FAQs</h2>
         {% for block in section.blocks %}
           {% if block.settings.heading_only == true %}
-            <h3 class="faq-header"><a href="#{{ block.settings.anchor | escape }}">{{ block.settings.title }}</a></h3>
+            <h3><a href="#{{ block.settings.anchor | escape }}">{{ block.settings.title }}</a></h3>
           {% endif %}
         {% endfor %}
 
