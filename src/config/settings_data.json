@@ -1072,9 +1072,10 @@
         }
       },
       "404-template": {
-      "type": "404-template",
-      "settings": {
-        "fourohfour_content": "404-content"
+        "type": "404-template",
+        "settings": {
+          "fourohfour_content": "404-content"
+        }
       }
     },
     "content_for_index": [
