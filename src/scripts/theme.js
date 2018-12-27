@@ -2028,7 +2028,83 @@ $(document).ready(function() {
     }
   });
 
+/*============================================================================
+  Accounts :: SWELL
+==============================================================================*/
+
+  (function loyalty_program() {
+
+    $(document).on('swell:setup', function() {
+
+      const ui = {
+        pointsLeft: $( '.points-left' ),
+        nextMembershipLevel: $( '.next-membership-level' ),
+        progressCircle: $( '#progress-circle' )
+      };
+
+      const swellData = {
+        customerDetails: swellAPI.getCustomerDetails(),
+               vipTiers: swellAPI.getVipTiers() 
+      }
+
+      //console.log(ui.vipTiers);
+      //console.log(ui.customerDetails);
+    
+      // mark the current tier 
+      $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
+    
+      // show points to next tier 
+      var currentPoints = swellData.customerDetails.pointsBalance,
+          currentTier = swellData.customerDetails.vipTier.id,
+          tierCounter = 0;
+
+      swellData.vipTiers.forEach(function(tier){
+        if (tier.id == currentTier) {
+
+          var nextTier = swellData.vipTiers[tierCounter + 1],
+              nextTierPoints = nextTier.swellrequiredPointsEarned,
+              currentTierPoints = tier.swellrequiredPointsEarned,
+              pointsLeft = nextTierPoints - currentPoints,
+              progressPercentage = ( (currentPoints - currentTierPoints) / (nextTierPoints - currentTierPoints) ) * 100,
+              progressInt = Math.round(progressPercentage),
+              progressClass = "p" + progressInt;
+    
+          // if the progress percentage is above 50%, add this class (for the circle);
+          if ( progressInt > 50 ) progressClass += " over50";
+  
+          ui.pointsLeft.html( pointsLeft );
+          ui.nextMembershipLevel.html( nextTier.name );
+          ui.progressCircle.addClass( progressClass );
+        }
+        tierCounter++;
+      });
+    
+      // DASHBOARD :: SIDEBAR :: Load popups
+    
+      $('#club--how-to-score-points a.i-con').each(function() {
+    
+        $(this).fancybox({
+          href: $(this).attr('href'),
+          wrapCSS: 'fancybox-promo-popup',
+          openEffect: 'none',
+          closeEffect: 'none',
+          autoHeight: true,
+          maxWidth: 400,
+          maxHeight: 400,
+          padding: 30,
+          live: true
+        });
+      });
+    
+    });
+
+  })();  
+
 });
+
+
+
+
 
 /*============================================================================
   Product Modules

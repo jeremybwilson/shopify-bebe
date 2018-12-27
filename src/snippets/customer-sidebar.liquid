@@ -1,4 +1,6 @@
-  <div id="customer_sidebar" class="desktop-3 mobile-3">
+  <div id="customer_sidebar" class="desktop-2 tablet-6 mobile-3">
+    <h2>{{ 'customer.account.sidebar_title' | t }}</h2>
+
     <div id="customer_detail" class="group">
       <h5 class="name">{{ customer.name }}</h5>
       <p class="email note">{{ customer.email }}</p>
@@ -12,9 +14,22 @@
         <p>{{ customer.default_address.zip}}</p>
         <p>{{ customer.default_address.phone }}</p>
         {% endif %}
-        <a id="view_address" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
-        <a id="view_my_account" href="/account">{{ 'customer.account.return' | t }}</a>        
+
       </div>
-      <a id="sign_out" class="button" href="{{ shop.url }}/account/logout">{{ 'customer.account.sign_out' | t }}</a>
+
     </div>
+
+    {% assign main_nav = 'account-sidebar' %}
+    {% assign menu = linklists[main_nav] %}  
+
+
+
+    <ul id="account-nav">
+      {% for link in menu.links %}
+          <li class="nav-link">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+      {% endfor %}
+    </ul>
+  
   </div>

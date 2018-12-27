@@ -2,43 +2,10 @@
 
   {% include 'customer-sidebar' %}
 
-  <div id="customer_orders" class="desktop-9 mobile-3">
-    <div class="section-title account-header desktop-12 mobile-3 centered">
-      <h1>{{ 'customer.account.title' | t }}</h1>
-      {% if settings.breadcrumb %}
-        {% include 'breadcrumb' %}
-      {% endif %}
-    </div>
+  <div id="customer_dashboard" class="desktop-10 tablet-6 mobile-3">
 
-    <h5 class="name">{{ 'customer.orders.title' | t }}</h5>
-    {% if customer.orders.size != 0 %}
-    <table>
-      <thead>
-        <tr>
-          <th class="order_number">{{ 'customer.orders.order_number' | t }}</th>
-          <th class="date">{{ 'customer.orders.date' | t }}</th>
-          <th class="payment_status">{{ 'customer.orders.payment_status' | t }}</th>
-          <th class="fulfillment_status">{{ 'customer.orders.fulfillment_status' | t }}</th>
-          <th>Order Status</th>
-          <th class="total">{{ 'customer.orders.total' | t }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for order in customer.orders %}
-        <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
-          <td>{{ order.name | link_to: order.customer_url }}</td>
-          <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
-          <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
-          <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
-          <td><a href="{{ order.order_status_url }}" title="Track Your Order" target="_blank">Track Order</a></td>
-          <td><span class="total money"><span class="money">{{ order.total_price | money }}</span></span></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% else %}
-    <h5>{{ 'customer.orders.none' | t }}</h5>
-    {% endif %}
+    {% include 'customer-dashboard' %}
+
   </div>
 
 </div>
