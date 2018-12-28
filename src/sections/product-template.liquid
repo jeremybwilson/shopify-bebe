@@ -183,7 +183,13 @@
     {% include 'product-campaign-video' %}
 
     {% comment %} :: RECENTLY VIEWED :: {% endcomment %}
-    {% include 'recently-viewed' %}
+    {% if section.settings.show_recently_viewed %}
+      {% if section.settings.recently_viewed_type == 'nosto' and section.settings.recently_viewed_nosto_id != blank %}
+        {% include 'nosto-element' with section.settings.recently_viewed_nosto_id %}
+      {% else %}
+        {% include 'recently-viewed' %}
+      {% endif %}
+    {% endif %}
 
     {% comment %} :: RECOMMENDED PRODUCTS :: {% endcomment %}
     {% if section.settings.nosto_rec_show and section.settings.nosto_rec_id != blank %}
@@ -461,6 +467,38 @@
         "type": "page",
         "id": "size_chart_page",
         "label": "Size Chart Page"
+      },
+      {
+        "type": "header",
+        "content": "Recently Viewed"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_recently_viewed",
+        "label": "Show recently viewed",
+        "default": true
+      },
+      {
+        "type": "radio",
+        "id": "recently_viewed_type",
+        "label": "Type",
+        "default": "nosto",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "nosto",
+            "label": "Nosto"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "label": "Nosto ID",
+        "id": "recently_viewed_nosto_id",
+        "default": "productpage-nosto-3 "
       },
       {
         "type": "header",
