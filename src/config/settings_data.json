@@ -159,11 +159,11 @@
     "tumblr_url": "",
     "youtube_url": "https:\/\/www.youtube.com\/user\/bebestores",
     "googleplus_url": "",
-    "instagram_id": "\/bebebabes",
     "instagram_url": "http:\/\/www.instagram.com\/explore\/tags\/bebebabes",
+    "instagram_id": "\/bebebabes",
     "snapchat_url": "https:\/\/www.snapchat.com\/add\/bebe_stores",
-    "iphone_app_url": "http:\/\/www.bebe.com\/content.jsp?pageName=apps",
-    "android_app_url": "http:\/\/www.bebe.com\/content.jsp?pageName=apps",
+    "iphone_app_url": "http:\/\/www.bebe.com\/pages\/apps",
+    "android_app_url": "http:\/\/www.bebe.com\/pages\/apps",
     "popup": false,
     "email_image": "",
     "email_popup_title": "Signup Up & Get 10% Off Your First Order!",
@@ -713,19 +713,64 @@
       "page-faq-template": {
         "type": "page-faq-template",
         "blocks": {
+          "1545694490844": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "MY PASSWORD IS NOT WORKING. HOW DO I ACCESS MY bebe.com ACCOUNT?",
+              "answer": "<p>We recently launched a new and improved version of bebe.com, and for your security, you'll need to update your password to access your account. Please go to our <a href=\"\/user\/login.jsp\">Sign In<\/a> page, enter your email address and current password, click the \"Sign In\" button, and you will be prompted to request an email that will allow you to update your password.<\/p>",
+              "anchor": "password"
+            }
+          },
+          "1545694625513": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I ACCESS MY CLUBBEBE ACCOUNT?",
+              "answer": "<p>If you create a bebe.com account using the same email address you used to sign up for clubbebe, your clubbebe information will automatically show up in <a href=\"\/user\/main.jsp\">My Account<\/a> after you sign in, under \"clubbebe Points &amp; Rewards.\" If you have created a bebe.com account and you're still having trouble accessing your clubbebe information, please <a href=\"\/pages\/contact-us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777).<\/p>",
+              "anchor": "access"
+            }
+          },
+          "1545694702329": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW MUCH IS SHIPPING AND HANDLING?",
+              "answer": "<p>We offer a range of shipping options. Please see <a href=\"\/pages\/shipping\">Shipping<\/a> for details.<\/p>",
+              "anchor": "shipping"
+            }
+          },
+          "1545695009550": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "INTERNATIONAL SHIPPING",
+              "answer": "<p>bebe.com has partnered with a trusted third-party company, International Checkout, to fulfill orders for our international customers.<\/p>\n<p>Please note that International Checkout coordinates your bebe.com order and is responsible for all billing, shipping and customer service issues related to your International order: <\/p>\n<ul>\n  <li> Select your items at <a href=\"\/\">http:\/\/www.bebe.com<\/a> and put your items in the bebe Shopping Bag.<\/li>\n<\/ul>\n<ul>\n  <li> Select the International Shipping link in the shopping bag.<\/li>\n<\/ul>\n<ul>\n  <li> Confirm the items in your bag are ready for purchase and proceed to International Checkout by selecting the International Checkout button.<\/li>\n<\/ul>\n<ul>\n  <li> The item name, sku number and price will be transferred to International Checkout for processing<\/li>\n  <li> To complete your order, you will be asked to fill in shipping and billing information on the International Checkout website\n  <\/li>\n<\/ul>\n<p>If you would like assistance placing your order, please contact International Checkout: <a href=\"mailto:support@internationalcheckout.com\">support@internationalcheckout.com<\/a><\/p>\n<div>\n  <div class=\"returnTable\">\n    <div class=\"returnTableTitle\">\n      <p>CUSTOMER SERVICE HOURS: 8 AM TO 6 PM PT<\/p>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>USA Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+001.310.601.8196<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>UK Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+44.20.8133.2436<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Australia Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+61.28003.4685<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Germany Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+49.618.530.9342<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Sweden Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+46.4069.35779<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Ireland Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+01.443.3715<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>New Zealand Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+09.889.0408<\/p><\/div>\n    <\/div>\n  <\/div>\n<\/div>\n\n<p>To check the status of your order or track your package, please log in to your International <br> Checkout account at: <a href=\"https:\/\/www.internationalcheckout.com\/login.php\">https:\/\/www.internationalcheckout.com\/login.php<\/a><\/p>\n<p>To learn more, view International Checkout's Customer Service and Terms &amp; Conditions information at:<a href=\"http:\/\/www.internationalcheckout.com\/cs.php\"> http:\/\/www.internationalcheckout.com\/cs.php<\/a><\/p>",
+              "anchor": "international"
+            }
+          },
+          "1545689790310": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Ordering\/Shipping Questions",
+              "answer": "",
+              "anchor": "ordershipping"
+            }
+          },
           "1542219298126": {
             "type": "html",
             "settings": {
-              "heading": "Ordering\/shipping questions",
+              "heading_only": false,
               "title": "MY PASSWORD IS NOT WORKING. HOW DO I ACCESS MY ACCOUNT?",
               "answer": "<p>We recently launched a new and improved version of bebe.com, and for your security, you'll need to update your password to access your account. Please go to our <a href=\"\/user\/rewards_sign_up.jsp\">Sign In<\/a> page, enter your email address and current password, click the \"Sign In\" button, and you will be prompted to request an email that will allow you to update your password.<\/p>",
-              "anchor": ""
+              "anchor": "ordershipping"
             }
           },
           "1542220082322": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "CAN I PLACE AN ORDER BY PHONE?",
               "answer": "<p>Yes, you can place an order by phone. Call Client Services at 877-bebe-777 (877-232-3777) during operating hours to order by phone (6 am - 8 pm PT M - F; 9 am - 5 pm PT weekends). Stay by your computer to refer to necessary information to assist the agent or have the style information available, including size, color and SKU or style number as a reference.<\/p>",
               "anchor": ""
@@ -734,7 +779,7 @@
           "1542220259294": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I KNOW THAT MY INFORMATION IS SECURE?",
               "answer": "<p> We have gone to great lengths to ensure shopping on bebe.com is completely safe. We're proud to have a Norton Secured Seal, powered by VeriSign, the most recognized security trust mark on the Internet with more than half a billion views a day on websites in 170 countries worldwide. VeriSign uses SSL encryption to protect your private information the entire time you're on bebe.com, whether you're searching for items or completing the checkout process for an order. Information exchanged with any web address beginning with  \"https\" is encrypted using SSL technology before it's sent over the Internet. Please see <a href=\"\/pages\/privacy\">Privacy &amp; Security<\/a> for complete details.<\/p>",
               "anchor": ""
@@ -743,7 +788,7 @@
           "1542220285963": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I KNOW IF MY ORDER IS COMPLETE?",
               "answer": "<p>You'll see a confirmation page after you complete your shopping experience. Then you'll receive a confirmation email detailing the items purchased, estimated ship date and final cost.<\/p>",
               "anchor": ""
@@ -752,7 +797,7 @@
           "1542220342731": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I TRACK MY ORDER?",
               "answer": "<p>Once your order ships, we'll send you an email that contains tracking info and links. You can also sign in to <a href=\"\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" Please note it may take up to 24-48 hours for tracking information to appear. Still have questions? Please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.\n<\/p>",
               "anchor": ""
@@ -761,7 +806,7 @@
           "1542220365959": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHAT IF MY ORDER DOESN'T ARRIVE?",
               "answer": "<p> If, after following up with UPS, you're still not satisfied, please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.<\/p>",
               "anchor": ""
@@ -770,7 +815,7 @@
           "1542220387334": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I RETURN AN ITEM?",
               "answer": "<p>If you don't absolutely love your new purchase, you may return your unworn, undamaged item(s) within 21 days in the original country and division of purchase.<\/p>\n<p><strong>PLEASE NOTE:<\/strong><\/p>\n<p>All return items must be in original, new, unworn, undamaged and unaltered condition with all tags attached and accompanied by your receipt. We cannot accept any return item that is not in original, new condition or any return item that is damaged due to:<\/p>\n<ul>\n    <li>Soiling or staining (food, lipstick, makeup, bleach, marker\/pen, sweat, dirt, etc.)<\/li>\n    <li>Wear and tear (ripping, tearing, snagging or other signs of wear)<\/li>\n    <li>Odor (perfume, mildew, body odor)<\/li>\n<\/ul>\n\n<p>Additionally, Final Sale items with prices ending in $.99, gift cards, lingerie and swimwear cannot be returned or exchanged. We're unable to honor previous sale prices, promotions and\/or price adjustments. Shipping and handling charges will not be refunded.<\/p>\n<p>Additionally, Final Sale items with prices ending in $.99, gift cards, lingerie and swimwear cannot be returned or exchanged. We're unable to honor previous sale prices, promotions and\/or price adjustments. Shipping and handling charges will not be refunded.<\/p>\n \n <p>To place a bebe.com return, please access the <a href=\"http:\/\/returns.narvar.com\/bebe\/returns\">self-service returns portal<\/a>. You'll need your order number and billing ZIP code. You can also click on the link provided in your shipping confirmation email, or sign in to <a href=\"\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" All domestic returns are charged a flat $7, which will be deducted from the refund amount.  (Please note: eligible ShopRunner orders from the 48 contiguous states enjoy free returns.)<\/p> \n \n <p>In the portal, you can either print out a prepaid return shipping label that you can use to ship your return via UPS or you can schedule a convenient in-home pickup by the U.S. Postal Service. Place item(s) and completed packing slip in secure packaging and seal. Remove or cover original labels, and affix the prepaid label to outside of the package. Either drop the package off at a UPS location or have it picked up by the USPS. UPS locations include The UPS Store, UPS drop boxes, UPS customer service centers and UPS drivers. You can find your nearest UPS location at <a href=\"http:\/\/ups.com\/dropoff\" target=\"_blank\">ups.com\/dropoff<\/a>. To track your return, access the self-service returns portal, click the link in the original shipping confirmation email, or sign in to <a href=\"\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\"<\/p>\n \n <p>Please allow 2-3 weeks from the time you mail your return for it to be processed. We?ll send you an email confirmation once your return is complete.<\/p>\n \n <p>For complete details on returning an item, including in-store returns, please visit our <a href=\"\/pages\/returns\">Returns<\/a> page. If you believe your return is due to our error, please <a href=\"\/pages\/contact-us\">Contact Us<\/a>.<\/p>",
               "anchor": ""
@@ -779,7 +824,7 @@
           "1542220434241": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I EXCHANGE AN ITEM?",
               "answer": "<p> Due to limited merchandise quantities and the constantly evolving fashion selection on bebe.com, we currently do not process exchanges of bebe.com merchandise. In order to get the item(s) you want as quickly as possible, simply place a new order and return the unwanted item(s) for a refund. When we receive your return, we'll issue you a refund. <a href=\"\/pages\/returns\">Click Here<\/a> for a full copy of our returns policy.<\/p>",
               "anchor": ""
@@ -788,7 +833,7 @@
           "1542220460535": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHAT IF I HAVE A QUALITY ISSUE WITH MY PURCHASE BUT DON'T HAVE A RECEIPT AND\/OR 21 DAYS HAVE PASSED?",
               "answer": "<p> bebe stands behind the quality of its merchandise. If a quality issue arises, please take the item to a bebe store or call Client Services at 877-bebe-777 (877-232-3777) for immediate attention.<\/p>",
               "anchor": ""
@@ -797,7 +842,7 @@
           "1542220481622": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "CAN I USE A GIFT CARD WITH MY ONLINE PURCHASE?",
               "answer": "<p> Gift cards are accepted when shopping on bebe.com. Just enter the number and PIN in the appropriate section while checking out. <\/p>",
               "anchor": ""
@@ -806,7 +851,7 @@
           "1542220502350": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "CAN I USE A MERCHANDISE RETURN CREDIT (MRC) WITH MY ONLINE PURCHASE?",
               "answer": "<p> Merchandise return credits are accepted when shopping on bebe.com. Just enter the MRC number in the appropriate section while checking out.<\/p>",
               "anchor": ""
@@ -815,7 +860,7 @@
           "1542220523668": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "SOMETHING I PURCHASED IS NOW ON SALE. CAN I RECEIVE A PRICE ADJUSTMENT?",
               "answer": "<p> Unfortunately, due to high demand for merchandise and availability issues, we do not currently allow price adjustments.<\/p>",
               "anchor": ""
@@ -824,16 +869,25 @@
           "1542220577233": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "DO YOU SHIP INTERNATIONALLY?",
               "answer": "<p>bebe.com partners with a trusted third-party company, International Checkout, to fulfill international orders. If you're shipping your order outside of the U.S. or Canada, please follow these steps:<\/p>\n\n<ol>\n<li>Select your items and add them to your shopping bag.<\/li>\n<li>Choose the International Checkout link on the shopping bag page. This will open the International Checkout order page.<\/li>\n<li>Please copy and paste the details for each item from your bebe shopping bag into the International Checkout order form.<\/li>\n<li>After all of the items are added to the International Checkout order form, select your payment method and continue through the International Checkout page.<\/li>\n<li>Submit your order with International Checkout. You'll receive an order confirmation and status updates from International Checkout.<\/li>\n<\/ol>\n<p>Please <a href=\"https:\/\/www.internationalcheckout.com\/contact.php\" title=\"Contact International Checkout\">Contact International Checkout<\/a> via their website for assistance with placing or tracking your international order.<\/p>\n<p><strong>Or contact Customer Service at one of their centers:<\/strong><\/p>\n  <ul style=\" list-style-type: none;\">\n      <li>USA and Canada: +1866.6820641<\/li>\n      <li>USA Phone: +001.310.601.8196<\/li>\n      <li>UK Phone: +44.20.8133.2436<\/li>\n      <li>Australia Phone : +61.28003.4685<\/li>\n      <li>Denmark Phone : +45.369.50312<\/li>\n      <li>Sweden Phone : +46.4069.35779<\/li>\n      <li>Hong Kong Phone : +852.8175.6057<\/li>\n      <li>Japan Phone : +81.50553.46826<\/li>\n      <li>Finland Phone : +358.(02)3619.0437<\/li>\n      <li>Brazil Phone : +55.(11)3230.9539<\/li>\n      <li>Ireland Phone : +353.1443.3715<\/li>\n      <li>Mexico Phone : +52.558.421.8266<\/li>\n      <li>New Zealand Phone : +64.9889.0408<\/li>\n  <\/ul>\n\n<p><strong>MY PROMOTIONAL CODE IS NOT WORKING. WHY?<\/strong><\/p>\n<p> Promotional codes always contain qualifiers. Please make sure you have reached the right amount of pre-tax sale dollars, the correct number of items or any of the other conditions that apply to the promotion. Please verify that you have provided the correct code. If you are still having trouble, please <a href=\"\/pages\/contact-us\">Contact Us<\/a>. <\/p>",
               "anchor": ""
             }
           },
+          "1545690577541": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Clubbebe Questions",
+              "answer": "",
+              "anchor": "clubbebe"
+            }
+          },
           "1542220607549": {
             "type": "html",
             "settings": {
-              "heading": "CLUBBEBE QUESTIONS",
+              "heading_only": false,
               "title": "WHAT IS clubbebe?",
               "answer": "<p>clubbebe is bebe's customer loyalty program where you earn points towards rewards. For every $1 you spend, you get 1 point. For all clubbebe member levels, with the exception of Icon, you receive a $10 reward for every 250 points earned. Once you reach Icon level, you will receive a $15 reward for every 250 points earned. More information about clubbebe, including registration details, is available by going to <a href=\"\/user\/login.jsp?initForm=close\">www.bebe.com\/clubbebe<\/a>.<\/p>",
               "anchor": "clubbebe"
@@ -842,7 +896,7 @@
           "1544774629895": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I SIGN UP FOR clubbebe?",
               "answer": "<p>To sign up, go to <\/p>",
               "anchor": ""
@@ -851,7 +905,7 @@
           "1544774693805": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHAT IF I FORGET MY bebe ACCOUNT PASSWORD?",
               "answer": "<p>To find your information, click on \"Forgot Your Password?\" on the <a href=\"\/user\/login.jsp?initForm=close\">Sign In<\/a> page. You will then need to follow the instructions to create a new password.<\/p>",
               "anchor": ""
@@ -860,7 +914,7 @@
           "1544774720516": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I CHANGE MY PASSWORD?",
               "answer": "<p>Click on \"Profile\" under the <a href=\"\/user\/main.jsp\">My Account<\/a> section. You'll then enter your old password and create a new one. Still having trouble signing in? Please <a href=\"\/pages\/contact-us\">Contact Us<\/a>.<\/p>",
               "anchor": ""
@@ -869,7 +923,7 @@
           "1544774735705": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHERE DO I FIND MY clubbebe ACCOUNT NUMBER?",
               "answer": "<p>Your clubbebe account number can be found in the \"Points &amp; Rewards\" area under <a href=\"\/user\/main.jsp\" title=\"My Account\">My Account<\/a>. You can also <a href=\"\/pages\/contact-us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777) with any questions about your clubbebe account.<\/p>",
               "anchor": ""
@@ -878,7 +932,7 @@
           "1544774836953": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I EARN POINTS?",
               "answer": "<p>To earn points, create an account on bebe.com. It only takes seconds, and you?ll immediately begin earning points as you shop. Please see below for additional ways to earn points.<\/p>\n<div class=\"rewards-table\">\n    <div class=\"rewards-row rewards-row-first\">\n        <div class=\"rewards-cell\"><strong>If you...<\/strong><\/div>\n        <div class=\"rewards-cell\"><strong>You earn...<\/strong><\/div>\n        <div class=\"rewards-cell\"><strong>Limit<\/strong><\/div>\n        <div class=\"rewards-cell\"><strong>Details<\/strong><\/div>\n    <\/div>\n    <div class=\"rewards-row\">\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">If you...<\/span>\n            <span class=\"rewards-cell-text\">Refer a Friend<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">You earn...<\/span>\n            <span class=\"rewards-cell-text\">100 pts.<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Limit:<\/span>\n            <span class=\"rewards-cell-text\">2X per month<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Details:<\/span>\n            <span class=\"rewards-cell-text\">Refer a friend and earn points if they make a purchase and sign up for clubbebe. Points will only be awarded for new customer referrals.<\/span>\n        <\/div>\n    <\/div>\n    <div class=\"rewards-row\">\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">If you...<\/span>\n            <span class=\"rewards-cell-text\">Follow bebe on Twitter<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">You earn...<\/span>\n            <span class=\"rewards-cell-text\">20 pts.<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Limit:<\/span>\n            <span class=\"rewards-cell-text\">1X<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Details:<\/span>\n            <span class=\"rewards-cell-text\">Follow bebe on Twitter.<\/span>\n        <\/div>\n    <\/div>\n    <div class=\"rewards-row\">\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">If you...<\/span>\n            <span class=\"rewards-cell-text\">Follow bebe on Instagram<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">You earn...<\/span>\n            <span class=\"rewards-cell-text\">20 pts.<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Limit:<\/span>\n            <span class=\"rewards-cell-text\">1X<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Details:<\/span>\n            <span class=\"rewards-cell-text\">Follow bebe on Instagram.<\/span>\n        <\/div>\n    <\/div>\n    <div class=\"rewards-row\">\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">If you...<\/span>\n            <span>Follow bebe on Facebook<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">You earn...<\/span>\n            <span>20 pts.<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Limit:<\/span>\n            <span>1X<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Details:<\/span>\n            <span>Follow bebe on Facebook.<\/span>\n        <\/div>\n    <\/div>\n    <div class=\"rewards-row\">\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">If you...<\/span>\n            <span>Visit bebe.com<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">You earn...<\/span>\n            <span>1 pt.<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Limit:<\/span>\n            <span>1X per day<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Details:<\/span>\n            <span>Visit bebe.com once a day.<\/span>\n        <\/div>\n    <\/div>\n    <div class=\"rewards-row\">\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">If you...<\/span>\n            <span>Hashtag a bebe photo<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">You earn...<\/span>\n            <span>20 pts.<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Limit:<\/span>\n            <span>2X per month<\/span>\n        <\/div>\n        <div class=\"rewards-cell\">\n            <span class=\"rewards-mob-text\">Details:<\/span>\n            <span>Hashtag a photo on Instagram using #BeIconic. You must follow bebe on Instagram to earn points.<\/span>\n        <\/div>\n    <\/div>\n<\/div>",
               "anchor": ""
@@ -887,7 +941,7 @@
           "1544774951367": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW DO I CHECK MY POINTS?",
               "answer": "<p>Sign in to <a href=\"\/user\/login.jsp\" title=\"My Account\">My Account<\/a> and select \"Points &amp; Rewards.\" You can also <a href=\"\/pages\/contact-us\" title=\"Contact Us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777) with any questions about your clubbebe account.<\/p>",
               "anchor": ""
@@ -896,7 +950,7 @@
           "1544775080929": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHY DON'T I SEE MY 50 WELCOME POINTS?",
               "answer": "<p>Once you've created a bebe.com account using the email address that you used to sign up for clubbebe, you will receive 50 welcome points. It may take up to approximately 72 hours for these points to appear in your account.<\/p>",
               "anchor": ""
@@ -905,7 +959,7 @@
           "1544775098460": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW MANY POINTS DO I NEED TO GET FREE SHIPPING?  HOW LONG DOES IT LAST?",
               "answer": "<p>Once you've accumulated 1,000 points and become an Elite member, you will receive free standard shipping within the 50 U.S. states for one year on all online orders. Once you've accumulated 2,500 points and have become an Icon member, you will receive free express shipping within the 50 U.S. states for one year on all online orders. Free shipping benefits shall end the earlier of (1) 12 months after the calendar year in which the member earned the requisite number of points or (2) when the member's account is closed or (3) if there are changes to the program. Free shipping year(s) do not accumulate and cannot be rolled-over; each time you earn a free shipping year, all previous free shipping periods are expired. Please note that you must create a bebe.com account using the email address that you used to sign up for clubbebe to receive online benefits. If you've done this and you're still not receiving free shipping, please call Client Services at 877.bebe.777 (877.232.3777) for assistance.<\/p>",
               "anchor": ""
@@ -914,7 +968,7 @@
           "1544775147134": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "I'VE CREATED AN ONLINE ACCOUNT. WHY AM I NOT SEEING MY POINTS?",
               "answer": "<p>Once you've created your bebe.com account using the email address that you used to sign up for clubbebe, points may take up to approximately 72 hours to appear in your account. If you're still not seeing your points after 72 hours, please <a href=\"\/pages\/contact-us\" title=\"Contact Us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777) for assistance.<\/p>",
               "anchor": ""
@@ -923,16 +977,25 @@
           "1544775170861": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "HOW CAN I STOP RECEIVING bebe EMAILS?",
               "answer": "<p>You may, at any time, update or remove your personal information by contacting Client Services via email or by clicking on <a href=\"\/pages\/contact-us\" title=\"Contact Us\">Contact Us<\/a> from any page on bebe.com. In addition, if you prefer not to receive information from us through email, you may opt out of receiving bebe emails by clicking the \"unsubscribe\" link at the bottom of any bebe email that you have received. If you prefer not to receive information from us through regular mail (for example, catalogs and direct mail promotions), please send us an email or call Client Services at 877-bebe-777 (877-232-3777). Please note that it may take up to 3 weeks for your request to become effective. Thereafter, when you make purchases, we may still send you an email confirmation and may need to contact you by phone, email or regular mail if we have other questions regarding your order. If for any reason you continue to receive email or regular mail from bebe after following the steps above, please contact Client Services immediately and we'll be happy to assist you. For general information about bebe stores, inc., please visit the <a href=\"\/custserv\/custservsection.jsp?pageName=About\">About bebe<\/a> page.<\/p>",
               "anchor": ""
             }
           },
+          "1545690845240": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Ratings & Reviews Questions",
+              "answer": "",
+              "anchor": "rating"
+            }
+          },
           "1544775204364": {
             "type": "html",
             "settings": {
-              "heading": "RATINGS & REVIEWS QUESTIONS",
+              "heading_only": false,
               "title": "HOW CAN I RATE AND REVIEW A PRODUCT?",
               "answer": "<p> To rate and review a product, simply click the \"Write a Review\" link on the item's product detail page. You will then go through the rating and review process, where you will establish a username and then craft your review.<\/p>",
               "anchor": "rating"
@@ -941,7 +1004,7 @@
           "1544775397397": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHERE IS MY REVIEW",
               "answer": "<p>Your review will live on the product detail page of the item you have reviewed. Reviews may take up to 7 business days to be posted. Please see our <a href=\"\/custserv\/custservsection.jsp?pageName=RatingGuidelines\">Rating Guidelines<\/a> for further information. Once posted, your review will be available for other clients to read over before they purchase. The most helpful reviews provide lots of details.<\/p>",
               "anchor": ""
@@ -950,16 +1013,25 @@
           "1544775433942": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "DO I HAVE TO BUY THE ITEM ONLINE TO REVIEW?",
               "answer": "<p>In order to review, you must have made your purchase in a bebe store or on bebe.com. Because we want to give other clients the most accurate information possible, we do require that only clients who have purchased a specific item are eligible to review it. Please rate and review only those products you have recently purchased.<\/p>",
               "anchor": ""
             }
           },
+          "1545690913359": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "FAQ and Answers  On Proposition 65",
+              "answer": "",
+              "anchor": "prop65"
+            }
+          },
           "1544775513100": {
             "type": "html",
             "settings": {
-              "heading": "FAQ AND ANSWERS ON PROPOSITION 65",
+              "heading_only": false,
               "title": "WHAT IS PROPOSITION 65?",
               "answer": "<p>Proposition 65 is a California law that was approved by California voters in a referendum in 1986. It requires the state to keep a list of chemicals that cause cancer or reproductive toxicity. If a product contains a chemical on the list or contains a chemical in predetermined unacceptable levels that exceed the safe harbor levels as determined by the Office of Environmental Health Hazard Assessment of the California Environmental Protection Agency, businesses are required to provide a \"reasonable warning\" to customers prior to exposing them to such chemicals. The list of chemicals and metals covered by Proposition 65 now exceeds 800 and can be accessed at <a href=\"http:\/\/oehha.ca.gov\/prop65\/prop65_list\/Newlist.html\">http:\/\/oehha.ca.gov\/prop65\/prop65_list\/Newlist.html<\/a>. The safe harbor levels can be accessed at <a href=\"http:\/\/oehha.ca.gov\/prop65\/getNSRLs.html\">http:\/\/oehha.ca.gov\/prop65\/getNSRLs.html<\/a>.<\/p>",
               "anchor": "prop65"
@@ -968,7 +1040,7 @@
           "1544775552036": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHAT ARE SOME EXAMPLES OF PRODUCTS THAT MAY CONTAIN A CHEMICAL ON THE PROPOSITION 65 LIST?",
               "answer": "<p>The following types of products are examples that may contain one or more chemicals on the list: jewelry, shoes and rhinestones. This list is neither an exhaustive list nor should it be interpreted to mean that all products containing rhinestones or all products which are jewelry or shoe items contain chemicals on the Proposition 65 list.<\/p>",
               "anchor": ""
@@ -977,14 +1049,49 @@
           "1544775580124": {
             "type": "html",
             "settings": {
-              "heading": "",
+              "heading_only": false,
               "title": "WHAT IS YOUR POLICY FOR TESTING?",
               "answer": "<p>bebe tests for many of the substances in question and, typically, our products contain no such chemicals or are within acceptable levels. However, this is not true for 100% of our products. As a result, we are required by law to post Proposition 65 information.<\/p>",
               "anchor": ""
             }
+          },
+          "1545695430831": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I TRACK MY ORDER?",
+              "answer": "<p>Once your order ships, we'll send you an email that contains tracking info and links. You can also sign in to <a href=\"\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" Please note it may take up to 24-48 hours for tracking information to appear. Still have questions? Please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.<\/p>",
+              "anchor": "status"
+            }
+          },
+          "1545695624500": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I RETURN AN ITEM?",
+              "answer": "<p>If you don't absolutely love your new purchase, you may return your item(s) within 21 days in the original country and division of purchase. All items must be in original, new, unworn, undamaged and unaltered condition with all tags attached (including the return tag on dresses, rompers and jumpsuits) and accompanied by your receipt.<\/p>\n<p>Please note that Final Sale items with prices ending in $.99, bebeoutlets.com purchases, gift cards, lingerie and swimwear cannot be returned or exchanged. We're unable to honor previous sale prices, promotions and\/or price adjustments. Shipping and handling charges will not be refunded. Unfortunately, we cannot accept any item for return that is not in original, new condition or damaged due to:<\/p>\n<ul class=\"custfaq\">\n  <li style=\"margin-left:20px;\">Soiling or staining (food, lipstick, makeup, bleach, marker\/pen, sweat, dirt, etc.)<\/li>\n  <li style=\"margin-left:20px\">Wear and tear (worn, ripping, tearing, snagging)<\/li>\n  <li style=\"margin-left:20px\">Scent (perfume, body odor, mildew)<\/li>\n<\/ul>\n\n<p style=\"margin-top:10px;margin-bottom: 10px;\">To place a bebe.com return, please access the <a href=\"http:\/\/returns.narvar.com\/bebe\/returns\">self-service returns portal<\/a>. You'll need your order number and billing ZIP code. You can also click on the link provided in your shipping confirmation email, or sign in to <a href=\"https:\/\/www.bebe.com\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" All domestic returns are charged a flat $7, which will be deducted from the refund amount.  (Please note: eligible ShopRunner orders from the 48 contiguous states enjoy free returns.)<\/p> \n\n<p>In the portal, you can either print out a prepaid return shipping label that you can use to ship your return via UPS or you can schedule a convenient in-home pickup by the U.S. Postal Service. Place item(s) and completed packing slip in secure packaging and seal. Remove or cover original labels, and affix the prepaid label to outside of the package. Either drop the package off at a UPS location or have it picked up by the USPS. UPS locations include The UPS Store, UPS drop boxes, UPS customer service centers and UPS drivers. You can find your nearest UPS location at <a href=\"http:\/\/ups.com\/dropoff\" target=\"_blank\">ups.com\/dropoff<\/a>. To track your return, access the self-service returns portal, click the link in the original shipping confirmation email, or sign in to <a href=\"https:\/\/www.bebe.com\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\"<\/p>\n\n<p>Please allow 2-3 weeks from the time you mail your return for it to be processed. We?ll send you an email confirmation once your return is complete.<\/p>\n\n<p>For complete details on returning an item, including in-store returns, please visit our <a href=\"\/pages\/returns\">Returns<\/a> page. If you believe your return is due to our error, please <a href=\"\/pages\/contact-us\">Contact Us<\/a>.<\/p>",
+              "anchor": "return"
+            }
+          },
+          "1545695760166": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "MY PROMOTIONAL CODE IS NOT WORKING. WHY?",
+              "answer": "<p>Promotional codes always contain qualifiers. Please make sure you have reached the right amount of pre-tax sale dollars, the correct number of items or any of the other conditions that apply to the promotion. Please verify that you have provided the correct code. If you are still having trouble, please contact <a href=\"\/pages\/contact-us\">Client Services<\/a>. <\/p>",
+              "anchor": "promo"
+            }
           }
         },
         "block_order": [
+          "1545694490844",
+          "1545694625513",
+          "1545694702329",
+          "1545695009550",
+          "1545695430831",
+          "1545695624500",
+          "1545695760166",
+          "1545689790310",
           "1542219298126",
           "1542220082322",
           "1542220259294",
@@ -998,6 +1105,7 @@
           "1542220502350",
           "1542220523668",
           "1542220577233",
+          "1545690577541",
           "1542220607549",
           "1544774629895",
           "1544774693805",
@@ -1009,27 +1117,27 @@
           "1544775098460",
           "1544775147134",
           "1544775170861",
+          "1545690845240",
           "1544775204364",
           "1544775397397",
           "1544775433942",
+          "1545690913359",
           "1544775513100",
           "1544775552036",
           "1544775580124"
         ],
         "settings": {
-          "anchor_top_offset": -100,
+          "anchor_top_offset": -180,
           "section_title_top": "Client Services",
-          "before_content": "<h2 class=\"heading\">FAQs<\/h2>\n<h3><a href=\"#ordershipping\">Ordering\/Shipping Questions<\/a><\/h3>\n<h3><a href=\"#clubbebe\">Clubbebe Questions<\/a><\/h3>\n<h3><a href=\"#rating\">Ratings &amp; Reviews Questions<\/a><\/h3>\n<h3><a href=\"#prop65\">California's Prop 65 Questions<\/a><\/h3>",
+          "before_content": "",
           "after_content": "<p> <\/p>\n<p><a href=\"#top\">Back to Top<\/a><\/p>",
-          "landing_page_faq_nav": "side-menu-faq",
-          "landing_page_about_nav": "side-menu-about"
+          "landing_page_cs_nav": "side-menu-cs"
         }
       },
       "page-landing-template": {
         "type": "page-landing-template",
         "settings": {
-          "landing_page_faq_nav": "side-menu-faq",
-          "landing_page_about_nav": "side-menu-about"
+          "landing_page_cs_nav": "side-menu-cs"
         }
       },
       "1544343478271": {
@@ -1067,22 +1175,14 @@
         "type": "page-contact-template",
         "settings": {
           "show_contact_form": true,
-          "landing_page_faq_nav": "side-menu-faq",
-          "landing_page_about_nav": "side-menu-about"
-        }
-      },
-      "404-template": {
-        "type": "404-template",
-        "settings": {
-          "fourohfour_content": "404-content"
+          "landing_page_cs_nav": "side-menu-cs"
         }
       }
     },
     "content_for_index": [
       "1535728526385",
       "1536251685211",
-      "1544343478271",
-      "1545264907890"
+      "1544343478271"
     ]
   }
 }
