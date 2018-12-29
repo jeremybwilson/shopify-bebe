@@ -719,7 +719,7 @@
               "heading_only": false,
               "title": "MY PASSWORD IS NOT WORKING. HOW DO I ACCESS MY bebe.com ACCOUNT?",
               "answer": "<p>We recently launched a new and improved version of bebe.com, and for your security, you'll need to update your password to access your account. Please go to our <a href=\"\/user\/login.jsp\">Sign In<\/a> page, enter your email address and current password, click the \"Sign In\" button, and you will be prompted to request an email that will allow you to update your password.<\/p>",
-              "anchor": "password"
+              "anchor": "custservice"
             }
           },
           "1545694625513": {
@@ -728,7 +728,7 @@
               "heading_only": false,
               "title": "HOW DO I ACCESS MY CLUBBEBE ACCOUNT?",
               "answer": "<p>If you create a bebe.com account using the same email address you used to sign up for clubbebe, your clubbebe information will automatically show up in <a href=\"\/user\/main.jsp\">My Account<\/a> after you sign in, under \"clubbebe Points &amp; Rewards.\" If you have created a bebe.com account and you're still having trouble accessing your clubbebe information, please <a href=\"\/pages\/contact-us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777).<\/p>",
-              "anchor": "access"
+              "anchor": ""
             }
           },
           "1545694702329": {
@@ -737,7 +737,7 @@
               "heading_only": false,
               "title": "HOW MUCH IS SHIPPING AND HANDLING?",
               "answer": "<p>We offer a range of shipping options. Please see <a href=\"\/pages\/shipping\">Shipping<\/a> for details.<\/p>",
-              "anchor": "shipping"
+              "anchor": ""
             }
           },
           "1545695009550": {
@@ -746,7 +746,34 @@
               "heading_only": false,
               "title": "INTERNATIONAL SHIPPING",
               "answer": "<p>bebe.com has partnered with a trusted third-party company, International Checkout, to fulfill orders for our international customers.<\/p>\n<p>Please note that International Checkout coordinates your bebe.com order and is responsible for all billing, shipping and customer service issues related to your International order: <\/p>\n<ul>\n  <li> Select your items at <a href=\"\/\">http:\/\/www.bebe.com<\/a> and put your items in the bebe Shopping Bag.<\/li>\n<\/ul>\n<ul>\n  <li> Select the International Shipping link in the shopping bag.<\/li>\n<\/ul>\n<ul>\n  <li> Confirm the items in your bag are ready for purchase and proceed to International Checkout by selecting the International Checkout button.<\/li>\n<\/ul>\n<ul>\n  <li> The item name, sku number and price will be transferred to International Checkout for processing<\/li>\n  <li> To complete your order, you will be asked to fill in shipping and billing information on the International Checkout website\n  <\/li>\n<\/ul>\n<p>If you would like assistance placing your order, please contact International Checkout: <a href=\"mailto:support@internationalcheckout.com\">support@internationalcheckout.com<\/a><\/p>\n<div>\n  <div class=\"returnTable\">\n    <div class=\"returnTableTitle\">\n      <p>CUSTOMER SERVICE HOURS: 8 AM TO 6 PM PT<\/p>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>USA Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+001.310.601.8196<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>UK Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+44.20.8133.2436<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Australia Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+61.28003.4685<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Germany Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+49.618.530.9342<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Sweden Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+46.4069.35779<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>Ireland Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+01.443.3715<\/p><\/div>\n<\/div>\n<div class=\"tableRow\">\n<div class=\"tableCol col1\"><p>New Zealand Phone:<\/p><\/div>\n<div class=\"tableCol col2\"><p>+09.889.0408<\/p><\/div>\n    <\/div>\n  <\/div>\n<\/div>\n\n<p>To check the status of your order or track your package, please log in to your International <br> Checkout account at: <a href=\"https:\/\/www.internationalcheckout.com\/login.php\">https:\/\/www.internationalcheckout.com\/login.php<\/a><\/p>\n<p>To learn more, view International Checkout's Customer Service and Terms &amp; Conditions information at:<a href=\"http:\/\/www.internationalcheckout.com\/cs.php\"> http:\/\/www.internationalcheckout.com\/cs.php<\/a><\/p>",
-              "anchor": "international"
+              "anchor": ""
+            }
+          },
+          "1545695430831": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I TRACK MY ORDER?",
+              "answer": "<p>Once your order ships, we'll send you an email that contains tracking info and links. You can also sign in to <a href=\"\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" Please note it may take up to 24-48 hours for tracking information to appear. Still have questions? Please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545695624500": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I RETURN AN ITEM?",
+              "answer": "<p>If you don't absolutely love your new purchase, you may return your item(s) within 21 days in the original country and division of purchase. All items must be in original, new, unworn, undamaged and unaltered condition with all tags attached (including the return tag on dresses, rompers and jumpsuits) and accompanied by your receipt.<\/p>\n<p>Please note that Final Sale items with prices ending in $.99, bebeoutlets.com purchases, gift cards, lingerie and swimwear cannot be returned or exchanged. We're unable to honor previous sale prices, promotions and\/or price adjustments. Shipping and handling charges will not be refunded. Unfortunately, we cannot accept any item for return that is not in original, new condition or damaged due to:<\/p>\n<ul class=\"custfaq\">\n  <li style=\"margin-left:20px;\">Soiling or staining (food, lipstick, makeup, bleach, marker\/pen, sweat, dirt, etc.)<\/li>\n  <li style=\"margin-left:20px\">Wear and tear (worn, ripping, tearing, snagging)<\/li>\n  <li style=\"margin-left:20px\">Scent (perfume, body odor, mildew)<\/li>\n<\/ul>\n\n<p style=\"margin-top:10px;margin-bottom: 10px;\">To place a bebe.com return, please access the <a href=\"http:\/\/returns.narvar.com\/bebe\/returns\">self-service returns portal<\/a>. You'll need your order number and billing ZIP code. You can also click on the link provided in your shipping confirmation email, or sign in to <a href=\"https:\/\/www.bebe.com\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" All domestic returns are charged a flat $7, which will be deducted from the refund amount.  (Please note: eligible ShopRunner orders from the 48 contiguous states enjoy free returns.)<\/p> \n\n<p>In the portal, you can either print out a prepaid return shipping label that you can use to ship your return via UPS or you can schedule a convenient in-home pickup by the U.S. Postal Service. Place item(s) and completed packing slip in secure packaging and seal. Remove or cover original labels, and affix the prepaid label to outside of the package. Either drop the package off at a UPS location or have it picked up by the USPS. UPS locations include The UPS Store, UPS drop boxes, UPS customer service centers and UPS drivers. You can find your nearest UPS location at <a href=\"http:\/\/ups.com\/dropoff\" target=\"_blank\">ups.com\/dropoff<\/a>. To track your return, access the self-service returns portal, click the link in the original shipping confirmation email, or sign in to <a href=\"https:\/\/www.bebe.com\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\"<\/p>\n\n<p>Please allow 2-3 weeks from the time you mail your return for it to be processed. We?ll send you an email confirmation once your return is complete.<\/p>\n\n<p>For complete details on returning an item, including in-store returns, please visit our <a href=\"\/pages\/returns\">Returns<\/a> page. If you believe your return is due to our error, please <a href=\"\/pages\/contact-us\">Contact Us<\/a>.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545695760166": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "MY PROMOTIONAL CODE IS NOT WORKING. WHY?",
+              "answer": "<p>Promotional codes always contain qualifiers. Please make sure you have reached the right amount of pre-tax sale dollars, the correct number of items or any of the other conditions that apply to the promotion. Please verify that you have provided the correct code. If you are still having trouble, please contact <a href=\"\/pages\/contact-us\">Client Services<\/a>. <\/p>",
+              "anchor": ""
             }
           },
           "1545689790310": {
@@ -1055,35 +1082,18 @@
               "anchor": ""
             }
           },
-          "1545695430831": {
+          "1546049621783": {
             "type": "html",
             "settings": {
-              "heading_only": false,
-              "title": "HOW DO I TRACK MY ORDER?",
-              "answer": "<p>Once your order ships, we'll send you an email that contains tracking info and links. You can also sign in to <a href=\"\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" Please note it may take up to 24-48 hours for tracking information to appear. Still have questions? Please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.<\/p>",
-              "anchor": "status"
-            }
-          },
-          "1545695624500": {
-            "type": "html",
-            "settings": {
-              "heading_only": false,
-              "title": "HOW DO I RETURN AN ITEM?",
-              "answer": "<p>If you don't absolutely love your new purchase, you may return your item(s) within 21 days in the original country and division of purchase. All items must be in original, new, unworn, undamaged and unaltered condition with all tags attached (including the return tag on dresses, rompers and jumpsuits) and accompanied by your receipt.<\/p>\n<p>Please note that Final Sale items with prices ending in $.99, bebeoutlets.com purchases, gift cards, lingerie and swimwear cannot be returned or exchanged. We're unable to honor previous sale prices, promotions and\/or price adjustments. Shipping and handling charges will not be refunded. Unfortunately, we cannot accept any item for return that is not in original, new condition or damaged due to:<\/p>\n<ul class=\"custfaq\">\n  <li style=\"margin-left:20px;\">Soiling or staining (food, lipstick, makeup, bleach, marker\/pen, sweat, dirt, etc.)<\/li>\n  <li style=\"margin-left:20px\">Wear and tear (worn, ripping, tearing, snagging)<\/li>\n  <li style=\"margin-left:20px\">Scent (perfume, body odor, mildew)<\/li>\n<\/ul>\n\n<p style=\"margin-top:10px;margin-bottom: 10px;\">To place a bebe.com return, please access the <a href=\"http:\/\/returns.narvar.com\/bebe\/returns\">self-service returns portal<\/a>. You'll need your order number and billing ZIP code. You can also click on the link provided in your shipping confirmation email, or sign in to <a href=\"https:\/\/www.bebe.com\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\" All domestic returns are charged a flat $7, which will be deducted from the refund amount.  (Please note: eligible ShopRunner orders from the 48 contiguous states enjoy free returns.)<\/p> \n\n<p>In the portal, you can either print out a prepaid return shipping label that you can use to ship your return via UPS or you can schedule a convenient in-home pickup by the U.S. Postal Service. Place item(s) and completed packing slip in secure packaging and seal. Remove or cover original labels, and affix the prepaid label to outside of the package. Either drop the package off at a UPS location or have it picked up by the USPS. UPS locations include The UPS Store, UPS drop boxes, UPS customer service centers and UPS drivers. You can find your nearest UPS location at <a href=\"http:\/\/ups.com\/dropoff\" target=\"_blank\">ups.com\/dropoff<\/a>. To track your return, access the self-service returns portal, click the link in the original shipping confirmation email, or sign in to <a href=\"https:\/\/www.bebe.com\/user\/login.cmd\">My Account<\/a> and follow the tracking link under \"Order History.\"<\/p>\n\n<p>Please allow 2-3 weeks from the time you mail your return for it to be processed. We?ll send you an email confirmation once your return is complete.<\/p>\n\n<p>For complete details on returning an item, including in-store returns, please visit our <a href=\"\/pages\/returns\">Returns<\/a> page. If you believe your return is due to our error, please <a href=\"\/pages\/contact-us\">Contact Us<\/a>.<\/p>",
-              "anchor": "return"
-            }
-          },
-          "1545695760166": {
-            "type": "html",
-            "settings": {
-              "heading_only": false,
-              "title": "MY PROMOTIONAL CODE IS NOT WORKING. WHY?",
-              "answer": "<p>Promotional codes always contain qualifiers. Please make sure you have reached the right amount of pre-tax sale dollars, the correct number of items or any of the other conditions that apply to the promotion. Please verify that you have provided the correct code. If you are still having trouble, please contact <a href=\"\/pages\/contact-us\">Client Services<\/a>. <\/p>",
-              "anchor": "promo"
+              "heading_only": true,
+              "title": "Customer Service",
+              "answer": "",
+              "anchor": "custservice"
             }
           }
         },
         "block_order": [
+          "1546049621783",
           "1545694490844",
           "1545694625513",
           "1545694702329",
@@ -1127,7 +1137,7 @@
           "1544775580124"
         ],
         "settings": {
-          "anchor_top_offset": -180,
+          "anchor_top_offset": -200,
           "section_title_top": "Client Services",
           "before_content": "",
           "after_content": "<p> <\/p>\n<p><a href=\"#top\">Back to Top<\/a><\/p>",
