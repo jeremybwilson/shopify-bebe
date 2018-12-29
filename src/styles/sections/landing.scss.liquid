@@ -181,6 +181,138 @@
       }
     }
 
+    /* Mobile App Page CSS */
+    .app-page-wrapper {
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-direction(column);
+      @include align-items(center);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .on-the-go {
+      @include flexbox;
+      @include flex-direction(row);
+      @include justify-content(center);
+      @include align-items(center);
+      margin: 10px auto 35px;
+
+      span {
+        @include fontSize(22px);
+        font-weight: $font-weight--book;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      img {
+        margin: 0 5px;
+      }
+    }
+
+    .on-mob-wrapper {
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(center);
+      @include flex-wrap(wrap);
+      width: 100%;
+
+      @include mq('tablet-and-up'){
+        @include align-items(flex-start);
+      }
+
+      .on-mobile-devices-left, .on-mobile-devices-right {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        @include align-items(center);
+        width: 100%;
+        margin: 0;
+      }
+
+      .on-mobile-devices-left {
+        @include mq('lap-and-up'){
+        }
+        @include mq('tablet-and-up'){
+          width: 55%;
+        }
+        img {
+          @include mq('tablet-and-up'){}
+        }
+      }
+
+      .on-mobile-devices-mid {
+        display: none;
+
+        @include mq('tablet-and-up') {
+          display: flex;
+          margin: 0;
+          width: 10%;
+        }
+
+        img {
+          width: 90%;
+        }
+      }
+
+      .on-mobile-devices-right {
+        padding: 0;
+        margin-top: 20px;
+
+        @include mq('lap-and-up'){
+          // width: calc(40% - 10px);
+        }
+        @include mq('tablet-and-up') {
+          width: 35%;
+          padding-left: 10px;
+          margin-top: 0;
+        }
+
+        .bebe-mob-app {
+          @include flexbox;
+          @include align-items(center);
+          @include justify-content(center);
+          width: 100%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(flex-start);
+          }
+
+          span.heading {
+            @include fontSize(17px);
+            width: auto;
+          }
+        }
+
+        p, .app-store-logos {
+          @include flexbox;
+          @include justify-content(center);
+          @include fontSize(12px);
+          width: 100%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(flex-start);
+          }
+        }
+        
+        .bullet-list {
+          display: block;
+
+          @include mq('tablet-and-up'){
+            width: 100%;
+          }
+        }
+
+        p, span {
+          text-transform: uppercase;
+        }
+
+        .app-store-logos {
+          width: 100%;
+        }
+      }
+    }
+
+
     .us-ship-table {
       display: none;
       background-color: #eaeaea;
