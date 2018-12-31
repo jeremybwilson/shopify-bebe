@@ -185,7 +185,9 @@
     {% comment %} :: RECENTLY VIEWED :: {% endcomment %}
     {% if section.settings.show_recently_viewed %}
       {% if section.settings.recently_viewed_type == 'nosto' and section.settings.recently_viewed_nosto_id != blank %}
-        {% include 'nosto-element' with section.settings.recently_viewed_nosto_id %}
+        <div class="row">
+          {% include 'nosto-element' with section.settings.recently_viewed_nosto_id %}
+        </div>
       {% else %}
         {% include 'recently-viewed' %}
       {% endif %}
@@ -194,7 +196,7 @@
     {% comment %} :: RECOMMENDED PRODUCTS :: {% endcomment %}
     {% if section.settings.nosto_rec_show and section.settings.nosto_rec_id != blank %}
       <div class="row">
-        {% include 'nosto-element' with 'productpage-nosto-2' %}
+        {% include 'nosto-element' with section.settings.nosto_rec_id %}
       </div>
     {% endif %}
 
