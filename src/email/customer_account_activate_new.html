@@ -1,6 +1,6 @@
 {% capture email_title %}Activate your account{% endcapture %}
 {% capture email_body %}
-  <p>You've created a new customer account at <a href="{{shop.url}}">bebe.com</a>. All you have to do is activate it.</p>
+  <p>You've created a new customer account at <a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate">bebe.com</a>. All you have to do is activate it.</p>
 {% endcapture %}
 
 <!DOCTYPE html>
@@ -27,6 +27,10 @@
 
     a:visited {
       color: #9d6d31;
+    }
+
+    .body {
+      border: 1px solid #d3dbe2;
     }
 
     .disclaimer__subtext,
@@ -57,7 +61,7 @@
                               <img src="{{shop.email_logo_url}}" alt="bebe.com" width="{{ shop.email_logo_width }}">
                             {%- else %}
                               <h1 class="shop-name__text">
-                                <a href="{{shop.url}}">bebe.com</a>
+                                <a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate">bebe.com</a>
                               </h1>
                             {%- endif %}
                           </td>
@@ -112,8 +116,8 @@
                 <table class="container" style="text-align:center;margin-bottom:40px;">
                   <tr>
                     <td><a href="#" style="color:#000;text-decoration:none;letter-spacing:1px;">FIND A STORE</a></td>
-                    <td><a href="{{ shop.url }}/account" style="color:#000;text-decoration:none;letter-spacing:1px;">MY ACCOUNT</a></td>
-                    <td><a href="{{ shop.url }}/pages/clubbebe" style="color:#000;text-decoration:none;letter-spacing:1px;">CLUBBEBE</a></td>
+                    <td><a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate/account?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate" style="color:#000;text-decoration:none;letter-spacing:1px;">MY ACCOUNT</a></td>
+                    <td><a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate/pages/clubbebe?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate" style="color:#000;text-decoration:none;letter-spacing:1px;">CLUBBEBE</a></td>
                   </tr>
                 </table>
               </center>
@@ -125,7 +129,7 @@
                         Have a question? Call us at 877-bebe-777 (<a href="tel:877-232-37777">877-232-37777</a>).
                       </p>
                       <p class="disclaimer__subtext">
-                        To continue to receive <a href="{{ shop.url }}">bebe.com</a> email,
+                        To continue to receive <a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate">bebe.com</a> email,
                         please add <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
                         to your address book.
                       </p>
