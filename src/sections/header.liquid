@@ -95,8 +95,9 @@
 
       {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
       <div id="nav-logo">
-          <a href="/">
+          <a href="/" title="{{ shop.name }}">
             {% include 'svg-icon-header-logo' %}
+            <span class="sr-only">{{ shop.name }}</span>
           </a>
       </div>
       <div id="nav-logo-backing"></div>
