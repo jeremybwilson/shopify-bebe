@@ -298,12 +298,12 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                     position: absolute;
                     right: 12px;
                     top: 50%;
+                    transform: translateY(-50%);
                     border-bottom: none;
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;
                     border-top: 5px solid $filterArrowColor;
                     transition: all 0.25s ease-in-out;
-                    margin-top: -5px;
                     content: ' ';
                     background: $filterBg;
                     pointer-events: none; // so it doesn't become an unclickable area
@@ -344,6 +344,8 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 // Mobile
                 @include mq( 'lap-and-up' ) {
                     position: relative;
+                    padding-left: 7px;
+                    margin-left: 25px;
                     opacity: 1;
                     padding-right: 32px;
                     @include fontSize( 10px ); 
@@ -400,7 +402,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 // SORT : LABEL : Hide select label visually so label is click element visually
                 .styled-select {
                     @include fontSize( 12px );
-                    min-width: 100px;
+                    // min-width: 100px;
                     width: 100px;
                     color: $filterBg; //Hide text, but still use menu
                     cursor: pointer;
