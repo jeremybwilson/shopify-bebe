@@ -62,7 +62,7 @@ body > .page-wrap {
 #content {
   position: relative;
   //padding: 0 0 100px 0;
-  padding: 100px 0;
+  padding: 60px 0;
 
   // special pages that don't need padding at the top
 
@@ -72,6 +72,12 @@ body > .page-wrap {
   }
   body.product & {
     padding-bottom: 20px;
+  }
+
+  body.page-landing &,
+  body.page-faq &,
+  body.page-contact & {
+    max-width: 1200px;
   }
 }
 
@@ -243,4 +249,8 @@ button.shopify-payment-button__more-options {
     width: 100%;
     margin: 0 auto;
   }
+}
+
+.sr-only {
+  display: none;
 }
