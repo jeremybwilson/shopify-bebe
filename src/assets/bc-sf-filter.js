@@ -151,7 +151,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
         itemPriceHtml += '<div class="was">' + this.formatMoney(data.compare_at_price_min, this.moneyFormat) + '</div>';
         
     } else {
-        itemPriceHtml += '<div class="prod-price">';
+        itemPriceHtml += '<div class="prod-price bfx-price">';
         
         if (priceVaries) {
             itemPriceHtml += bcSfFilterConfig.label.from_price + ' ' + this.formatMoney(data.price_min, this.moneyFormat) + ' - ' + this.formatMoney(data.price_max, this.moneyFormat);

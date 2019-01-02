@@ -1,8 +1,3 @@
-{% assign use_swatches = false %}
-{% if section.settings.product_variants == 'swatches' and product.type != 'Gift Card' %}
-  {% assign use_swatches = true %}
-{% endif %}
-
 {% assign call_to_action = 'products.product.add_to_cart' | t %}
 
 {% unless current_variant.available %}
@@ -28,10 +23,10 @@
   {% comment %} :: SALE PRICE - FORMATTING :: {% endcomment %}
   <div id="product-price" class="has-compare-price">
     <span class="product-price" itemprop="price">
-      <span class="money">{{ price }}</span>
+      <span class="money bfx-price">{{ price }}</span>
     </span>
       <span class="was">
-        <span class="money">{{ compare_price }}</span>
+        <span class="money bfx-price">{{ compare_price }}</span>
       </span>
   </div>
 
@@ -40,7 +35,7 @@
   {% comment %} :: REGULAR PRICE :: {% endcomment %}
   <div id="product-price">
     <span class="product-price" itemprop="price">
-      <span class="money">{{ price }}</span>
+      <span class="money bfx-price">{{ price }}</span>
     </span>
   </div>
   
@@ -57,7 +52,7 @@
   {% endcomment %}
   {% if product.options.size > 1 %}
 
-    <div class="select" {% if product.variants.size == 1 or use_swatches %}style="display: none;"{% endif %}>
+    <div class="select" {% if product.variants.size == 1 or section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
       <select id="product-select-{{ product.id }}" name='id'>
         {% for variant in product.variants %}
           <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
@@ -66,7 +61,7 @@
         {% endfor %}
       </select>
     </div><!-- .select -->
-    {% if use_swatches %}
+    {% if section.settings.product_variants == 'swatches' %}
 
       {% comment %} 
       :: CYCLE #1 :: (Cycle through the available options )
@@ -82,7 +77,7 @@
   {% endcomment %}
   {% elsif product.options.size == 1 and product.variants.size > 1 %}
 
-    <div class="product-selector select" {% if use_swatches %}style="display: none;"{% endif %}>
+    <div class="select" {% if section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
       <label>{{ product.options[0] }}</label>
       <select id="product-select-{{ product.id }}" name='id'>
         {% for variant in product.variants %}
@@ -92,7 +87,7 @@
         {% endfor %}
       </select>
     </div><!-- .select -->
-    {% if use_swatches %}
+    {% if section.settings.product_variants == 'swatches' %}
 
       {% comment %} Option Loop 
 
@@ -114,7 +109,7 @@
 
   {% elsif product.variants.size == 1 %}
 
-    <select id="product-select-{{ product.id }}" name="id" {% if product.variants.size == 1 or use_swatches %}style="display: none;"{% endif %}>
+    <select id="product-select-{{ product.id }}" name="id" {% if product.variants.size == 1 or section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
       {% for variant in product.variants %}
         <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
           {{ variant.title }} - {{ variant.price | money }}

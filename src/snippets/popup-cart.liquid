@@ -6,7 +6,7 @@
     {% include 'shopping-cart' %}
 
     <div class="desktop-12 tablet-6 quick-cart-total">
-      {{ 'cart.general.subtotal' | t }}: <span class="cart_total"><span class="money">{{ cart.total_price | money }}</span></span>
+      {{ 'cart.general.subtotal' | t }}: <span class="cart_total"><span class="money bfx-price">{{ cart.total_price | money }}</span></span>
     </div>
 
     {% if cart.item_count != 0 %}

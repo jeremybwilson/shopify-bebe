@@ -133,13 +133,17 @@
     {{ "customer_area.js"  | shopify_asset_url | script_tag }}
   {% endif %}
 
+  {% include 'borderfree-snippets' %}
+
   {{ content_for_header }}
+
+  {{ 'bfx.scss.css' | asset_url | stylesheet_tag }}
 
   {% include 'nosto-script' with 'shopify-3379396672' %}
 
 </head>
 
-<body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
+<body class="gridlock shifter bfx-price-container bfx-remove-element-container {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
   {% section 'offer-tab' %}
   {% comment %}{% include 'script-google-tag-body' %}{% endcomment %}
   {% include 'timber-cart' %}
@@ -271,5 +275,14 @@
   {% include 'bc-sf-filter' %}
 <!--end-bc-sf-filter-js-->
   {% include 'nosto-tagging' %}
+  {% include 'borderfree-custom-selector' %}
+
+  <script src="{{ 'borderfree.js' | asset_url }}"></script>
+  <script>
+    const isProd = {{ isProd | json }};
+    (function() {
+      Borderfree.init(isProd);
+    }());
+  </script>
 </body>
 </html>
