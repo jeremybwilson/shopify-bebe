@@ -39,7 +39,7 @@
                     <span class="ajaxcart__product-meta">{{ vendor }}</span>
                   {% endraw %}{% endif %}{% raw %}
                 </p>
-                <p><strong>{{{price}}}</strong></p>
+                <p><strong class="bfx-price bfx-list-price">{{{price}}}</strong></p>
 
                 <div class="display-table">
                   <div class="display-table-cell">
@@ -74,11 +74,11 @@
             <p><strong>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</strong></p>
           </div>
           <div class="desktop-half tablet-half mobile-half">
-            <p class="text-right"><strong>{{{totalPrice}}}</strong></p>
+            <p class="text-right"><strong class="bfx-price bfx-minicart-subtotal">{{{totalPrice}}}</strong></p>
           </div>
 
         <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
-        <button type="submit" class="cart__checkout" name="checkout">
+        <button type="submit" class="cart__checkout js-cart-drawer-checkout" name="checkout">
           {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}
         </button>
         {% endraw %}{% if additional_checkout_buttons %}
@@ -116,5 +116,3 @@
     </div>
   {% endraw %}
   </script>
-
-

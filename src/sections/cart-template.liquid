@@ -33,16 +33,18 @@
         document.getElementById('cartform').submit();
       }
     </script>
-    <form action="/cart" method="post" id="cartform">
+    <form action="/cart" method="post" id="cartform" class="bfx-checkout-container">
+      <div id="cartform--table " class="desktop-8 tablet-6 mobile-3">
 
-      <div id="cartform--table" class="desktop-8 tablet-6 mobile-3">
+       <span class="hide bfx-customData-label">userAgent</span>
+      <span class="hide bfx-customData-value" id="orderUserAgent"></span>
 
         {% for item in cart.items %}
           {% comment %} CART : LOOP {% endcomment %}
           {% assign item_name = item.title | split: ' - ' | first %}
           {% assign item_props = item.title | split: ' - ' | last %}
 
-          <div class="cartform--item">
+          <div class="cartform--item bfx-product">
             {% comment %} CART : LOOP : Image {% endcomment %}
             <div class="cart-image">
                 <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
@@ -55,7 +57,7 @@
               <div class="cart-item-info">
                 {% if settings.vendor %}<p>{{ item.vendor }}</p>{% endif %}
                 <span class="cart-title">
-                  <a href="{{ item.url }}" title="{{ item.product.title | escape }}">{{ item_name }}</a>
+                  <a class="bfx-product-name" href="{{ item.url }}" title="{{ item.product.title | escape }}">{{ item_name }}</a>
                 </span>
                 <span class="cart-props">
                   {{ item_props }}
@@ -64,6 +66,13 @@
                 <span class="cart-sku">
                   SKU: {{ item.sku }}
                 </span>
+
+                <span class="bfx-sku hide">
+                {{ item.variant_id }}
+                </span>
+
+                <span class="bfx-product-customData-label hide">variant_id</span>
+                <span class="bfx-product-customData-value hide">{{ item.variant_id }}</span>
 
                 {% comment %} CART : ITEM : Price {% endcomment %}
 
@@ -82,7 +91,7 @@
                 {% else %}
 
                   <div class="prod-price">
-                    <span class="money">{{ item.price | money }}</span>
+                    <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
                   </div>
 
                 {% endif %}
@@ -92,7 +101,7 @@
 
                 <div class="cart-quantity">
                   <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
-                  <input type="text" class="cart-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
+                  <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
                 </div>                
 
               </div>
@@ -126,7 +135,7 @@
 
             </div>
             <div class="cart--total-price">
-              <span class="money">{{ item.line_price | money }}</span>
+              <span class="money bfx-price bfx-product-subtotal">{{ item.line_price | money }}</span>
             </div>
           </div>
         {% endfor %}
@@ -151,8 +160,8 @@
 
       <div id="basket-right" class="desktop-4 tablet-6 mobile-3">
         <h3>{{ 'cart.general.order_summary' | t }}</h3>
-        <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money">{{ cart.total_price | money }}</span></h4>
-        <input type="submit" name="checkout" id="checkout" value="{{ 'cart.general.checkout' | t }}" class="button" />
+        <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart.total_price | money }}</span></h4>
+        <input type="submit" name="checkout" id="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout" />
         <div class="clear"></div>
         {% if additional_checkout_buttons %}
           {{ content_for_additional_checkout_buttons }}
