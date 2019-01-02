@@ -2,7 +2,7 @@
   {%- if section.settings.homepage_only == false or template.name == 'index' -%}
     <div class="offer-tab" data-section-id="{{ section.id }}" data-section-type="offer-tab-section">
       <a href="#newsletter-modal" class="js-offer-tab offer-tab__label">{{ section.settings.label }}</a>
-      <label class="offer-tab__cross js-offer-tab-close">{% include 'svg-icon-x' %}</label>
+      <span class="offer-tab__cross js-offer-tab-close">{% include 'svg-icon-x' %}</span>
     </div>
     
     {% include 'newsletter-modal' %}

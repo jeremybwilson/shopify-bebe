@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .offer-tab {
-  @include fontSize(15px);
   height: initial;
   line-height: 1;
   background-color: $color--primary-1;
@@ -24,6 +23,7 @@
 }
 
 a.offer-tab__label {
+  @include fontSize(15px);
   display: inline-block;
   color: inherit;
   padding: 15px 4px 15px 15px;
@@ -35,13 +35,14 @@ a.offer-tab__label {
 }
 
 .offer-tab__cross {
+  @include fontSize(12px);
   cursor: pointer;
   padding: 15px 15px 15px 4px;
   position: relative;
   display: inline-block;
   line-height: 0;
   color: $color--reverse-1;
-  
+
   svg {
     width: 1em;
     height: 1em;
