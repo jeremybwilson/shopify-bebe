@@ -1,6 +1,7 @@
 {% if settings.facebook_url != blank %}
   <li>
-    <a href="{{ settings.facebook_url }}" target="_blank" title="Facebook">
+    <a href="{{ settings.facebook_url }}" target="_blank" title="{{ settings.facebook_title_alt_text }}">
+      <span class="sr-only">{{ settings.facebook_title_alt_text }}</span>
       {% comment %} {% include 'svg-icon-facebook' %} {% endcomment %}
       {% include 'svg-icon-facebook2' %}
     </a>
@@ -9,7 +10,8 @@
 
 {% if settings.instagram_url != blank %}
     <li>
-      <a href="{{ settings.instagram_url }}" target="_blank" title="Instagram">
+      <a href="{{ settings.instagram_url }}" target="_blank" title="{{ settings.instagram_title_alt_text }}">
+        <span class="sr-only">{{ settings.instagram_title_alt_text }}</span>
         {% include 'svg-icon-instagram' %}
       </a>
     </li>
@@ -17,7 +19,8 @@
 
 {% if settings.snapchat_url != blank %}
     <li>
-      <a href="{{ settings.snapchat_url }}" target="_blank" title="Snapchat">
+      <a href="{{ settings.snapchat_url }}" target="_blank" title="{{ settings.snapchat_title_alt_text }}">
+        <span class="sr-only">{{ settings.snapchat_title_alt_text }}</span>
         {% comment %} <i class="fa fa-snapchat fa-2x"></i> {% endcomment %}
         {% include 'svg-icon-snapchat2' %}
       </a>
@@ -26,7 +29,8 @@
 
 {% if settings.twittername != blank %}
   <li>
-    <a href="{{ settings.twittername }}" target="_blank" title="Twitter">
+    <a href="{{ settings.twittername }}" target="_blank" title="{{ settings.twitter_title_alt_text }}">
+      <span class="sr-only">{{ settings.twitter_title_alt_text }}</span>
       {% comment %} <i class="fa fa-twitter fa-2x"></i> {% endcomment %}
       {% include 'svg-icon-twitter' %}
     </a>
@@ -35,7 +39,8 @@
 
 {% if settings.googleplus_url != blank %}
   <li>
-    <a href="{{ settings.googleplus_url }}" target="_blank" title="Google Plus">
+    <a href="{{ settings.googleplus_url }}" target="_blank" title="{{ settings.googleplus_title_alt_text }}">
+      <span class="sr-only">{{ settings.googleplus_title_alt_text }}</span>
       {% comment %} <i class="fa fa-google-plus fa-2x"></i> {% endcomment %}
       {% include 'svg-icon-googleplus' %}
     </a>
@@ -44,7 +49,8 @@
 
 {% if settings.youtube_url != blank %}
   <li>
-    <a href="{{ settings.youtube_url }}" target="_blank" title="Youtube">
+    <a href="{{ settings.youtube_url }}" target="_blank" title="{{ settings.youtube_title_alt_text }}">
+      <span class="sr-only">{{ settings.youtube_title_alt_text }}</span>
       {% include 'svg-icon-youtube2' %}
     </a>
   </li>
@@ -52,7 +58,8 @@
 
 {% if settings.pinterest_url != blank %}
   <li>
-    <a href="{{ settings.pinterest_url }}" target="_blank" title="Pinterest">
+    <a href="{{ settings.pinterest_url }}" target="_blank" title="{{ settings.pinterest_title_alt_text }}">
+      <span class="sr-only">{{ settings.pinterest_title_alt_text }}</span>
       {% comment %} <i class="fa fa-pinterest fa-2x"></i> {% endcomment %}
       {% include 'svg-icon-pinterest' %}
     </a>
@@ -61,7 +68,7 @@
 
 {% if settings.tumblr_url != blank %}
   <li>
-    <a href="{{ settings.tumblr_url }}" target="_blank" title="Tumblr">
+    <a href="{{ settings.tumblr_url }}" target="_blank" title="{{ settings.tumblr_title_alt_text }}">
       <i class="fa fa-tumblr fa-2x"></i>
     </a>
   </li>
@@ -69,7 +76,8 @@
 
 {% if settings.iphone_app_url != blank %}
   <li>
-    <a href="{{ settings.iphone_app_url }}" target="_blank">
+    <a href="{{ settings.iphone_app_url }}" target="_blank" title="{{ settings.iphone_app_title_alt_text }}">
+      <span class="sr-only">{{ settings.iphone_app_title_alt_text }}</span>
       {% include 'svg-icon-mobile' %}
       {% comment %} <i class="fa fa-android fa-2x"></i> {% endcomment %}
     </a>
@@ -78,7 +86,8 @@
 
 {% if settings.android_app_url != blank %}
   <li>
-    <a href="{{ settings.android_app_url }}" target="_blank">
+    <a href="{{ settings.android_app_url }}" target="_blank" title="{{ settings.android_app_title_alt_text }}">
+      <span class="sr-only">{{ settings.android_app_title_alt_text }}</span>
       {% include 'svg-icon-android' %}
       {% comment %} <i class="fa fa-apple fa-2x"></i> {% endcomment %}
     </a>
