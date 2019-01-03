@@ -8,7 +8,7 @@
   </li>
 {% endif %}
 
-{% if settings.share_twitter != blank %}
+{% if settings.share_twitter %}
   <li>
     <a href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" target="_blank" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
       <span class="sr-only">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
@@ -18,7 +18,7 @@
   </li>
 {% endif %}
 
-{% if settings.share_pinterest != blank %}
+{% if settings.share_pinterest %}
   <li>
     <a href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}" target="_blank" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}">
       <span class="sr-only">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
