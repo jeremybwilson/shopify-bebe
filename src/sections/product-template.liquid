@@ -137,7 +137,7 @@
             {% comment %} :: SOCIAL LINKS :: {% endcomment %}
             {% if section.settings.show_social %}
               <ul id="product-description-social">
-                {% include 'social-icons' %}
+                {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
               </ul>
             {% endif %}
 
