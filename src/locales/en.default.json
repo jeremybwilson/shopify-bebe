@@ -39,7 +39,12 @@
       "submit": "Search"
     },
     "social": {
-   	  "share": "Share"
+       "share": "Share",
+       "alt_text": {
+         "share_on_facebook": "Share on Facebook",
+         "share_on_twitter": "Tweet on Twitter",
+         "share_on_pinterest": "Pin on Pinterest"
+       }
    	}
   },
   "sections": {
