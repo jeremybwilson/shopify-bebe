@@ -2767,11 +2767,11 @@ theme.ProductGallery = function (context, events) {
         $slideshow.slick({
           arrows: true,
           infinite: false,
-          nextArrow: '<button type="button" class="slick-next"><div class="bar-left"></div><div class="bar-right"></div></button>',
-          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"></div><div class="bar-right"></div></button>',
+          nextArrow: '<button type="button" class="slick-next"><div class="bar-left"><span class="sr-only">Next</span></div><div class="bar-right"></div></button>',
+          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"><span class="sr-only>Previous</span></div><div class="bar-right"></div></button>',
           slidesToShow: 5,
           slidesToScroll: 3,
-          slide: '.product-thumbnail',
+          // slide: '.product-thumbnail',
           vertical: true,
           verticalSwiping: true,
           responsive: [
@@ -2799,7 +2799,9 @@ theme.ProductGallery = function (context, events) {
         $slideshow.find('.product-thumbnail').removeClass('active');
         $slideshow.find('.product-video-thumbnail').addClass('active');
         $slideshow.find('[data-color-var="' + color + '"]').addClass('active');
-        $slideshow.slick('slickFilter','.active');
+        $slideshow.slick('slickFilter', function () {
+          return $(this).find('.active').length;
+        });
         $slideshow.find('[data-color-var="' + color + '"]').eq(0).trigger('click');
       }
     };
