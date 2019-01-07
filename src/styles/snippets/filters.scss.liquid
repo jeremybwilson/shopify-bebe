@@ -298,12 +298,12 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                     position: absolute;
                     right: 12px;
                     top: 50%;
+                    transform: translateY(-50%);
                     border-bottom: none;
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;
                     border-top: 5px solid $filterArrowColor;
                     transition: all 0.25s ease-in-out;
-                    margin-top: -5px;
                     content: ' ';
                     background: $filterBg;
                     pointer-events: none; // so it doesn't become an unclickable area
@@ -344,6 +344,8 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 // Mobile
                 @include mq( 'lap-and-up' ) {
                     position: relative;
+                    padding-left: 7px;
+                    margin-left: 25px;
                     opacity: 1;
                     padding-right: 32px;
                     @include fontSize( 10px ); 
@@ -400,7 +402,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
                 // SORT : LABEL : Hide select label visually so label is click element visually
                 .styled-select {
                     @include fontSize( 12px );
-                    min-width: 100px;
+                    // min-width: 100px;
                     width: 100px;
                     color: $filterBg; //Hide text, but still use menu
                     cursor: pointer;
@@ -416,17 +418,30 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
  *    Filter layout and setup on Mobile
  * ---------------------------------------------- */
 #filter-list-mobile-wrap {
+    @include flexbox();
+    @include align-items(center);
     position: relative;
 
+    // SORT
+    .filter-wrap-desktop {
+        margin-bottom: 0;
+    }
+
+    #sortme .sort-label::after {
+        margin-top: 0;
+        transform: translateY(-50%);
+        right: 10px;
+    }
+    
     // FILTER : BUTTON - MOBILE : Filter open button for mobile sizes
     #filter-list-button-wrap {
         //position: absolute;
         z-index: 25;
-        width: 100%;
         left: 0;
         top: {{ settings.filter_bar_border_width }}px; //Adjust top position for border settings
         height: 47px;
         padding: 0;
+        margin-right: auto;
 
         @include mq( 'lap-and-up' ) {
             display: none;
@@ -438,6 +453,7 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
             width: 100%;
             top: 0;
             background: $filterBg;
+            padding-right: 10px;
 
             // BUTTON WRAP - JS Wrap for just the button, it does an innerHTML replacement so had to work around it
             #bc-sf-filter-tree-mobile {
@@ -463,9 +479,9 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
             // FILTER : BUTTON ARROW : (can't do ':after' on above elm as its innerHTML changes via the app js code)
             #filter-button-arrow {
                 position: absolute;
-                right: 20px;
+                right: 0;
                 top: 50%;
-                margin-top: -5px;
+                transform: translateY(-50%);
                 border-bottom: none;
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;

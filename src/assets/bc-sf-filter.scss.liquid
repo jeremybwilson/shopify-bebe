@@ -10,6 +10,43 @@ $breakpointMobile: 767px; $searchBoxMobileHeight: 50px;
 @media screen and (max-width: 767px) {
     .collection #product-loop {padding-top: 10px;}
 }
+
+#bc-sf-filter-scroll-to-top {
+    color: #000;
+    background-color: #fff;
+    
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+#bc-sf-filter-scroll-to-top span {
+    color: #000;
+    text-transform: uppercase;
+    line-height: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    &::before {
+        content: url(#{'{{ "ico_caret_up.svg" | asset_url }}'});
+        width: 12px;
+        height: 12px;
+        margin-bottom: 1px;
+    }
+
+    &::after {
+        content: 'Top';
+        font-size: 10px;
+        margin-top: 1px;
+        font-weight: 600;
+        line-height: 1;
+    }
+}
+
 /* Search */
 #search-bar form input {margin-bottom: 10px;}
 
