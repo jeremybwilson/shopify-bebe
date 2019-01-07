@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+// SUBPAGE : Mobile nav padding reduction for mobile
+body.page-landing,
+body.page-faq
+ {
+  #content {
+    padding: 25px 0;
+
+    @include mq( 'tablet-and-up' ) {
+      padding: 100px 0;
+    }
+  }
+}
+
 #subpage {
   @include flexbox;
   @include flex-direction(column);
@@ -52,6 +65,7 @@
       }
 
       ul.menu-cust-service > li {
+        list-style-type: none;
         color: $color--primary-1;
         cursor: pointer;
         margin-bottom: 0px;
@@ -69,7 +83,7 @@
 
         ul.menu-cust-service-sub > li {
           list-style-type: none;
-          margin-left: 0;
+          margin: 5px 0 0 0;
 
           &.active {
             text-decoration: underline;
@@ -156,7 +170,11 @@
 
         ul.menu-cust-service-sub > li {
           list-style-type: none;
-          margin-left: 0;
+          margin: 5px 0 0 0;
+
+          &.active {
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -293,7 +311,7 @@
             @include justify-content(flex-start);
           }
         }
-        
+
         .bullet-list {
           display: block;
 
@@ -318,35 +336,38 @@
       background-color: #eaeaea;
       font-family: $sans--2;
       @include fontSize(14px);
-  
+
       @include mq('tablet-and-up'){
         display: table;
         width: 100%;
       }
-      
+
       .table-row-dark {
         background: #dadada;
       }
 
-      tr:nth-child(odd) td {
-        background: none;
-      }
+      tbody {
+        .light-grey-override {
+          background: #eaeaea;
+        }
 
-      th {
-        background-color: #303030;
-        color: $color--reverse-1;
-        padding: 10px 20px;
-      }
-      td {
-        padding: 10px 20px;
+        th {
+          background-color: #303030;
+          color: $color--reverse-1;
+          padding: 10px 20px;
+        }
+
+        td {
+          padding: 10px 20px;
+        }
+
       }
     }
-    
+
     .us-ship-table-mobile {
       display: block;
       border-collapse: collapse;
       border-spacing: 0;
-      background: #303030;
       font-family: $sans--2;
       @include fontSize(14px);
 
@@ -358,13 +379,11 @@
         background: #dadada;
       }
 
-      tbody tr:nth-child(odd) td, tbody tr:nth-child(2n+1) td {
+      tbody tr:nth-child(2n+1) td {
         background: none;
       }
 
       th {
-        // background-color: #303030;
-        // color: $color--reverse-1;
         padding: 10px 20px;
         border-style: solid;
         border-width: 0;
@@ -385,6 +404,37 @@
         word-break: normal;
       }
     }
+
+    .canada-ship-table {
+      background: #eaeaea;
+
+      tbody {
+
+        .light-grey-override {
+          background: #eaeaea;
+        }
+
+        th {
+          background-color: #303030;
+          color: $color--reverse-1;
+          padding: 10px 20px;
+        }
+
+      }
+    }
+
+    // CSS styles carried over from old site
+    body.mobile .holReturnTable{width:100%;max-width:none;margin-right:0;text-align:center}
+    .returnTable{width: 100%;margin:20px auto;padding:0;border-bottom:1px solid #ddd;position:relative;display:inline-block;vertical-align:top}
+    .returnTable div.returnTableTitle{width:100%;background:#ddd;padding:3%;text-transform:uppercase}
+    .returnTable div.tableRow{width:100%;padding:1.5% 3%;display:block}
+    .returnTable div.tableRow:nth-child(odd){background:#eee}
+    .returnTable div.tableRow div.tableCol{display:inline-block}
+    .returnTable div.tableRow div.tableCol.col1{width:40%}
+    .returnTable div.tableRow div.tableCol.col1.col1Full{width:100%}
+    .returnTable div.tableRow div.tableCol.col2{width:55%}
+    body.mobile .returnTable{width:100%;max-width:none;text-align:center;}
+
   }
 
 
@@ -434,7 +484,7 @@
     margin-top: 3px;
   }
 
-  // CSS pulled from existing Bebe site to display LI icon using sprite image. 
+  // CSS pulled from existing Bebe site to display LI icon using sprite image.
   .li-connect-widget .li-connect-mark {
     background:url(https://cdn.shopify.com/s/files/1/0033/7939/6672/files/sprite_li_connect_v14.png) -92px -42px no-repeat !important;
     display:inline-block !important;
