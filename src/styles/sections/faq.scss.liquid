@@ -40,8 +40,8 @@
         text-decoration: none;
 
         @include mq('tablet-and-up'){
-        padding-top: 5px;
-        letter-spacing: 2px;
+          padding-top: 5px;
+          letter-spacing: 2px;
         }
 
         &:before {
@@ -51,7 +51,7 @@
 
         ul.menu-cust-service-sub > li {
           list-style-type: none;
-          margin-left: 0;
+          margin: 5px 0 0 0;
 
           &.active {
             text-decoration: underline;
@@ -253,7 +253,7 @@
       .rewards-row {
         @include flexbox;
         justify-content: flex-start;
-  
+
         &.rewards-row-first {
           @include flexbox;
         }
@@ -263,7 +263,7 @@
           span.rewards-mob-text {
             display: none;
           }
-          
+
           &:nth-child(1) {
             width: 20%;
           }
@@ -281,7 +281,7 @@
     }
     .rewards-row {
       border-bottom: 1px solid #000;
-  
+
       .rewards-cell {
         @include flexbox;
         width: 100%;
@@ -289,7 +289,7 @@
 
         & > span {
           display: block;
-        
+
           &:nth-child(1) {
             width: 20%;
             min-width: 100px;
