@@ -120,6 +120,9 @@
           {% endcomment %}
         </div>
 
+        <div class="desktop-12 tablet-6 mobile-3">
+          <p class="collection-results-count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'item', 'items' }}</p>
+        </div>
 
         {% comment %} :: PAGINATION :: {% endcomment %}
         <div id="pagination" class="desktop-12 tablet-6 mobile-3">
