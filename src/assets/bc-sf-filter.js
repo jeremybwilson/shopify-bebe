@@ -365,12 +365,21 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
         filterTreeWrap: '#bc-sf-filter-tree',
         filterWrap: '.filter-wrap-desktop',
         resultsCount: 'results-count', // Using innerHTML, lack of # intentional
+        resultsCountClassname: '.js-results-count',
         selectedInputs: 'input.selected'
     };
 
     // RESULTS COUNT : Render number of results in current collection 
     var resultsDiv = document.getElementById( ui.resultsCount ) || {};
-    resultsDiv.innerHTML = data.total_product + " Results";
+    var resultsDivs = [].slice.apply(document.querySelectorAll(ui.resultsCountClassname));
+    var resourceName = {
+        result: data.total_product > 1 ? 'Results' : 'Result',
+        item: data.total_product > 1 ? 'Items' : 'Item'
+    };
+    resultsDiv.innerHTML = data.total_product + ' ' + resourceName.result;
+    resultsDivs.forEach(function (element) {
+        element.innerHTML = data.total_product + ' ' + resourceName.item;
+    });
 
 
     // Build number of products (BoostCommerce Code)
