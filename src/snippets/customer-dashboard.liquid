@@ -4,8 +4,21 @@
         {% comment %} POINTS TOP PANEL {% endcomment %}
         <div id="club--points-panel">
 
+            {% comment %} Rewards History {% endcomment %}
+            <div id="club--rewards-history" class="points-panel--panel">
+                <h2>My Rewards History</h2>
+                <ul id="club--rewards-history--list">
+                    <li id="club--rewards-history--header">
+                        <span class="club--rewards-history--date">Date</span>
+                        <span class="club--rewards-history--action">Action</span>
+                        <span class="club--rewards-history--points">Points</span>
+                        <span class="club--rewards-history--status">Status</span>
+                    </li>
+                </ul>
+            </div>
+
             {% comment %} Rewards Available {% endcomment %}
-            <div id="club--rewards-available" class="points-panel--panel">
+            <div id="club--rewards-available" class="points-panel--panel" style="display: none;">
                 <span class="club--big-number">$0.00</span>
                 <span class="club--desc">Rewards Available</span>
             </div>
@@ -20,8 +33,8 @@
             <div id="club--points-to-next-reward" class="points-panel--panel">
                 <div id="progress-circle" class="progress-circle">
                     <div class="points-info">
-                        <span class="points-left club--big-number"></span>
-                        <span class="club--desc">Points to next level</span>                    
+                        <span class="points-to-next-reward club--big-number"></span>
+                        <span class="club--desc">Points to next Reward</span>                    
                     </div>
                     <div class="left-half-clipper">
                         <div class="first50-bar"></div>
@@ -148,12 +161,12 @@
                 <div class="perks"><span class="perks-pts">200</span><span class="perk-sub-copy">POINTS</span><span class="pt-line"></span><p>per referred friend***</p></div>
                 {% comment %} <div class="perks"><span class="perks-pts">20</span><span class="perk-sub-copy">POINTS</span><span class="pt-line"></span><p>per Instagram photo<span>tagged with #bebebabe<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">#</sup></span></p></div> {% endcomment %}
                 <div class="perks"><span class="perks-pts">20</span><span class="perk-sub-copy">POINTS</span><span class="pt-line"></span><p>per social media connect<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">µ</sup></p></div>
+                <div class="perks"><span class="perks-pts">15</span><span class="perk-sub-copy">POINTS</span><span class="pt-line"></span><p>per item review<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">§</sup></p></div>
             </div>
 
             <div class="clubrowcon row-dt">
                 {% comment %} <div class="perks"><span class="perks-pts">1</span><span class="perk-sub-copy">POINT</span><span class="pt-line"></span><p>per bebe.com visit<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">¶</sup></p></div> {% endcomment %}
-                <div class="perks"><span class="perks-pts">15</span><span class="perk-sub-copy">POINTS</span><span class="pt-line"></span><p>per item review<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">§
-            </sup></p></div>
+                
                 {% comment %} <div class="perks"><span class="perks-pts"><img style="width:40px;margin-top:-8px;" src="//s7d9.scene7.com/is/image/bebe/clubpresenticon?$fullsize$&amp;qlt=90" alt="bebe" class="clubiconpres"></span><span class="perk-sub-copy">BIRTHDAY GIFT</span><span class="pt-line"></span><p><span>if you add your birthday</span><span>to your bebe.com profile</span></p></div> {% endcomment %}
             </div>
 
@@ -188,10 +201,6 @@
                 </span> to reach <span class="next-membership-level"></span>
             </div>
 
-        </div>
-
-        <div id="club--view-rewards-history">
-            <a class="swell-history-link" href="javascript:void(0)">View Rewards History</a>
         </div>
 
         <div id="club--how-to-score-points">

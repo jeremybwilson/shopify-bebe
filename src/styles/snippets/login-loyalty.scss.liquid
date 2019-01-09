@@ -173,11 +173,11 @@
     @include flex-grow( 1 );
 
     @include mq('lap-and-up') {
-      border-right: solid 1px $color--field-1;
+      //border-left: solid 1px $color--field-1;
     }
 
-    &:last-child {
-      border-right: none;
+    &:first-child {
+      border-left: none;
     } 
   }
 }
@@ -198,6 +198,49 @@
 
   @include mq( 'lap-and-up' ) {
     width: auto;
+  }
+}
+
+// DASHBOARD :: Rewards History
+div#club--rewards-history {
+  display: none;
+  width: 100%;
+  padding: 10px 20px;
+
+  h2 {
+    color: $color--accent-1;
+    margin: 0 0 12px;
+    @include fontSize( 18px );
+    text-align: center;
+  }
+}
+#club--rewards-history--list {
+  width: 100%;
+  margin: 0 auto;
+  list-style: none;  
+
+  li {
+    @include flexbox;
+  }
+  span {
+    padding: 5px 10px 3px;
+  }
+}
+#club--rewards-history--header {
+  font-weight: $font-weight--bold;
+  text-transform: uppercase;
+  border-bottom: solid 1px $color--field-1;
+}
+.club--rewards-history--date { width: 20%; }
+.club--rewards-history--action { width: 45%; }
+.club--rewards-history--points { width: 15%; text-align: right; }
+.club--rewards-history--status { width: 20%; text-align: right; }
+
+// DASHBOARD :: Current Points Total
+
+#club--current-points-total {
+  @include mq( 'lap-and-up' ) {
+    border-right: solid 1px $color--field-1;
   }
 }
 
@@ -590,3 +633,7 @@
 #club--hidden-popups {
   display: none;
 }
+
+// Import Pikaday
+
+@import url('../vendor/pikaday.scss.liquid');
