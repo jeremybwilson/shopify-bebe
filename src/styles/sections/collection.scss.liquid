@@ -29,6 +29,16 @@ $resultsTextColor: {{ settings.filter_text_color }};
         }
     }    
 }
+
+.gridlock .row .collection-banner--mobile {
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+}
+
 .has--category-banner {
     display: none;
 }
@@ -42,6 +52,11 @@ $resultsTextColor: {{ settings.filter_text_color }};
   }    
 }
 
+/*  COLLECTION : Title
+ * ---------------------------------------------- */
+.collection--title {
+    width: 100%;
+}
 
 /*  COLLECTION : Main styling block
  * ---------------------------------------------- */
@@ -60,13 +75,13 @@ $resultsTextColor: {{ settings.filter_text_color }};
         }
     }
     h1 {
-        display: none;
+        // display: none;
         border: none;
         @include fontDim(21px,21px,.04em);
 
-        @include mq( 'lap-and-up' ) {
-            display: block;
-        }
+        // @include mq( 'lap-and-up' ) {
+        //     display: block;
+        // }
     }
 
     #breadcrumb {
@@ -113,66 +128,3 @@ $resultsTextColor: {{ settings.filter_text_color }};
         left: auto;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
