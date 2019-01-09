@@ -371,13 +371,13 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
 
     // RESULTS COUNT : Render number of results in current collection 
     var resultsDiv = document.getElementById( ui.resultsCount ) || {};
-    var resulstDivs = [].slice.apply(document.querySelectorAll(ui.resultsCountClassname));
+    var resultsDivs = [].slice.apply(document.querySelectorAll(ui.resultsCountClassname));
     var resourceName = {
         result: data.total_product > 1 ? 'Results' : 'Result',
         item: data.total_product > 1 ? 'Items' : 'Item'
     };
     resultsDiv.innerHTML = data.total_product + ' ' + resourceName.result;
-    resulstDivs.forEach(function (element) {
+    resultsDivs.forEach(function (element) {
         element.innerHTML = data.total_product + ' ' + resourceName.item;
     });
 
