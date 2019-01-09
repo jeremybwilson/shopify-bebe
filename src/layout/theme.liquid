@@ -115,7 +115,7 @@
   {{ 'jquery.fs.shifter.js' | asset_url | script_tag }}
   {% include 'script-yotpo' %}
   {% comment %}{% include 'script-zendesk' %}{% endcomment %}
-  {% comment %}{% include 'script-google-tag-head' %}{% endcomment %}
+  {% include 'script-google-tag-head' %}
 
   {% comment %} :: MULTI-CURRENCY :: {% endcomment %}
   {%- if settings.show_multiple_currencies -%}
@@ -152,7 +152,7 @@
 
 <body class="gridlock shifter bfx-price-container bfx-remove-element-container {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
   {% section 'offer-tab' %}
-  {% comment %}{% include 'script-google-tag-body' %}{% endcomment %}
+  {% include 'script-google-tag-body' %}
   {% include 'timber-cart' %}
 
   <div class="shifter-page{% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
