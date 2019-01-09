@@ -54,6 +54,20 @@ body > .page-wrap {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f7f8', endColorstr='{{ settings.background }}', GradientType=0 );
 }
 
+.tablet-and-up--hide {
+  @include mq('lap-and-up') {
+    display: none !important;
+  }
+}
+
+.tablet-and-down--hide {
+  display: none !important;
+
+  @include mq('lap-and-up') {
+    display: inherit !important;
+  }
+}
+
 // Page Background (Design wanted a gradient stylization)
 #PageContainer {
   //@include bgGradient;

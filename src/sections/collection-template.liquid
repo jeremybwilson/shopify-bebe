@@ -1,4 +1,25 @@
+{% assign has_banner = false %}
+{% if collection.description contains 'has--category-banner' %}
+  {% assign has_banner = true %}
+{% endif %}
+
+<script>console.log({{ has_banner | json }})</script>
+
 <div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-template">
+  {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
+  {% if has_banner %}
+    <div class="collection-banner tablet-and-down--hide">
+      {% include 'collection-banner-image' with 'desktop' %}
+    </div>
+  {% endif %}
+
+  <div class="row tablet-and-up--hide">
+    <div class="mobile-3">
+      <h1 class="collection--title">
+      {{ collection.title }}
+      </h1>
+    </div>
+  </div>
 
   <div class="row">
 
@@ -27,15 +48,24 @@
       
     </div><!--#collection--sidebar-->
 
+    {% comment %} :: COLLECTION MOBILE BANNER :: {% endcomment %}
+    {% if has_banner %}
+      <div class="collection-banner collection-banner--mobile tablet-and-up--hide">
+        {% include 'collection-banner-image' with 'mobile' %}
+      </div>
+    {% endif %}
+
     {% comment %} :: COLLECTION MAIN :: {% endcomment %}
     <div id="collection--main" class="mobile-3 desktop-10">
 
-      <h1 class="collection--title">
+      <h1 class="collection--title tablet-and-down--hide">
         {{ collection.title }}
       </h1>
 
       {% if settings.breadcrumb %}
-        {% include 'breadcrumb' %}
+        <div class="desktop-10">
+          {% include 'breadcrumb' %}
+        </div>
       {% endif %}
 
   
@@ -60,7 +90,7 @@
         {% endcomment %}
 
         {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
-        <div id="desktop-sort-wrapper">
+        <div id="desktop-sort-wrapper" class="mobile-3 desktop-10">
           <div id="full-width-filter" class="filter-wrap-desktop">
               <ul id="sortme" class="sort-options animate25">
               {% if section.settings.sort_by %} 

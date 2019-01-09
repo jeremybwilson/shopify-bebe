@@ -23,6 +23,7 @@
 
   {% when 'collection' %}
     {% assign has_breadcrumb = false %}
+    {% assign simple_layout = true %}
 
   {% when 'list-collections' %}
     {% assign simple_layout = true %}  
@@ -164,15 +165,6 @@
         REACT : EXAMPLE #1
         <div id="example-global-react" data-info-passed-to-react='{ "name": "greg" }'></div>
       {% endcomment %}
-      
-      {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
-      {% if template contains 'collection' %}
-        {% if collection.description contains 'has--category-banner' %}
-          <div class="collection-banner">
-            {% include 'collection-banner-image' %}
-          </div>
-        {% endif %}
-      {% endif %}
 
       {% comment %} :: Simple Layout :: {% endcomment %}
       {% if simple_layout %}
