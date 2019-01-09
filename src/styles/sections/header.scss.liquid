@@ -581,8 +581,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
     .icon-nav-mobile-menu {
         position: absolute;
         left: $navMobileBarGutter;
-        width: 30px;
-        height: 16px;
+        width: 28px;
+        height: 18px;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
@@ -596,16 +596,17 @@ $navHoverColor: {{ settings.nav_hover_color }};
             position: absolute;
             background: $color--primary-2;
             width: 100%;
-            height: 2px;
+            height: 4px;
             transition: all 0.25s ease-in-out;
 
             &.one   { top: 0; }
             &.two   { 
                 top: 50%;  
-                transform: translateY( -50% ) 
+                transform: translateY( -50% );
+                // This should center the middle bar for reasons i don't understand
+                margin-top: 1px;
             }
             &.three { 
-                width: 70%;
                 top: 100%; 
                 transform: translateY( -50% ) 
             }
