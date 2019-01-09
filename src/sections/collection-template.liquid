@@ -3,8 +3,6 @@
   {% assign has_banner = true %}
 {% endif %}
 
-<script>console.log({{ has_banner | json }})</script>
-
 <div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-template">
   {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
   {% if has_banner %}
