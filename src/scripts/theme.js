@@ -2033,28 +2033,60 @@ $(document).ready(function() {
 ==============================================================================*/
 
   (function loyalty_program() {
-
     $(document).on('swell:setup', function() {
 
+      // just show the rewards popup for reference purposes
+      // $('h2').click(function() {
+      //   swellAPI.showPopupByType("RewardsPopup");
+      // });
+
+      // Inits
       const ui = {
         pointsLeft: $( '.points-left' ),
+        pointsToNextReward: $( '.points-to-next-reward' ),
         nextMembershipLevel: $( '.next-membership-level' ),
-        progressCircle: $( '#progress-circle' )
+        progressCircle: $( '#progress-circle' ),
+        rewardsHistory: $( '#club--rewards-history' ),
+        rewardsHistoryList: $( '#club--rewards-history--list' )
       };
-
       const swellData = {
         customerDetails: swellAPI.getCustomerDetails(),
-               vipTiers: swellAPI.getVipTiers() 
+               vipTiers: swellAPI.getVipTiers(),
+         redemptionData: swellAPI.getActiveRedemptionOptions(),
+           campaignData: swellAPI.getActiveCampaigns()
       }
 
-      //console.log(ui.vipTiers);
-      //console.log(ui.customerDetails);
-    
+      // DASHBOARD :: Rewards History
+      const customerRewards = swellData.customerDetails.actionHistoryItems;
+
+      if ( customerRewards ) {
+        
+        // Append the list items
+        customerRewards.forEach(function(reward) {
+          let $rewardsListItem = $('<li/>');
+
+          $rewardsListItem
+            .append( '<span class="club--rewards-history--date">' + reward.date + '</span>' )
+            .append( '<span class="club--rewards-history--action">' + reward.action +'</span>' )
+            .append( '<span class="club--rewards-history--points">' + reward.points + '</span>' )
+            .append( '<span class="club--rewards-history--status">' + reward.status + '</span>' );
+
+          ui.rewardsHistoryList.append( $rewardsListItem );
+
+        });  
+        ui.rewardsHistory.show();
+      }
+
+      // console.log(swellData.vipTiers);
+      // console.log(swellData.customerDetails);
+      // console.log(swellData.redemptionData);
+      // console.log(customerRewards);
+
       // mark the current tier 
       $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
-    
+
       // show points to next tier 
-      var currentPoints = swellData.customerDetails.pointsBalance,
+      var currentPoints = swellData.customerDetails.pointsEarned,
           currentTier = swellData.customerDetails.vipTier.id,
           tierCounter = 0;
 
@@ -2064,21 +2096,28 @@ $(document).ready(function() {
           var nextTier = swellData.vipTiers[tierCounter + 1],
               nextTierPoints = nextTier.swellrequiredPointsEarned,
               currentTierPoints = tier.swellrequiredPointsEarned,
-              pointsLeft = nextTierPoints - currentPoints,
-              progressPercentage = ( (currentPoints - currentTierPoints) / (nextTierPoints - currentTierPoints) ) * 100,
-              progressInt = Math.round(progressPercentage),
-              progressClass = "p" + progressInt;
+              pointsLeft = nextTierPoints - currentPoints;
     
-          // if the progress percentage is above 50%, add this class (for the circle);
-          if ( progressInt > 50 ) progressClass += " over50";
-  
           ui.pointsLeft.html( pointsLeft );
           ui.nextMembershipLevel.html( nextTier.name );
-          ui.progressCircle.addClass( progressClass );
         }
         tierCounter++;
       });
-    
+
+      // DASHBOARD :: POINTS TO NEXT REWARD 
+      // show points to next reward ( 250 points ) and make the circle
+
+      let rewardsTarget = 250,
+          pointsToNextReward = currentPoints % rewardsTarget, // get the remainder
+          progressInt = Math.round( ( ( rewardsTarget - pointsToNextReward ) / rewardsTarget ) * 100 ), // get the percentage
+          progressClass = "p" + progressInt;
+
+      // if the progress percentage is above 50%, add this class (for the circle);
+      if ( progressInt > 50 ) progressClass += " over50";
+
+      ui.pointsToNextReward.html( pointsToNextReward );
+      ui.progressCircle.addClass( progressClass );
+
       // DASHBOARD :: SIDEBAR :: Load popups
     
       $('#club--how-to-score-points a.i-con').each(function() {
@@ -2099,12 +2138,7 @@ $(document).ready(function() {
     });
 
   })();  
-
 });
-
-
-
-
 
 /*============================================================================
   Product Modules
