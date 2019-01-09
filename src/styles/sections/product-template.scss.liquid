@@ -290,9 +290,11 @@
  * ---------------------------------------------- */
 #product-description-body {
   font-family: $sans--2;
+  @include fontDim( 15px, 20px, 0 );
 
   p {
-    @include fontDim( 15px, 20px, 0 );
+    // @include fontDim( 15px, 20px, 0 );
+    font-size: inherit;
     margin-bottom: 20px;
   }
 
