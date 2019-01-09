@@ -2,13 +2,8 @@
   "presets": {
   },
   "current": {
-    "borderfree_enabled": true,
-    "borderfree_js_snippet_dev": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.stage.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'c85068b0-94af-11e7-b751-e9c5ac3b554e', env:'STAGE', mode:'default', brand:'default'});<\/script>",
-    "borderfree_js_snippet_prod": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'ca5de210-a8dc-11e5-8656-a581984679b7', env:'PROD', mode:'default', brand:'default'}); <\/script>",
-    "borderfree_merchant_snippet_dev": "<script src=\"https:\/\/stagecheckout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
-    "borderfree_merchant_snippet_prod": "<script src=\"https:\/\/checkout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
     "favicon": "shopify:\/\/shop_images\/favicon.png",
-    "google_tag_manager_id": "",
+    "google_tag_manager_id": "GTM-MX9MWW2",
     "yotpo_id": "ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt",
     "announcement_text_color": "#000",
     "announcement_bg_one": "#fff",
@@ -158,6 +153,9 @@
     "ajax_cart_method": "drawer",
     "ajax_cart_remove_text": "This will remove the item from your cart. Continue?",
     "ajax_cart_low_stock_text": "This item does not have enough stock to add to your cart.",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
     "twittername": "",
     "facebook_url": "http:\/\/www.facebook.com\/bebe",
     "pinterest_url": "http:\/\/www.pinterest.com\/bebestores",
@@ -205,6 +203,11 @@
     "checkout_accent_color": "#9d6d31",
     "checkout_button_color": "#000000",
     "checkout_error_color": "#ff6d6d",
+    "borderfree_enabled": true,
+    "borderfree_js_snippet_dev": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.stage.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'c85068b0-94af-11e7-b751-e9c5ac3b554e', env:'STAGE', mode:'default', brand:'default'});<\/script>",
+    "borderfree_js_snippet_prod": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'ca5de210-a8dc-11e5-8656-a581984679b7', env:'PROD', mode:'default', brand:'default'}); <\/script>",
+    "borderfree_merchant_snippet_dev": "<script src=\"https:\/\/stagecheckout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
+    "borderfree_merchant_snippet_prod": "<script src=\"https:\/\/checkout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
     "facebook_title_alt_text": "Facebook",
     "pinterest_title_alt_text": "Pinterest",
     "tumblr_title_alt_text": "Tumblr",
@@ -444,7 +447,12 @@
           "shipping_text": "<p>Bebe ships to addresses and P.O. boxes in the 48 contiguous states, Guam and Saipan via standard shipping only. At this time, we do not ship to P.O. boxes in Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and U.S. Territories other than Guam and Saipan. Eligible ShopRunner orders enjoy free 2 business day shipping to physical addresses in the 48 contiguous states only.<br><br>Please see our <a href=\"\/pages\/shipping#canadaShippingSection\" title=\"Canada Shipping\">Canada<\/a> and <a href=\"\/pages\/shipping#internationalShippingSection\" title=\"International Shipping\">International<\/a> sections for shipping info specific to these locations.<BR><BR><span>Learn More:<\/span> <a href=\"\/pages\/shipping\" title=\"Shipping\">Shipping<\/a> \/ <a href=\"\/pages\/returns\" title=\"Returns\">Returns<\/a><\/p>",
           "show_social": true,
           "size_chart_header_text": "Size Chart",
-          "size_chart_page": "size-chart"
+          "size_chart_page": "size-chart",
+          "show_recently_viewed": true,
+          "recently_viewed_type": "nosto",
+          "recently_viewed_nosto_id": "productpage-nosto-3",
+          "nosto_rec_show": true,
+          "nosto_rec_id": "productpage-nosto-2"
         }
       },
       "blog-template": {
@@ -1104,15 +1112,6 @@
               "answer": "<p>bebe tests for many of the substances in question and, typically, our products contain no such chemicals or are within acceptable levels. However, this is not true for 100% of our products. As a result, we are required by law to post Proposition 65 information.<\/p>",
               "anchor": ""
             }
-          },
-          "1546049621783": {
-            "type": "html",
-            "settings": {
-              "heading_only": true,
-              "title": "Customer Service",
-              "answer": "",
-              "anchor": "custservice"
-            }
           }
         },
         "block_order": [
@@ -1196,12 +1195,6 @@
           "show": true,
           "homepage_only": false,
           "label": "GET 20% OFF"
-        }
-      },
-      "1545264907890": {
-        "type": "nosto-element",
-        "settings": {
-          "nosto_id": "frontpage-nosto-2"
         }
       },
       "page-contact-template": {
