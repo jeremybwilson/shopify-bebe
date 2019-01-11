@@ -184,7 +184,7 @@
     {% comment %} :: RECENTLY VIEWED :: {% endcomment %}
     {% if section.settings.show_recently_viewed %}
       {% if section.settings.recently_viewed_type == 'nosto' and section.settings.recently_viewed_nosto_id != blank %}
-        <div class="row">
+        <div class="row pdp-nosto-row">
           {% include 'nosto-element' with section.settings.recently_viewed_nosto_id %}
         </div>
       {% else %}
@@ -193,10 +193,15 @@
     {% endif %}
 
     {% comment %} :: RECOMMENDED PRODUCTS :: {% endcomment %}
-    {% if section.settings.nosto_rec_show and section.settings.nosto_rec_id != blank %}
-      <div class="row">
-        {% include 'nosto-element' with section.settings.nosto_rec_id %}
-      </div>
+    {% if section.settings.show_nosto_recommendations %}
+      {% for i in (1..3) %}
+        {% assign nosto_section_id = 'nosto_id_' | append: i %}
+        {% if section.settings[nosto_section_id] != blank %}
+          <div class="row pdp-nosto-row">
+            {% include 'nosto-element' with section.settings[nosto_section_id] %}
+          </div>
+        {% endif %}
+      {% endfor %}
     {% endif %}
 
     {% comment %} :: REVIEWS :: {% endcomment %}
@@ -499,22 +504,35 @@
         "type": "text",
         "label": "Nosto ID",
         "id": "recently_viewed_nosto_id",
-        "default": "productpage-nosto-3 "
+        "default": "productpage-nosto-3",
+        "info": "Only if Nosto is selected"
       },
       {
         "type": "header",
-        "content": "Nosto recommended products"
+        "content": "Nosto product recommendations"
       },
       {
         "type": "checkbox",
-        "id": "nosto_rec_show",
-        "label": "Show section",
+        "id": "show_nosto_recommendations",
+        "label": "Show nosto recommendations",
         "default": true
       },
       {
         "type": "text",
-        "id": "nosto_rec_id",
-        "label": "Nosto ID",
+        "id": "nosto_id_1",
+        "label": "Nosto ID 1",
+        "default": "productpage-nosto-1"
+      },
+      {
+        "type": "text",
+        "id": "nosto_id_2",
+        "label": "Nosto ID 2",
+        "default": "productpage-nosto-4"
+      },
+      {
+        "type": "text",
+        "id": "nosto_id_3",
+        "label": "Nosto ID 3",
         "default": "productpage-nosto-2"
       }
     ]

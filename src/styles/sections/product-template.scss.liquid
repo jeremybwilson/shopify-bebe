@@ -472,7 +472,7 @@
 
 /* Recommended Products
  * ---------------------------------------------- */
-#productpage-nosto-2 .nosto-block {
+.pdp-nosto-row .nosto-block {
   padding-bottom: 35px;
 
   @include mq('tablet-and-up') {
@@ -481,7 +481,7 @@
   }
 }
 
- #productpage-nosto-2 .nosto-block .title {
+ .pdp-nosto-row .nosto-block .title {
   @include fontSize( 25px );
   font-weight: $font-weight--medium;
   margin-bottom: 12px;
@@ -489,6 +489,11 @@
   letter-spacing: 0;
 }
 
-#productpage-nosto-2 .nosto-carousel {
+.pdp-nosto-row .nosto-carousel {
   padding-top: 20px;
+}
+
+.pdp-nosto-row .nosto-block {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }

@@ -1,6 +1,6 @@
 {% if section.settings.nosto_id != blank %}
-  <div class="homepage-section index-section" data-section-id="{{ section.id }}">
-    <div class="row homepage-section">
+  <div class="index-section index-section--nosto-element" data-section-id="{{ section.id }}" data-section-type="nosto-section">
+    <div class="row">
       {% include 'nosto-element' with section.settings.nosto_id %}
     </div>
   </div>

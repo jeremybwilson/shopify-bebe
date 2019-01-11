@@ -183,6 +183,13 @@
 
 </div>
 
+{% for block in section.blocks %}
+  {% if block.settings.nosto_id != blank %}
+    <div class="row">
+      {% include 'nosto-element' with block.settings.nosto_id %}
+    </div>
+  {% endif %}
+{% endfor %}
 
 {% schema %}
   {
@@ -213,7 +220,19 @@
         "id": "cart_bottom_block",
         "label": "Cart Bottom - Additional HTML"
       }
-
+    ],
+    "blocks": [
+      {
+        "type": "Nosto_element",
+        "name": "Nosto element",
+        "settings": [
+          {
+            "type": "text",
+            "id": "nosto_id",
+            "label": "Nosto id"
+          }
+        ]
+      }
     ]
   }
 {% endschema %}
