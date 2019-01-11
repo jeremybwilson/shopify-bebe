@@ -17,6 +17,10 @@
   font-family: $sans--2;
   font-weight: $font-weight--book;
 
+  @include mq('phone') {
+    display: none;
+  }
+
   &.fancybox-margin {
     margin-right: -56px + 15px;
   }

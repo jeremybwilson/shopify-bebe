@@ -2454,13 +2454,13 @@ theme.ProductForm = function (context, events) {
 
     addToCart.on('click',this, function() {
       const ui = {
-        navLogo: $('#nav-logo svg'),
-        prodDesc: $('#product-description')
+        navLogo: $('#nav-bar-wrapper'),
+        prodDesc: $('#product-details--wrapper')
       }
 
       if ( ui.navLogo.length > 0 && ui.prodDesc.length > 0 ) {
-
-        const $headerHeight = ui.navLogo.outerHeight() * 1.75; // accommodate for header height
+        
+        const $headerHeight = ui.navLogo.outerHeight() * 1.25; // accommodate for header height
         var scrollValue = ui.prodDesc.offset().top - $headerHeight;
 
         $('body,html').animate({ scrollTop: scrollValue }, 1000);
@@ -2912,7 +2912,8 @@ theme.Product = (function () {
       shippingAccordionHeader: $( '#shipping--accordion-header' ),
       shippingAccordionContent: $( '#shipping--accordion-content'),
       sizeChartAccordionHeader: $( 'size-chart--accordion-header' ),
-      sizeChartPopup: $( '#size-chart--popup' )
+      sizeChartPopup: $( '#size-chart--popup' ),
+      sizeChartTrigger: $( '.size-chart--trigger' )
     }
 
     theme.ProductMobileGallery(events);
@@ -2938,6 +2939,12 @@ theme.Product = (function () {
           ui.shippingAccordionHeader.toggleClass( 'open' );
           ui.shippingAccordionContent.slideToggle(250);
         });
+      }
+
+      if ( ui.sizeChartTrigger.length > 0 ) {
+        ui.sizeChartTrigger.fancybox({
+          padding: 0
+        })
       }
 
       // SIZE CHART : Accordion (really opens popup, but lets follow same pattern since ui is an accordion-esque element)

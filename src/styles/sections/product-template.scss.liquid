@@ -8,6 +8,10 @@
     // @include fontSize(14px);
     margin-top: 10px;
 
+    @include mq( 'phone' ) {
+      display: none;
+    }
+
     // @include mq('tablet-and-up') {
     //   @include fontSize(16px);
     // }
@@ -38,23 +42,6 @@
     display: none;
   }
   
-  &:after {
-    position: absolute;
-    content: '';
-    top: 100%;
-    left: 0;
-    height: 25px;
-    width: 100%;
-    opacity: .25;
-
-    background: #ffffff;
-    background: -moz-linear-gradient(top, #d9d9d9 0%, #ffffff 100%);
-    background: -webkit-linear-gradient(top, #d9d9d9 0%,#ffffff 100%);
-    background: linear-gradient(to bottom, #d9d9d9 0%,#ffffff 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d9d9', endColorstr='#ffffff',GradientType=0 );    
-  }
-
-
   .mobile-header--top {
     @include flexbox;
     @include justify-content(space-between);

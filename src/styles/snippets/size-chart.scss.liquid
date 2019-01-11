@@ -203,7 +203,7 @@ body[class*='size-chart'] #content {
 
     td {
       border-right: solid 1px $color--border-gray;
-      color: $color--gray-1;
+      color: $color--primary-1;
       @include fontDim(12px,12px,.025em);
 
       @include mq('lap-and-up') {
@@ -246,31 +246,62 @@ body[class*='size-chart'] #content {
   .fancybox-skin {
     background: transparent;
   }
-  .fancybox-close {
-    left: 50%;
-    top: -40px;
-    transform: translateX(-50%);
-    color: $color--accent-1;
-    text-decoration: none;
 
-    @include mq('tablet-and-up') {
-      left: auto;
-      margin-left: 0;
-      top: 0;
-    }
-  }
 }
 
 
+// SIZE CHART - POPUP
 #size-chart--popup {
   max-height: 80vh;
   background: $color--white;
   padding: 0;
 
+  @include mq('lap-and-up') {
+    max-width: 900px;
+    width: 100%;
+    overflow: auto;
+  }
+
   #size-chart--wrapper {
     padding: 15px;
     background-color: $color--white;
+
+    #size-chart--nav {
+      ul {
+        @include mq( 'phone' ) {
+          display: none;
+        }
+        @include mq('desk-and-up') {
+          @include justify-content( flex-start );
+        }
+      
+        padding: 0;
+
+        li {
+          margin: 4px;
+          font-weight: $font-weight--medium;
+          text-align: center !important;
+
+          @include mq('desk-and-up') {
+            margin: 0 20px 8px 0;
+          }
+        }
+      }
+      p {
+        margin-top: -1%;
+      }
+    }
   }
+  
+  h2 {
+    margin-top: 0;
+    @include fontSize( 26px );
+
+    @include mq( 'phone' ) {
+      @include fontSize( 22px );
+    }
+  }
+
 
   #measure-guide--wrapper {
     @include flex(0, 0, 35%);
@@ -278,6 +309,10 @@ body[class*='size-chart'] #content {
     margin-top: 0;
     width: 35%;
     height: 470px;
+
+    @include mq( 'phone' ) {
+      display: none;
+    }
 
     #measure-guide {
       width: 90%;
@@ -297,27 +332,37 @@ body[class*='size-chart'] #content {
     width: 65%;
     overflow: auto;
     height: 470px;
+
+    h4 {
+      margin-bottom: 12px;
+      @include fontDim( 14px, 16px, 0 );
+
+      &:first-child {
+        margin-top: 0;        
+      }
+    }
   }
   
-  table th,
-  .size-chart--table #chart-dress-jumpsuits--us td,
-  .size-chart--table #chart-dress-jumpsuits--eu td {
-    padding: 8px;
-  }
+  table {
+    width: 100% !important;
 
+    th, td {
+      @include mq('lap-and-up') {
+        padding: 8px 4px;
+      }  
+      td {
+        font-weight: $font-weight--book;
+      }
+    }
+  }
   table th {
-    @include fontSize(12px);
+    @include fontSize(10px);
+    letter-spacing: 0;
   }
-
   table td {
     @include fontSize(10px);
   }
 
-  @include mq('lap-and-up') {
-    max-width: 720px;
-    width: 100%;
-    overflow: auto;
-  }
 }
 
 
