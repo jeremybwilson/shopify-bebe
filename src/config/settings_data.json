@@ -415,6 +415,24 @@
       },
       "collection-template": {
         "type": "collection-template",
+        "blocks": {
+          "1547175271023": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "categorypage-nosto-2"
+            }
+          },
+          "1547175288256": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "categorypage-nosto-1"
+            }
+          }
+        },
+        "block_order": [
+          "1547175271023",
+          "1547175288256"
+        ],
         "settings": {
           "grid": 3,
           "rows": 8,
@@ -451,8 +469,10 @@
           "show_recently_viewed": true,
           "recently_viewed_type": "nosto",
           "recently_viewed_nosto_id": "productpage-nosto-3",
-          "nosto_rec_show": true,
-          "nosto_rec_id": "productpage-nosto-2"
+          "show_nosto_recommendations": true,
+          "nosto_id_1": "productpage-nosto-1",
+          "nosto_id_2": "productpage-nosto-4",
+          "nosto_id_3": "productpage-nosto-2"
         }
       },
       "blog-template": {
@@ -478,6 +498,17 @@
       },
       "search-template": {
         "type": "search-template",
+        "blocks": {
+          "1547175514264": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "searchpage-nosto-1"
+            }
+          }
+        },
+        "block_order": [
+          "1547175514264"
+        ],
         "settings": {
         }
       },
@@ -1298,12 +1329,70 @@
         "type": "page-coupons-template",
         "settings": {
         }
+      },
+      "1547175141098": {
+        "type": "nosto-element",
+        "settings": {
+          "nosto_id": "frontpage-nosto-1"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "blocks": {
+          "1547175340820": {
+            "type": "Nosto_element",
+            "settings": {
+              "nosto_id": "cartpage-nosto-1"
+            }
+          },
+          "1547175360441": {
+            "type": "Nosto_element",
+            "settings": {
+              "nosto_id": "cartpage-nosto-2"
+            }
+          }
+        },
+        "block_order": [
+          "1547175340820",
+          "1547175360441"
+        ],
+        "settings": {
+          "image": "",
+          "mobile_image": "",
+          "link": "",
+          "cart_bottom_block": ""
+        }
+      },
+      "1547175393847": {
+        "type": "nosto-element",
+        "settings": {
+          "nosto_id": "frontpage-nosto-5"
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "blocks": {
+          "1547175587513": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "notfound-nosto-2"
+            }
+          }
+        },
+        "block_order": [
+          "1547175587513"
+        ],
+        "settings": {
+          "fourohfour_content": "404-content"
+        }
       }
     },
     "content_for_index": [
       "1535728526385",
       "1536251685211",
-      "1544343478271"
+      "1544343478271",
+      "1547175141098",
+      "1547175393847"
     ]
   }
 }
