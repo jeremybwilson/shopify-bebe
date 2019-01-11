@@ -1472,6 +1472,12 @@
     "name": "Borderfree",
     "settings": [
       {
+        "type": "checkbox",
+        "id": "borderfree_enabled",
+        "label": "Enable BorderFree",
+        "default": true
+      },
+      {
         "type": "header",
         "content": "Development"
       },
