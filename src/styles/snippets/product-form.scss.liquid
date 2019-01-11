@@ -106,11 +106,11 @@
       height: {{ height }};
       margin: 0 10px 5px 0;
       padding:0;
-      border: solid 3px {{ settings.size_border }};
+      border: solid 2px {{ settings.size_border }};
       color: {{ settings.size_text }};
       background: {{ settings.size_bg }};
       @include fontDim( 16px, 16px, .025em );
-      font-weight: $font-weight--bold;
+      font-weight: $font-weight--book;
       line-height: calc( {{ height }} - 5px );
       text-align: center;
       text-transform: uppercase;
@@ -317,11 +317,11 @@
   margin-top: 0;
 }
 input.add {
-  @include fontSize( 24px );
+  @include fontSize( 22px );
   width: 100%;
   height: 48px;
   margin-top: 0;
-  font-weight: $font-weight--medium;
+  font-weight: $font-weight--book;
   background: $color--primary-1;
 
   @include mq('tablet-and-up') {

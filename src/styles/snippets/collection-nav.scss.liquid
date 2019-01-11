@@ -33,7 +33,7 @@
                 padding: 0;
             }
         }
-        li.active a {
+        li.active > a {
             font-weight: $font-weight--bold;
         }
     }
@@ -45,6 +45,10 @@
         @include mq( 'lap-and-up' ) {
             @include fontSize( 13px );
         }
+    }
+
+    .collection--subnav--subnav {
+        text-indent: .35em;
     }
 }
 

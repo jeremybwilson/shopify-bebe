@@ -7,9 +7,16 @@ $textColor: $color--text-1;     // #000
 $avatarBg: $color--primary-1;   // #000
 $reviewNameWidth: 180px;        // Username section on each review, 768+
 
-
 /* YOTPO REVIEWS : CORE STYLES
  * ---------------------------------------------- */
+
+.yotpo {
+
+    .y-label,
+    label.y-label {
+        letter-spacing: 0;
+    }
+}
 #yotpo-reviews.yotpo-main-widget { // Larger heirachy to override their nested styles
     padding: 15px 0 25px;
     max-width: 1220px;
@@ -50,7 +57,7 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
     // SUMMARY : Reviews summary block at top
     .yotpo-bottomline {
         @include flexbox;
-        @include align-items( center );
+        @include justify-content( center );
         padding-bottom: 50px;
         position: relative;
 
@@ -62,12 +69,29 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
             top: 0;
             transform: translateX( -50% );
             content: 'OVERALL RATING';
-            @include fontSize( 20px );
+            @include fontSize( 16px );
             font-family: $sans--2;
             font-weight: $font-weight--medium;
             text-align: center;
             color: $textColor;
         }
+
+        .avg-score {
+            font-family: $sans--2;
+            font-weight: $font-weight--book;
+            @include fontSize(32px);
+
+            @include mq( 'desk-and-up' ) {
+                @include fontSize(32px);
+            }
+        }
+
+        .reviews-qa-labels-container {
+            .reviews-qa-label {
+                font-family: $sans--2;
+            }
+        }
+        
 
         // SUMMARY STARS + REVIEW COUNT
         .yotpo-stars-and-sum-reviews {
@@ -112,8 +136,21 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
         }
     }
 
-
     // WRITE A REVIEW : Section for adding your own review
+    .write-question-review-buttons-container {
+        @include mq( 'tablet-and-up' ) {
+            @include flexbox;
+            @include justify-content( center );
+            float: none;
+            padding-right: 0;
+        }
+        .write-question-review-button {
+            .write-question-review-button-text {
+                font-family: $sans--2;
+            }
+        }
+    }
+
     .write-review {
         input {
             outline: none;
@@ -234,6 +271,15 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
                     font-family: $sans--2;
                 }
 
+                .content-review,
+                .yotpo-read-more,
+                .rest-content-collapsed {
+                    @include p;
+                }
+                .yotpo-read-more {
+                    font-weight: $font-weight--bold;
+                }
+
             }
 
             // REVIEW : FOOTER : Bottom buttons for "Share" and Thumbs up or Down
@@ -264,8 +310,14 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
     // NO REVIEWS YET HANDLING
     .yotpo-no-reviews {
 
+        .new-yotpo-small-box {
+            border-bottom: none;
+        }
+
         // HIDE : Usual submit review button since we have a special "Be first to write review" button available
         .yotpo-bottomline {
+            padding-bottom: 0;
+
             .write-review-button {
                 display: none;
             }

@@ -5,12 +5,12 @@
  ==================*/
 .product {
   #breadcrumb {
-    @include fontSize(14px);
+    // @include fontSize(14px);
     margin-top: 10px;
 
-    @include mq('tablet-and-up') {
-      @include fontSize(16px);
-    }
+    // @include mq('tablet-and-up') {
+    //   @include fontSize(16px);
+    // }
 
     // ALIGNMENT ADJUSTMENT
     @include mq( 'wide-and-up' ) {
@@ -121,7 +121,7 @@
     h1 {
       color: $color--primary-2;
       @include fontDim(15px,16px,0);
-      font-weight: $font-weight--medium;
+      font-weight: $font-weight--book;
       text-align: center;
       text-transform: uppercase;
 
@@ -325,6 +325,10 @@
   a {
     text-decoration: underline; // Ew.. 
   }
+
+  ul, li {
+    line-height: 22px / 12px * 1em;
+  }
 }
 
 /* Social Icons (Description)
@@ -377,9 +381,8 @@
 #product-description-social svg {
   display: inline-block;
   vertical-align: middle;
-  width: 1em;
-  height: 1em;
-  stroke: currentColor;
+  width: .75em;
+  height: .75em;
   fill: currentColor;
 }
 
