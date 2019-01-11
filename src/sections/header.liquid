@@ -46,9 +46,11 @@
           {% endif %}
           
 
-          {% comment %} ..:: CURRENCY PICKER (DISABLED) ::.. {% endcomment %}
-          {% if settings.show_multiple_currencies %}
-            <li class="nav-item nav-currency">{% include 'currencies-picker' %}</li>
+          {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
+          {% if section.settings.show_multiple_currencies %}
+            <li class="nav-item nav-currencies-picker">
+              {% include 'borderfree-open-modal' %}
+            </li>
           {% endif %}
 
 
@@ -68,8 +70,6 @@
               {% endif %}
             </li>
           {% endif %}
-
-          {% include 'borderfree-open-modal' %}
 
           {% comment %} ..:: CART ::.. {% endcomment %}
           <li class="nav-item nav-cart">
@@ -388,8 +388,15 @@
         "label": "Show search bar",
         "default": true
       },
-
-
+      {
+        "type": "header",
+        "content": "Multiple currencies"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Show multiple currencies"
+      },
       {
         "type":"header",
         "content": "navigation"
