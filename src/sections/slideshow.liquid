@@ -140,6 +140,30 @@
                   
                   {% endif %}
 
+                  {% comment %} THIRD AND FOURTH CTA ROW {% endcomment %}
+                  {% if block.settings.cta_three_link != blank and block.settings.cta_three_button_text != blank
+                     or block.settings.cta_four_link != blank and block.settings.cta_four_button_text != blank %}
+                    <div>
+                      {% comment %} CTA THREE {% endcomment %}
+                      {% if block.settings.cta_three_link != blank and block.settings.cta_three_button_text != blank %}
+                        <div class="cta" id="cta-three-{{ block.id }}">
+                          <a href="{{ block.settings.cta_three_link }}">
+                          {{ block.settings.cta_three_button_text }}
+                          </a>
+                        </div>
+                      {% endif %}
+
+                      {% comment %} CTA FOUR {% endcomment %}
+                      {% if block.settings.cta_four_link != blank and block.settings.cta_four_button_text != blank %}
+                        <div class="cta" id="cta-four-{{ block.id }}">
+                          <a href="{{ block.settings.cta_four_link }}">
+                          {{ block.settings.cta_four_button_text }}
+                          </a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
                 </div>
                 {% endif %}
               </div>
@@ -307,7 +331,39 @@
           "label": "Button text",
           "default": "Add a button",
           "info": "Visible only if a link is chosen"
-        },        
+        },
+        {
+          "type": "header",
+          "content": "Button 3"
+        },
+        {
+          "type": "url",
+          "id": "cta_three_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta_three_button_text",
+          "label": "Button text",
+          "default": "Add a button",
+          "info": "Visible only if a link is chosen"
+        },
+        {
+          "type": "header",
+          "content": "Button 4"
+        },
+        {
+          "type": "url",
+          "id": "cta_four_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta_four_button_text",
+          "label": "Button text",
+          "default": "Add a button",
+          "info": "Visible only if a link is chosen"
+        },
         {
           "type": "header",
           "content": "Text Box - Color Scheme"
