@@ -31,7 +31,7 @@
                 {% comment %} HEADER {% endcomment %}
                 {% comment %} Only pull the active nav item {% endcomment %}
 
-                {% if link.active %}
+                {% if link.child_active or link.active %}
 
                 <li class="nav-link">
                     <h3>{{ link.title }}</h3>
@@ -50,6 +50,22 @@
 
                                 <li class="collection--sub-link{% if sub_link.active %} active{% endif %}">
                                     <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+
+                                    {% if sub_link.links != blank %}
+
+                                        <ul class="collection--subnav--subnav">
+
+                                            {% for sub_sub_link in sub_link.links %}
+
+                                                <li class="collection--sub-sub-link{% if sub_sub_link.active %} active{% endif %}">
+                                                    <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                                </li>
+
+                                            {% endfor %}
+
+                                        </ul>
+
+                                    {% endif %}
                                 </li>
 
                             {% else %}

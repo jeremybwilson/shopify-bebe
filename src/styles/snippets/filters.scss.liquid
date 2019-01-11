@@ -781,6 +781,19 @@ $filterBarBorder: {{ settings.filter_bar_border_width }}px solid {{ settings.fil
 
             .bc-sf-filter-option-swatch {
 
+                &.circle-grid {
+                    @include flexbox;
+                    @include flex-wrap( wrap );
+                    @include justify-content( flex-start );
+
+                    li {
+                        width: 25%;
+                        margin-bottom: 12px;
+                        text-align: center;
+
+                    }
+                }
+
                 li {
                     a {
                         .bc-sf-filter-option-swatch-image {
