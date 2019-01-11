@@ -1074,11 +1074,12 @@ theme.Newsletter = (function() {
   function Newsletter(container) {
     const $container = this.$container = $(container);
     const ui = {
-           formId: $( '#footer-newsletter' ),
-          textbox: $( '#email' ),
-           submit: $( '#button-footer-newsletter-submit' ),
-         errorMsg: $( '#newsletter-error-response'),
-       successMsg: $( '#newsletter-success-response')
+      formId: $( '#footer-newsletter' ),
+      textbox: $( '#email' ),
+      subaction: $( '#sub-action' ),
+      submit: $( '#button-footer-newsletter-submit' ),
+      errorMsg: $( '#newsletter-error-response'),
+      successMsg: $( '#newsletter-success-response')
     };
 
     // regex for valid email
@@ -1116,23 +1117,47 @@ theme.Newsletter = (function() {
 
           // success state
 
-          zaius.subscribe({
-              list_id: 'newsletter',
-              email: ui.textbox.val()
-            },
+          //  Example form url for ExactTarget
+          // https://cl.s#.exct.net/subscribe.aspx?mid=YOURMEMBERID&lid=YOURLISTID&Email%20Address=YOUREMAIL&SubAction=sub_add_update
+          // https://cl.s10.exct.net/subscribe.aspx?lid=178&mid=100011471&Email%20Address=devtest%40brandedonline.com&SubAction=sub_add_update
+          // var listId = '178';  // was dev_footer_newsletter
+          // var memberId = '100011471';   // already included in HTML as hidden input
+          // var email = ui.textbox.val();
+          // var subAction = ui.subaction.val();
 
-            // success state
-            function() {
-              ui.formId.fadeOut( () => {
-                ui.successMsg.fadeIn();
-              });
-            },
+          var baseUrl = 'https://cl.s10.exct.net/subscribe.aspx';
+          // var fullUrl = baseUrl + 'lid=' + listId + '&MID=' + memberId;
+          console.log(`Here is the POST'ed form data`, ui.formId.serialize());
 
-            // fail state
-            function(error) {
-              console.log(error);
+          // Ajax to submit (post) to ExactTarget list subscription
+          $.ajax({
+            type: 'POST',
+            url: baseUrl,
+            data: ui.formId.serialize(),
+            // async: true, // unnecessary -> true by default
+            dataType: 'json',
+            success: function(response) {
+              // Handle success here
+              if(response == true){
+                ui.formId.fadeOut( () => {
+                  ui.successMsg.fadeIn();
+                });
+                console.log('form was submitted');
+              }
+            },
+            complete: function(data) {
+              console.log(data);
+              // alert(data.responseText);  // returns undefined
+            },
+            error: function(XMLHttpRequest, textStatus) {
+              if(textStatus == 'Unauthorized'){
+                console.log(`custom message => Error: `, textStatus);
+              } else {
+                // console.log(`There was an error: `, textStatus);
+                console.log(`custom message => Error: `, textStatus);
+              }
             }
-          );
+          });
         }
       });
     }
@@ -2060,7 +2085,7 @@ $(document).ready(function() {
       const customerRewards = swellData.customerDetails.actionHistoryItems;
 
       if ( customerRewards ) {
-        
+
         // Append the list items
         customerRewards.forEach(function(reward) {
           let $rewardsListItem = $('<li/>');
@@ -2073,7 +2098,7 @@ $(document).ready(function() {
 
           ui.rewardsHistoryList.append( $rewardsListItem );
 
-        });  
+        });
         ui.rewardsHistory.show();
       }
 
@@ -2082,10 +2107,10 @@ $(document).ready(function() {
       // console.log(swellData.redemptionData);
       // console.log(customerRewards);
 
-      // mark the current tier 
+      // mark the current tier
       $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
 
-      // show points to next tier 
+      // show points to next tier
       var currentPoints = swellData.customerDetails.pointsEarned,
           currentTier = swellData.customerDetails.vipTier.id,
           tierCounter = 0;
@@ -2097,14 +2122,14 @@ $(document).ready(function() {
               nextTierPoints = nextTier.swellrequiredPointsEarned,
               currentTierPoints = tier.swellrequiredPointsEarned,
               pointsLeft = nextTierPoints - currentPoints;
-    
+
           ui.pointsLeft.html( pointsLeft );
           ui.nextMembershipLevel.html( nextTier.name );
         }
         tierCounter++;
       });
 
-      // DASHBOARD :: POINTS TO NEXT REWARD 
+      // DASHBOARD :: POINTS TO NEXT REWARD
       // show points to next reward ( 250 points ) and make the circle
 
       let rewardsTarget = 250,
@@ -2119,9 +2144,9 @@ $(document).ready(function() {
       ui.progressCircle.addClass( progressClass );
 
       // DASHBOARD :: SIDEBAR :: Load popups
-    
+
       $('#club--how-to-score-points a.i-con').each(function() {
-    
+
         $(this).fancybox({
           href: $(this).attr('href'),
           wrapCSS: 'fancybox-promo-popup',
@@ -2134,10 +2159,10 @@ $(document).ready(function() {
           live: true
         });
       });
-    
+
     });
 
-  })();  
+  })();
 });
 
 /*============================================================================
