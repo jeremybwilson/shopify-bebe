@@ -446,13 +446,14 @@
             h4.nav-sub-header {
               @include fontSize(14px);
               font-weight: $font-weight--bold;
-              background: $color--footer-gray;
               position: relative;
               margin: 0 5px;
               padding: 10px 5px 7px;
               z-index: 49;
 
               @include mq('phone') {
+                background: {{ settings.footer_background }};
+
                 // TRIANGLE : CLOSED : Downward arrow in css
                 &:after {
                   width: 0;
