@@ -1,8 +1,6 @@
   {% assign isProd = false %}
-  {% comment %} {% assign shop_domain = 'bebe-prod.myshopify.com' %} {% endcomment %}
-  
-  {% comment %} :: Needs to be Spyder's domain otherwise Borderfree won't work :: {% endcomment %}
-  {% assign shop_domain = 'spyder-active.myshopify.com' %}
+  {% assign shop_domain = 'bebe-prod.myshopify.com' %}
+
   {% if shop.domain contains shop_domain %}
     {% assign isProd = true %}
   {% endif %}
