@@ -49,27 +49,9 @@
           </div>
         </div>
       </div>
-
-      <div id="nosto-container"></div>
     </div>
 
     {{ tracking_code }}
 
-    <script type="text/javascript">
-      (function () {
-        if (Shopify.Checkout.step !== 'thank_you') {
-          return null
-        }
-
-        var nostoScript = document.createElement('script')
-        nostoScript.setAttribute('src', nostoSrc)
-        document.head.appendChild('//connect.nosto.com/include/shopify-3379396672')
-
-        var nostoElement = document.createElement('div')
-        nostoElement.setAttribute('class', 'nosto_element')
-        nostoElement.setAttribute('id', 'cartpage-nosto-1')
-        document.getElementsByClassName('content')[0].appendChild(nostoElement)
-      })()
-    </script>
   </body>
 </html>
