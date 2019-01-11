@@ -2758,7 +2758,7 @@ theme.ProductGallery = function (context, events) {
           src = src.replace("{width}", "1000");
 
       $(element).zoom({
-        magnify: 2,
+        //magnify: 2,
         target: '.zoom-box',
         url: src
       });

@@ -63,14 +63,14 @@
       
       {% comment %} :: ZOOM WRAPPER :: {% endcomment %}
       {% if section.settings.show_zoom %}
-        <a class="product-fancybox" rel="product-images"  href="{{ image | img_url: '2400x' }}">
+        <a class="product-fancybox" rel="product-images"  href="{{ image | img_url: '1440x' }}">
       {% endif %}
 
           <div id="{{ product.id }}" 
             class="product__image lazyload lazyload-fade"
             
             {% if section.settings.show_zoom %} 
-              data-zoom-src="{{ image | img_url: '2400x' }}" 
+              data-zoom-src="{{ image | img_url: '1440x' }}" 
             {% endif %}
 
             style="background-image: url( '{{ image | product_img_url: '600x' }}' )"
