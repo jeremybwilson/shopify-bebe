@@ -116,7 +116,7 @@
             {% assign productOptions = product.options | downcase %}
             {% if productOptions contains 'size' and product.type != 'Gift Card' %}
               <dl id="size-chart--accordion" class="product-accordion">
-                <a id="size-chart--accordion-header" class="product-accordion--header fancybox size-chart--trigger" href="#size-chart--popup">
+                <a id="size-chart--accordion-header" class="product-accordion--header size-chart--trigger" href="#size-chart--popup">
                   <h3>{{ section.settings.size_chart_header_text }}</h3>
                 </a>
               </dl>
