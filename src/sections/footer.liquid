@@ -14,13 +14,14 @@
                 <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
               </div><!-- .foot-sub-emailtext -->
               <div class="foot-sub-emailform">
-                <form id="footer-newsletter">
-                  <input type=hidden name="MID" value="100011471">
-                  <input type=hidden name="lid" value="178">
+                <form id="footer-newsletter" action="https://cl.s10.exct.net/subscribe.aspx" method="post">
+                {% comment %}<form id="footer-newsletter">{% endcomment %}
+                  <input type="hidden" name="MID" value="100011471">
+                  <input type="hidden" name="lid" value="178">
                   <input type="hidden" id="sub-action" name="SubAction" value="sub_add_update" checked>
-                  <input type=hidden name="thx" value="">
-                  {% comment %} <input type=hidden name="err" value="Your error page here"> {% endcomment %}
-                  {% comment %} <input type=hidden name="usub" value="Your success unsub page here"> {% endcomment %}
+                  <input type="hidden" id="thank-you-url" name="thx" value="">
+                  <input type="hidden" id="error-url" name="err" value=""> 
+                  <input type="hidden" id="unsub-url" name="usub" value="">
                   <label id="subscribe-footer-newsletter" for="footer-newsletter">
                     <input class="form-control subscribe-form" type="email" id="email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}">
                   </label>
