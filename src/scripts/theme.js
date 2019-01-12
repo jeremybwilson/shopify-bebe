@@ -1077,89 +1077,161 @@ theme.Newsletter = (function() {
       formId: $( '#footer-newsletter' ),
       textbox: $( '#email' ),
       subaction: $( '#sub-action' ),
+      thankYouInput: $( '#thank-you-url' ),
+      errorInput: $( '#error-url' ),
+      unsubInput: $( '#usub-url' ),
       submit: $( '#button-footer-newsletter-submit' ),
       errorMsg: $( '#newsletter-error-response'),
       successMsg: $( '#newsletter-success-response')
     };
 
-    // regex for valid email
+    // REDIRECTION : Sales force url forces you to let it redirect, and reads these properties to determine the location.
+    // Since we can't input browser location via liquid, has to be done here on load. 
+    ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
+    ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
+    ui.unsubInput.attr( 'value', window.location.origin + '/pages/newsletter-unsub' );
 
+    // regex for valid email
     const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
     if ( ui.formId ) {
-
       ui.textbox.on('focus', () => {
 
         // remove any pre-existing error class
-
-        ui.formId.removeClass('has-error');
-        ui.errorMsg.fadeOut();
-
+        toggleError( false );
       });
 
-      // submit form
 
-      ui.formId.submit( (e) => {
-        e.preventDefault();
+      // VALIDATE : Check string for valid email
+      const validateEmail = () => {
+        return regexEmail.test( ui.textbox.val() );
+      };
 
-        // validation code
 
-        let validEmail = regexEmail.test(ui.textbox.val());
-
-        if(!validEmail) {
-
-          // error state
-
+      // ERROR MSG : Toggle error msg showing
+      const toggleError = ( state ) => {
+        
+        // TRUE = error present
+        if ( state ) {
           ui.formId.addClass('has-error');
           ui.errorMsg.fadeIn();
-
+        
         } else {
-
-          // success state
-
-          //  Example form url for ExactTarget
-          // https://cl.s#.exct.net/subscribe.aspx?mid=YOURMEMBERID&lid=YOURLISTID&Email%20Address=YOUREMAIL&SubAction=sub_add_update
-          // https://cl.s10.exct.net/subscribe.aspx?lid=178&mid=100011471&Email%20Address=devtest%40brandedonline.com&SubAction=sub_add_update
-          // var listId = '178';  // was dev_footer_newsletter
-          // var memberId = '100011471';   // already included in HTML as hidden input
-          // var email = ui.textbox.val();
-          // var subAction = ui.subaction.val();
-
-          var baseUrl = 'https://cl.s10.exct.net/subscribe.aspx';
-          // var fullUrl = baseUrl + 'lid=' + listId + '&MID=' + memberId;
-          console.log(`Here is the POST'ed form data`, ui.formId.serialize());
-
-          // Ajax to submit (post) to ExactTarget list subscription
-          $.ajax({
-            type: 'POST',
-            url: baseUrl,
-            data: ui.formId.serialize(),
-            // async: true, // unnecessary -> true by default
-            dataType: 'json',
-            success: function(response) {
-              // Handle success here
-              if(response == true){
-                ui.formId.fadeOut( () => {
-                  ui.successMsg.fadeIn();
-                });
-                console.log('form was submitted');
-              }
-            },
-            complete: function(data) {
-              console.log(data);
-              // alert(data.responseText);  // returns undefined
-            },
-            error: function(XMLHttpRequest, textStatus) {
-              if(textStatus == 'Unauthorized'){
-                console.log(`custom message => Error: `, textStatus);
-              } else {
-                // console.log(`There was an error: `, textStatus);
-                console.log(`custom message => Error: `, textStatus);
-              }
-            }
-          });
+          ui.formId.removeClass('has-error');
+          ui.errorMsg.fadeOut();
         }
-      });
+      }; 
+
+
+      // KEYPRESS EVENT : Check input as typing if email is valid
+      var debounce = require( 'lodash.debounce' );
+      ui.textbox.on( 'keyup', debounce( () => {
+        const validEmail = validateEmail();
+        // console.log( `::: DEBUG : Is valid? = ${validEmail}` );
+
+        // Enable submit button if valid email is entered
+        if ( validEmail ) {
+          ui.submit.addClass( 'enable' ); // Enable submit button
+          toggleError( false );
+        
+        } else {
+          ui.submit.removeClass( 'enable' );
+          toggleError( true );
+        }
+      }, 250 ) );
+
+      // SUBMIT : Old way (use if not using salesforce)
+      // ui.formId.submit( (e) => {
+      //   e.preventDefault();
+
+      //   // validation code
+      //   let validEmail = regexEmail.test(ui.textbox.val());
+
+      //   if(!validEmail) {
+
+      //     // error state
+      //     ui.formId.addClass('has-error');
+      //     ui.errorMsg.fadeIn();
+
+      //   } else {
+
+      //     // success state
+
+      //     //  Example form url for ExactTarget
+      //     // https://cl.s#.exct.net/subscribe.aspx?mid=YOURMEMBERID&lid=YOURLISTID&Email%20Address=YOUREMAIL&SubAction=sub_add_update
+      //     // https://cl.s10.exct.net/subscribe.aspx?lid=178&mid=100011471&Email%20Address=devtest%40brandedonline.com&SubAction=sub_add_update
+      //     // var listId = '178';  // was dev_footer_newsletter
+      //     // var memberId = '100011471';   // already included in HTML as hidden input
+      //     // var email = ui.textbox.val();
+      //     // var subAction = ui.subaction.val();
+
+      //     var baseUrl = 'https://cl.s10.exct.net/subscribe.aspx';
+      //     // var fullUrl = baseUrl + 'lid=' + listId + '&MID=' + memberId;
+      //     console.log(`Here is the POST'ed form data`, ui.formId.serialize());
+      //     var formData = ui.formId.serialize();
+      //     formData.replace('thx=', "thx='" + window.location.href + "'");
+      //     formData = formData.replace( 'thx=', `thx='${window.location.href}'` );
+      //     formData = formData.replace( 'err=', `err='${window.location.href}'` );
+      //     formData = formData.replace( 'usub=', `usub='${window.location.href}'` );
+      //     const fetch = require( 'isomorphic-fetch' );
+
+      //     // Ajax to submit (post) to ExactTarget list subscription
+      //     fetch( baseUrl , {
+      //           method: 'POST',
+      //           body: formData,
+      //           headers: { 
+      //             'Content-Type': 'application/x-www-form-urlencoded'
+      //           }
+      //       })
+      //       .then( res => {
+      //             if ( res.status >= 400 ) {
+      //                 throw new Error( "Bad res from server" );
+      //             }
+      //             return res.json();
+      //         })
+      //         .then( productJson => {
+      //             return productJson;
+      //       })
+      //       .catch( error => {
+      //         const theError = error && error.message ? error.message : error || 'Request failed for an unknown reason with no error object returned..';
+      //         console.log( `[ theme.js newsletter -- subscribe() ] : Failed request :\n${ theError }` );
+      //     });
+
+      //     // $.ajax({
+      //     //   type: 'POST',
+      //     //   url: baseUrl,
+      //     //   data: ui.formId.serialize(),
+      //     //   // async: true, // unnecessary -> true by default
+      //     //   dataType: 'json',
+      //     //   success: function(response) {
+
+      //     //     // Handle success here
+      //     //     console.log( '::: DEBUG : entered success handler...' );
+      //     //     debugger;
+      //     //     if(response == true){
+      //     //       ui.formId.fadeOut( () => {
+      //     //         ui.successMsg.fadeIn();
+      //     //       });
+      //     //       console.log('form was submitted');
+      //     //     }
+      //     //   },
+      //     //   complete: function(data) {
+      //     //     console.log(`::: DEBUG : Complete entered : ${data}` );
+
+      //     //     // alert(data.responseText);  // returns undefined
+      //     //   },
+      //     //   error: function(XMLHttpRequest, textStatus) {
+      //     //     console.log( `::: DEBUG : Error handler entered` );
+      //     //     if(textStatus == 'Unauthorized'){
+      //     //       console.log(`custom message => Error: `, textStatus);
+      //     //     } else {
+      //     //       // console.log(`There was an error: `, textStatus);
+      //     //       console.log(`custom message => Error: `, textStatus);
+      //     //     }
+      //     //   }
+      //     // });
+      //   }
+      // });
     }
   }
   Newsletter.prototype = _.assignIn({}, Newsletter.prototype, {});
