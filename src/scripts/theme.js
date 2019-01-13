@@ -1076,7 +1076,7 @@ theme.Newsletter = (function() {
     const ui = {
       formId: $( '#footer-newsletter' ),
       textbox: $( '#email' ),
-      subaction: $( '#sub-action' ),
+      subAction: $( '#sub-action' ),
       thankYouInput: $( '#thank-you-url' ),
       errorInput: $( '#error-url' ),
       unsubInput: $( '#usub-url' ),

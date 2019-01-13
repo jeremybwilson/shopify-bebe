@@ -14,13 +14,12 @@
                 <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
               </div><!-- .foot-sub-emailtext -->
               <div class="foot-sub-emailform">
-                <form id="footer-newsletter" action="https://cl.s10.exct.net/subscribe.aspx" method="post">
-                {% comment %}<form id="footer-newsletter">{% endcomment %}
-                  <input type="hidden" name="MID" value="100011471">
-                  <input type="hidden" name="lid" value="178">
-                  <input type="hidden" id="sub-action" name="SubAction" value="sub_add_update" checked>
+                <form id="footer-newsletter" action="{{ section.settings.newsletter_subscription_api_url }}" method="post">
+                  <input type="hidden" name="MID" value="{{ section.settings.newsletter_email_service_provider_mid }}">
+                  <input type="hidden" name="lid" value="{{ section.settings.newsletter_email_service_provider_lid }}">
+                  <input type="hidden" id="sub-action" name="SubAction" value="{{ section.settings.newsletter_sub_action }}" checked>
                   <input type="hidden" id="thank-you-url" name="thx" value="">
-                  <input type="hidden" id="error-url" name="err" value=""> 
+                  <input type="hidden" id="error-url" name="err" value="">
                   <input type="hidden" id="unsub-url" name="usub" value="">
                   <label id="subscribe-footer-newsletter" for="footer-newsletter">
                     <input class="form-control subscribe-form" type="email" id="email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}">
@@ -178,6 +177,30 @@
         "id": "newsletter_subheading",
         "label": "Newsletter sub-heading",
         "default": "STAY IN TOUCH & GET 10% OFF"
+      },
+      {
+        "type": "url",
+        "id": "newsletter_subscription_api_url",
+        "label": "ESP API Endpoint URL",
+        "info": "Required"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_email_service_provider_lid",
+        "label": "Email Studio (ExactTarget) List ID",
+        "default": "List ID (123) here"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_email_service_provider_mid",
+        "label": "Email Studio (ExactTarget) Member ID",
+        "default": "Member ID (XYZ123) here"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_sub_action",
+        "label": "Email Studio (ExactTarget) Subscription attribute",
+        "default": "sub_add_update"
       },
       {
         "type": "text",
