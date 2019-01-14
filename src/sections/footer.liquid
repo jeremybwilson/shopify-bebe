@@ -113,7 +113,7 @@
             </a>
           </span><!-- .raf-wrapper --> {% endcomment %}
           <div class="copyright">
-            <span class="copyright-wrapper">{{ section.settings.copyright_footer_text }}</span>
+            <span class="copyright-wrapper">&copy; {{ "now" | date: "%Y" }} {{ section.settings.copyright_footer_text }}</span>
           </div>
           {% comment %} :: LINKS : Copyright / privacy footer links :: {% endcomment %}
           {% assign privacy_menu = linklists[section.settings.footer_privacy_nav] %}
