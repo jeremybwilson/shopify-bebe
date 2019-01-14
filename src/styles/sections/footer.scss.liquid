@@ -203,9 +203,6 @@
     @include flex-wrap(wrap);
     @include justify-content(center);
     width: 100%;
-    // margin: 0 auto;
-    // padding: 20px 0;
-    // text-align: center;
   }
 
   .subfoot-links {
@@ -288,29 +285,33 @@
     padding: 10px 0;
     width: 100%;
 
-    // @include mq('tablet-and-up') {
-
-    // }
-
     .newsletter-wrapper {
       background: transparent;
-      padding: 20px 25px;
+      padding: 20px 0;
       width: 100%;
 
       @include mq('tablet-and-up') {
-        padding: 0px;
+        padding: 20px 25px;
         text-align: left;
         width: 69%;
+      }
+
+      .newsletter {
+        margin-bottom: 35px;
+
+        @include mq('tablet-and-up') {
+          margin-bottom: 0;
+        }
       }
     }
   }
 
   .social-wrapper {
-    background:transparent;
-    display:flex;
+    @include flexbox;
     @include align-items(flex-start);
     @include justify-content(center);
-    padding: 10px;
+    background:transparent;
+    padding: 10px 0;
     margin: 0;
 
     @include mq('tablet-and-up'){
@@ -330,10 +331,6 @@
         @include justify-content(flex-start);
         @include fontSize(14px);
         width: 100%;
-
-        @include mq('tablet-and-up'){
-
-        }
       }
 
       .social-image img {
@@ -347,12 +344,46 @@
         @include justify-content(space-evenly);
         margin: 10px 0 0;
         padding: 0;
+        text-align: center;
         width: 100%;
 
-        li {
-          padding: 0;
+        @include mq('tablet-and-up') {
+          @include justify-content(center);
+          @include align-items(center);
+          margin-top: 0;
+          margin-left: 24px;
         }
 
+        li {
+          display: inline-block;
+          padding: 0;
+        }
+        a {
+          position: relative;
+          top: 2px;
+          color: {{ settings.icons }};
+
+          svg {
+            width: 22px;
+            height: 22px;
+
+            @include mq('tablet-and-up') {
+              width: 20px;
+              height: 20px;
+            }
+
+            * {
+              transition: fill .3s ease;
+              fill: {{ settings.icons }};
+            }
+          }
+
+          &:hover {
+            svg * {
+              fill: {{ settings.icons_hover }};
+            }
+          }
+        }
       }
     }
   }

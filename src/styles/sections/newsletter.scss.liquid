@@ -211,46 +211,4 @@
       @include fontDim(20px,20px,.04em);
     }
   }
-  ul#social-icons {
-    margin-top: 16px;
-    text-align: center;
-
-    @include mq('tablet-and-up') {
-      @include flexbox;
-      @include justify-content(center);
-      @include align-items(center);
-      margin-top: 0;
-      margin-left: 24px;
-    }
-    li {
-      display: inline-block;
-      padding: 0 20px;
-    }
-    a {
-      position: relative;
-      top: 2px;
-      color: {{ settings.icons }};
-
-      svg {
-        width: 22px;
-        height: 22px;
-
-        @include mq('tablet-and-up') {
-          width: 20px;
-          height: 20px;
-        }
-
-        * {
-          transition: fill .3s ease;
-          fill: {{ settings.icons }};
-        }
-      }
-
-      &:hover {
-        svg * {
-          fill: {{ settings.icons_hover }};
-        }
-      }
-    }
-  }
 }
