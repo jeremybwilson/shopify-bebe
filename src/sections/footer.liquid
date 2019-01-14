@@ -12,13 +12,17 @@
             <div class="email-text">
               <div class="foot-sub-emailtext">
                 <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
-                {% comment %} :: JS from live site related to newsletter form :: {% endcomment %}
-                {% comment %} <script type="text/blzscript">$(document).ready(function(){if(("#egcForm").length){$("#eGiftFormContent .scheduleDelivery span").html("(If today's date is selected, e-gift card will be sent the following day. Weekend orders will be sent by end of day on Monday.)");}});</script> {% endcomment %}
               </div><!-- .foot-sub-emailtext -->
               <div class="foot-sub-emailform">
-                <form id="footer-newsletter">
+                <form id="footer-newsletter" action="{{ section.settings.newsletter_subscription_api_url }}" method="post">
+                  <input type="hidden" name="MID" value="{{ section.settings.newsletter_email_service_provider_mid }}">
+                  <input type="hidden" name="lid" value="{{ section.settings.newsletter_email_service_provider_lid }}">
+                  <input type="hidden" id="sub-action" name="SubAction" value="{{ section.settings.newsletter_sub_action }}" checked>
+                  <input type="hidden" id="thank-you-url" name="thx" value="">
+                  <input type="hidden" id="error-url" name="err" value="">
+                  <input type="hidden" id="unsub-url" name="usub" value="">
                   <label id="subscribe-footer-newsletter" for="footer-newsletter">
-                    <input class="form-control subscribe-form" type="email" id="email" name="email" placeholder="{{ section.settings.newsletter_placeholder }}">
+                    <input class="form-control subscribe-form" type="email" id="email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}">
                   </label>
                   <label id="button-footer-newsletter-submit" for="footer-newsletter-submit">
                     <input id="footer-newsletter-submit" type="submit" value="{{ section.settings.newsletter_submit_button }}">
@@ -31,9 +35,6 @@
                 <span id="newsletter-success-response" style="display:none;">
                 {{ section.settings.newsletter_success }}</span>
               </div>
-              {% comment %} :: Hidden link text related to email and sms notification (sign up forms) ::  {% endcomment %}
-              {% comment %} <a style="display:none;" class="openAjaxLayer" id="jsLauchEmailLayer" href="/user/subscribe_layer.jsp">Email Sign Up</a>
-              <a style="display:none;" class="openAjaxLayer" id="jsLauchTextLayer" href="/user/text_subscribe_layer.jsp">Text Sign Up</a> {% endcomment %}
             </div><!-- .email-text -->
           </div><!-- .newsletter -->
 
@@ -176,6 +177,30 @@
         "id": "newsletter_subheading",
         "label": "Newsletter sub-heading",
         "default": "STAY IN TOUCH & GET 10% OFF"
+      },
+      {
+        "type": "url",
+        "id": "newsletter_subscription_api_url",
+        "label": "ESP API Endpoint URL",
+        "info": "Required"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_email_service_provider_lid",
+        "label": "Email Studio (ExactTarget) List ID",
+        "default": "List ID (123) here"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_email_service_provider_mid",
+        "label": "Email Studio (ExactTarget) Member ID",
+        "default": "Member ID (XYZ123) here"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_sub_action",
+        "label": "Email Studio (ExactTarget) Subscription attribute",
+        "default": "sub_add_update"
       },
       {
         "type": "text",

@@ -1074,67 +1074,117 @@ theme.Newsletter = (function() {
   function Newsletter(container) {
     const $container = this.$container = $(container);
     const ui = {
-           formId: $( '#footer-newsletter' ),
-          textbox: $( '#email' ),
-           submit: $( '#button-footer-newsletter-submit' ),
-         errorMsg: $( '#newsletter-error-response'),
-       successMsg: $( '#newsletter-success-response')
+      formId: $( '#footer-newsletter' ),
+      textbox: $( '#email' ),
+      subAction: $( '#sub-action' ),
+      thankYouInput: $( '#thank-you-url' ),
+      errorInput: $( '#error-url' ),
+      unsubInput: $( '#usub-url' ),
+      submit: $( '#button-footer-newsletter-submit' ),
+      errorMsg: $( '#newsletter-error-response'),
+      successMsg: $( '#newsletter-success-response')
     };
 
-    // regex for valid email
+    // REDIRECTION : Sales force url forces you to let it redirect, and reads these properties to determine the location.
+    // Since we can't input browser location via liquid, has to be done here on load.
+    ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
+    ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
+    ui.unsubInput.attr( 'value', window.location.origin + '/pages/newsletter-unsub' );
 
+    // regex for valid email
     const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
     if ( ui.formId ) {
-
       ui.textbox.on('focus', () => {
 
         // remove any pre-existing error class
-
-        ui.formId.removeClass('has-error');
-        ui.errorMsg.fadeOut();
-
+        toggleError( false );
       });
 
-      // submit form
+      // VALIDATE : Check string for valid email
+      const validateEmail = () => {
+        return regexEmail.test( ui.textbox.val() );
+      };
 
-      ui.formId.submit( (e) => {
-        e.preventDefault();
+      // ERROR MSG : Toggle error msg showing
+      const toggleError = ( state ) => {
 
-        // validation code
-
-        let validEmail = regexEmail.test(ui.textbox.val());
-
-        if(!validEmail) {
-
-          // error state
-
+        // TRUE = error present
+        if ( state ) {
           ui.formId.addClass('has-error');
           ui.errorMsg.fadeIn();
 
         } else {
-
-          // success state
-
-          zaius.subscribe({
-              list_id: 'newsletter',
-              email: ui.textbox.val()
-            },
-
-            // success state
-            function() {
-              ui.formId.fadeOut( () => {
-                ui.successMsg.fadeIn();
-              });
-            },
-
-            // fail state
-            function(error) {
-              console.log(error);
-            }
-          );
+          ui.formId.removeClass('has-error');
+          ui.errorMsg.fadeOut();
         }
-      });
+      };
+
+      // KEYPRESS EVENT : Check input as typing if email is valid
+      var debounce = require( 'lodash.debounce' );
+      ui.textbox.on( 'keyup', debounce( () => {
+        const validEmail = validateEmail();
+        // console.log( `::: DEBUG : Is valid? = ${validEmail}` );
+
+        // Enable submit button if valid email is entered
+        if ( validEmail ) {
+          ui.submit.addClass( 'enable' ); // Enable submit button
+          toggleError( false );
+        } else {
+          ui.submit.removeClass( 'enable' );
+          toggleError( true );
+        }
+      }, 250 ) );
+
+      // SUBMIT : Old way (use if not using salesforce)
+      // ui.formId.submit( (e) => {
+      //   e.preventDefault();
+
+      //   // validation code
+      //   let validEmail = regexEmail.test(ui.textbox.val());
+
+      //   if(!validEmail) {
+
+      //     // error state
+      //     ui.formId.addClass('has-error');
+      //     ui.errorMsg.fadeIn();
+
+      //   } else {
+
+      //     // success state
+
+      //     var baseUrl = 'https://cl.s10.exct.net/subscribe.aspx';
+      //     console.log(`Here is the POST'ed form data`, ui.formId.serialize());
+      //     var formData = ui.formId.serialize();
+      //     formData.replace('thx=', "thx='" + window.location.href + "'");
+      //     formData = formData.replace( 'thx=', `thx='${window.location.href}'` );
+      //     formData = formData.replace( 'err=', `err='${window.location.href}'` );
+      //     formData = formData.replace( 'usub=', `usub='${window.location.href}'` );
+      //     const fetch = require( 'isomorphic-fetch' );
+
+      //     // Ajax to submit (post) to ExactTarget list subscription
+      //     fetch( baseUrl , {
+      //           method: 'POST',
+      //           body: formData,
+      //           headers: {
+      //             'Content-Type': 'application/x-www-form-urlencoded'
+      //           }
+      //       })
+      //       .then( res => {
+      //             if ( res.status >= 400 ) {
+      //                 throw new Error( "Bad res from server" );
+      //             }
+      //             return res.json();
+      //         })
+      //         .then( productJson => {
+      //             return productJson;
+      //       })
+      //       .catch( error => {
+      //         const theError = error && error.message ? error.message : error || 'Request failed for an unknown reason with no error object returned..';
+      //         console.log( `[ theme.js newsletter -- subscribe() ] : Failed request :\n${ theError }` );
+      //     });
+      //   }
+      // });
     }
   }
   Newsletter.prototype = _.assignIn({}, Newsletter.prototype, {});
@@ -2060,7 +2110,7 @@ $(document).ready(function() {
       const customerRewards = swellData.customerDetails.actionHistoryItems;
 
       if ( customerRewards ) {
-        
+
         // Append the list items
         customerRewards.forEach(function(reward) {
           let $rewardsListItem = $('<li/>');
@@ -2073,7 +2123,7 @@ $(document).ready(function() {
 
           ui.rewardsHistoryList.append( $rewardsListItem );
 
-        });  
+        });
         ui.rewardsHistory.show();
       }
 
@@ -2082,10 +2132,10 @@ $(document).ready(function() {
       // console.log(swellData.redemptionData);
       // console.log(customerRewards);
 
-      // mark the current tier 
+      // mark the current tier
       $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
 
-      // show points to next tier 
+      // show points to next tier
       var currentPoints = swellData.customerDetails.pointsEarned,
           currentTier = swellData.customerDetails.vipTier.id,
           tierCounter = 0;
@@ -2097,14 +2147,14 @@ $(document).ready(function() {
               nextTierPoints = nextTier.swellrequiredPointsEarned,
               currentTierPoints = tier.swellrequiredPointsEarned,
               pointsLeft = nextTierPoints - currentPoints;
-    
+
           ui.pointsLeft.html( pointsLeft );
           ui.nextMembershipLevel.html( nextTier.name );
         }
         tierCounter++;
       });
 
-      // DASHBOARD :: POINTS TO NEXT REWARD 
+      // DASHBOARD :: POINTS TO NEXT REWARD
       // show points to next reward ( 250 points ) and make the circle
 
       let rewardsTarget = 250,
@@ -2119,9 +2169,9 @@ $(document).ready(function() {
       ui.progressCircle.addClass( progressClass );
 
       // DASHBOARD :: SIDEBAR :: Load popups
-    
+
       $('#club--how-to-score-points a.i-con').each(function() {
-    
+
         $(this).fancybox({
           href: $(this).attr('href'),
           wrapCSS: 'fancybox-promo-popup',
@@ -2134,10 +2184,10 @@ $(document).ready(function() {
           live: true
         });
       });
-    
+
     });
 
-  })();  
+  })();
 });
 
 /*============================================================================

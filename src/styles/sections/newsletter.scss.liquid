@@ -124,6 +124,14 @@
     width: 47px;
     height: 47px;
     cursor: pointer;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.25s ease-in-out;
+
+    &.enable {
+      pointer-events: all;
+      opacity: 1;
+    }
 
     @include mq('tablet-and-up') {
       width: 46px;
