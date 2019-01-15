@@ -148,12 +148,7 @@
     var borderFreeCheck = function borderFreeCheck() {
       var borderFreeLoaded = false;
       var checkBf = setInterval(function () {
-        /**
-         * TEMPORARY: If condition is always true until we figure out how/where
-         * BorderFree injects '#bfx-cc-wrapper-collapsed'.
-         * This will allow us to render the currency selector.
-         */
-        if (true || $("#bfx-cc-wrapper-collapsed").length && borderFreeLoaded === false) {
+        if ($("#bfx-cc-wrapper-collapsed").length && borderFreeLoaded === false) {
           borderFreeLoaded = true;
           borderFree();
           clearInterval(checkBf);
