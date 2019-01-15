@@ -357,12 +357,12 @@
           "announcement_text_one": "Free Shipping with no Minimum",
           "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "#",
-          "announcement_text_two": "SIGN UP FOR CLUBBEBE REWARDS & GET 20% OFF",
+          "announcement_text_two": "FREE SHIPPING OVER $100",
           "announcement_popup_two_content": "announcement-2",
           "announcement_link_two": "#",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
-          "top_left_highlight_link": "http:\/\/www.instagram.com\/explore\/tags\/bebebabe",
+          "top_left_highlight_link": "http:\/\/www.instagram.com\/bebe_stores",
           "top_left_highlight_text": "#Bebebabe",
           "logo_size": 24,
           "logo_transform": "uppercase",
@@ -406,13 +406,13 @@
           "newsletter_submit_button": "SUBSCRIBE",
           "newsletter_error": "Please enter a valid e-mail address",
           "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
-          "instagram_footer_link": "http:\/\/www.instagram.com\/explore\/tags\/bebebabes",
-          "instagram_footer_image": "shopify:\/\/shop_images\/bebe-desktop-bebebabes.jpg",
+          "instagram_footer_link": "https:\/\/www.instagram.com\/bebe_stores",
+          "instagram_footer_image": "shopify:\/\/shop_images\/bebebabes.jpg",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
           "trust_icon_image_three": "",
           "social_heading": "Connect With Us",
-          "social_insta_hashtag": "#BEBEBABES",
+          "social_insta_hashtag": "#BEBEBABE",
           "copyright_footer_text": "BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED",
           "footer_nav": "footer",
           "footer_privacy_nav": "footer-copyright-menu"
@@ -554,23 +554,27 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-hero-desktop_1e65d41b-5bf4-4aa0-ac37-52ef69b02d42.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/bebe-hero-mobile_11e43f0a-ed4b-40c6-93ce-316ebf3a991b.jpg",
-              "heading": "Go Straight for the New Stuff",
+              "image": "shopify:\/\/shop_images\/1-15_new.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-15_new.jpg",
+              "cta_full_image": "",
+              "heading": "You Know You Want New",
               "hide_header_desktop": true,
               "subheading": "",
               "cta_one_link": "\/collections\/legacy\/audience_men",
               "cta_one_button_text": "Shop New Arrivals",
               "cta_two_link": "",
-              "cta_two_button_text": "Garden",
+              "cta_two_button_text": "",
               "cta_three_link": "",
-              "cta_three_button_text": "Add a button",
+              "cta_three_button_text": "",
               "cta_four_link": "",
               "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#ffffff",
-              "custom_slide_alt_color": "#000000",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
               "caption_horizontal": "center",
+              "caption_horizontal_offset": 0,
               "caption_vertical": 65,
               "caption_vertical_mobile": 65,
               "caption_background": "rgba(0,0,0,0)",
@@ -592,24 +596,24 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-twin-promo-1_16a77097-415e-4331-9f90-865d716cce94.jpg",
+              "image": "shopify:\/\/shop_images\/MW_2019-01-14-jackets.jpg",
               "mobile_image": "",
               "link": "#",
-              "heading_text": "Shimmy into These",
+              "heading_text": "New Year, Still Cold",
               "text": "",
-              "cta_text": "Shop Denim",
+              "cta_text": "Shop Jackets & Coats",
               "cta_style": "button"
             }
           },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-twin-promo-2_68ac37b0-1ce8-4173-adb7-3cbad8d06b2f.jpg",
+              "image": "shopify:\/\/shop_images\/MW_2019-01-02-sleeves.jpg",
               "mobile_image": "",
               "link": "#",
-              "heading_text": "It's Spring. You Need Dresses.",
+              "heading_text": "Sexy but with Sleeves",
               "text": "",
-              "cta_text": "Shop Now",
+              "cta_text": "Shop Long Sleeve Dresses",
               "cta_style": "button"
             }
           }
@@ -685,6 +689,7 @@
             "settings": {
               "image": "",
               "mobile_image": "",
+              "cta_full_image": "",
               "heading": "We Come From Alaska",
               "hide_header_desktop": false,
               "subheading": "Where nothing is forgiven and no compromise goes unpunished. <br> Where 50-foot seas swallow the slightest missteps.",
@@ -696,10 +701,13 @@
               "cta_three_button_text": "Add a button",
               "cta_four_link": "",
               "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#164732",
               "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
               "caption_vertical": 50,
               "caption_vertical_mobile": 50,
               "caption_background": "rgba(0,0,0,0)",
@@ -1220,7 +1228,7 @@
         "type": "rich-text",
         "settings": {
           "heading": "BEBE – SEXY CLOTHING & CHIC CONTEMPORARY FASHION",
-          "rich_text": "<p>Welcome to bebe.com, featuring the sexiest clothing and chic fashion styles, all in one place. You&rsquo;ll find the latest on-trend looks and<a href=\"http:\/\/www.bebe.com\/New\/Featured-Designers\/pc\/193\/1161.cat\"> women&rsquo;s designer clothing<\/a> at affordable prices. Looking for the hottest <a href=\"http:\/\/www.bebe.com\/Dresses\/197.sec\">dresses<\/a> of the season? From gorgeous party dresses to classy cocktail and special occasion dresses, bebe has all the chic styles you need. Browse maxi dresses, <a href=\"http:\/\/www.bebe.com\/Dresses\/Bodycon\/pc\/197\/204.cat\">bodycon dresses<\/a> and much more to find your perfect head-turning look. If you&rsquo;re looking for curve-hugging women&rsquo;s jeans, sophisticated<a href=\"http:\/\/www.bebe.com\/Dresses\/Jumpsuits-Rompers\/pc\/197\/208.cat\"> jumpsuits<\/a>, cute rompers, fun tops or<a href=\"http:\/\/www.bebe.com\/Shoes\/239.sec\"> sexy shoes<\/a>, the options are fabulous as well. Every season, bebe.com is the hottest destination for sexy looks and<a href=\"http:\/\/www.bebe.com\/New\/All-New-Arrivals\/pc\/193\/635.cat\"> trendy fashion clothes<\/a> online.<br><br><\/p>",
+          "rich_text": "<p>Welcome to bebe.com, featuring the sexiest clothing and chic fashion styles, all in one place. You&rsquo;ll find the latest on-trend looks and&nbsp;<a href=\"http:\/\/www.bebe.com\/New\/Featured-Designers\/pc\/193\/1161.cat\">women&rsquo;s designer clothing<\/a> at affordable prices. Looking for the hottest <a href=\"http:\/\/www.bebe.com\/Dresses\/197.sec\">dresses<\/a> of the season? From gorgeous party dresses to classy cocktail and special occasion dresses, bebe has all the chic styles you need. Browse maxi dresses, <a href=\"http:\/\/www.bebe.com\/Dresses\/Bodycon\/pc\/197\/204.cat\">bodycon dresses<\/a> and much more to find your perfect head-turning look. If you&rsquo;re looking for curve-hugging women&rsquo;s jeans, sophisticated&nbsp;<a href=\"http:\/\/www.bebe.com\/Dresses\/Jumpsuits-Rompers\/pc\/197\/208.cat\">jumpsuits<\/a>, cute rompers, fun tops or&nbsp;<a href=\"http:\/\/www.bebe.com\/Shoes\/239.sec\">sexy shoes<\/a>, the options are fabulous as well. Every season, bebe.com is the hottest destination for sexy looks and&nbsp;<a href=\"http:\/\/www.bebe.com\/New\/All-New-Arrivals\/pc\/193\/635.cat\">trendy fashion clothes<\/a> online.<br><br><\/p>",
           "rich_text_columns": "col3",
           "rich_text_horizontal": "left",
           "page": ""
@@ -1229,7 +1237,7 @@
       "customer-login": {
         "type": "customer-login",
         "settings": {
-          "above_form_block": "<h1>Sign In<\/h1>",
+          "above_form_block": "<h1>Sign In<\/h1>\n<div class=\"announcement--box\">\n<h2 style=\"text-align: center;\">Our brand new site is live.<\/h2>\n<h3>\nPlease create a new account to explore this experience.<\/h3>\n<p style=\"text-align: center;\"> <\/p>\n<\/div>",
           "login_content": "login-content"
         }
       },
@@ -1254,25 +1262,13 @@
           "1545461750320": {
             "type": "text_block",
             "settings": {
-              "heading_text": "END OF SEASON SALE: UP TO 70% OFF",
+              "heading_text": "END OF SEASON SALE: UP TO 65% OFF",
               "text": "<p>Save on hundreds of styles. Discount taken at checkout.<\/p>",
               "cta_text": "Shop Sale",
-              "link": "http:\/\/www.bebe.com\/Sale\/All-Sale\/pc\/270\/271.cat",
+              "link": "shopify:\/\/collections\/sale-65-off",
               "details_text": "<p>Valid online and at bebe's 1 West 34th Street store in New York City. Priced as marked. Final sale.<\/p>",
               "coupon_size": "full",
               "coupon_color": "medium"
-            }
-          },
-          "1545990623813": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "40% OFF WINTER STYLES",
-              "text": "<p>Enjoy 40% off select regular-priced styles for a limited time. Priced as marked.<\/p>",
-              "cta_text": "Shop Now",
-              "link": "http:\/\/www.bebe.com\/New\/40-Off-Winter-Styles\/pc\/193\/1382.cat",
-              "details_text": "<p>Valid online and at bebe's 1 West 34th Street store in New York City. Priced as marked online. Discount taken at register in-store.<\/p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
             }
           },
           "1545990628348": {
@@ -1326,7 +1322,6 @@
         },
         "block_order": [
           "1545461750320",
-          "1545990623813",
           "1545990628348",
           "1545990631198",
           "1545990640803",
@@ -1398,10 +1393,96 @@
         "settings": {
           "fourohfour_content": "404-content"
         }
+      },
+      "1547557172846": {
+        "type": "slideshow",
+        "blocks": {
+          "1547557172846-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1-15_endofseasonpromo.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-10_sale.jpg",
+              "cta_full_image": "#",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "#",
+              "cta_one_button_text": "Shop 40% Off",
+              "cta_two_link": "#",
+              "cta_two_button_text": "Shop 50% Off",
+              "cta_three_link": "#",
+              "cta_three_button_text": "Shop 60% Off",
+              "cta_four_link": "#",
+              "cta_four_button_text": "Shop All Sale",
+              "hide_buttons_desktop": true,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 64,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547557172846-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "1547557568724": {
+        "type": "slideshow",
+        "blocks": {
+          "1547557568724-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1-15_PSA.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-15_psa.jpg",
+              "cta_full_image": "#",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "",
+              "cta_one_button_text": "",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "",
+              "cta_three_button_text": "",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
+              "hide_buttons_desktop": true,
+              "hide_buttons_mobile": true,
+              "caption_color_scheme": "white",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#e41c39",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 50,
+              "caption_background": "transparent",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547557568724-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
       }
     },
     "content_for_index": [
+      "1547557568724",
       "1535728526385",
+      "1547557172846",
       "1536251685211",
       "1544343478271",
       "1547175141098",
