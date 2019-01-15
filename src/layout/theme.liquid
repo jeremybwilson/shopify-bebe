@@ -152,7 +152,7 @@
 
 </head>
 
-<body class="gridlock shifter bfx-price-container bfx-remove-element-container {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
+<body class="gridlock shifter bfx-price-container bfx-remove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
   {% section 'offer-tab' %}
   {% include 'script-google-tag-body' %}
   {% include 'timber-cart' %}
