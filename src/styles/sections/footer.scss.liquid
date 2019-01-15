@@ -12,7 +12,8 @@
   // repeating elements
 
   .row {
-
+    padding-left: 12px;
+    padding-right: 12px;
     width: 100%;
 
     @include mq('tablet-and-up') {
@@ -22,8 +23,11 @@
       @include align-items(center);
       max-width: 1100px;
       margin-bottom: 20px;
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
+
   a {
     font-family: $sans--2;
     color: $color--text-1;
@@ -33,11 +37,13 @@
       text-decoration: none;
     }
   }
+
   h4 {
     color: $color--text-1;
     border-bottom: none;
     text-transform: uppercase;
   }
+
   img,
   svg {
     width: auto;
@@ -47,14 +53,11 @@
       margin: 0 5px;
     }
   }
+
   button, input, select {
     @include fontSize(14px);
     font-family: $sans--2;
     outline: 0;
-  }
-
-  .strong {
-    font-weight: $font-weight--bold
   }
 
   .fl-inline {
@@ -624,6 +627,7 @@
     @include flex-wrap(wrap);
   }
 }
+
 .brands--telephone {
   padding-bottom: 42px;
   border-bottom: solid 1px {{ settings.footer_border }};
