@@ -3,6 +3,12 @@
 /*==================
   PDP
  ==================*/
+ .body-product #breadcrumb + .clear {
+  @include mq('tablet-and-up') {
+    margin-top: 40px;
+  }
+}
+
 .product {
   #breadcrumb {
     // @include fontSize(14px);
@@ -84,10 +90,10 @@
 #shopify-section-product-template {
   margin-top: 0;
 
-  @include mq('tablet-and-up') {
-    position: relative;
-    top: 40px;
-  }
+  // @include mq('tablet-and-up') {
+  //   position: relative;
+  //   top: 40px;
+  // }
 }
 
 .row.product-details--top {
