@@ -554,23 +554,27 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-hero-desktop_1e65d41b-5bf4-4aa0-ac37-52ef69b02d42.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/bebe-hero-mobile_11e43f0a-ed4b-40c6-93ce-316ebf3a991b.jpg",
-              "heading": "Go Straight for the New Stuff",
+              "image": "shopify:\/\/shop_images\/1-15_new.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-15_new.jpg",
+              "cta_full_image": "",
+              "heading": "You Know You Want New",
               "hide_header_desktop": true,
               "subheading": "",
               "cta_one_link": "\/collections\/legacy\/audience_men",
               "cta_one_button_text": "Shop New Arrivals",
               "cta_two_link": "",
-              "cta_two_button_text": "Garden",
+              "cta_two_button_text": "",
               "cta_three_link": "",
-              "cta_three_button_text": "Add a button",
+              "cta_three_button_text": "",
               "cta_four_link": "",
               "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#ffffff",
-              "custom_slide_alt_color": "#000000",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
               "caption_horizontal": "center",
+              "caption_horizontal_offset": 0,
               "caption_vertical": 65,
               "caption_vertical_mobile": 65,
               "caption_background": "rgba(0,0,0,0)",
@@ -592,24 +596,24 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-twin-promo-1_16a77097-415e-4331-9f90-865d716cce94.jpg",
+              "image": "shopify:\/\/shop_images\/MW_2019-01-14-jackets.jpg",
               "mobile_image": "",
               "link": "#",
-              "heading_text": "Shimmy into These",
+              "heading_text": "New Year, Still Cold",
               "text": "",
-              "cta_text": "Shop Denim",
+              "cta_text": "Shop Jackets & Coats",
               "cta_style": "button"
             }
           },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-twin-promo-2_68ac37b0-1ce8-4173-adb7-3cbad8d06b2f.jpg",
+              "image": "shopify:\/\/shop_images\/MW_2019-01-02-sleeves.jpg",
               "mobile_image": "",
               "link": "#",
-              "heading_text": "It's Spring. You Need Dresses.",
+              "heading_text": "Sexy but with Sleeves",
               "text": "",
-              "cta_text": "Shop Now",
+              "cta_text": "Shop Long Sleeve Dresses",
               "cta_style": "button"
             }
           }
@@ -685,6 +689,7 @@
             "settings": {
               "image": "",
               "mobile_image": "",
+              "cta_full_image": "",
               "heading": "We Come From Alaska",
               "hide_header_desktop": false,
               "subheading": "Where nothing is forgiven and no compromise goes unpunished. <br> Where 50-foot seas swallow the slightest missteps.",
@@ -696,10 +701,13 @@
               "cta_three_button_text": "Add a button",
               "cta_four_link": "",
               "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#164732",
               "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
               "caption_vertical": 50,
               "caption_vertical_mobile": 50,
               "caption_background": "rgba(0,0,0,0)",
@@ -1398,10 +1406,96 @@
         "settings": {
           "fourohfour_content": "404-content"
         }
+      },
+      "1547557172846": {
+        "type": "slideshow",
+        "blocks": {
+          "1547557172846-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1-15_endofseasonpromo.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-10_sale.jpg",
+              "cta_full_image": "#",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "#",
+              "cta_one_button_text": "Shop 40% Off",
+              "cta_two_link": "#",
+              "cta_two_button_text": "Shop 50% Off",
+              "cta_three_link": "#",
+              "cta_three_button_text": "Shop 60% Off",
+              "cta_four_link": "#",
+              "cta_four_button_text": "Shop All Sale",
+              "hide_buttons_desktop": true,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 64,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547557172846-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "1547557568724": {
+        "type": "slideshow",
+        "blocks": {
+          "1547557568724-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1-15_PSA.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-15_psa.jpg",
+              "cta_full_image": "#",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "",
+              "cta_one_button_text": "",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "",
+              "cta_three_button_text": "",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
+              "hide_buttons_desktop": true,
+              "hide_buttons_mobile": true,
+              "caption_color_scheme": "white",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#e41c39",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 50,
+              "caption_background": "transparent",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547557568724-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
       }
     },
     "content_for_index": [
+      "1547557568724",
       "1535728526385",
+      "1547557172846",
       "1536251685211",
       "1544343478271",
       "1547175141098",

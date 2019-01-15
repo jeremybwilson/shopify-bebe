@@ -33,8 +33,10 @@
             {% if block.settings.image != blank %}
 
               <div class="box-ratio">
+                {% if block.settings.cta_full_image != blank %}
+                <a href="{{ block.settings.cta_full_image }}">
+                {% endif %}
                 <picture>
-                  
                   {% comment %} :: MOBILE IMAGE :: {% endcomment %}
 
                   {% if block.settings.mobile_image != blank %}
@@ -52,6 +54,9 @@
                     data-parent-fit="cover"
                     alt="{{ block.settings.image.alt | escape }}">
                 </picture>
+                {% if block.settings.cta_full_image != blank %}
+                </a>
+                {% endif %}
 
                 <noscript>
                   <img src="{{ block.settings.image | img_url: '1024x' }}" alt="{{ block.settings.image.alt | escape }}" class="slideshow__image slideshow__image--{{ block.id }}">
@@ -176,8 +181,28 @@
             @media screen and (max-width: 767px) {
               .flex-caption.slide-{{ block.id }} {
                 top: {{ block.settings.caption_vertical_mobile }}%;
+                {% if block.settings.hide_buttons_mobile %}
+                display: none;
+                {% endif %}
               }
             }
+            @media screen and (min-width: 768px) {
+              .flex-caption.slide-{{ block.id }} {
+                {% if block.settings.caption_horizontal_offset %}
+                margin-left: {{ block.settings.caption_horizontal_offset }}%;
+                {% endif %}
+                {% if block.settings.hide_buttons_desktop %}
+                display: none;
+                {% endif %}
+              }
+
+              {% if block.settings.caption_horizontal_offset and block.settings.caption_horizontal_offset > 0 %}
+              .flex-caption.slide-{{ block.id }} .caption-inners {
+                transform: translateX(-50%);
+              }
+              {% endif %}
+            }
+
             .flex-caption.slide-{{ block.id }} .caption-inners {
               {% assign bg_color = block.settings.caption_background %}
               {% assign caption_opacity = block.settings.caption_opacity | plus: 0 %}
@@ -208,10 +233,16 @@
             .flex-caption.slide-{{ block.id }} h2.slide-title {
               color: {{ slide_text_color }};
             }
+            @media screen and (max-width: 767px) {
+              .flex-caption.slide-{{ block.id }} h2.slide-title {
+                color: {{ cta_color }};
+              }
+            }
             .flex-caption.slide-{{ block.id }} p {
               color: {{ slide_text_color }};
             }
             .flex-caption.slide-{{ block.id }} .cta a {
+              color: {{ slide_text_color }};
               background-color: {{ cta_color }};
             }
             .flex-caption.slide-{{ block.id }} .cta a:hover {
@@ -278,7 +309,12 @@
           "type": "image_picker",
           "id": "mobile_image",
           "label": "Image (Mobile)"
-        },        
+        },
+        {
+          "type": "url",
+          "id": "cta_full_image",
+          "label": "Full image link"
+        },
         {
           "type": "header",
           "content": "Text Box - Content"
@@ -365,6 +401,16 @@
           "info": "Visible only if a link is chosen"
         },
         {
+          "type": "checkbox",
+          "id": "hide_buttons_desktop",
+          "label": "Hide Buttons on Desktop"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_buttons_mobile",
+          "label": "Hide Buttons on Mobile"
+        },
+        {
           "type": "header",
           "content": "Text Box - Color Scheme"
         },
@@ -425,10 +471,20 @@
         },
         {
           "type": "range",
+          "id": "caption_horizontal_offset",
+          "min": 0,
+          "max": 30,
+          "step": 0.50,
+          "unit": "%",
+          "label": "Horizontal offset (desktop only)",
+          "default": 0
+        },
+        {
+          "type": "range",
           "id": "caption_vertical",
           "min": 5,
           "max": 70,
-          "step": 5,
+          "step": 1,
           "unit": "%",
           "label": "Vertical position",
           "default": 50
@@ -438,7 +494,7 @@
           "id": "caption_vertical_mobile",
           "min": 5,
           "max": 80,
-          "step": 5,
+          "step": 1,
           "unit": "%",
           "label": "Vertical position (mobile)",
           "default": 50
