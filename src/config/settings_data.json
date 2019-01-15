@@ -556,7 +556,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/1-15_new.jpg",
               "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-15_new.jpg",
-              "cta_full_image": "",
+              "cta_full_image": "\/collections\/new",
               "heading": "You Know You Want New",
               "hide_header_desktop": true,
               "subheading": "",
@@ -573,8 +573,8 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 25.5,
               "caption_vertical": 65,
               "caption_vertical_mobile": 65,
               "caption_background": "rgba(0,0,0,0)",
@@ -598,7 +598,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/MW_2019-01-14-jackets.jpg",
               "mobile_image": "",
-              "link": "#",
+              "link": "shopify:\/\/collections\/jackets-coats",
               "heading_text": "New Year, Still Cold",
               "text": "",
               "cta_text": "Shop Jackets & Coats",
@@ -610,7 +610,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/MW_2019-01-02-sleeves.jpg",
               "mobile_image": "",
-              "link": "#",
+              "link": "shopify:\/\/collections\/dresses",
               "heading_text": "Sexy but with Sleeves",
               "text": "",
               "cta_text": "Shop Long Sleeve Dresses",
@@ -1228,7 +1228,7 @@
         "type": "rich-text",
         "settings": {
           "heading": "BEBE – SEXY CLOTHING & CHIC CONTEMPORARY FASHION",
-          "rich_text": "<p>Welcome to bebe.com, featuring the sexiest clothing and chic fashion styles, all in one place. You&rsquo;ll find the latest on-trend looks and&nbsp;<a href=\"http:\/\/www.bebe.com\/New\/Featured-Designers\/pc\/193\/1161.cat\">women&rsquo;s designer clothing<\/a> at affordable prices. Looking for the hottest <a href=\"http:\/\/www.bebe.com\/Dresses\/197.sec\">dresses<\/a> of the season? From gorgeous party dresses to classy cocktail and special occasion dresses, bebe has all the chic styles you need. Browse maxi dresses, <a href=\"http:\/\/www.bebe.com\/Dresses\/Bodycon\/pc\/197\/204.cat\">bodycon dresses<\/a> and much more to find your perfect head-turning look. If you&rsquo;re looking for curve-hugging women&rsquo;s jeans, sophisticated&nbsp;<a href=\"http:\/\/www.bebe.com\/Dresses\/Jumpsuits-Rompers\/pc\/197\/208.cat\">jumpsuits<\/a>, cute rompers, fun tops or&nbsp;<a href=\"http:\/\/www.bebe.com\/Shoes\/239.sec\">sexy shoes<\/a>, the options are fabulous as well. Every season, bebe.com is the hottest destination for sexy looks and&nbsp;<a href=\"http:\/\/www.bebe.com\/New\/All-New-Arrivals\/pc\/193\/635.cat\">trendy fashion clothes<\/a> online.<br><br><\/p>",
+          "rich_text": "<p>Welcome to bebe.com, featuring the sexiest clothing and chic fashion styles, all in one place. You&rsquo;ll find the latest on-trend looks and&nbsp;<a href=\"\/collections\" title=\"All Collections\">women&rsquo;s designer clothing<\/a> at affordable prices. Looking for the hottest <a href=\"\/collections\/dresses\" title=\"Dresses\">dresses<\/a> of the season? From gorgeous party dresses to classy cocktail and special occasion dresses, bebe has all the chic styles you need. Browse maxi dresses, <a href=\"\/collections\/bodycon-dressses\" title=\"Dresses &gt; Bodycon Dresses\">bodycon dresses<\/a> and much more to find your perfect head-turning look. If you&rsquo;re looking for curve-hugging women&rsquo;s jeans, sophisticated&nbsp;<a href=\"\/collections\/jumpsuits\" title=\"Jumpsuits\">jumpsuits<\/a>, cute rompers, fun tops or&nbsp;<a href=\"\/collections\/heels\" title=\"Shoes &gt; Heels\">sexy shoes<\/a>, the options are fabulous as well. Every season, bebe.com is the hottest destination for sexy looks and&nbsp;<a href=\"\/collections\/new\" title=\"New\">trendy fashion clothes<\/a> online.<br><br><\/p>",
           "rich_text_columns": "col3",
           "rich_text_horizontal": "left",
           "page": ""
@@ -1322,7 +1322,6 @@
         },
         "block_order": [
           "1545461750320",
-          "1545990623813",
           "1545990628348",
           "1545990631198",
           "1545990640803",
@@ -1445,7 +1444,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/1-15_PSA.jpg",
               "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-15_psa.jpg",
-              "cta_full_image": "#",
+              "cta_full_image": "\/account\/login",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
