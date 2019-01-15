@@ -406,13 +406,13 @@
           "newsletter_submit_button": "SUBSCRIBE",
           "newsletter_error": "Please enter a valid e-mail address",
           "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
-          "instagram_footer_link": "http:\/\/www.instagram.com\/explore\/tags\/bebebabes",
-          "instagram_footer_image": "shopify:\/\/shop_images\/bebe-desktop-bebebabes.jpg",
+          "instagram_footer_link": "https:\/\/www.instagram.com\/bebe_stores",
+          "instagram_footer_image": "shopify:\/\/shop_images\/bebebabes.jpg",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
           "trust_icon_image_three": "",
           "social_heading": "Connect With Us",
-          "social_insta_hashtag": "#BEBEBABES",
+          "social_insta_hashtag": "#BEBEBABE",
           "copyright_footer_text": "BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED",
           "footer_nav": "footer",
           "footer_privacy_nav": "footer-copyright-menu"
@@ -1262,25 +1262,13 @@
           "1545461750320": {
             "type": "text_block",
             "settings": {
-              "heading_text": "END OF SEASON SALE: UP TO 70% OFF",
+              "heading_text": "END OF SEASON SALE: UP TO 65% OFF",
               "text": "<p>Save on hundreds of styles. Discount taken at checkout.<\/p>",
               "cta_text": "Shop Sale",
-              "link": "http:\/\/www.bebe.com\/Sale\/All-Sale\/pc\/270\/271.cat",
+              "link": "shopify:\/\/collections\/sale-65-off",
               "details_text": "<p>Valid online and at bebe's 1 West 34th Street store in New York City. Priced as marked. Final sale.<\/p>",
               "coupon_size": "full",
               "coupon_color": "medium"
-            }
-          },
-          "1545990623813": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "40% OFF WINTER STYLES",
-              "text": "<p>Enjoy 40% off select regular-priced styles for a limited time. Priced as marked.<\/p>",
-              "cta_text": "Shop Now",
-              "link": "http:\/\/www.bebe.com\/New\/40-Off-Winter-Styles\/pc\/193\/1382.cat",
-              "details_text": "<p>Valid online and at bebe's 1 West 34th Street store in New York City. Priced as marked online. Discount taken at register in-store.<\/p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
             }
           },
           "1545990628348": {
