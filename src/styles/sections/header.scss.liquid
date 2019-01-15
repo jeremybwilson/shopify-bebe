@@ -320,7 +320,9 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 }
             }
             .swell-club {
-                display: none;
+                @include mq('phone') {
+                    display: none !important;                    
+                }
 
                 @include mq('lap-and-up') {
                     color: $color--accent-1;
@@ -540,6 +542,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
         @include mq( 'desk-and-up' ) {
             height: auto;
             max-width: 1200px;
+            margin-top: 18px;
+            padding: 0;
         }
 
         @include mq( 'wide-and-up' ){
