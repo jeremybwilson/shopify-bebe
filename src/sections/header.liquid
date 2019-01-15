@@ -47,7 +47,7 @@
           
 
           {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
-          {% if section.settings.show_multiple_currencies %}
+          {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
             <li class="nav-item nav-currencies-picker">
               {% include 'borderfree-open-modal' %}
             </li>
