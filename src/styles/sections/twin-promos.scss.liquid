@@ -4,6 +4,18 @@
   @include mq('phone') {
     margin-bottom: 0;
 
+    &.homepage-section {
+      .single-promo {
+        .cta a {
+          padding: 0;
+        }
+
+        h3 {
+          font-weight: normal;
+        }
+      }
+    }
+
     .row.homepage-section {
       margin-bottom: 0;
       padding: 0;
@@ -20,7 +32,9 @@
           position: absolute;
           bottom: 100px;
           left: 50%;
-          width: calc(100% - 64px);
+          width: 100%;
+          min-width: calc(100% - 64px);
+          max-width: calc(100% - 20px);
           transform: translateX(-50%);
         }
       }
@@ -64,8 +78,9 @@
     h3 {
       margin-bottom: 16px;
       color: $color--white;
-      font-weight: $font-weight--black;
+      font-weight: $font-weight--medium;
       @include fontDim(30px,36px,.04em);
+      text-shadow: 1px 1px 1px #ccc;
       // text-transform: uppercase;
 
       @include mq('tablet-and-up') {
@@ -99,6 +114,7 @@
       }
 
       a {
+        padding: 0;
         color: $color--primary-2;
         text-decoration: none;
         letter-spacing: inherit;
@@ -115,13 +131,19 @@
           border-radius: 0;
           color: $color--white;
           @include fontDim(16px,16px,.04em);
-          font-weight: $font-weight--black;
+          font-weight: $font-weight--medium;
           text-transform: uppercase;
     
           @include mq('lap-and-up') {
             padding: 20px 60px;
             @include fontDim(20px,20px,0);
           }
+
+          @include mq('phone') {
+            color: $color--primary-1;
+            background-color: $color--white;
+          }
+
           &:hover {
             text-decoration: none;
           }
