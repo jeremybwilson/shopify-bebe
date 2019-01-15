@@ -365,6 +365,10 @@ var ajaxCart = (function(module, $) {
   cartCallback = function(cart) {
     $body.removeClass('drawer--is-loading');
     $body.trigger('ajaxCart.afterCartLoad', cart);
+
+    if (window.Shopify && Shopify.StorefrontExpressButtons) {
+      Shopify.StorefrontExpressButtons.initialize();
+    }
   };
 
   adjustCart = function () {
