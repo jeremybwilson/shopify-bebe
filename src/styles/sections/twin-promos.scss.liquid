@@ -79,8 +79,8 @@
       margin-bottom: 16px;
       color: $color--white;
       font-weight: $font-weight--medium;
-      @include fontDim(30px,36px,.04em);
-      text-shadow: 1px 1px 1px #ccc;
+      @include fontDim(30px,36px,.0em);
+      //text-shadow: 1px 1px 1px #ccc;
       // text-transform: uppercase;
 
       @include mq('tablet-and-up') {
@@ -130,13 +130,13 @@
           border: none;
           border-radius: 0;
           color: $color--white;
-          @include fontDim(16px,16px,.04em);
+          @include fontDim(16px,16px,0em);
           font-weight: $font-weight--medium;
           text-transform: uppercase;
     
           @include mq('lap-and-up') {
             padding: 20px 60px;
-            @include fontDim(20px,20px,0);
+            @include fontDim(16px,16px,0);
           }
 
           @include mq('phone') {

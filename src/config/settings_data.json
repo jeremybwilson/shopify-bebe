@@ -262,7 +262,7 @@
             "settings": {
               "menu_item": "New",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-1.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/new"
             }
           },
           "1522184323686": {
@@ -270,7 +270,7 @@
             "settings": {
               "menu_item": "Dresses",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-2.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/dresses"
             }
           },
           "1542668952241": {
@@ -278,7 +278,7 @@
             "settings": {
               "menu_item": "Jumpsuits",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-3.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/jumpsuits"
             }
           },
           "1542668973870": {
@@ -286,7 +286,7 @@
             "settings": {
               "menu_item": "Tops",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-4.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/blouses-shirts"
             }
           },
           "1542668979700": {
@@ -294,7 +294,7 @@
             "settings": {
               "menu_item": "Bottoms",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-5.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/leggings"
             }
           },
           "1542668985601": {
@@ -302,7 +302,7 @@
             "settings": {
               "menu_item": "Jackets & Coats",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-6.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/jackets-coats"
             }
           },
           "1542669004635": {
@@ -310,7 +310,7 @@
             "settings": {
               "menu_item": "Logo",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-7.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/logo"
             }
           },
           "1542669012588": {
@@ -318,7 +318,7 @@
             "settings": {
               "menu_item": "Shoes",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-10.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/heels"
             }
           },
           "1542669019789": {
@@ -326,7 +326,7 @@
             "settings": {
               "menu_item": "Accessories",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-9.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/jewelry"
             }
           },
           "1542669025513": {
@@ -334,7 +334,7 @@
             "settings": {
               "menu_item": "Sale",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-8.jpg",
-              "nav_promo_link": "#"
+              "nav_promo_link": "shopify:\/\/collections\/sale"
             }
           }
         },
@@ -354,12 +354,12 @@
           "full_width_header": false,
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
-          "announcement_text_one": "Free Shipping with no Minimum",
+          "announcement_text_one": "FREE SHIPPING OVER $100",
           "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "#",
-          "announcement_text_two": "FREE SHIPPING OVER $100",
+          "announcement_text_two": "Sign Up for clubbebe Rewards & get 20% off",
           "announcement_popup_two_content": "announcement-2",
-          "announcement_link_two": "#",
+          "announcement_link_two": "\/account\/login",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
           "top_left_highlight_link": "http:\/\/www.instagram.com\/bebe_stores",
@@ -575,7 +575,7 @@
               "custom_slide_alt_color": "#ffffff",
               "caption_horizontal": "left",
               "caption_horizontal_offset": 25.5,
-              "caption_vertical": 65,
+              "caption_vertical": 60,
               "caption_vertical_mobile": 65,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
@@ -1244,7 +1244,7 @@
       "offer-tab": {
         "type": "offer-tab",
         "settings": {
-          "show": true,
+          "show": false,
           "homepage_only": false,
           "label": "GET 20% OFF"
         }
@@ -1268,7 +1268,7 @@
               "link": "shopify:\/\/collections\/sale-65-off",
               "details_text": "<p>Valid online and at bebe's 1 West 34th Street store in New York City. Priced as marked. Final sale.<\/p>",
               "coupon_size": "full",
-              "coupon_color": "medium"
+              "coupon_color": "light"
             }
           },
           "1545990628348": {
@@ -1280,18 +1280,6 @@
               "link": "http:\/\/www.bebe.com\/New\/All-New-Arrivals\/pc\/193\/635.cat?intid=cd_freeship100_120715",
               "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.<\/p>",
               "coupon_size": "full",
-              "coupon_color": "white"
-            }
-          },
-          "1545990631198": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "FREE CANADIAN SHIPPING OVER $200",
-              "text": "<p>Enjoy on any order shipped to Canada.<\/p>",
-              "cta_text": "Shop Now",
-              "link": "http:\/\/www.bebe.com\/New\/All-New-Arrivals\/pc\/193\/635.cat?intid=cd_canadianshipping_120715",
-              "details_text": "<p>Enjoy free standard shipping on any bebe.com order of $200 or more shipped to a physical address in Canada. Excludes all other shipping destinations. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Not valid at bebe stores or on bebeoutlets.com. Offer not valid on gift cards, orders shipped to postal boxes or previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Please note that bebe.com purchases shipped to Canada can only be returned by shipment to bebe's online returns address, and customer is responsible for any return shipping costs. Other restrictions may apply. Offer subject to change at any time.<\/p>",
-              "coupon_size": "full",
               "coupon_color": "light"
             }
           },
@@ -1301,10 +1289,10 @@
               "heading_text": "20% OFF WHEN YOU SIGN UP FOR EMAIL",
               "text": "<p>Be first to hear about exclusive offers, new arrivals &amp; more.<\/p>",
               "cta_text": "Send Me Email",
-              "link": "http:\/\/www.bebe.com\/user\/subscribe_layer.jsp",
+              "link": "#newsletter-social",
               "details_text": "<p>Enjoy 20% off any regular-priced purchase. One-time use only. Only valid on bebe.com and at bebe's One West 34th Street store in New York City. Not valid at any other bebe store location. To redeem online, enter code provided in sign-up confirmation email at checkout. Not valid on sale items, promotions, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.<\/p>",
               "coupon_size": "half",
-              "coupon_color": "medium"
+              "coupon_color": "light"
             }
           },
           "1545991169940": {
@@ -1313,7 +1301,7 @@
               "heading_text": "20% OFF WHEN YOU JOIN CLUBBEBE",
               "text": "<p>Earn points on every purchase &amp; be rewarded.<\/p>",
               "cta_text": "Join the Club",
-              "link": "http:\/\/www.bebe.com\/user\/login.jsp?initForm=close",
+              "link": "\/account\/login",
               "details_text": "<p>Enjoy 20% off your next regular-priced purchase. One-time use only. Only valid on bebe.com. Not valid at bebe stores or on bebeoutlets.com. To redeem, enter code provided in email at checkout. Not valid on sale items, promotional items, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.<\/p>",
               "coupon_size": "half",
               "coupon_color": "light"
@@ -1323,7 +1311,6 @@
         "block_order": [
           "1545461750320",
           "1545990628348",
-          "1545990631198",
           "1545990640803",
           "1545991169940"
         ],
