@@ -125,7 +125,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
 
 
     // THUMBNAIL : Add Thumbnail template
-    var itemThumbUrl = images.length > 0 ? this.optimizeImage(images[0]['src']) : bcSfFilterConfig.general.no_image_url;
+    var itemThumbUrl = images.length > 0 ? this.optimizeImage(images[0]['src'], '400x') : bcSfFilterConfig.general.no_image_url;
     itemHtml = itemHtml.replace(/{{itemThumbUrl}}/g, itemThumbUrl);
     
 
@@ -133,7 +133,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
     var itemFlipImageHtml = '';
     if (bcSfFilterConfig.custom.image_flip && images.length > 1) {
         itemFlipImageHtml = '<div class="hidden">';
-        itemFlipImageHtml += '<img src="' + this.optimizeImage(images[1]['src']) + '" alt="{{itemTitle}}" />';
+        itemFlipImageHtml += '<img src="' + this.optimizeImage(images[1]['src'], '400x') + '" alt="{{itemTitle}}" />';
         itemFlipImageHtml += '</div>';
     }
     itemHtml = itemHtml.replace(/{{itemFlipImage}}/g, itemFlipImageHtml);
@@ -188,13 +188,13 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
                 var option = options[0]['values'][k]; //One color in the list of variant colors
 
                 // PRODUCT IMAGE : Parent image that is displayed by default (used by hover states to reset)
-                var productImgUrl = images.length > 0 ? this.optimizeImage(images[0]['src']) : bcSfFilterConfig.general.no_image_url;
+                var productImgUrl = images.length > 0 ? this.optimizeImage(images[0]['src'], '400x') : bcSfFilterConfig.general.no_image_url;
                 
                 // VARIANT IMAGE : Build Variant Product Image URL for hover display of that color's image
                 var imageIndex = option['image'] - 1; //Doesn't count from 0, counts from 1
                 var variantImgUrl = '';
                 if (typeof data['images'][imageIndex] !== 'undefined') {
-                    variantImgUrl = this.optimizeImage(data['images'][imageIndex]['src']);
+                    variantImgUrl = this.optimizeImage(data['images'][imageIndex]['src'], '400x');
                 }
 
                 // PRODUCT SKU
