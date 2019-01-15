@@ -319,6 +319,17 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     }
                 }
             }
+            .swell-club {
+                display: none;
+
+                @include mq('lap-and-up') {
+                    color: $color--accent-1;
+                }
+
+                & > span {
+                    color: inherit;
+                }
+            }
 
 
             // CART 
