@@ -1,3 +1,21 @@
+.announcement--box {
+  
+  margin-bottom: 40px;
+  border: solid 1px $color--field-1;
+
+  h2 {
+    @include fontSize( 20px );
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: $color--accent-1;
+  }
+  h3 {
+    @include fontSize( 16px );
+    margin-bottom: 0;
+    font-weight: $font-weight--book;
+  }
+}
+
 .clubrowcon {
   @include flexbox;
   @include justify-content( center );
@@ -69,11 +87,19 @@
   @include flex-basis( auto );
   text-align: center;
 
+  @include mq('phone') {
+    width: auto;
+  }
+
   h2 {
     letter-spacing: 2px;
     @include fontSize( 24px );
     text-align:center;
     margin-bottom: 2%;
+
+    @include mq('phone') {
+      @include fontSize( 16px );
+    }
   }
   p {
     text-align:center;
@@ -84,6 +110,10 @@
     border: 0;
     height: 0;
     border-top: 1px solid {{ settings.dotted_color }};
+
+    @include mq('phone') {
+      display: none;
+    }
   }  
 }
 .clubiconimg{
@@ -106,6 +136,10 @@
 .clubsubcopy-con{
   width:50%;
   margin:0 auto 5%;
+
+  @include mq('phone') {
+    width: 100%;
+  }
 
   h3{
     text-align: center;
@@ -453,6 +487,54 @@ div#club--rewards-history {
     }
   }
 }
+
+body.customers-login {
+  .clubrowcon {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  #club--vip-tiers {
+    margin-bottom: 60px; 
+
+    #club--vip-tiers--mobile-chart {
+      margin-left: 0.5rem;
+
+      & > li {
+        margin-left: 0;
+        color: $color--primary-1;
+        border: solid 1px $color--field-1;
+        padding: 20px;
+
+        &.club--tier-active:after {
+          display: none;
+        }        
+      }
+    }
+
+    table {
+      thead {
+        th {
+          span {
+            color: $color--primary-1;
+          }
+        }
+      }
+      tbody {
+        td {
+          span {
+            color: $color--primary-1;
+          }
+        }
+      }
+    }
+  }
+
+  .cmsWrapper {
+    margin-bottom: 40px;
+  }
+}
+
+
 
 // :: DASHBOARD :: More Perks
 
