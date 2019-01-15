@@ -1237,7 +1237,7 @@
       "customer-login": {
         "type": "customer-login",
         "settings": {
-          "above_form_block": "<h1>Sign In<\/h1>",
+          "above_form_block": "<h1>Sign In<\/h1>\n<div class=\"announcement--box\">\n<h2 style=\"text-align: center;\">Our brand new site is live.<\/h2>\n<h3>\nPlease create a new account to explore this experience.<\/h3>\n<p style=\"text-align: center;\"> <\/p>\n<\/div>",
           "login_content": "login-content"
         }
       },
