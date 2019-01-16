@@ -78,7 +78,7 @@
         {% else %}
           {% assign sizeClass = 'short-label' %}
         {% endif %}
-        <div class="swatch-element {{ sizeClass }} {% unless available %}soldout{% endunless %}">
+        <div class="swatch-element {{ sizeClass }} {% unless available %}soldout{% endunless %}{% if available == false and section.settings.show_sold_out == false %} hide{% endif %}">
           {{ radio_button }}
 
           <label for="{{ id }}">
@@ -89,7 +89,7 @@
       {% endcapture %}
 
       {% capture color_swatch %}
-        <div class="swatch-element color {% unless available %}soldout{% endunless %}" data-swatch-value="{{ value | esc }}">
+        <div class="swatch-element color {% unless available %}soldout{% endunless %}{% if available == false and section.settings.show_sold_out == false %} hide{% endif %}" data-swatch-value="{{ value | esc }}">
           <div class="tooltip">
             {{ value }}
           </div>
