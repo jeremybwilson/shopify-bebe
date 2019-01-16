@@ -152,57 +152,59 @@
 
 </head>
 
-<body id="DrawerPageContainer" class="gridlock shifter bfx-price-container bfx-refmove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}{% if settings.ajax_cart_method == 'drawer' %} drawer-content{% endif %}">
-  {% section 'offer-tab' %}
-  {% include 'script-google-tag-body' %}
+<body class="gridlock shifter bfx-price-container bfx-refmove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
   {% include 'timber-cart' %}
+  <div id="DrawerPageContainer" class="drawer-content">
+    {% section 'offer-tab' %}
+    {% include 'script-google-tag-body' %}
 
-  {% comment %} :: Fixed header cannot be wrapped in a transitional container. :: {% endcomment %}
-  {% section 'header' %}
+    {% comment %} :: Fixed header cannot be wrapped in a transitional container. :: {% endcomment %}
+    {% section 'header' %}
 
-  <div class="shifter-page{% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
-    <div class="page-wrap">
+    <div class="shifter-page{% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
+      <div class="page-wrap">
 
-      <div class="clear"></div>
+        <div class="clear"></div>
 
-      {% comment %}
-        REACT : EXAMPLE #1
-        <div id="example-global-react" data-info-passed-to-react='{ "name": "greg" }'></div>
-      {% endcomment %}
+        {% comment %}
+          REACT : EXAMPLE #1
+          <div id="example-global-react" data-info-passed-to-react='{ "name": "greg" }'></div>
+        {% endcomment %}
 
-      {% comment %} :: Simple Layout :: {% endcomment %}
-      {% if simple_layout %}
-
-        {{ content_for_layout }}
-
-      {% comment %} :: ALL OTHER PAGES :: {% endcomment %}
-      {% else %}
-
-        {% comment %} :: BREADCRUMBS :: {% endcomment %}
-        {% if settings.breadcrumb and has_breadcrumb %}
-          {% include 'breadcrumb' %}
-        {% endif %}
-
-        {% comment %} :: PAGE CONTENT :: {% endcomment %}
-        <div id="content" {% if content_row_wrapper %}class="row"{% endif %} >
+        {% comment %} :: Simple Layout :: {% endcomment %}
+        {% if simple_layout %}
 
           {{ content_for_layout }}
 
-        </div>
+        {% comment %} :: ALL OTHER PAGES :: {% endcomment %}
+        {% else %}
 
-      {% endif %} 
-      {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
+          {% comment %} :: BREADCRUMBS :: {% endcomment %}
+          {% if settings.breadcrumb and has_breadcrumb %}
+            {% include 'breadcrumb' %}
+          {% endif %}
 
-    </div>  <!-- close the page-wrap class -->
+          {% comment %} :: PAGE CONTENT :: {% endcomment %}
+          <div id="content" {% if content_row_wrapper %}class="row"{% endif %} >
 
-    {% section 'footer' %}
-  </div> <!-- close the shifter-page class -->
+            {{ content_for_layout }}
 
-  {% include 'cookie-banner' %}
+          </div>
 
-  {% include 'popup' %}
+        {% endif %} 
+        {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
 
-  <a href="#" class="scrollup"><i class="icon-chevron-up icon-2x"></i></a>
+      </div>  <!-- close the page-wrap class -->
+
+      {% section 'footer' %}
+    </div> <!-- close the shifter-page class -->
+
+    {% include 'cookie-banner' %}
+
+    {% include 'popup' %}
+
+    <a href="#" class="scrollup"><i class="icon-chevron-up icon-2x"></i></a>
+  </div>
 
   <!-- Begin Recently Viewed Products -->
   <script type="text/javascript" charset="utf-8">
