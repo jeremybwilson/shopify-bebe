@@ -152,15 +152,17 @@
 
 </head>
 
-<body class="gridlock shifter bfx-price-container bfx-remove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
+<body id="DrawerPageContainer" class="gridlock shifter bfx-price-container bfx-refmove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}{% if settings.ajax_cart_method == 'drawer' %} drawer-content{% endif %}">
   {% section 'offer-tab' %}
   {% include 'script-google-tag-body' %}
   {% include 'timber-cart' %}
 
+  {% comment %} :: Fixed header cannot be wrapped in a transitional container. :: {% endcomment %}
+  {% section 'header' %}
+
   <div class="shifter-page{% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
     <div class="page-wrap">
 
-      {% section 'header' %}
       <div class="clear"></div>
 
       {% comment %}

@@ -117,7 +117,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
       this.$nodes = {
         parent: $('body, html'),
-        page: $('#PageContainer'),
+        page: $('#DrawerPageContainer'),
         moved: $('.is-moved-by-drawer')
       };
 
@@ -140,6 +140,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     };
 
     Drawer.prototype.open = function (evt) {
+      console.log('hello world')
       // Keep track if drawer was opened from a click, or called by another function
       var externalCall = false;
 
