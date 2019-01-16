@@ -85,7 +85,7 @@
                 {% assign insta_img_url = section.settings.instagram_footer_image | img_url: '542x' %}
                 {% if section.settings.instagram_footer_link != blank %}<a href="{{ section.settings.instagram_footer_link }}" target="_blank">{% endif %}
                   <img src="{{ insta_img_url }}" alt="{{ section.settings.social_insta_hashtag }}" />
-                {% if section.settings.link != blank %}</a>{% endif %}
+                {% if section.settings.instagram_footer_link != blank %}</a>{% endif %}
               {% endif %}
             </div>
             <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
