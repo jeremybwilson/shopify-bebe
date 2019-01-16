@@ -1910,6 +1910,18 @@ $(document).ready(function() {
     }
   });
 
+  $(".fancybox-promo-trigger").fancybox({
+    href: $(this).attr('href'),
+    wrapCSS: 'fancybox-promo-popup',
+    openEffect: 'none',
+    closeEffect: 'none',
+    autoHeight: true,
+    maxWidth: 400,
+    maxHeight: 400,
+    padding: 30,
+    live: true
+  });
+
   /*============================================================================
    Sticky Navigation
   ==============================================================================*/
