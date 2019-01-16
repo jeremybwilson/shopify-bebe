@@ -281,7 +281,7 @@
       "add_to_cart": "Add to Bag",
       "pre_order": "Pre Order",
       "quantity": "Quantity",
-      "sku": "SKU",
+      "sku": "Style #",
       "back_to": "Back To",
       "previous_product_html": "Previous Product",
       "next_product_html": "Next Product",
@@ -293,7 +293,8 @@
       "continue": "Continue Shopping",
       "popup_question": "Ask us a question",
       "add_to_cart_success_link": "View Shopping Bag and Check out!",
-      "add_to_cart_success_html": "Item Added {{ link }}"
+      "add_to_cart_success_html": "Item Added {{ link }}",
+      "details": "Details"
     }
   },
   "gift_cards": {
