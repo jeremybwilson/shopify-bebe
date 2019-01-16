@@ -117,7 +117,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
       this.$nodes = {
         parent: $('body, html'),
-        page: $('#PageContainer'),
+        page: $('#DrawerPageContainer'),
         moved: $('.is-moved-by-drawer')
       };
 

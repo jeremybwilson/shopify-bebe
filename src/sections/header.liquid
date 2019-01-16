@@ -14,7 +14,20 @@
 
 
   {% comment %} ..:: NAVIGATION PORTION ::.. {% endcomment %}
-  <header id="nav-bar-wrapper" {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
+  {% assign header_class_name = '' %}
+  {% if section.settings.full_width_header %}
+    {% assign header_class_name = 'gridlock-fluid' %}
+  {% endif %}
+
+  {% if settings.ajax_cart_method == 'drawer' %}
+    {% if header_class_name != blank %}
+      {% assign header_class_name = header_class_name | append: ' ' %}
+    {% endif %}
+    {% assign header_class_name = header_class_name | append: 'is-moved-by-drawer' %}
+  {% endif %}
+
+  <header id="nav-bar-wrapper"
+          {% if header_class_name != blank %}class="{{ header_class_name }}"{% endif %}>
     {% if section.settings.full_width_header %}<div class="row">{% endif %}
 
     <div id="nav-aux">
