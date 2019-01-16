@@ -138,8 +138,10 @@
           {% continue %}
         {% endif %}
         {% if block.settings.nosto_id != blank %}
-          <div class="mobile-3 desktop-10">
-            {% include 'nosto-element' with block.settings.nosto_id %}
+          <div class="row">
+            <div class="mobile-3 desktop-12">
+              {% include 'nosto-element' with block.settings.nosto_id %}
+            </div>
           </div>
         {% endif %}
       {% endfor %}
