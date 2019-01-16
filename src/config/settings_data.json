@@ -262,7 +262,7 @@
             "settings": {
               "menu_item": "New",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-1.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/new"
+              "nav_promo_link": "shopify:\/\/collections\/the-pretty-ones"
             }
           },
           "1522184323686": {
@@ -270,7 +270,7 @@
             "settings": {
               "menu_item": "Dresses",
               "nav_image": "shopify:\/\/shop_images\/nav-megamenu-2.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/dresses"
+              "nav_promo_link": "shopify:\/\/collections\/cocktail-evening-dresses"
             }
           },
           "1542668952241": {
@@ -467,7 +467,7 @@
           "zoom_image_position": "zoom_over_main",
           "related_products": "none",
           "shipping_header_text": "Shipping & Returns",
-          "shipping_text": "<p>Bebe ships to addresses and P.O. boxes in the 48 contiguous states, Guam and Saipan via standard shipping only. At this time, we do not ship to P.O. boxes in Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and U.S. Territories other than Guam and Saipan. Eligible ShopRunner orders enjoy free 2 business day shipping to physical addresses in the 48 contiguous states only.<br><br>Please see our <a href=\"\/pages\/shipping#canadaShippingSection\" title=\"Canada Shipping\">Canada<\/a> and <a href=\"\/pages\/shipping#internationalShippingSection\" title=\"International Shipping\">International<\/a> sections for shipping info specific to these locations.<BR><BR><span>Learn More:<\/span> <a href=\"\/pages\/shipping\" title=\"Shipping\">Shipping<\/a> \/ <a href=\"\/pages\/returns\" title=\"Returns\">Returns<\/a><\/p>",
+          "shipping_text": "<p><span style=\"text-decoration: none;\">bebe <\/span><span style=\"text-decoration: none;\">ships to addresses in the <\/span><span style=\"text-decoration: none;\">50 United States and U.S. Territories, as well as to APO, FPO and DPO addresses. bebe ships to<\/span><span style=\"text-decoration: none;\"> P.O. boxes in the 48 contiguous states, Guam and Saipan via standard shipping only. At this time, we do not ship to P.O. boxes in Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and U.S. Territories other than Guam and Saipan.<\/span><br><br>Please see our <a href=\"\/pages\/shipping#canadaShippingSection\" title=\"Canada Shipping\">Canada<\/a> and <a href=\"\/pages\/shipping#internationalShippingSection\" title=\"International Shipping\">International<\/a> sections for shipping info specific to these locations.<br><br>Learn More: <a href=\"\/pages\/shipping\" title=\"Shipping\">Shipping<\/a> \/ <a href=\"\/pages\/returns\" title=\"Returns\">Returns<\/a><\/p>",
           "show_social": true,
           "size_chart_header_text": "Size Chart",
           "size_chart_page": "size-chart",
