@@ -1,4 +1,10 @@
 <div id="club--dashboard">
+    <div class="announcement--box">
+        <h2 style="text-align: center;">Clubbebe Update</h2>
+        <h3 style="text-align: center; margin-bottom: 20px">We’re working on some improvements to bebe.com, so your clubbebe points &amp; rewards might look a little off right now.<br>Your clubbebe account will be fully updated by 1/21/19.</h3>
+        
+    </div>
+
     <div id="club--main-info">
 
         {% comment %} POINTS TOP PANEL {% endcomment %}
@@ -23,14 +29,8 @@
                 <span class="club--desc">Rewards Available</span>
             </div>
 
-            {% comment %} Current Points Total {% endcomment %}
-            <div id="club--current-points-total" class="points-panel--panel">
-                <span class="swell-point-balance club--big-number"><i class="fa fa-spin fa-spinner"></i></span>
-                <div class="club--desc">Current points total</div>
-            </div>
-
             {% comment %} Points To Next Reward {% endcomment %}
-            <div id="club--points-to-next-reward" class="points-panel--panel">
+            <div id="club--points-to-next-reward" class="points-panel--panel" style="display: none;">
                 <div id="progress-circle" class="progress-circle">
                     <div class="points-info">
                         <span class="points-to-next-reward club--big-number"></span>
@@ -184,6 +184,12 @@
     {% comment %} RIGHT SIDE  {% endcomment %}
     <div id="club--sidebar">
         <div id="club--level--container">
+            {% comment %} Current Points Total {% endcomment %}
+            <div id="club--current-points-total" class="points-panel--panel">
+                <span class="swell-point-balance club--big-number"><i class="fa fa-spin fa-spinner"></i></span>
+                <div class="club--desc">Current points total</div>
+            </div>
+
             {% comment %} Current Tier Level {% endcomment %}
 
             <ul id="club--mini-vip-tier">

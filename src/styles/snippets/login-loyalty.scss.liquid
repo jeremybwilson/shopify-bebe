@@ -1,5 +1,5 @@
 .announcement--box {
-  
+  width: 100%;
   margin-bottom: 40px;
   border: solid 1px $color--field-1;
 
@@ -273,8 +273,16 @@ div#club--rewards-history {
 // DASHBOARD :: Current Points Total
 
 #club--current-points-total {
+
+  @include flexbox;
+  @include flex-direction( column );
+  @include justify-content( center );
+  @include align-items( center );
+
   @include mq( 'lap-and-up' ) {
-    border-right: solid 1px $color--field-1;
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: solid 1px $color--field-1;
   }
 }
 
