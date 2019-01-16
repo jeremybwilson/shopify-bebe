@@ -457,7 +457,7 @@
           "vendor": false,
           "show_quantity": false,
           "show_sku": false,
-          "show_sold_out": false,
+          "show_sold_out": true,
           "product_variants": "swatches",
           "use_swatch_images": true,
           "swatch_shape": "circles",
