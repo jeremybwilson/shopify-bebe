@@ -344,17 +344,15 @@
       ul#social-icons {
         @include flexbox;
         @include flex-wrap(wrap);
-        @include justify-content(space-evenly);
+        @include justify-content(space-between);
         margin: 10px 0 0;
         padding: 0;
         text-align: center;
         width: 100%;
 
         @include mq('tablet-and-up') {
-          @include justify-content(center);
           @include align-items(center);
           margin-top: 0;
-          margin-left: 24px;
         }
 
         li {
