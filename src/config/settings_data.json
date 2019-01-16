@@ -457,6 +457,7 @@
           "vendor": false,
           "show_quantity": false,
           "show_sku": false,
+          "show_sold_out": true,
           "product_variants": "swatches",
           "use_swatch_images": true,
           "swatch_shape": "circles",
@@ -1277,7 +1278,7 @@
               "heading_text": "FREE U.S. SHIPPING OVER $100",
               "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.<\/p>",
               "cta_text": "Shop Now",
-              "link": "http:\/\/www.bebe.com\/New\/All-New-Arrivals\/pc\/193\/635.cat?intid=cd_freeship100_120715",
+              "link": "shopify:\/\/collections\/new",
               "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.<\/p>",
               "coupon_size": "full",
               "coupon_color": "light"
