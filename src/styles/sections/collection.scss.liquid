@@ -135,3 +135,53 @@ $resultsTextColor: {{ settings.filter_text_color }};
     text-align: right;
     color: $resultsTextColor; //Imported from filters.scss.liquid
 }
+
+/* FOOTER : 
+ *    Includes Nosto recommendations and SEO text
+ * ---------------------------------------------- */
+.collection-footer {
+    @include mq('lap-and-up') {
+        position: relative;
+
+        // Magic number to align with bc-sf product cards
+        margin-left: -6px;
+        margin-right: 6px;
+
+        // Emulate sidebar
+        &::before {
+            content: " ";
+            width: 12.5%;
+            height: 1px;
+            margin-left: 1.04167%;
+            margin-right: 1.04167%;
+            float: left;
+        }
+
+        .collection-footer__elements {
+            width: 82.5%;
+            margin: 0 auto;
+            overflow: auto;
+        }
+    }
+}
+
+// Nosto elements
+.collection-nosto {
+    padding-left: 6px;
+    padding-right: 6px;
+
+    @include mq('lap-and-up') {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.collection-nosto__element {
+    .gridlock .row & {
+        float: none;
+    }
+
+    .nosto-block {
+        margin-bottom: 30px;
+    }
+}
