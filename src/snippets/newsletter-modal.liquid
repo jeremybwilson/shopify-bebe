@@ -35,13 +35,13 @@
                 autocorrect="off"
                 autocapitalize="off">
       </label>
-      <span class="newsletter-modal__btn-group">
-        <label id="button-modal-newsletter-submit" for="modal-newsletter-submit">
+      <!-- <span class="newsletter-modal__btn-group"> -->
+        <label id="button-modal-newsletter-submit" class="newsletter-modal__btn-group" for="modal-newsletter-submit">
           <button type="submit" id="footer-newsletter-submit" class="button newsletter-modal__btn" name="commit">
             {{ 'general.newsletter_form.submit' | t }}
           </button>
         </label>
-      </span>
+      <!-- </span> -->
     </div>
     <div id="newsletter-form--response">
       <span id="newsletter-success-response" class="success_message newsletter-modal__success" style="display:none;">{{ section.settings.newsletter_error }}</span>
