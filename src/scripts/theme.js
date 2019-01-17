@@ -1085,7 +1085,7 @@ theme.Newsletter = (function() {
       successMsg: $( '#newsletter-success-response')
     };
 
-    // REDIRECTION : Sales force url forces you to let it redirect, and reads these properties to determine the location.
+    // REDIRECTION : Salesforce url forces you to let it redirect, and reads these properties to determine the location.
     // Since we can't input browser location via liquid, has to be done here on load.
     ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
     ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
@@ -2521,7 +2521,7 @@ theme.ProductForm = function (context, events) {
       }
 
       if ( ui.navLogo.length > 0 && ui.prodDesc.length > 0 ) {
-        
+
         const $headerHeight = ui.navLogo.outerHeight() * 1.25; // accommodate for header height
         var scrollValue = ui.prodDesc.offset().top - $headerHeight;
 
@@ -3203,6 +3203,7 @@ $(document).ready(function() {
   var sections = new theme.Sections();
   sections.register('header-section', theme.Header);
   sections.register('newsletter-social', theme.Newsletter);
+  // sections.register('newsletter-modal', theme.NewsletterModal);
   sections.register('instagram', theme.Instagram);
   sections.register('featured-collections', theme.FeaturedCollections);
   sections.register('homepage-products', theme.FeaturedProducts);
