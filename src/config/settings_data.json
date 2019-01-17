@@ -399,7 +399,7 @@
           "heading": "Subscribe to our newsletter",
           "newsletter_subheading": "STAY IN TOUCH & GET 20% OFF",
           "newsletter_subscription_api_url": "https:\/\/cl.s10.exct.net\/subscribe.aspx",
-          "newsletter_email_service_provider_lid": "18",
+          "newsletter_email_service_provider_lid": "180",
           "newsletter_email_service_provider_mid": "100011471",
           "newsletter_sub_action": "sub_add_update",
           "newsletter_placeholder": "Enter Email",
@@ -1516,9 +1516,9 @@
       "1547711858918",
       "1547557172846",
       "1536251685211",
-      "1544343478271",
       "1547175141098",
-      "1547175393847"
+      "1547175393847",
+      "1544343478271"
     ]
   }
 }
