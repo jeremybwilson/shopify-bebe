@@ -23,7 +23,7 @@
     <input type="hidden" id="thank-you-url" name="thx" value="">
     <input type="hidden" id="error-url" name="err" value="">
     <input type="hidden" id="unsub-url" name="usub" value="">
-    <div class="klaviyo_field_group">
+    {% comment %} <div class="klaviyo_field_group"> {% endcomment %}
       <label  id="subscribe-footer-newsletter" for="modal-newsletter">
         <input  type="email"
                 name="Email Address"
@@ -35,17 +35,17 @@
                 autocorrect="off"
                 autocapitalize="off">
       </label>
-      <!-- <span class="newsletter-modal__btn-group"> -->
-        <label id="button-modal-newsletter-submit" class="newsletter-modal__btn-group" for="modal-newsletter-submit">
-          <button type="submit" id="footer-newsletter-submit" class="button newsletter-modal__btn" name="commit">
-            {{ 'general.newsletter_form.submit' | t }}
-          </button>
-        </label>
-      <!-- </span> -->
-    </div>
+      {% comment %} <span class="newsletter-modal__btn-group"> {% endcomment %}
+      <label id="button-modal-newsletter-submit" class="newsletter-modal__btn-group" for="modal-newsletter-submit">
+        <button type="submit" id="footer-newsletter-submit" class="button newsletter-modal__btn" name="commit">
+          {{ 'general.newsletter_form.submit' | t }}
+        </button>
+      </label>
+      {% comment %} </span> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
     <div id="newsletter-form--response">
-      <span id="newsletter-success-response" class="success_message newsletter-modal__success" style="display:none;">{{ section.settings.newsletter_error }}</span>
-      <span id="newsletter-error-response" class="error_message newsletter-modal__error" style="display:none;">{{ section.settings.newsletter_success }}</span>
+      <span id="newsletter-error-response" class="error_message newsletter-modal__error" style="display:none;">{{ section.settings.newsletter_error }}</span>
+      <span id="newsletter-success-response" class="success_message newsletter-modal__success" style="display:none;">{{ section.settings.newsletter_success }}</span>
     </div>
     <!-- <div class="klaviyo_messages">
       <div class="success_message newsletter-modal__success" style="display:none;"></div>
