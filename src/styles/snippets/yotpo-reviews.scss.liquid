@@ -10,11 +10,18 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
 /* YOTPO REVIEWS : CORE STYLES
  * ---------------------------------------------- */
 
-.yotpo {
+html .yotpo {
 
     .y-label,
     label.y-label {
         letter-spacing: 0;
+    }
+    
+    // buttons
+
+    .yotpo-default-button,
+    input[type="button"].yotpo-default-button {
+        @include buttonDefaultStyle;
     }
 }
 #yotpo-reviews.yotpo-main-widget { // Larger heirachy to override their nested styles
@@ -145,8 +152,27 @@ $reviewNameWidth: 180px;        // Username section on each review, 768+
             padding-right: 0;
         }
         .write-question-review-button {
+            background: $color--primary-1;
+            color: $color--reverse-1;
+            padding: 0 15px !important;
+
+            @include mq( 'tablet-and-up' ) {
+                padding: 0 24px !important;
+            }
+
+            &:hover {
+                border-color: none;
+                background: $button--main-bg-hover !important;
+                color: $button--main-text-hover !important;            
+            }
+
+            .write-question-review-button-icon {
+                color: inherit !important;
+            }
+
             .write-question-review-button-text {
                 font-family: $sans--2;
+                color: inherit;
             }
         }
     }

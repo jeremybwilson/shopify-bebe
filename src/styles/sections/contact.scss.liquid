@@ -1,16 +1,6 @@
 @charset "UTF-8";
 
 // SUBPAGE : Mobile nav padding reduction for mobile
-body.page-contact
- {
-  #content {
-    padding: 25px 0;
-
-    @include mq( 'tablet-and-up' ) {
-      padding: 100px 0;
-    }
-  }
-}
 
 #contact-bebe {
 
@@ -190,8 +180,9 @@ body.page-contact
             text-align: center;
           }
           input[type="submit"] {
+            @include buttonDefaultStyle;
+            @include mainButton;
             width: 200px;
-            background-color: $color--primary-1;
           }
           .successForm p {
             color: $color--primary-2;
