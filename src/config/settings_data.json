@@ -588,7 +588,7 @@
         ],
         "settings": {
           "full_width": true,
-          "slider_speed": 3
+          "slider_speed": 6
         }
       },
       "1536251685211": {
@@ -597,24 +597,24 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MW_2019-01-14-jackets.jpg",
-              "mobile_image": "",
-              "link": "shopify:\/\/collections\/jackets-coats",
-              "heading_text": "New Year, Still Cold",
+              "image": "shopify:\/\/shop_images\/twin-promo-leggings.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/twin-promo-leggings-mobile.jpg",
+              "link": "shopify:\/\/collections\/leggings",
+              "heading_text": "Nice & Tight",
               "text": "",
-              "cta_text": "Shop Jackets & Coats",
+              "cta_text": "Shop Leggings",
               "cta_style": "button"
             }
           },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MW_2019-01-02-sleeves.jpg",
-              "mobile_image": "",
-              "link": "\/collections\/long-sleeve-dresses",
-              "heading_text": "Sexy but with Sleeves",
+              "image": "shopify:\/\/shop_images\/twin-promo-romantic-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/twin-promo-romantic-mobile.jpg",
+              "link": "shopify:\/\/collections\/valentines-day-dresses",
+              "heading_text": "Feelin' Romantic?",
               "text": "",
-              "cta_text": "Shop Long Sleeve Dresses",
+              "cta_text": "SHOP V-DAY DRESSES",
               "cta_style": "button"
             }
           }
@@ -1384,6 +1384,7 @@
       },
       "1547557172846": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1547557172846-0": {
             "type": "image",
@@ -1465,11 +1466,54 @@
           "full_width": true,
           "slider_speed": 5
         }
+      },
+      "1547711858918": {
+        "type": "slideshow",
+        "blocks": {
+          "1547711858918-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/free-shipping-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/free-shipping-mobile.jpg",
+              "cta_full_image": "shopify:\/\/collections\/new",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "",
+              "cta_one_button_text": "",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "",
+              "cta_three_button_text": "",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "white",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#e41c39",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547711858918-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
       }
     },
     "content_for_index": [
       "1547557568724",
       "1535728526385",
+      "1547711858918",
       "1547557172846",
       "1536251685211",
       "1544343478271",
