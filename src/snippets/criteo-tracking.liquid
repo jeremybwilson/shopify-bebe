@@ -19,7 +19,7 @@
     <script>
       var criteo_items = [];
       {% for item in collection.products limit:3 %}
-        criteo_items.push("{{item.id}}");
+        criteo_items.push("{{item.sku}}");
       {% endfor %}
         window.criteo_q.push(
           { event: "viewList", ecpplugin: "shopify", product: criteo_items}
@@ -28,7 +28,7 @@
   {% when 'product' %}
     <script type="text/javascript">
       window.criteo_q.push(
-        { event: "viewItem", ecpplugin: "shopify", product: "{{ product.id }}" }
+        { event: "viewItem", ecpplugin: "shopify", product: "{{ product.sku }}" }
       );
     </script>
   {% when 'cart' %}
@@ -36,7 +36,7 @@
       var criteo_items = [];
       {% for item in cart.items %}
         criteo_items.push({
-          id : "{{item.product.id}}",
+          id : "{{item.product.sku}}",
           price : {{item.price | money_without_currency | remove: ","}}, //removing comma to comply with most countries
           quantity : {{item.quantity}}
         });
