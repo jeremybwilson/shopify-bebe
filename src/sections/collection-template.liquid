@@ -132,34 +132,37 @@
 
       {% endpaginate %}
 
-      {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
-      {% for block in section.blocks %}
-        {% if block.type != 'nosto_element' %}
-          {% continue %}
-        {% endif %}
-        {% if block.settings.nosto_id != blank %}
-          <div class="row">
-            <div class="mobile-3 desktop-12">
-              {% include 'nosto-element' with block.settings.nosto_id %}
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-
-      {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-      {% if template contains 'collection' and settings.show_collection_seo_block == true %}
-        {% if collection.description != blank %}
-          {% unless collection.description contains "banner--only" %}
-            {% include 'collection-seo-block' %}
-          {% endunless %}
-        {% endif %}
-      {% endif %}
-
-
     </div><!--#collection-main-->
 
   </div><!--.row-->
 
+  <div class="row">
+    <div class="collection-footer">
+      <div class="collection-footer__elements">
+        {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
+        <div class="collection-nosto">
+          {% for block in section.blocks %}
+            {% if block.type == 'nosto_element' and block.settings.nosto_id != blank %}
+              <div class="collection-nosto__element mobile-12">
+                {% include 'nosto-element' with block.settings.nosto_id %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
+        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
+          {% if collection.description != blank %}
+            {% unless collection.description contains "banner--only" %}
+                <div class="mobile-12">
+                  {% include 'collection-seo-block' %}
+              </div>
+            {% endunless %}
+          {% endif %}
+        {% endif %}
+      </div><!--.collection-footer__elements-->
+    </div><!--.collection-footer-->
+  </div><!--.row-->
 </div><!--.collection-template-->
 
 <script>
