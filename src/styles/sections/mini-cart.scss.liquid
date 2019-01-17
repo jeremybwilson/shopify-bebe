@@ -323,6 +323,10 @@ textarea#CartSpecialInstructions {
       font-weight: $font-weight--bold;
     }
   }
+
+  .additional-checkout-button + .additional-checkout-button {
+    margin-left: 0px;
+  }
 }
 
 // Checkout
@@ -330,13 +334,6 @@ textarea#CartSpecialInstructions {
 button.cart__checkout {
   width: 100%;
   background: $color--primary-1;
-  border-radius: 0 !important;
-  font-family: $sans--2;
-  font-weight: $font-weight--bold;
-  @include fontSize(14px);
-  letter-spacing: .125em;
-  text-transform: uppercase;
-  transition: background .25s ease-in-out;
 
   &:hover {
     background: $color--accent-1;

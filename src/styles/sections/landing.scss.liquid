@@ -452,19 +452,14 @@
   }
 
   .career-button, .return-button {
-    background-color: $color--primary-1;
-    color: $color--reverse-1;
-    text-decoration: none;
-    @include fontSize(12px);
-    font-weight: $font-weight--bold;
     @include flexbox;
     @include justify-content(center);
+    @include buttonDefaultStyle;
+    @include mainButton;
     width: 100%;
-    padding: 15px 30px;
     margin: 20px 0;
 
     @include mq('tablet-and-up'){
-      @include fontSize(15px);
       width: calc(240px - 5%);
     }
   }

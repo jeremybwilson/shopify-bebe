@@ -16,9 +16,6 @@
       font-weight: normal;
     }
 
-    .cta a {
-      font-weight: $font-weight--medium;
-    }
   }
 
   // image holder (for lazy-loading)
@@ -122,21 +119,9 @@
 
     a {
       display: inline-block;
-      padding: 15px 25px;
-      border: none;
-      border-radius: 0;
+      @include buttonDefaultStyle;
       color: $color--white;
-      @include fontDim(16px,16px,.04em);
-      font-weight: $font-weight--black;
-      text-transform: uppercase;
 
-      @include mq('tablet-and-up') {
-        padding: 20px 24px;
-        @include fontDim(16px,16px,0);
-      }
-      &:hover {
-        text-decoration: none;
-      }
     }
   }
 

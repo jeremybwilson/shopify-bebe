@@ -125,19 +125,9 @@
 
         span.button {
           display: inline-block;
-          padding: 15px 25px;
-          height: auto;
-          border: none;
-          border-radius: 0;
+          @include buttonDefaultStyle;
+
           color: $color--white;
-          @include fontDim(16px,16px,0em);
-          font-weight: $font-weight--medium;
-          text-transform: uppercase;
-    
-          @include mq('lap-and-up') {
-            padding: 20px 60px;
-            @include fontDim(16px,16px,0);
-          }
 
           @include mq('phone') {
             color: $color--primary-1;
