@@ -1,0 +1,39 @@
+
+{% comment %} Parse the collection title to remove breadcrumb-like naming {% endcomment %}
+{% if collection.title contains '>' %}
+    {% assign collection_title = collection.title | split: '>' | last %}
+{% else %}
+    {% assign collection_title = collection.title %}
+{% endif %}
+
+{% comment %} Parse the collection description to strip h3 {% endcomment %}
+
+{% if collection.description contains '</h3>' %}
+    {% assign collection_description = collection.description | split: '</h3>' | last %}
+{% else %}
+    {% assign collection_description = collection.description %}
+{% endif %}
+
+<div class="catch-item" data-alpha="{{ collection.title }}">
+  
+    <a href="{{ collection.url }}" title="{{ collection_title }}" >
+        <div class="catch-item--image">
+            {% if collection.image %}
+                {% include "basic-responsive-image", type: collection.image %}
+                <noscript>
+                    <img src="{{ collection.image | img_url: '120x120' }}" alt="{{ collection__image.alt | escape }}" class="collection__image">
+                </noscript>
+            {% else %}
+                {% include "basic-responsive-image", type: collection.products.first.featured_image %}
+                <noscript>
+                    <img src="{{ collection.products.first.featured_image | img_url: '120x120' }}" alt="{{ collection.products.first.featured_image.alt | escape }}" class="collection__image">
+                </noscript>
+            {% endif %}
+        </div>
+        <div class="catch-item--text">
+            <h3>{{ collection_title }}</h3>
+            <p>{{ collection_description | strip_html | truncatewords: 8, '... [more]'}}</p>
+        </div>    
+    </a>
+  
+</div>
