@@ -114,7 +114,7 @@
                 {% comment %} :: PRODUCT SKU :: {% endcomment %}
                 <span class="product-sku--wrapper">
                   <span class="product-sku--header">{{ 'products.product.sku' | t }}</span>
-                  <span class="product-sku"> {{ product.variants.first.sku }}</span>
+                  <span class="product-style-number"> {{ product.variants.first.sku | split: '-' | first }}</span>
                 </span>
               </div>
 
