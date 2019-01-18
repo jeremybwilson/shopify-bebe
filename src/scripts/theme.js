@@ -1074,14 +1074,14 @@ theme.Newsletter = (function() {
   function Newsletter(container) {
     const $container = this.$container = $(container);
     const ui = {
-      formId: $( '#footer-newsletter' ),
-      textbox: $( '#email' ),
-      subAction: $( '#sub-action' ),
-      thankYouInput: $( '#thank-you-url' ),
+          formId: $( '#footer-newsletter' ),
+         textbox: $( '#email' ),
+       subAction: $( '#sub-action' ),
+   thankYouInput: $( '#thank-you-url' ),
       errorInput: $( '#error-url' ),
       unsubInput: $( '#usub-url' ),
-      submit: $( '#button-footer-newsletter-submit' ),
-      errorMsg: $( '#newsletter-error-response'),
+          submit: $( '#button-footer-newsletter-submit' ),
+        errorMsg: $( '#newsletter-error-response'),
       successMsg: $( '#newsletter-success-response')
     };
 
@@ -1113,12 +1113,12 @@ theme.Newsletter = (function() {
         if ( state ) {
           ui.formId.addClass('has-error');
           ui.errorMsg.fadeIn();
-          // console.log(`adding error class`);
+          // console.log( `::: DEBUG : adding class` );
 
         } else {
           ui.formId.removeClass('has-error');
           ui.errorMsg.fadeOut();
-          // console.log(`removing error class`);
+          // console.log( `::: DEBUG : removing class` );
         }
       };
 
@@ -3194,7 +3194,6 @@ theme.OfferTab = (function () {
     });
   }
 
-  // OfferTab.prototype = _.assignIn({}, OfferTab.prototype, {});
   return OfferTab;
 })();
 
