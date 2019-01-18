@@ -14,43 +14,36 @@
     {%- endif -%}
   </div>
 
-  <form id="modal-newsletter"
-        action="{{ section.settings.newsletter_subscription_api_url }}"
-        method="POST">
-    <input type="hidden" name="MID" value="{{ section.settings.newsletter_email_service_provider_mid }}">
-    <input type="hidden" name="lid" value="{{ section.settings.newsletter_email_service_provider_lid }}">
-    <input type="hidden" id="sub-action" name="SubAction" value="{{ section.settings.newsletter_sub_action }}" checked>
-    <input type="hidden" id="thank-you-url" name="thx" value="">
-    <input type="hidden" id="error-url" name="err" value="">
-    <input type="hidden" id="unsub-url" name="usub" value="">
-    {% comment %} <div class="klaviyo_field_group"> {% endcomment %}
-      <label  id="subscribe-footer-newsletter" for="modal-newsletter">
-        <input  type="email"
-                name="Email Address"
-                id="email"
-                value="{% if customer %}{{ customer.email }}{% endif %}"
-                aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}"
-                placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}"
-                class="newsletter-modal__input"
-                autocorrect="off"
-                autocapitalize="off">
-      </label>
-      {% comment %} <span class="newsletter-modal__btn-group"> {% endcomment %}
-      <label id="button-modal-newsletter-submit" class="newsletter-modal__btn-group" for="modal-newsletter-submit">
-        <button type="submit" id="footer-newsletter-submit" class="button newsletter-modal__btn" name="commit">
+  <form id="email_signup"
+        class="klaviyo_gdpr_embed_{{ settings.newsletter_popup_klaviyo_id }} newsletter-modal__form"
+        action="//manage.kmail-lists.com/subscriptions/subscribe"
+        data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+        method="GET"
+        target="_blank"
+        novalidate="novalidate">
+    <input type="hidden" name="g" value="{{ settings.newsletter_popup_klaviyo_id }}">
+    <input type="hidden" name="$fields" value="$consent">
+    <input type="hidden" name="$list_fields" value="$consent">
+    <div class="klaviyo_field_group">
+      <input type="email"
+              value="{% if customer %}{{ customer.email }}{% endif %}"
+              name="email"
+              id="k_id_email"
+              aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}"
+              placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}"
+              class="newsletter-modal__input"
+              autocorrect="off"
+              autocapitalize="off">
+      <span class="newsletter-modal__btn-group">
+        <button type="submit" class="button newsletter-modal__btn" name="commit" id="Subscribe">
           {{ 'general.newsletter_form.submit' | t }}
         </button>
-      </label>
-      {% comment %} </span> {% endcomment %}
-    {% comment %} </div> {% endcomment %}
-    <div id="newsletter-form--response">
-      <span id="newsletter-error-response" class="error_message newsletter-modal__error" style="display:none;">{{ section.settings.newsletter_error }}</span>
-      <span id="newsletter-success-response" class="success_message newsletter-modal__success" style="display:none;">{{ section.settings.newsletter_success }}</span>
+      </span>
     </div>
-    <!-- <div class="klaviyo_messages">
+    <div class="klaviyo_messages">
       <div class="success_message newsletter-modal__success" style="display:none;"></div>
       <div class="error_message newsletter-modal__error" style="display:none;"></div>
-    </div> -->
+    </div>
   </form>
 
   {%- if settings.newsletter_popup_fine_print != blank -%}
