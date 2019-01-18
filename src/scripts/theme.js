@@ -1113,12 +1113,12 @@ theme.Newsletter = (function() {
         if ( state ) {
           ui.formId.addClass('has-error');
           ui.errorMsg.fadeIn();
-          // console.log( `::: DEBUG : adding class` );
+          console.log( `::: DEBUG : adding class to form element` );
 
         } else {
           ui.formId.removeClass('has-error');
           ui.errorMsg.fadeOut();
-          // console.log( `::: DEBUG : removing class` );
+          console.log( `::: DEBUG : removing class from form element` );
         }
       };
 
