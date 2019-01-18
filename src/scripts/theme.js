@@ -1085,7 +1085,7 @@ theme.Newsletter = (function() {
       successMsg: $( '#newsletter-success-response')
     };
 
-    // REDIRECTION : Sales force url forces you to let it redirect, and reads these properties to determine the location.
+    // REDIRECTION : Salesforce url forces you to let it redirect, and reads these properties to determine the location.
     // Since we can't input browser location via liquid, has to be done here on load.
     ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
     ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
