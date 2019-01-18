@@ -24,7 +24,7 @@
 
     // ALIGNMENT ADJUSTMENT
     @include mq( 'wide-and-up' ) {
-      padding-left: 100px;
+      //padding-left: 100px;
     }
 
     & > *:nth-last-child(-n+3) {
@@ -104,7 +104,7 @@
 
   @include mq('tablet-and-up') {
     width: 100%;
-    max-width: 1280px;
+    max-width: 960px;
     margin: 0 auto 72px;
   }
 }
@@ -113,8 +113,8 @@
   #content {
     h1 {
       color: $color--primary-2;
-      @include fontDim(15px,16px,0);
-      font-weight: $font-weight--book;
+      @include fontDim(16px,18px,0);
+      font-weight: $font-weight--medium;
       text-align: center;
       text-transform: uppercase;
 
@@ -127,7 +127,7 @@
       }
 
       @include mq('tablet-and-up') {
-        @include fontDim(22px,32px,0);
+        @include fontDim(20px,20px,0);
       }
     }
   }
@@ -149,10 +149,6 @@
 
   @include mq('phone') {
     display: none;
-  }
-
-  @include mq('tablet-and-up') {
-    @include fontSize(22px);
   }
 
   &.has-compare-price {
