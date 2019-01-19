@@ -1077,9 +1077,9 @@ theme.Newsletter = (function() {
           formId: $( '#footer-newsletter' ),
          textbox: $( '#email' ),
        subAction: $( '#sub-action' ),
-   thankYouInput: $( '#thank-you-url' ),
-      errorInput: $( '#error-url' ),
-      unsubInput: $( '#usub-url' ),
+   thankYouInput: $( '#thank-you-url-footer' ),
+      errorInput: $( '#error-url-footer' ),
+      unsubInput: $( '#unsub-url-footer' ),
           submit: $( '#button-footer-newsletter-submit' ),
         errorMsg: $( '#newsletter-error-response'),
       successMsg: $( '#newsletter-success-response')
@@ -3192,6 +3192,72 @@ theme.OfferTab = (function () {
       e.preventDefault();
       $(this).parent().fadeOut();
     });
+
+    const $container = this.$container = $(container);
+    const ui = {
+          formId: $( '#modal-newsletter' ),
+         textbox: $( '#exct_id_email' ),
+       subAction: $( '#sub-action-offertab' ),
+   thankYouInput: $( '#thank-you-url-offertab' ),
+      errorInput: $( '#error-url-offertab' ),
+      unsubInput: $( '#unsub-url-offertab' ),
+          submit: $( '#button-modal-newsletter-submit' ),
+        errorMsg: $( '#modal-error-response'),
+      successMsg: $( '#modal-success-response')
+    };
+
+    // REDIRECTION : Salesforce url forces you to let it redirect, and reads these properties to determine the location.
+    // Since we can't input browser location via liquid, has to be done here on load.
+    ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
+    ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
+    ui.unsubInput.attr( 'value', window.location.origin + '/pages/newsletter-unsub' );
+
+    // regex for valid email
+    const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
+
+    if ( ui.formId ) {
+      ui.textbox.on('focus', () => {
+
+        // remove any pre-existing error class
+        toggleError( false );
+
+      });
+
+      // VALIDATE : Check string for valid email
+      const validateEmail = () => {
+        return regexEmail.test( ui.textbox.val() );
+      };
+
+      // ERROR MSG : Toggle error msg showing
+      const toggleError = ( state ) => {
+
+        // TRUE = error present
+        if ( state ) {
+          ui.formId.addClass('has-error');
+          ui.errorMsg.fadeIn();
+
+        } else {
+          ui.formId.removeClass('has-error');
+          ui.errorMsg.fadeOut();
+        }
+      };
+
+      // KEYPRESS EVENT : Check input as typing if email is valid
+      var debounce = require( 'lodash.debounce' );
+      ui.textbox.on( 'keyup', debounce( () => {
+        const validEmail = validateEmail();
+        // console.log( `::: DEBUG : Is valid? = ${validEmail}` );
+
+        // Enable submit button if valid email is entered
+        if ( validEmail ) {
+          ui.submit.addClass( 'enable' ); // Enable submit button
+          toggleError( false );
+        } else {
+          ui.submit.removeClass( 'enable' );
+          toggleError( true );
+        }
+      }, 250 ) );
+    }
   }
 
   return OfferTab;
