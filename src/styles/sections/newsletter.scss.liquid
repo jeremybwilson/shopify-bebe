@@ -79,9 +79,11 @@
     border: solid 1px transparent;
     transition: border .3s ease;
   }
+
   form.has-error {
     border: solid 1px $color--error;
   }
+
   input[type="email"] {
     box-sizing: border-box;
     position: relative;
@@ -113,6 +115,18 @@
   form.has-error input[type="email"] {
     color: $color--error;
   }
+
+  #button-footer-newsletter-submit, #button-modal-newsletter-submit {
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0.5;
+
+    &.enable {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
   #button-footer-newsletter-submit {
     position: absolute;
     z-index: 2;
@@ -123,14 +137,14 @@
     right: 0;
     width: 47px;
     height: 47px;
-    cursor: pointer;
-    pointer-events: none;
-    opacity: 0.5;
+    // cursor: pointer;
+    // pointer-events: none;
+    // opacity: 0.5;
     transition: opacity 0.25s ease-in-out;
 
     &.enable {
-      pointer-events: all;
-      opacity: 1;
+      // pointer-events: all;
+      // opacity: 1;
     }
 
     @include mq('tablet-and-up') {
@@ -150,26 +164,9 @@
       }
     }
   }
+
   input[type="submit"] {
     display: none;
-  }
-
-  // response messages
-
-  #newsletter-form--response {
-    color: $color--white;
-
-    #newsletter-error-response {
-      @include h7;
-    }
-    #newsletter-success-response {
-      text-transform: none;
-
-      p {
-        color: inherit;
-        @include fontSize(16px);
-      }
-    }
   }
 }
 
