@@ -187,13 +187,25 @@
         }
       }
     }
+
     // response messages
+
     #newsletter-form--response {
+      // color: $color--white;
       color: $color--text-1;
       margin-bottom: 15px;
 
-      @include mq('tablet-and-up'){
+      #newsletter-error-response {
+        @include h7;
+        color: $color--error;
+      }
+      #newsletter-success-response {
+        text-transform: none;
 
+        p {
+          color: inherit;
+          @include fontSize(16px);
+        }
       }
     }
   }
