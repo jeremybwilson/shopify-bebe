@@ -261,7 +261,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "New",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-1.jpg",
+              "nav_image": "shopify:\/\/shop_images\/unnamed.jpg",
               "nav_promo_link": "shopify:\/\/collections\/the-pretty-ones"
             }
           },
@@ -269,15 +269,15 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Dresses",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-2.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/cocktail-evening-dresses"
+              "nav_image": "shopify:\/\/shop_images\/unnamed-1.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/work-dresses"
             }
           },
           "1542668952241": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Jumpsuits",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-3.jpg",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_00e972f2-f74d-4a2d-84ff-e2ad689fc31c.jpg",
               "nav_promo_link": "shopify:\/\/collections\/jumpsuits"
             }
           },
@@ -285,7 +285,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Tops",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-4.jpg",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_ff2419fa-a52d-4599-a68e-f716a14590f2.jpg",
               "nav_promo_link": "shopify:\/\/collections\/blouses-shirts"
             }
           },
@@ -293,7 +293,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Bottoms",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-5.jpg",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_2417033e-9e23-44a1-b0b8-977cc10b2e51.jpg",
               "nav_promo_link": "shopify:\/\/collections\/leggings"
             }
           },
@@ -301,7 +301,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Jackets & Coats",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-6.jpg",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_f140fe8e-914a-4cf4-88f9-61a50a2a45f3.jpg",
               "nav_promo_link": "shopify:\/\/collections\/jackets-coats"
             }
           },
@@ -309,23 +309,23 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Logo",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-7.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/logo"
+              "nav_image": "shopify:\/\/shop_images\/unnamed_bee0f492-66fd-409a-a52c-630b429598a1.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/logo-tops"
             }
           },
           "1542669012588": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Shoes",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-10.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/heels"
+              "nav_image": "shopify:\/\/shop_images\/unnamed_89fed0e2-293f-4fc4-8087-c518295420b3.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/boots-booties"
             }
           },
           "1542669019789": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Accessories",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-9.jpg",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_09d662c4-c4e9-49c3-a043-b4966a6ec4ef.jpg",
               "nav_promo_link": "shopify:\/\/collections\/jewelry"
             }
           },
@@ -333,8 +333,8 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Sale",
-              "nav_image": "shopify:\/\/shop_images\/nav-megamenu-8.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/sale"
+              "nav_image": "shopify:\/\/shop_images\/unnamed_69f3721f-5acf-4c3f-b35a-68a96336bc6f.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/sale-dresses"
             }
           }
         },
