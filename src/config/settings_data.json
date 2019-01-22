@@ -1254,13 +1254,7 @@
         "settings": {
           "show": true,
           "homepage_only": false,
-          "label": "GET 20% OFF",
-          "newsletter_subscription_api_url": "https:\/\/cl.s10.exct.net\/subscribe.aspx",
-          "newsletter_email_service_provider_lid": "180",
-          "newsletter_email_service_provider_mid": "100011471",
-          "newsletter_sub_action": "sub_add_update",
-          "newsletter_error": "Please enter a valid e-mail address",
-          "newsletter_success": "<p>You have successfully joined our newsletter.<\/p>"
+          "label": "GET 20% OFF"
         }
       },
       "page-contact-template": {
