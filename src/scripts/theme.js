@@ -2109,7 +2109,9 @@ $(document).ready(function() {
         nextMembershipLevel: $( '.next-membership-level' ),
         progressCircle: $( '#progress-circle' ),
         rewardsHistory: $( '#club--rewards-history' ),
-        rewardsHistoryList: $( '#club--rewards-history--list' )
+        rewardsHistoryList: $( '#club--rewards-history--list' ),
+        activeCoupon: $( '#club--active-coupons'),
+        activeCouponList: $( '#club--active-coupons--list' )
       };
       const swellData = {
         customerDetails: swellAPI.getCustomerDetails(),
@@ -2140,9 +2142,29 @@ $(document).ready(function() {
       }
 
       // console.log(swellData.vipTiers);
-      // console.log(swellData.customerDetails);
-      // console.log(swellData.redemptionData);
-      // console.log(customerRewards);
+      console.log(swellData.customerDetails);
+      console.log(swellData.redemptionData);
+
+      // pull the available rewards
+      if ( swellData.redemptionData ) {
+
+          swellData.redemptionData.forEach(function(coupon) {
+            let $couponListItem = $('<li/>');
+
+            $couponListItem
+              .attr('data-id', coupon.id )
+              .append( '<span class="club--active-coupons--description">' + coupon.description + '</span>' )
+              .append( '<span class="club--active-coupons--cost">' + coupon.costText + '</span>' )
+              .append( '<span class="club--active-coupons--redeem"><button class="club--redeem">Redeem</button></span>' );
+
+            ui.activeCouponList.append( $couponListItem );
+            
+          });
+
+          ui.activeCoupon.show();
+
+      }
+      
 
       // mark the current tier
       $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
