@@ -72,7 +72,7 @@ jobs:
           command: | #Change theme ID for each level
             echo '
             production:
-              password:' $SLATE_PASSWORD_MUCK_PROD '
+              password:' $SLATE_PASSWORD '
               theme_id: "66250145856"
               store: bebe-prod.myshopify.com
               ignore_files:
