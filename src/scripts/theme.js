@@ -1077,22 +1077,13 @@ theme.Newsletter = (function() {
           formId: $( '#footer-newsletter' ),
          textbox: $( '#email' ),
        subAction: $( '#sub-action' ),
-   thankYouInput: $( '#thank-you-url-footer' ),
-      errorInput: $( '#error-url-footer' ),
-      unsubInput: $( '#unsub-url-footer' ),
           submit: $( '#button-footer-newsletter-submit' ),
         errorMsg: $( '#newsletter-error-response'),
       successMsg: $( '#newsletter-success-response')
     };
 
-    // REDIRECTION : Salesforce url forces you to let it redirect, and reads these properties to determine the location.
-    // Since we can't input browser location via liquid, has to be done here on load.
-    ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
-    ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
-    ui.unsubInput.attr( 'value', window.location.origin + '/pages/newsletter-unsub' );
-
     // regex for valid email
-    const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
+    // const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
     if ( ui.formId ) {
       ui.textbox.on('focus', () => {
@@ -1113,12 +1104,10 @@ theme.Newsletter = (function() {
         if ( state ) {
           ui.formId.addClass('has-error');
           ui.errorMsg.fadeIn();
-          console.log( `::: DEBUG : adding class to form element` );
 
         } else {
           ui.formId.removeClass('has-error');
           ui.errorMsg.fadeOut();
-          console.log( `::: DEBUG : removing class from form element` );
         }
       };
 
@@ -1126,7 +1115,6 @@ theme.Newsletter = (function() {
       var debounce = require( 'lodash.debounce' );
       ui.textbox.on( 'keyup', debounce( () => {
         const validEmail = validateEmail();
-        // console.log( `::: DEBUG : Is valid? = ${validEmail}` );
 
         // Enable submit button if valid email is entered
         if ( validEmail ) {
@@ -1138,55 +1126,6 @@ theme.Newsletter = (function() {
         }
       }, 250 ) );
 
-      // SUBMIT : Old way (use if not using salesforce)
-      // ui.formId.submit( (e) => {
-      //   e.preventDefault();
-
-      //   // validation code
-      //   let validEmail = regexEmail.test(ui.textbox.val());
-
-      //   if(!validEmail) {
-
-      //     // error state
-      //     ui.formId.addClass('has-error');
-      //     ui.errorMsg.fadeIn();
-
-      //   } else {
-
-      //     // success state
-
-      //     var baseUrl = 'https://cl.s10.exct.net/subscribe.aspx';
-      //     console.log(`Here is the POST'ed form data`, ui.formId.serialize());
-      //     var formData = ui.formId.serialize();
-      //     formData.replace('thx=', "thx='" + window.location.href + "'");
-      //     formData = formData.replace( 'thx=', `thx='${window.location.href}'` );
-      //     formData = formData.replace( 'err=', `err='${window.location.href}'` );
-      //     formData = formData.replace( 'usub=', `usub='${window.location.href}'` );
-      //     const fetch = require( 'isomorphic-fetch' );
-
-      //     // Ajax to submit (post) to ExactTarget list subscription
-      //     fetch( baseUrl , {
-      //           method: 'POST',
-      //           body: formData,
-      //           headers: {
-      //             'Content-Type': 'application/x-www-form-urlencoded'
-      //           }
-      //       })
-      //       .then( res => {
-      //             if ( res.status >= 400 ) {
-      //                 throw new Error( "Bad res from server" );
-      //             }
-      //             return res.json();
-      //         })
-      //         .then( productJson => {
-      //             return productJson;
-      //       })
-      //       .catch( error => {
-      //         const theError = error && error.message ? error.message : error || 'Request failed for an unknown reason with no error object returned..';
-      //         console.log( `[ theme.js newsletter -- subscribe() ] : Failed request :\n${ theError }` );
-      //     });
-      //   }
-      // });
     }
   }
   Newsletter.prototype = _.assignIn({}, Newsletter.prototype, {});
@@ -1998,7 +1937,7 @@ $(document).ready(function() {
    fadeOutGroup: $( '#subscribe--popup--form, #subscribe--popup .fine-print')
     };
 
-    const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
+    // const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
     if ( ui.formId ) {
 
@@ -3174,7 +3113,6 @@ theme.Search = (function() {
   return Search;
 })();
 
-
 /*============================================================================
   Offer Tab
 ==============================================================================*/
@@ -3198,22 +3136,10 @@ theme.OfferTab = (function () {
           formId: $( '#modal-newsletter' ),
          textbox: $( '#exct_id_email' ),
        subAction: $( '#sub-action-offertab' ),
-   thankYouInput: $( '#thank-you-url-offertab' ),
-      errorInput: $( '#error-url-offertab' ),
-      unsubInput: $( '#unsub-url-offertab' ),
           submit: $( '#button-modal-newsletter-submit' ),
         errorMsg: $( '#modal-error-response'),
       successMsg: $( '#modal-success-response')
     };
-
-    // REDIRECTION : Salesforce url forces you to let it redirect, and reads these properties to determine the location.
-    // Since we can't input browser location via liquid, has to be done here on load.
-    ui.thankYouInput.attr( 'value', window.location.origin + '/pages/newsletter-thank-you' );
-    ui.errorInput.attr( 'value', window.location.origin + '/pages/newsletter-error' );
-    ui.unsubInput.attr( 'value', window.location.origin + '/pages/newsletter-unsub' );
-
-    // regex for valid email
-    const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
     if ( ui.formId ) {
       ui.textbox.on('focus', () => {
@@ -3263,6 +3189,9 @@ theme.OfferTab = (function () {
   return OfferTab;
 })();
 
+
+// regex for valid email - moved outside of theme sections and defined globally here
+const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
 /*============================================================================
   Registering Sections
