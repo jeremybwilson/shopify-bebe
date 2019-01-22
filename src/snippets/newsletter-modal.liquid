@@ -15,11 +15,11 @@
   </div>
 
   <form id="modal-newsletter"
-        action="{{ section.settings.newsletter_subscription_api_url }}"
+        action="{{ settings.newsletter_subscription_api_url }}"
         method="POST">
-    <input type="hidden" name="MID" value="{{ section.settings.newsletter_email_service_provider_mid }}">
-    <input type="hidden" name="lid" value="{{ section.settings.newsletter_email_service_provider_lid }}">
-    <input type="hidden" id="sub-action" name="SubAction" value="{{ section.settings.newsletter_sub_action }}" checked>
+    <input type="hidden" name="MID" value="{{ settings.newsletter_email_service_provider_mid }}">
+    <input type="hidden" name="lid" value="{{ settings.newsletter_email_service_provider_lid }}">
+    <input type="hidden" id="sub-action" name="SubAction" value="{{ settings.newsletter_sub_action }}" checked>
     <input type="hidden" id="thank-you-url-offertab" name="thx" value="">
     <input type="hidden" id="error-url-offertab" name="err" value="">
     <input type="hidden" id="unsub-url-offertab" name="usub" value="">
@@ -42,8 +42,8 @@
       </label>
     </div>
     <div id="modal-form--response">
-      <span id="modal-error-response" style="display:none;">{{ section.settings.newsletter_error }}</span>
-      <span id="modal-success-response" style="display:none;">{{ section.settings.newsletter_success }}</span>
+      <span id="modal-error-response" style="display:none;">{{ settings.newsletter_error }}</span>
+      <span id="modal-success-response" style="display:none;">{{ settings.newsletter_success }}</span>
     </div>
   </form>
 
