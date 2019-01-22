@@ -1,41 +1,34 @@
 # Javascript Node CircleCI 2.0 configuration file
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
+version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:8.11.3-browsers
-
 general:
   branches:
     only:
       - develop # list of branches to build
-
-version: 2
+      - release
 jobs:
   build:
     <<: *defaults
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}-bootstrapped
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
       # NPM Install & Overwrite the slate build-js file with our custom one that compiles ES6 / React
       - run: npm run bootstrap
-
       # Save the cached setup
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}-bootstrapped
-
       # Persist the specified paths (workspace/echo-output) into the workspace for use in deploy job.
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a  
@@ -44,78 +37,76 @@ jobs:
           # Must be relative path from root
           paths:
             - .
-  deploy:
+  deploy_develop:
     <<: *defaults
-
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: ~/repo
-
         #Install slate to use slate deploy commands (v0.14)
       - run: sudo npm i -g @shopify/slate
-
       - run:
           name: Generate dev env setting
           command: | #Change theme ID for each level 
             echo '
             development:
               password:' $SLATE_PASSWORD '
-              theme_id: "live"
-              store: muckboot-dev.myshopify.com
+              theme_id: "66250145856"
+              store: bebe-prod.myshopify.com
               ignore_files:
                 # - settings_data.json #This is commented out so we keep in sync with repo
                 - settings_data.presets-portion.bak.json' > ./config.yml
-
       - run:
           name: Deploy
           command: npm run deploy
-
+  deploy_release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/repo
+        #Install slate to use slate deploy commands (v0.14)
+      - run: sudo npm i -g @shopify/slate
+      - run:
+          name: Generate prod env setting
+          command: | #Change theme ID for each level
+            echo '
+            production:
+              password:' $SLATE_PASSWORD_MUCK_PROD '
+              theme_id: "66250145856"
+              store: bebe-prod.myshopify.com
+              ignore_files:
+                - settings_data.json' > ./config.yml
+      - run:
+          name: Deploy
+          command: slate deploy -e production
 workflows:
   version: 2
-
-  build-deploy:
+  build_deploy_dev:
     jobs:
-      - build
-      - deploy:
+      - build:
+          filters:
+            branches:
+              only:
+                - develop
+      - deploy_develop:
           requires:
             - build
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          filters:
+            branches:
+              only:
+                - develop
+  build_deploy_release:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - release
+      - deploy_release:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - release
