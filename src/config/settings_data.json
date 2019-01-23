@@ -562,8 +562,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/sale-up-to-65-off-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/sale-up-to-65-off-mobile.jpg",
+              "image": "shopify:\/\/shop_images\/sale-up-to-65-off-desktop_a602323f-56f3-4708-b8fd-cd407c36dba5.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/sale-up-to-65-off-mobile_35a22492-296b-46af-9f91-e3aba0bd9daa.jpg",
               "cta_full_image": "shopify:\/\/collections\/sale",
               "heading": "",
               "hide_header_desktop": false,
@@ -1274,7 +1274,7 @@
               "text": "<p>Save on hundreds of styles. Discount taken at checkout.<\/p>",
               "cta_text": "Shop Sale",
               "link": "shopify:\/\/collections\/sale-65-off",
-              "details_text": "<p>Valid online and at bebe's 1 West 34th Street store in New York City. Priced as marked. Final sale.<\/p>",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1298,7 +1298,7 @@
               "text": "<p>Be first to hear about exclusive offers, new arrivals &amp; more.<\/p>",
               "cta_text": "Send Me Email",
               "link": "#newsletter-social",
-              "details_text": "<p>Enjoy 20% off any regular-priced purchase. One-time use only. Only valid on bebe.com and at bebe's One West 34th Street store in New York City. Not valid at any other bebe store location. To redeem online, enter code provided in sign-up confirmation email at checkout. Not valid on sale items, promotions, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.<\/p>",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
               "coupon_size": "half",
               "coupon_color": "light"
             }
@@ -1310,7 +1310,7 @@
               "text": "<p>Earn points on every purchase &amp; be rewarded.<\/p>",
               "cta_text": "Join the Club",
               "link": "\/account\/login",
-              "details_text": "<p>Enjoy 20% off your next regular-priced purchase. One-time use only. Only valid on bebe.com. Not valid at bebe stores or on bebeoutlets.com. To redeem, enter code provided in email at checkout. Not valid on sale items, promotional items, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.<\/p>",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
               "coupon_size": "half",
               "coupon_color": "light"
             }
@@ -1476,6 +1476,7 @@
       },
       "1547711858918": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
