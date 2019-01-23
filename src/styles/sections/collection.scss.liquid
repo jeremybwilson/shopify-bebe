@@ -6,6 +6,13 @@
  * ---------------------------------------------- */
 $resultsTextColor: {{ settings.filter_text_color }};
 
+#product-loop {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
 
 /*  COLLECTION: Banner
  * ---------------------------------------------- */
