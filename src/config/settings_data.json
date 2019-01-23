@@ -1252,7 +1252,7 @@
       "offer-tab": {
         "type": "offer-tab",
         "settings": {
-          "show": true,
+          "show": false,
           "homepage_only": false,
           "label": "GET 20% OFF"
         }
