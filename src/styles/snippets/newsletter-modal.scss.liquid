@@ -4,6 +4,40 @@
   padding: 15px;
   text-align: center;
   max-width: 450px;
+
+  form.has-error input[type="email"] {
+    color: $color--error;
+  }
+
+  #button-modal-newsletter-submit {
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0.5;
+
+    &.enable {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  #modal-form--response {
+    // color: $color--white;
+    color: $color--text-1;
+  }
+
+  #modal-error-response {
+    @include h7;
+    color: $color--error;
+  }
+
+  #modal-success-response {
+    text-transform: none;
+
+    p {
+      color: inherit;
+      @include fontSize(16px);
+    }
+  }
 }
 
 .newsletter-modal__head {

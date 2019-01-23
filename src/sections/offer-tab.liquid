@@ -4,7 +4,7 @@
       <a href="#newsletter-modal" class="js-offer-tab offer-tab__label">{{ section.settings.label }}</a>
       <span class="offer-tab__cross js-offer-tab-close">{% include 'svg-icon-x' %}</span>
     </div>
-    
+
     {% include 'newsletter-modal' %}
 
   {%- endif -%}
@@ -18,7 +18,7 @@
         "type": "checkbox",
         "id": "show",
         "label": "Show offer tab",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",

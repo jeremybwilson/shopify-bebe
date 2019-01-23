@@ -14,13 +14,13 @@
                 <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
               </div><!-- .foot-sub-emailtext -->
               <div class="foot-sub-emailform">
-                <form id="footer-newsletter" action="{{ section.settings.newsletter_subscription_api_url }}" method="post">
-                  <input type="hidden" name="MID" value="{{ section.settings.newsletter_email_service_provider_mid }}">
-                  <input type="hidden" name="lid" value="{{ section.settings.newsletter_email_service_provider_lid }}">
-                  <input type="hidden" id="sub-action" name="SubAction" value="{{ section.settings.newsletter_sub_action }}" checked>
-                  <input type="hidden" id="thank-you-url" name="thx" value="">
-                  <input type="hidden" id="error-url" name="err" value="">
-                  <input type="hidden" id="unsub-url" name="usub" value="">
+                <form id="footer-newsletter" action="{{ settings.newsletter_subscription_api_url }}" method="post">
+                  <input type="hidden" name="MID" value="{{ settings.newsletter_email_service_provider_mid }}">
+                  <input type="hidden" name="lid" value="{{ settings.newsletter_email_service_provider_lid }}">
+                  <input type="hidden" id="sub-action" name="SubAction" value="{{ settings.newsletter_sub_action }}" checked>
+                  <input type="hidden" id="thank-you-url-footer" name="thx" value="{{ settings.newsletter_signup_thank_you_page }}">
+                  <input type="hidden" id="error-url-footer" name="err" value="{{ settings.newsletter_signup_error_page }}">
+                  <input type="hidden" id="unsub-url-footer" name="usub" value="{{ settings.newsletter_signup_unsub_page }}">
                   <label id="subscribe-footer-newsletter" for="footer-newsletter">
                     <input class="form-control subscribe-form" type="email" id="email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}">
                   </label>
@@ -31,9 +31,9 @@
                 </form>
               </div><!-- .foot-sub-emailform -->
               <div id="newsletter-form--response">
-                <span id="newsletter-error-response" style="display:none;">{{ section.settings.newsletter_error }}</span>
+                <span id="newsletter-error-response" style="display:none;">{{ settings.newsletter_error }}</span>
                 <span id="newsletter-success-response" style="display:none;">
-                {{ section.settings.newsletter_success }}</span>
+                {{ settings.newsletter_success }}</span>
               </div>
             </div><!-- .email-text -->
           </div><!-- .newsletter -->
@@ -167,9 +167,13 @@
         "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
       },
       {
+        "type": "header",
+        "content": "Newsletter API settings under Theme Settings"
+      },
+      {
         "type": "text",
         "id": "heading",
-        "label": "Heading",
+        "label": "Heading (deprecated)",
         "default": "Subscribe to our newsletter"
       },
       {
@@ -177,30 +181,6 @@
         "id": "newsletter_subheading",
         "label": "Newsletter sub-heading",
         "default": "STAY IN TOUCH & GET 10% OFF"
-      },
-      {
-        "type": "url",
-        "id": "newsletter_subscription_api_url",
-        "label": "ESP API Endpoint URL",
-        "info": "Required"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_email_service_provider_lid",
-        "label": "Email Studio (ExactTarget) List ID",
-        "default": "List ID (123) here"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_email_service_provider_mid",
-        "label": "Email Studio (ExactTarget) Member ID",
-        "default": "Member ID (XYZ123) here"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_sub_action",
-        "label": "Email Studio (ExactTarget) Subscription attribute",
-        "default": "sub_add_update"
       },
       {
         "type": "text",
@@ -213,18 +193,6 @@
         "id": "newsletter_submit_button",
         "label": "Submit button text",
         "default": "ENTER"
-      },
-      {
-        "type": "text",
-        "id": "newsletter_error",
-        "label": "Error Text",
-        "default": "Please enter a valid e-mail address"
-      },
-      {
-        "type": "richtext",
-        "id": "newsletter_success",
-        "label": "Success Text",
-        "default": "<p>You have successfully joined our newsletter</p>"
       },
       {
         "type": "header",

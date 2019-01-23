@@ -79,9 +79,11 @@
     border: solid 1px transparent;
     transition: border .3s ease;
   }
+
   form.has-error {
     border: solid 1px $color--error;
   }
+
   input[type="email"] {
     box-sizing: border-box;
     position: relative;
@@ -113,6 +115,7 @@
   form.has-error input[type="email"] {
     color: $color--error;
   }
+
   #button-footer-newsletter-submit {
     position: absolute;
     z-index: 2;
@@ -141,7 +144,6 @@
     svg {
       width: 14px;
       height: 14px;
-
     }
 
     &:hover {
@@ -150,26 +152,9 @@
       }
     }
   }
+
   input[type="submit"] {
     display: none;
-  }
-
-  // response messages
-
-  #newsletter-form--response {
-    color: $color--white;
-
-    #newsletter-error-response {
-      @include h7;
-    }
-    #newsletter-success-response {
-      text-transform: none;
-
-      p {
-        color: inherit;
-        @include fontSize(16px);
-      }
-    }
   }
 }
 
