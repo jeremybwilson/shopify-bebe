@@ -3118,7 +3118,7 @@ theme.Search = (function() {
 ==============================================================================*/
 theme.OfferTab = (function () {
   function OfferTab(container) {
-    $('.js-offer-tab').fancybox({
+    $('.js-offer-tab, .js-offer-tab-email').fancybox({
       hideContentOnClick: true,
     });
 
