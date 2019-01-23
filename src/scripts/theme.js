@@ -2158,8 +2158,7 @@ $(document).ready(function() {
             const $couponRedeem = $('<span class="club--active-coupons--redeem"/>');
 
             const $couponRedeemButton = $('<button class="club--redeem js-swell-redeem">Redeem</button>');
-            $couponRedeemButton.on('click', handleClickRedeem);
-            $couponRedeemButton.attr('data-redemption-option-id', coupon.id);
+            $couponRedeemButton.on('click', handleClickRedeem(coupon.id));
 
             $couponRedeem.append($couponRedeemButton);
             $couponListItem.append($couponRedeem);
@@ -2169,13 +2168,12 @@ $(document).ready(function() {
           ui.activeCoupon.show();
       }
 
-      function handleClickRedeem(e) {
+      handleClickRedeem = couponId => e => {
         e.preventDefault();
         if (swellAPI) {
           const options = {
-            redemptionOptionId: $(this).attr('data-redemption-option-id'),
+            redemptionOptionId: couponId,
             couponCode: '278961',
-            pointsUded: 250,
             discountType: 'fixed_amount',
           }
 
@@ -2184,11 +2182,11 @@ $(document).ready(function() {
       }
       
       function onSuccess(message) {
-        console.log('Success!', message)
+        console.log('Success!', message);
       }
 
       function onError(message) {
-        console.log('Error!', message)
+        console.log('Error!', message);
       }
 
       // mark the current tier
