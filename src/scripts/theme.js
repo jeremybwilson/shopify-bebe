@@ -2096,7 +2096,7 @@ $(document).ready(function() {
 
   (function loyalty_program() {
     $(document).on('swell:setup', function() {
-
+      'use strict';
       // just show the rewards popup for reference purposes
       // $('h2').click(function() {
       //   swellAPI.showPopupByType("RewardsPopup");
@@ -2142,29 +2142,54 @@ $(document).ready(function() {
       }
 
       // console.log(swellData.vipTiers);
-      console.log(swellData.customerDetails);
-      console.log(swellData.redemptionData);
+      console.log('Customer Details', swellData.customerDetails);
+      console.log('Redemption Data', swellData.redemptionData);
 
       // pull the available rewards
       if ( swellData.redemptionData ) {
-
           swellData.redemptionData.forEach(function(coupon) {
             let $couponListItem = $('<li/>');
 
             $couponListItem
               .attr('data-id', coupon.id )
               .append( '<span class="club--active-coupons--description">' + coupon.description + '</span>' )
-              .append( '<span class="club--active-coupons--cost">' + coupon.costText + '</span>' )
-              .append( '<span class="club--active-coupons--redeem"><button class="club--redeem">Redeem</button></span>' );
+              .append( '<span class="club--active-coupons--cost">' + coupon.costText + '</span>' );
 
+            const $couponRedeem = $('<span class="club--active-coupons--redeem"/>');
+
+            const $couponRedeemButton = $('<button class="club--redeem js-swell-redeem">Redeem</button>');
+            $couponRedeemButton.on('click', handleClickRedeem);
+            $couponRedeemButton.attr('data-redemption-option-id', coupon.id);
+
+            $couponRedeem.append($couponRedeemButton);
+            $couponListItem.append($couponRedeem);
             ui.activeCouponList.append( $couponListItem );
-            
           });
 
           ui.activeCoupon.show();
+      }
 
+      function handleClickRedeem(e) {
+        e.preventDefault();
+        if (swellAPI) {
+          const options = {
+            redemptionOptionId: $(this).attr('data-redemption-option-id'),
+            couponCode: '278961',
+            pointsUded: 250,
+            discountType: 'fixed_amount',
+          }
+
+          return swellAPI.makeRedemption(options, onSuccess, onError)
+        }
       }
       
+      function onSuccess(message) {
+        console.log('Success!', message)
+      }
+
+      function onError(message) {
+        console.log('Error!', message)
+      }
 
       // mark the current tier
       $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
