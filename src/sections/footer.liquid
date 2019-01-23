@@ -18,9 +18,9 @@
                   <input type="hidden" name="MID" value="{{ settings.newsletter_email_service_provider_mid }}">
                   <input type="hidden" name="lid" value="{{ settings.newsletter_email_service_provider_lid }}">
                   <input type="hidden" id="sub-action" name="SubAction" value="{{ settings.newsletter_sub_action }}" checked>
-                  <input type="hidden" id="thank-you-url-footer" name="thx" value="{{ settings.newsletter_signup_thank_you_page }}">
-                  <input type="hidden" id="error-url-footer" name="err" value="{{ settings.newsletter_signup_error_page }}">
-                  <input type="hidden" id="unsub-url-footer" name="usub" value="{{ settings.newsletter_signup_unsub_page }}">
+                  <input type="hidden" id="thank-you-url-footer" name="thx" value="{{ shop.secure_url }}{{ settings.newsletter_signup_thank_you_page }}">
+                  <input type="hidden" id="error-url-footer" name="err" value="{{ shop.secure_url }}{{ settings.newsletter_signup_error_page }}">
+                  <input type="hidden" id="unsub-url-footer" name="usub" value="{{ shop.secure_url }}{{ settings.newsletter_signup_unsub_page }}">
                   <label id="subscribe-footer-newsletter" for="footer-newsletter">
                     <input class="form-control subscribe-form" type="email" id="email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}">
                   </label>
