@@ -3172,7 +3172,6 @@ theme.OfferTab = (function () {
       var debounce = require( 'lodash.debounce' );
       ui.textbox.on( 'keyup', debounce( () => {
         const validEmail = validateEmail();
-        // console.log( `::: DEBUG : Is valid? = ${validEmail}` );
 
         // Enable submit button if valid email is entered
         if ( validEmail ) {
@@ -3188,7 +3187,6 @@ theme.OfferTab = (function () {
 
   return OfferTab;
 })();
-
 
 // regex for valid email - moved outside of theme sections and defined globally here
 const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
