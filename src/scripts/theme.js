@@ -2158,7 +2158,7 @@ $(document).ready(function() {
             const $couponRedeem = $('<span class="club--active-coupons--redeem"/>');
 
             const $couponRedeemButton = $('<button class="club--redeem js-swell-redeem">Redeem</button>');
-            $couponRedeemButton.on('click', handleClickRedeem({ couponId: coupon.id, couponCode: '278961', discountType: 'fixed_amount' }));
+            $couponRedeemButton.on('click', redemptionOptionId);
 
             $couponRedeem.append($couponRedeemButton);
             $couponListItem.append($couponRedeem);
@@ -2168,10 +2168,10 @@ $(document).ready(function() {
           ui.activeCoupon.show();
       }
 
-      handleClickRedeem = options => e => {
+      handleClickRedeem = redemptionOptionId => e => {
         e.preventDefault();
         if (swellAPI) {
-          return swellAPI.makeRedemption(options, onSuccess, onError)
+          return swellAPI.makeRedemption({ redemptionOptionId }, onSuccess, onError)
         }
       }
       
