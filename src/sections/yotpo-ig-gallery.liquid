@@ -1,0 +1,65 @@
+<div id="yotpo-ig-{{ section.id }}" data-section-id="{{ section.id }}" class="yotpo-ig-gallery{% if section.settings.full_width %} gridlock-fluid full-width{% endif %}">
+  <div class="row">
+    {% if section.settings.show_header %}
+    <div class="insta-header"><span>Shop our</span></div>
+    {% endif %}
+    <h4>{{ section.settings.header }}</h4>
+    <div
+      class="yotpo yotpo-pictures-widget"
+      data-gallery-id="{{ section.settings.gallery_id }}">
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+{% schema %}
+{
+  "name": "Instagram Gallery Section",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "gallery_id",
+      "label": "Gallery ID (from Yotpo)"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show IG Header",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "header",
+      "label": "header"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Instagram Gallery",
+      "settings": [
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Gallery",
+      "category": "Promotional",
+      "blocks": [
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
