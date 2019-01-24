@@ -1,5 +1,8 @@
 <div id="yotpo-ig-{{ section.id }}" data-section-id="{{ section.id }}" class="yotpo-ig-gallery{% if section.settings.full_width %} gridlock-fluid full-width{% endif %}">
   <div class="row">
+    {% if section.settings.show_header %}
+    <div class="insta-header"><span>Shop our</span></div>
+    {% endif %}
     <h4>{{ section.settings.header }}</h4>
     <div
       class="yotpo yotpo-pictures-widget"
@@ -27,7 +30,13 @@
       "default": false
     },
     {
-      "type": "text",
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show IG Header",
+      "default": true
+    },
+    {
+      "type": "richtext",
       "id": "header",
       "label": "header"
     }

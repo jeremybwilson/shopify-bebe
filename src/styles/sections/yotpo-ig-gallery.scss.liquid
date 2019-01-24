@@ -1,15 +1,92 @@
+.gridlock .yotpo-ig-gallery .row [class*=all-] {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 .yotpo-ig-gallery {
     // max-width: 1440px;
+    div.insta-header {
+        text-align: center;
+        margin: 12px auto;
 
-    &.full_width {
+        span {
+            display: inline-block;
+            @include fontSize(32px);
 
+            &:after {
+                background-image: url('//s7d9.scene7.com/is/image/bebe/2017-03-12-inst-iconv01?$fullsize$&fmt=png-alpha');
+                background-size: 40px 40px;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                content: '';
+                position: relative;
+                top: 10px;
+                right: -8px;
+            }
+        }
     }
 
-    .yotpo .yotpo-instagram .yotpo-header .yotpo-header-element .yotpo-instagram-username {
+    h4 {
+        text-align: center;
+    }
+}
 
+div.yotpo {
+    .yotpo-pictures-collage-wrapper .yotpo-pictures-collage-small-images-wrapper.row-size-3 {
+        margin-right: 0;
+        margin-left: 0;
     }
 
-    .yotpo-lightbox.yotpo .yotpo-modal.yotpo-modal-active .yotpo-lightbox-container .yotpo-lightbox-content-container .yotpo-lightbox-products-container .yotpo-lightbox-product-button {
-        display: none;
+    .yotpo-instagram {
+        .yopto-main.yotpo-regular-box {
+            font-family: $sans--2;
+        }
+
+        .yotpo-footer .yotpo-helpful {
+            display: none;
+        }
+
+        .yotpo-header .yotpo-header-element .yotpo-instagram-username {
+            font-family: $sans--2;
+        }
+    }
+
+    &.yotpo-lightbox {
+        .yotpo-modal.yotpo-modal-active .yotpo-lightbox-container {
+            .yotpo-lightbox-content-container {
+                .yotpo-instagram .yotpo-icon-profile {
+                    background: url(//s7d9.scene7.com/is/image/bebe/bebelogoicon) #666;
+                    background-position: center;
+                    background-size: cover;
+    
+                    label {
+                        text-indent: -9999px;
+                    }
+                }
+    
+                .yotpo-instagram .yotpo-helpful,
+                .yotpo-lightbox-products-container .yotpo-lightbox-product-button {
+                    display: none;
+                }
+            }
+
+            .yotpo-label.yotpo-small-box {
+                display: none;
+            }
+        }
+
+        .yotpo-modal .yotpo-modal-mask.yotpo-active-display {
+            opacity: 0.1;
+        }
+
+        label.yotpo-lightbox-product-name {
+            font-family: $sans--2;
+            font-size: 12px;
+        }
+    }
+
+    .yotpo-icon-button-text {
+        white-space: nowrap;
     }
 }
