@@ -1526,25 +1526,6 @@
           "slider_speed": 5
         }
       },
-      "1548227985794": {
-        "type": "yotpo-ig-gallery",
-        "blocks": {
-          "1548227985794-0": {
-            "type": "text_block",
-            "settings": {
-            }
-          }
-        },
-        "block_order": [
-          "1548227985794-0"
-        ],
-        "settings": {
-          "gallery_id": "5c3c6b7432a3a44146eaaa9e",
-          "full_width": false,
-          "show_header": true,
-          "header": "Tap the looks below for details. Follow @bebe_stores &amp; tag your looks with #bebebabe for a chance to be featured."
-        }
-      },
       "1548306390190": {
         "type": "slideshow",
         "blocks": {
@@ -1594,7 +1575,6 @@
       "1547711858918",
       "1547557172846",
       "1536251685211",
-      "1548227985794",
       "1535728526385",
       "1547175141098",
       "1547175393847",
