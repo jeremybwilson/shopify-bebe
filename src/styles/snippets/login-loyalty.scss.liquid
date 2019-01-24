@@ -192,22 +192,25 @@
     border-right: solid 1px $color--field-1;
   }
 }
+
+// :: DASHBOARD :: Top Panel
+
 #club--points-panel {
   @include flexbox;
   @include align-items( stretch );
   @include flex-wrap( wrap );
-  @include justify-content( stretch );
+  @include justify-content( space-between );
   width: 100%;
+  margin-bottom: 20px;
 
   & > div {
     @include flexbox;
     @include align-items( center );
     @include justify-content( center );
-    @include flex-direction( column );
-    @include flex-grow( 1 );
+    @include flex-grow(1);
 
     @include mq('lap-and-up') {
-      //border-left: solid 1px $color--field-1;
+      border-left: solid 1px $color--field-1;
     }
 
     &:first-child {
@@ -227,48 +230,38 @@
   text-align: center;
   text-transform: uppercase;
 }
-#club--points-to-next-reward {
-  width: 100%;
 
-  @include mq( 'lap-and-up' ) {
-    width: auto;
+// DASHBOARD :: Redeem Award 
+
+#club--redeem-award {
+
+  .club--redeem__eligible {
+    display: none;
   }
-}
 
-// DASHBOARD :: Rewards History
-div#club--rewards-history {
-  display: none;
-  width: 100%;
-  padding: 10px 20px;
-
-  h2 {
-    color: $color--accent-1;
-    margin: 0 0 12px;
-    @include fontSize( 18px );
-    text-align: center;
-  }
-}
-#club--rewards-history--list {
-  width: 100%;
-  margin: 0 auto;
-  list-style: none;  
-
-  li {
+  .club--redeem-content {
     @include flexbox;
-  }
-  span {
-    padding: 5px 10px 3px;
+    @include flex-direction( column );
+    @include justify-content( center );
+    @include align-items( center );
+  
+    @include mq( 'lap-and-up' ) {
+      padding-bottom: 20px;
+    }
+
+    .club--desc {
+      max-width: 150px;
+      margin-bottom: 12px;
+    }
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }
-#club--rewards-history--header {
-  font-weight: $font-weight--bold;
-  text-transform: uppercase;
-  border-bottom: solid 1px $color--field-1;
-}
-.club--rewards-history--date { width: 20%; }
-.club--rewards-history--action { width: 45%; }
-.club--rewards-history--points { width: 15%; text-align: right; }
-.club--rewards-history--status { width: 20%; text-align: right; }
 
 // DASHBOARD :: Current Points Total
 
@@ -280,13 +273,19 @@ div#club--rewards-history {
   @include align-items( center );
 
   @include mq( 'lap-and-up' ) {
-    width: 100%;
     padding-bottom: 20px;
-    border-bottom: solid 1px $color--field-1;
   }
 }
 
 // DASHBOARD :: Points To Next Reward (AKA the circle)
+
+#club--points-to-next-reward {
+  width: 100%;
+
+  @include mq( 'lap-and-up' ) {
+    width: auto;
+  }
+}
 
 .progress-circle {
   // the outer circle
@@ -370,6 +369,41 @@ div#club--rewards-history {
     }
   }  
 }
+
+// DASHBOARD :: Rewards History
+div#club--rewards-history {
+  display: none;
+  width: 100%;
+  padding: 10px 20px;
+
+  h2 {
+    color: $color--accent-1;
+    margin: 0 0 12px;
+    @include fontSize( 18px );
+    text-align: center;
+  }
+}
+#club--rewards-history--list {
+  width: 100%;
+  margin: 0 auto;
+  list-style: none;  
+
+  li {
+    @include flexbox;
+  }
+  span {
+    padding: 5px 10px 3px;
+  }
+}
+#club--rewards-history--header {
+  font-weight: $font-weight--bold;
+  text-transform: uppercase;
+  border-bottom: solid 1px $color--field-1;
+}
+.club--rewards-history--date { width: 20%; }
+.club--rewards-history--action { width: 45%; }
+.club--rewards-history--points { width: 15%; text-align: right; }
+.club--rewards-history--status { width: 20%; text-align: right; }
 
 // :: DASHBOARD :: VIP Tiers Breakdown
 
@@ -722,6 +756,13 @@ body.customers-login {
 }
 #club--hidden-popups {
   display: none;
+}
+#club--redemption-popup {
+  text-align: center;
+
+  .club--coupon-code {
+    font-weight: $font-weight--bold;
+  }
 }
 
 // Import Pikaday

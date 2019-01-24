@@ -2037,89 +2037,165 @@ $(document).ready(function() {
 
   (function loyalty_program() {
     $(document).on('swell:setup', function() {
-
-      // just show the rewards popup for reference purposes
-      // $('h2').click(function() {
-      //   swellAPI.showPopupByType("RewardsPopup");
-      // });
-
+    
       // Inits
       const ui = {
         pointsLeft: $( '.points-left' ),
         pointsToNextReward: $( '.points-to-next-reward' ),
         nextMembershipLevel: $( '.next-membership-level' ),
         progressCircle: $( '#progress-circle' ),
-        rewardsHistory: $( '#club--rewards-history' ),
-        rewardsHistoryList: $( '#club--rewards-history--list' )
+        rewardsHistoryModule: $( '#club--rewards-history' ),
+        rewardsHistoryList: $( '#club--rewards-history--list' ),
+        activeCouponEligible: $( '.club--redeem__eligible'),
+        activeCouponIneligible: $( '.club--redeem__ineligible' ),
+        vipUnlockMessage: $( '#club--vip-unlock-message' ),
+        redemptionPopup: $( '#club--redemption-popup' )
       };
-      const swellData = {
+
+      let swellData = {
         customerDetails: swellAPI.getCustomerDetails(),
                vipTiers: swellAPI.getVipTiers(),
          redemptionData: swellAPI.getActiveRedemptionOptions(),
            campaignData: swellAPI.getActiveCampaigns()
+      }  
+
+      let clubReloadData = function() {
+        if ( swellData ) {
+          swellData = {
+            customerDetails: swellAPI.getCustomerDetails(),
+                   vipTiers: swellAPI.getVipTiers(),
+             redemptionData: swellAPI.getActiveRedemptionOptions(),
+               campaignData: swellAPI.getActiveCampaigns()
+          }    
+        }
       }
+      
+      console.log( 'Customer Details', swellData.customerDetails );
+      console.log( 'VIP Tiers', swellData.vipTiers );
+      console.log( 'Redemption Data', swellData.redemptionData );
 
-      // DASHBOARD :: Rewards History
-      const customerRewards = swellData.customerDetails.actionHistoryItems;
+      let clubRefreshData = function() {
+        // wrapping it in a function because we'll be clearing and updating the data
 
-      if ( customerRewards ) {
+        // DASHBOARD :: Rewards History
+        const customerRewards = swellData.customerDetails.actionHistoryItems;
 
-        // Append the list items
-        customerRewards.forEach(function(reward) {
-          let $rewardsListItem = $('<li/>');
+        if ( customerRewards ) {
 
-          $rewardsListItem
-            .append( '<span class="club--rewards-history--date">' + reward.date + '</span>' )
-            .append( '<span class="club--rewards-history--action">' + reward.action +'</span>' )
-            .append( '<span class="club--rewards-history--points">' + reward.points + '</span>' )
-            .append( '<span class="club--rewards-history--status">' + reward.status + '</span>' );
+          // hide the list
+          ui.rewardsHistoryModule.hide();
 
-          ui.rewardsHistoryList.append( $rewardsListItem );
+          // save the header
+          let $rewardsHeader = $( '#club--rewards-history--header' );
 
-        });
-        ui.rewardsHistory.show();
-      }
+          // clear the list 
+          ui.rewardsHistoryList.html($rewardsHeader);
 
-      // console.log(swellData.vipTiers);
-      // console.log(swellData.customerDetails);
-      // console.log(swellData.redemptionData);
-      // console.log(customerRewards);
+          // append the list items
+          customerRewards.forEach(function(reward) {
+            let $rewardsListItem = $('<li/>');
 
-      // mark the current tier
-      $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
+            $rewardsListItem
+              .append( '<span class="club--rewards-history--date">' + reward.date + '</span>' )
+              .append( '<span class="club--rewards-history--action">' + reward.action +'</span>' )
+              .append( '<span class="club--rewards-history--points">' + reward.points + '</span>' )
+              .append( '<span class="club--rewards-history--status">' + reward.status + '</span>' );
 
-      // show points to next tier
-      var currentPoints = swellData.customerDetails.pointsEarned,
-          currentTier = swellData.customerDetails.vipTier.id,
-          tierCounter = 0;
+            ui.rewardsHistoryList.append( $rewardsListItem );
+          });
 
-      swellData.vipTiers.forEach(function(tier){
-        if (tier.id == currentTier) {
+          // show the list
+          ui.rewardsHistoryModule.show();
+        }
 
-          var nextTier = swellData.vipTiers[tierCounter + 1],
+        // DASHBOARD :: SIDEBAR :: Mark the current tier
+
+        // clear the tiers
+        $( '#club--vip-tiers--mobile-chart li' ).removeClass( 'club--tier-active' );
+
+        // mark the tier
+        $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
+
+        // DASHBOARD :: SIDEBAR :: Show points to next tier
+        let currentPoints = swellData.customerDetails.pointsEarned,
+            currentTier = swellData.customerDetails.vipTier.id,
+            tierCounter = 0;
+
+        ui.vipUnlockMessage.hide();
+
+        swellData.vipTiers.forEach(function(tier){
+          if (tier.id == currentTier) {
+
+            // check to see you're not on the highest tier
+            if ( !tierCounter == swellData.vipTiers.length ) {
+
+              var nextTier = swellData.vipTiers[tierCounter + 1],
               nextTierPoints = nextTier.swellrequiredPointsEarned,
               currentTierPoints = tier.swellrequiredPointsEarned,
               pointsLeft = nextTierPoints - currentPoints;
 
-          ui.pointsLeft.html( pointsLeft );
-          ui.nextMembershipLevel.html( nextTier.name );
-        }
-        tierCounter++;
-      });
+              ui.pointsLeft.html( pointsLeft );
+              ui.nextMembershipLevel.html( nextTier.name );
+              ui.vipUnlockMessage.show();
 
-      // DASHBOARD :: POINTS TO NEXT REWARD
-      // show points to next reward ( 250 points ) and make the circle
+            } 
+          }
+          tierCounter++;
+        });
 
-      let rewardsTarget = 250,
-          pointsToNextReward = currentPoints % rewardsTarget, // get the remainder
-          progressInt = Math.round( ( ( rewardsTarget - pointsToNextReward ) / rewardsTarget ) * 100 ), // get the percentage
-          progressClass = "p" + progressInt;
+        // DASHBOARD :: REWARDS
 
-      // if the progress percentage is above 50%, add this class (for the circle);
-      if ( progressInt > 50 ) progressClass += " over50";
+        // Client constant
+        let rewardsTarget = 250; 
 
-      ui.pointsToNextReward.html( pointsToNextReward );
-      ui.progressCircle.addClass( progressClass );
+        // reset the display
+        ui.activeCouponEligible.hide()
+          .html(''); // and erase the info
+        ui.activeCouponIneligible.show();
+
+        if ( swellData.customerDetails.pointsBalance >= rewardsTarget && swellData.redemptionData ) {
+          // if customer has enough points (points balance, not total points), show the redemption data
+
+          swellData.redemptionData.forEach(function(coupon) {
+
+            // display your option(s) you can redeem
+            const $couponListItem = $( '<div class="club--redeem-content"/>' );
+              
+            $couponListItem
+              .attr( 'id' , 'club--redeem-coupon--' + coupon.id )
+              .append( '<span class="club--big-number">' + coupon.name + '</span>' )
+              .append( '<span class="club--desc">' + coupon.description + '</span>' )
+              .append('<a class="club--redeem button" data-redemption-option-id="' + coupon.id + '">Redeem (' + coupon.costText +') </a>');
+
+            ui.activeCouponEligible.append( $couponListItem );
+          });
+
+          // show the data
+          ui.activeCouponEligible.show();
+          ui.activeCouponIneligible.hide();
+        }; 
+
+        // DASHBOARD :: Points to next reward
+
+        ui.pointsToNextReward.html( '0' );
+        ui.progressCircle
+          .removeClass()
+          .addClass( 'progress-circle' );
+
+        let pointsToNextReward = rewardsTarget - (currentPoints % rewardsTarget), // get the remainder
+            progressInt = Math.round( ( (rewardsTarget - pointsToNextReward ) / rewardsTarget ) * 100 ), // get the percentage
+            progressClass = "p" + progressInt;
+
+        // if the progress percentage is above 50%, add this class (for the circle);
+        if ( progressInt > 50 ) progressClass += " over50";
+
+        ui.pointsToNextReward.html( pointsToNextReward );
+        ui.progressCircle.addClass( progressClass );
+
+      };
+
+      // run them
+      clubRefreshData();
 
       // DASHBOARD :: SIDEBAR :: Load popups
 
@@ -2135,6 +2211,46 @@ $(document).ready(function() {
           maxHeight: 400,
           padding: 30,
           live: true
+        });
+      });
+
+      // CUSTOMER ACTIONS
+
+      // REDEEM AN ACTIVE COUPON
+      $(document).on('click', '.club--redeem' ,function() {
+   
+        swellAPI.makeRedemption( {
+          redemptionOptionId: $(this).data('redemption-option-id')
+        }, function(redemption) {
+
+          // success state
+          ui.redemptionPopup
+            .find( '.club--coupon-code' )
+            .html( redemption.couponCode )
+
+          // show the popup
+          $.fancybox({
+            href: '#club--redemption-popup',
+            wrapCSS: 'fancybox-promo-popup',
+            openEffect: 'none',
+            closeEffect: 'none',
+            autoHeight: true,
+            maxWidth: 400,
+            maxHeight: 400,
+            padding: 30,
+            live: true,
+            afterClose: function() {
+
+              // refresh everything
+              swellAPI.refreshCustomerDetails(function(){
+                clubReloadData();
+                clubRefreshData();
+              });
+            }
+          });
+
+        }, function(err) {
+          console.log('There has been an error: ' + err);
         });
       });
 
