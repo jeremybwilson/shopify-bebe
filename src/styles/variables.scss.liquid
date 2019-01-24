@@ -393,79 +393,80 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
 }
 
 
-
 /* MIXIN : MEDIA QUERIES
  *    EX : @include mq( 'lap-and-up' ) { CODE }
  * ------------------------------------------------------------------------- */
-$phone:            "screen and (max-width: 767px)";
-$phone-portrait:   "screen and (max-width: 479px)";
-$phone-landscape:  "screen and (min-width: 480px) and (max-width: 767px)";
-$tablet:           "screen and (min-width: 768px) and (max-width: 1023px)";
-$tablet-and-up:    "screen and (min-width: 768px)";
-$tablet-portrait:  "screen and (min-width: 768px) and (max-width: 959px)";
-$tablet-landscape: "screen and (min-width: 960px) and (max-width: 1023px)";
-$lap:              "screen and (min-width: 1024px) and (max-width: 1219px)";
-$lap-and-up:       "screen and (min-width: 1024px)";
-$desk-and-up:      "screen and (min-width: 1220px)";
-$lap-and-desk:     "screen and (min-width: 1024px) and (max-width: 1679px)";
-$wide-and-up:      "screen and (min-width: 1680px)";
-$retina:           "(-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi)";
+ $phone:            "screen and (max-width: 767px)";
+ $phone-portrait:   "screen and (max-width: 479px)";
+ $phone-landscape:  "screen and (min-width: 480px) and (max-width: 767px)";
+ $tablet:           "screen and (min-width: 768px) and (max-width: 1023px)";
+ $tablet-and-up:    "screen and (min-width: 768px)";
+ $tablet-portrait:  "screen and (min-width: 768px) and (max-width: 959px)";
+ $tablet-landscape: "screen and (min-width: 960px) and (max-width: 1023px)";
+ $lap:              "screen and (min-width: 1024px) and (max-width: 1219px)";
+ $lap-and-up:       "screen and (min-width: 1024px)";
+ $desk-and-up:      "screen and (min-width: 1220px)";
+ $lap-and-desk:     "screen and (min-width: 1024px) and (max-width: 1679px)";
+ $wide-and-up:      "screen and (min-width: 1680px)";
+ $ie-high-contrast: "screen and (-ms-high-contrast: active), (-ms-high-contrast: none)";
+ $retina:           "(-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi)";
 
-@mixin mq($alias) {
-  @if $alias == "phone" {
-    @media #{$phone} {
-      @content;
-    }
-  } @else if $alias == "phone-portrait" {
-    @media #{$phone-portrait} {
-      @content;
-    }
-  } @else if $alias == "phone-landscape" {
-    @media #{$phone-landscape} {
-      @content;
-    }        
-  } @else if $alias == "tablet" {
-    @media #{$tablet} {
-      @content;
-    }
-  } @else if $alias == "tablet-and-up" {
-    @media #{$tablet-and-up} {
-      @content;
-    }
-  } @else if $alias == "tablet-portrait" {
-    @media #{$tablet-portrait} {
-      @content;
-    }    
-  } @else if $alias == "tablet-landscape" {
-    @media #{$tablet-landscape} {
-      @content;
-    }        
-  } @else if $alias == "lap" {
-    @media #{$lap} {
-      @content;
-    }
-  } @else if $alias == "lap-and-up" {
-    @media #{$lap-and-up} {
-      @content;
-    }
-  } @else if $alias == "desk-and-up" {
-    @media #{$desk-and-up} {
-      @content;
-    }
-  } @else if $alias == "lap-and-desk" {
-    @media #{$lap-and-desk} {
-      @content;
-    }
-  } @else if $alias == "wide-and-up" {
-    @media #{$wide-and-up} {
-      @content;
-    }
-  } @else if $alias == "retina" {
-    @media #{$retina} {
-      @content;
-    }
-  }
-}
-
-
-
+ @mixin mq($alias) {
+   @if $alias == "phone" {
+     @media #{$phone} {
+       @content;
+     }
+   } @else if $alias == "phone-portrait" {
+     @media #{$phone-portrait} {
+       @content;
+     }
+   } @else if $alias == "phone-landscape" {
+     @media #{$phone-landscape} {
+       @content;
+     }
+   } @else if $alias == "tablet" {
+     @media #{$tablet} {
+       @content;
+     }
+   } @else if $alias == "tablet-and-up" {
+     @media #{$tablet-and-up} {
+       @content;
+     }
+   } @else if $alias == "tablet-portrait" {
+     @media #{$tablet-portrait} {
+       @content;
+     }
+   } @else if $alias == "tablet-landscape" {
+     @media #{$tablet-landscape} {
+       @content;
+     }
+   } @else if $alias == "lap" {
+     @media #{$lap} {
+       @content;
+     }
+   } @else if $alias == "lap-and-up" {
+     @media #{$lap-and-up} {
+       @content;
+     }
+   } @else if $alias == "desk-and-up" {
+     @media #{$desk-and-up} {
+       @content;
+     }
+   } @else if $alias == "lap-and-desk" {
+     @media #{$lap-and-desk} {
+       @content;
+     }
+   } @else if $alias == "wide-and-up" {
+     @media #{$wide-and-up} {
+       @content;
+     }
+   } @else if $alias == "ie-high-contrast" {
+     @media #{$ie-high-contrast} {
+       @content;
+     }
+   } @else if $alias == "retina" {
+     @media #{$retina} {
+       @content;
+     }
+   }
+ }

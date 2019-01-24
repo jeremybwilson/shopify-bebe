@@ -123,7 +123,7 @@
         @include align-items( center );
         width: 100%;
         height: 100%;
-        position: absolute; 
+        position: absolute;
         background: $color--primary-1;
         transition: 0.5s all ease-in-out;
         padding: 0 16px;
@@ -132,7 +132,12 @@
         @include mq( 'lap-and-up' ) {
             padding: 0;
             background: $color--reverse-1;
-        }   
+        }
+
+        @include mq( 'ie-high-contrast' ){
+          position: absolute;
+          top: 0;
+        }
 
         &.one { opacity: 1; }
         &.two { pointer-events: none; }

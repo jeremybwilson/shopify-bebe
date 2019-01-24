@@ -142,6 +142,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
             text-align: right;
             z-index: $zIndexUserBtns; //50
 
+            @include mq( 'ie-high-contrast' ) {
+              position: relative;
+            }
+
             @include mq( 'lap-and-up' ) {
                 top: 0;
                 right: 0;
@@ -452,8 +456,12 @@ $navHoverColor: {{ settings.nav_hover_color }};
             text-indent: 0;
             text-transform: uppercase;
 
+            @include mq( 'ie-high-contrast' ){
+              line-height: normal;
+            }
+
             @include mq( 'lap-and-up' ) {
-                @include fontSize(12px);                
+                @include fontSize(12px);
             }
 
             &:focus {
@@ -461,7 +469,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 box-shadow: none;
                 color: $color--primary-1;
                 border-bottom-color: $color--primary-1;
-            }            
+            }
 
             &::placeholder {
                 color: #bbb;
