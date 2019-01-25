@@ -1,188 +1,193 @@
-/* SNIPPET : Header-Announcement-Bar 
+/* SNIPPET : Header-Announcement-Bar
  *           (Promos bar on top of nav bar)
  * ---------------------------------------------- */
 
 // PROMO : BG : Background setup for one and two promos
 #top-bar-bg {
-    //width: 100%;
-    //height: 40px;
-    z-index: 100;
-    position: absolute;
-    //@include inline-flex;
+  //width: 100%;
+  //height: 40px;
+  z-index: 100;
+  position: absolute;
+  //@include inline-flex;
+  display: none;
+
+  #bg-1,
+  #bg-2 {
+    width: 100%;
+    height: 100%;
+    background: {{ settings.announcement_bg_one }};
+  }
+
+  #bg-2 {
     display: none;
+    background: {{ settings.announcement_bg_two }};
+  }
 
-    #bg-1,
-    #bg-2 {
-        width: 100%;
-        height: 100%;
-        background: {{ settings.announcement_bg_one }};
+  @include mq( 'tablet-and-up' ) {
+    &.double-promo {
+      #bg-1,
+      #bg-2 {
+          display: inline-block;
+          width: 50%;
+      }
     }
-
-    #bg-2 {
-        display: none;
-        background: {{ settings.announcement_bg_two }};
-    }
-
-    @include mq( 'tablet-and-up' ) {
-        &.double-promo {
-            #bg-1,
-            #bg-2 {
-                display: inline-block;
-                width: 50%;
-            }
-        }
-    }
+  }
 }
 
 // PROMO : CORE : General style that apply regardless of one or two slots
 #top-bar {
-    text-align: center;
-    line-height: 30px;
-    padding: 0;
+  text-align: center;
+  line-height: 30px;
+  padding: 0;
+  position: relative;
+  z-index: 200;
+  color: {{ settings.announcement_text_color }};
+  @include fontDim( 12px, 12px, .04em );
+  font-weight: $font-weight--medium;
+  text-transform: uppercase;
+
+  @include mq( 'lap-and-up' ) {
+    width: 40%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .row {
     position: relative;
-    z-index: 200;
-    color: {{ settings.announcement_text_color }};
-    @include fontDim( 12px, 12px, .04em );
-    font-weight: $font-weight--medium;
-    text-transform: uppercase;
+    height: 100%;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    width: auto;
+    color: $color--reverse-1;
+    text-align: center;
+    margin: 0 auto;
 
     @include mq( 'lap-and-up' ) {
-        width: 40%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        color: {{ settings.announcement_text_color }};
     }
+  }
 
-    .row {
-        position: relative;
-        height: 100%;
-        margin: 0;
-    }
-
-    a {
-        text-decoration: none;
-        cursor: pointer;
-        width: auto;
-        color: $color--reverse-1;
-        text-align: center;
-        margin: 0 auto;
-
-        @include mq( 'lap-and-up' ) {
-            color: {{ settings.announcement_text_color }};
-        }
-    }
-
-    .bold { font-weight: $font-weight--bold; }
+  .bold { font-weight: $font-weight--bold; }
 }
 
 
 
 // PROMO : ONE : Single, full-bar promo is displayed
 #single-promo-wrapper {
-    @include flexbox;
-    @include align-items( center );
-    @include justify-content( center );
-    height: 100%;
-    width: 100%;
-    font-size: {{ settings.announcement_text_size }}px;
-    line-height: calc( {{ settings.announcement_text_size }}px + 4px );
+  @include flexbox;
+  @include align-items( center );
+  @include justify-content( center );
+  height: 100%;
+  width: 100%;
+  font-size: {{ settings.announcement_text_size }}px;
+  line-height: calc( {{ settings.announcement_text_size }}px + 4px );
 
-    div { 
-        display: inline-block; 
-    }
+  div {
+    display: inline-block;
+  }
 }
 
 
 
 // PROMOS : TWO : Two promos displayed side by side with animation on mobile sizes
 #double-promo-wrapper {
-    @include inline-flex;
-    @include flex-flow( row wrap );
-    @include justify-content( space-evenly ); //Horizontally
-    @include align-items( center ); //Vertically
+  @include inline-flex;
+  @include flex-flow( row wrap );
+  @include justify-content( space-evenly ); //Horizontally
+  @include align-items( center ); //Vertically
+  width: 100%;
+  height: 100%;
+  font-size: calc( {{ settings.announcement_text_size }}px - 3px );
+  line-height: calc( {{ settings.announcement_text_size }}px + 4px ); // Aligns the lines cleaner
+
+  /* TABLET : Adjust tablet portrait font to fit prettier in space */
+  @include mq( 'tablet-and-up' ) {
+    font-size: calc( {{ settings.announcement_text_size }}px - 4px );
+    line-height: calc( {{ settings.announcement_text_size }}px - 4px );
+  }
+
+  /* DESKTOP : Adjust tablet portrait font to fit prettier in space */
+  @include mq( 'lap-and-up' ) {
+    font-size: {{ settings.announcement_text_size }}px;
+    line-height: {{ settings.announcement_text_size }}px;
+  }
+
+  .promo-banner {
+    opacity: 0;
+    @include flexbox;
+    @include align-items( center );
     width: 100%;
     height: 100%;
-    font-size: calc( {{ settings.announcement_text_size }}px - 3px );
-    line-height: calc( {{ settings.announcement_text_size }}px + 4px ); // Aligns the lines cleaner
+    position: absolute;
+    background: $color--primary-1;
+    transition: 0.5s all ease-in-out;
+    padding: 0 16px;
+    text-align: center;
 
-    /* TABLET : Adjust tablet portrait font to fit prettier in space */
-    @include mq( 'tablet-and-up' ) {
-        font-size: calc( {{ settings.announcement_text_size }}px - 4px );
-        line-height: calc( {{ settings.announcement_text_size }}px - 4px );
-    }
-
-    /* DESKTOP : Adjust tablet portrait font to fit prettier in space */
     @include mq( 'lap-and-up' ) {
-        font-size: {{ settings.announcement_text_size }}px;
-        line-height: {{ settings.announcement_text_size }}px;
+      padding: 0;
+      background: $color--reverse-1;
     }
 
-    .promo-banner {
-        opacity: 0;
-        @include flexbox;
-        @include align-items( center );
-        width: 100%;
-        height: 100%;
-        position: absolute; 
-        background: $color--primary-1;
-        transition: 0.5s all ease-in-out;
-        padding: 0 16px;
-        text-align: center;
-
-        @include mq( 'lap-and-up' ) {
-            padding: 0;
-            background: $color--reverse-1;
-        }   
-
-        &.one { opacity: 1; }
-        &.two { pointer-events: none; }
-
-        div { display: inline-block; }//So any "bold" sections sit inline with the rest of unbolded text
-
-        .details-link {
-            font-weight: $font-weight--book;
-            text-decoration: underline;
-        }
+    @include mq( 'ie-high-contrast' ){
+      position: absolute;
+      top: 0;
     }
 
-    #promo-arrow-left,
-    #promo-arrow-right {
-        position: absolute;
-        display: none;
-        //@include flexbox;
-        @include align-items( center );
-        cursor: pointer;
-        height: 100%;
-        width: 23px;
-        top: 50%;
-        transform: translateY( -50% );
+    &.one { opacity: 1; }
+    &.two { pointer-events: none; }
 
-        svg {
-            width: 10px;
-            height: 10px;
-        }
+    div { display: inline-block; }//So any "bold" sections sit inline with the rest of unbolded text
+
+    .details-link {
+      font-weight: $font-weight--book;
+      text-decoration: underline;
     }
-    #promo-arrow-left {
-        left: 0;
-        @include justify-content( flex-end );
+  }
+
+  #promo-arrow-left,
+  #promo-arrow-right {
+    position: absolute;
+    display: none;
+    //@include flexbox;
+    @include align-items( center );
+    cursor: pointer;
+    height: 100%;
+    width: 23px;
+    top: 50%;
+    transform: translateY( -50% );
+
+    svg {
+        width: 10px;
+        height: 10px;
     }
-    #promo-arrow-right {
-        right: 0;
-        @include justify-content( flex-start );
-    }
+  }
+  #promo-arrow-left {
+    left: 0;
+    @include justify-content( flex-end );
+  }
+  #promo-arrow-right {
+    right: 0;
+    @include justify-content( flex-start );
+  }
 
 
-    // ALTERNATIVE : Animation class for mobile banner swaps, if they want to hide arrows and it just auto-rotates
-    &.auto-swap {
-        .one { animation: 10s promoFade1 0s linear infinite; }
-        .two { animation: 10s promoFade2 5s linear infinite; }
-    }
+  // ALTERNATIVE : Animation class for mobile banner swaps, if they want to hide arrows and it just auto-rotates
+  &.auto-swap {
+    .one { animation: 10s promoFade1 0s linear infinite; }
+    .two { animation: 10s promoFade2 5s linear infinite; }
+  }
 
-    // Static Classes so user can manually swap the banners using arrows. (Arrow click removes auto-swap class)
-    &.show-promo-two .promo-banner {
-        &.one { opacity: 0; pointer-events: none; }
-        &.two { opacity: 1; pointer-events: auto;}
-    }
+  // Static Classes so user can manually swap the banners using arrows. (Arrow click removes auto-swap class)
+  &.show-promo-two .promo-banner {
+    &.one { opacity: 0; pointer-events: none; }
+    &.two { opacity: 1; pointer-events: auto;}
+  }
 
 }
 
@@ -215,7 +220,7 @@
     .fancybox-inner {
         box-sizing: border-box;
     }
-    
+
     .fancybox-inner > div {
         padding: 20px !important;
         box-sizing: border-box;

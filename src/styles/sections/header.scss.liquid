@@ -23,11 +23,11 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
 #header-section {
     position: relative;
-    //margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it. 
+    //margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it.
     font-family: $sans--2;
 }
 
-/* SNIPPET : Header-Announcement-Bar 
+/* SNIPPET : Header-Announcement-Bar
  *           (Promos bar on top of nav bar)
  * ---------------------------------------------- */
  @import url('../snippets/header-announcement-bar.scss.liquid');
@@ -55,7 +55,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
     // SHADOW : When stick nav is active
     /* &.isStuck {
-        box-shadow: $navBoxShadow; 
+        box-shadow: $navBoxShadow;
 
         #nav-logo-backing {
             box-shadow: $navBoxShadow;
@@ -73,13 +73,13 @@ $navHoverColor: {{ settings.nav_hover_color }};
             @include flexbox;
             @include justify-content( space-between );
             height: 36px;
-            padding: 0 10px;    
+            padding: 0 10px;
             border-bottom: solid 1px $color--field-1;
         }
     }
-    
-    // TOP-LEFT HIGHLIGHT LINK: Goes to "Bebe Babes" right now but could go somewhere else so hardcoded for now 
-    
+
+    // TOP-LEFT HIGHLIGHT LINK: Goes to "Bebe Babes" right now but could go somewhere else so hardcoded for now
+
     .header--top-left--highlight {
         display: none;
 
@@ -98,9 +98,9 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 @include justify-content( flex-start );
                 @include align-items( center );
                 @include flex-wrap( nowrap );
-        
-                position: relative;        
-                z-index: 2;    
+
+                position: relative;
+                z-index: 2;
                 margin-right: auto;
             }
         }
@@ -142,6 +142,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
             text-align: right;
             z-index: $zIndexUserBtns; //50
 
+            @include mq( 'ie-high-contrast' ) {
+              position: relative;
+            }
+
             @include mq( 'lap-and-up' ) {
                 top: 0;
                 right: 0;
@@ -167,7 +171,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     @include mq( 'lap-and-up' ) {
                         width: 100%;
                         height: 100%;
-                        padding: 0 7px;    
+                        padding: 0 7px;
                     }
                 }
 
@@ -228,7 +232,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         background: {{ settings.header_background }};
                         transition: background 0.25s ease-in-out;
 
-                        // BORDER : Border on all but first (till hovered) and last 
+                        // BORDER : Border on all but first (till hovered) and last
                         &:not(:last-child) { border-bottom: $navMinorBorder; }
                         &:first-child {
                             border: none;
@@ -241,8 +245,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         &:hover {
                             background: $color--primary-2;
 
-                            .site-name  { 
-                                color: {{ settings.header_background }}; //Use bg color when swapping 
+                            .site-name  {
+                                color: {{ settings.header_background }}; //Use bg color when swapping
                                 background: $color--primary-2;
                             }
                             .site-arrow { opacity: 0; }
@@ -273,7 +277,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             z-index: 5;
                             transition: opacity 0.25s ease-in-out;
 
-                            svg {    
+                            svg {
                                 position: absolute;
                                 height: 100%;
                                 width: 100%;
@@ -287,7 +291,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
             // ACCOUNT : User account item
             .nav-account {
-                
+
                 &:hover {
                     .icon-account {
                         fill: {{ settings.nav_links_hover }};
@@ -303,7 +307,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         color: $color--primary-1;
                         font-weight: $font-weight--medium;
                         @include fontDim( 12px, 12px, .04em );
-                        text-transform: uppercase;    
+                        text-transform: uppercase;
                         white-space: nowrap;
                     }
                 }
@@ -321,7 +325,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
             .swell-club {
                 @include mq('phone') {
-                    display: none !important;                    
+                    display: none !important;
                 }
 
                 @include mq('lap-and-up') {
@@ -334,53 +338,60 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
 
-            // CART 
+            // CART
             .nav-cart {
-                position: relative;
-                color: {{ settings.nav_links }}; //Legacy font-icon support for "bag" font icon
+              position: relative;
+              color: {{ settings.nav_links }}; //Legacy font-icon support for "bag" font icon
 
-                &:hover {
-                    .fa-shopping-bag { color: {{ settings.nav_links_hover }}; }
-                    .icon-cart  { fill:  {{ settings.nav_links_hover }}; }
-                    //.cart-count { color: {{ settings.nav_links_hover }}; }
+              &:hover {
+                .fa-shopping-bag { color: {{ settings.nav_links_hover }}; }
+                .icon-cart  { fill:  {{ settings.nav_links_hover }}; }
+                //.cart-count { color: {{ settings.nav_links_hover }}; }
+              }
+
+              .icon-shopping-bag {
+
+                @include mq( 'ie-high-contrast' ){
+                  width: 21px;
                 }
+              }
 
-                i.fa, // Support bag font-icon for now..
-                .icon-cart {
-                    height: 22px;
-                    margin-right: 8px; // Space icon from cart #
-                    fill: {{ settings.nav_links }};
-                    color: {{ settings.nav_links }}; //For "Bag" insteaed of Cart icon (font icon)
-                    transition: fill 0.35s ease-in-out;
+              i.fa, // Support bag font-icon for now..
+              .icon-cart {
+                height: 22px;
+                margin-right: 8px; // Space icon from cart #
+                fill: {{ settings.nav_links }};
+                color: {{ settings.nav_links }}; //For "Bag" insteaed of Cart icon (font icon)
+                transition: fill 0.35s ease-in-out;
+              }
+              svg {
+                width: auto;
+                height: 23px;
+
+                @include mq( 'lap-and-up' ) {
+                    height: 21px;
                 }
-                svg {
-                    width: auto;
-                    height: 23px;
+              }
 
-                    @include mq( 'lap-and-up' ) {
-                        height: 21px;
-                    }
+              .cart-count {
+                position: absolute;
+                top: 5px;
+                right: 0;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: $color--primary-1;
+                color: $color--reverse-1;
+                @include fontDim( 11px, 14px, .04em );
+                font-weight: $font-weight--medium;
+                text-align: center;
+
+                transition: color 0.35s ease-in-out;
+
+                &.hidden-count {
+                    display: none;
                 }
-
-                .cart-count {
-                    position: absolute;
-                    top: 5px;
-                    right: 0;
-                    width: 14px;
-                    height: 14px;
-                    border-radius: 50%;
-                    background: $color--primary-1;
-                    color: $color--reverse-1;
-                    @include fontDim( 11px, 14px, .04em );
-                    font-weight: $font-weight--medium;
-                    text-align: center;
-                    
-                    transition: color 0.35s ease-in-out;
-
-                    &.hidden-count {
-                        display: none;
-                    }
-                }
+              }
             }
 
             // LOYALTY STUB
@@ -394,14 +405,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     @include justify-content ( flex-start );
                     padding: 7px 10px 5px;
                     background: $color--field-1;
-    
+
                     span {
                         color: $color--primary-1;
-    
+
                         @include fontSize(13px);
                         line-height: 11px;
                         text-transform: uppercase;
-    
+
                         &.line-2 {
                             color: $color--accent-1;
                         }
@@ -423,7 +434,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         @include mq( 'desk-and-up' ) {
             width: 160px;
         }
-        
+
         form {
             @include flexbox;
             @include align-items( center );
@@ -452,8 +463,12 @@ $navHoverColor: {{ settings.nav_hover_color }};
             text-indent: 0;
             text-transform: uppercase;
 
+            @include mq( 'ie-high-contrast' ){
+              line-height: normal;
+            }
+
             @include mq( 'lap-and-up' ) {
-                @include fontSize(12px);                
+                @include fontSize(12px);
             }
 
             &:focus {
@@ -461,7 +476,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 box-shadow: none;
                 color: $color--primary-1;
                 border-bottom-color: $color--primary-1;
-            }            
+            }
 
             &::placeholder {
                 color: #bbb;
@@ -513,7 +528,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
 
     /* NAV BG :
-     * 
+     *
      * Why? Because it lets use use rotated, box-shadows on logo
      * to make a mobile sticky nav with a nice minor box shadow
      * ---------------------------------------------- */
@@ -569,6 +584,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
             width: 100%;
             height: 100%;
             position: relative;
+
+            .icon-header-logo {
+
+              @include mq( 'ie-high-contrast' ){
+                height: 24.5px;
+              }
+
+            }
         }
     }
 
@@ -605,15 +628,15 @@ $navHoverColor: {{ settings.nav_hover_color }};
             transition: all 0.25s ease-in-out;
 
             &.one   { top: 0; }
-            &.two   { 
-                top: 50%;  
+            &.two   {
+                top: 50%;
                 transform: translateY( -50% );
                 // This should center the middle bar for reasons i don't understand
                 margin-top: 1px;
             }
-            &.three { 
-                top: 100%; 
-                transform: translateY( -50% ) 
+            &.three {
+                top: 100%;
+                transform: translateY( -50% )
             }
         }
     }
@@ -666,11 +689,11 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     position: relative;
                 }
 
-                .nav-category-header { //Center the nav link item vertically 
+                .nav-category-header { //Center the nav link item vertically
                     @include inline-flex;
                     @include align-items( center );
                     @include fontSize( 16px );
-                    letter-spacing: .5px; 
+                    letter-spacing: .5px;
                     padding-top: 1px; // make up size for 3px bottom border on links
                     padding-bottom: 3px;
                     padding-left: 12px;
@@ -696,7 +719,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 .submenu {
                     position: absolute;
                     top: 100%;
-                    left: 50%; 
+                    left: 50%;
                     width: 200px;
                     transform: translateX( -50% );
                     text-align: center;
@@ -811,7 +834,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         height: 26px;
                     }
 
-                    a { 
+                    a {
                         text-decoration: none;
                     }
 
@@ -829,8 +852,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
                             // TRAINGLE : CLOSED : Downward arrow in css
                             &:after {
-                                width: 0; 
-                                height: 0; 
+                                width: 0;
+                                height: 0;
                                 position: absolute;
                                 top: 50%;
                                 transform: translateY( -50% );
@@ -840,12 +863,12 @@ $navHoverColor: {{ settings.nav_hover_color }};
                                 border-bottom: 4px solid transparent;
                                 border-left: 8px solid {{ settings.nav_links_hover }};
                             }
-                        }  
+                        }
 
 
                         // SUB-NAV : Regular Links to sub-collection divisions
                         a {
-                            @include fontSize(13px);    
+                            @include fontSize(13px);
                             color: $navListItemColor;
                             transition: color 0.25s ease-in-out;
 
@@ -854,7 +877,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                             }
                         }
 
-                        
+
                         // SALE : Sale gets unique color var from settings
                         {% if settings.enable_nav_name_styling %}
                             &.sale a {
@@ -903,7 +926,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             width: 20px;
             height: 20px;
 
-            * { 
+            * {
                 fill: $color--primary-1;
             }
         }
@@ -921,7 +944,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
         }
     }
 
-    /*  NAV : MOBILE NAV MENU STYLES 
+    /*  NAV : MOBILE NAV MENU STYLES
      *   (would have combined them, but its all already setup in theme)
      * ---------------------------------------------- */
     $navMobileMenuGutter: 35px;
@@ -962,7 +985,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             width: 100%;
             left: 50%;
             transform: translateX( -50% );
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
             padding: 0 $navMobileMenuGutter;
 
             input {
@@ -981,9 +1004,9 @@ $navHoverColor: {{ settings.nav_hover_color }};
             padding: 0 2px 60px; //Aligns the titles to the left edge matching search underline
             @include fontSize( 16px );
 
-            li { 
+            li {
                 position: relative;
-                border-bottom: none; 
+                border-bottom: none;
             }
 
             a {
@@ -999,7 +1022,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
                 letter-spacing: 4px;
                 padding-left: 35px;
 
-                a { 
+                a {
                     color: $color--text-1;
                     padding: 0;
                 }
@@ -1009,8 +1032,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
             .accordion-sub-header {
                 // TRAINGLE : CLOSED : Downward arrow in css
                 &:after {
-                    width: 0; 
-                    height: 0; 
+                    width: 0;
+                    height: 0;
                     position: absolute;
                     top: 50%;
                     transform: translateY( -50% );
@@ -1076,8 +1099,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
                             // TRAINGLE : CLOSED : Rightward Arrow
                             &:after {
-                                width: 0; 
-                                height: 0; 
+                                width: 0;
+                                height: 0;
                                 position: absolute;
                                 top: 50%;
                                 transform: translateY( -50% );
@@ -1137,8 +1160,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     &:first-child {
                         // TRAINGLE : CLOSED : Rightward Arrow
                         &:after {
-                            width: 0; 
-                            height: 0; 
+                            width: 0;
+                            height: 0;
                             position: absolute;
                             top: 50%;
                             transform: translateY( -50% );
