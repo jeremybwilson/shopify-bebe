@@ -229,7 +229,7 @@
       "title": "Reset your password",
       "email": "Email",
       "submit": "Submit",
-      "cancel": "Cancel",
+      "cancel": "Cancel / Return to Signup",
       "subtext": "We will send you an email to reset your password.",
       "success": "We've sent you an email with a link to update your password."
     },
