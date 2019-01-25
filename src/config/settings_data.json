@@ -1241,7 +1241,7 @@
       "customer-login": {
         "type": "customer-login",
         "settings": {
-          "above_form_block": "<h1>Sign In<\/h1>",
+          "above_form_block": "<style>\n#login-psa {\nbackground-color: #2C2D30;\nmargin-top: -12px;\nmargin-bottom: 12px;\npadding: 12px 40px 30px;\n}\n#login-psa h2 {\ncolor: #fff;\nfont-size: 1.3em;\n}\n#login-psa p {\ncolor: #fff;\n<\/style>\n<div id=\"login-psa\">\n<h2>PSA: We've Changed<\/h2>\n<p>bebe.com might seem a little different now. We made some changes so we can optimize our site &amp; add more features this year. <br>To keep your account active, track future orders &amp; save personal info, you'll need to update your password.<\/p>\n<\/div>\n<h1>Sign In<\/h1>",
           "login_content": "login-content"
         }
       },
@@ -1534,7 +1534,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/psa-desktop.jpg",
               "mobile_image": "shopify:\/\/shop_images\/psa-mobile.jpg",
-              "cta_full_image": "\/account\/login",
+              "cta_full_image": "shopify:\/\/pages\/reset-password",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",

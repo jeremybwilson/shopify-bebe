@@ -7,6 +7,10 @@
     </div>
   {% endif %}
 
+  <div id="password-reset-submit-success" style="display: none;">
+    <h3>{{ 'customer.recover_password.success' | t }}</h3>
+  </div>
+
   <div id="customer--signup-options" class="row">
 
     {% comment %} :: LOGIN : Left :: {% endcomment %}
@@ -78,6 +82,15 @@
             <input class="secondary button" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
             <span class="note"><a href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.recover_password.cancel' | t }}</a></span>
           </div>
+
+          {% if form.posted_successfully? %}
+            {% assign resetPassword = true %}
+
+            <script type="text/javascript">
+              document.getElementById('password-reset-submit-success').style.display = 'inline-block';
+            </script>
+
+          {% endif %}
         
         {% endform %}
       </div>
