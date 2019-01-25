@@ -93,7 +93,7 @@
       "title": "My Shopping Bag",
       "view_cart": "View Bag",
       "close_cart": "Close",
-      "shipping_at_checkout": "Shipping calculated at checkout",
+      "shipping_at_checkout": "Shipping and discount codes will be calculated at checkout",
       "empty": "Your shopping bag is currently empty.",
       "product": "Product",
       "unit_price": "Price",
@@ -108,7 +108,8 @@
       "update": "Update Bag",
       "checkout": "Check Out",
       "note": "Please leave special instructions below:",
-      "recently_viewed": "You also Viewed"
+      "recently_viewed": "You also Viewed",
+      "discount_code_advisory": "Note: Discount codes can be entered on the checkout page"
     }
   },
   "collections": {
