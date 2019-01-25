@@ -2049,7 +2049,8 @@ $(document).ready(function() {
         activeCouponEligible: $( '.club--redeem__eligible'),
         activeCouponIneligible: $( '.club--redeem__ineligible' ),
         vipUnlockMessage: $( '#club--vip-unlock-message' ),
-        redemptionPopup: $( '#club--redemption-popup' )
+        redemptionPopup: $( '#club--redemption-popup' ),
+        totalPointsEarned: $( '#total-points-number')
       };
 
       let swellData = {
@@ -2073,6 +2074,7 @@ $(document).ready(function() {
       console.log( 'Customer Details', swellData.customerDetails );
       console.log( 'VIP Tiers', swellData.vipTiers );
       console.log( 'Redemption Data', swellData.redemptionData );
+      
 
       let clubRefreshData = function() {
         // wrapping it in a function because we'll be clearing and updating the data
@@ -2113,40 +2115,66 @@ $(document).ready(function() {
         // clear the tiers
         $( '#club--vip-tiers--mobile-chart li' ).removeClass( 'club--tier-active' );
 
+        let vipTierName = '';
+
+        // check to see if a customer has a tier, if not default to "Member"
+        if ( swellData.customerDetails.vipTier ) {
+          vipTierName = swellData.customerDetails.vipTier.name;
+        } else {
+          vipTierName = 'Member';
+        }      
+
         // mark the tier
-        $( '.club-tier--' + swellData.customerDetails.vipTier.name ).addClass( 'club--tier-active' );
+        $( '.club-tier--' + vipTierName ).addClass( 'club--tier-active' );
+
+        // show total points earned
+        ui.totalPointsEarned.html( swellData.customerDetails.pointsEarned );
 
         // DASHBOARD :: SIDEBAR :: Show points to next tier
-        let currentPoints = swellData.customerDetails.pointsEarned,
-            currentTier = swellData.customerDetails.vipTier.id,
-            tierCounter = 0;
 
-        ui.vipUnlockMessage.hide();
+        let currentPoints = swellData.customerDetails.pointsEarned;
 
-        swellData.vipTiers.forEach(function(tier){
-          if (tier.id == currentTier) {
+        if ( swellData.customerDetails.vipTier ) {
+          var currentTier = swellData.customerDetails.vipTier.id,
+          tierCounter = 0;
 
-            // check to see you're not on the highest tier
-            if ( !tierCounter == swellData.vipTiers.length ) {
+          ui.vipUnlockMessage.hide();
 
-              var nextTier = swellData.vipTiers[tierCounter + 1],
-              nextTierPoints = nextTier.swellrequiredPointsEarned,
-              currentTierPoints = tier.swellrequiredPointsEarned,
-              pointsLeft = nextTierPoints - currentPoints;
+          swellData.vipTiers.forEach(function(tier){
+            tierCounter++;
+            
+            if (tier.id == currentTier) {
+              // check to see you're not on the highest tier
+              if ( tierCounter != swellData.vipTiers.length ) {
+                
+                var nextTier = swellData.vipTiers[tierCounter],
+                nextTierPoints = nextTier.swellrequiredPointsEarned,
+                pointsLeft = nextTierPoints - currentPoints;
 
-              ui.pointsLeft.html( pointsLeft );
-              ui.nextMembershipLevel.html( nextTier.name );
-              ui.vipUnlockMessage.show();
+                ui.pointsLeft.html( pointsLeft );
+                ui.nextMembershipLevel.html( nextTier.name );
+                ui.vipUnlockMessage.show();
+              }
+            }
+          });
+        } else {
+          // No tier, therefore "Member tier"
 
-            } 
-          }
-          tierCounter++;
-        });
+          var nextTier = swellData.vipTiers[0],
+          nextTierPoints = nextTier.swellrequiredPointsEarned,
+          pointsLeft = nextTierPoints - currentPoints;          
+
+          ui.pointsLeft.html( pointsLeft );
+          ui.nextMembershipLevel.html( nextTier.name );
+
+          ui.vipUnlockMessage.show();
+
+        }
 
         // DASHBOARD :: REWARDS
 
         // Client constant
-        let rewardsTarget = 250; 
+        var rewardsTarget = 250;         
 
         // reset the display
         ui.activeCouponEligible.hide()
@@ -2218,6 +2246,10 @@ $(document).ready(function() {
 
       // REDEEM AN ACTIVE COUPON
       $(document).on('click', '.club--redeem' ,function() {
+
+        $(this)
+          .after('<i class="fa fa-spin fa-spinner"></i>')
+          .hide();
    
         swellAPI.makeRedemption( {
           redemptionOptionId: $(this).data('redemption-option-id')
@@ -2250,7 +2282,7 @@ $(document).ready(function() {
           });
 
         }, function(err) {
-          console.log('There has been an error: ' + err);
+          alert('There has been an error. Please try again later.');
         });
       });
 
