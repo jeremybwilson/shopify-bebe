@@ -136,7 +136,8 @@ $navHoverColor: {{ settings.nav_hover_color }};
             position: absolute;
             height: 100%;
             top: 23px;
-            right: $navMobileBarGutter;
+            //right: $navMobileBarGutter;
+            right: 5px;
             margin: 0;
             list-style: none;
             text-align: right;
@@ -203,6 +204,38 @@ $navHoverColor: {{ settings.nav_hover_color }};
 
 
             // SITE PICKER : Dropdown selector for the other site pickers
+            .nav-currencies-picker {
+                width: 40px;
+                position: relative;
+
+                @include mq( 'lap-and-up' ) {
+                    width: 77px;
+                }
+
+                .current-country {
+                    top: -20px;
+                    right: 0;
+
+                    @include mq( 'lap-and-up' ) {
+                        top: 0;
+                    }
+                }
+                
+
+                .current-country-container {
+                    .hidden-sm-down {
+                        display: none;
+
+                        @include mq( 'desk-and-up' ) {
+                            display: block;
+                        }                        
+                    }
+                    .hidden-sm-down + .hidden-sm-down {
+                        display: none;
+                    }
+                }
+            }
+
             .nav-sites {
                 @include align-items( flex-start );
                 position: relative;
@@ -290,7 +323,7 @@ $navHoverColor: {{ settings.nav_hover_color }};
             }
 
             // ACCOUNT : User account item
-            .nav-account {
+            .nav-account-item {
 
                 &:hover {
                     .icon-account {
@@ -309,6 +342,14 @@ $navHoverColor: {{ settings.nav_hover_color }};
                         @include fontDim( 12px, 12px, .04em );
                         text-transform: uppercase;
                         white-space: nowrap;
+                    }
+
+                    &.my-account-text {
+                        display: none;
+
+                        @include mq('wide-and-up') {
+                            display: block;
+                        }
                     }
                 }
 
