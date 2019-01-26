@@ -82,10 +82,10 @@
 
                 {% if item.variant.compare_at_price > item.price %}
                   <div class="onsale">
-                    <span class="money">{{ item.price | money }}</span>
+                    <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
                   </div>
                   <div class="was">
-                    <span class="money">{{ item.variant.compare_at_price | money }}</span>
+                    <span class="money bfx-price">{{ item.variant.compare_at_price | money }}</span>
                   </div>
 
                 {% else %}
@@ -161,16 +161,8 @@
       <div id="basket-right" class="desktop-4 tablet-6 mobile-3">
         <h3>{{ 'cart.general.order_summary' | t }}</h3>
         <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart.total_price | money }}</span></h4>
-
-        {% comment %} CART :: Discount code advisory {% endcomment %}
-
-        <div id="discount-code-advisory">
-          <h4>{{ 'cart.general.discount_code_advisory' | t }}</h4>
-        </div>
-
         <input type="submit" name="checkout" id="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout" />
         <div class="clear"></div>
-
         {% if additional_checkout_buttons %}
           {{ content_for_additional_checkout_buttons }}
           <div class="clear"></div>

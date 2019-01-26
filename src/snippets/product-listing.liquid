@@ -66,8 +66,8 @@
 
   <div class="price">
     {% if product.price < product.compare_at_price %}
-    <div class="onsale"><span class="money">{{ product.price | money }}</span></div>
-    <div class="was"><span class="money">{{ product.compare_at_price | money }}</span></div>
+    <div class="onsale"><span class="money bfx-price bfx-list-price">{{ product.price | money }}</span></div>
+    <div class="was"><span class="money bfx-price">{{ product.compare_at_price | money }}</span></div>
     {% else %}
     <div class="prod-price">{% if product.price_varies %} {{ 'products.general.from' | t }} <span class="money">{{ product.price_min | money }}</span> - <span class="money">{{ product.price_max | money }}</span> {% else %}<span class="money">{{ product.price | money }}</span>{% endif %}</div>
     {% endif %}

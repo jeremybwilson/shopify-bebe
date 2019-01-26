@@ -33,7 +33,7 @@
         </a>
         <div class="price">
           {{if price < compare_at_price}}
-            <div class="onsale"><span class="money bfx-price">${Shopify.formatMoney(price)}</span></div>
+            <div class="onsale"><span class="money bfx-price bfx-list-price">${Shopify.formatMoney(price)}</span></div>
             <div class="was"><span class="money bfx-price">${Shopify.formatMoney(compare_at_price)}</span></div>
           {{else}}
           <div class="prod-price"><span class="money bfx-price">${Shopify.formatMoney(price)}</span></div>
