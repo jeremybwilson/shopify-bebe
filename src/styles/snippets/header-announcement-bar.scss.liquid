@@ -36,7 +36,7 @@
 
 // PROMO : CORE : General style that apply regardless of one or two slots
 #top-bar {
-  text-align: center;
+  text-align: center;  
   line-height: 30px;
   padding: 0;
   position: relative;
@@ -51,6 +51,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+  }
+  @include mq( 'wide-and-up') {
+    width: 35%;
   }
 
   .row {
