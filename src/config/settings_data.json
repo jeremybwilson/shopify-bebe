@@ -442,8 +442,8 @@
           "1547175288256"
         ],
         "settings": {
-          "grid": 3,
-          "rows": 8,
+          "grid": 4,
+          "rows": 10,
           "sort_by": true,
           "filter_1_title": "Filter by X",
           "sort_a": "",
