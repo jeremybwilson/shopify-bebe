@@ -192,21 +192,15 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
 }
 
 
-
+#pagination {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
 
 .bc-sf-filter-load-more-button {
-    @include h6;
-    @include fontSize( 16px );
-    font-weight: $font-weight--black;
-    color: $loadMoreTextColor;
-    background: $loadMoreBg;
-    border: none;
-    padding: 20px 70px;
-    transition: background 0.25s ease-in-out;
-
-    &:hover {
-        background: $loadMoreBgHover;
-        color: $loadMoreTextColor;
-    }
+    display: inline-block;
+    @include mainButton;
+    @include buttonDefaultStyle;
+    height: 45px;
 }
