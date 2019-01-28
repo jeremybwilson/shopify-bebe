@@ -73,7 +73,7 @@ jobs:
             echo '
             production:
               password:' $SLATE_PASSWORD '
-              theme_id: "66250145856"
+              theme_id: "live"
               store: bebe-prod.myshopify.com
               ignore_files:
                 - settings_data.json' > ./config.yml
