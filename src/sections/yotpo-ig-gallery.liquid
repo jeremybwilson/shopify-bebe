@@ -3,7 +3,11 @@
     {% if section.settings.show_header %}
     <div class="insta-header"><span>Shop our</span></div>
     {% endif %}
-    <h4>{{ section.settings.header }}</h4>
+    {% if section.settings.header != blank %}
+      <div class="insta-copy">
+        {{ section.settings.header }}
+      </div>
+    {% endif %}
     <div
       class="yotpo yotpo-pictures-widget"
       data-gallery-id="{{ section.settings.gallery_id }}">

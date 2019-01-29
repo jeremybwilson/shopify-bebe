@@ -5,13 +5,20 @@
 
 .yotpo-ig-gallery {
     // max-width: 1440px;
+
+    @include mq( 'tablet-and-up' ) {
+        margin-top: 40px;
+    }
+
     div.insta-header {
         text-align: center;
         margin: 12px auto;
 
         span {
             display: inline-block;
-            @include fontSize(32px);
+            font-weight: $font-weight--medium;
+            color: $color--primary-1;
+            @include fontSize(24px);    
 
             &:after {
                 background-image: url({{ 'instagram-icon.png' | asset_url }});
@@ -27,12 +34,37 @@
         }
     }
 
-    h4 {
+    .insta-copy {
         text-align: center;
+    }
+}
+html .yotpo.yotpo-pictures-gallery .load-btn-white,
+html .yotpo.yotpo-pictures-widget .load-btn-white {
+    @include buttonDefaultStyle;
+    @include mainButton;
+    min-width: 280px;
+
+    @include mq( 'lap-and-up' ) {
+        min-width: 430px;
+    }
+
+    .yotpo-icon-button-text {
+        color: $color--reverse-1;
+        font-family: $sans--2;
+        @include fontSize( 14px ); // change this to a settings value
+        letter-spacing: .04em;
+      
     }
 }
 
 div.yotpo {
+    .yotpo-pictures-widget {
+        margin-top: 0;
+
+        @include mq('lap-and-up') {
+            margin-top: 15px;
+        }
+    }
     .yotpo-pictures-collage-wrapper .yotpo-pictures-collage-small-images-wrapper.row-size-3 {
         margin-right: 0;
         margin-left: 0;
@@ -47,9 +79,20 @@ div.yotpo {
             display: none;
         }
 
+        .yotpo-lightbox-product-name {
+            @include h2;
+        }
+
         .yotpo-header .yotpo-header-element .yotpo-instagram-username {
             font-family: $sans--2;
+            letter-spacing: .04em;
+            color: $color--accent-1;
         }
+        label,
+        .yotpo-instagram-hashtag {
+            font-family: $sans--2;
+        }
+        
     }
 
     &.yotpo-lightbox {
