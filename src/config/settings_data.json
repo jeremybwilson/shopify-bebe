@@ -558,14 +558,14 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/sale-up-to-65-off-desktop_a602323f-56f3-4708-b8fd-cd407c36dba5.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/sale-up-to-65-off-mobile_35a22492-296b-46af-9f91-e3aba0bd9daa.jpg",
-              "cta_full_image": "shopify:\/\/collections\/sale",
-              "heading": "",
-              "hide_header_desktop": false,
+              "image": "shopify:\/\/shop_images\/the-red-ones-are-he-hottest.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/the-red-ones-are-he-hottest-mobile-2.jpg",
+              "cta_full_image": "",
+              "heading": "<p><\/p>",
+              "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify:\/\/collections\/sale",
-              "cta_one_button_text": "Shop Sale",
+              "cta_one_link": "\/collections\/sexy-in-red",
+              "cta_one_button_text": "Shop Red",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -575,12 +575,12 @@
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#000000",
-              "custom_slide_alt_color": "#ffffff",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 69,
-              "caption_vertical_mobile": 63,
+              "caption_horizontal_offset": 30,
+              "caption_vertical": 64,
+              "caption_vertical_mobile": 80,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
             }
@@ -600,24 +600,24 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/twin-promo-leggings.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/twin-promo-leggings-mobile.jpg",
-              "link": "shopify:\/\/collections\/leggings",
-              "heading_text": "Nice & Tight",
+              "image": "shopify:\/\/shop_images\/bebe-tops.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/bebe-tops-mobile.jpg",
+              "link": "shopify:\/\/collections\/tops",
+              "heading_text": "Sexy But  Make It Classy",
               "text": "",
-              "cta_text": "Shop Leggings",
+              "cta_text": "Shop Night Out Tops",
               "cta_style": "button"
             }
           },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-romantic-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/bebe-romantic-mobile.jpg",
-              "link": "shopify:\/\/collections\/valentines-day-dresses",
-              "heading_text": "Feelin' Romantic?",
+              "image": "shopify:\/\/shop_images\/bebe-leggings.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/bebe-leggings-mobile.jpg",
+              "link": "shopify:\/\/collections\/leggings",
+              "heading_text": "Nice & Tight",
               "text": "",
-              "cta_text": "SHOP V-DAY DRESSES",
+              "cta_text": "SHOP Leggings",
               "cta_style": "button"
             }
           }
@@ -1278,11 +1278,11 @@
           "1545461750320": {
             "type": "text_block",
             "settings": {
-              "heading_text": "UP TO 65% OFF",
+              "heading_text": "SALE UP TO 65% OFF",
               "text": "<p>Save on hundreds of styles. Discount taken at checkout.<\/p>",
               "cta_text": "Shop Sale",
               "link": "shopify:\/\/collections\/sale",
-              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>\n<p><strong>+ EVERGREEN &ldquo;FREE U.S. SHIPPING OVER $100,&rdquo; &ldquo;20% OFF WHEN YOU SIGN UP FOR EMAIL&rdquo; &amp; &ldquo;20% OFF WHEN YOU JOIN CLUBBEBE&rdquo; OFFERS<\/strong><\/p>\n<p><\/p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1447,14 +1447,14 @@
           "1547557568724-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/30-percent-off-250-or-more-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/30-percent-off-250-or-more-mobile-3.jpg",
+              "image": "shopify:\/\/shop_images\/all-you-need-is-love-and-something-cute-to-wear.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/all-you-need-is-love-and-something-cute-to-wear-mobile-2.jpg",
               "cta_full_image": "",
-              "heading": "",
-              "hide_header_desktop": false,
+              "heading": "<p><br><br><\/p>",
+              "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify:\/\/collections\/new",
-              "cta_one_button_text": "Shop Now",
+              "cta_one_link": "shopify:\/\/collections\/featured-valentines-day",
+              "cta_one_button_text": "SHOP VALENTINE'S DAY",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1464,12 +1464,12 @@
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#000000",
-              "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "center",
+              "custom_slide_main_color": "#fff4f4",
+              "custom_slide_alt_color": "#000000",
+              "caption_horizontal": "left",
               "caption_horizontal_offset": 25,
               "caption_vertical": 64,
-              "caption_vertical_mobile": 80,
+              "caption_vertical_mobile": 72,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1485,14 +1485,13 @@
       },
       "1547711858918": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/free-shipping-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/free-shipping-mobile.jpg",
-              "cta_full_image": "shopify:\/\/collections\/new",
+              "image": "shopify:\/\/shop_images\/sale-up-to-65-off-shop-sale.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/sale-up-to-65-off-shop-sale-mobile_fe0cea4e-8f53-446b-a27d-180bb1e7cc01.jpg",
+              "cta_full_image": "shopify:\/\/collections\/sale",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
@@ -1532,8 +1531,8 @@
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/psa-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/psa-mobile.jpg",
+              "image": "shopify:\/\/shop_images\/psa-weve-changed-update-password-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/psa-weve-changed-update-password-mobile.jpg",
               "cta_full_image": "shopify:\/\/pages\/reset-password",
               "heading": "",
               "hide_header_desktop": false,
@@ -1570,9 +1569,9 @@
       }
     },
     "content_for_index": [
-      "1548306390190",
-      "1547557568724",
       "1547711858918",
+      "1547557568724",
+      "1548306390190",
       "1547557172846",
       "1536251685211",
       "1535728526385",
