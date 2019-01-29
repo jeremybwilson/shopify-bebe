@@ -27,11 +27,11 @@
 
         <div id="product-price--mobile">
           <span class="product-price" itemprop="price">
-            <span class="money">{{ price }}</span>
+            <span class="money bfx-price">{{ price }}</span>
           </span>
           {% if current_variant.compare_at_price > current_variant.price %}
             <span class="was">
-              <span class="money">{{ compare_price }}</span>
+              <span class="money bfx-price">{{ compare_price }}</span>
             </span>
           {% endif %}
         </div><div class="clear"></div>
