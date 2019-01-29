@@ -102,6 +102,7 @@
       }
     }
     .cta {
+      min-width: 280px;
       margin-top: 0;
       @include fontDim(13px,13px,0);
       font-weight:  $font-weight--bold;
@@ -112,8 +113,12 @@
         margin-top: 0;
         @include fontSize(16px);
       }
+      @include mq('lap-and-up') {
+        min-width: 430px;
+      }
 
       a {
+        width: 100%;
         padding: 0;
         color: $color--primary-2;
         text-decoration: none;
@@ -124,6 +129,7 @@
         }
 
         span.button {
+          width: 100%;
           display: inline-block;
           @include buttonDefaultStyle;
 
