@@ -157,7 +157,15 @@
         {% endif %}
 
         {% if template == 'product.quick' %}
+          <span class="product-sku--wrapper">
+            <span class="product-sku--header">{{ 'products.product.sku' | t }}</span>
+            <span class="product-style-number"> {{ product.variants.first.sku | split: '-' | first }}</span>
+          </span>
+
           <a href="{{ product.url | within_collection }}" class="full-click">{{ 'products.general.view_full' | t }}</a>
+
+          {% comment %} :: PRODUCT SKU :: {% endcomment %}
+
         {% endif %}
 
       </div>
