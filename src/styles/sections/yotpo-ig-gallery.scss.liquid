@@ -2,10 +2,81 @@
     margin-right: 0;
     margin-left: 0;
 }
+.yotpo {
+
+    &.yotpo-pictures-gallery,
+    &.yotpo-pictures-widget {
+        margin-top: 0;
+
+        // header
+
+        .yotpo-pictures-gallery-header-wrapper {
+
+            @include mq( 'desk-and-up' ) {
+                position: relative;
+            }
+
+            .yotpo-pictures-gallery-title-wrapper {
+
+                @include mq( 'tablet' ) {
+                    float: none;
+                    text-align: center;
+                }
+                @include mq( 'desk-and-up' ) {
+                    float: none;
+                    text-align: center;
+                }
+
+                // Top text            
+
+                .yotpo-pictures-gallery-title {
+                    display: block;
+                    width: 100%;
+                    @include p;
+                    font-family: $sans--2 !important;
+                    text-align: center;    
+                    @include fontSize( 12px );
+                }
+
+            }
+
+            // Upload button
+
+            .yotpo-pictures-gallery-upload-button-wrapper {
+
+                @include mq( 'tablet' ) {
+                    text-align: center;
+                }
+
+                @include mq( 'desk-and-up' ) {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    margin-top: -15px;
+
+                    .yotpo-icon {
+                        line-height: 49px;
+                    }
+                }
+                .yotpo-pictures-gallery-upload-button {
+                    @include buttonDefaultStyle;
+                    @include mainButton;
+                    border-radius: 0;
+                    font-family: $sans--2 !important;
+
+                    &:hover {
+                        background-color: $color--gray-1 !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
 .yotpo-ig-gallery {
     // max-width: 1440px;
     margin-top: 20px;
+    margin-bottom: 20px;
 
     @include mq( 'tablet-and-up' ) {
         margin-top: 40px;
@@ -21,17 +92,21 @@
             color: $color--primary-1;
             @include fontSize(24px);    
 
-            &:after {
-                background-image: url({{ 'instagram-icon.png' | asset_url }});
-                background-size: 40px 40px;
-                display: inline-block;
-                width: 40px;
-                height: 40px;
-                content: '';
-                position: relative;
-                top: 10px;
-                right: -8px;
-            }
+        }
+        &.show-icon {
+            span {
+                &:after {
+                    background-image: url({{ 'instagram-icon.png' | asset_url }});
+                    background-size: 40px 40px;
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    content: '';
+                    position: relative;
+                    top: 10px;
+                    right: -8px;
+                }                
+            }            
         }
     }
 
@@ -67,8 +142,6 @@ div.yotpo {
         margin-right: 0;
         margin-left: 0;
     }
-
-
 
     .yotpo-instagram {
         .yopto-main.yotpo-regular-box {
@@ -134,7 +207,7 @@ div.yotpo {
     }
 }
 
-
+// Homepage hacks for visibility
 
 .index {
     .yotpo {
@@ -185,3 +258,111 @@ div.yotpo {
     }
 }
 
+// Yotpo Modal (because of course there is!)
+
+.yotpo {
+    &.image-upload-flow-popup {
+        .yotpo-modal-base.yotpo-modal-active {
+
+            .yotpo-modal-dialog {
+                width: 500px;
+                border-radius: 0;
+
+                * {
+                    font-family: $sans--2 !important;
+                }
+
+                .yotpo-modal-title {
+                    @include h2-alt;
+                }
+
+                .yotpo-modal-subtitle {
+                    @include p;
+                }
+
+                .yotpo-upload-photos {
+                    .yotpo-caption-modal-textarea {
+                        border-radius: 0px;
+                        @include p;
+                        font-size: 12px !important;
+                        font-size: .75rem !important;
+                    }
+                    &.image-error .yotpo-caption-modal-textarea {
+                        background-color: #f4f3f0;
+                        border: solid 1px $color--error;
+                    }
+                    &.image-empty .yotpo-caption-modal-textarea {
+                        background-color: $color--field-1;
+                    }
+                    .yotpo-upload-button {
+                        border-radius: 0;
+
+                        .yotpo-icon-cross {
+                            right: 1px;
+                        }
+                    }
+                }
+            }    
+            .yotpo-modal-content {
+                .yotpo-user-details-modal-input {
+                    border-radius: 0;
+                    font-size: 13px !important;
+                    font-size: .8125rem !important;
+                }
+                .yotpo-modal-user-detail-input .user_details_input {
+                    margin-top: 13px;
+                }
+                .yotpo-modal-submit-button {
+                    @include buttonDefaultStyle;
+                    height: 45px;
+                    border-radius: 0;                    
+
+                    .yotpo-modal-submit-label {
+                        margin-top: 0;
+                        line-height: 45px;
+                    }
+                }
+
+                .yotpo-modal-close .close-button {
+                    @include buttonDefaultStyle;
+                    height: 45px;
+                    border-radius: 0;
+                }
+                
+            }
+            .yotpo-caption-modal-bottom {
+                .yotpo-add-more {
+
+                    .yotpo-add-more-label {
+                        text-transform: uppercase;
+                        @include fontSize( 12px );
+                        font-weight: $font-weight--medium;
+                    }
+
+                }
+                .yotpo-next-button {
+                    @include buttonDefaultStyle;
+                    border-radius: 0;
+                    height: 45px;
+
+                    .yotpo-icon-right-arrow-2 {
+                        margin-top: 1px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Instafooter
+
+.insta-footer {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+
+    a {
+        min-width: 230px;
+        text-decoration: none;
+    }
+}
