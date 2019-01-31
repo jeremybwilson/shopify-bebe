@@ -5,13 +5,21 @@
 
 .yotpo-ig-gallery {
     // max-width: 1440px;
+    margin-top: 20px;
+
+    @include mq( 'tablet-and-up' ) {
+        margin-top: 40px;
+    }
+
     div.insta-header {
         text-align: center;
         margin: 12px auto;
 
         span {
             display: inline-block;
-            @include fontSize(32px);
+            font-weight: $font-weight--medium;
+            color: $color--primary-1;
+            @include fontSize(24px);    
 
             &:after {
                 background-image: url({{ 'instagram-icon.png' | asset_url }});
@@ -27,16 +35,40 @@
         }
     }
 
-    h4 {
+    .insta-copy {
         text-align: center;
+    }
+}
+html .yotpo.yotpo-pictures-gallery .load-btn-white,
+html .yotpo.yotpo-pictures-widget .load-btn-white {
+    @include buttonDefaultStyle;
+    @include mainButton;
+    min-width: 230px;
+
+
+    .yotpo-icon-button-text {
+        color: $color--reverse-1;
+        font-family: $sans--2;
+        @include fontSize( 14px ); // change this to a settings value
+        letter-spacing: .04em;
+      
     }
 }
 
 div.yotpo {
+    .yotpo-pictures-widget {
+        margin-top: 0;
+
+        @include mq('lap-and-up') {
+            margin-top: 15px;
+        }
+    }
     .yotpo-pictures-collage-wrapper .yotpo-pictures-collage-small-images-wrapper.row-size-3 {
         margin-right: 0;
         margin-left: 0;
     }
+
+
 
     .yotpo-instagram {
         .yopto-main.yotpo-regular-box {
@@ -47,9 +79,20 @@ div.yotpo {
             display: none;
         }
 
+        .yotpo-lightbox-product-name {
+            @include h2;
+        }
+
         .yotpo-header .yotpo-header-element .yotpo-instagram-username {
             font-family: $sans--2;
+            letter-spacing: .04em;
+            color: $color--accent-1;
         }
+        label,
+        .yotpo-instagram-hashtag {
+            font-family: $sans--2;
+        }
+        
     }
 
     &.yotpo-lightbox {
@@ -90,3 +133,55 @@ div.yotpo {
         white-space: nowrap;
     }
 }
+
+
+
+.index {
+    .yotpo {
+        .yotpo-pictures-collage-wrapper {
+            margin-left: -5px;
+            margin-right: -5px;
+
+            @include mq('phone') {
+                .yotpo-pictures-gallery-images-wrapper.row-size-1 {
+                    .yotpo-pictures-collage-row {
+                        @include flexbox;
+                    }
+                    .yotpo-pictures-collage-big-image.row-size-1 {
+                        
+                    }
+                    .yotpo-pictures-collage-small-images-wrapper.row-size-1 {
+                        @include flexbox;
+                        @include flex-direction(column);
+
+                        .yotpo-single-image-container {
+                            width: 100%;
+                            max-width: none;
+                            max-height: none;
+                        }
+                    }    
+                    
+                    .yotpo-pictures-collage-row ~ .yotpo-pictures-collage-row {
+                        margin-top: calc(-100% / 2);
+
+                        .yotpo-pictures-collage-big-image.row-size-1 {
+                            width: calc(100% / 2);
+                        }
+
+                        .yotpo-pictures-collage-small-images-wrapper.row-size-1 {
+                            display: none;
+                        }
+                    }                    
+                }
+            }
+
+            .yotpo-pictures-gallery-images-wrapper.row-size-2,
+            .yotpo-pictures-gallery-images-wrapper.row-size-3 {
+                .yotpo-pictures-collage-row ~ .yotpo-pictures-collage-row {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+

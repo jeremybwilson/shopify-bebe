@@ -1,14 +1,31 @@
 <div id="yotpo-ig-{{ section.id }}" data-section-id="{{ section.id }}" class="yotpo-ig-gallery{% if section.settings.full_width %} gridlock-fluid full-width{% endif %}">
+
+
   <div class="row">
+
+
     {% if section.settings.show_header %}
     <div class="insta-header"><span>Shop our</span></div>
     {% endif %}
-    <h4>{{ section.settings.header }}</h4>
+    {% if section.settings.header != blank %}
+      <div class="insta-copy">
+        {{ section.settings.header }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.full_width %}    
+      </div>
+    {% endif %}
+
+
     <div
       class="yotpo yotpo-pictures-widget"
       data-gallery-id="{{ section.settings.gallery_id }}">
     </div>
+
+  {% unless section.settings.full_width %}    
   </div>
+  {% endunless %}
 </div>
 
 <div class="clear"></div>

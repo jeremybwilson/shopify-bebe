@@ -112,15 +112,17 @@
   .cta {
     display: inline-block;
     margin: 10px 10px 0;
+    min-width: 230px;
 
     @include mq('tablet-and-up') {
       margin-top: 18px;
     }
-
+    
     a {
       display: inline-block;
       @include buttonDefaultStyle;
       color: $color--white;
+      width: 100%;
 
     }
   }
