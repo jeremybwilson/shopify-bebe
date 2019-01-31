@@ -102,19 +102,16 @@
       }
     }
     .cta {
-      min-width: 280px;
+      min-width: 230px;
       margin-top: 0;
       @include fontDim(13px,13px,0);
       font-weight:  $font-weight--bold;
       text-transform: uppercase;
-      display: block;
+      display: inline-block;
 
       @include mq('tablet-and-up') {
         margin-top: 0;
         @include fontSize(16px);
-      }
-      @include mq('lap-and-up') {
-        min-width: 430px;
       }
 
       a {

@@ -5,6 +5,7 @@
 
 .yotpo-ig-gallery {
     // max-width: 1440px;
+    margin-top: 20px;
 
     @include mq( 'tablet-and-up' ) {
         margin-top: 40px;
@@ -42,11 +43,8 @@ html .yotpo.yotpo-pictures-gallery .load-btn-white,
 html .yotpo.yotpo-pictures-widget .load-btn-white {
     @include buttonDefaultStyle;
     @include mainButton;
-    min-width: 280px;
+    min-width: 230px;
 
-    @include mq( 'lap-and-up' ) {
-        min-width: 430px;
-    }
 
     .yotpo-icon-button-text {
         color: $color--reverse-1;
@@ -69,6 +67,8 @@ div.yotpo {
         margin-right: 0;
         margin-left: 0;
     }
+
+
 
     .yotpo-instagram {
         .yopto-main.yotpo-regular-box {
@@ -133,3 +133,55 @@ div.yotpo {
         white-space: nowrap;
     }
 }
+
+
+
+.index {
+    .yotpo {
+        .yotpo-pictures-collage-wrapper {
+            margin-left: -5px;
+            margin-right: -5px;
+
+            @include mq('phone') {
+                .yotpo-pictures-gallery-images-wrapper.row-size-1 {
+                    .yotpo-pictures-collage-row {
+                        @include flexbox;
+                    }
+                    .yotpo-pictures-collage-big-image.row-size-1 {
+                        
+                    }
+                    .yotpo-pictures-collage-small-images-wrapper.row-size-1 {
+                        @include flexbox;
+                        @include flex-direction(column);
+
+                        .yotpo-single-image-container {
+                            width: 100%;
+                            max-width: none;
+                            max-height: none;
+                        }
+                    }    
+                    
+                    .yotpo-pictures-collage-row ~ .yotpo-pictures-collage-row {
+                        margin-top: calc(-100% / 2);
+
+                        .yotpo-pictures-collage-big-image.row-size-1 {
+                            width: calc(100% / 2);
+                        }
+
+                        .yotpo-pictures-collage-small-images-wrapper.row-size-1 {
+                            display: none;
+                        }
+                    }                    
+                }
+            }
+
+            .yotpo-pictures-gallery-images-wrapper.row-size-2,
+            .yotpo-pictures-gallery-images-wrapper.row-size-3 {
+                .yotpo-pictures-collage-row ~ .yotpo-pictures-collage-row {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
