@@ -4,7 +4,7 @@ var bcSfFilterSettings = {
        limit: bcSfFilterConfig.custom.products_per_page,
         // Optional
         loadProductFirst: true,
-        refineByHorizontalPosition: 'top',
+        refineByHorizontalPosition: 'top'
     },
     selector: {
         products: '#product-loop'
