@@ -4,14 +4,12 @@ var bcSfFilterSettings = {
        limit: bcSfFilterConfig.custom.products_per_page,
         // Optional
         loadProductFirst: true,
-        refineByHorizontalPosition: 'top',
-        paginationType: 'infinite',
+        refineByHorizontalPosition: 'top'
     },
     selector: {
         products: '#product-loop'
     }
 };
-
 
 // FILTER TEMPLATES
 var bcSfFilterTemplate = {
@@ -357,62 +355,9 @@ BCSfFilter.prototype.buildExtrasProductList = function(data) {
     //     });    
     // }
 };
-   
-    // Build Infinite Loading event
-BCSfFilter.prototype.buildInfiniteLoadingEvent = function(data) {
-    var _this = this;
-    var currentPage = parseInt(this.queryParams.page);
-
-    // Using scrolling to prevent callling onscroll twice
-    var scrolling = 0;
-
-    // onscroll event
-    // When windown reaches the bottom of product list
-    var scrollToBottom = false;
-    if (jQ(this.getSelector('bottomPagination')).length > 0) {
-        jQ(window).scroll(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var scrollbarHeight = jQ(window).height() * (jQ(window).height() / jQ(document).outerHeight());
-            var maxPos = parseInt(jQ(_this.getSelector('bottomPagination')).offset().top);
-            var maxScroll = parseInt(jQ(window).scrollTop()) + scrollbarHeight + _this.getSettingValue('general.positionShowInfiniteLoading');
-            if ((jQ(window).scrollTop() + jQ(window).height() + scrollbarHeight) >= jQ(document).outerHeight() - 100) {
-                scrollToBottom = true;
-            }
-            // Begin loading more products
-            if (scrolling == 0 && data.products.length > 0) {
-                
-                if (maxScroll >= maxPos || (maxScroll < maxPos && scrollToBottom)) {
-                    // Show Loading
-                    _this.showLoadMoreLoading();
-
-                    // Prevent scrolling twice
-                    scrolling = 1;
-
-                    // Next page
-                    currentPage ++;
-
-                    // Build data of next page
-                    _this.internalClick = true;
-                    _this.queryParams.limit = _this.getSettingValue('general.limit');
-                    _this.queryParams.page = currentPage;
-                    //_this.getFilterData('page');
-                  
-                    /******************* Custom *******************/
-                    var newUrl = _this.buildToolbarLink('page', currentPage - 1, currentPage);
-                    _this.onChangeData(newUrl, 'page');
-
-                }
-            }
-
-        });
-    }
-}
 
 // Build Additional Elements
 BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
- 
-
 
     var ui = {
         filterHeaderText: '.bc-sf-filter-block-title span', // Text for filter headers, appending the count here
