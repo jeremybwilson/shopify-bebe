@@ -5,7 +5,6 @@ var bcSfFilterSettings = {
         // Optional
         loadProductFirst: true,
         refineByHorizontalPosition: 'top',
-        paginationType: 'infinite',
     },
     selector: {
         products: '#product-loop'
