@@ -1,0 +1,1870 @@
+{
+  "presets": {
+  },
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/favicon.png",
+    "google_tag_manager_id": "GTM-MX9MWW2",
+    "yotpo_id": "ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt",
+    "announcement_text_color": "#000",
+    "announcement_bg_one": "#fff",
+    "announcement_bg_two": "#fff",
+    "header_background": "rgba(0,0,0,0)",
+    "logo_color": "#000000",
+    "nav_links": "#000000",
+    "nav_header_color": "#000000",
+    "nav_sub_header_color": "#000000",
+    "nav_list_item_color": "#000000",
+    "nav_links_hover": "#000000",
+    "nav_links_sale": "#aa5131",
+    "nav_minor_border_color": "#e9e9e9",
+    "social_links": "#000000",
+    "social_links_hover": "#000000",
+    "background": "#fefffe",
+    "header_color": "#000000",
+    "text_color": "#000000",
+    "link_color": "#000000",
+    "link_hover_color": "#000000",
+    "sale_color": "#77511e",
+    "dotted_color": "#b5b5b5",
+    "error_text": "#f00",
+    "success_text": "#4ab064",
+    "button_bg": "#000000",
+    "button_bg_hover": "#616365",
+    "button_text": "#ffffff",
+    "button_text_hover": "#ffffff",
+    "button_border_color": "rgba(0,0,0,0)",
+    "button_border_color_hover": "rgba(0,0,0,0)",
+    "button_border_width": 0,
+    "alt_button_bg": "#8a8a8a",
+    "alt_button_bg_hover": "#8a8a8a",
+    "alt_button_text": "#ffffff",
+    "alt_button_text_hover": "#ffffff",
+    "alt_button_border_color": "rgba(0,0,0,0)",
+    "alt_button_border_color_hover": "rgba(0,0,0,0)",
+    "alt_button_border_width": 0,
+    "homepage_instagram_header": "#000000",
+    "homepage_instagram_text": "#000000",
+    "filter_bg": "#ffffff",
+    "filter_text_color": "#000000",
+    "filter_arrow_color": "#000000",
+    "filter_checkbox_bg": "#ffffff",
+    "filter_divider_color": "#333333",
+    "filter_button_main_bg": "#000000",
+    "filter_button_main_text": "#fefffe",
+    "filter_button_alt_bg": "#ffffff",
+    "filter_button_alt_text": "#77511e",
+    "filter_bar_border_color": "rgba(0,0,0,0)",
+    "quickview_button_bg": "rgba(255,255,255,0.7)",
+    "quickview_button_text": "#757575",
+    "catalog_item_text_color": "#000000",
+    "catalog_item_price_color": "#000000",
+    "catalog_item_accent_color": "#77511e",
+    "collection_seo_footer_bg": "#ffffff",
+    "collection_seo_footer_text": "#161616",
+    "collection_load_more_text": "#000000",
+    "collection_load_more_bg": "#000000",
+    "collection_load_more_bg_hover": "#000000",
+    "product_badge_square_bg": "#000000",
+    "product_badge_circle_bg": "#000000",
+    "product_badge_diamond_bg": "#000000",
+    "product_badge_text_color": "#fefffe",
+    "react_swatch_outline_color": "#000000",
+    "fancybox_overlay_bg": "0,0,0,0.6",
+    "fancybox_close_color": "#000000",
+    "fancybox_close_hover_color": "#000000",
+    "gdpr_bg": "#ffffff",
+    "gdpr_text": "#000000",
+    "gdpr_border_color": "rgba(0,0,0,0)",
+    "gdpr_border_width": 0,
+    "gdpr_button_bg": "#000000",
+    "gdpr_button_text": "#ffffff",
+    "gdpr_button_bg_hover": "#000000",
+    "gdpr_alt_button_bg": "#8a8a8a",
+    "gdpr_alt_button_text": "#ffffff",
+    "gdpr_alt_button_bg_hover": "#8a8a8a",
+    "navigation": "#000000",
+    "nav_color": "#ffffff",
+    "nav_hover_color": "#77511e",
+    "nav_hover_link_color": "#ffffff",
+    "dropdown_background_color": "#000000",
+    "nav_dropdown_color": "#ffffff",
+    "dropdown_hover_background_color": "#282828",
+    "dropdown_hover_link_color": "#ffffff",
+    "directional_background": "#000000",
+    "directional_hover_background": "#ffffff",
+    "directional_color": "#ffffff",
+    "directional_hover_color": "#000000",
+    "swatch_color": "#000000",
+    "swatch_background": "#ffffff",
+    "swatch_border": "#ffffff",
+    "swatch_selected_color": "#ffffff",
+    "swatch_selected_background": "#000000",
+    "swatch_selected_border": "#dfdfdf",
+    "size_text": "#000000",
+    "size_border": "#dfdfdf",
+    "size_bg": "rgba(0,0,0,0)",
+    "size_text_soldout": "#5b5b5b",
+    "size_border_soldout": "#dfdfdf",
+    "size_bg_soldout": "#dfdfdf",
+    "size_text_selected": "#000000",
+    "size_border_selected": "#000000",
+    "size_bg_selected": "rgba(0,0,0,0)",
+    "new_background": "#222",
+    "new_text": "#ffffff",
+    "sale_background": "#77511e",
+    "sale_text": "#ffffff",
+    "soldout_background": "#222",
+    "soldout_text": "#ffffff",
+    "icons": "#000000",
+    "icons_hover": "#77511e",
+    "newsletter_footer_background": "#ffffff",
+    "newsletter_footer_text": "#000000",
+    "social_footer_background": "#e7e7e7",
+    "social_footer_header": "#000000",
+    "footer_background": "#f4f3f0",
+    "footer_color": "#000000",
+    "footer_border": "#333333",
+    "main_font": "source_sans_pro_n4",
+    "nav_font": "source_sans_pro_n4",
+    "heading_font": "source_sans_pro_n4",
+    "announcement_text_size": 12,
+    "font_size": 13,
+    "h1_size": 24,
+    "h2_size": 20,
+    "h3_size": 18,
+    "h4_size": 16,
+    "h5_size": 14,
+    "nav_size": 13,
+    "dropdown_font_size": 13,
+    "navigation_transform": "uppercase",
+    "dropdown_transform": "uppercase",
+    "link_decoration": "none",
+    "section_title_border": "bottom_only_short",
+    "border_weight": "3px",
+    "breadcrumb": true,
+    "enable_nav_name_styling": true,
+    "quickview": true,
+    "vendor": false,
+    "show_collection_seo_block": true,
+    "filter_bar_border_width": 3,
+    "details_align": "center",
+    "secondary_images_hover": "image_flip",
+    "cart_notes_enable": false,
+    "ajax_cart_method": "drawer",
+    "ajax_cart_remove_text": "This will remove the item from your cart. Continue?",
+    "ajax_cart_low_stock_text": "This item does not have enough stock to add to your cart.",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "twittername": "",
+    "facebook_url": "http:\/\/www.facebook.com\/bebe",
+    "pinterest_url": "http:\/\/www.pinterest.com\/bebestores",
+    "tumblr_url": "",
+    "youtube_url": "https:\/\/www.youtube.com\/user\/bebestores",
+    "googleplus_url": "",
+    "instagram_url": "http:\/\/www.instagram.com\/explore\/tags\/bebebabes",
+    "instagram_id": "\/bebebabes",
+    "snapchat_url": "https:\/\/www.snapchat.com\/add\/bebe_stores",
+    "iphone_app_url": "\/pages\/apps",
+    "android_app_url": "\/pages\/apps",
+    "popup": false,
+    "email_image": "",
+    "email_popup_title": "Signup Up & Get 10% Off Your First Order!",
+    "email_popup_text": "",
+    "email_popup_input_placeholder": "Enter Your Email Address",
+    "email_popup_bottom_text": "<p>By providing your email address, you agree to our <a target=\"_blank\" href=\"https:\/\/www.bebe.com\/pages\/privacy-policy\">Privacy Policy<\/a> &amp; <a href=\"\/pages\/terms-conditions\" target=\"_blank\">Terms of Service<\/a>.<\/p>",
+    "email_popup_error": "Please enter a valid e-mail address",
+    "email_popup_success": "<p>You have successfully joined our newsletter<\/p>",
+    "newsletter_popup_klaviyo_id": "",
+    "newsletter_subscription_api_url": "https:\/\/cl.s10.exct.net\/subscribe.aspx",
+    "newsletter_email_service_provider_lid": "180",
+    "newsletter_email_service_provider_mid": "100011471",
+    "newsletter_sub_action": "sub_add_update",
+    "newsletter_signup_thank_you_page": "shopify:\/\/pages\/newsletter-thank-you",
+    "newsletter_signup_error_page": "shopify:\/\/pages\/newsletter-error",
+    "newsletter_signup_unsub_page": "shopify:\/\/pages\/newsletter-unsub",
+    "newsletter_popup_title": "LET'S STAY IN TOUCH",
+    "newsletter_popup_promotion": "ENJOY 20% OFF",
+    "newsletter_popup_body": "YOUR NEXT REGULAR-PRICED PURCHASE WHEN YOU SIGN UP FOR EXCLUSIVE OFFERS, NEW ARRIVALS, & MORE.*",
+    "newsletter_popup_fine_print": "*SEE SIGN-UP CONFIRMATION EMAIL FOR DETAILS.",
+    "newsletter_error": "Please enter a valid e-mail address",
+    "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
+    "cookie_banner_mobile_text": "<p>We use cookies.<\/p>",
+    "cookie_banner_mobile_button": "http:\/\/www.bebe.com\/pages\/privacy-policy",
+    "cookie_banner_mobile_button_text": "More Info",
+    "cookie_banner_desktop_text": "<p>This site uses cookies to simplify and improve your usage and experience of this website. Cookies are small text files stored on the device you are using to access this website. If you ignore this message and continue without changing your browser settings, we will assume that you are consenting to our use of cookies. For further information on our use of cookies, please see our <a href=\"https:\/\/www.honeywell.com\/privacy-statement\" target=\"_blank\">Privacy Statement<\/a><\/p>",
+    "cookie_banner_accept_button_text": "Accept",
+    "show_multiple_currencies": false,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "USD",
+    "borderfree_enabled": true,
+    "borderfree_js_snippet_dev": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.stage.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'c85068b0-94af-11e7-b751-e9c5ac3b554e', env:'STAGE', mode:'default', brand:'default'});<\/script>",
+    "borderfree_merchant_snippet_dev": "<script src=\"https:\/\/stagecheckout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
+    "borderfree_js_snippet_prod": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'8601e7a0-98af-11e7-9d88-79dc73db0d95', env:'PROD', mode:'default', brand:'default'}); <\/script>",
+    "borderfree_merchant_snippet_prod": "<script src=\"https:\/\/checkout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo_checkout.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#e3e3e3",
+    "checkout_heading_font": "Lato",
+    "checkout_body_font": "Lato",
+    "checkout_accent_color": "#9d6d31",
+    "checkout_button_color": "#000000",
+    "checkout_error_color": "#ff6d6d",
+    "facebook_title_alt_text": "Facebook",
+    "pinterest_title_alt_text": "Pinterest",
+    "tumblr_title_alt_text": "Tumblr",
+    "youtube_title_alt_text": "Youtube",
+    "googleplus_title_alt_text": "Google Plus",
+    "instagram_title_alt_text": "Instagram",
+    "snapchat_title_alt_text": "Snapchat",
+    "iphone_app_title_alt_text": "iPhone App",
+    "android_app_title_alt_text": "Android App",
+    "international_store_version": "US",
+    "cart_links": "#000000",
+    "cart_links_hover": "#000000",
+    "newsletter_color": "#ffffff",
+    "newsletter_background": "#2f2f2f",
+    "newsletter_hover": "#ffffff",
+    "pre_footer_icon_color": "#e4e4e4",
+    "newsletter_button_color": "#ffffff",
+    "newsletter_button": "#000000",
+    "newsletter_button_hover": "#535353",
+    "alternate_colors": true,
+    "image_flip": true,
+    "font-size": 13,
+    "transparent_color": "rgba(0,0,0,0)",
+    "email_popup_image": false,
+    "megadropdown_link": "",
+    "nav_promo_image": false,
+    "nav_promo_link": "\/collections\/all",
+    "mega_1_show": false,
+    "mega_1_links": "",
+    "mega_2_show": false,
+    "mega_2_links": "",
+    "mega_3_show": false,
+    "mega_3_links": "",
+    "mega_4_show": false,
+    "mega_4_links": "",
+    "nav_center": true,
+    "nav_height": "40",
+    "linklist_breakpoint": "8",
+    "main_nav": "main-menu",
+    "password_bg": "no_password_bg",
+    "max-height": false,
+    "desktop-image-height": "",
+    "tablet-image-height": "",
+    "mobile-image-height": "",
+    "mailchimp": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1535652898841": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "New",
+              "nav_image": "shopify:\/\/shop_images\/unnamed.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/the-pretty-ones"
+            }
+          },
+          "1522184323686": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Dresses",
+              "nav_image": "shopify:\/\/shop_images\/unnamed-1.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/work-dresses"
+            }
+          },
+          "1542668952241": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Jumpsuits",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_00e972f2-f74d-4a2d-84ff-e2ad689fc31c.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/jumpsuits"
+            }
+          },
+          "1542668973870": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Tops",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_ff2419fa-a52d-4599-a68e-f716a14590f2.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/blouses-shirts"
+            }
+          },
+          "1542668979700": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Bottoms",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_2417033e-9e23-44a1-b0b8-977cc10b2e51.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/leggings"
+            }
+          },
+          "1542668985601": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Jackets & Coats",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_f140fe8e-914a-4cf4-88f9-61a50a2a45f3.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/jackets-coats"
+            }
+          },
+          "1542669004635": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Logo",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_bee0f492-66fd-409a-a52c-630b429598a1.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/logo-tops"
+            }
+          },
+          "1542669012588": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Shoes",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_89fed0e2-293f-4fc4-8087-c518295420b3.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/boots-booties"
+            }
+          },
+          "1542669019789": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Accessories",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_09d662c4-c4e9-49c3-a043-b4966a6ec4ef.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/jewelry"
+            }
+          },
+          "1542669025513": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Sale",
+              "nav_image": "shopify:\/\/shop_images\/unnamed_69f3721f-5acf-4c3f-b35a-68a96336bc6f.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/sale-dresses"
+            }
+          }
+        },
+        "block_order": [
+          "1535652898841",
+          "1522184323686",
+          "1542668952241",
+          "1542668973870",
+          "1542668979700",
+          "1542668985601",
+          "1542669004635",
+          "1542669012588",
+          "1542669019789",
+          "1542669025513"
+        ],
+        "settings": {
+          "full_width_header": false,
+          "show_announcement_text": true,
+          "num_of_promo_banners": "2",
+          "announcement_text_one": "FREE SHIPPING OVER $100",
+          "announcement_popup_one_content": "announcement-1",
+          "announcement_link_one": "#",
+          "announcement_text_two": "Sign Up for clubbebe Rewards & get 20% off",
+          "announcement_popup_two_content": "announcement-2",
+          "announcement_link_two": "\/account\/login",
+          "announcement_height": 35,
+          "announcement_swap_rate": 5,
+          "top_left_highlight_link": "http:\/\/www.instagram.com\/bebe_stores",
+          "top_left_highlight_text": "#Bebebabe",
+          "logo_size": 24,
+          "logo_transform": "uppercase",
+          "logo_weight": "bold",
+          "cart_icon": "bag",
+          "show_site_picker": false,
+          "site_picker_manifest": "US|United States|https:\/\/xtratuf.com,EU|European Union|https:\/\/www.muckbootcompany.eu,UK|United Kingdom|https:\/\/www.muckbootcompany.co.uk",
+          "show_search": true,
+          "show_multiple_currencies": true,
+          "main_nav": "main-menu",
+          "nav_center": true,
+          "nav_height": 28,
+          "linklist_breakpoint": 5
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1480972996114": {
+            "type": "link_list",
+            "settings": {
+              "menu_id": "",
+              "show_headings": true
+            }
+          }
+        },
+        "block_order": [
+          "1480972996114"
+        ],
+        "settings": {
+          "tel_text": "855-377-BOOT (2668)",
+          "tel_number": "18553772668",
+          "show_credit_cards": true,
+          "heading": "Subscribe to our newsletter",
+          "newsletter_subheading": "STAY IN TOUCH & GET 20% OFF",
+          "newsletter_placeholder": "Enter Email",
+          "newsletter_submit_button": "SUBSCRIBE",
+          "instagram_footer_link": "https:\/\/www.instagram.com\/bebe_stores",
+          "instagram_footer_image": "shopify:\/\/shop_images\/bebebabes.jpg",
+          "trust_icon_image_one": "",
+          "trust_icon_image_two": "",
+          "trust_icon_image_three": "",
+          "social_heading": "Connect With Us",
+          "social_insta_hashtag": "#BEBEBABE",
+          "copyright_footer_text": "BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED",
+          "footer_nav": "footer",
+          "footer_privacy_nav": "footer-copyright-menu"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1547175271023": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "categorypage-nosto-2"
+            }
+          },
+          "1547175288256": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "categorypage-nosto-1"
+            }
+          }
+        },
+        "block_order": [
+          "1547175271023",
+          "1547175288256"
+        ],
+        "settings": {
+          "grid": 4,
+          "rows": 10,
+          "sort_by": true,
+          "filter_1_title": "Filter by X",
+          "sort_a": "",
+          "filter_2_title": "Filter by Y",
+          "sort_b": "",
+          "filter_3_title": "Filter by Z",
+          "sort_c": ""
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_nav": false,
+          "vendor": false,
+          "show_quantity": false,
+          "show_sku": false,
+          "show_sold_out": true,
+          "product_variants": "swatches",
+          "use_swatch_images": true,
+          "swatch_shape": "circles",
+          "show_payment_button": false,
+          "show_controls": false,
+          "show_zoom": true,
+          "thumbnails": "left",
+          "zoom_image_position": "zoom_over_main",
+          "related_products": "none",
+          "shipping_header_text": "Shipping & Returns",
+          "shipping_text": "<p>bebe ships to addresses in the 50 United States and U.S. Territories, as well as to APO, FPO and DPO addresses. bebe ships to P.O. boxes in the 48 contiguous states, Guam and Saipan via standard shipping only. At this time, we do not ship to P.O. boxes in Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and U.S. Territories other than Guam and Saipan.<\/p>\
+<p>Please see our <a href=\"\/pages\/shipping#canadaShippingSection\" title=\"Canada Shipping\">Canada<\/a> and <a href=\"\/pages\/shipping#internationalShippingSection\" title=\"International Shipping\">International<\/a> sections for shipping info specific to these locations.<\/p>\
+<p>Learn More: <a href=\"\/pages\/shipping\" title=\"Shipping\">Shipping<\/a> \/ <a href=\"\/pages\/returns\" title=\"Returns\">Returns<\/a><\/p>",
+          "show_social": true,
+          "size_chart_header_text": "Size Chart",
+          "size_chart_page": "size-chart",
+          "show_recently_viewed": true,
+          "recently_viewed_type": "nosto",
+          "recently_viewed_nosto_id": "productpage-nosto-3",
+          "show_nosto_recommendations": true,
+          "nosto_id_1": "productpage-nosto-1",
+          "nosto_id_2": "productpage-nosto-4",
+          "nosto_id_3": "productpage-nosto-2"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "image": "",
+          "text": "<p>Add some descriptive text to your Blog page.<\/p>",
+          "show_date": true
+        }
+      },
+      "mobile-navigation": {
+        "type": "mobile-navigation",
+        "settings": {
+          "main_nav": "main-menu"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "show_date": true,
+          "show_icons": true
+        }
+      },
+      "search-template": {
+        "type": "search-template",
+        "blocks": {
+          "1547175514264": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "searchpage-nosto-1"
+            }
+          }
+        },
+        "block_order": [
+          "1547175514264"
+        ],
+        "settings": {
+        }
+      },
+      "password-template": {
+        "type": "password-template",
+        "settings": {
+          "newsletter_details": "<p>Coming Soon<\/p><p>Signup for our newsletter and get updated when we launch our site <a href=\"https:\/\/example.com\/\">see our newsletter policy.<\/a><\/p>",
+          "text_size": 18,
+          "text_color": "#000000",
+          "logo": "",
+          "logo_max_width": "500",
+          "background_color": "#f5f5f5",
+          "background_image": "",
+          "show_overlay_color": true,
+          "background_overlay_color": "#f5f5f5",
+          "overlay_color_opacity": 40,
+          "border_color": "#000000",
+          "button_color": "#000000",
+          "button_text_color": "#ffffff"
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "show_newsletter_section": false,
+          "heading": "Join Our Newsletter",
+          "newsletter_subheading": "<p>Sign up now for exclusive offers<\/p>",
+          "newsletter_placeholder": "Enter Email Address",
+          "newsletter_error": "Please enter a valid e-mail address",
+          "newsletter_success": "<p>You have successfully joined our newsletter<\/p>",
+          "show_social_media_section": false,
+          "social_heading": "Connect With Us"
+        }
+      },
+      "1535728526385": {
+        "type": "slideshow",
+        "blocks": {
+          "1535728526385-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/25-off-entire-site-with-more-v-day-looks_23b87e21-bbd7-46b6-9376-0873ac611423.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-02-01_promo.jpg",
+              "cta_full_image": "",
+              "heading": "<p><\/p>",
+              "hide_header_desktop": true,
+              "subheading": "",
+              "cta_one_link": "shopify:\/\/collections\/new",
+              "cta_one_button_text": "Shop New Arrivals",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "shopify:\/\/collections\/featured-valentines-day",
+              "cta_three_button_text": "Shop Valentine's Day",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 35.5,
+              "caption_vertical": 68,
+              "caption_vertical_mobile": 80,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.2"
+            }
+          }
+        },
+        "block_order": [
+          "1535728526385-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 6
+        }
+      },
+      "1536251685211": {
+        "type": "twin-promos",
+        "blocks": {
+          "1536251685211-1": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/bebe-tops.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/bebe-tops-mobile.jpg",
+              "link": "shopify:\/\/collections\/tops",
+              "heading_text": "Sexy But  Make It Classy",
+              "text": "",
+              "cta_text": "Shop Night Out Tops",
+              "cta_style": "button"
+            }
+          },
+          "1536251685211-0": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/the-red-ones-are-the-hottest.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/the-red-ones-are-the-hottest_9808fdc2-8a41-48fe-8769-148b5c34b530.jpg",
+              "link": "\/collections\/sexy-in-red",
+              "heading_text": "The Red Ones Are the Hottest",
+              "text": "",
+              "cta_text": "SHOP RED",
+              "cta_style": "button"
+            }
+          }
+        },
+        "block_order": [
+          "1536251685211-1",
+          "1536251685211-0"
+        ],
+        "settings": {
+          "full_width": false
+        }
+      },
+      "page-about-template": {
+        "type": "page-about-template",
+        "blocks": {
+          "1539644589684": {
+            "type": "text_block",
+            "settings": {
+              "module_image": "",
+              "module_html": "<p>We've earned the <strong>Respect, Loyalty and trust<\/strong> of people who can't afford to take trust lightly.<\/p>",
+              "module_image_color_scheme": "light",
+              "module_image_position_desktop": "image_right",
+              "module_image_position_mobile": "image_top"
+            }
+          },
+          "1539646800597": {
+            "type": "text_block",
+            "settings": {
+              "module_image": "",
+              "module_html": "<p>We make essential gear <strong>engineered to withstand the world's toughest conditions<\/strong> and to protect people who put their lives on the line to live and work on the water.<\/p>",
+              "module_image_color_scheme": "dark",
+              "module_image_position_desktop": "image_left",
+              "module_image_position_mobile": "image_top"
+            }
+          },
+          "1539646807998": {
+            "type": "text_block",
+            "settings": {
+              "module_image": "",
+              "module_html": "<p> We're part of a marine lifestyle that values <strong>authenticity, performance and hard work<\/strong> whether you \
+fish to live or live to fish.<\/p>",
+              "module_image_color_scheme": "light",
+              "module_image_position_desktop": "image_right",
+              "module_image_position_mobile": "image_top"
+            }
+          },
+          "1539646813012": {
+            "type": "text_block",
+            "settings": {
+              "module_image": "",
+              "module_html": "<p><strong>XTRATUF<\/strong> is chosen not only by fisherman on the Bering Sea, but by commercial, sport and water-enthusiasts everywhere.<\/p>",
+              "module_image_color_scheme": "light",
+              "module_image_position_desktop": "image_left",
+              "module_image_position_mobile": "image_top"
+            }
+          }
+        },
+        "block_order": [
+          "1539644589684",
+          "1539646800597",
+          "1539646807998",
+          "1539646813012"
+        ],
+        "settings": {
+          "about_text": "<h2>Choose Your Footwear<\/h2>\
+<p>We have a variety of footwear to fit your marine lifestyle.<\/p>",
+          "about_text_color": "#e6e6e6"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "1537562942330": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "mobile_image": "",
+              "cta_full_image": "",
+              "heading": "We Come From Alaska",
+              "hide_header_desktop": false,
+              "subheading": "Where nothing is forgiven and no compromise goes unpunished. <br> Where 50-foot seas swallow the slightest missteps.",
+              "cta_one_link": "",
+              "cta_one_button_text": "Add a button",
+              "cta_two_link": "",
+              "cta_two_button_text": "Add a button",
+              "cta_three_link": "",
+              "cta_three_button_text": "Add a button",
+              "cta_four_link": "",
+              "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "white",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#164732",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1537562942330"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "columns-carousel": {
+        "type": "columns-carousel",
+        "blocks": {
+          "1539638126458": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "mobile_image": "",
+              "heading": "Commercial Fishing",
+              "svg_icon": "",
+              "png_icon": "",
+              "link": "shopify:\/\/collections\/commercial-fishing",
+              "cta_text": "Shop Now"
+            }
+          },
+          "1539642501764": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "mobile_image": "",
+              "heading": "Sport Fishing",
+              "svg_icon": "",
+              "png_icon": "",
+              "link": "shopify:\/\/collections\/sport-fishing",
+              "cta_text": "Shop Now"
+            }
+          },
+          "1539642513779": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "mobile_image": "",
+              "heading": "Water Sports",
+              "svg_icon": "",
+              "png_icon": "",
+              "link": "shopify:\/\/collections\/water-sports",
+              "cta_text": "Shop Now"
+            }
+          },
+          "1539642524127": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "mobile_image": "",
+              "heading": "Lifestyle",
+              "svg_icon": "",
+              "png_icon": "",
+              "link": "shopify:\/\/collections\/lifestyle",
+              "cta_text": "Shop Now"
+            }
+          }
+        },
+        "block_order": [
+          "1539638126458",
+          "1539642501764",
+          "1539642513779",
+          "1539642524127"
+        ],
+        "settings": {
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "1546049621783": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Customer Service",
+              "answer": "",
+              "anchor": "custservice"
+            }
+          },
+          "1545694490844": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "MY PASSWORD IS NOT WORKING. HOW DO I ACCESS MY bebe.com ACCOUNT?",
+              "answer": "<p>We recently launched a new and improved version of bebe.com, and for your security, you'll need to update your password to access your account. Please go to our <a href=\"\/account\/login\" title=\"Sign In\">Sign In<\/a> page, enter your email address and current password, click the \"Sign In\" button, and you will be prompted to request an email that will allow you to update your password.<\/p>",
+              "anchor": "custservice"
+            }
+          },
+          "1545694625513": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I ACCESS MY CLUBBEBE ACCOUNT?",
+              "answer": "<p>If you create a bebe.com account using the same email address you used to sign up for clubbebe, your clubbebe information will automatically show up in <a href=\"\/account\/login\" title=\"My Account\">My Account<\/a> after you sign in, under \"clubbebe Points &amp; Rewards.\" If you have created a bebe.com account and you're still having trouble accessing your clubbebe information, please <a href=\"\/pages\/contact-us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777).<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545694702329": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW MUCH IS SHIPPING AND HANDLING?",
+              "answer": "<p>We offer a range of shipping options. Please see <a href=\"\/pages\/shipping\">Shipping<\/a> for details.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545695009550": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "INTERNATIONAL SHIPPING",
+              "answer": "<p>bebe.com has partnered with a trusted third-party company, International Checkout, to fulfill orders for our international customers.<\/p>\
+<p>Please note that International Checkout coordinates your bebe.com order and is responsible for all billing, shipping and customer service issues related to your International order: <\/p>\
+<ul>\
+  <li> Select your items at <a href=\"\/\">http:\/\/www.bebe.com<\/a> and put your items in the bebe Shopping Bag.<\/li>\
+<\/ul>\
+<ul>\
+  <li> Select the International Shipping link in the shopping bag.<\/li>\
+<\/ul>\
+<ul>\
+  <li> Confirm the items in your bag are ready for purchase and proceed to International Checkout by selecting the International Checkout button.<\/li>\
+<\/ul>\
+<ul>\
+  <li> The item name, sku number and price will be transferred to International Checkout for processing<\/li>\
+  <li> To complete your order, you will be asked to fill in shipping and billing information on the International Checkout website\
+  <\/li>\
+<\/ul>\
+<p>If you would like assistance placing your order, please contact International Checkout: <a href=\"mailto:support@internationalcheckout.com\">support@internationalcheckout.com<\/a><\/p>\
+<div>\
+  <div class=\"returnTable\">\
+    <div class=\"returnTableTitle\">\
+      <p>CUSTOMER SERVICE HOURS: 8 AM TO 6 PM PT<\/p>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>USA Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+001.310.601.8196<\/p><\/div>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>UK Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+44.20.8133.2436<\/p><\/div>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>Australia Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+61.28003.4685<\/p><\/div>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>Germany Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+49.618.530.9342<\/p><\/div>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>Sweden Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+46.4069.35779<\/p><\/div>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>Ireland Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+01.443.3715<\/p><\/div>\
+<\/div>\
+<div class=\"tableRow\">\
+<div class=\"tableCol col1\"><p>New Zealand Phone:<\/p><\/div>\
+<div class=\"tableCol col2\"><p>+09.889.0408<\/p><\/div>\
+    <\/div>\
+  <\/div>\
+<\/div>\
+\
+<p>To check the status of your order or track your package, please log in to your International <br> Checkout account at: <a href=\"https:\/\/www.internationalcheckout.com\/login.php\">https:\/\/www.internationalcheckout.com\/login.php<\/a><\/p>\
+<p>To learn more, view International Checkout's Customer Service and Terms &amp; Conditions information at:<a href=\"http:\/\/www.internationalcheckout.com\/cs.php\"> http:\/\/www.internationalcheckout.com\/cs.php<\/a><\/p>",
+              "anchor": ""
+            }
+          },
+          "1545695430831": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I TRACK MY ORDER?",
+              "answer": "<p>Once your order ships, we'll send you an email that contains tracking info and links. You can also sign in to <a href=\"\/account\/login\" title=\"My Account\">My Account<\/a> and follow the tracking link under \"Order History.\" Please note it may take up to 24-48 hours for tracking information to appear. Still have questions? Please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\" title=\"Contact Us\">contact us via email<\/a>, and we'll be happy to assist you.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545695624500": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I RETURN AN ITEM?",
+              "answer": "<p>bebe wants you to be happy with your purchase. If the fit or color isn't exactly what you expected, we want to fix that. If for any reason you're not happy with your purchase, you can return your regular priced items within 21-30 days of your purchase for a refund or store credit. We will even cover the return shipping cost for U.S. shipping addresses only. Click below to start your return and access your free shipping label.<\/p>\
+<p><a class=\"return-button\" href=\"http:\/\/bebe-prod.returnly.com\" target=\"_blank\" rel=\"noopener noreferrer\">MAKE A RETURN<\/a><\/p>\
+<meta charset=\"utf-8\"><meta charset=\"utf-8\">\
+<h2>How soon will I get my refund?<\/h2>\
+<p>Once your items are inspected by the store, you'll get your refund typically within 10-14 business days.<\/p>\
+<h3>Here are the rules:<\/h3>\
+<ul class=\"bullet\">\
+<li>\
+<strong>Return New Items Only<\/strong>: Returned clothes and accessories must be in new, unworn condition without any damages and with the original hang tag attached. When appropriate, we recommend you try on clothing with an undergarment.<\/li>\
+<li>\
+<strong>Some Items Can\u2019t Be Returned<\/strong>: Unfortunately, Final Sale items cannot be returned. All SALE items are FINAL SALE. These items are marked as such online during your purchase to alleviate confusion. Please make note of it.<\/li>\
+<li>\
+<strong>A Refund If Returned Within 30 Days<\/strong>: If the items you ordered are not what you expected in size, fit or style, we will gladly provide you with a refund or store credit on any regular priced items in your order within 30 days of purchase. We will even cover the return shipping cost for U.S. shipping addresses only. Use our<span>\u00a0<\/span><a title=\"Start A Return\" rel=\"noopener noreferrer\" href=\"https:\/\/bebe-prod.returnly.com\/\" target=\"_blank\">automated return system<\/a><span>\u00a0<\/span>to start your return and access your free shipping label or<span>\u00a0<\/span><a href=\"mailto:clientservices@bebe.com\" title=\"Email Client Services\">contact customer service<\/a><span>\u00a0<\/span>for assistance.<\/li>\
+<li><strong>Items Can Not Be Returned After 30 Days.<\/strong><\/li>\
+<li>\
+<strong>Gifts Can Be Returned For An Online Store Credit<\/strong>: Items must be in new, unworn condition with original hang tags attached. The original order number is required to complete the return via our automated system. If you have any trouble using our automated system to access your free shipping label<span>\u00a0<\/span><a href=\"mailto:clientservices@bebe.com\" title=\"Email Client Services\">contact customer service<\/a><span>\u00a0<\/span>for assistance.<\/li>\
+<li>\
+<strong>Remember to Keep the Tags On:<span>\u00a0<\/span><\/strong>Please remember to keep all tags on if you want to return the item. If you return an item without the original hang tag attached, the return will not be processed.<\/li>\
+<li>\
+<strong>Automated Return Center:\u00a0<\/strong>Access your return center online, select the item(s) you would like to return, get a refund estimate, download your free shipping label. Your refund will be processed within 5 business days after we receive and inspect the returned item(s).<\/li>\
+<\/ul>",
+              "anchor": ""
+            }
+          },
+          "1545695760166": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "MY PROMOTIONAL CODE IS NOT WORKING. WHY?",
+              "answer": "<p>Promotional codes always contain qualifiers. Please make sure you have reached the right amount of pre-tax sale dollars, the correct number of items or any of the other conditions that apply to the promotion. Please verify that you have provided the correct code. If you are still having trouble, please contact <a href=\"\/pages\/contact-us\">Client Services<\/a>. <\/p>",
+              "anchor": ""
+            }
+          },
+          "1545689790310": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Ordering\/Shipping Questions",
+              "answer": "",
+              "anchor": "ordershipping"
+            }
+          },
+          "1542219298126": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "MY PASSWORD IS NOT WORKING. HOW DO I ACCESS MY ACCOUNT?",
+              "answer": "<p>We recently launched a new and improved version of bebe.com, and for your security, you'll need to update your password to access your account. Please go to our <a href=\"\/account\/login\" title=\"Sign In\">Sign In<\/a> page, enter your email address and current password, click the \"Sign In\" button, and you will be prompted to request an email that will allow you to update your password.<\/p>",
+              "anchor": "ordershipping"
+            }
+          },
+          "1542220082322": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "CAN I PLACE AN ORDER BY PHONE?",
+              "answer": "<p>Yes, you can place an order by phone. Call Client Services at 877-bebe-777 (877-232-3777) during operating hours to order by phone (6 am - 8 pm PT M - F; 9 am - 5 pm PT weekends). Stay by your computer to refer to necessary information to assist the agent or have the style information available, including size, color and SKU or style number as a reference.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220259294": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I KNOW THAT MY INFORMATION IS SECURE?",
+              "answer": "<p> We have gone to great lengths to ensure shopping on bebe.com is completely safe. We're proud to have a Norton Secured Seal, powered by VeriSign, the most recognized security trust mark on the Internet with more than half a billion views a day on websites in 170 countries worldwide. VeriSign uses SSL encryption to protect your private information the entire time you're on bebe.com, whether you're searching for items or completing the checkout process for an order. Information exchanged with any web address beginning with  \"https\" is encrypted using SSL technology before it's sent over the Internet. Please see <a href=\"\/pages\/privacy\">Privacy &amp; Security<\/a> for complete details.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220285963": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I KNOW IF MY ORDER IS COMPLETE?",
+              "answer": "<p>You'll see a confirmation page after you complete your shopping experience. Then you'll receive a confirmation email detailing the items purchased, estimated ship date and final cost.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220342731": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I TRACK MY ORDER?",
+              "answer": "<p>Once your order ships, we'll send you an email that contains tracking info and links. You can also sign in to <a href=\"\/account\/login\" title=\"My Account\">My Account<\/a> and follow the tracking link under \"Order History.\" Please note it may take up to 24-48 hours for tracking information to appear. Still have questions? Please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.\
+<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220365959": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT IF MY ORDER DOESN'T ARRIVE?",
+              "answer": "<p> If, after following up with UPS, you're still not satisfied, please call Client Services at 877-bebe-777 (877-232-3777) or <a href=\"\/pages\/contact-us\">contact us via email<\/a>, and we'll be happy to assist you.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220387334": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I RETURN AN ITEM?",
+              "answer": "<p>bebe wants you to be happy with your purchase. If the fit or color isn't exactly what you expected, we want to fix that. If for any reason you're not happy with your purchase, you can return your regular priced items within 21-30 days of your purchase for a refund or store credit. We will even cover the return shipping cost for U.S. shipping addresses only. Click below to start your return and access your free shipping label.<\/p>\
+<p><a class=\"return-button\" href=\"http:\/\/bebe-prod.returnly.com\" target=\"_blank\" rel=\"noopener noreferrer\">MAKE A RETURN<\/a><\/p>\
+<meta charset=\"utf-8\"><meta charset=\"utf-8\">\
+<h2>How soon will I get my refund?<\/h2>\
+<p>Once your items are inspected by the store, you'll get your refund typically within 10-14 business days.<\/p>\
+<h3>Here are the rules:<\/h3>\
+<ul class=\"bullet\">\
+<li>\
+<strong>Return New Items Only<\/strong>: Returned clothes and accessories must be in new, unworn condition without any damages and with the original hang tag attached. When appropriate, we recommend you try on clothing with an undergarment.<\/li>\
+<li>\
+<strong>Some Items Can\u2019t Be Returned<\/strong>: Unfortunately, Final Sale items cannot be returned. All SALE items are FINAL SALE. These items are marked as such online during your purchase to alleviate confusion. Please make note of it.<\/li>\
+<li>\
+<strong>A Refund If Returned Within 30 Days<\/strong>: If the items you ordered are not what you expected in size, fit or style, we will gladly provide you with a refund or store credit on any regular priced items in your order within 30 days of purchase. We will even cover the return shipping cost for U.S. shipping addresses only. Use our<span>\u00a0<\/span><a title=\"Start A Return\" rel=\"noopener noreferrer\" href=\"https:\/\/bebe-prod.returnly.com\/\" target=\"_blank\">automated return system<\/a><span>\u00a0<\/span>to start your return and access your free shipping label or<span>\u00a0<\/span><a href=\"mailto:clientservices@bebe.com\" title=\"Email Client Services\">contact customer service<\/a><span>\u00a0<\/span>for assistance.<\/li>\
+<li><strong>Items Can Not Be Returned After 30 Days.<\/strong><\/li>\
+<li>\
+<strong>Gifts Can Be Returned For An Online Store Credit<\/strong>: Items must be in new, unworn condition with original hang tags attached. The original order number is required to complete the return via our automated system. If you have any trouble using our automated system to access your free shipping label<span>\u00a0<\/span><a href=\"mailto:clientservices@bebe.com\" title=\"Email Client Services\">contact customer service<\/a><span>\u00a0<\/span>for assistance.<\/li>\
+<li>\
+<strong>Remember to Keep the Tags On:<span>\u00a0<\/span><\/strong>Please remember to keep all tags on if you want to return the item. If you return an item without the original hang tag attached, the return will not be processed.<\/li>\
+<li>\
+<strong>Automated Return Center:\u00a0<\/strong>Access your return center online, select the item(s) you would like to return, get a refund estimate, download your free shipping label. Your refund will be processed within 5 business days after we receive and inspect the returned item(s).<\/li>\
+<\/ul>",
+              "anchor": ""
+            }
+          },
+          "1542220434241": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I EXCHANGE AN ITEM?",
+              "answer": "<p> Due to limited merchandise quantities and the constantly evolving fashion selection on bebe.com, we currently do not process exchanges of bebe.com merchandise. In order to get the item(s) you want as quickly as possible, simply place a new order and return the unwanted item(s) for a refund. When we receive your return, we'll issue you a refund. <a href=\"\/pages\/returns\">Click Here<\/a> for a full copy of our returns policy.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220460535": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT IF I HAVE A QUALITY ISSUE WITH MY PURCHASE BUT DON'T HAVE A RECEIPT AND\/OR 21 DAYS HAVE PASSED?",
+              "answer": "<p> bebe stands behind the quality of its merchandise. If a quality issue arises, please take the item to a bebe store or call Client Services at 877-bebe-777 (877-232-3777) for immediate attention.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220481622": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "CAN I USE A GIFT CARD WITH MY ONLINE PURCHASE?",
+              "answer": "<p> Gift cards are accepted when shopping on bebe.com. Just enter the number and PIN in the appropriate section while checking out. <\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220502350": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "CAN I USE A MERCHANDISE RETURN CREDIT (MRC) WITH MY ONLINE PURCHASE?",
+              "answer": "<p> Merchandise return credits are accepted when shopping on bebe.com. Just enter the MRC number in the appropriate section while checking out.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220523668": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "SOMETHING I PURCHASED IS NOW ON SALE. CAN I RECEIVE A PRICE ADJUSTMENT?",
+              "answer": "<p> Unfortunately, due to high demand for merchandise and availability issues, we do not currently allow price adjustments.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1542220577233": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "DO YOU SHIP INTERNATIONALLY?",
+              "answer": "<p>bebe.com partners with a trusted third-party company, International Checkout, to fulfill international orders. If you're shipping your order outside of the U.S. or Canada, please follow these steps:<\/p>\
+\
+<ol>\
+<li>Select your items and add them to your shopping bag.<\/li>\
+<li>Choose the International Checkout link on the shopping bag page. This will open the International Checkout order page.<\/li>\
+<li>Please copy and paste the details for each item from your bebe shopping bag into the International Checkout order form.<\/li>\
+<li>After all of the items are added to the International Checkout order form, select your payment method and continue through the International Checkout page.<\/li>\
+<li>Submit your order with International Checkout. You'll receive an order confirmation and status updates from International Checkout.<\/li>\
+<\/ol>\
+<p>Please <a href=\"https:\/\/www.internationalcheckout.com\/contact.php\" title=\"Contact International Checkout\">Contact International Checkout<\/a> via their website for assistance with placing or tracking your international order.<\/p>\
+<p><strong>Or contact Customer Service at one of their centers:<\/strong><\/p>\
+  <ul style=\" list-style-type: none;\">\
+      <li>USA and Canada: +1866.6820641<\/li>\
+      <li>USA Phone: +001.310.601.8196<\/li>\
+      <li>UK Phone: +44.20.8133.2436<\/li>\
+      <li>Australia Phone : +61.28003.4685<\/li>\
+      <li>Denmark Phone : +45.369.50312<\/li>\
+      <li>Sweden Phone : +46.4069.35779<\/li>\
+      <li>Hong Kong Phone : +852.8175.6057<\/li>\
+      <li>Japan Phone : +81.50553.46826<\/li>\
+      <li>Finland Phone : +358.(02)3619.0437<\/li>\
+      <li>Brazil Phone : +55.(11)3230.9539<\/li>\
+      <li>Ireland Phone : +353.1443.3715<\/li>\
+      <li>Mexico Phone : +52.558.421.8266<\/li>\
+      <li>New Zealand Phone : +64.9889.0408<\/li>\
+  <\/ul>\
+\
+<p><strong>MY PROMOTIONAL CODE IS NOT WORKING. WHY?<\/strong><\/p>\
+<p> Promotional codes always contain qualifiers. Please make sure you have reached the right amount of pre-tax sale dollars, the correct number of items or any of the other conditions that apply to the promotion. Please verify that you have provided the correct code. If you are still having trouble, please <a href=\"\/pages\/contact-us\">Contact Us<\/a>. <\/p>",
+              "anchor": ""
+            }
+          },
+          "1545690577541": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Clubbebe Questions",
+              "answer": "",
+              "anchor": "clubbebe"
+            }
+          },
+          "1542220607549": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT IS clubbebe?",
+              "answer": "<p>clubbebe is bebe's customer loyalty program where you earn points towards rewards. For every $1 you spend, you get 1 point. For all clubbebe member levels, with the exception of Icon, you receive a $10 reward for every 250 points earned. Once you reach Icon level, you will receive a $15 reward for every 250 points earned. More information about clubbebe, including registration details, is available by going to <a href=\"\/pages\/clubbebe\" title=\"clubbebe\">www.bebe.com\/clubbebe<\/a>.<\/p>",
+              "anchor": "clubbebe"
+            }
+          },
+          "1544774629895": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I SIGN UP FOR clubbebe?",
+              "answer": "<p>To sign up, go to <a href=\"\/account\/login\" title=\"clubbebe\">www.bebe.com\/account\/login<\/a>.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544774693805": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT IF I FORGET MY bebe ACCOUNT PASSWORD?",
+              "answer": "<p>To find your information, click on \"Forgot Your Password?\" on the <a href=\"\/account\/login\" title=\"Sign In\">Sign In<\/a> page. You will then need to follow the instructions to create a new password.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544774720516": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I CHANGE MY PASSWORD?",
+              "answer": "<p>Click on \"Profile\" under the <a href=\"\/user\/main.jsp\">My Account<\/a> section. You'll then enter your old password and create a new one. Still having trouble signing in? Please <a href=\"\/pages\/contact-us\">Contact Us<\/a>.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544774735705": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHERE DO I FIND MY clubbebe ACCOUNT NUMBER?",
+              "answer": "<p>Your clubbebe account number can be found in the \"Points &amp; Rewards\" area under <a href=\"\/user\/main.jsp\" title=\"My Account\">My Account<\/a>. You can also <a href=\"\/pages\/contact-us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777) with any questions about your clubbebe account.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544774836953": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I EARN POINTS?",
+              "answer": "<p>To earn points, create an account on bebe.com. It only takes seconds, and you?ll immediately begin earning points as you shop. Please see below for additional ways to earn points.<\/p>\
+<div class=\"rewards-table\">\
+    <div class=\"rewards-row rewards-row-first\">\
+        <div class=\"rewards-cell\"><strong>If you...<\/strong><\/div>\
+        <div class=\"rewards-cell\"><strong>You earn...<\/strong><\/div>\
+        <div class=\"rewards-cell\"><strong>Limit<\/strong><\/div>\
+        <div class=\"rewards-cell\"><strong>Details<\/strong><\/div>\
+    <\/div>\
+    <div class=\"rewards-row\">\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">If you...<\/span>\
+            <span class=\"rewards-cell-text\">Refer a Friend<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">You earn...<\/span>\
+            <span class=\"rewards-cell-text\">100 pts.<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Limit:<\/span>\
+            <span class=\"rewards-cell-text\">2X per month<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Details:<\/span>\
+            <span class=\"rewards-cell-text\">Refer a friend and earn points if they make a purchase and sign up for clubbebe. Points will only be awarded for new customer referrals.<\/span>\
+        <\/div>\
+    <\/div>\
+    <div class=\"rewards-row\">\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">If you...<\/span>\
+            <span class=\"rewards-cell-text\">Follow bebe on Twitter<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">You earn...<\/span>\
+            <span class=\"rewards-cell-text\">20 pts.<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Limit:<\/span>\
+            <span class=\"rewards-cell-text\">1X<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Details:<\/span>\
+            <span class=\"rewards-cell-text\">Follow bebe on Twitter.<\/span>\
+        <\/div>\
+    <\/div>\
+    <div class=\"rewards-row\">\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">If you...<\/span>\
+            <span class=\"rewards-cell-text\">Follow bebe on Instagram<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">You earn...<\/span>\
+            <span class=\"rewards-cell-text\">20 pts.<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Limit:<\/span>\
+            <span class=\"rewards-cell-text\">1X<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Details:<\/span>\
+            <span class=\"rewards-cell-text\">Follow bebe on Instagram.<\/span>\
+        <\/div>\
+    <\/div>\
+    <div class=\"rewards-row\">\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">If you...<\/span>\
+            <span>Follow bebe on Facebook<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">You earn...<\/span>\
+            <span>20 pts.<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Limit:<\/span>\
+            <span>1X<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Details:<\/span>\
+            <span>Follow bebe on Facebook.<\/span>\
+        <\/div>\
+    <\/div>\
+    <div class=\"rewards-row\">\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">If you...<\/span>\
+            <span>Visit bebe.com<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">You earn...<\/span>\
+            <span>1 pt.<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Limit:<\/span>\
+            <span>1X per day<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Details:<\/span>\
+            <span>Visit bebe.com once a day.<\/span>\
+        <\/div>\
+    <\/div>\
+    <div class=\"rewards-row\">\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">If you...<\/span>\
+            <span>Hashtag a bebe photo<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">You earn...<\/span>\
+            <span>20 pts.<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Limit:<\/span>\
+            <span>2X per month<\/span>\
+        <\/div>\
+        <div class=\"rewards-cell\">\
+            <span class=\"rewards-mob-text\">Details:<\/span>\
+            <span>Hashtag a photo on Instagram using #BeIconic. You must follow bebe on Instagram to earn points.<\/span>\
+        <\/div>\
+    <\/div>\
+<\/div>",
+              "anchor": ""
+            }
+          },
+          "1544774951367": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW DO I CHECK MY POINTS?",
+              "answer": "<p>Sign in to <a href=\"\/account\/login\" title=\"My Account\">My Account<\/a> and select \"Points &amp; Rewards.\" You can also <a href=\"\/pages\/contact-us\" title=\"Contact Us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777) with any questions about your clubbebe account.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544775080929": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHY DON'T I SEE MY 50 WELCOME POINTS?",
+              "answer": "<p>Once you've created a bebe.com account using the email address that you used to sign up for clubbebe, you will receive 50 welcome points. It may take up to approximately 72 hours for these points to appear in your account.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544775098460": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW MANY POINTS DO I NEED TO GET FREE SHIPPING?  HOW LONG DOES IT LAST?",
+              "answer": "<p>Once you've accumulated 1,000 points and become an Elite member, you will receive free standard shipping within the 50 U.S. states for one year on all online orders. Once you've accumulated 2,500 points and have become an Icon member, you will receive free express shipping within the 50 U.S. states for one year on all online orders. Free shipping benefits shall end the earlier of (1) 12 months after the calendar year in which the member earned the requisite number of points or (2) when the member's account is closed or (3) if there are changes to the program. Free shipping year(s) do not accumulate and cannot be rolled-over; each time you earn a free shipping year, all previous free shipping periods are expired. Please note that you must create a bebe.com account using the email address that you used to sign up for clubbebe to receive online benefits. If you've done this and you're still not receiving free shipping, please call Client Services at 877.bebe.777 (877.232.3777) for assistance.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544775147134": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "I'VE CREATED AN ONLINE ACCOUNT. WHY AM I NOT SEEING MY POINTS?",
+              "answer": "<p>Once you've created your bebe.com account using the email address that you used to sign up for clubbebe, points may take up to approximately 72 hours to appear in your account. If you're still not seeing your points after 72 hours, please <a href=\"\/pages\/contact-us\" title=\"Contact Us\">Contact Us<\/a> or call Client Services at 877-bebe-777 (877-232-3777) for assistance.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544775170861": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW CAN I STOP RECEIVING bebe EMAILS?",
+              "answer": "<p>You may, at any time, update or remove your personal information by contacting Client Services via email or by clicking on <a href=\"\/pages\/contact-us\" title=\"Contact Us\">Contact Us<\/a> from any page on bebe.com. In addition, if you prefer not to receive information from us through email, you may opt out of receiving bebe emails by clicking the \"unsubscribe\" link at the bottom of any bebe email that you have received. If you prefer not to receive information from us through regular mail (for example, catalogs and direct mail promotions), please send us an email or call Client Services at 877-bebe-777 (877-232-3777). Please note that it may take up to 3 weeks for your request to become effective. Thereafter, when you make purchases, we may still send you an email confirmation and may need to contact you by phone, email or regular mail if we have other questions regarding your order. If for any reason you continue to receive email or regular mail from bebe after following the steps above, please contact Client Services immediately and we'll be happy to assist you. For general information about bebe stores, inc., please visit the <a href=\"\/custserv\/custservsection.jsp?pageName=About\">About bebe<\/a> page.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545690845240": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "Ratings & Reviews Questions",
+              "answer": "",
+              "anchor": "rating"
+            }
+          },
+          "1544775204364": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "HOW CAN I RATE AND REVIEW A PRODUCT?",
+              "answer": "<p> To rate and review a product, simply click the \"Write a Review\" link on the item's product detail page. You will then go through the rating and review process, where you will establish a username and then craft your review.<\/p>",
+              "anchor": "rating"
+            }
+          },
+          "1544775397397": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHERE IS MY REVIEW",
+              "answer": "<p>Your review will live on the product detail page of the item you have reviewed. Reviews may take up to 7 business days to be posted. Please see our <a href=\"\/custserv\/custservsection.jsp?pageName=RatingGuidelines\">Rating Guidelines<\/a> for further information. Once posted, your review will be available for other clients to read over before they purchase. The most helpful reviews provide lots of details.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544775433942": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "DO I HAVE TO BUY THE ITEM ONLINE TO REVIEW?",
+              "answer": "<p>In order to review, you must have made your purchase in a bebe store or on bebe.com. Because we want to give other clients the most accurate information possible, we do require that only clients who have purchased a specific item are eligible to review it. Please rate and review only those products you have recently purchased.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1545690913359": {
+            "type": "html",
+            "settings": {
+              "heading_only": true,
+              "title": "FAQ and Answers  On Proposition 65",
+              "answer": "",
+              "anchor": "prop65"
+            }
+          },
+          "1544775513100": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT IS PROPOSITION 65?",
+              "answer": "<p>Proposition 65 is a California law that was approved by California voters in a referendum in 1986. It requires the state to keep a list of chemicals that cause cancer or reproductive toxicity. If a product contains a chemical on the list or contains a chemical in predetermined unacceptable levels that exceed the safe harbor levels as determined by the Office of Environmental Health Hazard Assessment of the California Environmental Protection Agency, businesses are required to provide a \"reasonable warning\" to customers prior to exposing them to such chemicals. The list of chemicals and metals covered by Proposition 65 now exceeds 800 and can be accessed at <a href=\"http:\/\/oehha.ca.gov\/prop65\/prop65_list\/Newlist.html\">http:\/\/oehha.ca.gov\/prop65\/prop65_list\/Newlist.html<\/a>. The safe harbor levels can be accessed at <a href=\"http:\/\/oehha.ca.gov\/prop65\/getNSRLs.html\">http:\/\/oehha.ca.gov\/prop65\/getNSRLs.html<\/a>.<\/p>",
+              "anchor": "prop65"
+            }
+          },
+          "1544775552036": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT ARE SOME EXAMPLES OF PRODUCTS THAT MAY CONTAIN A CHEMICAL ON THE PROPOSITION 65 LIST?",
+              "answer": "<p>The following types of products are examples that may contain one or more chemicals on the list: jewelry, shoes and rhinestones. This list is neither an exhaustive list nor should it be interpreted to mean that all products containing rhinestones or all products which are jewelry or shoe items contain chemicals on the Proposition 65 list.<\/p>",
+              "anchor": ""
+            }
+          },
+          "1544775580124": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "WHAT IS YOUR POLICY FOR TESTING?",
+              "answer": "<p>bebe tests for many of the substances in question and, typically, our products contain no such chemicals or are within acceptable levels. However, this is not true for 100% of our products. As a result, we are required by law to post Proposition 65 information.<\/p>",
+              "anchor": ""
+            }
+          }
+        },
+        "block_order": [
+          "1546049621783",
+          "1545694490844",
+          "1545694625513",
+          "1545694702329",
+          "1545695009550",
+          "1545695430831",
+          "1545695624500",
+          "1545695760166",
+          "1545689790310",
+          "1542219298126",
+          "1542220082322",
+          "1542220259294",
+          "1542220285963",
+          "1542220342731",
+          "1542220365959",
+          "1542220387334",
+          "1542220434241",
+          "1542220460535",
+          "1542220481622",
+          "1542220502350",
+          "1542220523668",
+          "1542220577233",
+          "1545690577541",
+          "1542220607549",
+          "1544774629895",
+          "1544774693805",
+          "1544774720516",
+          "1544774735705",
+          "1544774836953",
+          "1544774951367",
+          "1544775080929",
+          "1544775098460",
+          "1544775147134",
+          "1544775170861",
+          "1545690845240",
+          "1544775204364",
+          "1544775397397",
+          "1544775433942",
+          "1545690913359",
+          "1544775513100",
+          "1544775552036",
+          "1544775580124"
+        ],
+        "settings": {
+          "anchor_top_offset": -200,
+          "section_title_top": "Client Services",
+          "before_content": "",
+          "after_content": "<p>\u00a0<\/p>\
+<p><a href=\"#top\">Back to Top<\/a><\/p>",
+          "landing_page_cs_nav": "side-menu-cs"
+        }
+      },
+      "page-landing-template": {
+        "type": "page-landing-template",
+        "settings": {
+          "landing_page_cs_nav": "side-menu-cs"
+        }
+      },
+      "1544343478271": {
+        "type": "rich-text",
+        "settings": {
+          "heading": "BEBE \u2013 SEXY CLOTHING & CHIC CONTEMPORARY FASHION",
+          "rich_text": "<p>Welcome to bebe.com, featuring the sexiest clothing and chic fashion styles, all in one place. You&rsquo;ll find the latest on-trend looks and&nbsp;<a href=\"\/collections\/new\" title=\"New\">women&rsquo;s designer clothing<\/a> at affordable prices. Looking for the hottest <a href=\"\/collections\/dresses\" title=\"Dresses\">dresses<\/a> of the season? From gorgeous party dresses to classy cocktail and special occasion dresses, bebe has all the chic styles you need. Browse maxi dresses, <a href=\"\/collections\/bodycon-dressses\" title=\"Dresses &gt; Bodycon Dresses\">bodycon dresses<\/a> and much more to find your perfect head-turning look. If you&rsquo;re looking for curve-hugging women&rsquo;s jeans, sophisticated&nbsp;<a href=\"\/collections\/jumpsuits\" title=\"Jumpsuits\">jumpsuits<\/a>, cute rompers, fun tops or&nbsp;<a href=\"\/collections\/heels\" title=\"Shoes &gt; Heels\">sexy shoes<\/a>, the options are fabulous as well. Every season, bebe.com is the hottest destination for sexy looks and&nbsp;<a href=\"\/collections\/new\" title=\"New\">trendy fashion clothes<\/a> online.<br><br><\/p>",
+          "rich_text_columns": "col1",
+          "rich_text_horizontal": "left",
+          "page": ""
+        }
+      },
+      "customer-login": {
+        "type": "customer-login",
+        "settings": {
+          "above_form_block": "<h1>Sign In<\/h1>",
+          "login_content": "login-content"
+        }
+      },
+      "offer-tab": {
+        "type": "offer-tab",
+        "settings": {
+          "show": false,
+          "homepage_only": false,
+          "label": "GET 20% OFF"
+        }
+      },
+      "page-contact-template": {
+        "type": "page-contact-template",
+        "settings": {
+          "show_contact_form": true,
+          "landing_page_cs_nav": "side-menu-cs"
+        }
+      },
+      "coupon": {
+        "type": "coupon",
+        "blocks": {
+          "1548911264351": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "25% OFF ENTIRE SITE",
+              "text": "<p>Save on all regular-priced &amp; already reduced styles with code BEBE25.<\/p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify:\/\/collections\/new",
+              "details_text": "<p>Enjoy 25% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code BEBE25 at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2\/4\/19 at 11:59 pm PST.<\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1548911363640": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FREE EXPRESS SHIPPING OVER $200",
+              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.<\/p>",
+              "cta_text": "Shop Now",
+              "link": "shopify:\/\/collections\/new",
+              "details_text": "<p>For a limited time, enjoy free express shipping on any bebe.com order of $200 or more shipped to a physical address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects express shipping. Valid on bebe.com only. Not valid at bebe stores. Offer not valid on gift cards, orders shipped to P.O. Boxes or previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer expires 2\/4\/19 at 11:59 pm PST.<\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1548307320899": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "CLUBBEBE EXCLUSIVE: 30% OFF $250",
+              "text": "<p>Save on your regular-priced clubbebe purchase with code CLUB30<\/p>",
+              "cta_text": "Shop Now",
+              "link": "shopify:\/\/collections\/new",
+              "details_text": "<p>Valid on <a href=\"http:\/\/bebe.com\/\">bebe.com<\/a> only. Not valid at bebe stores. Valid for clubbebe members only. To redeem online, enter code CLUB30 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotions, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 1\/28\/19 at 11:59 pm PST.&nbsp; &nbsp;<\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1545461750320": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "SALE UP TO 65% OFF",
+              "text": "<p>Save on hundreds of styles. Discount taken at checkout.<\/p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify:\/\/collections\/sale",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>\
+<p><strong>+ EVERGREEN &ldquo;FREE U.S. SHIPPING OVER $100,&rdquo; &ldquo;20% OFF WHEN YOU SIGN UP FOR EMAIL&rdquo; &amp; &ldquo;20% OFF WHEN YOU JOIN CLUBBEBE&rdquo; OFFERS<\/strong><\/p>\
+<p><\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1545990628348": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FREE U.S. SHIPPING OVER $100",
+              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.<\/p>",
+              "cta_text": "Shop Now",
+              "link": "shopify:\/\/collections\/new",
+              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.<\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1545990640803": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF WHEN YOU SIGN UP FOR EMAIL",
+              "text": "<p>Be first to hear about exclusive offers, new arrivals &amp; more.<\/p>",
+              "cta_text": "Send Me Email",
+              "link": "#newsletter-social",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
+              "coupon_size": "half",
+              "coupon_color": "light"
+            }
+          },
+          "1545991169940": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF WHEN YOU JOIN CLUBBEBE",
+              "text": "<p>Earn points on every purchase &amp; be rewarded.<\/p>",
+              "cta_text": "Join the Club",
+              "link": "\/account\/login",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
+              "coupon_size": "half",
+              "coupon_color": "light"
+            }
+          }
+        },
+        "block_order": [
+          "1548911264351",
+          "1548911363640",
+          "1548307320899",
+          "1545461750320",
+          "1545990628348",
+          "1545990640803",
+          "1545991169940"
+        ],
+        "settings": {
+          "show_header": true,
+          "coupon_header": "Coupons & Discounts",
+          "coupon_description": "<p>Get the hottest deal whenever you shop bebe! You'll always find our current offers, promotions &amp; sales right here.<\/p>"
+        }
+      },
+      "page-coupons-template": {
+        "type": "page-coupons-template",
+        "settings": {
+        }
+      },
+      "1547175141098": {
+        "type": "nosto-element",
+        "settings": {
+          "nosto_id": "frontpage-nosto-1"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "blocks": {
+          "1547175340820": {
+            "type": "Nosto_element",
+            "settings": {
+              "nosto_id": "cartpage-nosto-1"
+            }
+          },
+          "1547175360441": {
+            "type": "Nosto_element",
+            "settings": {
+              "nosto_id": "cartpage-nosto-2"
+            }
+          }
+        },
+        "block_order": [
+          "1547175340820",
+          "1547175360441"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/25-off-entire-store-cart-image.jpg",
+          "mobile_image": "",
+          "link": "",
+          "cart_bottom_block": ""
+        }
+      },
+      "1547175393847": {
+        "type": "nosto-element",
+        "settings": {
+          "nosto_id": "frontpage-nosto-5"
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "blocks": {
+          "1547175587513": {
+            "type": "nosto_element",
+            "settings": {
+              "nosto_id": "notfound-nosto-2"
+            }
+          }
+        },
+        "block_order": [
+          "1547175587513"
+        ],
+        "settings": {
+          "fourohfour_content": "404-content"
+        }
+      },
+      "1547557172846": {
+        "type": "slideshow",
+        "disabled": true,
+        "blocks": {
+          "1547557172846-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20190115_endofseasonpromo_3024x_7f5d7c09-55de-4b12-8dfc-3498abcbc44a.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MW_2019-01-10_sale.jpg",
+              "cta_full_image": "#",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "shopify:\/\/collections\/sale-40-off",
+              "cta_one_button_text": "Shop 40% Off",
+              "cta_two_link": "shopify:\/\/collections\/sale-50-off",
+              "cta_two_button_text": "Shop 50% Off",
+              "cta_three_link": "shopify:\/\/collections\/sale-65-off",
+              "cta_three_button_text": "Shop 65% Off",
+              "cta_four_link": "shopify:\/\/collections\/sale",
+              "cta_four_button_text": "Shop All Sale",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 63,
+              "caption_vertical_mobile": 64,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547557172846-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "1547557568724": {
+        "type": "slideshow",
+        "blocks": {
+          "1547557568724-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/3-cute-denim-trends-we-love-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/3-cute-denim-trends-we-love-mobile-final.gif",
+              "cta_full_image": "",
+              "heading": "3 Cute Denim Looks We Love",
+              "hide_header_desktop": true,
+              "subheading": "",
+              "cta_one_link": "shopify:\/\/collections\/jeans",
+              "cta_one_button_text": "SHOP NEW JEANS",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "",
+              "cta_three_button_text": "",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 13.5,
+              "caption_vertical": 57,
+              "caption_vertical_mobile": 72,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547557568724-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "1547711858918": {
+        "type": "slideshow",
+        "blocks": {
+          "1547711858918-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/free-us-express-shipping-over-200-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/free-us-express-shipping-over-200-mobile.jpg",
+              "cta_full_image": "shopify:\/\/collections\/new",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "",
+              "cta_one_button_text": "",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "",
+              "cta_three_button_text": "",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "white",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#e41c39",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1547711858918-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "1548306390190": {
+        "type": "slideshow",
+        "disabled": true,
+        "blocks": {
+          "1548306390190-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/psa-weve-changed-update-password-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/psa-weve-changed-update-password-mobile.jpg",
+              "cta_full_image": "shopify:\/\/pages\/reset-password",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "",
+              "cta_one_button_text": "Add a button",
+              "cta_two_link": "",
+              "cta_two_button_text": "Add a button",
+              "cta_three_link": "",
+              "cta_three_button_text": "Add a button",
+              "cta_four_link": "",
+              "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": true,
+              "hide_buttons_mobile": true,
+              "caption_color_scheme": "white",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#e41c39",
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 50,
+              "caption_vertical_mobile": 50,
+              "caption_background": "transparent",
+              "caption_opacity": "0.1"
+            }
+          }
+        },
+        "block_order": [
+          "1548306390190-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "slider_speed": 5
+        }
+      },
+      "1548988108322": {
+        "type": "yotpo-ig-gallery",
+        "settings": {
+          "gallery_id": "5c3c6b7432a3a44146eaaa9e",
+          "full_width": true,
+          "show_header": true,
+          "header_text": "Shop our",
+          "show_icon": true,
+          "header": "<p>Tap the looks below for details. Follow @bebe_stores &amp; tag your looks with #bebebabe for a chance to be featured.&nbsp;<a href=\"\/pages\/instagallery-hidden\" title=\"Instagallery\">SEE MORE<\/a><\/p>",
+          "cta_text": "See More",
+          "cta_url": "shopify:\/\/pages\/instagallery"
+        }
+      }
+    },
+    "content_for_index": [
+      "1548306390190",
+      "1535728526385",
+      "1547711858918",
+      "1547557172846",
+      "1536251685211",
+      "1547557568724",
+      "1547175141098",
+      "1547175393847",
+      "1548988108322",
+      "1544343478271"
+    ]
+  }
+}
