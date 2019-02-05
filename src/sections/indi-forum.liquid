@@ -1,0 +1,61 @@
+{% include "indi-global" %}
+
+<div style="background-color: {{ section.settings.background_color }};">
+	<div id="indi-forum-{{ section.id }}" style="margin-left: auto; margin-right: auto;"></div>
+</div>
+<script>
+	var indi_forum_{{ section.id | replace: '-', '_' }} = new indi.forum("#indi-forum-{{ section.id }}", {
+    	title: "{{ section.settings.title }}",
+		description: "{{ section.settings.description }}",
+		submit_button_text: "{{ section.settings.submit_button_text }}",
+		submit_button_url: "{{ section.settings.submit_button_url }}",
+		thumbnail_url: "{{ section.settings.thumbnail_url }}"
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "Indi Forum",
+    "settings": [
+		{
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+      	},
+		{
+          "id": "description",
+          "type": "text",
+          "label": "Short Description"
+      	},
+		{
+          "id": "submit_button_text",
+          "type": "text",
+          "label": "Submit Button Text",
+		  "default": "Upload Photo / Video"
+      	},
+		{
+          "id": "submit_button_url",
+          "type": "text",
+          "label": "Submit Button URL"
+      	},
+		{
+          "id": "thumbnail_url",
+          "type": "text",
+          "label": "Thumbnail URL (https)"
+      	}
+
+	],
+    "presets": [
+      {
+        "name": "Indi Forum",
+        "category": "Indi"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
