@@ -558,18 +558,18 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/the-red-ones-are-he-hottest.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/the-red-ones-are-he-hottest-mobile-2.jpg",
+              "image": "shopify:\/\/shop_images\/ends-tonight-25-off-entire-store_0bcba1dc-b709-4af6-a844-a2856c4461ea.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/ends-tonight-25-off-entire-store-mobile.jpg",
               "cta_full_image": "",
               "heading": "<p><\/p>",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "\/collections\/sexy-in-red",
-              "cta_one_button_text": "Shop Red",
+              "cta_one_link": "shopify:\/\/collections\/new",
+              "cta_one_button_text": "Shop New Arrivals",
               "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
-              "cta_three_button_text": "",
+              "cta_three_link": "shopify:\/\/collections\/featured-valentines-day",
+              "cta_three_button_text": "Shop Valentine's Day",
               "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
@@ -578,8 +578,8 @@
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 30,
-              "caption_vertical": 64,
+              "caption_horizontal_offset": 35.5,
+              "caption_vertical": 68,
               "caption_vertical_mobile": 80,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
@@ -612,12 +612,12 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bebe-leggings.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/bebe-leggings-mobile.jpg",
-              "link": "shopify:\/\/collections\/leggings",
-              "heading_text": "Nice & Tight",
+              "image": "shopify:\/\/shop_images\/the-red-ones-are-the-hottest.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/the-red-ones-are-the-hottest_9808fdc2-8a41-48fe-8769-148b5c34b530.jpg",
+              "link": "\/collections\/sexy-in-red",
+              "heading_text": "The Red Ones Are the Hottest",
               "text": "",
-              "cta_text": "SHOP Leggings",
+              "cta_text": "SHOP RED",
               "cta_style": "button"
             }
           }
@@ -1241,7 +1241,7 @@
       "customer-login": {
         "type": "customer-login",
         "settings": {
-          "above_form_block": "<style>\n#login-psa {\nbackground-color: #2C2D30;\nmargin-top: -12px;\nmargin-bottom: 12px;\npadding: 12px 40px 30px;\n}\n#login-psa h2 {\ncolor: #fff;\nfont-size: 1.3em;\n}\n#login-psa p {\ncolor: #fff;\n<\/style>\n<div id=\"login-psa\">\n<h2>PSA: We've Changed<\/h2>\n<p>bebe.com might seem a little different now. We made some changes so we can optimize our site &amp; add more features this year. <br>To keep your account active, track future orders &amp; save personal info, you'll need to update your password.<\/p>\n<\/div>\n<h1>Sign In<\/h1>",
+          "above_form_block": "<h1>Sign In<\/h1>",
           "login_content": "login-content"
         }
       },
@@ -1263,6 +1263,30 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1548911264351": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "25% OFF ENTIRE SITE",
+              "text": "<p>Save on all regular-priced &amp; already reduced styles with code BEBE25.<\/p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify:\/\/collections\/new",
+              "details_text": "<p>Enjoy 25% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code BEBE25 at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2\/4\/19 at 11:59 pm PST.<\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1548911363640": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FREE EXPRESS SHIPPING OVER $200",
+              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.<\/p>",
+              "cta_text": "Shop Now",
+              "link": "shopify:\/\/collections\/new",
+              "details_text": "<p>For a limited time, enjoy free express shipping on any bebe.com order of $200 or more shipped to a physical address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects express shipping. Valid on bebe.com only. Not valid at bebe stores. Offer not valid on gift cards, orders shipped to P.O. Boxes or previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer expires 2\/4\/19 at 11:59 pm PST.<\/p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1548307320899": {
             "type": "text_block",
             "settings": {
@@ -1325,6 +1349,8 @@
           }
         },
         "block_order": [
+          "1548911264351",
+          "1548911363640",
           "1548307320899",
           "1545461750320",
           "1545990628348",
@@ -1369,7 +1395,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify:\/\/shop_images\/25-off-entire-store-cart-image.jpg",
           "mobile_image": "",
           "link": "",
           "cart_bottom_block": ""
@@ -1447,14 +1473,14 @@
           "1547557568724-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/all-you-need-is-love-and-something-cute-to-wear.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/all-you-need-is-love-and-something-cute-to-wear-mobile-2.jpg",
+              "image": "shopify:\/\/shop_images\/3-cute-denim-trends-we-love-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/3-cute-denim-trends-we-love-mobile-final.gif",
               "cta_full_image": "",
-              "heading": "<p><br><br><\/p>",
+              "heading": "3 Cute Denim Looks We Love",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify:\/\/collections\/featured-valentines-day",
-              "cta_one_button_text": "SHOP VALENTINE'S DAY",
+              "cta_one_link": "shopify:\/\/collections\/jeans",
+              "cta_one_button_text": "SHOP NEW JEANS",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1466,9 +1492,9 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 25,
-              "caption_vertical": 64,
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 13.5,
+              "caption_vertical": 57,
               "caption_vertical_mobile": 72,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
@@ -1489,9 +1515,9 @@
           "1547711858918-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/sale-up-to-65-off-shop-sale.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/sale-up-to-65-off-shop-sale-mobile_fe0cea4e-8f53-446b-a27d-180bb1e7cc01.jpg",
-              "cta_full_image": "shopify:\/\/collections\/sale",
+              "image": "shopify:\/\/shop_images\/free-us-express-shipping-over-200-desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/free-us-express-shipping-over-200-mobile.jpg",
+              "cta_full_image": "shopify:\/\/collections\/new",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
@@ -1566,17 +1592,31 @@
           "full_width": true,
           "slider_speed": 5
         }
+      },
+      "1548988108322": {
+        "type": "yotpo-ig-gallery",
+        "settings": {
+          "gallery_id": "5c3c6b7432a3a44146eaaa9e",
+          "full_width": true,
+          "show_header": true,
+          "header_text": "Shop our",
+          "show_icon": true,
+          "header": "<p>Tap the looks below for details. Follow @bebe_stores &amp; tag your looks with #bebebabe for a chance to be featured.&nbsp;<a href=\"\/pages\/instagallery\" title=\"Instagallery\">SEE MORE<\/a><\/p>",
+          "cta_text": "See More",
+          "cta_url": "shopify:\/\/pages\/instagallery"
+        }
       }
     },
     "content_for_index": [
-      "1547711858918",
-      "1547557568724",
       "1548306390190",
+      "1535728526385",
+      "1547711858918",
       "1547557172846",
       "1536251685211",
-      "1535728526385",
+      "1547557568724",
       "1547175141098",
       "1547175393847",
+      "1548988108322",
       "1544343478271"
     ]
   }
