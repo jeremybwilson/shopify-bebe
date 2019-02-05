@@ -459,7 +459,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
         }
     }
     document.getElementById( ui.currentCount ).innerHTML = productsCount;
-    if (productsCount && productsCount !== data.total_product) {
+    if (productsCount) {
         document.getElementById( 'collection-total-products-count' ).innerHTML = data.total_product;
         $productsCountWidget.style.display = 'block';
     }
