@@ -410,7 +410,7 @@ BCSfFilter.prototype.buildInfiniteLoadingEvent = function(data) {
 
 // Build Additional Elements
 BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
-    console.log('Chris:', data);
+
 
 
     var ui = {
@@ -460,6 +460,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     }
     document.getElementById( ui.currentCount ).innerHTML = productsCount;
     if (productsCount && productsCount !== data.total_product) {
+        document.getElementById( 'collection-total-products-count' ).innerHTML = data.total_product;
         $productsCountWidget.style.display = 'block';
     }
 
