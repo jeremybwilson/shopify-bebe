@@ -34,6 +34,14 @@
     
       {% comment %} ..:: TOP LEFT ::.. {% endcomment %}      
       <div class="header--top-left--highlight">
+
+        {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
+        {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+          <li class="nav-item nav-currencies-picker">
+            {% include 'borderfree-open-modal' %}
+          </li>
+        {% endif %}
+
         {% if section.settings.top_left_highlight_link != blank %}
         <a href="{{ section.settings.top_left_highlight_link }}" target="_blank">
           {% include 'svg-icon-instagram' %}
@@ -49,14 +57,8 @@
 
       {% comment %} ..:: NAV : ACCOUNT + CART + SEARCH (Right Elements) ::.. {% endcomment %}
       <div id="nav-user">
-        <ul id="nav-user-list"> 
+        <ul id="nav-user-list">
 
-          {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
-          {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
-            <li class="nav-item nav-currencies-picker">
-              {% include 'borderfree-open-modal' %}
-            </li>
-          {% endif %}
 
           {% comment %} ..:: SEARCH ::.. {% endcomment %}
           {% if section.settings.show_search %}
@@ -104,6 +106,12 @@
     {% comment %} <div id="nav-bar-bg"></div> {% endcomment %}
     <div id="nav-bar" class="row">
 
+      {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
+      {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <li class="nav-item nav-currencies-picker">
+          {% include 'borderfree-open-modal' %}
+        </li>
+      {% endif %}
 
       {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
       <div id="nav-logo">
