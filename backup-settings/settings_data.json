@@ -1260,30 +1260,6 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
-          "1548307320899": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "CLUBBEBE EXCLUSIVE: 30% OFF $250",
-              "text": "<p>Save on your regular-priced clubbebe purchase with code CLUB30</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on <a href=\"http://bebe.com/\">bebe.com</a> only. Not valid at bebe stores. Valid for clubbebe members only. To redeem online, enter code CLUB30 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotions, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 1/28/19 at 11:59 pm PST.&nbsp; &nbsp;</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1545461750320": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "SALE UP TO 65% OFF",
-              "text": "<p>Save on hundreds of styles. Discount taken at checkout.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>\n<p><strong>+ EVERGREEN &ldquo;FREE U.S. SHIPPING OVER $100,&rdquo; &ldquo;20% OFF WHEN YOU SIGN UP FOR EMAIL&rdquo; &amp; &ldquo;20% OFF WHEN YOU JOIN CLUBBEBE&rdquo; OFFERS</strong></p>\n<p></p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1319,11 +1295,22 @@
               "coupon_size": "half",
               "coupon_color": "light"
             }
+          },
+          "1549427831005": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "24 HOUR SALE: ADDITIONAL 50% OFF",
+              "text": "<p>Today only, enjoy extra savings on all sale styles with code 2450.</p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Enjoy an additional 50% off all sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code 2450 at checkout. Not valid on regular-priced items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. All sale items are final sale. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/6/19 at 11:59 pm PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
           }
         },
         "block_order": [
-          "1548307320899",
-          "1545461750320",
+          "1549427831005",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1396,23 +1383,22 @@
       },
       "1547557172846": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/20190115_endofseasonpromo_3024x_7f5d7c09-55de-4b12-8dfc-3498abcbc44a.jpg",
-              "mobile_image": "shopify://shop_images/MW_2019-01-10_sale.jpg",
-              "cta_full_image": "#",
-              "heading": "",
+              "image": "shopify://shop_images/24-hour-sale-code-2450-desktop.jpg",
+              "mobile_image": "shopify://shop_images/24-hour-sale-code-2450-mobile.jpg",
+              "cta_full_image": "",
+              "heading": "<br>",
               "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "shopify://collections/sale-40-off",
-              "cta_one_button_text": "Shop 40% Off",
-              "cta_two_link": "shopify://collections/sale-50-off",
-              "cta_two_button_text": "Shop 50% Off",
-              "cta_three_link": "shopify://collections/sale-65-off",
-              "cta_three_button_text": "Shop 65% Off",
+              "cta_one_link": "shopify://collections/sale",
+              "cta_one_button_text": "SHOP SALE",
+              "cta_two_link": "",
+              "cta_two_button_text": "",
+              "cta_three_link": "",
+              "cta_three_button_text": "",
               "cta_four_link": "shopify://collections/sale",
               "cta_four_button_text": "Shop All Sale",
               "hide_buttons_desktop": false,
@@ -1422,7 +1408,7 @@
               "custom_slide_alt_color": "#ffffff",
               "caption_horizontal": "center",
               "caption_horizontal_offset": 0,
-              "caption_vertical": 63,
+              "caption_vertical": 70,
               "caption_vertical_mobile": 64,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
@@ -1439,6 +1425,7 @@
       },
       "1547557568724": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1547557568724-0": {
             "type": "image",
@@ -1481,6 +1468,7 @@
       },
       "1547711858918": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
@@ -1575,17 +1563,44 @@
           "cta_text": "See More",
           "cta_url": "shopify://pages/instagallery"
         }
+      },
+      "1549408161041": {
+        "type": "indi-forum",
+        "settings": {
+          "title": "Become A #BEBEBABE",
+          "description": "Upload your photos and videos wearing Bebe and earn a commission on all sales you influence",
+          "submit_button_text": "Upload Photo / Video",
+          "submit_button_url": "https://indi.com/Submit/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
+          "thumbnail_url": "https://images.indi.com/s3/indi-upload-us-west-1/Image/e5fcaf8c02a52b58c800df9869e492a6.jpg"
+        }
+      },
+      "1549408222080": {
+        "type": "indi-carousel",
+        "settings": {
+          "collection_id": "b7a3ee5e-a7a7-4332-a77d-6e4a377ce8b5",
+          "size": "large",
+          "theme": "light",
+          "background_color": "",
+          "show_title": false,
+          "show_views": false,
+          "show_likes": false,
+          "show_buzz": false,
+          "round_corners": false,
+          "animate": true
+        }
       }
     },
     "content_for_index": [
       "1548306390190",
-      "1535728526385",
-      "1547711858918",
       "1547557172846",
+      "1547711858918",
       "1536251685211",
+      "1535728526385",
       "1547557568724",
       "1547175141098",
       "1547175393847",
+      "1549408161041",
+      "1549408222080",
       "1548988108322",
       "1544343478271"
     ]
