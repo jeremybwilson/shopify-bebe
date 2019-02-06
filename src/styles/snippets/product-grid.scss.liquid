@@ -24,6 +24,17 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
         padding-left: 6px;
         padding-right: 6px;
         text-align: center;
+
+        @include mq ( 'phone' ) {
+            &:nth-child(2n-1) {
+                padding-left: 0;
+                padding-right: 3px;
+            }
+            &:nth-child(2n) {
+                padding-left: 3px;
+                padding-right: 0;
+            }
+        }
     }
 
     // IMAGE : Product Image containment and layers
