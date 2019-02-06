@@ -140,6 +140,17 @@
   <div class="row">
     <div class="collection-footer">
       <div class="collection-footer__elements">
+        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
+        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
+          {% if collection.description != blank %}
+            {% unless collection.description contains "banner--only" %}
+              <div class="mobile-12">
+                {% include 'collection-seo-block' %}
+              </div>
+            {% endunless %}
+          {% endif %}
+        {% endif %}
+
         {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
         <div class="collection-nosto">
           {% for block in section.blocks %}
@@ -150,17 +161,6 @@
             {% endif %}
           {% endfor %}
         </div>
-
-        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
-          {% if collection.description != blank %}
-            {% unless collection.description contains "banner--only" %}
-                <div class="mobile-12">
-                  {% include 'collection-seo-block' %}
-              </div>
-            {% endunless %}
-          {% endif %}
-        {% endif %}
       </div><!--.collection-footer__elements-->
     </div><!--.collection-footer-->
   </div><!--.row-->
