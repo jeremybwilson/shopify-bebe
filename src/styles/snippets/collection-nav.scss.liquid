@@ -59,8 +59,10 @@
 #collection-nav--mobile-trigger {
     @include flexbox;
     @include justify-content( space-between );
+    align-items: center;
     width: 100%;
     margin-bottom: 0;
+    margin-top: 20px;
     border: solid 1px $color--primary-1;
     background: $color--reverse-1;
     font-family: $font-stack--heading;
@@ -85,6 +87,10 @@
     }
     &.is-open svg {
         transform: rotate( 180deg );
+    }
+
+    .current-page {
+        margin: 0;
     }
 }
 
