@@ -11,14 +11,6 @@
     </div>
   {% endif %}
 
-  <div class="row tablet-and-up--hide">
-    <div class="mobile-3">
-      <h1 class="collection--title">
-      {{ collection.title }}
-      </h1>
-    </div>
-  </div>
-
   <div class="row">
 
     {% comment %} :: COLLECTION SIDEBAR :: {% endcomment %}
@@ -120,7 +112,15 @@
           {% endcomment %}
         </div>
 
+        <div class="desktop-12 tablet-6 mobile-3">
+          <div id="collection-current-products-count-widget">
+            Showing <span id="collection-current-products-count"></span>
+              of <span  id="collection-total-products-count"></span> items
+          </div>
+        </div>
+
         <div id="bc-sf-filter-load-more"></div>
+
 
         <div class="desktop-12 tablet-6 mobile-3">
           <div class="collection-results-count js-results-count"></div>
@@ -140,6 +140,17 @@
   <div class="row">
     <div class="collection-footer">
       <div class="collection-footer__elements">
+        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
+        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
+          {% if collection.description != blank %}
+            {% unless collection.description contains "banner--only" %}
+              <div class="mobile-12">
+                {% include 'collection-seo-block' %}
+              </div>
+            {% endunless %}
+          {% endif %}
+        {% endif %}
+
         {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
         <div class="collection-nosto">
           {% for block in section.blocks %}
@@ -150,17 +161,6 @@
             {% endif %}
           {% endfor %}
         </div>
-
-        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
-          {% if collection.description != blank %}
-            {% unless collection.description contains "banner--only" %}
-                <div class="mobile-12">
-                  {% include 'collection-seo-block' %}
-              </div>
-            {% endunless %}
-          {% endif %}
-        {% endif %}
       </div><!--.collection-footer__elements-->
     </div><!--.collection-footer-->
   </div><!--.row-->

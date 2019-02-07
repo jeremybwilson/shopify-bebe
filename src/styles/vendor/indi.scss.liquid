@@ -1,0 +1,67 @@
+// Indi
+
+// Home 
+
+.indi-forum {
+    
+    h4 {
+        @include h1-alt;
+    }
+    
+}
+
+.indi-carousel--wrapper {
+    border-bottom: solid 1px $color--field-1;
+
+    @include mq( 'desk-and-up' ) {
+        padding-bottom: 40px;
+    }
+
+    .indi-root {
+
+        @include mq( 'lap-and-up' ) {
+            max-width: none;
+        }
+
+    }
+}
+// Brand Advocate PAge
+
+.page-indi-brand-advocate {
+    #content {
+        padding-top: 0;
+
+    }
+    .indi-forum {
+
+        .indi-forum-details {
+            h4 {
+                @include h1-alt;
+            }
+        }
+        .btn {
+            margin-top: 12px;
+        }
+    }
+
+    #indi-carousel-root {
+        max-width: none;
+    }
+    
+}
+
+
+// PDP
+
+// Forum (upload section)
+
+#indi-forum-root {
+
+    body.product & {
+        border-top: solid 1px $color--field-1;
+
+        h4 {
+            @include h2-alt;
+        }           
+    } 
+}
