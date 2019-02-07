@@ -21,6 +21,20 @@ $navSubHeaderColor: {{ settings.nav_sub_header_color }};
 $navListItemColor: {{ settings.nav_list_item_color }};
 $navHoverColor: {{ settings.nav_hover_color }};
 
+$color--super-hot-neon-pink: #ff009c;
+
+@mixin typeNeon {
+    color: $color--reverse-1;
+    text-shadow: 0 0 1.7px $color--super-hot-neon-pink;
+    -webkit-text-stroke: .75px $color--super-hot-neon-pink;
+
+    @include mq( 'ie-high-contrast' ) {
+        color: $color--super-hot-neon-pink;
+        text-shadow: none;
+    }
+}
+
+
 #header-section {
     position: relative;
     //margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it.
@@ -825,12 +839,24 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     padding-left: 12px;
                     padding-right: 12px;
                     border-bottom: 3px solid transparent;
+                    white-space: nowrap;
+
+                    @include mq( 'lap' ) {
+                        padding-left: 6px;
+                        padding-right: 6px;
+                    }
 
                     @include mq( 'lap-and-up' ) {
                         @include fontSize( 13px );
                         font-weight: $font-weight--medium;
                     }
                 }
+
+                &.flash-sale .nav-category-header {
+                    @include typeNeon;
+                }
+                
+
 
                 &:hover a {
                     color: $color--accent-3;
@@ -1153,6 +1179,10 @@ $navHoverColor: {{ settings.nav_hover_color }};
                     color: $color--text-1;
                     padding: 0;
                 }
+            }
+            
+            .flash-sale {
+                @include typeNeon;
             }
 
             .accordion-header,
