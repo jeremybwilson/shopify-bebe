@@ -595,18 +595,6 @@
       "1536251685211": {
         "type": "twin-promos",
         "blocks": {
-          "1536251685211-1": {
-            "type": "text_block",
-            "settings": {
-              "image": "shopify://shop_images/bebe-tops.jpg",
-              "mobile_image": "shopify://shop_images/bebe-tops-mobile.jpg",
-              "link": "shopify://collections/tops",
-              "heading_text": "Sexy But  Make It Classy",
-              "text": "",
-              "cta_text": "Shop Night Out Tops",
-              "cta_style": "button"
-            }
-          },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
@@ -618,11 +606,23 @@
               "cta_text": "SHOP RED",
               "cta_style": "button"
             }
+          },
+          "1536251685211-1": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify://shop_images/see-through-sexy-new.jpg",
+              "mobile_image": "shopify://shop_images/see-through-sexy-mobile.jpg",
+              "link": "shopify://collections/lace-dresses",
+              "heading_text": "See-Through Sexy",
+              "text": "",
+              "cta_text": "shop lace dresses",
+              "cta_style": "button"
+            }
           }
         },
         "block_order": [
-          "1536251685211-1",
-          "1536251685211-0"
+          "1536251685211-0",
+          "1536251685211-1"
         ],
         "settings": {
           "full_width": false
@@ -1260,6 +1260,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1549427831005": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "24 HOUR SALE: ADDITIONAL 50% OFF",
+              "text": "<p>Today only, enjoy extra savings on all sale styles with code 2450.</p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Enjoy an additional 50% off all sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code 2450 at checkout. Not valid on regular-priced items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. All sale items are final sale. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/6/19 at 11:59 pm PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1293,18 +1305,6 @@
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
               "coupon_size": "half",
-              "coupon_color": "light"
-            }
-          },
-          "1549427831005": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "24 HOUR SALE: ADDITIONAL 50% OFF",
-              "text": "<p>Today only, enjoy extra savings on all sale styles with code 2450.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Enjoy an additional 50% off all sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code 2450 at checkout. Not valid on regular-priced items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. All sale items are final sale. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/6/19 at 11:59 pm PST.</p>",
-              "coupon_size": "full",
               "coupon_color": "light"
             }
           }
@@ -1387,8 +1387,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/24-hour-sale-code-2450-desktop.jpg",
-              "mobile_image": "shopify://shop_images/24-hour-sale-code-2450-mobile.jpg",
+              "image": "shopify://shop_images/extended-24-more-hours-additional-50-off.jpg",
+              "mobile_image": "shopify://shop_images/extended-24-more-hours-additional-50-off-mobile.jpg",
               "cta_full_image": "",
               "heading": "<br>",
               "hide_header_desktop": false,
