@@ -53,7 +53,7 @@
       </h1>
 
       {% if settings.breadcrumb %}
-        <div class="desktop-10">
+        <div class="desktop-8 collection-breadcrumb-wrapper">
           {% include 'breadcrumb' %}
         </div>
       {% endif %}
@@ -80,7 +80,7 @@
         {% endcomment %}
 
         {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
-        <div id="desktop-sort-wrapper" class="mobile-3 desktop-10">
+        <div id="desktop-sort-wrapper" class="mobile-3 desktop-4">
           <div id="full-width-filter" class="filter-wrap-desktop">
               <ul id="sortme" class="sort-options animate25">
               {% if section.settings.sort_by %} 
@@ -136,34 +136,31 @@
     </div><!--#collection-main-->
 
   </div><!--.row-->
-
-  <div class="row">
-    <div class="collection-footer">
-      <div class="collection-footer__elements">
-        {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
-        {% if template contains 'collection' and settings.show_collection_seo_block == true %}
-          {% if collection.description != blank %}
-            {% unless collection.description contains "banner--only" %}
-              <div class="mobile-12">
-                {% include 'collection-seo-block' %}
-              </div>
-            {% endunless %}
-          {% endif %}
+  
+  <div class="collection-footer row">
+    <div class="collection-footer__elements mobile-3 desktop-10">
+      {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
+      {% if template contains 'collection' and settings.show_collection_seo_block == true %}
+        {% if collection.description != blank %}
+          {% unless collection.description contains "banner--only" %}
+            {% include 'collection-seo-block' %}
+          {% endunless %}
         {% endif %}
+      {% endif %}
 
-        {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
-        <div class="collection-nosto">
-          {% for block in section.blocks %}
-            {% if block.type == 'nosto_element' and block.settings.nosto_id != blank %}
-              <div class="collection-nosto__element mobile-12">
-                {% include 'nosto-element' with block.settings.nosto_id %}
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div><!--.collection-footer__elements-->
-    </div><!--.collection-footer-->
-  </div><!--.row-->
+      {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
+      <div class="collection-nosto">
+        {% for block in section.blocks %}
+          {% if block.type == 'nosto_element' and block.settings.nosto_id != blank %}
+            <div class="collection-nosto__element mobile-12">
+              {% include 'nosto-element' with block.settings.nosto_id %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div><!--.collection-footer__elements-->
+  </div><!--.collection-footer-->
+  
 </div><!--.collection-template-->
 
 <script>
