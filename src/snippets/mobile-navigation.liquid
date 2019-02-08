@@ -8,7 +8,7 @@
 
       {% comment %} :: LEVEL 1 : SUB-NAV : Accordion (Has nested menus) :: {% endcomment %}
       {% if link.links != blank %}
-        <li class="accordion-header accordion-toggle" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</li>
+        <li class="accordion-header accordion-toggle {{ link.title | replace: '.', ' ' | handle }}" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</li>
         
         <div class="accordion-content">
           <ul class="sub">

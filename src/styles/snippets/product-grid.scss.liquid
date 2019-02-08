@@ -14,10 +14,15 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
 // CATALOG : Wrapper to the catalog items
 #product-loop {
     position: relative;
+    clear: both;
     //width: 110%; //Design has this wider than page edges, but the max-width will prevent page bound breakage
     left: 50%;
     transform: translateX( -50% );
     max-width: 99vw; // Prevent breaking viewport bounds
+
+    @include mq( 'phone' ) {
+        padding-top: 0;
+    }    
 
     // ITEM 
     .product-index {
@@ -28,10 +33,10 @@ $loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
         @include mq ( 'phone' ) {
             &:nth-child(2n-1) {
                 padding-left: 0;
-                padding-right: 3px;
+                padding-right: 5px;
             }
             &:nth-child(2n) {
-                padding-left: 3px;
+                padding-left: 5px;
                 padding-right: 0;
             }
         }

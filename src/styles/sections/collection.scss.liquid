@@ -77,6 +77,12 @@ $resultsTextColor: {{ settings.filter_text_color }};
     /* COLLECTION : Main
      * ---------------------------------------------- */
     #collection--main {
+        @include mq( 'phone' ) {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
         @include mq( 'lap-and-up' ) {
             width: 82.5%; // [FPO] number
         }
@@ -84,7 +90,12 @@ $resultsTextColor: {{ settings.filter_text_color }};
     h1 {
         // display: none;
         border: none;
-        @include fontDim(21px,21px,.04em);
+        @include fontDim(14px,14px,.04em);
+        font-weight: $font-weight--bold;
+
+        @include mq( 'lap-and-up' ) {
+            @include fontDim(21px,21px,.04em);
+        }
 
         // @include mq( 'lap-and-up' ) {
         //     display: block;
@@ -102,10 +113,14 @@ $resultsTextColor: {{ settings.filter_text_color }};
     /* COLLECTION : Product Grid + Item View
      * ---------------------------------------------- */
     .collection-template {
+        
+        & > .row {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
 
         @import url('../snippets/product-grid.scss.liquid');
     }
-    
 
     /* FILTERS : Styling for filter sets
      * ---------------------------------------------- */
@@ -147,7 +162,7 @@ $resultsTextColor: {{ settings.filter_text_color }};
 
 // Footer results count on collection template
 .collection-results-count {
-    margin: 15px 0;
+    margin: 0 0 15px;
     text-align: right;
     color: $resultsTextColor; //Imported from filters.scss.liquid
 }
@@ -160,44 +175,40 @@ $resultsTextColor: {{ settings.filter_text_color }};
         position: relative;
 
         // Magic number to align with bc-sf product cards
-        margin-left: -6px;
-        margin-right: 6px;
-
-        // Emulate sidebar
-        &::before {
-            content: " ";
-            width: 12.5%;
-            height: 1px;
-            margin-left: 1.04167%;
-            margin-right: 1.04167%;
-            float: left;
-        }
 
         .collection-footer__elements {
-            width: 82.5%;
-            margin: 0 auto;
-            overflow: auto;
+            width: 82.5% !important;
+            margin-left: 12.5% + $grid--gutter !important;
+            float: left;
+
         }
     }
 }
 
 // Nosto elements
 .collection-nosto {
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 0;
+    padding-right: 0;
 
     @include mq('lap-and-up') {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 }
 
 .collection-nosto__element {
+
     .gridlock .row & {
         float: none;
+        margin-left: 0;
+        margin-right: 0;        
     }
 
     .nosto-block {
-        margin-bottom: 30px;
+        margin-bottom: 8px;
+
+        @include mq( 'lap-and-up' ) {
+            margin-bottom: 30px;
+        }
     }
 }
