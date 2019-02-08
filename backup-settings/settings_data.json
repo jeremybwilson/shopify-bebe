@@ -1260,18 +1260,6 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
-          "1549427831005": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "24 HOUR SALE: ADDITIONAL 50% OFF",
-              "text": "<p>Today only, enjoy extra savings on all sale styles with code 2450.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Enjoy an additional 50% off all sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code 2450 at checkout. Not valid on regular-priced items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. All sale items are final sale. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/6/19 at 11:59 pm PST.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1307,10 +1295,35 @@
               "coupon_size": "half",
               "coupon_color": "light"
             }
+          },
+          "1549602776323": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF $150, 25% OFF $200",
+              "text": "<p>Take 20% off with code VDAY20. Take 25% off with code VDAY25.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off $150, enter code VDAY20 at checkout. To redeem 25% off $200, enter code VDAY25 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 2/12/19 at 11:59 pm PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1549602874389": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FREE EXPRESS SHIPPING OVER $200",
+              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/new",
+              "details_text": "<p>For a limited time, enjoy free express shipping on any bebe.com order of $200 or more shipped to a physical address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects express shipping. Valid on bebe.com only. Not valid at bebe stores. Offer not valid on gift cards, orders shipped to P.O. Boxes or previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer expires 2/11/19 at 11:59 am PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
           }
         },
         "block_order": [
-          "1549427831005",
+          "1549602776323",
+          "1549602874389",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1352,7 +1365,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify://shop_images/shopping-shipping-banner.jpg",
           "mobile_image": "",
           "link": "",
           "cart_bottom_block": ""
@@ -1387,14 +1400,14 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/extended-24-more-hours-additional-50-off.jpg",
-              "mobile_image": "shopify://shop_images/extended-24-more-hours-additional-50-off-mobile.jpg",
+              "image": "shopify://shop_images/get-ready-with-20-off-25-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/get-ready-with-20-off-25-off-mobile.jpg",
               "cta_full_image": "",
               "heading": "<br>",
               "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "shopify://collections/sale",
-              "cta_one_button_text": "SHOP SALE",
+              "cta_one_link": "shopify://collections/new",
+              "cta_one_button_text": "SHOP NOW",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1406,10 +1419,10 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 70,
-              "caption_vertical_mobile": 64,
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 27,
+              "caption_vertical": 66,
+              "caption_vertical_mobile": 78,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1468,7 +1481,6 @@
       },
       "1547711858918": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
