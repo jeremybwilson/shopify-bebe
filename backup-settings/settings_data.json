@@ -1485,9 +1485,9 @@
           "1547711858918-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/free-us-express-shipping-over-200-desktop.jpg",
-              "mobile_image": "shopify://shop_images/free-us-express-shipping-over-200-mobile.jpg",
-              "cta_full_image": "shopify://collections/new",
+              "image": "shopify://shop_images/need-it-by-vday-order-by-noon.jpg",
+              "mobile_image": "shopify://shop_images/need-it-by-vday-order-by-noon-mobile.jpg",
+              "cta_full_image": "/pages/shipping",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
