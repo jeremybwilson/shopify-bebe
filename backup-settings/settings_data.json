@@ -344,6 +344,14 @@
               "nav_image": "shopify://shop_images/unnamed_69f3721f-5acf-4c3f-b35a-68a96336bc6f.jpg",
               "nav_promo_link": "shopify://collections/sale-dresses"
             }
+          },
+          "1549960094390": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Flash Sale",
+              "nav_image": "shopify://shop_images/flash-nav.jpg",
+              "nav_promo_link": "shopify://collections/flash-sale"
+            }
           }
         },
         "block_order": [
@@ -356,7 +364,8 @@
           "1542669004635",
           "1542669012588",
           "1542669019789",
-          "1542669025513"
+          "1542669025513",
+          "1549960094390"
         ],
         "settings": {
           "full_width_header": false,
@@ -1307,9 +1316,35 @@
               "coupon_size": "half",
               "coupon_color": "light"
             }
+          },
+          "1550034781785": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF 1 ITEM, 30% OFF 2+ ITEMS",
+              "text": "<p>Valid for all regular-priced styles. 20% off with code LOVE20. 30% off with code LOVE30.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Enjoy 20% off any 1 regular-priced item or 30% off any 2 or more regular-priced items. Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off, enter code LOVE20 at checkout. To redeem 30% off, enter code LOVE30 at checkout. Not valid on sale items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/14/19 at 11:59 pm PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1550034889585": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FLASH SALE: UP TO 75% OFF",
+              "text": "<p>Deep reductions on select styles for a limited time. Priced as marked.</p>",
+              "cta_text": "SHOP FLASH SALE",
+              "link": "shopify://collections/flash-sale",
+              "details_text": "<p>All discounts applied to original prices. Items priced as marked. Only valid on bebe.com, ending 2/14/19 at 11:59 pm PST or when all flash sale items are sold out, whichever occurs first. Exclusions may apply. No adjustments for prior purchases. Please note that all flash sale merchandise available on bebe.com is final sale due to limited quantities at deeply discounted prices. As a result, all items are ineligible for credit, refund or exchange. Flash sale purchases cannot be returned or exchanged by shipment to bebe's online returns address.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
           }
         },
         "block_order": [
+          "1550034781785",
+          "1550034889585",
           "1549602776323",
           "1545990628348",
           "1545990640803",
@@ -1352,9 +1387,9 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify://shop_images/shopping-shipping-banner.jpg",
+          "image": "shopify://shop_images/love-more-save-more-cart.jpg",
           "mobile_image": "",
-          "link": "",
+          "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
         }
       },
@@ -1387,36 +1422,67 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/v-day-promo-desktop.jpg",
-              "mobile_image": "shopify://shop_images/v-day-promo-mobile.jpg",
+              "image": "shopify://shop_images/love-more-save-more-desktop.jpg",
+              "mobile_image": "shopify://shop_images/love-more-save-more-mobile.jpg",
               "cta_full_image": "",
               "heading": "<br>",
               "hide_header_desktop": false,
               "subheading": "",
               "cta_one_link": "shopify://collections/new",
-              "cta_one_button_text": "SHOP NOW",
+              "cta_one_button_text": "SHOP NEW ARRIVALS",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
               "cta_three_button_text": "",
-              "cta_four_link": "shopify://collections/sale",
-              "cta_four_button_text": "Shop All Sale",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 27,
-              "caption_vertical": 66,
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 67,
               "caption_vertical_mobile": 78,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          },
+          "1550034198683": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/flash-sale-desktop.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-mobile.gif",
+              "cta_full_image": "",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "shopify://collections/new",
+              "cta_one_button_text": "Shop New Arrivals",
+              "cta_two_link": "",
+              "cta_two_button_text": "Add a button",
+              "cta_three_link": "",
+              "cta_three_button_text": "Add a button",
+              "cta_four_link": "",
+              "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#000000",
+              "custom_slide_alt_color": "#ffffff",
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 0,
+              "caption_vertical": 70,
+              "caption_vertical_mobile": 75,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
           }
         },
         "block_order": [
-          "1547557172846-0"
+          "1547557172846-0",
+          "1550034198683"
         ],
         "settings": {
           "full_width": true,
@@ -1468,6 +1534,7 @@
       },
       "1547711858918": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
