@@ -1269,6 +1269,30 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1550034781785": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF 1 ITEM, 30% OFF 2+ ITEMS",
+              "text": "<p>Valid for all regular-priced styles. 20% off with code LOVE20. 30% off with code LOVE30.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Enjoy 20% off any 1 regular-priced item or 30% off any 2 or more regular-priced items. Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off, enter code LOVE20 at checkout. To redeem 30% off, enter code LOVE30 at checkout. Not valid on sale items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/14/19 at 11:59 pm PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1550034889585": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FLASH SALE: UP TO 75% OFF",
+              "text": "<p>Deep reductions on select styles for a limited time. Priced as marked.</p>",
+              "cta_text": "SHOP FLASH SALE",
+              "link": "shopify://collections/flash-sale",
+              "details_text": "<p>All discounts applied to original prices. Items priced as marked. Only valid on bebe.com, ending 2/14/19 at 11:59 pm PST or when all flash sale items are sold out, whichever occurs first. Exclusions may apply. No adjustments for prior purchases. Please note that all flash sale merchandise available on bebe.com is final sale due to limited quantities at deeply discounted prices. As a result, all items are ineligible for credit, refund or exchange. Flash sale purchases cannot be returned or exchanged by shipment to bebe's online returns address.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1549602776323": {
             "type": "text_block",
             "settings": {
@@ -1314,30 +1338,6 @@
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
               "coupon_size": "half",
-              "coupon_color": "light"
-            }
-          },
-          "1550034781785": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF 1 ITEM, 30% OFF 2+ ITEMS",
-              "text": "<p>Valid for all regular-priced styles. 20% off with code LOVE20. 30% off with code LOVE30.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Enjoy 20% off any 1 regular-priced item or 30% off any 2 or more regular-priced items. Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off, enter code LOVE20 at checkout. To redeem 30% off, enter code LOVE30 at checkout. Not valid on sale items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/14/19 at 11:59 pm PST.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1550034889585": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "FLASH SALE: UP TO 75% OFF",
-              "text": "<p>Deep reductions on select styles for a limited time. Priced as marked.</p>",
-              "cta_text": "SHOP FLASH SALE",
-              "link": "shopify://collections/flash-sale",
-              "details_text": "<p>All discounts applied to original prices. Items priced as marked. Only valid on bebe.com, ending 2/14/19 at 11:59 pm PST or when all flash sale items are sold out, whichever occurs first. Exclusions may apply. No adjustments for prior purchases. Please note that all flash sale merchandise available on bebe.com is final sale due to limited quantities at deeply discounted prices. As a result, all items are ineligible for credit, refund or exchange. Flash sale purchases cannot be returned or exchanged by shipment to bebe's online returns address.</p>",
-              "coupon_size": "full",
               "coupon_color": "light"
             }
           }
@@ -1422,8 +1422,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/love-more-save-more-desktop.jpg",
-              "mobile_image": "shopify://shop_images/love-more-save-more-mobile.jpg",
+              "image": "shopify://shop_images/promo-desktop.jpg",
+              "mobile_image": "shopify://shop_images/promo-mobile.jpg",
               "cta_full_image": "",
               "heading": "<br>",
               "hide_header_desktop": false,
@@ -1452,8 +1452,8 @@
           "1550034198683": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/flash-sale-desktop.gif",
-              "mobile_image": "shopify://shop_images/flash-sale-mobile.gif",
+              "image": "shopify://shop_images/flash-sale-desktop_faddb870-01f9-4734-94ea-8ad44f7c1ac7.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-mobile_da99f913-1ddd-4cce-adb5-645c9c7f3caa.gif",
               "cta_full_image": "",
               "heading": "",
               "hide_header_desktop": false,
