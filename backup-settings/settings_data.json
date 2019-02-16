@@ -344,14 +344,6 @@
               "nav_image": "shopify://shop_images/unnamed_69f3721f-5acf-4c3f-b35a-68a96336bc6f.jpg",
               "nav_promo_link": "shopify://collections/sale-dresses"
             }
-          },
-          "1549960094390": {
-            "type": "mega_menu",
-            "settings": {
-              "menu_item": "Flash Sale",
-              "nav_image": "shopify://shop_images/flash-nav.jpg",
-              "nav_promo_link": "shopify://collections/flash-sale"
-            }
           }
         },
         "block_order": [
@@ -364,8 +356,7 @@
           "1542669004635",
           "1542669012588",
           "1542669019789",
-          "1542669025513",
-          "1549960094390"
+          "1542669025513"
         ],
         "settings": {
           "full_width_header": false,
@@ -1281,18 +1272,6 @@
               "coupon_color": "light"
             }
           },
-          "1550034889585": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "FLASH SALE: UP TO 75% OFF",
-              "text": "<p>Deep reductions on select styles for a limited time. Priced as marked.</p>",
-              "cta_text": "SHOP FLASH SALE",
-              "link": "shopify://collections/flash-sale",
-              "details_text": "<p>All discounts applied to original prices. Items priced as marked. Only valid on bebe.com, ending 2/14/19 at 11:59 pm PST or when all flash sale items are sold out, whichever occurs first. Exclusions may apply. No adjustments for prior purchases. Please note that all flash sale merchandise available on bebe.com is final sale due to limited quantities at deeply discounted prices. As a result, all items are ineligible for credit, refund or exchange. Flash sale purchases cannot be returned or exchanged by shipment to bebe's online returns address.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1332,7 +1311,6 @@
         },
         "block_order": [
           "1550034781785",
-          "1550034889585",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1435,41 +1413,10 @@
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
-          },
-          "1550034198683": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/flash-sale-extended-desktop.gif",
-              "mobile_image": "shopify://shop_images/flash-sale-extended-mobile.gif",
-              "cta_full_image": "",
-              "heading": "",
-              "hide_header_desktop": false,
-              "subheading": "",
-              "cta_one_link": "shopify://collections/flash-sale",
-              "cta_one_button_text": "Shop Now",
-              "cta_two_link": "",
-              "cta_two_button_text": "Add a button",
-              "cta_three_link": "",
-              "cta_three_button_text": "Add a button",
-              "cta_four_link": "",
-              "cta_four_button_text": "Add a button",
-              "hide_buttons_desktop": false,
-              "hide_buttons_mobile": false,
-              "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#000000",
-              "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 70,
-              "caption_vertical_mobile": 75,
-              "caption_background": "rgba(0,0,0,0)",
-              "caption_opacity": "0.1"
-            }
           }
         },
         "block_order": [
-          "1547557172846-0",
-          "1550034198683"
+          "1547557172846-0"
         ],
         "settings": {
           "full_width": true,
