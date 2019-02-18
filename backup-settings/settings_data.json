@@ -1387,8 +1387,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/20-off-150-or-more-desktop.jpg",
-              "mobile_image": "shopify://shop_images/20-off-150-or-more-mobile.jpg",
+              "image": "shopify://shop_images/ends-tonight-20-off-150-or-more-desktop.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-20-off-150-or-more-mobile.jpg",
               "cta_full_image": "",
               "heading": "<br>",
               "hide_header_desktop": false,
