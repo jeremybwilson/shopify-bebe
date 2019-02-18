@@ -67,36 +67,25 @@
               {% comment %} Styling to accommodate the box ratio for lazy-loaded images {% endcomment %}
 
               <style>
-
                 {% assign image_box_ratio = block.settings.image.height | append: ".0" | times: 1 | divided_by: block.settings.image.width | times: 100 | append: "%" %}
-
                 {% if block.settings.mobile_image != blank %}
                   {% assign mobile_image_box_ratio = block.settings.mobile_image.height | append: ".0" | times: 1 | divided_by: block.settings.mobile_image.width | times: 100 | append: "%" %}
-
                   /* Mobile */
-
                   #slide--{{ block.id }} .box-ratio {
                     padding-bottom: {{ mobile_image_box_ratio }};
                   }
-
                 {% else %}
-
                   #slide--{{ block.id }} .box-ratio {
                     padding-bottom: {{ image_box_ratio }};
                   }
-
                 {% endif %}
-
                 {% if block.settings.image != blank and block.settings.mobile_image != blank %}
-
                   /* Tablet and up */
-
                   @media screen and (min-width: 768px) {
                     #slide--{{ block.id }} .box-ratio {
                       padding-bottom: {{ image_box_ratio }};
                     }
                   }
-
                 {% endif %}
                 
               </style>
@@ -195,14 +184,12 @@
                 display: none;
                 {% endif %}
               }
-
               {% if block.settings.caption_horizontal_offset and block.settings.caption_horizontal_offset > 0 %}
               .flex-caption.slide-{{ block.id }} .caption-inners {
                 transform: translateX(-50%);
               }
               {% endif %}
             }
-
             .flex-caption.slide-{{ block.id }} .caption-inners {
               {% assign bg_color = block.settings.caption_background %}
               {% assign caption_opacity = block.settings.caption_opacity | plus: 0 %}
@@ -215,7 +202,6 @@
               padding: 10px 20px;
             }
             {% comment %} COLOR SCHEME STYLING {% endcomment %}
-
             {% if block.settings.caption_color_scheme == 'white' %}
               {% assign slide_text_color = '#ffffff' %}
               {% assign cta_color = '#e41c39' %}
@@ -229,7 +215,6 @@
               {% assign cta_color = block.settings.custom_slide_alt_color %}
               {% assign cta_hover_color = block.settings.custom_slide_alt_color %}
             {% endif %}
-
             .flex-caption.slide-{{ block.id }} h2.slide-title {
               color: {{ slide_text_color }};
             }
@@ -248,7 +233,6 @@
             .flex-caption.slide-{{ block.id }} .cta a:hover {
               background-color: {{ cta_hover_color }};
             }
-
           </style>
           {% endfor %}
         </ul>
@@ -260,7 +244,12 @@
 
         <div class="slider--nav">
           <a href="#" class="flex-prev">
-            {% include 'svg-icon-arrow-left' %}
+            <div class="desk-flex-prev">
+              {% include 'svg-icon-arrow-left' %}
+            </div>
+            <div class="mob-flex-prev">
+              {% include 'svg-icon-caret-left' %}
+            </div>
           </a>
           <div class="pagination">
             <span class="flexslider--current-slide"></span>
@@ -268,7 +257,12 @@
             <span class="flexslider--total-slides"></span>
           </div>
           <a href="#" class="flex-next">
-            {% include 'svg-icon-arrow-right' %}
+            <div class="desk-flex-next">
+              {% include 'svg-icon-arrow-right' %}
+            </div>
+            <div class="mob-flex-next">
+              {% include 'svg-icon-caret-right' %}
+            </div>
           </a>
         </div><!-- .slider--nav -->
 

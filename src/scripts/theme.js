@@ -1181,6 +1181,7 @@ theme.Slideshow = (function() {
       pauseOnAction: true,
       nextText: '',
       prevText: '',
+      drag: true,
       customDirectionNav: $('.slider--nav > a'),
 
       /* adds a custom pagination */

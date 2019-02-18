@@ -133,21 +133,39 @@
     display: none;
   }
   .slider--nav {
-    @include flexbox;
-    @include justify-content(space-between);
-    @include align-items(center);
-
     position: absolute;
     z-index: 2;
-    bottom: 40px;
-    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
     width: 100%;
-    max-width: 220px;
-    transform: translateX(-50%);
     color: $color--white;
 
+    .desk-flex-next,.desk-flex-prev{
+      display: none;
+    }
+    .mob-flex-prev{
+      margin-left: 15px;
+      display: inline-block;
+    }
+    .mob-flex-next{
+      float: right;
+      margin-right: 15px;
+    }
     @include mq('tablet-and-up') {
-      bottom: 55px;
+      @include flexbox;
+      @include justify-content(space-between);
+      @include align-items(center);      
+      bottom: 40px;
+      left: 50%;
+      max-width: 220px;
+      transform: translateX(-50%);
+      top: inherit;
+      .mob-flex-next,.mob-flex-prev{
+        display: none;
+      }
+      .desk-flex-next,.desk-flex-prev{
+        display: block;
+      }
     }
 
     .hide-pagination & {
@@ -158,36 +176,78 @@
 
     svg {
       width: 20px;
-      height: 20px;
+      height: 68px;
+      stroke: #fff;
+      @include mq('tablet-and-up') {
+        height: 20px;        
+      }
       margin-top: 7px;
 
       * {
         fill: $color--white;
+        stroke: $color--white;
       }
     }    
 
     // pager
 
     .pagination {
-      @include flexbox;
-      @include justify-content(center);
-      position: relative;
-      padding: 10px;
-      background: $color--white;
-      color: $color--accent-1;
-      font-weight: $font-weight--black;
-      @include fontDim(14px,14px,0);
-      text-align: center;
+      display: none;
 
       @include mq('tablet-and-up') {
-        @include fontSize(14px);
-      }
-
-      span {
-        display: inline;
+        @include flexbox;
+        @include justify-content(center);
+        position: relative;
+        padding: 10px;
+        background: $color--white;
+        color: $color--accent-1;
+        font-weight: $font-weight--black;
+        @include fontDim(14px,14px,0);
         text-align: center;
-        margin: 0 2px;
+        @include mq('tablet-and-up') {
+          @include fontSize(14px);
+        }
+
+        span {
+          display: inline;
+          text-align: center;
+          margin: 0 2px;
+        }
       }
     }
   }
+}
+
+
+
+    /***Desktop slider navigation***/
+    .slideshow-section .slider--nav {
+        top: 50%;
+        bottom: auto;
+        max-width: 100%;
+    }
+    .pagination {
+        display: none !important;
+    }
+    .slideshow-section .slider--nav .mob-flex-next, .slideshow-section .slider--nav .mob-flex-prev{
+      display: inline-block;
+    }
+    .slideshow-section .slider--nav .desk-flex-next, .slideshow-section .slider--nav .desk-flex-prev{
+      display:none !important;
+    }
+    .slideshow-section .slider--nav svg {
+        height: 68px;
+        margin-top: -34px;
+    }
+    .slideshow-section .slider--nav a.flex-prev {
+        text-align: left !important;
+    }
+    .slideshow-section .slider--nav a.flex-next {
+        text-align: right !important;
+    }
+@media (max-width:767px){
+    .slideshow-section .slider--nav svg {
+        height: 40px;
+        margin-top: -20px;
+    }
 }
