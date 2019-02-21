@@ -7,7 +7,7 @@
   {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
   {% if has_banner %}
     <div class="collection-banner tablet-and-down--hide">
-      {% include 'collection-banner-image' with 'desktop' %}
+      {{desktop_banner}}
     </div>
   {% endif %}
 
@@ -41,7 +41,7 @@
     {% comment %} :: COLLECTION MOBILE BANNER :: {% endcomment %}
     {% if has_banner %}
       <div class="collection-banner collection-banner--mobile tablet-and-up--hide">
-        {% include 'collection-banner-image' with 'mobile' %}
+        {{mobile_image}}
       </div>
     {% endif %}
 
