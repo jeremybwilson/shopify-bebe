@@ -46,7 +46,7 @@ var bcSfFilterTemplate = {
     // Pagination Template
     'previousHtml': '<a href="{{itemUrl}}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
     'nextHtml': '<a href="{{itemUrl}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
-    'pageItemHtml': '<a href="{{itemUrl}}">{{itemTitle}}</a>',
+    'pageItemHtml': '<span class="current2" onclick="javascript:location.href=\'{{itemUrl}}\'">{{itemTitle}}</span>',
     'pageItemSelectedHtml': '<span class="current">{{itemTitle}}</span>',
     'pageItemRemainHtml': '{{itemTitle}}',
     'paginateHtml': '<span class="count"></span>{{previous}}{{pageItems}}{{next}}',
@@ -276,12 +276,13 @@ BCSfFilter.prototype.buildPagination = function(totalProduct) {
         for (var iBefore = currentPage - 1; iBefore > currentPage - 3 && iBefore > 0; iBefore--) {
             beforeCurrentPageArr.unshift(iBefore);
         }
-        if (currentPage - 4 > 0) {
-            beforeCurrentPageArr.unshift('...');
+        if (currentPage - 3 > 0) {
+            beforeCurrentPageArr.unshift(currentPage - 3);
         }
-        if (currentPage - 4 >= 0) {
-            beforeCurrentPageArr.unshift(1);
-        }
+        /**** PDM-204 
+        // if (currentPage - 3 >= 0) {
+        //     beforeCurrentPageArr.unshift(1);
+        // } PDM-204 ****/
         beforeCurrentPageArr.push(currentPage);
 
         var afterCurrentPageArr = [];
@@ -289,11 +290,12 @@ BCSfFilter.prototype.buildPagination = function(totalProduct) {
             afterCurrentPageArr.push(iAfter);
         }
         if (currentPage + 3 < totalPage) {
-            afterCurrentPageArr.push('...');
+            afterCurrentPageArr.push(currentPage + 3);
         }
-        if (currentPage + 3 <= totalPage) {
-            afterCurrentPageArr.push(totalPage);
-        }
+        /**** PDM-204 
+        // if (currentPage + 3 <= totalPage) {
+        //     afterCurrentPageArr.push(totalPage);
+        // }PDM-204 ****/
 
         // Build page items
         var pageItemsHtml = '';
@@ -468,7 +470,18 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     // Build number of products (BoostCommerce Code)
     var from = this.queryParams.page == 1 ? this.queryParams.page : (this.queryParams.page - 1) * this.queryParams.limit + 1;
     var to = from + data.products.length - 1;
-    jQ(this.selector.bottomPagination).find('.count').html(bcSfFilterConfig.label.showing_items + ' ' + from + '-' + to + ' ' +  bcSfFilterConfig.label.pagination_of + ' ' + data.total_product);
+    /*jQ(this.selector.bottomPagination).find('.count').html(bcSfFilterConfig.label.showing_items + ' ' + from + '-' + to + ' ' +  bcSfFilterConfig.label.pagination_of + ' ' + data.total_product);*/
+
+    jQ(this.selector.bottomPagination).find('.count').html('');
+
+    document.getElementById("pagination").append($productsCountWidget);
+
+    var tempTotalItems = jQ(".collection-results-count.js-results-count").parent('div').html();
+    jQ(".collection-results-count.js-results-count").parent('div').remove();
+
+    /*document.getElementById("pagination").append($tempTotalItems);*/
+
+    jQ("#pagination").append(tempTotalItems)
 
 
     // APPLY (MOBILE) : Filters apply on selection, "Apply" closes menu on moble.  

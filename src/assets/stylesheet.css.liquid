@@ -2206,24 +2206,41 @@ footer img {
 #pagination span.current {
   padding: 5px;
   margin-right: 10px;
+  font-size:16px;
   border-bottom: 2px solid {{ settings.directional_background }};
 }
 
 #pagination a {
-  color: {{ settings.directional_color }};
-  border: 2px solid {{ settings.directional_background }};
-  background: {{ settings.directional_background }};
+  color: #000000;
+  /*** PDM-204
+  /*color: {{ settings.directional_color }};*/ 
+  /*border: 2px solid {{ settings.directional_background }};
+  background: {{ settings.directional_background }}; PDM-204 ****/
   padding: 5px 10px;
   margin-right: 10px;
-  font-weight: bold;
+  font-weight: normal;
   transition: all .25s ease-in-out;
   display: inline-block;
   margin-top: 10px;
+  font-size:16px;
+  text-decoration: none;
+}
+
+#pagination .current2 {
+  padding: 5px;
+  margin-right: 10px;
+  font-weight: normal;
+  font-size:16px;
+  cursor: pointer;
 }
 
 #pagination a:hover {
-  background: {{ settings.directional_hover_background }};
-  color: {{ settings.directional_hover_color }};
+ /*border-bottom: 1px solid {{ settings.directional_background }};*/
+}
+
+#pagination .current2:hover {
+  /*** PDM-204 ****/
+  border-bottom: 1px solid {{ settings.directional_background }};
 }
 
 #pagination span.count {
