@@ -44,8 +44,8 @@ var bcSfFilterTemplate = {
     'itemBadgeHtml': '<div class="react-badge" data-badge=\'{{badgeTags}}\'></div>',
 
     // Pagination Template
-    'previousHtml': '<a href="{{itemUrl}}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
-    'nextHtml': '<a href="{{itemUrl}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
+    'previousHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
+    'nextHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
     'pageItemHtml': '<span class="current2" onclick="javascript:location.href=\'{{itemUrl}}\'">{{itemTitle}}</span>',
     'pageItemSelectedHtml': '<span class="current">{{itemTitle}}</span>',
     'pageItemRemainHtml': '{{itemTitle}}',
@@ -470,7 +470,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     // Build number of products (BoostCommerce Code)
     var from = this.queryParams.page == 1 ? this.queryParams.page : (this.queryParams.page - 1) * this.queryParams.limit + 1;
     var to = from + data.products.length - 1;
-    /*jQ(this.selector.bottomPagination).find('.count').html(bcSfFilterConfig.label.showing_items + ' ' + from + '-' + to + ' ' +  bcSfFilterConfig.label.pagination_of + ' ' + data.total_product);*/
+    jQ(this.selector.bottomPagination).find('.count').html(bcSfFilterConfig.label.showing_items + ' ' + from + '-' + to + ' ' +  bcSfFilterConfig.label.pagination_of + ' ' + data.total_product);
 
     jQ(this.selector.bottomPagination).find('.count').html('');
 
