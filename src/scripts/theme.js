@@ -3397,5 +3397,5 @@ function debounce(fn, wait, immediate) {
 $(document).ready(function(){
   var mob_img = $('.collection_img');
   $('.collection-banner--mobile').append(mob_img);
-  $('.collection_img').show();
+  $('.collection_img').removeClass('collection_img_hide');
 });

@@ -2,6 +2,7 @@
   {% assign collection_handle = block.settings.collection %}
   {% if collection_handle == collection.handle %}
     {% comment %} Desktop Image {% endcomment%}
+    {% if block.settings.image != blank %}
     <div class="collection-banner tablet-and-down--hide">
       <div class="asset-desk test">
         <img class="lazyload lazyload-fade"
@@ -9,14 +10,16 @@
         alt="{{ collection.title | escape }}">
       </div>
     </div>
+    {% endif %}
 
     {% comment %} Mobile Image {% endcomment%}
-      
-      <div class="asset-mob collection_img" style="display:none">
+      {% if block.settings.mobile_image != blank %}
+      <div class="asset-mob collection_img collection_img_hide">
         <img class="lazyload lazyload-fade"
         data-src="{{ block.settings.mobile_image | img_url: '800x' }}"
         alt="{{ collection.title | escape }}">
-      </div>
+      </div> 
+      {% endif %}
       
   {% endif %}
 {% endfor %}
