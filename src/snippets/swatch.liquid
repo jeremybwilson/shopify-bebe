@@ -22,7 +22,7 @@
     {% for value in option.values %}
 
       {% comment %} :: SWATCH IMG URL :: {% endcomment %}
-      {% assign color_slugified = value | replace: ' ', '-' | downcase %}
+      {% assign color_slugified = value | replace: ' ', '-' | replace: '/', '-' | downcase %}
       {% assign image_url = current_sku | prepend: 'product_' | append: '_' | append: color_slugified | append: '_swatch.jpg' | file_url %}
 
       {% comment %} :: SWATCH IDENTIFIERS :: {% endcomment %}
