@@ -1245,7 +1245,7 @@
       "offer-tab": {
         "type": "offer-tab",
         "settings": {
-          "show": false,
+          "show": true,
           "homepage_only": false,
           "label": "GET 20% OFF"
         }
@@ -1260,6 +1260,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1550709328871": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF ENTIRE SITE",
+              "text": "<p>Save on all regular-priced &amp; already reduced styles with code EVERYTHING.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code EVERYTHING at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/25/19 at 11:59 pm PST.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1293,18 +1305,6 @@
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
               "coupon_size": "half",
-              "coupon_color": "light"
-            }
-          },
-          "1550709328871": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF ENTIRE SITE",
-              "text": "<p>Save on all regular-priced &amp; already reduced styles with code EVERYTHING.</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code EVERYTHING at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 2/25/19 at 11:59 pm PST.</p>",
-              "coupon_size": "full",
               "coupon_color": "light"
             }
           }
@@ -1387,8 +1387,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/limited-time-20-off-entire-store-desktop.jpg",
-              "mobile_image": "shopify://shop_images/limited-time-20-off-entire-store-mobile.jpg",
+              "image": "shopify://shop_images/sitewide-discount.jpg",
+              "mobile_image": "shopify://shop_images/sitewide-discount-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "New Season Cuteness",
               "hide_header_desktop": true,
