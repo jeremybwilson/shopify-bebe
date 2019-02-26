@@ -471,17 +471,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     var from = this.queryParams.page == 1 ? this.queryParams.page : (this.queryParams.page - 1) * this.queryParams.limit + 1;
     var to = from + data.products.length - 1;
     jQ(this.selector.bottomPagination).find('.count').html(bcSfFilterConfig.label.showing_items + ' ' + from + '-' + to + ' ' +  bcSfFilterConfig.label.pagination_of + ' ' + data.total_product);
-
-    jQ(this.selector.bottomPagination).find('.count').html('');
-
-    document.getElementById("pagination").append($productsCountWidget);
-
-    var tempTotalItems = jQ(".collection-results-count.js-results-count").parent('div').html();
-    jQ(".collection-results-count.js-results-count").parent('div').remove();
-
-    /*document.getElementById("pagination").append($tempTotalItems);*/
-
-    jQ("#pagination").append(tempTotalItems)
+    jQ(this.selector.bottomPagination).find('.count').hide();
 
 
     // APPLY (MOBILE) : Filters apply on selection, "Apply" closes menu on moble.  
