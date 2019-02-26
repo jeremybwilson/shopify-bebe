@@ -7,7 +7,8 @@
     {% if section.settings.show_contact_form %}
       {% if section.settings.show_contact_form != false %}
       <div id="bebe-form">
-        {% include 'contact' %}
+        {% comment %} {% include 'contact' %} {% endcomment %}
+        <script type="text/javascript" src="https://form.jotform.me/jsform/90502275900450"></script>
       </div>
       {% endif %}
     {% endif %}
