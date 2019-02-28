@@ -558,7 +558,7 @@
             "settings": {
               "image": "shopify://shop_images/sale-promo.jpg",
               "mobile_image": "shopify://shop_images/sale-promo-mobile.jpg",
-              "cta_full_image": "shopify://collections/shoes",
+              "cta_full_image": "",
               "heading": "",
               "hide_header_desktop": true,
               "subheading": "<br>",
@@ -1260,6 +1260,30 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1551245497483": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "25% OFF ALL DRESSES & JUMPSUITS",
+              "text": "<p>Enjoy 25% off original prices for a limited time.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/dresses",
+              "details_text": "<p>Online only. Priced as marked.</p>",
+              "coupon_size": "half",
+              "coupon_color": "light"
+            }
+          },
+          "1551245688567": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "SALE UP TO 50% OFF",
+              "text": "<p>Save on hundreds of styles. Priced as marked.</p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Online only. Select styles. Priced as marked. Final sale.</p>",
+              "coupon_size": "half",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1293,30 +1317,6 @@
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1551245497483": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "25% OFF ALL DRESSES & JUMPSUITS",
-              "text": "<p>Enjoy 25% off original prices for a limited time.</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/dresses",
-              "details_text": "<p>Online only. Priced as marked.</p>",
-              "coupon_size": "half",
-              "coupon_color": "light"
-            }
-          },
-          "1551245688567": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "SALE UP TO 50% OFF",
-              "text": "<p>Save on hundreds of styles. Priced as marked.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Online only. Select styles. Priced as marked. Final sale.</p>",
-              "coupon_size": "half",
               "coupon_color": "light"
             }
           }
@@ -1524,6 +1524,7 @@
       },
       "1548306390190": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1548306390190-0": {
             "type": "image",
@@ -1610,7 +1611,7 @@
             "settings": {
               "image": "shopify://shop_images/pretty-ones.jpg",
               "mobile_image": "shopify://shop_images/pretty-ones_59eeb8d4-2199-4b1d-b771-ba54d0717d14.jpg",
-              "link": "shopify://collections/dresses",
+              "link": "shopify://collections/the-pretty-ones",
               "heading_text": "The Pretty Ones",
               "text": "",
               "cta_text": "Shop Now",
