@@ -1581,11 +1581,13 @@
       "1549408161041": {
         "type": "indi-forum",
         "settings": {
-          "title": "Become A #BEBEBABE",
+          "title": "#BEBEBABE? GET PAID.",
           "description": "Upload your photos and videos wearing Bebe and earn a commission on all sales you influence",
+          "find_out_more_button_text": "Find Out More",
+          "find_out_more_button_url": "https://www.bebe.com/pages/brand-ambassador",
           "submit_button_text": "Upload Photo / Video",
           "submit_button_url": "https://indi.com/Submit/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
-          "thumbnail_url": "https://images.indi.com/s3/indi-upload-us-west-1/Image/e5fcaf8c02a52b58c800df9869e492a6.jpg"
+          "thumbnail_url": "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?3165571990720349519"
         }
       },
       "1549408222080": {
