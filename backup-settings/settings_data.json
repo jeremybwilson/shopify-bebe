@@ -1400,8 +1400,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/chic-look.jpg",
-              "mobile_image": "shopify://shop_images/chic-look-mobile.jpg",
+              "image": "shopify://shop_images/25-off-ends-tonight.jpg",
+              "mobile_image": "shopify://shop_images/25-off-ends-tonight-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "New Season Cuteness",
               "hide_header_desktop": true,
@@ -1583,8 +1583,6 @@
         "settings": {
           "title": "#BEBEBABE? GET PAID.",
           "description": "Upload your photos and videos wearing Bebe and earn a commission on all sales you influence",
-          "find_out_more_button_text": "Find Out More",
-          "find_out_more_button_url": "https://www.bebe.com/pages/brand-ambassador",
           "submit_button_text": "Upload Photo / Video",
           "submit_button_url": "https://indi.com/Submit/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
           "thumbnail_url": "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?3165571990720349519"
