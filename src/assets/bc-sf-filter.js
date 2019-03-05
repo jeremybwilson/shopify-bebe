@@ -414,7 +414,9 @@ BCSfFilter.prototype.buildInfiniteLoadingEvent = function(data) {
 // Build Additional Elements
 BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
 
-
+    // Add funtion scrollBack
+    var productItemSelector = '.product-index';
+    scrollBack(productItemSelector);
 
     var ui = {
         filterHeaderText: '.bc-sf-filter-block-title span', // Text for filter headers, appending the count here
@@ -549,6 +551,78 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
         time: new Date()
     });
 };
+
+function scrollBack(productItemSelector) {
+    // Get current page
+    var page = parseInt(bcsffilter.queryParams.page);
+    // Add id & data-page attribute to item
+    jQ(productItemSelector).each(function() {
+        if (jQ(this).attr('id') == undefined) {
+            var idItem = jQ(this).attr('href').replace(/^_+|_+$|\//g,'') + '-' + page;
+            jQ(this).attr('id', idItem);
+        }
+        if (jQ(this).data('page') == undefined) {
+            jQ(this).attr('data-page', page);
+        }
+    });
+
+  	if (bcsffilter.isMobile()) {
+      	// Change params on the address bar when click to item
+      	jQ('.bc-sf-filter-product-item').find('a')
+          .on('touchstart', function() {
+              isScrolling = false;
+          })
+          .on('touchmove', function(e) {
+              isScrolling = true;
+          })
+          .on('touchend', function(e) {
+              if (!isScrolling ) {
+                  window.location = jQ(this).attr('href');
+                  var urlW = new URL(window.location.href);
+
+                  if (urlW.searchParams.get('page') !== null) urlW.searchParams.delete("page");
+                  if (urlW.searchParams.get('bc-product-current') !== null) urlW.searchParams.delete("bc-product-current");
+
+                  urlW.searchParams.append('bc-product-current', jQ(this).attr('id'));
+                  urlW.searchParams.append('page', jQ(this).data('page'));
+
+                  window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
+              }
+          });
+    } else {
+      	// Change params on the address bar when click to item
+        jQ(productItemSelector).click(function(e){
+           var urlW = new URL(window.location.href);
+
+            if (urlW.searchParams.get('page') !== null) urlW.searchParams.delete("page");
+            if (urlW.searchParams.get('bc-product-current') !== null) urlW.searchParams.delete("bc-product-current");
+
+            urlW.searchParams.append('bc-product-current', jQ(this).attr('id'));
+            urlW.searchParams.append('page', jQ(this).data('page'));
+
+            window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
+        }); 
+    }
+    
+    // Turn off scroll default  of browser
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    if (history.state !== null) {
+        var urlW = new URL(window.location.href);
+        var itemId = urlW.searchParams.get('bc-product-current');
+        if (itemId !== null) {
+            urlW.searchParams.delete("bc-product-current");
+            if (urlW.searchParams.get('page') == 1) urlW.searchParams.delete("page");
+            window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
+          	
+          	setTimeout(function(){
+              	jQ("html, body").animate({ scrollTop: jQ('#' + itemId).offset().top }, 1000);
+            }, 1000)
+            
+        }
+    }
+}
 
 
 // Build Default layout
