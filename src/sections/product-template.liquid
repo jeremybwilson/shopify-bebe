@@ -194,7 +194,7 @@
           //template == 'product.quick' and 
         {%endcomment%}
         {%- if template == 'product.quick' and product.compare_at_price > product.price -%}
-          <div class="final_sale sale_quikeview">{{finalSaleText}}</div>
+          <div class="final_sale sale_quikeview">{{settings.final_sale}}</div>
         {%- endif -%}
 
   <div class="clear"></div>
