@@ -1572,7 +1572,7 @@
         "default": "<script src=\"https:\/\/checkout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>"
       }
     ]
-  },,
+  },
   {
     "name": "Final Sale Text",
     "settings": [
