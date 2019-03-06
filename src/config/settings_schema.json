@@ -1572,5 +1572,16 @@
         "default": "<script src=\"https:\/\/checkout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>"
       }
     ]
+  },,
+  {
+    "name": "Final Sale Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "final_sale",
+        "label": "Final sale text",
+        "default":"FINAL SALE.No returns or exchanges."
+      }
+    ]
   }
 ]
