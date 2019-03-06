@@ -1,6 +1,6 @@
   
 {% comment %} CART BANNER IMAGE {% endcomment %}
-
+{% assign finalSaleText = 'FINAL SALE.No returns or exchanges.' %}
 {% if section.settings.image != blank %}
 
   <div class="cart-banner">
@@ -105,6 +105,14 @@
                 </div>                
 
               </div>
+
+              {%comment%}
+                Final sale text for all sale product
+                //template == 'cart' and 
+              {%endcomment%}
+              {% if item.variant.compare_at_price > item.price %}
+                <div class="final_sale sale_cart">{{finalSaleText}}</div>
+              {%- endif -%}
 
               <div class="cart-item-actions">
                 <div class="cart-remove">
