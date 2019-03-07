@@ -44,9 +44,9 @@ var bcSfFilterTemplate = {
     'itemBadgeHtml': '<div class="react-badge" data-badge=\'{{badgeTags}}\'></div>',
 
     // Pagination Template
-    'previousHtml': '<a href="{{itemUrl}}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
-    'nextHtml': '<a href="{{itemUrl}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
-    'pageItemHtml': '<a href="{{itemUrl}}">{{itemTitle}}</a>',
+    'previousHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
+    'nextHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
+    'pageItemHtml': '<span class="current2" onclick="javascript:location.href=\'{{itemUrl}}\'">{{itemTitle}}</span>',
     'pageItemSelectedHtml': '<span class="current">{{itemTitle}}</span>',
     'pageItemRemainHtml': '{{itemTitle}}',
     'paginateHtml': '<span class="count"></span>{{previous}}{{pageItems}}{{next}}',
@@ -276,12 +276,13 @@ BCSfFilter.prototype.buildPagination = function(totalProduct) {
         for (var iBefore = currentPage - 1; iBefore > currentPage - 3 && iBefore > 0; iBefore--) {
             beforeCurrentPageArr.unshift(iBefore);
         }
-        if (currentPage - 4 > 0) {
-            beforeCurrentPageArr.unshift('...');
+        if (currentPage - 3 > 0) {
+            beforeCurrentPageArr.unshift(currentPage - 3);
         }
-        if (currentPage - 4 >= 0) {
-            beforeCurrentPageArr.unshift(1);
-        }
+        /**** PDM-204 
+        // if (currentPage - 3 >= 0) {
+        //     beforeCurrentPageArr.unshift(1);
+        // } PDM-204 ****/
         beforeCurrentPageArr.push(currentPage);
 
         var afterCurrentPageArr = [];
@@ -289,11 +290,12 @@ BCSfFilter.prototype.buildPagination = function(totalProduct) {
             afterCurrentPageArr.push(iAfter);
         }
         if (currentPage + 3 < totalPage) {
-            afterCurrentPageArr.push('...');
+            afterCurrentPageArr.push(currentPage + 3);
         }
-        if (currentPage + 3 <= totalPage) {
-            afterCurrentPageArr.push(totalPage);
-        }
+        /**** PDM-204 
+        // if (currentPage + 3 <= totalPage) {
+        //     afterCurrentPageArr.push(totalPage);
+        // }PDM-204 ****/
 
         // Build page items
         var pageItemsHtml = '';
@@ -412,7 +414,9 @@ BCSfFilter.prototype.buildInfiniteLoadingEvent = function(data) {
 // Build Additional Elements
 BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
 
-
+    // Add funtion scrollBack
+    var productItemSelector = '.product-index';
+    scrollBack(productItemSelector);
 
     var ui = {
         filterHeaderText: '.bc-sf-filter-block-title span', // Text for filter headers, appending the count here
@@ -469,6 +473,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     var from = this.queryParams.page == 1 ? this.queryParams.page : (this.queryParams.page - 1) * this.queryParams.limit + 1;
     var to = from + data.products.length - 1;
     jQ(this.selector.bottomPagination).find('.count').html(bcSfFilterConfig.label.showing_items + ' ' + from + '-' + to + ' ' +  bcSfFilterConfig.label.pagination_of + ' ' + data.total_product);
+    jQ(this.selector.bottomPagination).find('.count').hide();
 
 
     // APPLY (MOBILE) : Filters apply on selection, "Apply" closes menu on moble.  
@@ -546,6 +551,78 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
         time: new Date()
     });
 };
+
+function scrollBack(productItemSelector) {
+    // Get current page
+    var page = parseInt(bcsffilter.queryParams.page);
+    // Add id & data-page attribute to item
+    jQ(productItemSelector).each(function() {
+        if (jQ(this).attr('id') == undefined) {
+            var idItem = jQ(this).attr('href').replace(/^_+|_+$|\//g,'') + '-' + page;
+            jQ(this).attr('id', idItem);
+        }
+        if (jQ(this).data('page') == undefined) {
+            jQ(this).attr('data-page', page);
+        }
+    });
+
+  	if (bcsffilter.isMobile()) {
+      	// Change params on the address bar when click to item
+      	jQ('.bc-sf-filter-product-item').find('a')
+          .on('touchstart', function() {
+              isScrolling = false;
+          })
+          .on('touchmove', function(e) {
+              isScrolling = true;
+          })
+          .on('touchend', function(e) {
+              if (!isScrolling ) {
+                  window.location = jQ(this).attr('href');
+                  var urlW = new URL(window.location.href);
+
+                  if (urlW.searchParams.get('page') !== null) urlW.searchParams.delete("page");
+                  if (urlW.searchParams.get('bc-product-current') !== null) urlW.searchParams.delete("bc-product-current");
+
+                  urlW.searchParams.append('bc-product-current', jQ(this).attr('id'));
+                  urlW.searchParams.append('page', jQ(this).data('page'));
+
+                  window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
+              }
+          });
+    } else {
+      	// Change params on the address bar when click to item
+        jQ(productItemSelector).click(function(e){
+           var urlW = new URL(window.location.href);
+
+            if (urlW.searchParams.get('page') !== null) urlW.searchParams.delete("page");
+            if (urlW.searchParams.get('bc-product-current') !== null) urlW.searchParams.delete("bc-product-current");
+
+            urlW.searchParams.append('bc-product-current', jQ(this).attr('id'));
+            urlW.searchParams.append('page', jQ(this).data('page'));
+
+            window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
+        }); 
+    }
+    
+    // Turn off scroll default  of browser
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    if (history.state !== null) {
+        var urlW = new URL(window.location.href);
+        var itemId = urlW.searchParams.get('bc-product-current');
+        if (itemId !== null) {
+            urlW.searchParams.delete("bc-product-current");
+            if (urlW.searchParams.get('page') == 1) urlW.searchParams.delete("page");
+            window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
+          	
+          	setTimeout(function(){
+              	jQ("html, body").animate({ scrollTop: jQ('#' + itemId).offset().top }, 1000);
+            }, 1000)
+            
+        }
+    }
+}
 
 
 // Build Default layout

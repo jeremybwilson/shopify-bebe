@@ -3393,7 +3393,7 @@ function debounce(fn, wait, immediate) {
     }
   };
 }
-// Zestard code
+
 $(document).ready(function(){
   var mob_img = $('.collection_img');
   $('.collection-banner--mobile').append(mob_img);

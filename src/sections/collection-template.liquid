@@ -1,7 +1,4 @@
-{% assign has_banner = false %}
-{% if collection.description contains 'has--category-banner' %}
-  {% assign has_banner = true %}
-{% endif %}
+
 
 <div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-template">
   {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
@@ -114,23 +111,21 @@
           {% endcomment %}
         </div>
 
+        
+        <div id="bc-sf-filter-load-more"></div>
+
+        {% comment %} :: PAGINATION :: {% endcomment %}
+        <div id="pagination" class="desktop-12 tablet-6 mobile-3">
+          <div id="bc-sf-filter-bottom-pagination"></div>
+        </div>
         <div class="desktop-12 tablet-6 mobile-3">
           <div id="collection-current-products-count-widget">
             Showing <span id="collection-current-products-count"></span>
               of <span  id="collection-total-products-count"></span> items
           </div>
         </div>
-
-        <div id="bc-sf-filter-load-more"></div>
-
-
         <div class="desktop-12 tablet-6 mobile-3">
           <div class="collection-results-count js-results-count"></div>
-        </div>
-
-        {% comment %} :: PAGINATION :: {% endcomment %}
-        <div id="pagination" class="desktop-12 tablet-6 mobile-3">
-          <div id="bc-sf-filter-bottom-pagination"></div>
         </div>
 
       {% endpaginate %}

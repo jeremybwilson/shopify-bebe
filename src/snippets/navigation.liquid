@@ -25,9 +25,9 @@
                     {% comment %} NB. Thanks to the magic of Flexbox, container items with flex-direction: column and flex-wrap: wrap do NOT grow according to its children's sizes.
                     So this workaround adds extra column-widths per column multiples (in this case, 5) {% endcomment %}
                     {% assign columns_wide = '' %}
-                    {% if link.links.size > 10 %}
+                    {% if link.links.size > 5 %}
                       {% assign columns_wide = 'columns-3-wide' %}
-                    {% elsif link.links.size > 5 %}
+                    {% elsif link.links.size < 6 %} 
                       {% assign columns_wide = 'columns-1-wide' %}
                     {% endif %}
 
