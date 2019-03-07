@@ -3360,6 +3360,8 @@ $(document).ready(function() {
   sections.register('product-section', theme.Product);
   sections.register('search-template', theme.Search);
   sections.register('offer-tab-section', theme.OfferTab);
+  $(".index_Slider ul.flex-direction-nav li a.flex-prev").attr('title','flex-prev');
+  $(".index_Slider ul.flex-direction-nav li a.flex-next").attr('title','flex-next');
 });
 
 /*============================================================================
