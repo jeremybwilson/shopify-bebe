@@ -37,9 +37,11 @@
 
         {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
         {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <ul>
           <li class="nav-item nav-currencies-picker">
             {% include 'borderfree-open-modal' %}
           </li>
+        </ul>
         {% endif %}
 
         {% if section.settings.top_left_highlight_link != blank %}
@@ -87,7 +89,7 @@
 
           {% comment %} ..:: CART ::.. {% endcomment %}
           <li class="nav-item nav-cart">
-            <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %} class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false" {% endif %}>
+            <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %} class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false" {% endif %} title="cart">
               
               {% if section.settings.cart_icon == 'cart' %}
                 {% include 'svg-icon-cart' %}
@@ -108,9 +110,11 @@
 
       {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
       {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <ul>
         <li class="nav-item nav-currencies-picker">
           {% include 'borderfree-open-modal' %}
         </li>
+        </ul>
       {% endif %}
 
       {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
