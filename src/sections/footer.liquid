@@ -21,8 +21,8 @@
                   <input type="hidden" id="thank-you-url-footer" name="thx" value="{{ shop.secure_url }}{{ settings.newsletter_signup_thank_you_page }}">
                   <input type="hidden" id="error-url-footer" name="err" value="{{ shop.secure_url }}{{ settings.newsletter_signup_error_page }}">
                   <input type="hidden" id="unsub-url-footer" name="usub" value="{{ shop.secure_url }}{{ settings.newsletter_signup_unsub_page }}">
-                  <label id="subscribe-footer-newsletter" for="footer-newsletter-email">
-                    <input class="form-control subscribe-form" type="email" id="footer-newsletter-email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}" aria-hidden="true">
+                  <label id="subscribe-footer-newsletter" for="footer-newsletter">
+                    <input class="form-control subscribe-form" type="email" id="email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}">
                   </label>
                   <label id="button-footer-newsletter-submit" for="footer-newsletter-submit">
                     <input id="footer-newsletter-submit" type="submit" value="{{ section.settings.newsletter_submit_button }}">
