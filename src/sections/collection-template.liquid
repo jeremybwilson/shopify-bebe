@@ -1,15 +1,14 @@
-{% assign has_banner = false %}
-{% if collection.description contains 'has--category-banner' %}
-  {% assign has_banner = true %}
-{% endif %}
+
 
 <div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-template">
   {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
+  {% comment %}
   {% if has_banner %}
     <div class="collection-banner tablet-and-down--hide">
-      {% include 'collection-banner-image' with 'desktop' %}
+      {{desktop_banner}}
     </div>
   {% endif %}
+  {% endcomment %}
 
   <div class="row">
 
@@ -39,11 +38,11 @@
     </div><!--#collection--sidebar-->
 
     {% comment %} :: COLLECTION MOBILE BANNER :: {% endcomment %}
-    {% if has_banner %}
-      <div class="collection-banner collection-banner--mobile tablet-and-up--hide">
-        {% include 'collection-banner-image' with 'mobile' %}
-      </div>
-    {% endif %}
+    
+    <div class="collection-banner collection-banner--mobile tablet-and-up--hide">
+     
+    </div>
+    
 
     {% comment %} :: COLLECTION MAIN :: {% endcomment %}
     <div id="collection--main" class="mobile-3 desktop-10">

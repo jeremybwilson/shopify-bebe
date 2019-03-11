@@ -23,7 +23,7 @@
       data-src="{{ banner_mobile | file_img_url: '800x' }}"
       alt="{{ collection.title | escape }}">
   </div>
-{% endcapture %}
+{%- endcapture -%}
 
 {% case query %}
   {% when 'desktop' %}
