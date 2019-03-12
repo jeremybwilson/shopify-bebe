@@ -37,7 +37,7 @@
 
         {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
         {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
-        <ul>
+        <ul class="currencies-picker-list">
           <li class="nav-item nav-currencies-picker">
             {% include 'borderfree-open-modal' %}
           </li>
@@ -110,7 +110,7 @@
 
       {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
       {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
-        <ul>
+        <ul class="currencies-picker-list">
         <li class="nav-item nav-currencies-picker">
           {% include 'borderfree-open-modal' %}
         </li>
