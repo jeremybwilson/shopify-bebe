@@ -43,6 +43,8 @@
     }
 
     .body {
+      max-width: 640px;
+      margin: 60px auto;
       border: 1px solid #d3dbe2;
     }
 
@@ -228,7 +230,7 @@
                                       Discount
                                     {% endif %}
                                   {% endcapture %}
-            
+
                                   <tr class="subtotal-line">
                                     <td class="subtotal-line__title">
                                       <p>
@@ -245,7 +247,7 @@
                                   </tr>
                                 {% endif %}
                               {% endfor %}
-        
+
                               <tr class="subtotal-line">
                                 <td class="subtotal-line__title">
                                   <p>Subtotal</p>
@@ -254,7 +256,7 @@
                                   <strong>{{ subtotal_price | money }}</strong>
                                 </td>
                               </tr>
-        
+
                               <tr class="subtotal-line">
                                 <td class="subtotal-line__title">
                                   <p>Shipping</p>
@@ -325,7 +327,7 @@
                                     {% else %}
                                       {% capture transaction_name %}{{ transaction.gateway | replace: "_", " " | capitalize }}{% endcapture %}
                                     {% endif %}
-              
+
                                     <tr class="subtotal-line">
                                       <td class="subtotal-line__title">
                                         <p>
@@ -385,7 +387,7 @@
                 </table>
                 <table class="container">
                   <tr>
-                    <td>                      
+                    <td>
                       <table class="row">
                         <tr>
                           {% if requires_shipping and shipping_address %}
@@ -438,7 +440,7 @@
                 </table>
               </center>
             </td>
-          </tr>        
+          </tr>
         </table> {% comment %}{- END Customer information -}{% endcomment %}
 
         {% comment %}{- FOOTER -}{% endcomment %}
@@ -448,7 +450,6 @@
               <center>
                 <table class="container" style="text-align:center;margin-bottom:40px;">
                   <tr>
-                    <td><a href="#" style="color:#000;text-decoration:none;letter-spacing:1px;">FIND A STORE</a></td>
                     <td><a href="{{ shop.url }}/account?utm_source=tran&utm_medium=email&utm_campaign=order_confirmation" style="color:#000;text-decoration:none;letter-spacing:1px;">MY ACCOUNT</a></td>
                     <td><a href="{{ shop.url }}/pages/clubbebe?utm_source=tran&utm_medium=email&utm_campaign=order_confirmation" style="color:#000;text-decoration:none;letter-spacing:1px;">CLUBBEBE</a></td>
                   </tr>
@@ -467,8 +468,19 @@
                         to your address book.
                       </p>
                       <p class="disclaimer__subtext">
-                        bebe Stores, Inc., 400 Valley Drive, Brisbane, CA 94005 <br>
-                        Copyright &copy; {{ 'now' | date: "%Y" }} bebe Stores, Inc. All rights reserved.
+                        BB Brand Holdings, LLC, 946 W. 17th St., Costa Mesa, CA 92627<br>
+                        Copyright &copy; {{ 'now' | date: "%Y" }} bebe Online. All rights reserved.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+              <center>
+                <table class="container" style="text-align:center;">
+                  <tr>
+                    <td>
+                      <p class="disclaimer__subtext"><br /><br />
+                        PLEASE NOTE: We’re experiencing temporary shipping delays as we move inventory to a new location. We’ll do all we can to expedite order processing during this time; however, orders placed between 3/17/19 and 3/27/19 will be delayed approximately 7-10 business days. Free shipping will automatically be applied to all orders shipped to the 48 contiguous United States.
                       </p>
                     </td>
                   </tr>
