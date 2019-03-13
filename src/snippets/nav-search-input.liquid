@@ -1,11 +1,8 @@
 <form action="/search" method="get">
-<label for="q" class="hide">q</label>
-  <input class="nav-search-input" type="text" name="q" id="q" aria-hidden="true" placeholder="{{ 'general.search.placeholder' | t }}" />
-  <label for="type" type="hidden" class="hide">q</label>
-  <input type="hidden" id="type" name="type" value="product" />
+  <input class="nav-search-input" type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+  <input type="hidden" name="type" value="product" />
   <div class="nav-search-icon-wrap">
-  	<label for="nav-search" class="empty_a_link">search</label>
-    <input class="nav-search-submit" name="search" id="nav-search" type="submit" aria-hidden="true" value=""/>
+    <input class="nav-search-submit" type="submit" value=""/>
     {% include 'svg-icon-search' %}
   </div>
 </form>

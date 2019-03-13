@@ -1353,7 +1353,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify://shop_images/womens-day-25-off-everything-cart-page.jpg",
+          "image": "",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1516,8 +1516,8 @@
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/sale.jpg",
-              "mobile_image": "shopify://shop_images/sale-mobile.jpg",
+              "image": "shopify://shop_images/ends-tonight-additional-40-off-all-sale-desktop.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-additional-40-off-all-sale-mobile.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "",
               "hide_header_desktop": false,
@@ -1570,8 +1570,8 @@
         "settings": {
           "title": "#BEBEBABE? GET PAID.",
           "description": "Upload your photos & videos to earn commission on all bebe.com sales you influence.",
-          "submit_button_text": "Upload Photo / Video",
-          "submit_button_url": "https://indi.com/Submit/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
+          "submit_button_text": "FIND OUT MORE",
+          "submit_button_url": "https://www.bebe.com/pages/brand-ambassador",
           "thumbnail_url": "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?3165571990720349519"
         }
       },

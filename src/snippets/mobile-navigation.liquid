@@ -10,7 +10,7 @@
       {% if link.links != blank %}
         <li class="accordion-header accordion-toggle {{ link.title | replace: '.', ' ' | handle }}" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</li>
         
-        <li class="accordion-content">
+        <div class="accordion-content">
           <ul class="sub">
             {% for sub_link in link.links %}
 
@@ -24,10 +24,10 @@
                 {% if sub_link.links != blank  %}
                   
                   {% comment %} :: LEVEL 2 : Title :: {% endcomment %}
-                  <li class="accordion-sub-header accordion-toggle" aria-haspopup="true" aria-expanded="false"><span>{{ sub_link.title | escape }}</span></li>
+                  <div class="accordion-sub-header accordion-toggle" aria-haspopup="true" aria-expanded="false"><span>{{ sub_link.title | escape }}</span></div>
                   
                   {% comment %} :: LEVEL 2 : Nested Sub-Sub-Nav Menu :: {% endcomment %}
-                  <li class="accordion-content2">
+                  <div class="accordion-content2">
                     <ul class="sub">
                       {% for sub_sub_link in sub_link.links %}
                         
@@ -47,7 +47,7 @@
 
                       {% endfor %}
                     </ul>
-                  </li>
+                  </div>
 
 
                 {% comment %} 
@@ -69,7 +69,7 @@
 
             {% endfor %}
           </ul>
-        </li>
+        </div>
 
 
       {% comment %} :: LEVEL 1 : FLAT : Simple Menu (has no nested children) :: {% endcomment %}
