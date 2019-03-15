@@ -3,7 +3,6 @@
  {% if section.settings.sort_by %} 
     <li class="clearfix filter">
       <h4 class="sort-label">{{ 'collections.sorting.title' | t }}</h4> 
-      <label for="sort-by" class="empty_a_link" aria-hidden="true"></label>
       <select id="sort-by" class="styled-select">
         <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
         <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
@@ -50,9 +49,9 @@
 
       {% assign tags = section.settings.sort_a  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}    
       <h4>{{ section.settings.filter_1_title }}</h4>
-      <label for="fillter_sort_a" class="empty_a_link" aria-hidden="true"></label>
-      <select id="fillter_sort_a" class="styled-select coll-filter" aria-hidden="true">
+      <select class="styled-select coll-filter">
         <option value="">{{ 'collections.filter.all' | t }}</option>
+        
         {% for tag in tags %}
           {% if current_tags contains tag %}
             <option value="{{ tag | handle }}" selected>{{ tag }}</option>
@@ -60,6 +59,7 @@
             <option value="{{ tag | handle }}">{{ tag }}</option>
           {% endif %}
         {% endfor %}
+
       </select>
 
     </li>
@@ -69,8 +69,7 @@
     <li class="clearfix filter">
     {% assign tags = section.settings.sort_b  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}    
     <h4 class="sort-label">{{ section.settings.filter_2_title }}</h4>
-        <label for="fillter_sort_b" class="empty_a_link" aria-hidden="true"></label>
-        <select id="fillter_sort_b" class="styled-select coll-filter" aria-hidden="true">
+        <select class="styled-select coll-filter">
           <option value="">{{ 'collections.filter.all' | t }}</option>
           {% for tag in tags %}
           {% if current_tags contains tag %}
@@ -87,8 +86,7 @@
     <li class="clearfix filter">
   {% assign tags = section.settings.sort_c  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}    
   <h4 class="sort-label">{{ section.settings.filter_3_title }}</h4>
-      <label for="fillter_sort_c" class="empty_a_link" aria-hidden="true"></label>
-        <select id="fillter_sort_c" class="styled-select coll-filter" aria-hidden="true">
+      <select class="styled-select coll-filter">
         <option value="">{{ 'collections.filter.all' | t }}</option>
         {% for tag in tags %}
         {% if current_tags contains tag %}
