@@ -3398,8 +3398,4 @@ $(document).ready(function(){
   var mob_img = $('.collection_img');
   $('.collection-banner--mobile').append(mob_img);
   $('.collection_img').removeClass('collection_img_hide');
-
-  // flex slider - ADA compliance
-  $(".index_Slider ul.flex-direction-nav li a.flex-prev").attr('title','flex-prev');
-  $(".index_Slider ul.flex-direction-nav li a.flex-next").attr('title','flex-next');  
 });
