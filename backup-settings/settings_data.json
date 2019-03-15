@@ -1264,11 +1264,11 @@
           "1552019505927": {
             "type": "text_block",
             "settings": {
-              "heading_text": "ADDITIONAL 40% OFF ALL SALE",
-              "text": "<p>Enjoy extra savings on all sale styles with code <strong>EXTRA40</strong>.</p>",
+              "heading_text": "40% OFF ALL SALE",
+              "text": "<p>For a limited time, enjoy 40% off all sale styles. Priced as marked.</p>",
               "cta_text": "Shop Sale",
               "link": "shopify://collections/sale",
-              "details_text": "<p>Enjoy an additional 40% off all sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code EXTRA40 at checkout. Not valid on regular-priced items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 3/13/19 at 11:59 pm PDT.</p>",
+              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1308,13 +1308,39 @@
               "coupon_size": "full",
               "coupon_color": "light"
             }
+          },
+          "1552547749827": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "Our collections",
+              "text": "<p>Use this text field to describe the offer beyond the headline.</p>",
+              "cta_text": "Shop Now",
+              "link": "",
+              "details_text": "<p>Place relevant promotional details or disclaimers here.</p>",
+              "coupon_size": "full",
+              "coupon_color": "medium"
+            }
+          },
+          "1552547862016": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "15% OFF $150 OR MORE",
+              "text": "<p>Save on regular-priced &amp; sale styles with code MARCH15.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code MARCH15 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 3/18/19 at 11:59 pm PDT. &nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
           }
         },
         "block_order": [
+          "1552547862016",
           "1552019505927",
           "1545990628348",
           "1545990640803",
-          "1545991169940"
+          "1545991169940",
+          "1552547749827"
         ],
         "settings": {
           "show_header": true,
@@ -1353,7 +1379,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify://shop_images/15-off-150.jpg",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
