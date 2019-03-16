@@ -270,15 +270,15 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "New",
-              "nav_image": "shopify://shop_images/shop-spring-florals.jpg",
-              "nav_promo_link": "shopify://collections/floral-fabulous"
+              "nav_image": "shopify://shop_images/shop-festival.jpg",
+              "nav_promo_link": "shopify://collections/festival-fabulous"
             }
           },
           "1522184323686": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Dresses",
-              "nav_image": "shopify://shop_images/shop-spring-dresses_108ae761-f49f-419b-a887-11a54e807089.jpg",
+              "nav_image": "shopify://shop_images/shop-spring-dresses_6a681010-fddc-44e0-a55b-d56c19d5286a.jpg",
               "nav_promo_link": "shopify://collections/spring-dresses"
             }
           },
@@ -286,7 +286,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Jumpsuits",
-              "nav_image": "shopify://shop_images/shop-jumpsuits.jpg",
+              "nav_image": "shopify://shop_images/shop-jumpsuits_30a3011f-d9ad-4ea8-86c0-5961debe1791.jpg",
               "nav_promo_link": "shopify://collections/jumpsuits"
             }
           },
@@ -294,24 +294,24 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Tops",
-              "nav_image": "shopify://shop_images/shop-bodysuits.jpg",
-              "nav_promo_link": "shopify://collections/bodysuits"
+              "nav_image": "shopify://shop_images/shop-blouses.jpg",
+              "nav_promo_link": "shopify://collections/blouses-shirts"
             }
           },
           "1542668979700": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Bottoms",
-              "nav_image": "shopify://shop_images/shop-skirts.jpg",
-              "nav_promo_link": "shopify://collections/skirts"
+              "nav_image": "shopify://shop_images/shop-denim.jpg",
+              "nav_promo_link": "shopify://collections/jeans"
             }
           },
           "1542668985601": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Jackets & Coats",
-              "nav_image": "shopify://shop_images/shop-jacket.jpg",
-              "nav_promo_link": "shopify://collections/blazers"
+              "nav_image": "shopify://shop_images/shop-trenches.jpg",
+              "nav_promo_link": "shopify://collections/trenches"
             }
           },
           "1542669004635": {
@@ -342,7 +342,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Sale",
-              "nav_image": "shopify://shop_images/shop-sale.jpg",
+              "nav_image": "shopify://shop_images/shop-sale_b187c22e-a504-45a5-9e4b-803c458d929b.jpg",
               "nav_promo_link": "shopify://collections/sale"
             }
           }
@@ -596,18 +596,6 @@
       "1536251685211": {
         "type": "twin-promos",
         "blocks": {
-          "1536251685211-1": {
-            "type": "text_block",
-            "settings": {
-              "image": "shopify://shop_images/party-like-its-gonna-be-on-instagram.jpg",
-              "mobile_image": "shopify://shop_images/party-like-its-gonna-be-on-instagram_9de31204-05e7-489c-ae26-bc1633a6e857.jpg",
-              "link": "shopify://collections/cocktail-evening-dresses",
-              "heading_text": "Party Like It’s Gonna Be on Instagram",
-              "text": "",
-              "cta_text": "SHOP PARTY DRESSES",
-              "cta_style": "button"
-            }
-          },
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
@@ -617,6 +605,18 @@
               "heading_text": "Feelin' Those Spring Vibes",
               "text": "",
               "cta_text": "SHOP SPRING DRESSES",
+              "cta_style": "button"
+            }
+          },
+          "1536251685211-1": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify://shop_images/party-like-its-gonna-be-on-instagram.jpg",
+              "mobile_image": "shopify://shop_images/party-like-its-gonna-be-on-instagram_9de31204-05e7-489c-ae26-bc1633a6e857.jpg",
+              "link": "shopify://collections/cocktail-evening-dresses",
+              "heading_text": "Party Like It’s Gonna Be on Instagram",
+              "text": "",
+              "cta_text": "SHOP PARTY DRESSES",
               "cta_style": "button"
             }
           }
@@ -1261,6 +1261,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1552547862016": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "15% OFF $150 OR MORE",
+              "text": "<p>Save on regular-priced &amp; sale styles with code MARCH15.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code MARCH15 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 3/18/19 at 11:59 pm PDT. &nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1552019505927": {
             "type": "text_block",
             "settings": {
@@ -1319,18 +1331,6 @@
               "details_text": "<p>Place relevant promotional details or disclaimers here.</p>",
               "coupon_size": "full",
               "coupon_color": "medium"
-            }
-          },
-          "1552547862016": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "15% OFF $150 OR MORE",
-              "text": "<p>Save on regular-priced &amp; sale styles with code MARCH15.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code MARCH15 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 3/18/19 at 11:59 pm PDT. &nbsp;</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
             }
           }
         },
