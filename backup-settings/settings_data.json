@@ -1414,8 +1414,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/limited-time-15-off-desktop.jpg",
-              "mobile_image": "shopify://shop_images/limited-time-15-off-mobile.jpg",
+              "image": "shopify://shop_images/ends-tonight-15-off-150-or-more.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-15-off-150-or-more-mobile.jpg",
               "cta_full_image": "",
               "heading": "",
               "hide_header_desktop": true,
