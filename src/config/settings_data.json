@@ -203,6 +203,7 @@
     "borderfree_merchant_snippet_dev": "<script src=\"https:\/\/stagecheckout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
     "borderfree_js_snippet_prod": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https:\/\/bfx-objects.borderfree.com\/v1\/dist\/bfx.js\"); bfx({key:'8601e7a0-98af-11e7-9d88-79dc73db0d95', env:'PROD', mode:'default', brand:'default'}); <\/script>",
     "borderfree_merchant_snippet_prod": "<script src=\"https:\/\/checkout.borderfree.com\/htmlcheckout\/resources\/js\/merchant.js\"><\/script>",
+    "final_sale": "FINAL SALE. No returns or exchanges.",
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/logo_checkout.png",
     "checkout_logo_position": "left",
@@ -270,23 +271,23 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "New",
-              "nav_image": "shopify:\/\/shop_images\/unnamed.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/the-pretty-ones"
+              "nav_image": "shopify:\/\/shop_images\/shop-spring-florals.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/floral-fabulous"
             }
           },
           "1522184323686": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Dresses",
-              "nav_image": "shopify:\/\/shop_images\/unnamed-1.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/work-dresses"
+              "nav_image": "shopify:\/\/shop_images\/shop-spring-dresses_108ae761-f49f-419b-a887-11a54e807089.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/spring-dresses"
             }
           },
           "1542668952241": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Jumpsuits",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_00e972f2-f74d-4a2d-84ff-e2ad689fc31c.jpg",
+              "nav_image": "shopify:\/\/shop_images\/shop-jumpsuits.jpg",
               "nav_promo_link": "shopify:\/\/collections\/jumpsuits"
             }
           },
@@ -294,31 +295,31 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Tops",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_ff2419fa-a52d-4599-a68e-f716a14590f2.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/blouses-shirts"
+              "nav_image": "shopify:\/\/shop_images\/shop-bodysuits.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/bodysuits"
             }
           },
           "1542668979700": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Bottoms",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_2417033e-9e23-44a1-b0b8-977cc10b2e51.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/leggings"
+              "nav_image": "shopify:\/\/shop_images\/shop-skirts.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/skirts"
             }
           },
           "1542668985601": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Jackets & Coats",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_f140fe8e-914a-4cf4-88f9-61a50a2a45f3.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/jackets-coats"
+              "nav_image": "shopify:\/\/shop_images\/shop-jacket.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/blazers"
             }
           },
           "1542669004635": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Logo",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_bee0f492-66fd-409a-a52c-630b429598a1.jpg",
+              "nav_image": "shopify:\/\/shop_images\/shop-logo-tops.jpg",
               "nav_promo_link": "shopify:\/\/collections\/logo-tops"
             }
           },
@@ -326,15 +327,15 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Shoes",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_89fed0e2-293f-4fc4-8087-c518295420b3.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/boots-booties"
+              "nav_image": "shopify:\/\/shop_images\/shop-sandals.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/sandals"
             }
           },
           "1542669019789": {
             "type": "mega_menu",
             "settings": {
               "menu_item": "Accessories",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_09d662c4-c4e9-49c3-a043-b4966a6ec4ef.jpg",
+              "nav_image": "shopify:\/\/shop_images\/shop-jewelry.jpg",
               "nav_promo_link": "shopify:\/\/collections\/jewelry"
             }
           },
@@ -342,16 +343,8 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Sale",
-              "nav_image": "shopify:\/\/shop_images\/unnamed_69f3721f-5acf-4c3f-b35a-68a96336bc6f.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/sale-dresses"
-            }
-          },
-          "1549960094390": {
-            "type": "mega_menu",
-            "settings": {
-              "menu_item": "Flash Sale",
-              "nav_image": "shopify:\/\/shop_images\/flash-nav.jpg",
-              "nav_promo_link": "shopify:\/\/collections\/flash-sale"
+              "nav_image": "shopify:\/\/shop_images\/shop-sale.jpg",
+              "nav_promo_link": "shopify:\/\/collections\/sale"
             }
           }
         },
@@ -365,8 +358,7 @@
           "1542669004635",
           "1542669012588",
           "1542669019789",
-          "1542669025513",
-          "1549960094390"
+          "1542669025513"
         ],
         "settings": {
           "full_width_header": false,
@@ -567,14 +559,14 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pretty-ones-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/pretty-ones-mobile.jpg",
-              "cta_full_image": "",
-              "heading": "The Pretty Ones",
+              "image": "shopify:\/\/shop_images\/fancy_2c0242c7-139a-4a6a-9d6e-dab663e57f5d.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/fancy-mobile_824eff5f-2c18-42c1-b186-3bbedf571e7b.jpg",
+              "cta_full_image": "shopify:\/\/collections\/special-occasion-dresses",
+              "heading": "",
               "hide_header_desktop": true,
-              "subheading": "",
-              "cta_one_link": "shopify:\/\/collections\/the-pretty-ones",
-              "cta_one_button_text": "Shop Now",
+              "subheading": "<br>",
+              "cta_one_link": "shopify:\/\/collections\/special-occasion-dresses",
+              "cta_one_button_text": "Shop Special Occasion",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -582,14 +574,14 @@
               "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
-              "hide_buttons_mobile": false,
+              "hide_buttons_mobile": true,
               "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#000000",
-              "custom_slide_alt_color": "#ffffff",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
               "caption_horizontal_offset": 0,
-              "caption_vertical": 63,
-              "caption_vertical_mobile": 73,
+              "caption_vertical": 55,
+              "caption_vertical_mobile": 70,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
             }
@@ -606,34 +598,34 @@
       "1536251685211": {
         "type": "twin-promos",
         "blocks": {
-          "1536251685211-0": {
-            "type": "text_block",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/bandage-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/bandage-mobile.jpg",
-              "link": "shopify:\/\/collections\/bandage-dresses",
-              "heading_text": "Hug Those Curves",
-              "text": "",
-              "cta_text": "SHOP BANDAGE DRESSES",
-              "cta_style": "button"
-            }
-          },
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/see-through-sexy-new.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/see-through-sexy-mobile.jpg",
-              "link": "shopify:\/\/collections\/lace-dresses",
-              "heading_text": "See-Through Sexy",
+              "image": "shopify:\/\/shop_images\/blue-jean-bebe.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/blue-jean-bebe_9aa8b6dc-9e3d-487d-a871-d9d4f801822b.jpg",
+              "link": "shopify:\/\/collections\/dresses",
+              "heading_text": "Blue Jean bebe",
               "text": "",
-              "cta_text": "shop lace dresses",
+              "cta_text": "SHOP DENIM",
+              "cta_style": "button"
+            }
+          },
+          "1536251685211-0": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/feelin-those-spring-vibes.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/feelin-those-spring-vibes_77d34d2f-1f57-4738-ab40-f2308fc9f2d7.jpg",
+              "link": "shopify:\/\/collections\/spring-dresses",
+              "heading_text": "Feelin' Those Spring Vibes",
+              "text": "",
+              "cta_text": "SHOP SPRING DRESSES",
               "cta_style": "button"
             }
           }
         },
         "block_order": [
-          "1536251685211-0",
-          "1536251685211-1"
+          "1536251685211-1",
+          "1536251685211-0"
         ],
         "settings": {
           "full_width": false
@@ -1257,7 +1249,7 @@
       "offer-tab": {
         "type": "offer-tab",
         "settings": {
-          "show": false,
+          "show": true,
           "homepage_only": false,
           "label": "GET 20% OFF"
         }
@@ -1272,14 +1264,14 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
-          "1549602776323": {
+          "1552019505927": {
             "type": "text_block",
             "settings": {
-              "heading_text": "20% OFF $150, 25% OFF $200",
-              "text": "<p>Take 20% off with code VDAY20. Take 25% off with code VDAY25.<\/p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "shopify:\/\/collections\/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off $150, enter code VDAY20 at checkout. To redeem 25% off $200, enter code VDAY25 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 2\/12\/19 at 11:59 pm PST.<\/p>",
+              "heading_text": "ADDITIONAL 40% OFF ALL SALE",
+              "text": "<p>Enjoy extra savings on all sale styles with code <strong>EXTRA40<\/strong>.<\/p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify:\/\/collections\/sale",
+              "details_text": "<p>Enjoy an additional 40% off all sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code EXTRA40 at checkout. Not valid on regular-priced items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 3\/13\/19 at 11:59 pm PDT.<\/p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1292,7 +1284,7 @@
               "cta_text": "Shop Now",
               "link": "shopify:\/\/collections\/new",
               "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.<\/p>",
-              "coupon_size": "full",
+              "coupon_size": "half",
               "coupon_color": "light"
             }
           },
@@ -1316,13 +1308,13 @@
               "cta_text": "Join the Club",
               "link": "\/account\/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.<\/p>",
-              "coupon_size": "half",
+              "coupon_size": "full",
               "coupon_color": "light"
             }
           }
         },
         "block_order": [
-          "1549602776323",
+          "1552019505927",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1365,9 +1357,9 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify:\/\/shop_images\/shopping-shipping-banner.jpg",
+          "image": "",
           "mobile_image": "",
-          "link": "",
+          "link": "shopify:\/\/pages\/coupons-discounts",
           "cart_bottom_block": ""
         }
       },
@@ -1400,29 +1392,29 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/v-day-promo-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/v-day-promo-mobile.jpg",
+              "image": "shopify:\/\/shop_images\/new-arrivals.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/mobile-2.jpg",
               "cta_full_image": "",
-              "heading": "<br>",
-              "hide_header_desktop": false,
+              "heading": "Hot New Things",
+              "hide_header_desktop": true,
               "subheading": "",
               "cta_one_link": "shopify:\/\/collections\/new",
-              "cta_one_button_text": "SHOP NOW",
+              "cta_one_button_text": "SHOP NEW ARRIVALS",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
               "cta_three_button_text": "",
-              "cta_four_link": "shopify:\/\/collections\/sale",
-              "cta_four_button_text": "Shop All Sale",
+              "cta_four_link": "",
+              "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#000000",
-              "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 27,
-              "caption_vertical": 66,
-              "caption_vertical_mobile": 78,
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#000000",
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 36.5,
+              "caption_vertical": 54,
+              "caption_vertical_mobile": 72,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1528,9 +1520,9 @@
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/psa-weve-changed-update-password-desktop.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/psa-weve-changed-update-password-mobile.jpg",
-              "cta_full_image": "shopify:\/\/pages\/reset-password",
+              "image": "shopify:\/\/shop_images\/sale.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/sale-mobile.jpg",
+              "cta_full_image": "shopify:\/\/collections\/sale",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
@@ -1580,11 +1572,11 @@
       "1549408161041": {
         "type": "indi-forum",
         "settings": {
-          "title": "Become A #BEBEBABE",
-          "description": "Upload your photos and videos wearing Bebe and earn a commission on all sales you influence",
+          "title": "#BEBEBABE? GET PAID.",
+          "description": "Upload your photos & videos to earn commission on all bebe.com sales you influence.",
           "submit_button_text": "Upload Photo \/ Video",
           "submit_button_url": "https:\/\/indi.com\/Submit\/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
-          "thumbnail_url": "https:\/\/images.indi.com\/s3\/indi-upload-us-west-1\/Image\/e5fcaf8c02a52b58c800df9869e492a6.jpg"
+          "thumbnail_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0033\/7939\/6672\/files\/bebe-ambassador.jpg?3165571990720349519"
         }
       },
       "1549408222080": {
@@ -1601,6 +1593,61 @@
           "round_corners": false,
           "animate": true
         }
+      },
+      "1551244191226": {
+        "type": "twin-promos",
+        "disabled": true,
+        "blocks": {
+          "1551244191226-0": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pretty-ones.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/pretty-ones_59eeb8d4-2199-4b1d-b771-ba54d0717d14.jpg",
+              "link": "shopify:\/\/collections\/the-pretty-ones",
+              "heading_text": "The Pretty Ones",
+              "text": "",
+              "cta_text": "Shop Now",
+              "cta_style": "button"
+            }
+          },
+          "1551244191226-1": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/new-dresses.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/new-dresses_71e9acaa-49c7-454e-ad47-50ee5ec9bcb7.jpg",
+              "link": "shopify:\/\/collections\/new",
+              "heading_text": "New Season Cuteness",
+              "text": "",
+              "cta_text": "Shop New Arrivals",
+              "cta_style": "button"
+            }
+          }
+        },
+        "block_order": [
+          "1551244191226-0",
+          "1551244191226-1"
+        ],
+        "settings": {
+          "full_width": false
+        }
+      },
+      "collection-banner": {
+        "type": "collection-banner",
+        "blocks": {
+          "1551958736348": {
+            "type": "image",
+            "settings": {
+              "collection": "sale",
+              "image": "shopify:\/\/shop_images\/collection-banner-sale-desktop_7c960ef1-ca95-4a8f-81f7-e57b2cbe05ad.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/collection-banner-sale-mobile_50d57cd8-0d64-41a5-9471-3d9556d39147.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1551958736348"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
@@ -1609,6 +1656,7 @@
       "1547711858918",
       "1536251685211",
       "1535728526385",
+      "1551244191226",
       "1547557568724",
       "1547175141098",
       "1547175393847",
@@ -1618,4 +1666,4 @@
       "1544343478271"
     ]
   }
-  }
+}

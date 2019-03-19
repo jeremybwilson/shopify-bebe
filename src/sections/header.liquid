@@ -37,9 +37,11 @@
 
         {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
         {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <ul class="currencies-picker-list">
           <li class="nav-item nav-currencies-picker">
             {% include 'borderfree-open-modal' %}
           </li>
+          </ul>
         {% endif %}
 
         {% if section.settings.top_left_highlight_link != blank %}
@@ -108,9 +110,11 @@
 
       {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
       {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <ul class="currencies-picker-list">
         <li class="nav-item nav-currencies-picker">
           {% include 'borderfree-open-modal' %}
         </li>
+        </ul>
       {% endif %}
 
       {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
