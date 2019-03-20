@@ -89,7 +89,7 @@
 
           {% comment %} ..:: CART ::.. {% endcomment %}
           <li class="nav-item nav-cart">
-            <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %} class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false" {% endif %}>
+            <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %} class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false" {% endif %} title="cart">
               
               {% if section.settings.cart_icon == 'cart' %}
                 {% include 'svg-icon-cart' %}
