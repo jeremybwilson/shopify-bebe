@@ -596,18 +596,6 @@
       "1536251685211": {
         "type": "twin-promos",
         "blocks": {
-          "1536251685211-0": {
-            "type": "text_block",
-            "settings": {
-              "image": "shopify://shop_images/newest-chickest-shop-new-arrivals.jpg",
-              "mobile_image": "shopify://shop_images/newest-chickest-shop-new-arrivals_a0bdbf7c-40a7-496c-9014-0b635467563e.jpg",
-              "link": "shopify://collections/new",
-              "heading_text": "Newest & Chicest",
-              "text": "",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "cta_style": "button"
-            }
-          },
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
@@ -617,6 +605,18 @@
               "heading_text": "Party Like It’s Gonna Be on Instagram",
               "text": "",
               "cta_text": "SHOP PARTY DRESSES",
+              "cta_style": "button"
+            }
+          },
+          "1536251685211-0": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify://shop_images/newest-chickest-shop-new-arrivals.jpg",
+              "mobile_image": "shopify://shop_images/newest-chickest-shop-new-arrivals_a0bdbf7c-40a7-496c-9014-0b635467563e.jpg",
+              "link": "shopify://collections/new",
+              "heading_text": "Newest & Chicest",
+              "text": "",
+              "cta_text": "SHOP NEW ARRIVALS",
               "cta_style": "button"
             }
           }
@@ -1381,11 +1381,11 @@
               "heading": "",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/tops",
+              "cta_one_link": "shopify://collections/casual-tops",
               "cta_one_button_text": "SHOP VACATION TOPS",
               "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "shopify://collections/bottoms",
+              "cta_three_link": "shopify://collections/jeans",
               "cta_three_button_text": "SHOP DENIM",
               "cta_four_link": "",
               "cta_four_button_text": "",
