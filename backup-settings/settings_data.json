@@ -363,8 +363,8 @@
           "full_width_header": false,
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
-          "announcement_text_one": "FREE SHIPPING OVER $100",
-          "announcement_popup_one_content": "announcement-1",
+          "announcement_text_one": "FREE SHIPPING WITH NO MINIMUM",
+          "announcement_popup_one_content": "announcement-3-promo",
           "announcement_link_one": "#",
           "announcement_text_two": "Sign Up for clubbebe Rewards & get 20% off",
           "announcement_popup_two_content": "announcement-2",
@@ -611,12 +611,12 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/down-for-some-lwds.jpg",
-              "mobile_image": "shopify://shop_images/down-for-some-lwds_926a464a-03e8-4478-afdf-503782a589ab.jpg",
-              "link": "shopify://collections/little-white-dresses",
-              "heading_text": "Down for Some New LWDs?",
+              "image": "shopify://shop_images/lets-go-somewhere-shop-new-arrivals_7fa65069-86f4-44ac-8abb-311991be175d.jpg",
+              "mobile_image": "shopify://shop_images/lets-go-somewhere-shop-new-arrivals.jpg",
+              "link": "shopify://collections/new",
+              "heading_text": "Let's Go Somewhere Tropical",
               "text": "",
-              "cta_text": "SHOP LITTLE WHITE DRESSES",
+              "cta_text": "SHOP New Arrivals",
               "cta_style": "button"
             }
           }
@@ -1261,14 +1261,26 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1553583609027": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "48 HOUR SPRING SALE: 30% OFF",
+              "text": "<p>Enjoy 30% off select new styles. Priced as marked.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/48-hour-spring-sale",
+              "details_text": "<p>Valid online only. Priced as marked. Ends 3/27 at midnight PT.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
-              "heading_text": "FREE U.S. SHIPPING OVER $100",
+              "heading_text": "FREE U.S. SHIPPING WITH NO MINIMUM",
               "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.</p>",
               "cta_text": "Shop Now",
               "link": "shopify://collections/new",
-              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.</p>",
+              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 3/27/19 at 11:59 pm PDT.</p>",
               "coupon_size": "half",
               "coupon_color": "light"
             }
@@ -1299,6 +1311,7 @@
           }
         },
         "block_order": [
+          "1553583609027",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1375,14 +1388,14 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/lets-go-somewhere-tropical-desktop.jpg",
-              "mobile_image": "shopify://shop_images/lets-go-somewhere-tropical-mobile.jpg",
-              "cta_full_image": "shopify://collections/new",
-              "heading": "",
+              "image": "shopify://shop_images/spring-sale-30-off-select-styles.jpg",
+              "mobile_image": "shopify://shop_images/spring-sale-30-off-select-styles-mobile.jpg",
+              "cta_full_image": "shopify://collections/48-hour-spring-sale",
+              "heading": "<br><br>",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/new",
-              "cta_one_button_text": "SHOP NEW ARRIVALS",
+              "cta_one_link": "shopify://collections/48-hour-spring-sale",
+              "cta_one_button_text": "SHOP NOW",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1499,14 +1512,13 @@
       },
       "1548306390190": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/3-20_disclaimer.jpg",
-              "mobile_image": "shopify://shop_images/club-bebe-disclaimer-mobile.jpg",
-              "cta_full_image": "/account/login",
+              "image": "shopify://shop_images/free-shipping-no-minimum.jpg",
+              "mobile_image": "shopify://shop_images/free-shipping-no-minimum-mobile.jpg",
+              "cta_full_image": "shopify://pages/coupons-discounts",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
