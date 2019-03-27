@@ -46,7 +46,7 @@ var bcSfFilterTemplate = {
     // Pagination Template
     'previousHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
     'nextHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
-    'pageItemHtml': '<span class="current2" onclick="javascript:location.href=\'{{itemUrl}}\'">{{itemTitle}}</span>',
+    'pageItemHtml': '<a href=\'{{itemUrl}}\' class="current2">{{itemTitle}}</a>',
     'pageItemSelectedHtml': '<span class="current">{{itemTitle}}</span>',
     'pageItemRemainHtml': '{{itemTitle}}',
     'paginateHtml': '<span class="count"></span>{{previous}}{{pageItems}}{{next}}',
@@ -279,7 +279,7 @@ BCSfFilter.prototype.buildPagination = function(totalProduct) {
         if (currentPage - 3 > 0) {
             beforeCurrentPageArr.unshift(currentPage - 3);
         }
-        /**** PDM-204 
+        /**** PDM-204
         // if (currentPage - 3 >= 0) {
         //     beforeCurrentPageArr.unshift(1);
         // } PDM-204 ****/
@@ -292,7 +292,7 @@ BCSfFilter.prototype.buildPagination = function(totalProduct) {
         if (currentPage + 3 < totalPage) {
             afterCurrentPageArr.push(currentPage + 3);
         }
-        /**** PDM-204 
+        /**** PDM-204
         // if (currentPage + 3 <= totalPage) {
         //     afterCurrentPageArr.push(totalPage);
         // }PDM-204 ****/
@@ -476,7 +476,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     jQ(this.selector.bottomPagination).find('.count').hide();
 
 
-    // APPLY (MOBILE) : Filters apply on selection, "Apply" closes menu on moble.  
+    // APPLY (MOBILE) : Filters apply on selection, "Apply" closes menu on moble.
     var filterTreeWrap = $( ui.filterTreeWrap );
     if ( filterTreeWrap ) {
         filterTreeWrap.append( bcSfFilterTemplate.mobileApplyBtnHtml );
@@ -601,9 +601,9 @@ function scrollBack(productItemSelector) {
             urlW.searchParams.append('page', jQ(this).data('page'));
 
             window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
-        }); 
+        });
     }
-    
+
     // Turn off scroll default  of browser
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
@@ -615,11 +615,11 @@ function scrollBack(productItemSelector) {
             urlW.searchParams.delete("bc-product-current");
             if (urlW.searchParams.get('page') == 1) urlW.searchParams.delete("page");
             window.history.pushState('', '', urlW.toString().replace(/\+/g, '%20'));
-          	
+
           	setTimeout(function(){
               	jQ("html, body").animate({ scrollTop: jQ('#' + itemId).offset().top }, 1000);
             }, 1000)
-            
+
         }
     }
 }
