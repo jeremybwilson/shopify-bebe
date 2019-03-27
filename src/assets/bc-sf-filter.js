@@ -46,7 +46,7 @@ var bcSfFilterTemplate = {
     // Pagination Template
     'previousHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
     'nextHtml': '<span class="pag-nav" onclick="javascript:location.href=\'{{itemUrl}}\'"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
-    'pageItemHtml': '<a href=\'{{itemUrl}}\' class="current2" onclick="javascript:location.href=\'{{itemUrl}}\'">{{itemTitle}}</a>',
+    'pageItemHtml': '<a href=\'{{itemUrl}}\' class="current2">{{itemTitle}}</a>',
     'pageItemSelectedHtml': '<span class="current">{{itemTitle}}</span>',
     'pageItemRemainHtml': '{{itemTitle}}',
     'paginateHtml': '<span class="count"></span>{{previous}}{{pageItems}}{{next}}',
