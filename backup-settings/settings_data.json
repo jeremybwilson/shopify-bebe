@@ -1388,8 +1388,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/spring-sale-30-off-select-styles.jpg",
-              "mobile_image": "shopify://shop_images/spring-sale-30-off-select-styles-mobile.jpg",
+              "image": "shopify://shop_images/spring-sale-ends-tonight-desktop.jpg",
+              "mobile_image": "shopify://shop_images/spring-sale-ends-tonight-mobile.jpg",
               "cta_full_image": "shopify://collections/48-hour-spring-sale",
               "heading": "<br><br>",
               "hide_header_desktop": true,
