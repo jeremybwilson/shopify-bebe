@@ -363,8 +363,8 @@
           "full_width_header": false,
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
-          "announcement_text_one": "FREE SHIPPING WITH NO MINIMUM",
-          "announcement_popup_one_content": "announcement-3-promo",
+          "announcement_text_one": "FREE SHIPPING OVER $100",
+          "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "#",
           "announcement_text_two": "Sign Up for clubbebe Rewards & get 20% off",
           "announcement_popup_two_content": "announcement-2",
@@ -611,8 +611,8 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/lets-go-somewhere-shop-new-arrivals_7fa65069-86f4-44ac-8abb-311991be175d.jpg",
-              "mobile_image": "shopify://shop_images/lets-go-somewhere-shop-new-arrivals.jpg",
+              "image": "shopify://shop_images/lets-go-somewhere-tropical.jpg",
+              "mobile_image": "shopify://shop_images/lets-go-somewhere-tropical_4f95cfde-ebb1-4572-9794-782f696ae3b3.jpg",
               "link": "shopify://collections/new",
               "heading_text": "Let's Go Somewhere Tropical",
               "text": "",
@@ -1264,11 +1264,11 @@
           "1553583609027": {
             "type": "text_block",
             "settings": {
-              "heading_text": "48 HOUR SPRING SALE: 30% OFF",
-              "text": "<p>Enjoy 30% off select new styles. Priced as marked.</p>",
+              "heading_text": "50% OFF ALL SALE",
+              "text": "<p>For a limited time, enjoy 50% off all sale styles. Priced as marked.</p>",
               "cta_text": "Shop Now",
-              "link": "shopify://collections/48-hour-spring-sale",
-              "details_text": "<p>Valid online only. Priced as marked. Ends 3/27 at midnight PT.</p>",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1276,11 +1276,11 @@
           "1545990628348": {
             "type": "text_block",
             "settings": {
-              "heading_text": "FREE U.S. SHIPPING WITH NO MINIMUM",
+              "heading_text": "FREE U.S. SHIPPING OVER $100",
               "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.</p>",
               "cta_text": "Shop Now",
               "link": "shopify://collections/new",
-              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 3/27/19 at 11:59 pm PDT.</p>",
+              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.</p>",
               "coupon_size": "half",
               "coupon_color": "light"
             }
@@ -1388,13 +1388,13 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/spring-sale-ends-tonight-desktop.jpg",
-              "mobile_image": "shopify://shop_images/spring-sale-ends-tonight-mobile.jpg",
-              "cta_full_image": "shopify://collections/48-hour-spring-sale",
-              "heading": "<br><br>",
+              "image": "shopify://shop_images/limited-time-50-off-hp.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-hp-mobile.jpg",
+              "cta_full_image": "shopify://collections/sale",
+              "heading": "",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/48-hour-spring-sale",
+              "cta_one_link": "shopify://collections/sale",
               "cta_one_button_text": "SHOP NOW",
               "cta_two_link": "",
               "cta_two_button_text": "",
@@ -1408,8 +1408,8 @@
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 70,
+              "caption_horizontal_offset": 35,
+              "caption_vertical": 66,
               "caption_vertical_mobile": 75,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
@@ -1512,6 +1512,7 @@
       },
       "1548306390190": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1548306390190-0": {
             "type": "image",
@@ -1634,64 +1635,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/sale-final-sale-desktop.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_41a308b1-1cb4-412d-bc28-af354fcb9b71.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_9dcd862f-649f-479a-b93e-f5cd3a141600.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "sale-dresses",
-              "image": "shopify://shop_images/sale-final-sale-desktop_2b8fa4c1-f711-46cf-b7cb-62da4bb1cd93.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_70bf5324-39f2-48bb-98d6-ef728237bd38.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_8949d60e-ad58-48c4-b35b-1a07d7d9f17c.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_a829afec-87b6-48ca-997c-b775bb2ba8d2.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/sale-final-sale-desktop_159144c6-e3b8-4ec2-963f-7fdb7c680243.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_681ded11-d329-4ebe-b638-ffdf70a6cd46.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_b3e285e1-e228-45aa-89f1-ec8f55be763e.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_6ff0e8fd-b1c1-4d7a-b15e-edbe85ba0308.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/sale-final-sale-desktop_09205a87-c122-42ff-be3d-4922cd27161f.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_78f88fd3-1114-4510-b0b0-bd790aa3332f.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_b3b2ec3b-1ef3-44e7-a203-e34031175ca5.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_271af06a-c9ee-40c5-a92d-c245dc7dda0d.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/sale-final-sale-desktop_f7beb88f-0771-4748-b9ab-6a9d67217ea6.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_5970c1bc-fa28-4001-831e-9904c3a0bd36.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_1ac43d14-d258-4eca-8a6a-429c7549634c.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_f69e3a44-18b9-491d-94f0-575ab1b1c892.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/sale-final-sale-desktop_a8573672-d86d-4c1b-a35b-afc7fd1d2f80.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_dc2638dc-73d9-41c5-aa4f-7f7dff4b4e7e.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_c0cc3f8d-7062-45bc-9dd5-fc0445580a39.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_1c74f6c8-9681-47aa-a8b6-79a210364211.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/sale-final-sale-desktop_351e3ecb-0bd4-46e0-86df-5825e9aba489.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_28f55201-6f88-4c02-95ef-461589b3118b.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_6ee89512-5ca8-48d3-a878-c7dbd99dd2a7.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_dfc0a967-e244-4b07-ab0e-bef639a93bf6.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/sale-final-sale-desktop_6db4f436-582f-41a1-83c6-a0ebffcbff17.jpg",
-              "mobile_image": "shopify://shop_images/sale-final-sale-mobile_28719925-c028-4e62-9b70-1e8f8fcc046d.jpg"
+              "image": "shopify://shop_images/limited-time-50-off-plp_1d782292-8233-45c6-afc3-f43d4bacb9ea.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-50-off-plp-mobile_cec69ccc-647f-47c8-a627-fcba943637fc.jpg"
             }
           }
         },
