@@ -1261,6 +1261,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1553843543672": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "30% OFF $200 OR MORE",
+              "text": "<p>Save on any regular-priced purchase with code WEEKEND.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code WEEKEND at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 3/31/19 at 11:59 pm PDT.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1553583609027": {
             "type": "text_block",
             "settings": {
@@ -1305,18 +1317,6 @@
               "cta_text": "Join the Club",
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1553843543672": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "30% OFF $200 OR MORE",
-              "text": "<p>Save on any regular-priced purchase with code WEEKEND.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code WEEKEND at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 3/31/19 at 11:59 pm PDT.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1401,8 +1401,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/30-off-200-or-more-desktop.jpg",
-              "mobile_image": "shopify://shop_images/30-off-200-or-more-mobile.jpg",
+              "image": "shopify://shop_images/30-off-sale-ends-tonight-hp.jpg",
+              "mobile_image": "shopify://shop_images/30-off-sale-ends-tonight-hp-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
