@@ -3,13 +3,24 @@
 <div style="background-color: {{ section.settings.background_color }};">
 	<div id="indi-forum-{{ section.id }}" style="margin-left: auto; margin-right: auto;"></div>
 </div>
+<div id="div_btn_cta">
+  <button class="btn btn--secondary" type="button" onclick="window.location='{{ section.settings.submit_button1_url }}'">{{ section.settings.submit_button1_text }}</button>
+</div>
 <script>
 	var indi_forum_{{ section.id | replace: '-', '_' }} = new indi.forum("#indi-forum-{{ section.id }}", {
     	title: "{{ section.settings.title }}",
-		description: "{{ section.settings.description }}",
-		submit_button_text: "{{ section.settings.submit_button_text }}",
-		submit_button_url: "{{ section.settings.submit_button_url }}",
-		thumbnail_url: "{{ section.settings.thumbnail_url }}"
+      description: "{{ section.settings.description }}",
+      submit_button_text: "{{ section.settings.submit_button_text }}",
+      submit_button_url: "{{ section.settings.submit_button_url }}",
+      thumbnail_url: "{{ section.settings.thumbnail_url }}"
+    });
+    $( document ).ready(function() {
+      var button_div = $("#div_btn_cta").html();
+      $(".indi-forum-details").append(button_div);
+      $("#div_btn_cta").remove();
+      $(document).on('click', ".indi-forum-thumbnail", function(){
+        window.location = "{{ section.settings.thumbnail_redirect_url }}";
+      })
     });
 </script>
 
@@ -17,33 +28,47 @@
   {
     "name": "Indi Forum",
     "settings": [
-		{
-          "id": "title",
-          "type": "text",
-          "label": "Title"
-      	},
-		{
-          "id": "description",
-          "type": "text",
-          "label": "Short Description"
-      	},
-		{
-          "id": "submit_button_text",
-          "type": "text",
-          "label": "Submit Button Text",
-		  "default": "Upload Photo / Video"
-      	},
-		{
-          "id": "submit_button_url",
-          "type": "text",
-          "label": "Submit Button URL"
-      	},
-		{
-          "id": "thumbnail_url",
-          "type": "text",
-          "label": "Thumbnail URL (https)"
-      	}
-
+		  {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      },
+		  {
+        "id": "description",
+        "type": "text",
+        "label": "Short Description"
+      },
+		  {
+        "id": "submit_button_text",
+        "type": "text",
+        "label": "Submit Button Text",
+        "default": "Upload Photo / Video"
+      },
+		  {
+        "id": "submit_button_url",
+        "type": "text",
+        "label": "Submit Button URL"
+      },
+		  {
+        "id": "thumbnail_url",
+        "type": "text",
+        "label": "Thumbnail URL (https)"
+      },
+      {
+        "id": "thumbnail_redirect_url",
+        "type": "text",
+        "label": "Image Redirect URL"
+      },
+      {
+        "id": "submit_button1_text",
+        "type": "text",
+        "label": "Submit Button 1 Text"
+      },
+      {
+        "id": "submit_button1_url",
+        "type": "text",
+        "label": "Submit Button 1 URL"
+      }
 	],
     "presets": [
       {
