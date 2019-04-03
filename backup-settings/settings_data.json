@@ -1261,6 +1261,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1554177847427": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF $150 OR MORE",
+              "text": "<p>Save on regular-priced &amp; sale styles. Use code APRIL20.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code APRIL20 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 4/5/19 at 11:59 pm PDT. &nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1293,18 +1305,6 @@
               "cta_text": "Join the Club",
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1554177847427": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF $150 OR MORE",
-              "text": "<p>Save on regular-priced &amp; sale styles. Use code APRIL20.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code APRIL20 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 4/5/19 at 11:59 pm PDT. &nbsp;</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1573,7 +1573,10 @@
           "description": "Upload your photos & videos to earn commission on all bebe.com sales you influence.",
           "submit_button_text": "FIND OUT MORE",
           "submit_button_url": "https://www.bebe.com/pages/brand-ambassador",
-          "thumbnail_url": "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?3165571990720349519"
+          "thumbnail_url": "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?3165571990720349519",
+          "thumbnail_redirect_url": "https://www.bebe.com/pages/brand-ambassador",
+          "submit_button1_text": "FIND OUT MORE",
+          "submit_button1_url": "https://www.bebe.com/pages/brand-ambassador"
         }
       },
       "1549408222080": {
