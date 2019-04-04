@@ -45,7 +45,7 @@ const prepData = () => {
       text  : badgeTextTag.split( 'item_badge_text_' )[1],
       shape : badgeShapeTag ? badgeShapeTag.split( 'item_badge_shape_' )[1] : null,
       color : badgeColorTag ? badgeColorTag.split( 'item_badge_color_' )[1] : null,
-      bg    : badgeBgTag ? badgeColorTag.split( 'item_badge_bg_' )[1] : null
+      bg    : badgeBgTag ? badgeBgTag.split( 'item_badge_bg_' )[1] : null
     };
   
 
