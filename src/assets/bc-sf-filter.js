@@ -204,7 +204,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
                 productSku = productSku[0];
 
                 // SWATCH IMAGE : Build swatch image, fallback to color setting in case that fails
-                var swatchImgUrl = bcSfFilterConfig.general.swatch_replace_url.replace('swatch_url_source_do_not_remove.png', 'product_' + productSku + '_' + this.slugify(option['title']).replace('-','_') + '_swatch.jpg');
+                var swatchImgUrl = bcSfFilterConfig.general.swatch_replace_url.replace('swatch_url_source_do_not_remove.png', 'product_' + productSku + '_' + this.slugify(option['title']).replace( /-/gi, '_') + '_swatch.jpg');
 
                 // SWATCH OBJ: Single swatch object for manifest
                 var colorValueName = this.slugify( option['title'] );
