@@ -602,7 +602,7 @@
               "image": "shopify://shop_images/bold-in-blue.jpg",
               "mobile_image": "shopify://shop_images/bold-in-blue_c5184d21-802d-4546-9280-3989a130628f.jpg",
               "link": "shopify://collections/bold-in-blue",
-              "heading_text": "BOLD IN BLUE",
+              "heading_text": "Bold In Blue",
               "text": "",
               "cta_text": "SHOP NOW",
               "cta_style": "button"
@@ -611,12 +611,12 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/nothing-like-something-new.jpg",
-              "mobile_image": "shopify://shop_images/nothing-like-something-new_ddd40f3d-e0fb-412f-a951-fa1a86a2ff06.jpg",
-              "link": "shopify://collections/new",
-              "heading_text": "Nothing Like Something New",
+              "image": "shopify://shop_images/word-up-twin-promo.jpg",
+              "mobile_image": "shopify://shop_images/word-up-twin-promo_18816d23-c90d-4bfc-8870-d7446dd67100.jpg",
+              "link": "shopify://collections/logo",
+              "heading_text": "Word Up",
               "text": "",
-              "cta_text": "SHOP NEW ARRIVALS",
+              "cta_text": "SHOP Logo",
               "cta_style": "button"
             }
           }
@@ -1388,8 +1388,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/20-off-any-purchase-hp.jpg",
-              "mobile_image": "shopify://shop_images/20-off-any-purchase-hp-mobile.jpg",
+              "image": "shopify://shop_images/ends-tonight-20-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-20-off-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
@@ -1613,12 +1613,12 @@
           "1551244191226-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/new-dresses.jpg",
-              "mobile_image": "shopify://shop_images/new-dresses_71e9acaa-49c7-454e-ad47-50ee5ec9bcb7.jpg",
+              "image": "shopify://shop_images/word-up-twin-promo_18816d23-c90d-4bfc-8870-d7446dd67100.jpg",
+              "mobile_image": "shopify://shop_images/word-up-twin-promo.jpg",
               "link": "shopify://collections/new",
-              "heading_text": "New Season Cuteness",
+              "heading_text": "Word Up",
               "text": "",
-              "cta_text": "Shop New Arrivals",
+              "cta_text": "Shop Logo",
               "cta_style": "button"
             }
           }
