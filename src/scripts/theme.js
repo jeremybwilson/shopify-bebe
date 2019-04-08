@@ -3402,4 +3402,18 @@ $(document).ready(function(){
   // flex slider - ADA compliance
   $(".index_Slider ul.flex-direction-nav li a.flex-prev").attr('title','flex-prev');
   $(".index_Slider ul.flex-direction-nav li a.flex-next").attr('title','flex-next');  
+
+  if(window.location.href.indexOf('.com/products/') > -1 && window.location.href.indexOf('#yotpo-reviews') > -1){
+    setTimeout(()=>{
+      var targetLoc = $('#yotpo-reviews').offset().top;
+      if($(window).width() > 768){
+        targetLoc -= 110;
+      } else {
+        targetLoc -= 60;
+      }
+      $('html,body').animate({scrollTop:targetLoc+'px'},500);
+      $('.yotpo-display-wrapper .write-review-wrapper').slideDown(300);
+    },1500);
+  }
+
 });
