@@ -28,6 +28,17 @@
 
 <div id="contactFormWrapper">
   <h3>Leave a Message</h3>
+  <p class="form-type">
+    <label>{{ 'contact.form.type' | t }}<span class="req">*</span></label>    
+    <select id="contactFormtype" name="contact[type]">
+      <option value="Online Store Support">Online Store Support</option>
+      <option value="Online Purchase Return">Online Purchase Return</option>
+      <option value="Product Related Questions">Product Related Questions</option>
+      <option value="Corporate Inquiries">Corporate Inquiries</option>
+      <option value="Wholesale Inquiries">Wholesale Inquiries</option>
+    </select>
+  </p>
+
   <p class="form-name">
     <label>{{ 'contact.form.name' | t }}<span class="req">*</span></label>    
     <input type="text" id="contactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" />
@@ -52,3 +63,9 @@
   </p> 
 </div>
 {% endform %}
+<script>
+$( "#contact_form" ).submit(function( event ) {
+  var message = $("#contactFormMessage").val() + "\n Support Type : " + $("#contactFormtype").val();
+  $("#contactFormMessage").val(message);
+});
+</script>
