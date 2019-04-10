@@ -599,8 +599,8 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/flowery-flirty-tops.jpg",
-              "mobile_image": "shopify://shop_images/flowery-flirty-tops_4e81f6e1-cd02-472a-87c3-26fd7e91cd68.jpg",
+              "image": "shopify://shop_images/spring-tops.jpg",
+              "mobile_image": "shopify://shop_images/spring-tops_5ae5fb0c-3190-4ba5-a33a-6655788115f6.jpg",
               "link": "shopify://collections/tops",
               "heading_text": "Flowery & Flirty",
               "text": "",
@@ -1273,6 +1273,18 @@
               "coupon_color": "light"
             }
           },
+          "1554791977752": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "UP TO 50% OFF SALE",
+              "text": "<p>Score hot deals on sale items. Priced as marked.</p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1305,18 +1317,6 @@
               "cta_text": "Join the Club",
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1554791977752": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "UP TO 50% OFF SALE",
-              "text": "<p>Score hot deals on sale items. Priced as marked.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1650,64 +1650,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/up-to-50-off-sale_8f1dce5c-748c-480c-ba29-42782659fe56.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_81a4f8cb-3aed-4326-b569-0e5e2412d815.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_43dc6386-7160-46d5-8b39-b2a1ca35103c.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_320e5200-8580-454f-949f-27fedde3ac7c.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "",
-              "image": "shopify://shop_images/up-to-50-off-sale_847c7256-a6ca-4c76-b025-6b72f96909cc.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_b854e48d-4529-457d-8ef3-27c75e97afd6.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_e323add4-5f70-4783-9098-c8f1ae3f480d.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_1f94080f-d96f-4d7e-a5cb-7d966c2aad3b.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/up-to-50-off-sale_9ca0ba61-f7be-473d-8927-b7276a0c828a.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_84c0d616-6268-41de-8360-70b11e1e64da.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_007c598f-409f-4dc7-ab29-b8068731797c.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_fc0bbf2f-1486-4c71-bd4d-644d74bc257d.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/up-to-50-off-sale_ca1ad829-aefc-4d7d-9aa0-a523a5ce4a9e.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_bfd06d3b-e39b-48c1-9356-357311fb724f.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_189f3f48-d684-48fc-a79e-a762f99c7ec0.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_caed0389-d990-492f-8625-d1c0cf4d37c7.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/up-to-50-off-sale_3d289560-2b07-48c2-8582-5fb12570f787.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_87cb7e2d-951f-453b-b45c-df37557b772c.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_c206aca1-8bc9-41f2-92c9-196ba57e9818.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_a3b4be06-ea07-45e1-b5ee-866bac56aeb5.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/up-to-50-off-sale_8da127f4-6f60-4f77-9fe5-e5a9a57c3bce.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_678335f2-3ad2-47f2-9a7b-de88fdf0b40d.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_cd6f6e1e-c42b-4fdb-803c-24f0e95ca367.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_8937aa29-bfba-4417-b66b-43441528183b.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/up-to-50-off-sale_a5cf36cf-98e3-4e5c-86e7-a83c1030dee0.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_d84791e6-7b2b-483c-9b37-d07926930d32.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_ced3fca8-7abc-45f6-ba78-c6d8fcc6f441.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_cfcd3b48-074a-4f56-ac77-681b4750eeec.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/up-to-50-off-sale_fe36c834-44f2-48a2-bf39-95bcfe8d17c2.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_32fd2458-0921-475f-8277-4b84e459d246.jpg"
+              "image": "shopify://shop_images/up-to-50-off-sale_dce5bee5-0847-48d5-8bbc-0bebfd17bf09.jpg",
+              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_d97c191b-b32e-49ff-951a-523bf78afba0.jpg"
             }
           },
           "1554769189117": {
