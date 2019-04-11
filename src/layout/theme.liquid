@@ -1,11 +1,11 @@
-{% comment %} 
+{% comment %}
 
   TEMPLATE CODE :: ASSIGNMENTS
 
 {% endcomment %}
 
 {% comment %} Simple Layout : No Wrapper or Breadcrumbs {% endcomment %}
-{% assign simple_layout = false %} 
+{% assign simple_layout = false %}
 {% assign has_breadcrumb = true %}
 {% assign content_row_wrapper = true %}
 
@@ -26,7 +26,7 @@
     {% assign simple_layout = true %}
 
   {% when 'list-collections' %}
-    {% assign simple_layout = true %}  
+    {% assign simple_layout = true %}
 
   {% when 'blog' %}
     {% assign simple_layout = true %}
@@ -35,41 +35,41 @@
     {% assign has_breadcrumb = false %}
 
   {% when 'customers/account' %}
-    {% assign has_breadcrumb = false %}    
+    {% assign has_breadcrumb = false %}
 
   {% when 'customers/account.orders'%}
     {% assign has_breadcrumb = false %}
 
   {% when 'customers/order' %}
-    {% assign has_breadcrumb = false %} 
+    {% assign has_breadcrumb = false %}
 
   {% when 'customers/addresses' %}
-    {% assign has_breadcrumb = false %}  
+    {% assign has_breadcrumb = false %}
 
   {% when 'search' %}
     {% assign has_breadcrumb = false %}
 
-  {% when '404' %}        
+  {% when '404' %}
     {% assign has_breadcrumb = false %}
 
   {% when 'page.landing' %}
-    {% assign has_breadcrumb = false %}    
+    {% assign has_breadcrumb = false %}
 
   {% when 'page.faq' %}
-    {% assign has_breadcrumb = false %}    
+    {% assign has_breadcrumb = false %}
 
   {% when 'page.contact' %}
-    {% assign has_breadcrumb = false %}    
+    {% assign has_breadcrumb = false %}
 
   {% when 'page.resetpassword' %}
-    {% assign has_breadcrumb = false %}    
+    {% assign has_breadcrumb = false %}
 
   {% when 'page.instagallery' %}
-    {% assign has_breadcrumb = false %}    
-    
+    {% assign has_breadcrumb = false %}
+
   {% when 'page.indi-brand-advocate' %}
     {% assign has_breadcrumb = false %}
-    {% assign content_row_wrapper = false %}    
+    {% assign content_row_wrapper = false %}
 
 {% endcase %}
 
@@ -97,19 +97,19 @@
   <link rel="canonical" href="{{ canonical_url }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
   {% include 'social-media-meta-tags' %}
-  
+
   {% if template contains 'cart' %}
 	  <meta name="format-detection" content="telephone=no">
-  {% endif %}  
+  {% endif %}
 
   <meta name="google-site-verification" content="MW12oggtR9jmrow8u0VWHG3kbw3uW8Rd3Jvj0jCkidM" />
-  
+
   <!-- CSS
 ================================================== -->
   {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
   {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
   {{ 'queries.css' | asset_url | stylesheet_tag }}
-  {{ 'bc-sf-filter.scss.css' | asset_url | stylesheet_tag }} {% comment %} Filter App Styling {% endcomment %}  
+  {{ 'bc-sf-filter.scss.css' | asset_url | stylesheet_tag }} {% comment %} Filter App Styling {% endcomment %}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
 
   <!-- Typography
@@ -131,7 +131,14 @@
   {% include 'script-yotpo' %}
   {% include 'script-smarthq' %}
   {% comment %}{% include 'script-zendesk' %}{% endcomment %}
+
+    <!-- GTM
+================================================== -->
   {% include 'script-google-tag-head' %}
+
+  {%- if settings.enable_script_data_layer -%}
+    {% include 'script-data-layer' %}
+  {%- endif -%}
 
   {% comment %} :: MULTI-CURRENCY :: {% endcomment %}
   {%- if settings.show_multiple_currencies -%}
@@ -206,7 +213,7 @@
 
           </div>
 
-        {% endif %} 
+        {% endif %}
         {% comment %} :: End of 'ALL OTHER PAGES' IF block :: {% endcomment %}
 
       </div>  <!-- close the page-wrap class -->
