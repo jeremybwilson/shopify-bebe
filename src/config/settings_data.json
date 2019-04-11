@@ -1,6 +1,5 @@
 {
-  "presets": {
-  },
+  "presets": {},
   "current": {
     "favicon": "shopify:\/\/shop_images\/favicon.png",
     "google_tag_manager_id": "GTM-MX9MWW2",
@@ -195,6 +194,7 @@
     "cookie_banner_desktop_text": "<p>This site uses cookies to simplify and improve your usage and experience of this website. Cookies are small text files stored on the device you are using to access this website. If you ignore this message and continue without changing your browser settings, we will assume that you are consenting to our use of cookies. For further information on our use of cookies, please see our <a href=\"https:\/\/www.honeywell.com\/privacy-statement\" target=\"_blank\">Privacy Statement<\/a><\/p>",
     "cookie_banner_accept_button_text": "Accept",
     "show_multiple_currencies": false,
+    "enable_script_data_layer": false,
     "currency_format": "money_with_currency_format",
     "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
     "default_currency": "USD",
@@ -519,8 +519,7 @@
         "block_order": [
           "1547175514264"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "password-template": {
         "type": "password-template",
@@ -786,8 +785,7 @@
           "1539642513779",
           "1539642524127"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "page-faq-template": {
         "type": "page-faq-template",
@@ -1327,8 +1325,7 @@
       },
       "page-coupons-template": {
         "type": "page-coupons-template",
-        "settings": {
-        }
+        "settings": {}
       },
       "1547175141098": {
         "type": "nosto-element",
@@ -1646,8 +1643,7 @@
         "block_order": [
           "1551958736348"
         ],
-        "settings": {
-        }
+        "settings": {}
       }
     },
     "content_for_index": [
