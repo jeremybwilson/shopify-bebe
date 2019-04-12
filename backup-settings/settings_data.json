@@ -194,6 +194,7 @@
     "cookie_banner_desktop_text": "<p>This site uses cookies to simplify and improve your usage and experience of this website. Cookies are small text files stored on the device you are using to access this website. If you ignore this message and continue without changing your browser settings, we will assume that you are consenting to our use of cookies. For further information on our use of cookies, please see our <a href=\"https://www.honeywell.com/privacy-statement\" target=\"_blank\">Privacy Statement</a></p>",
     "cookie_banner_accept_button_text": "Accept",
     "show_multiple_currencies": false,
+    "enable_script_data_layer": false,
     "currency_format": "money_with_currency_format",
     "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
     "default_currency": "USD",
