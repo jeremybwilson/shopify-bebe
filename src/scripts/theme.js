@@ -1075,9 +1075,9 @@ theme.Newsletter = (function() {
     const $container = this.$container = $(container);
     const ui = {
           formId: $( '#footer-newsletter' ),
-         textbox: $( '#email' ),
+         textbox: $( '#footer-newsletter-email' ),
        subAction: $( '#sub-action' ),
-          submit: $( '#button-footer-newsletter-submit' ),
+    submitButton: $( '#button-footer-newsletter-submit' ),
         errorMsg: $( '#newsletter-error-response'),
       successMsg: $( '#newsletter-success-response')
     };
@@ -1118,10 +1118,26 @@ theme.Newsletter = (function() {
 
         // Enable submit button if valid email is entered
         if ( validEmail ) {
-          ui.submit.addClass( 'enable' ); // Enable submit button
+          ui.submitButton.addClass( 'enable' ); // Enable submit button
           toggleError( false );
+
+          // When the form is submitted, pass dataLayer payload
+          ui.submitButton.submit( (e) => {
+          // $('#button-footer-newsletter-submit').click( (e) => {
+
+            var payload = { email: ui.textbox.val(), emailType: 'marketing', interaction: 'On Email' }
+            if (typeof window.__bva__ !== 'undefined' && typeof window.__bva__.helpers !== 'undefined') {
+              window.__bva__.helpers.fireEmailPixel(payload)
+            } else if (typeof dataLayer !== 'undefined') {
+              dataLayer.push(payload, { event: 'On Email' })
+            }
+
+            // Log the clicked element in the console
+            console.log(payload);
+          });
+
         } else {
-          ui.submit.removeClass( 'enable' );
+          ui.submitButton.removeClass( 'enable' );
           toggleError( true );
         }
       }, 250 ) );
@@ -2038,7 +2054,7 @@ $(document).ready(function() {
 
   (function loyalty_program() {
     $(document).on('swell:setup', function() {
-    
+
       // Inits
       const ui = {
         pointsLeft: $( '.points-left' ),
@@ -2059,7 +2075,7 @@ $(document).ready(function() {
                vipTiers: swellAPI.getVipTiers(),
          redemptionData: swellAPI.getActiveRedemptionOptions(),
            campaignData: swellAPI.getActiveCampaigns()
-      }  
+      }
 
       let clubReloadData = function() {
         if ( swellData ) {
@@ -2068,14 +2084,14 @@ $(document).ready(function() {
                    vipTiers: swellAPI.getVipTiers(),
              redemptionData: swellAPI.getActiveRedemptionOptions(),
                campaignData: swellAPI.getActiveCampaigns()
-          }    
+          }
         }
       }
-      
+
       console.log( 'Customer Details', swellData.customerDetails );
       console.log( 'VIP Tiers', swellData.vipTiers );
       console.log( 'Redemption Data', swellData.redemptionData );
-      
+
 
       let clubRefreshData = function() {
         // wrapping it in a function because we'll be clearing and updating the data
@@ -2091,7 +2107,7 @@ $(document).ready(function() {
           // save the header
           let $rewardsHeader = $( '#club--rewards-history--header' );
 
-          // clear the list 
+          // clear the list
           ui.rewardsHistoryList.html($rewardsHeader);
 
           // append the list items
@@ -2123,7 +2139,7 @@ $(document).ready(function() {
           vipTierName = swellData.customerDetails.vipTier.name;
         } else {
           vipTierName = 'Member';
-        }      
+        }
 
         // mark the tier
         $( '.club-tier--' + vipTierName ).addClass( 'club--tier-active' );
@@ -2143,11 +2159,11 @@ $(document).ready(function() {
 
           swellData.vipTiers.forEach(function(tier){
             tierCounter++;
-            
+
             if (tier.id == currentTier) {
               // check to see you're not on the highest tier
               if ( tierCounter != swellData.vipTiers.length ) {
-                
+
                 var nextTier = swellData.vipTiers[tierCounter],
                 nextTierPoints = nextTier.swellrequiredPointsEarned,
                 pointsLeft = nextTierPoints - currentPoints;
@@ -2163,7 +2179,7 @@ $(document).ready(function() {
 
           var nextTier = swellData.vipTiers[0],
           nextTierPoints = nextTier.swellrequiredPointsEarned,
-          pointsLeft = nextTierPoints - currentPoints;          
+          pointsLeft = nextTierPoints - currentPoints;
 
           ui.pointsLeft.html( pointsLeft );
           ui.nextMembershipLevel.html( nextTier.name );
@@ -2175,7 +2191,7 @@ $(document).ready(function() {
         // DASHBOARD :: REWARDS
 
         // Client constant
-        var rewardsTarget = 250;         
+        var rewardsTarget = 250;
 
         // reset the display
         ui.activeCouponEligible.hide()
@@ -2189,7 +2205,7 @@ $(document).ready(function() {
 
             // display your option(s) you can redeem
             const $couponListItem = $( '<div class="club--redeem-content"/>' );
-              
+
             $couponListItem
               .attr( 'id' , 'club--redeem-coupon--' + coupon.id )
               .append( '<span class="club--big-number">' + coupon.name + '</span>' )
@@ -2202,7 +2218,7 @@ $(document).ready(function() {
           // show the data
           ui.activeCouponEligible.show();
           ui.activeCouponIneligible.hide();
-        }; 
+        };
 
         // DASHBOARD :: Points to next reward
 
@@ -2251,7 +2267,7 @@ $(document).ready(function() {
         $(this)
           .after('<i class="fa fa-spin fa-spinner"></i>')
           .hide();
-   
+
         swellAPI.makeRedemption( {
           redemptionOptionId: $(this).data('redemption-option-id')
         }, function(redemption) {
@@ -3326,6 +3342,23 @@ theme.OfferTab = (function () {
         if ( validEmail ) {
           ui.submit.addClass( 'enable' ); // Enable submit button
           toggleError( false );
+
+          // When the form is submitted, pass dataLayer payload
+          ui.submit.click( (e) => {
+          // $('#button-modal-newsletter-submit').click( (e) => {
+          // ui.formId.submit(function(e) {
+
+            var payload = { email: ui.textbox.val(), emailType: 'marketing', interaction: 'On Email' }
+            if (typeof window.__bva__ !== 'undefined' && typeof window.__bva__.helpers !== 'undefined') {
+              window.__bva__.helpers.fireEmailPixel(payload)
+            } else if (typeof dataLayer !== 'undefined') {
+              dataLayer.push(payload, { event: 'On Email' })
+            }
+
+            // Log the clicked element in the console
+            console.log(payload);
+          });
+
         } else {
           ui.submit.removeClass( 'enable' );
           toggleError( true );
@@ -3401,7 +3434,7 @@ $(document).ready(function(){
 
   // flex slider - ADA compliance
   $(".index_Slider ul.flex-direction-nav li a.flex-prev").attr('title','flex-prev');
-  $(".index_Slider ul.flex-direction-nav li a.flex-next").attr('title','flex-next');  
+  $(".index_Slider ul.flex-direction-nav li a.flex-next").attr('title','flex-next');
 
   if(window.location.href.indexOf('.com/products/') > -1 && window.location.href.indexOf('#yotpo-reviews') > -1){
     setTimeout(()=>{
