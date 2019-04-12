@@ -32,7 +32,20 @@
         "info": "(Ex: GTM-PM9T3KW)",
         "default": "GTM-NONE"
       },
-
+      {
+        "type": "checkbox",
+        "id": "enable_script_data_layer",
+        "label": "Enable/Disable dataLayer",
+        "info": "For Dev testing - PLEASE DO NOT DISABLE",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "data_layer_debugging",
+        "label": "Enable Data Layer Debugging",
+        "info": "You'll see debugging information via console.log",
+        "default": false
+      },
       {
         "type": "header",
         "content": "Yotpo Reviews"
@@ -48,7 +61,6 @@
   {
     "name": "Colors",
     "settings": [
-
       {
         "type": "header",
         "content": "Announcement Header"
@@ -71,8 +83,6 @@
         "label": "Announcement BG - #2",
         "default": "#073322"
       },
-
-
       {
         "type": "header",
         "content": "Navigation Header"
@@ -145,8 +155,6 @@
         "label": "Social icons hover",
         "default": "#000000"
       },
-
-
       {
         "type": "header",
         "content": "General"
@@ -301,9 +309,6 @@
         "label": "Secondary Button Border Width",
         "default": 0
       },
-
-
-
       {
         "type": "header",
         "content": "Homepage"
@@ -320,7 +325,6 @@
         "label": "Instagram Feed - Text",
         "default": "#ffffff"
       },
-
       {
         "type": "header",
         "content": "Collection + Filters"
@@ -477,8 +481,6 @@
         "info": "(For React Swatches on Collection Views)",
         "default": "#9a9a9a"
       },
-
-
       {
         "type": "header",
         "content": "Modals + Fancybox"
@@ -502,9 +504,6 @@
         "label": "Modal Close Hover Color",
         "default": "#9B492B"
       },
-
-
-
       {
         "type": "header",
         "content": "GDPR Banner"
@@ -573,10 +572,6 @@
         "label": "GDPR Alt Button Hover",
         "default": "#d6d6d6"
       },
-
-
-
-
       {
         "type": "header",
         "content": "Navigation"
@@ -658,8 +653,6 @@
         "label": "Text hover",
         "default": "#000000"
       },
-
-
       {
         "type": "header",
         "content": "Product variant swatches"
@@ -754,8 +747,6 @@
         "label": "Size swatch BG (selected)",
         "default": "transparent"
       },
-
-
       {
         "type": "header",
         "content": "Product icons"
@@ -836,7 +827,6 @@
         "label": "Social - Header",
         "default": "#0a56a4"
       },
-
       {
         "type": "header",
         "content": "Footer"
@@ -891,14 +881,14 @@
         "content": "Sizes"
       },
       {
-        "type":      "range",
-        "id":        "announcement_text_size",
-        "min":       12,
-        "max":       24,
-        "step":      1,
-        "unit":      "px",
-        "label":     "Announcement Promo Text",
-        "default":   18
+        "type": "range",
+        "id": "announcement_text_size",
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Announcement Promo Text",
+        "default": 18
       },
       {
         "type": "range",
@@ -1074,10 +1064,10 @@
       },
       {
         "type": "checkbox",
-        "default" : true,
+        "default": true,
         "id": "enable_nav_name_styling",
         "label": "Stylize Key Nav Items",
-        "info" : "(Adds bold/color-selection to nav items like 'Sale' in the menu)"
+        "info": "(Adds bold/color-selection to nav items like 'Sale' in the menu)"
       }
     ]
   },
@@ -1580,7 +1570,7 @@
         "type": "text",
         "id": "final_sale",
         "label": "Final sale text",
-        "default":"FINAL SALE.No returns or exchanges."
+        "default": "FINAL SALE.No returns or exchanges."
       }
     ]
   }
