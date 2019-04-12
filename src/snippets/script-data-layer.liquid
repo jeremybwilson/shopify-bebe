@@ -829,7 +829,8 @@ __bva__.helpers = (function () {
 
     /*DATALAYER: Global
     --------------------------- */
-    __bva__.helpers.watchEmailMarketingByClick('#sr_email_sign_up', '#sr_lm_email', '#sr_cart_runner')
+    __bva__.helpers.watchEmailMarketingByClick('modal-newsletter-submit', 'input[type="email"]', 'form[action="//cl.s10.exct.net/subscribe.aspx"]')
+    __bva__.helpers.watchEmailMarketingBySubmit('.contact-form-footer', '.input#footer-newsletter-email')
     __bva__.helpers.watchQuickView('product.quick')
 
     /*DATALAYER: Homepage
@@ -1406,6 +1407,20 @@ __bva__.helpers = (function () {
               'category'  : line_item.properties && line_item.properties._collection_private,
             }
 
+            {% comment %}
+            if (!options) {
+              return $.ajax({
+                url: line_item.url.split('?')[0] + '?view=data',
+                success: function (data) {
+                  var dataOptions = JSON.parse(data)
+                  ret.options = dataOptions.optionsByVariantId[line_item.variant_id.toString()]
+                  ret.category = dataOptions.collection
+                  return ret
+                }
+              })
+            }
+            {% endcomment %}
+
             return ret
           })
         }
@@ -1625,7 +1640,7 @@ __bva__.helpers = (function () {
             price: {{ product.price | money_without_currency | divided_by: 100.0 | json }},
             variant: productFromForm.variant,
             quantity: productFromForm.quantity,
-            brand: {{ product.vendor | json }},
+            // brand: {{ product.vendor | json }},
           }
 
           dataLayer.push({ products: [p] })
@@ -1656,6 +1671,7 @@ __bva__.helpers = (function () {
       /* DATALAYER: Newsletter Subscription
       ------------------------------------- */
       __bva__newsletter_fire = 0;
+
       $(document).on('click', __bva__.newsletterSelectors, function () {
         var $this = $(this)
         if(__bva__newsletter_fire !== 1){

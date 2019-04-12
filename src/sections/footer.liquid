@@ -14,7 +14,10 @@
                 <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
               </div><!-- .foot-sub-emailtext -->
               <div class="foot-sub-emailform">
-                <form id="footer-newsletter" action="{{ settings.newsletter_subscription_api_url }}" method="post">
+                <form id="footer-newsletter"
+                      class="contact-form-footer"
+                      action="{{ settings.newsletter_subscription_api_url }}"
+                      method="post">
                   <input type="hidden" name="MID" value="{{ settings.newsletter_email_service_provider_mid }}">
                   <input type="hidden" name="lid" value="{{ settings.newsletter_email_service_provider_lid }}">
                   <input type="hidden" id="sub-action" name="SubAction" value="{{ settings.newsletter_sub_action }}" checked>
