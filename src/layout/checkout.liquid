@@ -12,7 +12,14 @@
 
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
+
+    <!-- Data Layer for GTM
+    ================================================== -->
     {% include 'script-google-tag-head' %}
+    {%- if settings.enable_script_data_layer -%}
+      {% include 'script-data-layer' %}
+    {%- endif -%}
+
   </head>
   <body>
     {{ skip_to_content_link }}
