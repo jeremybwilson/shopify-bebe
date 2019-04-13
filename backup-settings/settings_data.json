@@ -194,7 +194,6 @@
     "cookie_banner_desktop_text": "<p>This site uses cookies to simplify and improve your usage and experience of this website. Cookies are small text files stored on the device you are using to access this website. If you ignore this message and continue without changing your browser settings, we will assume that you are consenting to our use of cookies. For further information on our use of cookies, please see our <a href=\"https://www.honeywell.com/privacy-statement\" target=\"_blank\">Privacy Statement</a></p>",
     "cookie_banner_accept_button_text": "Accept",
     "show_multiple_currencies": false,
-    "enable_script_data_layer": false,
     "currency_format": "money_with_currency_format",
     "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
     "default_currency": "USD",
@@ -218,6 +217,8 @@
     "checkout_accent_color": "#9d6d31",
     "checkout_button_color": "#000000",
     "checkout_error_color": "#ff6d6d",
+    "data_layer_debugging": false,
+    "enable_script_data_layer": true,
     "facebook_title_alt_text": "Facebook",
     "pinterest_title_alt_text": "Pinterest",
     "tumblr_title_alt_text": "Tumblr",
@@ -346,6 +347,14 @@
               "nav_image": "shopify://shop_images/shop-sale_b187c22e-a504-45a5-9e4b-803c458d929b.jpg",
               "nav_promo_link": "shopify://collections/sale"
             }
+          },
+          "1555101781432": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Flash Sale",
+              "nav_image": "",
+              "nav_promo_link": "shopify://collections/flash-sale"
+            }
           }
         },
         "block_order": [
@@ -358,7 +367,8 @@
           "1542669004635",
           "1542669012588",
           "1542669019789",
-          "1542669025513"
+          "1542669025513",
+          "1555101781432"
         ],
         "settings": {
           "full_width_header": false,
@@ -560,7 +570,7 @@
             "settings": {
               "image": "shopify://shop_images/limited-time-20-off-30-off-desktop.jpg",
               "mobile_image": "shopify://shop_images/limited-time-20-off-30-off-mobile.jpg",
-              "cta_full_image": "shopify://collections/festival-fabulous",
+              "cta_full_image": "shopify://collections/new",
               "heading": "",
               "hide_header_desktop": true,
               "subheading": "<br>",
