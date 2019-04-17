@@ -568,8 +568,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/new-things-for-spring-hp.jpg",
-              "mobile_image": "shopify://shop_images/new-things-for-spring-hp-mobile.jpg",
+              "image": "shopify://shop_images/20-off-entire-site-hp.jpg",
+              "mobile_image": "shopify://shop_images/20-off-entire-site-hp-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "",
               "hide_header_desktop": true,
@@ -578,19 +578,19 @@
               "cta_one_button_text": "Shop New Arrivals",
               "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
-              "cta_three_button_text": "",
+              "cta_three_link": "shopify://pages/coupons-discounts",
+              "cta_three_button_text": "See Details",
               "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
-              "hide_buttons_mobile": true,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 29.5,
-              "caption_vertical": 65,
-              "caption_vertical_mobile": 70,
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 26,
+              "caption_vertical": 70,
+              "caption_vertical_mobile": 80,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
             }
@@ -610,12 +610,12 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/spring-tops.jpg",
-              "mobile_image": "shopify://shop_images/spring-tops_5ae5fb0c-3190-4ba5-a33a-6655788115f6.jpg",
-              "link": "shopify://collections/tops",
-              "heading_text": "Flowery & Flirty",
+              "image": "shopify://shop_images/nice-enough-for-brunch.jpg",
+              "mobile_image": "shopify://shop_images/nice-enough-for-brunch_606f5432-3a31-4de9-b419-b48296b60714.jpg",
+              "link": "shopify://collections/brunch-dresses",
+              "heading_text": "Nice Enough for a Nice Brunch",
               "text": "",
-              "cta_text": "Shop Spring Tops",
+              "cta_text": "Shop Brunch Dresses",
               "cta_style": "button"
             }
           },
@@ -1275,11 +1275,11 @@
           "1554791977752": {
             "type": "text_block",
             "settings": {
-              "heading_text": "UP TO 50% OFF SALE",
-              "text": "<p>Score hot deals on sale items. Priced as marked.</p>",
+              "heading_text": "SALE UP TO 60% OFF ORIGINAL PRICES",
+              "text": "<p>Score hot deals when you use SAVEME20 for an extra 20% off already reduced prices.</p>",
               "cta_text": "Shop Sale",
               "link": "shopify://collections/sale",
-              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
+              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code SAVEME20 at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 4/21/19 at 11:59 pm PDT&nbsp;</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1319,9 +1319,22 @@
               "coupon_size": "full",
               "coupon_color": "light"
             }
+          },
+          "1555400002243": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF ENTIRE SITE",
+              "text": "<p>Enjoy 20% off regular-priced &amp; sale items with code SAVEME20.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code SAVEME20 at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 4/21/19 at 11:59 pm PDT.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
           }
         },
         "block_order": [
+          "1555400002243",
           "1554791977752",
           "1545990628348",
           "1545990640803",
@@ -1364,7 +1377,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify://shop_images/20-off-entire-store-cart.jpg",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1399,14 +1412,14 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/nice-enough-for-brunch-hp.jpg",
-              "mobile_image": "shopify://shop_images/nice-enough-for-brunch-mobile.jpg",
-              "cta_full_image": "shopify://collections/new",
+              "image": "shopify://shop_images/festival-fabulous-desktop_b2028a10-45f5-4df8-aa54-ff02f4a6f087.jpg",
+              "mobile_image": "shopify://shop_images/festival-fabulous-mobile_ca0488b4-bbf5-482d-9feb-b488a925dc06.jpg",
+              "cta_full_image": "shopify://collections/festival-fabulous",
               "heading": "<br>",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/brunch-dresses",
-              "cta_one_button_text": "SHOP Brunch Dresses",
+              "cta_one_link": "shopify://collections/festival-fabulous",
+              "cta_one_button_text": "SHOP Festival",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1420,7 +1433,7 @@
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
               "caption_horizontal_offset": 0,
-              "caption_vertical": 60,
+              "caption_vertical": 54,
               "caption_vertical_mobile": 75,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
@@ -1484,8 +1497,8 @@
           "1547711858918-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/up-to-50-off-sale.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile.jpg",
+              "image": "shopify://shop_images/sale-up-to-60-off-hp.jpg",
+              "mobile_image": "shopify://shop_images/sale-up-to-60-off-hp-mobile.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "",
               "hide_header_desktop": false,
@@ -1648,128 +1661,128 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/up-to-50-off-sale_43dc6386-7160-46d5-8b39-b2a1ca35103c.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_320e5200-8580-454f-949f-27fedde3ac7c.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_99de1567-3565-4a6e-82dc-8b13ee20e63e.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_c3491a59-daae-4909-a056-76bcf6adfe69.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "",
-              "image": "shopify://shop_images/up-to-50-off-sale_e323add4-5f70-4783-9098-c8f1ae3f480d.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_1f94080f-d96f-4d7e-a5cb-7d966c2aad3b.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_d96fcf42-e1a5-4e38-94d4-c65d2b75aec9.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_93564c6a-a576-4b40-88f8-950539c6827f.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/up-to-50-off-sale_007c598f-409f-4dc7-ab29-b8068731797c.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_fc0bbf2f-1486-4c71-bd4d-644d74bc257d.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_baef345e-8b0d-462f-9a27-2d7398d8094a.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_12a6945f-7c27-413f-b63a-09bb1321ba0f.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/up-to-50-off-sale_189f3f48-d684-48fc-a79e-a762f99c7ec0.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_caed0389-d990-492f-8625-d1c0cf4d37c7.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_0d967a37-31a8-4321-b97c-5174c42db854.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_68f087fe-9241-4f5d-a5d4-1dd0bbd972c5.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/up-to-50-off-sale_c206aca1-8bc9-41f2-92c9-196ba57e9818.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_a3b4be06-ea07-45e1-b5ee-866bac56aeb5.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_c5ab7d8e-9453-4031-960e-20ecb6c9f4f8.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_0be86e31-5edc-4e01-8fac-96cc308955d3.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/up-to-50-off-sale_cd6f6e1e-c42b-4fdb-803c-24f0e95ca367.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_8937aa29-bfba-4417-b66b-43441528183b.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_4be4d6c0-ef96-418c-9769-6fbd3ec1b167.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_00e8d5c6-7bbc-4c6a-8e3b-c4953a043bad.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/up-to-50-off-sale_ced3fca8-7abc-45f6-ba78-c6d8fcc6f441.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_cfcd3b48-074a-4f56-ac77-681b4750eeec.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop_85faa738-6ccd-43eb-964e-3a2ba426fdb1.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile_f6e3293b-d54a-4370-9285-07f40780e5fe.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/up-to-50-off-sale_dce5bee5-0847-48d5-8bbc-0bebfd17bf09.jpg",
-              "mobile_image": "shopify://shop_images/up-to-50-off-sale-mobile_d97c191b-b32e-49ff-951a-523bf78afba0.jpg"
+              "image": "shopify://shop_images/plp-sale-up-to-60-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/plp-sale-up-to-60-off-mobile.jpg"
             }
           },
           "1554769189117": {
             "type": "image",
             "settings": {
               "collection": "flash-sale",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_a394b714-ee7f-430c-a8d2-0fd0c40fd42b.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_a6e71f71-4ed6-4ce3-b211-e37dab0a36f4.gif"
+              "image": "shopify://shop_images/flash-sale-plp_f5626d08-e54a-4cdc-9d7a-260306785e59.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_71dfdecb-929b-442c-9539-cd943b2b004e.gif"
             }
           },
           "1554769338711": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-accessories",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_d56bdac2-cf46-45a6-a6f3-0adbe6e39c40.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_29ffef18-cc91-4343-aeb5-c19fed327c3d.gif"
+              "image": "shopify://shop_images/flash-sale-plp_1a8598fd-1a28-4262-a943-29e8ff4f14e8.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_9719d1ae-57d1-4fd4-93e2-17440cec7478.gif"
             }
           },
           "1554769356092": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-bottoms",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_9a2a4cb8-550c-4782-9bfb-9cfd9b14de0f.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_21a54102-725b-4339-b47b-8ad207f86cc6.gif"
+              "image": "shopify://shop_images/flash-sale-plp_81715202-c083-45dd-8c3a-92b2e2616419.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_0856204a-aa0c-4fef-aaef-9ff4278e6888.gif"
             }
           },
           "1554769476159": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-dresses",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_dac863c0-b63c-4455-b7cb-dd5e94c3deb1.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_20db5113-459c-4250-a6ba-e17b8a9e93ea.gif"
+              "image": "shopify://shop_images/flash-sale-plp_342a0f17-bf5d-4241-9795-cabff1bb3b22.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_ac9c53e8-cb54-4224-b817-a1e480600386.gif"
             }
           },
           "1554769497069": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-jackets",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_6a90d635-f3ab-4db9-ac65-241d1eeac6e9.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_f2455205-a93a-4c15-9933-aceab8add5c0.gif"
+              "image": "shopify://shop_images/flash-sale-plp_a59ab704-9d5b-4c1e-8a4b-900ef2b78910.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_1a2d6f80-ef85-4d5b-b304-d163a9294809.gif"
             }
           },
           "1554769523049": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-jumpsuits",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_3b8052b1-10a9-4876-a41b-e639970a18c7.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_1d17a99b-5472-426e-b508-03dda1e08693.gif"
+              "image": "shopify://shop_images/flash-sale-plp_e59ad5ac-c90e-4fa3-8eca-71729a8ca430.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_af9142f9-9e58-48a5-b9ce-a5c11f47092c.gif"
             }
           },
           "1554769543881": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-shoes",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new_0cdf3ba6-1673-47f1-87f9-370516d2b85a.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new_13bd59a3-b1c5-4002-a491-f9a40a380c67.gif"
+              "image": "shopify://shop_images/flash-sale-plp_fb2f4ed6-5a20-4d3f-b0af-701b25c9409a.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile_61207a7e-2de5-4249-a483-7fc1a598fd5b.gif"
             }
           },
           "1554769568607": {
             "type": "image",
             "settings": {
               "collection": "flash-sale-tops",
-              "image": "shopify://shop_images/up-to-65-off-flash-sale-desktop-new.gif",
-              "mobile_image": "shopify://shop_images/up-to-65-off-flash-sale-mobile-new.gif"
+              "image": "shopify://shop_images/flash-sale-plp.gif",
+              "mobile_image": "shopify://shop_images/flash-sale-plp-mobile.gif"
             }
           }
         },
@@ -1800,8 +1813,8 @@
     },
     "content_for_index": [
       "1535728526385",
-      "1547711858918",
       "1536251685211",
+      "1547711858918",
       "1551244191226",
       "1547557172846",
       "1548306390190",
