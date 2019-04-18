@@ -610,12 +610,12 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/nice-enough-for-brunch.jpg",
-              "mobile_image": "shopify://shop_images/nice-enough-for-brunch_606f5432-3a31-4de9-b419-b48296b60714.jpg",
-              "link": "shopify://collections/brunch-dresses",
-              "heading_text": "Nice Enough for a Nice Brunch",
+              "image": "shopify://shop_images/word-up-logo.jpg",
+              "mobile_image": "shopify://shop_images/word-up-logo_6db4eabf-b6d7-43f6-83fb-4dc10077eeb2.jpg",
+              "link": "shopify://products/serena-logo-stripe-dress-axis-bebe",
+              "heading_text": "Word Up",
               "text": "",
-              "cta_text": "Shop Brunch Dresses",
+              "cta_text": "Shop Logo",
               "cta_style": "button"
             }
           },
@@ -1272,6 +1272,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1555400002243": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF ENTIRE SITE",
+              "text": "<p>Enjoy 20% off regular-priced &amp; sale items with code SAVEME20.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code SAVEME20 at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 4/21/19 at 11:59 pm PDT.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1554791977752": {
             "type": "text_block",
             "settings": {
@@ -1316,18 +1328,6 @@
               "cta_text": "Join the Club",
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1555400002243": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF ENTIRE SITE",
-              "text": "<p>Enjoy 20% off regular-priced &amp; sale items with code SAVEME20.</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code SAVEME20 at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 4/21/19 at 11:59 pm PDT.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
