@@ -568,8 +568,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/20-off-entire-site-hp.jpg",
-              "mobile_image": "shopify://shop_images/20-off-entire-site-hp-mobile.jpg",
+              "image": "shopify://shop_images/ends-tonight-20-off.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-20-off-desktop_f5fccbb0-5f34-4386-bc0f-98e7488d4146.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "",
               "hide_header_desktop": true,
