@@ -29,7 +29,10 @@
         <span class="money bfx-price">{{ compare_price }}</span>
       </span>
   </div>
-
+  {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
+  {%- if product.compare_at_price > product.price -%}
+    <div class="final_sale sale_product">{{settings.final_sale}}</div>
+  {%- endif -%}
   {% else %}
 
   {% comment %} :: REGULAR PRICE :: {% endcomment %}
@@ -38,7 +41,7 @@
       <span class="money bfx-price">{{ price }}</span>
     </span>
   </div>
-  
+
   {% endif %}
 
   <div class="clear"></div>
@@ -46,7 +49,7 @@
   {% comment %} REVIEWS - STAR RATING {% endcomment %}
 
   {% comment %}
-  SWATCHES 
+  SWATCHES
   -------------------
     CONDITION #1 - If there are more than one set of product options (Color AND Size). This condition also renders the different variants under said options (Red S, Blue L).
   {% endcomment %}
@@ -63,7 +66,7 @@
     </div><!-- .select -->
     {% if section.settings.product_variants == 'swatches' %}
 
-      {% comment %} 
+      {% comment %}
       :: CYCLE #1 :: (Cycle through the available options )
         - This is the first of 3 sets of loops that determine the render of the product swatches. See 'swatch.liquid' for the other two. {% endcomment %}
       {% for option in product.options_with_values %}
@@ -89,7 +92,7 @@
     </div><!-- .select -->
     {% if section.settings.product_variants == 'swatches' %}
 
-      {% comment %} Option Loop 
+      {% comment %} Option Loop
 
       This is the first of 3 sets of loops that determine the render of the product swatches. See 'swatch.liquid' for the other two.
 
