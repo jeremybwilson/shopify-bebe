@@ -53,7 +53,7 @@
       ----------------------------- {% endcomment %}
   <div class="row product-details--top">
     <div id="product-photos" class="{% if section.settings.related_products == 'right' %}desktop-5{% else %}desktop-6{% endif %} tablet-3 mobile-hide" data-product-gallery>
-      
+
       {% comment %} :: ITEM BADGE :: {% endcomment %}
       {% include 'react-item-badge' %}
 
@@ -123,11 +123,12 @@
 
               {%comment%}
                 Final sale text for all sale product
-                //template == 'product'
+                // template == 'product'
+                Hiding this instance of final sale text -> PDM-501
               {%endcomment%}
-              {%- if product.compare_at_price > product.price -%}
+              {% comment %} {%- if product.compare_at_price > product.price -%}
                 <div class="final_sale sale_product">{{settings.final_sale}}</div>
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
             </div>
 
             {% comment %} :: SIZE CHART :: {% endcomment %}
@@ -191,7 +192,8 @@
 
         {%comment%}
           Final sale text for all sale product
-          //template == 'product.quick' and 
+          // template == 'product.quick' and
+          Leaving the below instance of the text in place as part of PDM-501
         {%endcomment%}
         {%- if template == 'product.quick' and product.compare_at_price > product.price -%}
           <div class="final_sale sale_quikeview">{{settings.final_sale}}</div>
@@ -242,7 +244,7 @@
 
     {% comment %} :: REVIEWS :: {% endcomment %}
     {% include 'yotpo-reviews' %}
-    
+
   {% endunless %}
 </div>
 
@@ -339,7 +341,7 @@
         "type": "checkbox",
         "id": "product_nav",
         "label": "Show next / previous product"
-      },      
+      },
       {
         "type": "checkbox",
         "id": "vendor",
@@ -483,7 +485,7 @@
       {
         "type": "header",
         "content": "Shipping Accordion"
-      },      
+      },
       {
         "type": "text",
         "id": "shipping_header_text",
