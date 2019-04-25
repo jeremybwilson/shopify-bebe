@@ -805,6 +805,10 @@ ul#nav li ul.megamenu div.mega-container li.desktop-3:nth-child(5n) {
   letter-spacing: 1px;
   border-radius: 3px;
   transition: all .25s ease-in-out;
+  @include mq('phone'){
+    background: {{ settings.cta_mobile_bg }};
+    color: {{ settings.cta_mobile_color }};
+  }
 }
 
 .cta a:hover {
