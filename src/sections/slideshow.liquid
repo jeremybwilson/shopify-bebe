@@ -231,16 +231,16 @@
               color: {{ slide_text_color }};
               background-color: {{ cta_color }};
               {%endcomment%}
-              color: {{ settings.cta_color }};
-              background-color: {{ settings.cta_background }};
+              color: $button--main-text;
+              background-color: $button--main-bg;
             }
             .flex-caption.slide-{{ block.id }} .cta a:hover {
               background-color: {{ cta_hover_color }};
             }
             @media (max-width: 767px){
               .flex-caption.slide-{{ block.id }} .cta a {
-                color: {{ settings.cta_mobile_color }};
-                background-color: {{ settings.cta_mobile_bg }};
+                background: $button--main-mobile-bg;
+                color: $button--main-mobile-text;
               }
             }
           </style>

@@ -85,34 +85,6 @@
       },
       {
         "type": "header",
-        "content": "CTA button color"
-      },
-      {
-        "type": "color",
-        "id": "cta_background",
-        "label": "CTA desktop BG",
-        "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "cta_color",
-        "label": "CTA desktop color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "cta_mobile_bg",
-        "label": "CTA mobile BG",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "cta_mobile_color",
-        "label": "CTA mobile color",
-        "default": "#000000"
-      },
-      {
-        "type": "header",
         "content": "Navigation Header"
       },
       {
@@ -253,6 +225,12 @@
       },
       {
         "type": "color",
+        "id": "button_mobile_bg",
+        "label": "Main Button Mobile BG",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
         "id": "button_bg_hover",
         "label": "Main Button BG Hover",
         "default": "#a6041c"
@@ -262,6 +240,12 @@
         "id": "button_text",
         "label": "Main Button Text",
         "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "button_mobile_text",
+        "label": "Main Button Mobile Text",
+        "default": "#000000"
       },
       {
         "type": "color",
