@@ -568,14 +568,14 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/limited-tme-20-off-hp.jpg",
-              "mobile_image": "shopify://shop_images/limited-tme-20-off-hp-mobile.jpg",
+              "image": "shopify://shop_images/20-off-entire-store-desktop.jpg",
+              "mobile_image": "shopify://shop_images/20-off-entire-store-mobile-3.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
               "subheading": "",
               "cta_one_link": "shopify://collections/new",
-              "cta_one_button_text": "Shop New Arrivals",
+              "cta_one_button_text": "Shop Now",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "shopify://pages/coupons-discounts",
@@ -590,7 +590,7 @@
               "caption_horizontal": "center",
               "caption_horizontal_offset": 35,
               "caption_vertical": 70,
-              "caption_vertical_mobile": 76,
+              "caption_vertical_mobile": 65,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
             }
@@ -1275,11 +1275,11 @@
           "1555400002243": {
             "type": "text_block",
             "settings": {
-              "heading_text": "20% OFF $150",
-              "text": "<p>Save on regular-priced &amp; sale styles. Use code 20PERCENT.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
+              "heading_text": "20% OFF ENTIRE SITE",
+              "text": "<p>Enjoy 20% off regular-priced &amp; sale items with code SITESALE.</p>",
+              "cta_text": "SHOP NOW",
               "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off any purchase of $150 or more, enter code 20PERCENT at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 4/25/19 at 11:59 pm PDT. &nbsp;</p>",
+              "details_text": "<p>Enjoy 20% off all regular-priced and sale merchandise on bebe.com. Not valid at bebe stores. To redeem, enter code SITESALE at checkout. Not valid on shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 4/29/19 at 11:59 pm PDT.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1377,7 +1377,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify://shop_images/20-off-150-cart.jpg",
+          "image": "",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": "<strong>PLEASE NOTE: We’re experiencing temporary shipping delays as we move inventory to a new location. We’ll do all we can to expedite order processing during this time; however, orders placed between 4/22/19 and 5/8/19 will be delayed approximately 7-10 business days. Free shipping will automatically be applied to all orders shipped to the 48 contiguous United States.</strong>"
@@ -1661,64 +1661,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_7257ba8b-07e4-40ed-885a-204183dee18e.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_718f4d75-2640-4a87-812e-a02fbf110586.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_41c0e53a-e27a-4fb0-bd38-38e730d0eab6.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_312f548c-0af0-44e2-a17d-1a14dd37de17.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_7babca6c-dec3-4f03-a457-0132cad8a9b7.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_7236765b-02cd-42e5-a0df-0bb6eaa15972.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_024051d9-d7fd-4b48-b50e-7bb77311bbde.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_30dd5731-8867-4c72-a8eb-9e85fc47f050.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_64f12dfb-be7c-4fb1-8cee-3db5a7a702e9.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_010d19cf-d445-407e-be8b-fc96a57eb801.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_2854d106-d466-4e9b-8f28-1ac2f0e3c253.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_52ea1239-e382-46f2-aac1-b09a980472d6.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_239d237c-ef66-433c-8c23-3138b38fd8e8.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_a1edc67f-0dad-4d54-9d93-58f8ce0ba0ff.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_49570379-2a34-4016-a6df-27d6e0ce228c.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_6e0a6a08-b46e-4988-9746-7e729f2b056e.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_95c8b725-c800-4a94-bff6-e517bcaed1b5.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_cdc836a4-070c-40f4-ba1f-68df8fcb98c2.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_b482cc45-b4b1-4e7a-9a2f-1a629e0dda1a.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_ecab3d8b-5bc8-47fb-b5fe-f8cd7429c7cb.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_444ada0a-c67d-4931-a34d-0b14ff0f27f3.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_e6c0dee9-dcda-4a04-bb62-0ee509d294a8.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_e9ccf760-adfc-424d-891f-a6e3075e761a.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_2a636ea5-0fea-4961-8f1f-db134e95918a.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop_511a8199-f3a9-4469-8894-2e841af450e6.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile_59d3a890-58c1-4c52-855e-baa518d8bf13.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_45cea4f7-e10f-4f7b-a0f7-64bc38e5bc60.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_f40ab637-32c7-44c6-bfa3-2e65690b796c.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/up-to-60-off-plp-desktop.jpg",
-              "mobile_image": "shopify://shop_images/up-to-60-off-plp-mobile.jpg"
+              "image": "shopify://shop_images/collection-banner-sale-desktop_1973d0d4-e7a8-4179-9581-27c600a5e53e.jpg",
+              "mobile_image": "shopify://shop_images/collection-banner-sale-mobile_6495a9ee-5635-43e5-92eb-f4d310514093.jpg"
             }
           },
           "1554769189117": {
