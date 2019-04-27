@@ -569,7 +569,7 @@
             "type": "image",
             "settings": {
               "image": "shopify://shop_images/20-off-entire-store-desktop.jpg",
-              "mobile_image": "shopify://shop_images/20-off-entire-store-mobile-3.jpg",
+              "mobile_image": "shopify://shop_images/20-off-entire-store-mobile-4_89ab9538-6d48-44f5-bd46-39488a931bb9.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
@@ -1284,18 +1284,6 @@
               "coupon_color": "light"
             }
           },
-          "1554791977752": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "SALE UP TO 60% OFF",
-              "text": "<p>Save on hundreds of styles. Discount taken at checkout.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1335,7 +1323,6 @@
         },
         "block_order": [
           "1555400002243",
-          "1554791977752",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1493,6 +1480,7 @@
       },
       "1547711858918": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
