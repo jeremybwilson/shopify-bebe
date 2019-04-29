@@ -193,11 +193,13 @@
         {%comment%}
           Final sale text for all sale product
           // template == 'product.quick' and
-          Leaving the below instance of the text in place as part of PDM-501
+
         {%endcomment%}
+        {% comment %} hiding this callout per PDM-501 feedback
         {%- if template == 'product.quick' and product.compare_at_price > product.price -%}
           <div class="final_sale sale_quikeview">{{settings.final_sale}}</div>
         {%- endif -%}
+        {% endcomment %}
 
   <div class="clear"></div>
   {% unless template == 'product.quick' %}
