@@ -569,7 +569,7 @@
             "type": "image",
             "settings": {
               "image": "shopify://shop_images/20-off-25-off-hp.jpg",
-              "mobile_image": "shopify://shop_images/20-off-25-off-hp-mobile.jpg",
+              "mobile_image": "shopify://shop_images/20-off-25-off-hp-mobile-2.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br><br>",
               "hide_header_desktop": true,
@@ -1272,42 +1272,6 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
-          "1545990628348": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "FREE U.S. SHIPPING OVER $100",
-              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.</p>",
-              "coupon_size": "half",
-              "coupon_color": "light"
-            }
-          },
-          "1545990640803": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF WHEN YOU SIGN UP FOR EMAIL",
-              "text": "<p>Be first to hear about exclusive offers, new arrivals &amp; more.</p>",
-              "cta_text": "Send Me Email",
-              "link": "#newsletter-social",
-              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "half",
-              "coupon_color": "light"
-            }
-          },
-          "1545991169940": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF WHEN YOU JOIN CLUBBEBE",
-              "text": "<p>Earn points on every purchase &amp; be rewarded.</p>",
-              "cta_text": "Join the Club",
-              "link": "/account/login",
-              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
           "1556691609420": {
             "type": "text_block",
             "settings": {
@@ -1340,6 +1304,42 @@
               "cta_text": "SIGN UP FOR CLUBBEBE",
               "link": "/account/login#clubBebePopup",
               "details_text": "<p>clubbebe members will receive clubbebe double points on all purchases made on bebe.com. Not valid at bebe stores. Associates of bebe stores, inc. and affiliates are not eligible. Not valid on gift cards, shipping, tax, prior purchases or price adjustments. Other restrictions may apply. Offer valid 5/1/19, starting at 12:00 am PDT, through 5/6/19, ending at 11:59 pm PDT. Note: clubbebe points earned on bebe.com may take up to 72 hours from the purchase or shipment date to show in the customer's clubbebe account.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1545990628348": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FREE U.S. SHIPPING OVER $100",
+              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Enjoy free standard shipping, with delivery in 2-8 business days, on any bebe.com order of $100 or more shipped to an address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects standard shipping. Valid on bebe.com only. Offer not valid at bebe stores or on bebeoutlets.com. Offer not valid on previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer subject to change at any time.</p>",
+              "coupon_size": "half",
+              "coupon_color": "light"
+            }
+          },
+          "1545990640803": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF WHEN YOU SIGN UP FOR EMAIL",
+              "text": "<p>Be first to hear about exclusive offers, new arrivals &amp; more.</p>",
+              "cta_text": "Send Me Email",
+              "link": "#newsletter-social",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
+              "coupon_size": "half",
+              "coupon_color": "light"
+            }
+          },
+          "1545991169940": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF WHEN YOU JOIN CLUBBEBE",
+              "text": "<p>Earn points on every purchase &amp; be rewarded.</p>",
+              "cta_text": "Join the Club",
+              "link": "/account/login",
+              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
