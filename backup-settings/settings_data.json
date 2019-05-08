@@ -163,7 +163,7 @@
     "tumblr_url": "",
     "youtube_url": "https://www.youtube.com/user/bebestores",
     "googleplus_url": "",
-    "instagram_url": "http://www.instagram.com/explore/tags/bebebabes",
+    "instagram_url": "https://www.instagram.com/bebe_stores/",
     "instagram_id": "/bebebabes",
     "snapchat_url": "https://www.snapchat.com/add/bebe_stores",
     "iphone_app_url": "/pages/apps",
@@ -276,6 +276,14 @@
               "nav_promo_link": "shopify://collections/white-hot"
             }
           },
+          "1542669012588": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Clothing",
+              "nav_image": "shopify://shop_images/clothing-nav.JPG",
+              "nav_promo_link": "shopify://collections/clothing"
+            }
+          },
           "1522184323686": {
             "type": "mega_menu",
             "settings": {
@@ -311,7 +319,7 @@
           "1542668985601": {
             "type": "mega_menu",
             "settings": {
-              "menu_item": "Jackets & Coats",
+              "menu_item": "Jackets",
               "nav_image": "shopify://shop_images/shop-trenches.jpg",
               "nav_promo_link": "shopify://collections/trenches"
             }
@@ -322,14 +330,6 @@
               "menu_item": "Logo",
               "nav_image": "shopify://shop_images/bebe-logo.jpg",
               "nav_promo_link": "shopify://collections/logo-tops"
-            }
-          },
-          "1542669012588": {
-            "type": "mega_menu",
-            "settings": {
-              "menu_item": "Clothing",
-              "nav_image": "",
-              "nav_promo_link": "shopify://collections/clothing"
             }
           },
           "1542669019789": {
@@ -420,7 +420,7 @@
           "newsletter_subheading": "STAY IN TOUCH & GET 20% OFF",
           "newsletter_placeholder": "Enter Email",
           "newsletter_submit_button": "SUBSCRIBE",
-          "instagram_footer_link": "https://www.instagram.com/bebe_stores",
+          "instagram_footer_link": "https://www.instagram.com/bebe_stores/",
           "instagram_footer_image": "shopify://shop_images/bebebabes.jpg",
           "trust_icon_image_one": "",
           "trust_icon_image_two": "",
