@@ -1181,6 +1181,22 @@
         "id": "ajax_cart_low_stock_text",
         "label": "Low stock alert text",
         "default": "This item does not have enough stock to add to your cart."
+      },
+      {
+        "type": "header",
+        "content": "Checkout messaging"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_checkout_note",
+        "label": "Enable special checkout messaging",
+        "default": false
+      },
+      {
+        "type": "html",
+        "label": "Special checkout messaging",
+        "id": "checkout_note_text",
+        "default": "<strong>PLEASE NOTE:<\/strong><br\/>We’re experiencing temporary shipping delays as we move inventory to a new location. We’ll do all we can to expedite order processing during this time; however, orders placed between 4/22/19 and 5/8/19 will be delayed approximately 7-10 business days. Free shipping will automatically be applied to all orders shipped to the 48 contiguous United States."
       }
     ]
   },
