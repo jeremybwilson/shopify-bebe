@@ -154,6 +154,8 @@
     "ajax_cart_method": "drawer",
     "ajax_cart_remove_text": "This will remove the item from your cart. Continue?",
     "ajax_cart_low_stock_text": "This item does not have enough stock to add to your cart.",
+    "enable_checkout_note": false,
+    "checkout_note_text": "<strong>PLEASE NOTE:</strong><br>We’re experiencing temporary shipping delays as we move inventory to a new location. We’ll do all we can to expedite order processing during this time; however, orders placed between 4/22/19 and 5/8/19 will be delayed approximately 7-10 business days. Free shipping will automatically be applied to all orders shipped to the 48 contiguous United States.",
     "share_facebook": true,
     "share_twitter": true,
     "share_pinterest": true,
@@ -1272,6 +1274,42 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1557385243760": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "25% OFF ALL DRESSES, TOPS & ACCESSORIES",
+              "text": "<p>Enjoy 25% off regular prices for a limited time.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/dresses",
+              "details_text": "<p>Online only. Priced as marked.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1557385376991": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "40% OFF ALL SALE",
+              "text": "<p>Score deeper savings on all markdowns.</p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
+          "1557385297540": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "FREE U.S. EXPRESS SHIPPING OVER $250",
+              "text": "<p>Enjoy on any order shipped to the 48 contiguous United States.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/new",
+              "details_text": "<p>For a limited time, enjoy free express shipping on any bebe.com order of $250 or more shipped to a physical address within the 48 contiguous United States. Excludes Alaska, Hawaii, Puerto Rico, the U.S. Virgin Islands and all other shipping destinations outside the United States. Shipping and handling charges will be deducted automatically at checkout for qualifying orders when customer selects express shipping. Valid on bebe.com only. Not valid at bebe stores. Offer not valid on gift cards, orders shipped to P.O. Boxes or previous purchases. Subject to adjustment due to returns, cancellations and exchanges. Minimum purchase required; sales tax and shipping and handling do not qualify toward the minimum purchase. Other restrictions may apply. Offer expires 5/12/19 at 11:59 pm PDT.</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1545990628348": {
             "type": "text_block",
             "settings": {
@@ -1310,6 +1348,9 @@
           }
         },
         "block_order": [
+          "1557385243760",
+          "1557385376991",
+          "1557385297540",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1634,64 +1675,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/bebe-sale-desktop_7b6055c2-a18e-4206-a1fc-f817b383584e.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_cc4efdca-a42c-409f-97c6-f436f868de9b.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_cf95981f-14ba-4cf5-a408-0b043f279247.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_3a051a53-8996-4753-a40d-0558af1671c5.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "",
-              "image": "shopify://shop_images/bebe-sale-desktop_932f87f0-9b60-4dec-bb86-9d436d9fc850.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_8f68fbd1-0410-4ff2-9a40-05ecc5061887.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_9d59452d-5cbf-4aa4-a428-e7ab8f6c342a.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_c62236e5-d275-44f1-af42-16b7a2e00031.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/bebe-sale-desktop_fb95ee45-9859-4b0c-94d7-9fe2b80414ce.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_feeda8e1-8ee3-4243-b1a9-ed4b6910b575.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_af7f0b70-efa2-4ba9-9849-871451861a44.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_3d4d3226-e7e0-44a1-aeb6-c2875237dee1.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/bebe-sale-desktop_80a7f99d-2daf-4763-8ab6-38c9bbc71acb.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_e7fef796-0f22-460e-a788-48862bb76d55.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_c7639dac-cbc7-46ad-9111-f942c32d128e.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_f209b4a1-e025-47bc-b861-70273a6b6251.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/bebe-sale-desktop_fdb5df6e-f920-4746-85d1-6b1895ef1775.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_cce558f4-847a-488d-94cc-b97863e92220.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_27142ac9-71f6-4d56-886f-f5f5409ce3de.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_91da0735-5c80-413b-a6dc-d69b322b3e9a.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/bebe-sale-desktop_dd6fb351-701b-4506-94a2-3791c626a95f.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_feb04e67-d33b-4777-80c3-1e95e85b32a8.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_fc62bf45-0ade-47b7-acf0-7b9523b24e6f.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_b72c4feb-0b51-4694-b310-034997f8ee6c.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/bebe-sale-desktop_75544e7a-43d9-4e27-a57c-982b4ba4c939.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_32cc80e1-c5f8-498b-9e47-2aa70f326bcd.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop_4e213d8f-7931-4ffe-b6b5-071d9bdabfb8.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile_0c8a00b7-43b0-4d6a-87da-031ccfd2415f.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/bebe-sale-desktop_ecfb004d-8b0a-415d-bcd4-d897fcbd55c0.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_49c66a9c-184d-42a8-9b45-835ec8b8baec.jpg"
+              "image": "shopify://shop_images/sale-plp-desktop.jpg",
+              "mobile_image": "shopify://shop_images/sale-plp-mobile.jpg"
             }
           },
           "1554769189117": {
@@ -1757,6 +1798,222 @@
               "image": "shopify://shop_images/flash-sale-plp.gif",
               "mobile_image": "shopify://shop_images/flash-sale-plp-mobile.gif"
             }
+          },
+          "1557431847764": {
+            "type": "image",
+            "settings": {
+              "collection": "accessories",
+              "image": "shopify://shop_images/25-off-accessories-plp_993671bd-d427-426c-b063-5a8826e1287a.jpg",
+              "mobile_image": "shopify://shop_images/25-off-accessories-plp-mobile_9ad61b38-fdb7-4da2-8e5c-7899702f6e28.jpg"
+            }
+          },
+          "1557432064647": {
+            "type": "image",
+            "settings": {
+              "collection": "shoes",
+              "image": "shopify://shop_images/25-off-accessories-plp_c59982be-f58c-42c2-98e0-e0834f6dbfa9.jpg",
+              "mobile_image": "shopify://shop_images/25-off-accessories-plp-mobile_b88116c9-9f51-45b1-ae03-b68f7ed53ab2.jpg"
+            }
+          },
+          "1557432432899": {
+            "type": "image",
+            "settings": {
+              "collection": "jewelry",
+              "image": "shopify://shop_images/25-off-accessories-plp_d118194b-c2d2-401d-89f1-f9baa021c7f1.jpg",
+              "mobile_image": "shopify://shop_images/25-off-accessories-plp-mobile_baf31c82-5308-449c-86b4-cc8d96f7c709.jpg"
+            }
+          },
+          "1557431885659": {
+            "type": "image",
+            "settings": {
+              "collection": "belts",
+              "image": "shopify://shop_images/25-off-accessories-plp.jpg",
+              "mobile_image": "shopify://shop_images/25-off-accessories-plp-mobile.jpg"
+            }
+          },
+          "1557432467732": {
+            "type": "image",
+            "settings": {
+              "collection": "hats",
+              "image": "shopify://shop_images/25-off-accessories-plp_2cce70d9-8f17-47c4-9131-98e73d748781.jpg",
+              "mobile_image": "shopify://shop_images/25-off-accessories-plp-mobile_1602d5a5-d1c9-4d7e-bb9c-ca6c405744d3.jpg"
+            }
+          },
+          "1557432618850": {
+            "type": "image",
+            "settings": {
+              "collection": "dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile.jpg"
+            }
+          },
+          "1557432664664": {
+            "type": "image",
+            "settings": {
+              "collection": "little-white-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_c339a39a-ac74-40ab-8ef3-38f0a02ed4e4.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_2f7d47bf-1e1a-4370-9353-1e6173a2e918.jpg"
+            }
+          },
+          "1557432735160": {
+            "type": "image",
+            "settings": {
+              "collection": "little-black-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_5beb3d5e-8679-473b-9de7-47abc2dfac35.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_1c5d0e03-b1bc-4465-b6bc-62f9c44eafa3.jpg"
+            }
+          },
+          "1557432769971": {
+            "type": "image",
+            "settings": {
+              "collection": "bodycon-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_7b0f50a5-a84a-4000-baa0-f0e5383fca3c.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_8423216a-c240-4bfc-a932-85b3e5c7687d.jpg"
+            }
+          },
+          "1557432787851": {
+            "type": "image",
+            "settings": {
+              "collection": "day-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_02f4b2dc-af89-4e35-8cac-2b0fdbe36c18.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_59ce726f-83e2-4df4-ae23-95f6895a0383.jpg"
+            }
+          },
+          "1557432813646": {
+            "type": "image",
+            "settings": {
+              "collection": "cutout-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_4ef8fa41-edfa-4e98-a362-4619258f0d82.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_3f12ab82-bf53-480a-a98e-32cb0e15fcbd.jpg"
+            }
+          },
+          "1557432843601": {
+            "type": "image",
+            "settings": {
+              "collection": "maxi-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_c65559c7-f848-40ac-9229-5dfcb0dedab3.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_ec04259a-cb73-494c-abf9-1f2db3e5828b.jpg"
+            }
+          },
+          "1557432875405": {
+            "type": "image",
+            "settings": {
+              "collection": "midi-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_aca65a9d-5df1-452e-89e9-02494b07f999.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_65143025-5759-4949-ad5e-741486707716.jpg"
+            }
+          },
+          "1557432895328": {
+            "type": "image",
+            "settings": {
+              "collection": "work-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_29602e4f-affd-4e49-bd98-d23644b0af60.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_919d3e95-1243-496a-9528-e677fcec649d.jpg"
+            }
+          },
+          "1557432925265": {
+            "type": "image",
+            "settings": {
+              "collection": "dresses-gowns",
+              "image": "shopify://shop_images/25-off-dresses-plp_2c653eeb-ac09-4d66-9afe-685d74cce791.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_d6917a1b-ae0f-43fe-b8a9-809ef5ff8006.jpg"
+            }
+          },
+          "1557432947304": {
+            "type": "image",
+            "settings": {
+              "collection": "cocktail-evening-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_e0469f2d-3d03-48c6-af57-3c4dbd2962b5.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_27e8c232-2c60-44b5-a8f5-fa6039b662b8.jpg"
+            }
+          },
+          "1557433089945": {
+            "type": "image",
+            "settings": {
+              "collection": "special-occasion-dresses",
+              "image": "shopify://shop_images/25-off-dresses-plp_a563c14c-d2e3-4be3-8647-8c44e61f6fe1.jpg",
+              "mobile_image": "shopify://shop_images/25-off-dresses-plp-mobile_b141a1a5-ad75-4da2-892d-05ea3fb46442.jpg"
+            }
+          },
+          "1557433598165": {
+            "type": "image",
+            "settings": {
+              "collection": "tops",
+              "image": "shopify://shop_images/25-off-tops-plp.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile.jpg"
+            }
+          },
+          "1557434801082": {
+            "type": "image",
+            "settings": {
+              "collection": "night-out-tops",
+              "image": "shopify://shop_images/25-off-tops-plp_44d5422e-a660-4368-87b3-a0c83a29acf8.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_df678565-a348-4969-a843-5e04a927ee10.jpg"
+            }
+          },
+          "1557434846279": {
+            "type": "image",
+            "settings": {
+              "collection": "casual-tops",
+              "image": "shopify://shop_images/25-off-tops-plp_1a70b20b-04f4-48cd-84a2-0c0541f30f3c.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_3ccb06c9-4948-44a8-ac55-14e75098e027.jpg"
+            }
+          },
+          "1557434985044": {
+            "type": "image",
+            "settings": {
+              "collection": "sweaters",
+              "image": "shopify://shop_images/25-off-tops-plp_ac2d76ca-c0e3-4464-9e00-aadfa2044635.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_21c4f0c6-d7c6-43f2-b8f8-0ab8589a34e3.jpg"
+            }
+          },
+          "1557435047922": {
+            "type": "image",
+            "settings": {
+              "collection": "tees-tanks",
+              "image": "shopify://shop_images/25-off-tops-plp_ea15eda3-7b99-4075-b2ef-7d7fc898416b.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_314219e0-c15b-4b67-adb1-fa4fc15e8207.jpg"
+            }
+          },
+          "1557435198388": {
+            "type": "image",
+            "settings": {
+              "collection": "lace-tops",
+              "image": "shopify://shop_images/25-off-tops-plp_4281df56-f56b-4d46-b6d0-72373e923270.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_11ffc73f-3817-4a0a-9799-d00b7c4b7510.jpg"
+            }
+          },
+          "1557435245099": {
+            "type": "image",
+            "settings": {
+              "collection": "off-the-shoulder-tops",
+              "image": "shopify://shop_images/25-off-tops-plp_f8df565a-e363-4a52-b6a1-65bbcd15db7f.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_e5a83bee-5ba7-46e1-b06d-22ebe2564c3c.jpg"
+            }
+          },
+          "1557435344593": {
+            "type": "image",
+            "settings": {
+              "collection": "bodysuits",
+              "image": "shopify://shop_images/25-off-tops-plp_f2124ece-3065-4d67-a202-6a70a60e91da.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_6e0eb486-8234-474c-8e24-746fa9591818.jpg"
+            }
+          },
+          "1557435379860": {
+            "type": "image",
+            "settings": {
+              "collection": "crop-tops",
+              "image": "shopify://shop_images/25-off-tops-plp_f59c405f-373d-4235-953c-b871f689c0c5.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_bab4e4f5-f9f7-4d09-aca1-b73b2095f5ee.jpg"
+            }
+          },
+          "1557435408889": {
+            "type": "image",
+            "settings": {
+              "collection": "peplum",
+              "image": "shopify://shop_images/25-off-tops-plp_41506ad2-bec8-4213-93f7-a2b34e0c7fc3.jpg",
+              "mobile_image": "shopify://shop_images/25-off-tops-plp-mobile_5e2b51bf-cf03-4dd7-8d8b-1275fd6777f5.jpg"
+            }
           }
         },
         "block_order": [
@@ -1775,7 +2032,34 @@
           "1554769497069",
           "1554769523049",
           "1554769543881",
-          "1554769568607"
+          "1554769568607",
+          "1557431847764",
+          "1557432064647",
+          "1557432432899",
+          "1557431885659",
+          "1557432467732",
+          "1557432618850",
+          "1557432664664",
+          "1557432735160",
+          "1557432769971",
+          "1557432787851",
+          "1557432813646",
+          "1557432843601",
+          "1557432875405",
+          "1557432895328",
+          "1557432925265",
+          "1557432947304",
+          "1557433089945",
+          "1557433598165",
+          "1557434801082",
+          "1557434846279",
+          "1557434985044",
+          "1557435047922",
+          "1557435198388",
+          "1557435245099",
+          "1557435344593",
+          "1557435379860",
+          "1557435408889"
         ],
         "settings": {}
       },
