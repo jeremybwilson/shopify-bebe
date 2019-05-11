@@ -30,9 +30,13 @@
       </span>
   </div>
   {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
-  {%- if product.compare_at_price > product.price -%}
-    <div class="final_sale sale_product">{{settings.final_sale}}</div>
-  {%- endif -%}
+
+	{% for tag in product.tags %}
+		{% if tag contains 'returnly_no_refund' %}
+		    <div class="final_sale sale_product">{{settings.final_sale}}</div>
+		{%- endif -%}
+	{% endfor %}
+
   {% else %}
 
   {% comment %} :: REGULAR PRICE :: {% endcomment %}
