@@ -110,10 +110,10 @@
                 //template == 'cart' and 
               {%endcomment%}
               {% for tag in item.tags %}
-        				{% if tag contains 'returnly_no_refund' %}
-      		    		<div class="final_sale sale_product">{{settings.final_sale}}</div>
-        				{%- endif -%}
-      			  {% endfor %}
+                {% if tag contains 'returnly_no_refund' %}
+                  <div class="final_sale sale_product">{{settings.final_sale}}</div>
+                {%- endif -%}
+              {% endfor %}
 
               <div class="cart-item-actions">
                 <div class="cart-remove">
