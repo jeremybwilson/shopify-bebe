@@ -570,8 +570,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/hot-deals-25-off-desktop.jpg",
-              "mobile_image": "shopify://shop_images/hot-deals-25-off-mobile.jpg",
+              "image": "shopify://shop_images/until-midnight-25-off-hp.jpg",
+              "mobile_image": "shopify://shop_images/until-midnight-25-off-hp-mobile.jpg",
               "cta_full_image": "shopify://collections/summer-dresses",
               "heading": "<br><br>",
               "hide_header_desktop": true,
@@ -591,7 +591,7 @@
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
               "caption_horizontal_offset": 0,
-              "caption_vertical": 61,
+              "caption_vertical": 66,
               "caption_vertical_mobile": 70,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
