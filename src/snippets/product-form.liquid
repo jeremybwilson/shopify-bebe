@@ -32,7 +32,7 @@
   {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
 
 	{% for tag in product.tags %}
-		{% if tag contains 'returnly_no_refund' %}
+		{% if tag contains 'returnly_no_refund' and price contains '.99' %}
 		    <div class="final_sale sale_product">{{settings.final_sale}}</div>
 		{%- endif -%}
 	{% endfor %}
