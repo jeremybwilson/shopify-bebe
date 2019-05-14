@@ -58,7 +58,7 @@ customBindings = {
   newsletterSelectors: [],
   newsletterSuccess: [],
   searchPage: [],
-  wishlistSelector: [],
+  wishlistSelector: ['.swym-add-to-wishlist'],
   removeWishlist: [],
   wishlistPage: [],
   marketingOpIn: ['#footer-newsletter'],
@@ -139,14 +139,22 @@ __bva__.helpers = (function () {
     var quantity = product.quantity || product.qty
     var brand = product.vendor || product.brand
 
+    var variantOptions = {};
+    if (product.variant_options && product.variant_options.length) {
+      for (var i = 0; i < product.variant_options.length; i++) {
+        variantOptions['option' + (i + 1).toString()] = product.variant_options[i];
+      }
+    }
+
     var payload = {
       'id': product.id.toString(),
       'sku': product.sku,
       'variant': variant.toString(),
-      'name': product.title,
+      'name': product.product_title,
       'price': parseFloat(product.price.toString().replace('.', ''), 10) / 100,
       'quantity': quantity,
       'brand': brand,
+      'options': variantOptions
     }
 
     if (this.template.indexOf('collection') !== -1) {
@@ -160,6 +168,7 @@ __bva__.helpers = (function () {
     })
 
     this.log('Add to Cart', payload)
+    console.log('ATC1:', product);
   }
 
   Helpers.prototype.fireEmptyCartPixel = function () {
@@ -265,16 +274,46 @@ __bva__.helpers = (function () {
 
       var payload = { id: '#checkout_reduction_code' }
 
-      if (value.length >= 12) {
-        payload.interaction = EVENTS.GIFT
-        dataLayer.push(payload, { event: EVENTS.GIFT })
-        self.log(EVENTS.GIFT, payload)
-      } else {
-        payload.interaction = EVENTS.PROMO
-        payload.code = value
-        dataLayer.push(payload, { event: EVENTS.PROMO })
-        self.log(EVENTS.PROMO, payload)
-      }
+      $('button[data-trekkie-id="apply_discount_button"]').on('click', function (e) {
+        if (value.length > 12) {
+          payload.interaction = EVENTS.GIFT
+
+          var gettingGiftAmt = setInterval(function () {
+            var giftCardAmount = $('[data-checkout-applied-gift-card-amount-target]').data('checkout-applied-gift-card-amount-target');
+            if (giftCardAmount) {
+              giftCardAmount = parseFloat(giftCardAmount)/100;
+              payload.amount = giftCardAmount;
+              dataLayer.push(payload, { event: EVENTS.GIFT })
+              self.log(EVENTS.GIFT, payload)
+              clearInterval(gettingGiftAmt)
+            }
+          }, 500);
+          setTimeout(function () {
+            if (gettingGiftAmt) {
+              clearInterval(gettingGiftAmt)
+            }
+          }, 5000);
+        } else {
+          payload.interaction = EVENTS.PROMO
+          payload.code = value
+
+          var gettingPromoAmt = setInterval(function () {
+            var discountAmount = $('[data-checkout-discount-amount-target]').data('checkout-discount-amount-target');
+            if (discountAmount) {
+              discountAmount = parseFloat(discountAmount)/100;
+              payload.amount = discountAmount;
+              dataLayer.push(payload, { event: EVENTS.PROMO })
+              self.log(EVENTS.PROMO, payload)
+              clearInterval(gettingPromoAmt)
+            }
+          }, 500);
+          setTimeout(function () {
+            if (gettingPromoAmt) {
+              clearInterval(gettingPromoAmt)
+            }
+          }, 5000);
+        }
+      })
     })
   }
 
@@ -373,7 +412,8 @@ __bva__.helpers = (function () {
             var radioVal = $selectedInput.val()
             var $label = $('.radio__label[for="' + $selectedInput.attr('id') + '"]')
             var labelVal = $label.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title')
-            firePixel(radioVal + '-' + labelVal)
+//            firePixel(radioVal + '-' + labelVal)
+            firePixel(labelVal)
             self.disconnect()
           }
         })
@@ -387,7 +427,8 @@ __bva__.helpers = (function () {
       var radioVal = $(this).val()
       var $label = $('.radio__label[for="' + $(this).attr('id') + '"]')
       var labelVal = $label.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title')
-      firePixel(radioVal + '-' + labelVal)
+//      firePixel(radioVal + '-' + labelVal)
+      firePixel(labelVal)
     })
 
     var $initialCheckedRadio = $(shippingRateSelector).filter(function () {
@@ -398,10 +439,50 @@ __bva__.helpers = (function () {
       var initialRadioVal = $initialCheckedRadio.val()
       var $initialLabel = $('.radio__label[for="' + $initialCheckedRadio.attr('id') + '"]')
       var initialLabelVal = $initialLabel.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title')
-      firePixel(initialRadioVal + '-' + initialLabelVal)
+//      firePixel(initialRadioVal + '-' + initialLabelVal)
+      firePixel(initialLabelVal)
     } else {
       initObserver()
     }
+  }
+
+  Helpers.prototype.watchCheckoutShippingFieldOnClick = function () {
+    var self = this;
+    var state = { method: '' };
+    var shippingRateSelector = '[id^="checkout_shipping_rate"]';
+
+    function firePixel(value) {
+      if (state.method !== value) {
+        state.method = value;
+        var data = {
+          interaction: 'On Ship',
+          shippingInfo: {
+            method: value,
+          }
+        };
+
+        dataLayer.push(data, {
+          event:'Shipping Information',
+          pageType :'Shipping Information',
+        });
+
+        self.log('Shipping - Transaction Data', data);
+      }
+    }
+
+    $('button[data-trekkie-id="apply_discount_button"]').click(function (e) {
+      var $initialCheckedRadio = $(shippingRateSelector).filter(function () {
+        return $(this).prop('checked');
+      });
+
+      if ($initialCheckedRadio.length) {
+        var initialRadioVal = $initialCheckedRadio.val();
+        var $initialLabel = $('.radio__label[for="' + $initialCheckedRadio.attr('id') + '"]');
+        var initialLabelVal = $initialLabel.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title');
+//      firePixel(initialRadioVal + '-' + initialLabelVal)
+        firePixel(initialLabelVal);
+      }
+    });
   }
 
   Helpers.prototype.watchCheckoutPaymentFields = function () {
@@ -826,11 +907,48 @@ __bva__.helpers = (function () {
       console.log("Log State"+" :"+JSON.stringify(logState, null, " "));
     }
 
+    /*DATALAYER: Cart
+     --------------------------- */
+    var _g_cart = {{ cart | json }}
+    var g_cart = {
+      'cartItems':[{% for line_item in cart.items %}{
+        'id'       : '{{line_item.product_id}}',
+        'sku'      : '{{line_item.sku}}',
+        'variant'  : '{{line_item.variant_id}}',
+        'name'     : '{{line_item.title}}',
+        'price'    : '{{line_item.price | money_without_currency | remove: "," | json }}',
+        'quantity' : '{{line_item.quantity}}',
+        'brand'    : {{ line_item.vendor | default: shop.name | json }},
+        'options'  : {
+          {% for variant in line_item.product.variants %}
+            {% if variant.id == line_item.variant_id %}
+              {% for option in line_item.product.options %}
+                {{ option | json }}: {{ variant.options[forloop.index0] | json }},
+              {% endfor %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        },
+      },{% endfor %}],
+      'cartTotal': {{ cart.total_price | money_without_currency | remove: ',' | json }},
+      'itemsCount': {{ cart.item_count | downcase | json }},
+      'discountAmounts': {{ cart.total_discount | money_without_currency | remove: ',' | json }},
+      'cartId': _g_cart && typeof _g_cart === 'object' ? _g_cart.token : 'NotAvailable',
+      'pageType' : 'Global Cart',
+      'event'    : 'Global Cart',
+    };
+
+    dataLayer.push(g_cart);
+    if(__bva__.debug){
+      console.log("Global Cart"+" :"+JSON.stringify(g_cart, null, " "));
+    }
+
+    __bva__.cart = g_cart.cartItems;
+
 
     /*DATALAYER: Global
     --------------------------- */
-    __bva__.helpers.watchEmailMarketingByClick('modal-newsletter-submit', 'input[type="email"]', 'form[action="//cl.s10.exct.net/subscribe.aspx"]')
-    __bva__.helpers.watchEmailMarketingBySubmit('.contact-form-footer', '.input#footer-newsletter-email')
+    __bva__.helpers.watchEmailMarketingByClick('#sr_email_sign_up', '#sr_lm_email', '#sr_cart_runner')
     __bva__.helpers.watchQuickView('product.quick')
 
     /*DATALAYER: Homepage
@@ -919,6 +1037,37 @@ __bva__.helpers = (function () {
       console.log("Collections"+" :"+JSON.stringify(product, null, " "));
       console.log("Collections"+" :"+JSON.stringify(collections, null, " "));
     }
+
+    $(document).on('click', '.product-quickview', function () {
+      var viewedElementId = $(this).closest('.product-index').attr('id');
+      viewedElementId = viewedElementId.toString();
+      console.log('Quick View:', viewedElementId);
+
+      var productList = [];
+      for (var dlIndex = 0; dlIndex < dataLayer.length; dlIndex++) {
+        if (dataLayer[dlIndex].products && dataLayer[dlIndex].products.length) {
+          productList = dataLayer[dlIndex].products;
+        }
+      }
+
+      var quickViewedProduct;
+      for (var pIdx = 0; pIdx < productList.length; pIdx++) {
+        if (productList[pIdx].id.toString() == viewedElementId ) {
+          quickViewedProduct = productList[pIdx];
+          break;
+        }
+      }
+
+      dataLayer.push({
+        event: 'Quick View',
+        pageType: 'Collection',
+        collectionTitle: collections.productList,
+        collectionHandle: collections.handle,
+        quickViewedIds: viewedElementId,
+        quickViewedProducts: [quickViewedProduct]
+      });
+    });
+
     {% endif %}
 
     /*DATALAYER: Custom collection
@@ -1004,6 +1153,22 @@ __bva__.helpers = (function () {
           productView();
         }
       });
+
+      $(document).on('click', '.product-quickview-button', function () {
+        var viewedElementId = $(this).data('id');
+        var viewedProduct = $(this).data('product');
+        viewedElementId = viewedElementId.toString();
+        console.log('Quick View:', viewedElementId);
+
+        dataLayer.push({
+          event: 'Quick View',
+          pageType: 'Product',
+          pageTitle: product.products[0].name,
+          pageURL: product.products[0].productURL,
+          quickViewedIds: viewedElementId,
+          quickViewedProducts: [viewedProduct]
+        });
+      });
     }
 
     /* DATALAYER: Cart View
@@ -1021,19 +1186,23 @@ __bva__.helpers = (function () {
         'price'    : '{{line_item.price | money_without_currency | remove: ',' }}',
         'quantity' : '{{line_item.quantity}}',
         'brand'    : {{ line_item.vendor | default: shop.name | json }},
-        'options'  : [
+        'productCategories': {% assign categorie_title = '"no category"' %}
+          {% for line_item_c in line_item.product.collections %}
+            {% assign categorie_title = line_item_c.title | json %}{% break %}
+          {% endfor %}{{categorie_title}},
+        'productURL': '{{line_item.product.url}}',
+        'productImages': {{line_item.product.images | json }},
+        'productDescription': {{ line_item.product.description | escape | json }},
+        'options'  : {
           {% for variant in line_item.product.variants %}
             {% if variant.id == line_item.variant_id %}
               {% for option in line_item.product.options %}
-                {
-                  'option': {{ option | json }},
-                  'value': {{ variant.options[forloop.index0] | json }},
-                },
+                {{ option | json }}: {{ variant.options[forloop.index0] | json }},
               {% endfor %}
               {% break %}
             {% endif %}
           {% endfor %}
-        ],
+        },
       },{% endfor %}],
       'cartTotal': {{ cart.total_price | money_without_currency | remove: ',' | json }},
       'itemsCount': {{ cart.item_count | downcase | json }},
@@ -1070,8 +1239,13 @@ __bva__.helpers = (function () {
       } else {
         allQty.forEach(function (qty, i) {
           var product = __bva__.cart.products[i]
-          var initialQuantity = parseInt(product.quantity, 10)
-          if (initialQuantity < qty) {
+          var initialQuantity = 0;
+          try {
+            initialQuantity = parseInt(product.quantity, 10)
+          } catch(e) {
+            console.log('Seems like the product is empty.');
+          }
+          if (initialQuantity < qty && product) {
             __bva__.helpers.fireAddToCartPixel(product)
           }
         })
@@ -1138,11 +1312,27 @@ __bva__.helpers = (function () {
       'variantId'   : {{ line_item.variant_id | json }},
       'name'        : {{ line_item.title | json }},
       'productType' : {{ line_item.product.type | json }},
-      'price'       : {{ line_item.price | money_without_currency| remove: "," | json }},
+      'price'       : {{ line_item.price | money_without_currency | remove: "," | json }},
+      'comparePrice'  : {{ line_item.compare_at_price_max | money_without_currency | remove: "," | json}},
+      'totalDiscount' : {{ line_item.total_discount | money_without_currency| remove: "," | json }},
       'quantity'    : {{ line_item.quantity | json }},
       'description' : {{ line_item.product.description | strip_newlines | strip_html | escape | json }},
       'imageURL'    : {{ line_item.product.featured_image.src|img_url:'grande' | prepend: 'https:' | json }},
-      'productURL'  : {{ shop.secure_url | append: line-item.product_url | json }},
+      'productURL'  : {{ shop.secure_url | append: line_item.url | json }},
+      'productCategories': {% assign categorie_title = '"no category"' %}
+        {% for line_item_c in line_item.product.collections %}
+          {% assign categorie_title = line_item_c.title | json %}{% break %}
+        {% endfor %}{{categorie_title}},
+      'options'  : {
+        {% for variant in line_item.product.variants %}
+          {% if variant.id == line_item.variant_id %}
+            {% for option in line_item.product.options %}
+              {{ option | json }}: {{ variant.options[forloop.index0] | json }},
+            {% endfor %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      },
     });
 
     {% endfor %}
@@ -1156,6 +1346,7 @@ __bva__.helpers = (function () {
       'transactionTax'         : {{ checkout.tax_price |  money_without_currency| remove: "," | json }},
       'transactionShipping'    : {{ checkout.shipping_price |  money_without_currency| remove: "," | json }},
       'transactionSubtotal'    : {{ checkout.subtotal_price |  money_without_currency| remove: "," | json }},
+      'transactionGiftCardAmount': {{ checkout.gift_cards_amount |  money_without_currency| remove: "," | json }},
       {% for discount in checkout.discounts %}
       'promoCode' : {{ discount.code | json }},
       'discount'  : {{ discount.amount | money_without_currency | json }},
@@ -1187,9 +1378,9 @@ __bva__.helpers = (function () {
               dataLayer.push({
                 'event'    :'Checkout Start',
                 'pageType' :'Checkout Start'});
-              dataLayer.push(transactionData,{
-                'event'    :'Customer Information',
-                'pageType' :'Customer Information'});
+//              dataLayer.push(transactionData,{
+//                'event'    :'Customer Information',
+//                'pageType' :'Customer Information'});
 
               if(__bva__.debug == true){
                 console.log("Customer Information - Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
@@ -1201,14 +1392,14 @@ __bva__.helpers = (function () {
 
             }else if (Shopify.Checkout.step === 'shipping_method'){
               dataLayer.push(transactionData,{
-                'event'    :'Shipping Information',
-                'pageType' :'Shipping Information',
-              });
+                'event'    :'Customer Information',
+                'pageType' :'Customer Information'});
+
               if(__bva__.debug == true){
                 console.log("Shipping - Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
               }
 
-              __bva__.helpers.watchCheckoutShippingField()
+              __bva__.helpers.watchCheckoutShippingFieldOnClick()
               __bva__.helpers.watchCheckoutDiscountField()
 
             }else if( Shopify.Checkout.step === "payment_method" ){
@@ -1236,6 +1427,18 @@ __bva__.helpers = (function () {
             if(__bva__.debug == true){
               console.log("Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
             }
+          }
+        }
+
+        if(Shopify.Checkout.isOrderStatusPage) {
+
+          dataLayer.push(transactionData,{
+            'pageType' :'Transaction',
+            'event'    :'Transaction'
+          });
+
+          if(__bva__.debug == true){
+            console.log("Transaction Data for order page"+" :"+JSON.stringify(transactionData, null, " "));
           }
         }
       }
@@ -1329,6 +1532,12 @@ __bva__.helpers = (function () {
         }
 
         var products = dbCart.items.map(function (lineItem) {
+          var variantOptions = {};
+          if (lineItem.variant_options && lineItem.variant_options.length) {
+            for (var i = 0; i < lineItem.variant_options.length; i++) {
+              variantOptions['option' + (i + 1).toString()] = lineItem.variant_options[i];
+            }
+          }
           return {
             id: lineItem.id,
             sku: lineItem.sku,
@@ -1337,7 +1546,11 @@ __bva__.helpers = (function () {
             price: lineItem.price / 100,
             quantity: lineItem.quantity,
             brand: lineItem.vendor,
-            options: [], //TODO
+            productCategories: lineItem.properties && typeof lineItem.properties == 'object' ? lineItem.properties._collection_private : '',
+            productURL: lineItem.url,
+            productImages: [lineItem.image],
+            productDescription: lineItem.product_description,
+            options: variantOptions
           }
         })
 
@@ -1407,20 +1620,6 @@ __bva__.helpers = (function () {
               'category'  : line_item.properties && line_item.properties._collection_private,
             }
 
-            {% comment %}
-            if (!options) {
-              return $.ajax({
-                url: line_item.url.split('?')[0] + '?view=data',
-                success: function (data) {
-                  var dataOptions = JSON.parse(data)
-                  ret.options = dataOptions.optionsByVariantId[line_item.variant_id.toString()]
-                  ret.category = dataOptions.collection
-                  return ret
-                }
-              })
-            }
-            {% endcomment %}
-
             return ret
           })
         }
@@ -1472,7 +1671,7 @@ __bva__.helpers = (function () {
                   'id'       : line_item.id,
                   'sku'      : line_item.sku,
                   'variant'  : line_item.variant_id,
-                  'name'     : line_item.title,
+                  'name'     : line_item.product_title ? line_item.product_title : line_item.title,
                   'price'    : (line_item.price/100),
                   'quantity' : line_item.quantity,
                   'image'    : line_item.image,
@@ -1538,6 +1737,7 @@ __bva__.helpers = (function () {
                 if (__bva__.debug) {
                   console.log("Add to Cart template collection"+" :"+JSON.stringify(product, null, " "));
                 }
+                console.log('ATC2:', product);
               }
             }
             // --------------------------------------------- get Json response
@@ -1640,7 +1840,7 @@ __bva__.helpers = (function () {
             price: {{ product.price | money_without_currency | divided_by: 100.0 | json }},
             variant: productFromForm.variant,
             quantity: productFromForm.quantity,
-            // brand: {{ product.vendor | json }},
+            brand: {{ product.vendor | json }},
           }
 
           dataLayer.push({ products: [p] })
@@ -1649,6 +1849,7 @@ __bva__.helpers = (function () {
           if (__bva__.debug) {
             console.log("Add to Cart"+" :"+JSON.stringify(p, null, " "));
           }
+          console.log('ATC3:', product);
         })
       }
 
@@ -1671,7 +1872,6 @@ __bva__.helpers = (function () {
       /* DATALAYER: Newsletter Subscription
       ------------------------------------- */
       __bva__newsletter_fire = 0;
-
       $(document).on('click', __bva__.newsletterSelectors, function () {
         var $this = $(this)
         if(__bva__newsletter_fire !== 1){
@@ -1804,4 +2004,71 @@ __bva__.helpers = (function () {
 // --------------------------------------------- wait for jQuery to load
 }, 500);
 
+function ready(fn) {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+// Custom event tracking
+ready(function () {
+  // viewing wishlist popup by swym
+  $(document).on('click', '#swym-anchor', function (e) {
+    var checkLoadedSwym = setInterval(function () {
+      if ($('#swym-item-grid li.swym-item').length) {
+        console.log('wishlist-view');
+        var wishListedItems = [];
+        var pushedIndex = 0;
+
+        // scraping wishlisted product's data
+        $('#swym-item-grid li.swym-item').each(function(i, listItem) {
+          var listItemUri = $(listItem).data('uri');
+          var listItemVId = $(listItem).data('epi');
+          var listItemImg = $(listItem).find('.swym-image').find('img').attr('src');
+          var $listItemInfo = $(listItem).find('.swym-information');
+          var listItemTitle = $listItemInfo.find('.swym-title').find('a').text();
+          var listItemPrice = $listItemInfo.find('.swym-price').text();
+          var listItemComparePrice = $listItemInfo.find('.swym-price').find('.swym-old').text();
+          if (listItemComparePrice) {
+            listItemPrice = listItemPrice.replace(listItemComparePrice, '');
+            listItemComparePrice = listItemComparePrice.replace('$', '');
+            listItemComparePrice = listItemComparePrice.trim();
+          }
+          listItemPrice = listItemPrice.replace('$', '');
+          listItemPrice = listItemPrice.trim();
+          if (listItemUri && pushedIndex === i) {
+            pushedIndex++;
+            wishListedItems.push({
+              url: listItemUri,
+              images: listItemImg,
+              variant: listItemVId,
+              name: listItemTitle,
+              price: listItemPrice,
+              compare_at_price: listItemComparePrice
+            });
+          }
+        });
+        if (wishListedItems.length === pushedIndex) {
+          // cordial track wishlist-view
+          console.log('Wishlist:', wishListedItems);
+          dataLayer.push(
+            {
+              'products': wishListedItems,
+              'pageType' : 'Wishlist',
+              'event'    : 'Wishlist'
+            }
+          );
+        }
+        clearInterval(checkLoadedSwym);
+      }
+    }, 1000);
+    setTimeout(function () {
+      if (checkLoadedSwym) {
+        clearInterval(checkLoadedSwym);
+      }
+    }, 5000);
+  });
+});
 </script>
