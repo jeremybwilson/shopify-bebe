@@ -1070,83 +1070,83 @@ theme.Header = (function() {
   Footer Newsletter
 ==============================================================================*/
 
-theme.Newsletter = (function() {
-  function Newsletter(container) {
-    const $container = this.$container = $(container);
-    const ui = {
-          formId: $( '#footer-newsletter' ),
-         textbox: $( '#footer-newsletter-email' ),
-       subAction: $( '#sub-action' ),
-    submitButton: $( '#button-footer-newsletter-submit' ),
-        errorMsg: $( '#newsletter-error-response'),
-      successMsg: $( '#newsletter-success-response')
-    };
+// theme.Newsletter = (function() {
+//   function Newsletter(container) {
+//     const $container = this.$container = $(container);
+//     const ui = {
+//           formId: $( '#footer-newsletter' ),
+//          textbox: $( '#footer-newsletter-email' ),
+//        subAction: $( '#sub-action' ),
+//     submitButton: $( '#button-footer-newsletter-submit' ),
+//         errorMsg: $( '#newsletter-error-response'),
+//       successMsg: $( '#newsletter-success-response')
+//     };
 
-    // regex for valid email
-    // const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
+//     // regex for valid email
+//     // const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
-    if ( ui.formId ) {
-      ui.textbox.on('focus', () => {
+//     if ( ui.formId ) {
+//       ui.textbox.on('focus', () => {
 
-        // remove any pre-existing error class
-        toggleError( false );
-      });
+//         // remove any pre-existing error class
+//         toggleError( false );
+//       });
 
-      // VALIDATE : Check string for valid email
-      const validateEmail = () => {
-        return regexEmail.test( ui.textbox.val() );
-      };
+//       // VALIDATE : Check string for valid email
+//       const validateEmail = () => {
+//         return regexEmail.test( ui.textbox.val() );
+//       };
 
-      // ERROR MSG : Toggle error msg showing
-      const toggleError = ( state ) => {
+//       // ERROR MSG : Toggle error msg showing
+//       const toggleError = ( state ) => {
 
-        // TRUE = error present
-        if ( state ) {
-          ui.formId.addClass('has-error');
-          ui.errorMsg.fadeIn();
+//         // TRUE = error present
+//         if ( state ) {
+//           ui.formId.addClass('has-error');
+//           ui.errorMsg.fadeIn();
 
-        } else {
-          ui.formId.removeClass('has-error');
-          ui.errorMsg.fadeOut();
-        }
-      };
+//         } else {
+//           ui.formId.removeClass('has-error');
+//           ui.errorMsg.fadeOut();
+//         }
+//       };
 
-      // KEYPRESS EVENT : Check input as typing if email is valid
-      var debounce = require( 'lodash.debounce' );
-      ui.textbox.on( 'keyup', debounce( () => {
-        const validEmail = validateEmail();
+//       // KEYPRESS EVENT : Check input as typing if email is valid
+//       var debounce = require( 'lodash.debounce' );
+//       ui.textbox.on( 'keyup', debounce( () => {
+//         const validEmail = validateEmail();
 
-        // Enable submit button if valid email is entered
-        if ( validEmail ) {
-          ui.submitButton.addClass( 'enable' ); // Enable submit button
-          toggleError( false );
+//         // Enable submit button if valid email is entered
+//         if ( validEmail ) {
+//           ui.submitButton.addClass( 'enable' ); // Enable submit button
+//           toggleError( false );
 
-          // When the form is submitted, pass dataLayer payload
-          ui.submitButton.submit( (e) => {
-          // $('#button-footer-newsletter-submit').click( (e) => {
+//           // When the form is submitted, pass dataLayer payload
+//           ui.submitButton.submit( (e) => {
+//           // $('#button-footer-newsletter-submit').click( (e) => {
 
-            var payload = { email: ui.textbox.val(), emailType: 'marketing', interaction: 'On Email' }
-            if (typeof window.__bva__ !== 'undefined' && typeof window.__bva__.helpers !== 'undefined') {
-              window.__bva__.helpers.fireEmailPixel(payload)
-            } else if (typeof dataLayer !== 'undefined') {
-              dataLayer.push(payload, { event: 'On Email' })
-            }
+//             var payload = { email: ui.textbox.val(), emailType: 'marketing', interaction: 'On Email' }
+//             if (typeof window.__bva__ !== 'undefined' && typeof window.__bva__.helpers !== 'undefined') {
+//               window.__bva__.helpers.fireEmailPixel(payload)
+//             } else if (typeof dataLayer !== 'undefined') {
+//               dataLayer.push(payload, { event: 'On Email' })
+//             }
 
-            // Log the clicked element in the console
-            console.log(payload);
-          });
+//             // Log the clicked element in the console
+//             console.log(payload);
+//           });
 
-        } else {
-          ui.submitButton.removeClass( 'enable' );
-          toggleError( true );
-        }
-      }, 250 ) );
+//         } else {
+//           ui.submitButton.removeClass( 'enable' );
+//           toggleError( true );
+//         }
+//       }, 250 ) );
 
-    }
-  }
-  Newsletter.prototype = _.assignIn({}, Newsletter.prototype, {});
-  return Newsletter;
-})();
+//     }
+//   }
+//   Newsletter.prototype = _.assignIn({}, Newsletter.prototype, {});
+//   return Newsletter;
+// })();
 
 
 /*============================================================================
