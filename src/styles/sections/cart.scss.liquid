@@ -245,16 +245,26 @@ body.cart {
 
 .button {
   &#update-cart {
-    background-color: $color--primary-1;
-
+    //background-color: $color--primary-1;
+    background: $button--main-mobile-bg;
+    color: $button--main-mobile-text;
+    @include mq('phone'){
+      background: $button--main-mobile-bg;
+      color: $button--main-mobile-text;
+    }
     &:hover {
       background-color: $color--accent-1;
     }  
   }
 
   &#checkout {
-    background-color: $color--primary-1;
-  
+    //background-color: $color--primary-1;
+    background: $button--main-mobile-bg;
+    color: $button--main-mobile-text;
+    @include mq('phone'){
+      background: $button--main-mobile-bg;
+      color: $button--main-mobile-text;
+    }
     &:hover {
       background-color: $color--accent-1;
     }

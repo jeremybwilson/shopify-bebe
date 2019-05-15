@@ -798,13 +798,17 @@ ul#nav li ul.megamenu div.mega-container li.desktop-3:nth-child(5n) {
 }
 
 .cta a {
-  color: {{ settings.cta_color }};
+  color: $button--main-text;
   font-size: {{ settings.cta_size }};
   padding: 10px 20px;
-  background: {{ settings.cta_background }};
+  background: $button--main-bg;
   letter-spacing: 1px;
   border-radius: 3px;
   transition: all .25s ease-in-out;
+  @include mq('phone'){
+    background: $button--main-mobile-bg;
+    color: $button--main-mobile-text;
+  }
 }
 
 .cta a:hover {

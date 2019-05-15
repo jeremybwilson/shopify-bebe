@@ -59,6 +59,8 @@ $button--main-text: {{ settings.button_text }};
 $button--main-text-hover: {{ settings.button_text_hover }};
 $button--main-border: {{ settings.button_border_width }}px solid {{ settings.button_border_color }};
 $button--main-border-hover: {{ settings.button_border_width }}px solid {{ settings.button_border_color_hover }};
+$button--main-mobile-bg: {{settings.button_mobile_bg}};
+$button--main-mobile-text: {{settings.button_mobile_text}};
 
 // BUTTONS -- Alt
 $button--alt-bg: {{ settings.alt_button_bg }};
@@ -80,7 +82,10 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-
+  @include mq('phone') {
+    background: $button--main-mobile-bg;
+    color: $button--main-mobile-text;
+  }
   &:hover {
     background: $button--main-bg-hover;
     color: $button--main-text-hover;
