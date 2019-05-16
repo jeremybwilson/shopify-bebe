@@ -30,8 +30,10 @@
     "error_text": "#f00",
     "success_text": "#4ab064",
     "button_bg": "#000000",
+    "button_mobile_bg": "#ffffff",
     "button_bg_hover": "#616365",
     "button_text": "#ffffff",
+    "button_mobile_text": "#000000",
     "button_text_hover": "#ffffff",
     "button_border_color": "rgba(0,0,0,0)",
     "button_border_color_hover": "rgba(0,0,0,0)",
@@ -334,6 +336,14 @@
               "nav_promo_link": "shopify://collections/logo-tops"
             }
           },
+          "1557791954256": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Swim",
+              "nav_image": "",
+              "nav_promo_link": "shopify://collections/swim"
+            }
+          },
           "1542669019789": {
             "type": "mega_menu",
             "settings": {
@@ -356,14 +366,6 @@
               "menu_item": "Flash Sale",
               "nav_image": "",
               "nav_promo_link": "shopify://collections/flash-sale"
-            }
-          },
-          "1557791954256": {
-            "type": "mega_menu",
-            "settings": {
-              "menu_item": "Swim",
-              "nav_image": "",
-              "nav_promo_link": "shopify://collections/swim"
             }
           }
         },
@@ -579,28 +581,28 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/sale-50-off-desktop.jpg",
-              "mobile_image": "shopify://shop_images/sale-50-off-mobile.jpg",
-              "cta_full_image": "shopify://collections/sale",
+              "image": "shopify://shop_images/limited-time-15-off-100-20-off-200-code-may20-desktop_9ecfa878-aaad-4e12-97e8-216bd2ae3aa1.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-15-off-100-20-off-200-code-may20-mobile_6c2bb24c-4f91-455d-989c-f14628332713.jpg",
+              "cta_full_image": "shopify://collections/new",
               "heading": "<br><br>",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/sale",
-              "cta_one_button_text": "SHOP SALE",
+              "cta_one_link": "shopify://collections/new",
+              "cta_one_button_text": "SHOP NOW",
               "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
-              "cta_three_button_text": "",
+              "cta_three_link": "shopify://pages/coupons-discounts",
+              "cta_three_button_text": "SEE DETAILS",
               "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
-              "hide_buttons_mobile": true,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 60,
+              "caption_horizontal_offset": 36,
+              "caption_vertical": 68,
               "caption_vertical_mobile": 70,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.2"
@@ -621,20 +623,20 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/barely-there.jpg",
+              "image": "shopify://shop_images/shop-white-always-nice-for-summer-desktop_06d024d4-3b00-43a0-8837-f8554520f0b3.jpg",
               "mobile_image": "",
-              "link": "shopify://collections/tops",
-              "heading_text": "Barely There",
+              "link": "shopify://collections/white-hot",
+              "heading_text": "White: Always Nice for Summer",
               "text": "",
-              "cta_text": "SHOP SUMMER TOPS",
+              "cta_text": "SHOP WHITE",
               "cta_style": "button"
             }
           },
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/vacation-ready-shop-now.jpg",
-              "mobile_image": "shopify://shop_images/vacation-ready-shop-now_afb14d37-54f1-4f6d-aff7-e18f2e680c00.jpg",
+              "image": "shopify://shop_images/vacation-ready-hp.jpg",
+              "mobile_image": "shopify://shop_images/vacation-ready-hp_4e7be50c-8a25-44b2-8cdd-aa0cb0361d3c.jpg",
               "link": "shopify://collections/vacation-ready",
               "heading_text": "Vacation Ready",
               "text": "",
@@ -1287,7 +1289,7 @@
             "type": "text_block",
             "settings": {
               "heading_text": "UP TO 50% OFF SALE",
-              "text": "<p>Score deeper savings on markdowns.</p>",
+              "text": "<p>Enjoy fabulous deals on sale styles. Priced as marked.</p>",
               "cta_text": "Shop Sale",
               "link": "shopify://collections/sale",
               "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
@@ -1330,9 +1332,22 @@
               "coupon_size": "full",
               "coupon_color": "light"
             }
+          },
+          "1557987831629": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "15% OFF $100, 20% OFF $200",
+              "text": "<p>Save on your regular-priced purchase. Use MAY15 for 15% off. Use MAY20 for 20% off.</p>",
+              "cta_text": "Shop New Arrivals",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 15% off any purchase of $100 or more, enter code MAY15 at checkout. To redeem 20% off any purchase of $200 or more, enter code MAY20 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 5/20/19 at 11:59 pm PDT. &nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
           }
         },
         "block_order": [
+          "1557987831629",
           "1557385376991",
           "1545990628348",
           "1545990640803",
@@ -1375,7 +1390,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify://shop_images/SBB_2019-05-16_promo_6259c121-23b8-4eb2-9d51-e665a3ce8bce.jpg",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1410,14 +1425,14 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/dive-in-babe-desktop.jpg",
-              "mobile_image": "shopify://shop_images/dive-in-babe-mobile.jpg",
-              "cta_full_image": "shopify://collections/swim",
+              "image": "shopify://shop_images/shop-summer-dresses-stay-cute-while-its-hot-desktop_939df013-4611-4d39-97e7-b63767a3b04d.jpg",
+              "mobile_image": "shopify://shop_images/shop-summer-dresses-stay-cute-while-its-hot-mobile_180a32fd-04a9-45c1-be90-fa5e2b29beca.jpg",
+              "cta_full_image": "shopify://collections/summer-dresses",
               "heading": "",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/swim",
-              "cta_one_button_text": "SHOP SWIM",
+              "cta_one_link": "shopify://collections/summer-dresses",
+              "cta_one_button_text": "SHOP SUMMER DRESSES",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1429,9 +1444,9 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 36,
-              "caption_vertical": 58,
+              "caption_horizontal": "left",
+              "caption_horizontal_offset": 19.5,
+              "caption_vertical": 64,
               "caption_vertical_mobile": 75,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
@@ -1534,13 +1549,12 @@
       },
       "1548306390190": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/40-off-all-sale.jpg",
-              "mobile_image": "shopify://shop_images/40-off-all-sale-mobile_07e61b8f-b021-42d9-be6a-d3533d1aac2f.jpg",
+              "image": "shopify://shop_images/shop-sale-up-to-50-off-desktop_5308f733-a2ed-417d-965c-8a34f1363f95.jpg",
+              "mobile_image": "shopify://shop_images/shop-sale-up-to-50-off-mobile_41ab2789-03b8-40a6-8b43-25136e77470a.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "",
               "hide_header_desktop": false,
@@ -1811,8 +1825,8 @@
       }
     },
     "content_for_index": [
-      "1547711858918",
       "1535728526385",
+      "1547711858918",
       "1548306390190",
       "1536251685211",
       "1547557172846",
