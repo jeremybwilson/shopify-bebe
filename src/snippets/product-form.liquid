@@ -20,31 +20,38 @@
   {% comment %} :: PRICE :: {% endcomment %}
   {% if current_variant.compare_at_price > current_variant.price %}
 
-  {% comment %} :: SALE PRICE - FORMATTING :: {% endcomment %}
-  <div id="product-price" class="has-compare-price">
-    <span class="product-price" itemprop="price">
-      <span class="money bfx-price">{{ price }}</span>
-    </span>
+    {% comment %} :: SALE PRICE - FORMATTING :: {% endcomment %}
+    <div id="product-price" class="has-compare-price">
+      <span class="product-price" itemprop="price">
+        <span class="money bfx-price">{{ price }}</span>
+      </span>
       <span class="was">
         <span class="money bfx-price">{{ compare_price }}</span>
       </span>
-  </div>
-  {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
+    </div>
+    
+    {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
 
-	{% for tag in product.tags %}
-		{% if tag contains 'returnly_no_refund' or price contains '.99' %}
-		    <div class="final_sale sale_product">{{settings.final_sale}}</div>
-		{%- endif -%}
-	{% endfor %}
+    {% assign add_final_sale_text = false %}
+
+    {% for tag in product.tags %}
+      {% if tag contains 'returnly_no_refund' %}
+        {% assign add_final_sale_text = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if add_final_sale_text == true or price contains '.99' %}
+      <div class="final_sale sale_product">{{settings.final_sale}}</div>
+    {%- endif -%}
 
   {% else %}
 
-  {% comment %} :: REGULAR PRICE :: {% endcomment %}
-  <div id="product-price">
-    <span class="product-price" itemprop="price">
-      <span class="money bfx-price">{{ price }}</span>
-    </span>
-  </div>
+    {% comment %} :: REGULAR PRICE :: {% endcomment %}
+    <div id="product-price">
+      <span class="product-price" itemprop="price">
+        <span class="money bfx-price">{{ price }}</span>
+      </span>
+    </div>
 
   {% endif %}
 

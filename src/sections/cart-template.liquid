@@ -109,12 +109,19 @@
                 Final sale text for all sale product
                 //template == 'cart' and 
               {%endcomment%}
+              
+              {% assign add_final_sale_text = false %}
               {% assign itemprice = item.price | money  %}
+
               {% for tag in item.product.tags %}
-                {% if tag contains 'returnly_no_refund' or itemprice contains '.99' %}
-                  <div class="final_sale sale_product">{{settings.final_sale}}</div>
-                {%- endif -%}
+                {% if tag contains 'returnly_no_refund' %}
+                  {% assign add_final_sale_text = true %}
+                {% endif %}
               {% endfor %}
+
+              {% if add_final_sale_text == true or itemprice contains '.99' %}
+                <div class="final_sale sale_product">{{settings.final_sale}}</div>
+              {%- endif -%}
 
               <div class="cart-item-actions">
                 <div class="cart-remove">
