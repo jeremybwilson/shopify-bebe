@@ -227,20 +227,23 @@
               color: {{ slide_text_color }};
             }
             .flex-caption.slide-{{ block.id }} .cta a {
-              {%comment%}
               color: {{ slide_text_color }};
               background-color: {{ cta_color }};
-              {%endcomment%}
-              color: $button--main-text;
-              background-color: $button--main-bg;
+
+              {% comment %}
+	              color: $button--main-text;
+	              background-color: $button--main-bg;
+              {% endcomment %}
             }
             .flex-caption.slide-{{ block.id }} .cta a:hover {
               background-color: {{ cta_hover_color }};
             }
             @media (max-width: 767px){
               .flex-caption.slide-{{ block.id }} .cta a {
-                background: $button--main-mobile-bg;
-                color: $button--main-mobile-text;
+                {% comment %}
+    	            background: $button--main-mobile-bg;
+	                color: $button--main-mobile-text;
+                {% endcomment %}
               }
             }
           </style>
