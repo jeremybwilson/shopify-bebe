@@ -113,7 +113,7 @@
               {% assign add_final_sale_text = false %}
               {% assign itemprice = item.price | money  %}
 
-      			  {% for tag in item.product.tags %}
+              {% for tag in item.product.tags %}
                 {% if tag contains 'returnly_no_refund' %}
                   {% assign add_final_sale_text = true %}
                 {% endif %}
