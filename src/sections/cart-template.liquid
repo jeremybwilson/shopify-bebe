@@ -111,7 +111,7 @@
               {%endcomment%}
               {% assign itemprice = item.price | money  %}
               {% for tag in item.product.tags %}
-                {% if tag contains 'returnly_no_refund' and itemprice contains '.99' %}
+                {% if tag contains 'returnly_no_refund' or itemprice contains '.99' %}
                   <div class="final_sale sale_product">{{settings.final_sale}}</div>
                 {%- endif -%}
               {% endfor %}
