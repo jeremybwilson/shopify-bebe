@@ -32,17 +32,17 @@
     
     {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
 
-  	{% assign add_final_sale_text = false %}
+    {% assign add_final_sale_text = false %}
 
-  	{% for tag in product.tags %}
-  		{% if tag contains 'returnly_no_refund' %}
-  			{% assign add_final_sale_text = true %}
-  		{% endif %}
-  	{% endfor %}
+    {% for tag in product.tags %}
+      {% if tag contains 'returnly_no_refund' %}
+        {% assign add_final_sale_text = true %}
+      {% endif %}
+    {% endfor %}
 
-  	{% if add_final_sale_text == true or price contains '.99' %}
-  	    <div class="final_sale sale_product">{{settings.final_sale}}</div>
-  	{%- endif -%}
+    {% if add_final_sale_text == true or price contains '.99' %}
+      <div class="final_sale sale_product">{{settings.final_sale}}</div>
+    {%- endif -%}
 
   {% else %}
 
