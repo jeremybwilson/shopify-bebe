@@ -340,7 +340,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Swim",
-              "nav_image": "",
+              "nav_image": "shopify://shop_images/shop-swim-nav.jpg",
               "nav_promo_link": "shopify://collections/swim"
             }
           },
@@ -1285,6 +1285,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1557987831629": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "15% OFF $100, 20% OFF $200",
+              "text": "<p>Save on your regular-priced purchase. Use MAY15 for 15% off. Use MAY20 for 20% off.</p>",
+              "cta_text": "Shop New Arrivals",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 15% off any purchase of $100 or more, enter code MAY15 at checkout. To redeem 20% off any purchase of $200 or more, enter code MAY20 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 5/20/19 at 11:59 pm PDT. &nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1557385376991": {
             "type": "text_block",
             "settings": {
@@ -1329,18 +1341,6 @@
               "cta_text": "Join the Club",
               "link": "/account/login",
               "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1557987831629": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "15% OFF $100, 20% OFF $200",
-              "text": "<p>Save on your regular-priced purchase. Use MAY15 for 15% off. Use MAY20 for 20% off.</p>",
-              "cta_text": "Shop New Arrivals",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 15% off any purchase of $100 or more, enter code MAY15 at checkout. To redeem 20% off any purchase of $200 or more, enter code MAY20 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 5/20/19 at 11:59 pm PDT. &nbsp;</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
