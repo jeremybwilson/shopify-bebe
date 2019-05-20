@@ -6,9 +6,9 @@
     "enable_script_data_layer": true,
     "data_layer_debugging": false,
     "yotpo_id": "ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt",
-    "announcement_text_color": "#000",
-    "announcement_bg_one": "#fff",
-    "announcement_bg_two": "#fff",
+    "announcement_text_color": "#000000",
+    "announcement_bg_one": "#ffffff",
+    "announcement_bg_two": "#ffffff",
     "header_background": "rgba(0,0,0,0)",
     "logo_color": "#000000",
     "nav_links": "#000000",
@@ -27,7 +27,7 @@
     "link_hover_color": "#000000",
     "sale_color": "#77511e",
     "dotted_color": "#b5b5b5",
-    "error_text": "#f00",
+    "error_text": "#ff0000",
     "success_text": "#4ab064",
     "button_bg": "#000000",
     "button_mobile_bg": "#ffffff",
@@ -57,7 +57,7 @@
     "filter_button_alt_bg": "#ffffff",
     "filter_button_alt_text": "#77511e",
     "filter_bar_border_color": "rgba(0,0,0,0)",
-    "quickview_button_bg": "rgba(255,255,255,0.7)",
+    "quickview_button_bg": "#ffffff",
     "quickview_button_text": "#757575",
     "catalog_item_text_color": "#000000",
     "catalog_item_price_color": "#000000",
@@ -112,11 +112,11 @@
     "size_text_selected": "#000000",
     "size_border_selected": "#000000",
     "size_bg_selected": "rgba(0,0,0,0)",
-    "new_background": "#222",
+    "new_background": "#222222",
     "new_text": "#ffffff",
     "sale_background": "#77511e",
     "sale_text": "#ffffff",
-    "soldout_background": "#222",
+    "soldout_background": "#222222",
     "soldout_text": "#ffffff",
     "icons": "#000000",
     "icons_hover": "#77511e",
@@ -173,7 +173,6 @@
     "iphone_app_url": "/pages/apps",
     "android_app_url": "/pages/apps",
     "popup": false,
-    "email_image": "",
     "email_popup_title": "Signup Up & Get 10% Off Your First Order!",
     "email_popup_text": "",
     "email_popup_input_placeholder": "Enter Your Email Address",
@@ -209,14 +208,11 @@
     "borderfree_js_snippet_prod": "<script id=\"bfx-snippet\"> (function(e,n,o,t,a){function c(n){e[t]._apiKey=n.key;e[t]._env=n.env;e[t]._logLevel=n.logLevel; e[t]._mode=n.mode;e[t]._brand=n.brand;e[t]._cookieFlag=n.cookieFlag}e[t]=c;e[t].l=1*new Date;var i,l; i=n.createElement(o);l=n.getElementsByTagName(o)[0];i.async=1;i.src=a;l.parentNode.insertBefore(i,l); })(window,document,\"script\",\"bfx\", \"https://bfx-objects.borderfree.com/v1/dist/bfx.js\"); bfx({key:'8601e7a0-98af-11e7-9d88-79dc73db0d95', env:'PROD', mode:'default', brand:'default'}); </script>",
     "borderfree_merchant_snippet_prod": "<script src=\"https://checkout.borderfree.com/htmlcheckout/resources/js/merchant.js\"></script>",
     "final_sale": "FINAL SALE. No returns or exchanges.",
-    "checkout_header_image": "",
     "checkout_logo_image": "shopify://shop_images/logo_checkout.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "small",
-    "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
+    "checkout_body_background_color": "#ffffff",
     "checkout_input_background_color_mode": "white",
-    "checkout_sidebar_background_image": "",
     "checkout_sidebar_background_color": "#e3e3e3",
     "checkout_heading_font": "Lato",
     "checkout_body_font": "Lato",
@@ -364,7 +360,6 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "Flash Sale",
-              "nav_image": "",
               "nav_promo_link": "shopify://collections/flash-sale"
             }
           }
@@ -435,9 +430,6 @@
           "newsletter_submit_button": "SUBSCRIBE",
           "instagram_footer_link": "https://www.instagram.com/bebe_stores/",
           "instagram_footer_image": "shopify://shop_images/bebebabes.jpg",
-          "trust_icon_image_one": "",
-          "trust_icon_image_two": "",
-          "trust_icon_image_three": "",
           "social_heading": "Connect With Us",
           "social_insta_hashtag": "#BEBEBABE",
           "copyright_footer_text": "BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED",
@@ -511,7 +503,6 @@
       "blog-template": {
         "type": "blog-template",
         "settings": {
-          "image": "",
           "text": "<p>Add some descriptive text to your Blog page.</p>",
           "show_date": true
         }
@@ -550,10 +541,8 @@
           "newsletter_details": "<p>Coming Soon</p><p>Signup for our newsletter and get updated when we launch our site <a href=\"https://example.com/\">see our newsletter policy.</a></p>",
           "text_size": 18,
           "text_color": "#000000",
-          "logo": "",
           "logo_max_width": "500",
           "background_color": "#f5f5f5",
-          "background_image": "",
           "show_overlay_color": true,
           "background_overlay_color": "#f5f5f5",
           "overlay_color_opacity": 40,
@@ -581,19 +570,17 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/limited-time-15-off-100-20-off-200-code-may20-desktop_9ecfa878-aaad-4e12-97e8-216bd2ae3aa1.jpg",
-              "mobile_image": "shopify://shop_images/limited-time-15-off-100-20-off-200-code-may20-mobile_6c2bb24c-4f91-455d-989c-f14628332713.jpg",
+              "image": "shopify://shop_images/ends-tonight-15-off-20-off.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-15-off-20-off-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br><br>",
               "hide_header_desktop": true,
               "subheading": "",
               "cta_one_link": "shopify://collections/new",
               "cta_one_button_text": "SHOP NOW",
-              "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "shopify://pages/coupons-discounts",
               "cta_three_button_text": "SEE DETAILS",
-              "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
@@ -624,7 +611,6 @@
             "type": "text_block",
             "settings": {
               "image": "shopify://shop_images/shop-white-always-nice-for-summer-desktop_06d024d4-3b00-43a0-8837-f8554520f0b3.jpg",
-              "mobile_image": "",
               "link": "shopify://collections/white-hot",
               "heading_text": "White: Always Nice for Summer",
               "text": "",
@@ -659,7 +645,6 @@
           "1539644589684": {
             "type": "text_block",
             "settings": {
-              "module_image": "",
               "module_html": "<p>We've earned the <strong>Respect, Loyalty and trust</strong> of people who can't afford to take trust lightly.</p>",
               "module_image_color_scheme": "light",
               "module_image_position_desktop": "image_right",
@@ -669,7 +654,6 @@
           "1539646800597": {
             "type": "text_block",
             "settings": {
-              "module_image": "",
               "module_html": "<p>We make essential gear <strong>engineered to withstand the world's toughest conditions</strong> and to protect people who put their lives on the line to live and work on the water.</p>",
               "module_image_color_scheme": "dark",
               "module_image_position_desktop": "image_left",
@@ -679,7 +663,6 @@
           "1539646807998": {
             "type": "text_block",
             "settings": {
-              "module_image": "",
               "module_html": "<p> We're part of a marine lifestyle that values <strong>authenticity, performance and hard work</strong> whether you \nfish to live or live to fish.</p>",
               "module_image_color_scheme": "light",
               "module_image_position_desktop": "image_right",
@@ -689,7 +672,6 @@
           "1539646813012": {
             "type": "text_block",
             "settings": {
-              "module_image": "",
               "module_html": "<p><strong>XTRATUF</strong> is chosen not only by fisherman on the Bering Sea, but by commercial, sport and water-enthusiasts everywhere.</p>",
               "module_image_color_scheme": "light",
               "module_image_position_desktop": "image_left",
@@ -714,19 +696,12 @@
           "1537562942330": {
             "type": "image",
             "settings": {
-              "image": "",
-              "mobile_image": "",
-              "cta_full_image": "",
               "heading": "We Come From Alaska",
               "hide_header_desktop": false,
               "subheading": "Where nothing is forgiven and no compromise goes unpunished. <br> Where 50-foot seas swallow the slightest missteps.",
-              "cta_one_link": "",
               "cta_one_button_text": "Add a button",
-              "cta_two_link": "",
               "cta_two_button_text": "Add a button",
-              "cta_three_link": "",
               "cta_three_button_text": "Add a button",
-              "cta_four_link": "",
               "cta_four_button_text": "Add a button",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
@@ -756,11 +731,8 @@
           "1539638126458": {
             "type": "image",
             "settings": {
-              "image": "",
-              "mobile_image": "",
               "heading": "Commercial Fishing",
               "svg_icon": "",
-              "png_icon": "",
               "link": "shopify://collections/commercial-fishing",
               "cta_text": "Shop Now"
             }
@@ -768,11 +740,8 @@
           "1539642501764": {
             "type": "image",
             "settings": {
-              "image": "",
-              "mobile_image": "",
               "heading": "Sport Fishing",
               "svg_icon": "",
-              "png_icon": "",
               "link": "shopify://collections/sport-fishing",
               "cta_text": "Shop Now"
             }
@@ -780,11 +749,8 @@
           "1539642513779": {
             "type": "image",
             "settings": {
-              "image": "",
-              "mobile_image": "",
               "heading": "Water Sports",
               "svg_icon": "",
-              "png_icon": "",
               "link": "shopify://collections/water-sports",
               "cta_text": "Shop Now"
             }
@@ -792,11 +758,8 @@
           "1539642524127": {
             "type": "image",
             "settings": {
-              "image": "",
-              "mobile_image": "",
               "heading": "Lifestyle",
               "svg_icon": "",
-              "png_icon": "",
               "link": "shopify://collections/lifestyle",
               "cta_text": "Shop Now"
             }
@@ -1391,7 +1354,6 @@
         ],
         "settings": {
           "image": "shopify://shop_images/SBB_2019-05-16_promo_6259c121-23b8-4eb2-9d51-e665a3ce8bce.jpg",
-          "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
         }
@@ -1433,11 +1395,8 @@
               "subheading": "",
               "cta_one_link": "shopify://collections/summer-dresses",
               "cta_one_button_text": "SHOP SUMMER DRESSES",
-              "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
               "cta_three_button_text": "",
-              "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": true,
@@ -1470,17 +1429,13 @@
             "settings": {
               "image": "shopify://shop_images/3-cute-denim-trends-we-love-desktop.jpg",
               "mobile_image": "shopify://shop_images/3-cute-denim-trends-we-love-mobile-final.gif",
-              "cta_full_image": "",
               "heading": "3 Cute Denim Looks We Love",
               "hide_header_desktop": true,
               "subheading": "",
               "cta_one_link": "shopify://collections/jeans",
               "cta_one_button_text": "SHOP NEW JEANS",
-              "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
               "cta_three_button_text": "",
-              "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
@@ -1517,13 +1472,9 @@
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "",
               "cta_one_button_text": "",
-              "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
               "cta_three_button_text": "",
-              "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": false,
@@ -1559,13 +1510,9 @@
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "",
               "cta_one_button_text": "Add a button",
-              "cta_two_link": "",
               "cta_two_button_text": "Add a button",
-              "cta_three_link": "",
               "cta_three_button_text": "Add a button",
-              "cta_four_link": "",
               "cta_four_button_text": "Add a button",
               "hide_buttons_desktop": true,
               "hide_buttons_mobile": true,
@@ -1576,7 +1523,7 @@
               "caption_horizontal_offset": 0,
               "caption_vertical": 50,
               "caption_vertical_mobile": 50,
-              "caption_background": "transparent",
+              "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
           }
