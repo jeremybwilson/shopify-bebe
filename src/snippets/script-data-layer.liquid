@@ -361,8 +361,28 @@ __bva__.helpers = (function () {
       }
     }
 
+    function validateEmail(email) {
+      var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+
     $(document.body).on('submit', 'form[data-customer-information-form]', function (e) {
       e.preventDefault()
+      var errMsg = 'Enter an email';
+      var email = $('#checkout_email_or_phone, #checkout_email').val();
+      if (email) {
+        errMsg = 'Enter a valid email';
+      }
+      if (!validateEmail(email)) {
+        if ($('#error-for-email_or_phone').length) {
+          $('#error-for-email_or_phone').html(errMsg);
+        } else {
+          $('#checkout_email_or_phone, #checkout_email')
+            .closest('.field--show-floating-label')
+            .append('<p class="field__message field__message--error" id="error-for-email_or_phone" style="display: block;">' + errMsg + '</p>');
+        }
+        return false;
+      }
       firePixel()
       $(document.body).unbind('submit')
       $('form[data-customer-information-form]')[0].submit()
