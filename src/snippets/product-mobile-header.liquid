@@ -35,7 +35,10 @@
             </span>
           {% endif %}
         </div><div class="clear"></div>
-
+        {% comment %} REVIEWS - STAR RATING {% endcomment %}
+        <div id="mobile-yotpo-star-rating">
+          {% include 'yotpo-star-rating' %} 
+        </div>
       </div>
 
       <input type="submit" name="button" class="add product--mobile-header--add AddtoCart{% if section.settings.show_payment_button %} secondary-button{% endif %}" value="{{ call_to_action }}" {% unless current_variant.available %}disabled{% endunless %} />
