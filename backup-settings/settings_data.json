@@ -386,9 +386,9 @@
         "settings": {
           "full_width_header": false,
           "show_announcement_text": true,
-          "num_of_promo_banners": "2",
-          "announcement_text_one": "MEMORIAL DAY SALE: UP TO 60% OFF SHOP SALE",
-          "announcement_popup_one_content": "announcement-1",
+          "num_of_promo_banners": "1",
+          "announcement_text_one": "20% OFF $150 WITH CODE <strong>MEMDAY20</strong>. 30% OFF $250 WITH CODE <strong>MEMDAY30</strong>.",
+          "announcement_popup_one_content": "announcement-2",
           "announcement_link_one": "shopify://collections/sale",
           "announcement_text_two": "20% OFF $150 WITH CODE <strong>MEMDAY20</strong>. 30% OFF $250 WITH CODE <strong>MEMDAY30</strong>.",
           "announcement_popup_two_content": "announcement-2",
@@ -581,8 +581,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/memorial-day-sale.jpg",
-              "mobile_image": "shopify://shop_images/memorial-day-sale-mobile.jpg",
+              "image": "shopify://shop_images/memorial-day-weekend-sale-up-to-60-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/memorial-day-weekend-sale-up-to-60-off-mobile.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "<br><br>",
               "hide_header_desktop": true,
