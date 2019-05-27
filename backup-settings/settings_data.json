@@ -581,8 +581,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/memorial-day-weekend-sale-up-to-60-off-desktop.jpg",
-              "mobile_image": "shopify://shop_images/memorial-day-weekend-sale-up-to-60-off-mobile.jpg",
+              "image": "shopify://shop_images/memorial-day-weekend-sale-ends-tonight-up-to-60-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/memorial-day-weekend-sale-ends-tonight-up-to-60-off-mobile.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "<br><br>",
               "hide_header_desktop": true,
