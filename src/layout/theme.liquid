@@ -172,6 +172,11 @@
   {% include 'nosto-script' with 'shopify-3379396672' %}
   {% include 'criteo-tracking' %}
 
+  {% comment %} Yottaa Rapid CTRL {% endcomment %}
+  {% if settings.yottaa_key != blank %}
+    {% include 'yottaa-script' %}
+  {% endif %}
+
 </head>
 
 <body class="gridlock shifter bfx-price-container bfx-remove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
