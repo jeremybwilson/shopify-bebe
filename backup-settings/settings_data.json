@@ -30,10 +30,10 @@
     "error_text": "#ff0000",
     "success_text": "#4ab064",
     "button_bg": "#000000",
-    "button_mobile_bg": "#ffffff",
+    "button_mobile_bg": "#000000",
     "button_bg_hover": "#616365",
     "button_text": "#ffffff",
-    "button_mobile_text": "#000000",
+    "button_mobile_text": "#ffffff",
     "button_text_hover": "#ffffff",
     "button_border_color": "rgba(0,0,0,0)",
     "button_border_color_hover": "rgba(0,0,0,0)",
@@ -581,8 +581,8 @@
           "1535728526385-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/memorial-day-weekend-sale-ends-tonight-up-to-60-off-desktop.jpg",
-              "mobile_image": "shopify://shop_images/memorial-day-weekend-sale-ends-tonight-up-to-60-off-mobile.jpg",
+              "image": "shopify://shop_images/memorial-day-weekend-sale-extended-one-more-day-up-to-60-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/memorial-day-weekend-sale-extended-one-more-day-up-to-60-off-mobile.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "<br><br>",
               "hide_header_desktop": true,
