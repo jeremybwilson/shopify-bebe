@@ -171,7 +171,11 @@
 
   {% include 'nosto-script' with 'shopify-3379396672' %}
   {% include 'criteo-tracking' %}
-  {% include 'yottaa-script' %}
+
+  {% comment %} Yottaa Rapid CTRL {% endcomment %}
+  {% if settings.yottaa_key != blank %}
+    {% include 'yottaa-script' %}
+  {% endif %}
 
 </head>
 

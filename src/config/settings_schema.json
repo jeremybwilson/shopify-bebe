@@ -55,6 +55,16 @@
         "id": "yotpo_id",
         "label": "Yotpo Account ID",
         "info": "(Ex: ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt)"
+      },
+      {
+        "type": "header",
+        "content": "Yottaa Rapid CTRL"
+      },
+      {
+        "type": "text",
+        "id": "yottaa_key",
+        "label": "Yottaa Key",
+        "info": "Enter a key for Rapid."
       }
     ]
   },
