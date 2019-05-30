@@ -65,6 +65,13 @@
     "collection_load_more_text": "#000000",
     "collection_load_more_bg": "#000000",
     "collection_load_more_bg_hover": "#000000",
+    "discount_modal_bg": "#fefffe",
+    "discount_modal_text": "#000000",
+    "discount_modal_header": "#164732",
+    "discount_modal_button_bg": "#164732",
+    "discount_modal_button_text": "#fefffe",
+    "discount_modal_button_alt_bg": "#ab5232",
+    "discount_modal_button_alt_text": "#fefffe",
     "product_badge_square_bg": "#000000",
     "product_badge_circle_bg": "#000000",
     "product_badge_diamond_bg": "#000000",
@@ -538,6 +545,16 @@
           "border_color": "#000000",
           "button_color": "#000000",
           "button_text_color": "#ffffff"
+        }
+      },
+      "gift-with-purchase": {
+        "type": "gift-with-purchase",
+        "blocks": {},
+        "block_order": [],
+        "settings": {
+          "discount_modal_enable": true,
+          "cookie_expire_in_days": 60,
+          "currency_symbol": "&euro;"
         }
       },
       "newsletter": {
