@@ -97,6 +97,53 @@ ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
   jQuery.ajax(params);
 };
 
+
+/*============================================================================
+  POST to cart/add.js returns the JSON of the cart
+    - Direct add item call by Variant ID
+    - NOTE : the isGift prop is for Gift With Purchase usage when
+             react-discounts adds the item from its modal.
+
+    UNDERSCORE AS FIRST LETTER OF LINE ITEM PROP HIDES IT FROM CHECKOUT!!
+==============================================================================*/
+ShopifyAPI.addItemById = function( variantId, callback, errorCallback, isGift ) {
+  var bodyData = "form_type=product&utf8=%E2%9C%93&id=" + variantId;
+  bodyData = isGift ? bodyData + "&properties[_discountItem]=true" : bodyData;
+
+  // SETUP : Build the fetch call
+  var params = {
+    type: 'POST',
+    url: '/cart/add.js',
+    data: bodyData,
+    dataType: 'json',
+    success: function(line_item) {
+      
+      // CALLBACK : Fire any provided success callbacks
+      if ((typeof callback) === 'function') {
+        callback( line_item );
+      } 
+
+      // UPDATE : ALways inform Ajax Cart of the Additions
+      ajaxCart.itemAddedCallback( line_item );
+    },
+    error: function(XMLHttpRequest, textStatus) {
+      
+      // CALLBACK : Fire any provided error callbacks
+      if ((typeof errorCallback) === 'function') {
+        errorCallback(XMLHttpRequest, textStatus);
+
+      // DEFAULT : Flow through default error alert flow if no callback given
+      } else {
+        ShopifyAPI.onError(XMLHttpRequest, textStatus);
+      }
+    }
+  };
+
+  // FIRE : Submit our cart item to add
+  jQuery.ajax(params);
+};
+
+
 // Get from cart.js returns the cart in JSON
 ShopifyAPI.getCart = function(callback) {
   jQuery.getJSON('/cart.js', function (cart, textStatus) {
@@ -110,29 +157,36 @@ ShopifyAPI.getCart = function(callback) {
 };
 
 // POST to cart/change.js returns the cart in JSON
-ShopifyAPI.changeItem = function(line, quantityChange, callback) {  
+ShopifyAPI.changeItem = function(line, quantityChange, callback, errorCallback) {
   var params = {
     type: 'POST',
     url: '/cart/change.js',
     data: 'quantity=' + quantityChange + '&line=' + line,
     dataType: 'json',
     success: function(cart) {
-      if ((typeof callback) === 'function') {
 
-        // NOTE: If call returns with cartItem Quantity LESS than quantityChange, it means
-        //       that this product has no more available units.
-        var cartItem = cart.items[line-1];
-        if ( cartItem && quantityChange > cartItem.quantity ) {
-          alert('{{ settings.ajax_cart_low_stock_text }}');
-        };
-        callback(cart);
+      // NO MORE STOCK: 'cartItem' quantity < 'quantityChange' === no more units available
+      var cartItem = cart.items[line-1];
+      if ( cartItem && quantityChange > cartItem.quantity ) {
+        alert( '{{ settings.ajax_cart_low_stock_text }}' );
+      };
+
+      // CALLBACK : CUSTOM : Custom callback function provided
+      if ((typeof callback) === 'function') {
+        callback( cart );
       }
-      else {
-        ShopifyAPI.onCartUpdate(cart);
-      }
+
+      // CALLBACK : Trigger standard cart update callback
+      ajaxCart.cartUpdateCallback( cart );
     },
+
     error: function(XMLHttpRequest, textStatus) {
-      ShopifyAPI.onError(XMLHttpRequest, textStatus);
+      if ((typeof errorCallback) === 'function') {
+        errorCallback( XMLHttpRequest, textStatus );
+
+      } else {
+        ShopifyAPI.onError(XMLHttpRequest, textStatus);
+      }
     }
   };
   jQuery.ajax(params);
@@ -155,7 +209,7 @@ var ajaxCart = (function(module, $) {
   var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
 
   // Private functions
-  var updateCountPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
+  var updateCountPrice, removeGiftItemsFromTotalPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
 
   /*============================================================================
               Bind new addToCart buttons for cases like "Quickview" 
@@ -209,6 +263,23 @@ var ajaxCart = (function(module, $) {
     // Override defaults with arguments
     $.extend(settings, options);
 
+    // HANDLEBARS : Add our template helper functions to handlebars for cart logic
+    Handlebars.registerHelper('if_eq', function(a, b, opts) {
+      if (a == b) {
+          return opts.fn(this);
+      } else {
+          return opts.inverse(this);
+      }
+    });
+
+    Handlebars.registerHelper('if_not_eq', function(a, b, opts) {
+      if (a != b) {
+          return opts.fn(this);
+      } else {
+          return opts.inverse(this);
+      }
+    });
+
     // Select DOM elements
     $formContainer     = $(settings.formSelector);
     $cartContainer     = $(settings.cartContainer);
@@ -261,14 +332,12 @@ var ajaxCart = (function(module, $) {
 
       // Remove any previous quantity errors
       $('.qty-error').remove();
-
       ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
     });
   };
 
   itemAddedCallback = function (product) {
     $addToCart.removeClass('is-adding').addClass('is-added');
-
     ShopifyAPI.getCart(cartUpdateCallback);
   };
 
@@ -284,7 +353,30 @@ var ajaxCart = (function(module, $) {
     }
   };
 
+
+  // RETURNS : Total price (in cents) sans items tagged with _discountItem property
+  //    NOTE : The _discountItem property is only added via addItemById()
+  removeGiftItemsFromTotalPrice = function( cart ) {
+    var cleanTotal = 0;
+
+    // SCAN CART ITEMS : Remove cost of gift items from total price (can't have 0 cost items due to SAP issue)
+    if ( cart.items && cart.items.length > 0 ) {
+
+      // CALC : Add cost of each item together, skipping the discount flagged items
+      cart.items.forEach( function( item ) {
+        if ( !item.properties || !item.properties._discountItem ) {
+          cleanTotal = cleanTotal + ( item.discounted_price * item.quantity );
+        }
+      });
+    }
+
+    return cleanTotal;
+  };
+
   cartUpdateCallback = function (cart) {
+    // Ensure gift items are not counted in the cart total
+    cart.total_price = removeGiftItemsFromTotalPrice( cart );
+
     // Update quantity and price
     updateCountPrice(cart);
     buildCart(cart);
@@ -366,6 +458,7 @@ var ajaxCart = (function(module, $) {
     $body.removeClass('drawer--is-loading');
     $body.trigger('ajaxCart.afterCartLoad', cart);
 
+    // Adds checkout buttons to mini cart
     if (window.Shopify && Shopify.StorefrontExpressButtons) {
       Shopify.StorefrontExpressButtons.initialize();
     }
@@ -478,6 +571,13 @@ var ajaxCart = (function(module, $) {
   adjustCartCallback = function (cart) {
     isUpdating = false;
 
+    /* TOTAL : Calculate cart total, subtracting gift item prices for safety
+       WHY: Removing items that drop you below threshold cause the ruby script to stop discounting
+        the item cost, so if the item itself that is a gift is set to a price higher than the threshold,
+        or ends up putting the user above the threshold it ends up thinking the cart total includes
+        the gift item, which causes the react app to not remove it. */
+    cart.total_price = removeGiftItemsFromTotalPrice( cart );
+
     // Update quantity and price
     updateCountPrice(cart);
 
@@ -586,8 +686,11 @@ var ajaxCart = (function(module, $) {
 
   module = {
     init: init,
-    load: loadCart,
-    initAddToCartButtons: initAddToCartButtons
+    initAddToCartButtons: initAddToCartButtons,
+    itemAddedCallback: itemAddedCallback,
+    itemErrorCallback: itemErrorCallback,
+    cartUpdateCallback: cartUpdateCallback,
+    load: loadCart
   };
   
   
