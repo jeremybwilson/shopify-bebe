@@ -19,19 +19,24 @@
         <div class="ajaxcart__product">
           <div class="ajaxcart row" data-line="{{line}}">
 
+              {{!-- :: PRODUCT IMAGE :: --}}
               <div class="grid__item desktop-4 tablet-2 mobile-1">
-                <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
+                <a aria-label="Product Image" {{#if_not_eq properties._discountItem "true" }} href="{{url}}" {{/if_not_eq}} class="ajaxcart__product-image {{#if properties._discountItem }}no-click{{/if}}"><img src="{{img}}" alt=""></a>
               </div>
+
+              {{!-- :: PRODUCT CONTENT (Name, Meta, Price, Quantity) :: --}}
               <div class="desktop-8 tablet-4 mobile-2">
                 <p>
-                  <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
+                  <a {{#if_not_eq properties._discountItem "true" }} href="{{url}}" {{/if_not_eq}} class="ajaxcart__product-name {{#if properties._discountItem }}no-click{{/if}}">{{name}}</a>
                   {{#if variation}}
                     <span class="ajaxcart__product-meta">{{variation}}</span>
                   {{/if}}
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
-                        <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                        {{#if_not_eq @key '_discountItem'}}
+                          <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                        {{/if_not_eq}}
                       {{/if}}
                     {{/each}}
                   {{/properties}}
@@ -39,22 +44,45 @@
                     <span class="ajaxcart__product-meta">{{ vendor }}</span>
                   {% endraw %}{% endif %}{% raw %}
                 </p>
-                <p><strong class="bfx-price bfx-list-price">{{{price}}}</strong></p>
 
-                <div class="display-table">
-                  <div class="display-table-cell">
-                    <div class="ajaxcart__qty">
-                      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus quantity-increment" data-id="{{id}}" data-qty="{{itemMinus}}" data-line="{{line}}">
-                        <span>&minus;</span>
-                      </button>
-                      <input type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{id}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">
-                      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus quantity-increment" data-id="{{id}}" data-line="{{line}}" data-qty="{{itemAdd}}">                        
-                        <span>+</span>
-                      </button>
+                {{!-- Hide price on gift items added in cart --}}
+                {{#if properties._discountItem }}
+                  <p class="ajaxcart__price-wrap"><strong>Gift Item</strong></p>
+                {{ else }}
+                  <p class="ajaxcart__price-wrap"><strong class="bfx-price bfx-list-price">{{{price}}}</strong></p>
+                {{/if}}
+
+
+                {{!--
+                  :: QUANTITY SELECTORS ::
+                    - If '_discountItem', hide quantity selectors (re: A free gift item from react-discounts)
+                    - '_discountItem' tag comes from 'ajax-cart.js.liquid' function "addItemById" when "isGift" = true
+                    - flag starts with underscore to HIDE IT FROM CHECKOUT AUTOMAGICALLY
+                --}}
+                {{#if properties._discountItem }}
+                  <div class="display-table">
+                    <div class="qty-remove-wrap display-table-cell">
+                      <a class="ajaxcart__remove" data-line="{{line}}">Remove</a>
                     </div>
-                    <a class="ajaxcart__remove" data-line="{{line}}">Remove</a>
                   </div>
-                </div>
+
+                {{else}}
+                  <div class="display-table">
+                    <div class="display-table-cell">
+                      <div class="ajaxcart__qty">
+                        <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus quantity-increment" data-id="{{id}}" data-qty="{{itemMinus}}" data-line="{{line}}">
+                          <span>&minus;</span>
+                        </button>
+                        <input type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{id}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">
+                        <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus quantity-increment" data-id="{{id}}" data-line="{{line}}" data-qty="{{itemAdd}}">                        
+                          <span>+</span>
+                        </button>
+                      </div>
+                      <a class="ajaxcart__remove" data-line="{{line}}">Remove</a>
+                    </div>
+                  </div>
+                {{/if}}
+                
               </div>
 
           </div>
