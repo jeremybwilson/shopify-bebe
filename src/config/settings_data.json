@@ -67,11 +67,11 @@
     "collection_load_more_bg_hover": "#000000",
     "discount_modal_bg": "#fefffe",
     "discount_modal_text": "#000000",
-    "discount_modal_header": "#164732",
-    "discount_modal_button_bg": "#164732",
-    "discount_modal_button_text": "#fefffe",
-    "discount_modal_button_alt_bg": "#ab5232",
-    "discount_modal_button_alt_text": "#fefffe",
+    "discount_modal_header": "#000000",
+    "discount_modal_button_bg": "#000000",
+    "discount_modal_button_text": "#ffffff",
+    "discount_modal_button_alt_bg": "#fefffe",
+    "discount_modal_button_alt_text": "#77511e",
     "product_badge_square_bg": "#000000",
     "product_badge_circle_bg": "#000000",
     "product_badge_diamond_bg": "#000000",
@@ -1558,7 +1558,7 @@
               "caption_horizontal_offset": 0,
               "caption_vertical": 50,
               "caption_vertical_mobile": 50,
-              "caption_background": "transparent",
+              "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
           }
