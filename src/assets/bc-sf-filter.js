@@ -69,6 +69,29 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
     var onSale = data.compare_at_price_min > data.price_min; // Check a product is on sale
     var priceVaries = data.price_min != data.price_max; // Check a product has many prices
 
+
+    /* HIDE ITEM : Hide if tag "hide_from_catalog" found basically 
+        INFO:
+            If item has tag "hide_from_catalog", skip it as its a Gift w/ Purchase item
+            We can't set item unavailable on sales channels if its a gift item, so this 
+            is solution for now to hide the item from store "all products catalogs"
+
+        RESULTS COUNT NOTE : 
+            Page counts will be off by however hidden items there are, but since
+            hidden items should have no collection tag assignments, it should only
+            affect the "all products" collection and a num or two off shouldn't matter there.
+    * --------------------------------------------------------------------------------------- */ 
+    if ( data.tags ) {
+        var hasHideFlag = data.tags.filter(function (tag) {
+            return tag === 'hide_from_catalog'
+        }).length
+
+        if ( hasHideFlag ) {
+            return '';
+        }
+    }
+
+
     // Get First Variant (selected_or_first_available_variant)
     var firstVariant = data['variants'][0];
     if (getParam('variant') !== null && getParam('variant') != '') {

@@ -596,6 +596,52 @@
       },
       {
         "type": "header",
+        "content": "Gift w/ Purchase Modal"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_bg",
+        "label": "BG of Modal Body",
+        "default": "#fefffe"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_text",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_header",
+        "label": "Header Text Color",
+        "default": "#164732"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_bg",
+        "label": "Primary Button BG",
+        "default": "#164732"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_text",
+        "label": "Primary button Text",
+        "default": "#fefffe"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_alt_bg",
+        "label": "Secondary Button BG",
+        "default": "#ab5232"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_alt_text",
+        "label": "Secondary button Text",
+        "default": "#fefffe"
+      },
+      {
+        "type": "header",
         "content": "Navigation"
       },
       {

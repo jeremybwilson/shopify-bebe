@@ -1,0 +1,201 @@
+{% comment %}
+  :: GIFT WITH PURCHASE (React-Discounts) ::
+  -----------------------------------------------------------------------------
+    WHAT:
+      - Configures and creates react-component mount root (div) when enabled
+
+    HOW:
+      - Use the blocks to create a discount, and fill in the data to configure
+        the gift with purchase discount object for the configuration
+
+    EXAMPLE USAGE:
+      {% section 'gift-with-purchase' %} (Place in root of theme, usually Layout > theme.liquid)
+{% endcomment %}
+
+
+
+{% comment %} :: CONFIG BUILDER :: (Creates json object from customizer blocks for react component) {% endcomment %}
+{%- capture discountConfig -%}
+  {
+    "cookieExpireInDays": {{ section.settings.cookie_expire_in_days }},
+    "currencySymbol": "{{ section.settings.currency_symbol }}",
+    "thresholdDiscounts": [
+      {%- for block in section.blocks -%}
+        {
+          "autoAddToCart": {{ block.settings.auto_add_to_cart }},
+          "discountId": {{ block.settings.gift_id }},
+          "displayName": "{{ block.settings.display_name | replace: "'", "&#39;" }}",
+          "giftId": {{ block.settings.gift_id }},
+          "grantType": "{{ block.settings.grant_type }}", 
+          "inventoryId": {{ block.settings.inventory_id }},
+          "minSpend": {{ block.settings.min_spend }},
+          "productHandle": "{{ block.settings.product_handle }}",
+          "time_start": "{{ block.settings.time_start }}",
+          "time_end": "{{ block.settings.time_end }}"
+        }{%- unless forloop.last == true -%}, {%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+{%- endcapture -%}
+
+
+
+{% comment %} :: COMPONENT ROOT :: (Mount point for global react component) {% endcomment %}
+{% if section.settings.discount_modal_enable == true %}
+  <div id="react-discounts" data-discount-config='{{ discountConfig }}'></div>
+{% endif %}
+
+
+
+{% comment %} :: CONFIGURATION SCHEMA :: {% endcomment %}
+{% schema %}
+{
+   "name":"Gift With Purchase",
+   "settings":[
+      {
+        "type": "header",
+        "content": "-- DIRECTIONS --"
+      },
+      {
+       "type": "paragraph",
+       "content": "To create GWP Promo, click 'Add Discount' down below in 'CONTENT' and fill in ALL FIELDS."
+      },
+      {
+        "type": "header",
+        "content": "-- Global Settings --"
+      },
+      {
+        "type": "checkbox",
+        "default" : false,
+        "id": "discount_modal_enable",
+        "label": "Enable GWP",
+        "info" : "(Must be on to use)"
+      },
+      {
+        "type": "range",
+        "id": "cookie_expire_in_days",
+        "min": 5,
+        "max": 365,
+        "step": 5,
+        "unit": "Day",
+        "label": "Cookie Expiration (in Days)",
+        "info": "(Days before 'do not show again' cookies expire)",
+        "default": 60
+      },
+      {
+        "type": "select",
+        "id": "currency_symbol",
+        "label": "Currency Symbol",
+        "default": "&#36;",
+        "options": [
+          {
+            "label": "$",
+            "value": "&#36;"
+          },
+          {
+            "label": "£",
+            "value": "&pound;"
+          },
+          {
+            "label": "€",
+            "value": "&euro;"
+          },
+          {
+            "label": "¥",
+            "value": "&yen;"
+          }
+        ]
+      }
+   ],
+
+   "blocks": [
+      {
+        "type": "discount_object",
+        "name": "Discount",
+        "settings": [
+          {
+            "type": "text",
+            "id": "display_name",
+            "label": "Displayed Item Name: (Optional)",
+            "info": "(Shows in modal, defaults to product title if none given)",
+            "placeholder": "Ex: My Cool Scarf"
+          },
+          {
+            "type": "range",
+            "id": "min_spend",
+            "min": 5,
+            "max": 500,
+            "step": 5,
+            "unit": "+",
+            "label": "Min Spend Threshold:",
+            "info": "(Min. cart total to qualify for gift)",
+            "default": 100
+          },
+          {
+            "type": "text",
+            "id": "time_start",
+            "label": "Start Date",
+            "info": "( DD MMM YYYY 16:00 GMT-7 ) *GMT-7 = LA Time",
+            "placeholder": "Ex: 17 Mar 2019 15:32 GMT-7"
+          },
+          {
+            "type": "text",
+            "id": "time_end",
+            "label": "End Date",
+            "info": "( DD MMM YYYY 21:00 GMT+1 ) *GMT+1 = UK Time",
+            "placeholder": "Ex: 17 Jan 2021 15:32 GMT+1"
+          },
+          {
+            "type": "select",
+            "id": "grant_type",
+            "label": "Grant Type:",
+            "info": "(User can obtain all gifts, or select one from all they qualify for)",
+            "default": "all",
+            "options": [
+              {
+                "label": "All",
+                "value": "all"
+              },
+              {
+                "label": "Pick One",
+                "value": "pick"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "auto_add_to_cart",
+            "label": "Auto-Add to Cart:",
+            "info": "(*Grant Type MUST = 'all')"
+          },
+          {
+            "type": "text",
+            "id": "gift_id",
+            "label": "Gift Item ID:",
+            "info": "(VARIANT ID - NOT Product ID or SKU!)",
+            "placeholder": "Ex: 21920429572201"
+          },
+          {
+            "type": "text",
+            "id": "inventory_id",
+            "label": "Inventory Item ID:",
+            "info": "(Variant ID - If also selling product, use full-price item's Variant ID, otherwise match Gift Item ID & set inventory quantity on gift item in admin)",
+            "placeholder": "Ex: 21920429572201"
+          }, 
+          {
+            "type": "text",
+            "id": "product_handle",
+            "label": "Inventory Item Handle:",
+            "info": "(Found in PDP URL ending or Product SEO Section in admin)",
+            "placeholder": "Ex: 'cool-silk-scarf'"
+          }
+        ]
+      }
+    ],
+
+   "presets": [{
+      "name": "Gift With Purchase",
+      "category": "Promotional"
+    }]
+}
+{% endschema %}
