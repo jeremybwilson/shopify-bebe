@@ -86,6 +86,13 @@
     "gdpr_alt_button_bg": "#8a8a8a",
     "gdpr_alt_button_text": "#ffffff",
     "gdpr_alt_button_bg_hover": "#8a8a8a",
+    "discount_modal_bg": "#fefffe",
+    "discount_modal_text": "#000000",
+    "discount_modal_header": "#000000",
+    "discount_modal_button_bg": "#000000",
+    "discount_modal_button_text": "#fefffe",
+    "discount_modal_button_alt_bg": "#fefffe",
+    "discount_modal_button_alt_text": "#77511e",
     "navigation": "#000000",
     "nav_color": "#ffffff",
     "nav_hover_color": "#77511e",
@@ -1864,6 +1871,14 @@
       "collections-list-catchall-template": {
         "type": "collections-list-catchall-template",
         "settings": {}
+      },
+      "gift-with-purchase": {
+        "type": "gift-with-purchase",
+        "settings": {
+          "discount_modal_enable": false,
+          "cookie_expire_in_days": 60,
+          "currency_symbol": "&#36;"
+        }
       }
     },
     "content_for_index": [
