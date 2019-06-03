@@ -267,6 +267,11 @@
 
   {% if settings.ajax_cart_method == 'drawer' %}
     {{ 'handlebars.min.js' | asset_url | script_tag }}
+    <script>
+      Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+        return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    });
+    </script>
     {% include 'ajax-cart-template' %}
     {{ 'ajax-cart.js' | asset_url | script_tag }}
     <script>

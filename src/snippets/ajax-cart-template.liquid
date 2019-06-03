@@ -31,7 +31,11 @@
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
-                        <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                        {{#ifEquals @key 'final_sale'}}
+                          <span class="ajaxcart__product-meta">{{this}}</span>
+                        {{else}}	
+                          <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                        {{/ifEquals}}
                       {{/if}}
                     {{/each}}
                   {{/properties}}
