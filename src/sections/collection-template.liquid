@@ -67,7 +67,12 @@
         {%- assign grid_item_width = 'desktop-3 tablet-2 mobile-half' -%}
       {% endcase %} 
 
-      {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}   
+      {%- if section.settings.static_product_limit != blank -%}
+         {%- assign product_limit = section.settings.static_product_limit -%}   
+      {%- else -%} 
+        {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+      {%- endif -%}
+      
 
       {% paginate collection.products by product_limit %}
 
@@ -224,6 +229,16 @@
         "step": 1,
         "label": "Rows",
         "default": 4
+      },
+      {
+        "type": "header",
+        "content": "Static product limit"
+      },
+      {
+        "type": "text",
+        "id": "static_product_limit",
+        "label": "Product limit",
+        "info":"Once you set up static product limit then 'Products per row' and 'Rows' settings will be disable"
       },
       {
         "type": "checkbox",
