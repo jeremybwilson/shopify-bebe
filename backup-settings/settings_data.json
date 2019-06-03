@@ -86,6 +86,13 @@
     "gdpr_alt_button_bg": "#8a8a8a",
     "gdpr_alt_button_text": "#ffffff",
     "gdpr_alt_button_bg_hover": "#8a8a8a",
+    "discount_modal_bg": "#fefffe",
+    "discount_modal_text": "#000000",
+    "discount_modal_header": "#000000",
+    "discount_modal_button_bg": "#000000",
+    "discount_modal_button_text": "#fefffe",
+    "discount_modal_button_alt_bg": "#fefffe",
+    "discount_modal_button_alt_text": "#77511e",
     "navigation": "#000000",
     "nav_color": "#ffffff",
     "nav_hover_color": "#77511e",
@@ -368,6 +375,14 @@
               "nav_image": "",
               "nav_promo_link": "shopify://collections/flash-sale"
             }
+          },
+          "1559544597998": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Bebe Girls",
+              "nav_image": "shopify://shop_images/bebe-girls-nav.jpg",
+              "nav_promo_link": "shopify://collections/girls"
+            }
           }
         },
         "block_order": [
@@ -381,19 +396,20 @@
           "1542669004635",
           "1557791954256",
           "1542669019789",
+          "1559544597998",
           "1542669025513",
           "1555101781432"
         ],
         "settings": {
           "full_width_header": false,
           "show_announcement_text": true,
-          "num_of_promo_banners": "1",
+          "num_of_promo_banners": "2",
           "announcement_text_one": "BUY 1 SALE ITEM, GET AN EXTRA 40% OFF A 2ND SALE ITEM",
           "announcement_popup_one_content": "additional-40-discount",
           "announcement_link_one": "shopify://collections/limited-time-40-off",
-          "announcement_text_two": "",
-          "announcement_popup_two_content": "",
-          "announcement_link_two": "/account/login",
+          "announcement_text_two": "BUY 1 SALE ITEM, GET AN EXTRA 40% OFF A 2ND SALE ITEM",
+          "announcement_popup_two_content": "additional-40-discount",
+          "announcement_link_two": "shopify://collections/limited-time-40-off",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
           "top_left_highlight_link": "http://www.instagram.com/bebe_stores",
@@ -601,8 +617,8 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "right",
-              "caption_horizontal_offset": 2,
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 35.5,
               "caption_vertical": 55,
               "caption_vertical_mobile": 70,
               "caption_background": "rgba(0,0,0,0)",
@@ -632,7 +648,7 @@
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 11.5,
+              "caption_horizontal_offset": 0,
               "caption_vertical": 64,
               "caption_vertical_mobile": 69,
               "caption_background": "rgba(0,0,0,0)",
@@ -1320,10 +1336,10 @@
           "1557385376991": {
             "type": "text_block",
             "settings": {
-              "heading_text": "MEMORIAL DAY SALE: UP TO 60% OFF",
-              "text": "<p>Enjoy fabulous deals on sale styles. Priced as marked.</p>",
-              "cta_text": "Shop Sale",
-              "link": "shopify://collections/sale",
+              "heading_text": "40% OFF SELECT SUMMER STYLES",
+              "text": "<p>Enjoy 40% off select items for a limited time. Priced as marked.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/limited-time-40-off",
               "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
@@ -1332,11 +1348,11 @@
           "1558598416156": {
             "type": "text_block",
             "settings": {
-              "heading_text": "20% OFF $150, 30% OFF $250",
-              "text": "<p>Save on your entire purchase. Use MEMDAY20 for 20% off. Use MEMDAY30 for 30% off.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off any purchase of $150 or more, enter code MEMDAY20 at checkout. To redeem 30% off any purchase of $250 or more, enter code MEMDAY30 at checkout. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 5/27/19 at 11:59 pm PDT.&nbsp;</p>",
+              "heading_text": "BUY 1 SALE ITEM, GET AN ADDITIONAL 40% OFF A 2ND SALE ITEM",
+              "text": "<p>Discount taken at checkout for qualifying orders. Excludes limited time 40% off styles.</p>",
+              "cta_text": "SHOP SALE",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Additional 40% discount will be applied to sale item of equal or lesser value at checkout when two sale items are purchased. If an odd number of three or more sale items are purchased, additional 40% discount will be applied to the item(s) of least value. Only valid on sale merchandise with prices ending in .99 on bebe.com. Not valid at bebe stores. Discount will be applied at checkout automatically for qualifying orders. Cannot be used in conjunction with any other offer. Not valid on regular-priced items, limited time promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer expires 6/2/19 at 11:59 pm PDT.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1422,7 +1438,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify://shop_images/cart-20-0ff-150-30-off-250.jpg",
+          "image": "",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1864,6 +1880,14 @@
       "collections-list-catchall-template": {
         "type": "collections-list-catchall-template",
         "settings": {}
+      },
+      "gift-with-purchase": {
+        "type": "gift-with-purchase",
+        "settings": {
+          "discount_modal_enable": false,
+          "cookie_expire_in_days": 60,
+          "currency_symbol": "&#36;"
+        }
       }
     },
     "content_for_index": [

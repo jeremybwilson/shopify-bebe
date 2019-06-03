@@ -208,29 +208,31 @@ __bva__.helpers = (function () {
 
   Helpers.prototype.monkeyPatchShopifyAPI = function () {
     if (typeof ShopifyAPI === 'undefined') {
-      return null
+      return null;
     }
 
-    var self = this
+    var self = this;
 
     if (typeof ShopifyAPI.changeItem !== 'undefined') {
       var changeItemMethod = ShopifyAPI.changeItem
       ShopifyAPI.changeItem = function () {
-        var line = arguments[0]
-        var quantityChange = arguments[1]
-        var callback = arguments[2]
-        var initialItem = self.cart.items[line - 1]
+        var line = arguments[0];
+        var quantityChange = arguments[1];
+        var callback = arguments[2];
+        var initialItem = self.cart.items[line - 1];
 
         arguments[2] = function (cart) {
-          self.cart = cart
-          var product = cart.items[line - 1]
-          if (product && initialItem.quantity < product.quantity) {
-            self.fireAddToCartPixel(product)
+          self.cart = cart;
+          var product = cart.items[line - 1];
+
+          // Have to account for initialItem being 0 when GWP items are added to cart.
+          if (product && initialItem && initialItem.quantity < product.quantity) {
+            self.fireAddToCartPixel(product);
           }
 
-          return callback.apply(this, arguments)
+          return callback.apply(this, arguments);
         }
-        changeItemMethod.apply(ShopifyAPI, arguments)
+        changeItemMethod.apply(ShopifyAPI, arguments);
       }
     }
 

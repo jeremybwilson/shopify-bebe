@@ -38,70 +38,116 @@
        <span class="hide bfx-customData-label">userAgent</span>
       <span class="hide bfx-customData-value" id="orderUserAgent"></span>
 
+        {% comment %} CART : LOOP {% endcomment %}
         {% for item in cart.items %}
-          {% comment %} CART : LOOP {% endcomment %}
           {% assign item_name = item.title | split: ' - ' | first %}
           {% assign item_props = item.title | split: ' - ' | last %}
 
+          {% comment %} GIFT WITH PURCHASE : Flag to Check when to hide props on gift items {% endcomment %}
+          {% assign isGiftItem = false %}
+          {% assign property_size = item.properties | size %}
+          {% if property_size > 0 %}
+            {% for p in item.properties %}
+              {% if p.first contains 'discountItem' %}
+                {% assign isGiftItem = true %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+
           <div class="cartform--item bfx-product">
-            {% comment %} CART : LOOP : Image {% endcomment %}
+
+            {% comment %} CART : LOOP : IMAGE {% endcomment %}
             <div class="cart-image">
+
+              {% comment %} :: GWP - Prevent picture linking to hidden gift item :: {% endcomment %}
+              {% if isGiftItem %}
+                <img title="{{ item.product.title | escape }}" src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}" />
+              
+              {% comment %} :: REGULAR ITEM IMAGE :: {% endcomment %}
+              {% else %}
                 <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
                   <img src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}" />
                 </a>
+              {% endif %}
             </div>
 
-            {% comment %} CART : LOOP : Info {% endcomment %}
+
+            {% comment %} CART : LOOP : INFO {% endcomment %}
             <div class="cart-item-properties">
               <div class="cart-item-info">
                 {% if settings.vendor %}<p>{{ item.vendor }}</p>{% endif %}
+
+                {% comment %} :: PRODUCT - NAME :: {% endcomment %}
                 <span class="cart-title">
-                  <a class="bfx-product-name" href="{{ item.url }}" title="{{ item.product.title | escape }}">{{ item_name }}</a>
+
+                  {% comment %} :: GWP - Prevent picture linking to hidden gift item :: {% endcomment %}
+                  {% if isGiftItem %}
+                    <div class="product-name bfx-product-name" title="{{ item.product.title | escape }}">{{ item_name }}</div>
+
+                  {% comment %} :: REGULAR NAME LINK :: {% endcomment %}
+                  {% else %}
+                    <a class="product-name bfx-product-name" href="{{ item.url }}" title="{{ item.product.title | escape }}">{{ item_name }}</a>
+                  {% endif %}
                 </span>
+
+                {% comment %} :: PRODUCT - PROP (Usually Color) :: {% endcomment %}
                 <span class="cart-props">
                   {{ item_props }}
                 </span>
 
-                <span class="cart-sku">
-                  SKU: {{ item.sku }}
-                </span>
+                {% comment %} :: PRODUCT - SKU :: {% endcomment %}
+                {% if isGiftItem == false %}
+                  <span class="cart-sku">
+                    SKU: {{ item.sku }}
+                  </span>
+                {% endif %}
 
                 <span class="bfx-sku hide">
-                {{ item.variant_id }}
+                  {{ item.variant_id }}
                 </span>
 
                 <span class="bfx-product-customData-label hide">variant_id</span>
                 <span class="bfx-product-customData-value hide">{{ item.variant_id }}</span>
 
-                {% comment %} CART : ITEM : Price {% endcomment %}
-
+                {% comment %} CART : ITEM : PRICE {% endcomment %}
                 <div class="cart-price">
-                
-                  <span class="cart-price-label">{{ 'cart.general.price' | t }}</span>
 
-                {% if item.variant.compare_at_price > item.price %}
-                  <div class="onsale">
-                    <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
+                  {% comment %} :: PRICE : GIFT ITEM - Hide Price :: {% endcomment %}
+                  {% if isGiftItem %}
+                    <div class="prod-price">
+                      <span class="money">Gift Item</span>
+                    </div>
+
+                  {% comment %} :: PRICE : REGULAR ITEM :: {% endcomment %}
+                  {% else %}
+
+                    {% comment %} :: PRICE - Regular, On Sale :: {% endcomment %}
+                    {% if item.variant.compare_at_price > item.price %}
+                      <div class="onsale">
+                        <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
+                      </div>
+                      <div class="was">
+                        <span class="money bfx-price">{{ item.variant.compare_at_price | money }}</span>
+                      </div>
+
+                    {% comment %} :: PRICE - Regular, Full Price :: {% endcomment %}
+                    {% else %}
+                      <div class="prod-price">
+                        <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
+                      </div>
+
+                    {% endif %}
+                  {% endif %}
+                </div>
+
+                {% comment %} CART : ITEM : QUANTITY {% endcomment %}
+                {% if isGiftItem == false %}
+                  <div class="cart-quantity">
+                    <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
+                    <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
                   </div>
-                  <div class="was">
-                    <span class="money bfx-price">{{ item.variant.compare_at_price | money }}</span>
-                  </div>
-
-                {% else %}
-
-                  <div class="prod-price">
-                    <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
-                  </div>
-
                 {% endif %}
-                </div> 
-
-                {% comment %} CART : ITEM : Quantity {% endcomment %}
-
-                <div class="cart-quantity">
-                  <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
-                  <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
-                </div>                
 
               </div>
 
@@ -127,33 +173,40 @@
                 <div class="cart-remove">
                   <a href="#" onclick="remove_item({{ item.variant.id }}); return false;"><i class="fa fa-times"></i><span class="remove-text">{{ 'cart.general.remove' | t }}</span></a>
                 </div>         
-
               </div>
 
               {% assign property_size = item.properties | size %}
               {% if property_size > 0 %}
                 {% for p in item.properties %}
-                  {% unless p.last == blank %}
-                    {% if p.first != "final_sale" %}
-                      {{ p.first }} : 
-                      {% comment %}
-                        Check if there was an uploaded file associated
-                      {% endcomment %}
-                      {% if p.last contains '/uploads/' %}
-                        <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                      {% else %}
-                        {{ p.last }}
-                      {% endif %}
+                  {% unless p.first contains 'discountItem' or p.first contains 'final_sale or p.last == blank %}
+                    {{ p.first }}:
+
+                    {% comment %}
+                      Check if there was an uploaded file associated
+                    {% endcomment %}
+                    {% if p.last contains '/uploads/' %}
+                      <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                    {% else %}
+                      {{ p.last }}
                     {% endif %}
-                    
-                  <br>
+
+                    <br>
                   {% endunless %}
                 {% endfor %}
               {% endif %}
 
             </div>
             <div class="cart--total-price">
-              <span class="money bfx-price bfx-product-subtotal">{{ item.line_price | money }}</span>
+              {% comment %} :: PRICE : GIFT ITEM - Hide Price :: {% endcomment %}
+              {% if isGiftItem %}
+                <div class="prod-price">
+                  <span class="money">Gift Item</span>
+                </div>
+
+              {% comment %} :: PRICE : REGULAR ITEM :: {% endcomment %}
+              {% else %}
+                <span class="money bfx-price bfx-product-subtotal">{{ item.line_price | money }}</span>
+              {% endif %}
             </div>
           </div>
         {% endfor %}
