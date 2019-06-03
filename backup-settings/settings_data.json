@@ -375,6 +375,14 @@
               "nav_image": "",
               "nav_promo_link": "shopify://collections/flash-sale"
             }
+          },
+          "1559544597998": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Bebe Girls",
+              "nav_image": "shopify://shop_images/bebe-girls-nav.jpg",
+              "nav_promo_link": "shopify://collections/girls"
+            }
           }
         },
         "block_order": [
@@ -388,6 +396,7 @@
           "1542669004635",
           "1557791954256",
           "1542669019789",
+          "1559544597998",
           "1542669025513",
           "1555101781432"
         ],
