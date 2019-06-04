@@ -35,6 +35,11 @@
             </span>
           {% endif %}
         </div><div class="clear"></div>
+        {% comment %}  :: Promo code / Sale callout - PDM-637 ::  {% endcomment %}
+        {%- if product.tags contains 'SALE_PROMO_CALLOUT' and section.settings.sale_callout != '' -%}
+          <div id="mobile-sale-callout" class="final_sale sale_product">{{section.settings.sale_callout}}</div>
+        {%- endif -%}
+
         {% comment %} REVIEWS - STAR RATING {% endcomment %}
         <div id="mobile-yotpo-star-rating">
           {% include 'yotpo-star-rating' %} 
