@@ -209,7 +209,7 @@ var ajaxCart = (function(module, $) {
   var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
 
   // Private functions
-  var updateCountPrice, removeGiftItemsFromTotalPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
+  var updateCountPrice, removeGiftItemsFromTotalPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
 
   /*============================================================================
               Bind new addToCart buttons for cases like "Quickview" 
@@ -279,12 +279,6 @@ var ajaxCart = (function(module, $) {
           return opts.inverse(this);
       }
     });
-
-    Handlebars.registerHelper('unless_contains', function (l, r, opts) {
-      return l.indexOf(r) === -1
-        ? opts.fn(this)
-        : null
-    })
 
     // Select DOM elements
     $formContainer     = $(settings.formSelector);
@@ -395,7 +389,7 @@ var ajaxCart = (function(module, $) {
     });
   };
 
-  buildCart = function (cart, isUpdate) {
+  buildCart = function (cart) {
     // Start with a fresh cart div
     $cartContainer.empty();
 
@@ -404,24 +398,15 @@ var ajaxCart = (function(module, $) {
       $cartContainer
         .append('<p>' + {{ 'cart.general.empty' | t | json }} + '</p>');
       cartCallback(cart);
-      // this is for cordial GTM script.
-      if (dataLayer && isUpdate) {
-        dataLayer.push({
-          pageType: 'Update Cart',
-          event: 'Update Cart',
-          cartItems: []
-        });
-      }
       return;
     }
 
     // Handlebars.js cart layout
     var items = [],
-      cordialItems = [],
-      item = {},
-      data = {},
-      source = $("#CartTemplate").html(),
-      template = Handlebars.compile(source);
+        item = {},
+        data = {},
+        source = $("#CartTemplate").html(),
+        template = Handlebars.compile(source);
 
     // Add each item to our handlebars.js data
     $.each(cart.items, function(index, cartItem) {
@@ -455,28 +440,6 @@ var ajaxCart = (function(module, $) {
       };
 
       items.push(item);
-
-      // this is for cordial GTM script.
-      var variantOptions = {};
-      if (cartItem.variant_options && cartItem.variant_options.length) {
-        for (var i = 0; i < cartItem.variant_options.length; i++) {
-          variantOptions['option' + (i + 1).toString()] = cartItem.variant_options[i];
-        }
-      }
-      cordialItems.push({
-        productID: cartItem.variant_id.toString(),
-        id: cartItem.variant_id,
-        sku: cartItem.sku || '',
-        category: cartItem.properties && typeof cartItem.properties == 'object' && cartItem.properties._collection_private || 'No category',
-        name: cartItem.product_title,
-        images: [cartItem.image],
-        description: cartItem.product_description,
-        qty: cartItem.quantity,
-        itemPrice: cartItem.price / 100,
-        salePrice: cartItem.discounted_price / 100,
-        url: cartItem.url,
-        attr: variantOptions,
-      });
     });
 
     // Gather all cart data and add to DOM
@@ -489,15 +452,6 @@ var ajaxCart = (function(module, $) {
     $cartContainer.append(template(data));
 
     cartCallback(cart);
-    // this is for cordial GTM script.
-    if (dataLayer && isUpdate) {
-      dataLayer.push({
-        pageType: 'Update Cart',
-        event: 'Update Cart',
-        cartItems: cordialItems,
-        totalAmount: cart.total_price
-      });
-    }
   };
 
   cartCallback = function(cart) {
@@ -517,12 +471,11 @@ var ajaxCart = (function(module, $) {
     // Add or remove from the quantity
     $body.on('click', '.ajaxcart__qty-adjust', function() {
       var $el = $(this),
-        line = $el.data('line'),
-        lineItemId = $el.data('id'),
-        $qtySelector = $el.siblings('.ajaxcart__qty-num'),
-        qty = parseInt($qtySelector.val().replace(/\D/g, ''));
+          line = $el.data('line'),
+          $qtySelector = $el.siblings('.ajaxcart__qty-num'),
+          qty = parseInt($qtySelector.val().replace(/\D/g, ''));
 
-      qty = validateQty(qty);
+      var qty = validateQty(qty);
 
       // Add or subtract from the current quantity
       if ($el.hasClass('ajaxcart__qty--plus')) {
@@ -543,7 +496,7 @@ var ajaxCart = (function(module, $) {
       // If it has a data-line, update the cart.
       // Otherwise, just update the input's number
       if (line) {
-        updateQuantity(line, qty, lineItemId);
+        updateQuantity(line, qty);
       } else {
         $qtySelector.val(qty);
       }
@@ -564,15 +517,14 @@ var ajaxCart = (function(module, $) {
     // Update quantity based on input on change
     $body.on('change', '.ajaxcart__qty-num', function() {
       var $el = $(this),
-        line = $el.data('line'),
-        lineItemId = $el.data('id'),
-        qty = parseInt($el.val().replace(/\D/g, ''));
+          line = $el.data('line'),
+          qty = parseInt($el.val().replace(/\D/g, ''));
 
-      qty = validateQty(qty);
+      var qty = validateQty(qty);
 
       // If it has a data-line, update the cart
       if (line) {
-        updateQuantity(line, qty, lineItemId);
+        updateQuantity(line, qty);
       }
     });
 
@@ -591,7 +543,7 @@ var ajaxCart = (function(module, $) {
       }, 50);
     });
 
-    function updateQuantity(line, qty, id) {
+    function updateQuantity(line, qty) {
       isUpdating = true;
 
       // Add activity classes when changing cart quantities
@@ -616,10 +568,6 @@ var ajaxCart = (function(module, $) {
     });
   };
 
-  cordialAjaxCartUpdate = function (cart) {
-    buildCart(cart, true);
-  };
-
   adjustCartCallback = function (cart) {
     isUpdating = false;
 
@@ -635,7 +583,7 @@ var ajaxCart = (function(module, $) {
 
     // Reprint cart on short timeout so you don't see the content being removed
     setTimeout(function() {
-      ShopifyAPI.getCart(cordialAjaxCartUpdate);
+      ShopifyAPI.getCart(buildCart);
     }, 150);
 
     // UPDATE : Event trigger for the Discounts Engine (React Component)
