@@ -35,7 +35,9 @@
                     {{#each this}}
                       {{#if this}}
                         {{#if_not_eq @key '_discountItem'}}
-                          <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                          {{#unless_contains @key '_private'}}
+                            <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                          {{/unless_contains}}
                         {{/if_not_eq}}
                       {{/if}}
                     {{/each}}
