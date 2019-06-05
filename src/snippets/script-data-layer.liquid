@@ -50,7 +50,7 @@ customBindings = {
   // Qty inputs on cart page
   cartQty: ['.cart-qty'],
   viewCart: [],
-  removeCartTrigger: ['.cart-remove a'],
+  removeCartTrigger: [],
   cartVisableSelector: [],
   promoSubscriptionsSelectors: [],
   promoSuccess: [],
@@ -130,9 +130,13 @@ __bva__.helpers = (function () {
     }
   }
 
-  Helpers.prototype.fireAddToCartPixel = function (product) {
+  Helpers.prototype.fireAddToCartPixel = function (product, isUpdate) {
     if (!product) {
       throw new Error('Missing product object')
+    }
+
+    if (isUpdate) {
+      return;
     }
 
     var variant = product.variant || product.variant_id
@@ -147,17 +151,19 @@ __bva__.helpers = (function () {
     }
 
     var payload = {
-      'id': product.id.toString(),
+      'id': variant.toString() || product.id.toString(),
       'sku': product.sku,
       'variant': variant.toString(),
       'name': product.product_title,
       'price': parseFloat(product.price.toString().replace('.', ''), 10) / 100,
+      'salePrice': parseFloat(product.discounted_price.toString().replace('.', ''), 10) / 100,
       'quantity': quantity,
       'brand': brand,
       'options': variantOptions,
       'url': product.url,
       'image': product.image,
-      'description': product.product_description
+      'description': product.product_description,
+      'category': product.properties && typeof product.properties == 'object' && product.properties._collection_private || 'No category'
     }
 
     if (this.template.indexOf('collection') !== -1) {
@@ -171,7 +177,7 @@ __bva__.helpers = (function () {
     })
 
     this.log('Add to Cart', payload)
-    console.log('ATC1:', product);
+//    console.log('ATC1:', product);
   }
 
   Helpers.prototype.fireEmptyCartPixel = function () {
@@ -935,40 +941,49 @@ __bva__.helpers = (function () {
     /*DATALAYER: Cart
      --------------------------- */
     var _g_cart = {{ cart | json }}
-    var g_cart = {
-      'cartItems':[{% for line_item in cart.items %}{
-        'id'       : '{{line_item.product_id}}',
-        'sku'      : '{{line_item.sku}}',
-        'variant'  : '{{line_item.variant_id}}',
-        'name'     : '{{line_item.title}}',
-        'price'    : '{{line_item.price | money_without_currency | remove: "," | json }}',
-        'quantity' : '{{line_item.quantity}}',
-        'brand'    : {{ line_item.vendor | default: shop.name | json }},
-        'options'  : {
-          {% for variant in line_item.product.variants %}
-            {% if variant.id == line_item.variant_id %}
-              {% for option in line_item.product.options %}
-                {{ option | json }}: {{ variant.options[forloop.index0] | json }},
-              {% endfor %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-        },
-      },{% endfor %}],
-      'cartTotal': {{ cart.total_price | money_without_currency | remove: ',' | json }},
-      'itemsCount': {{ cart.item_count | downcase | json }},
-      'discountAmounts': {{ cart.total_discount | money_without_currency | remove: ',' | json }},
-      'cartId': _g_cart && typeof _g_cart === 'object' ? _g_cart.token : 'NotAvailable',
-      'pageType' : 'Global Cart',
-      'event'    : 'Global Cart',
-    };
+    var g_cartItems = [];
+    if (_g_cart && typeof _g_cart === 'object') {
+      for (var i=0; i<_g_cart.items.length; i++) {
+        var variantOptions = {};
+        var cartItem = _g_cart.items[i];
+        if (cartItem.variant_options && cartItem.variant_options.length) {
+          for (var i = 0; i < cartItem.variant_options.length; i++) {
+            variantOptions['option' + (i + 1).toString()] = cartItem.variant_options[i];
+          }
+        }
+        g_cartItems.push({
+          productID: cartItem.variant_id.toString(),
+          id: cartItem.variant_id,
+          sku: cartItem.sku || '',
+          category: cartItem.properties && typeof cartItem.properties == 'object' && cartItem.properties._collection_private || 'No category',
+          name: cartItem.product_title,
+          images: [cartItem.image],
+          description: cartItem.product_description,
+          qty: cartItem.quantity,
+          itemPrice: cartItem.price/100,
+          salePrice: cartItem.discounted_price/100,
+          url: cartItem.url,
+          attr: variantOptions,
+        });
+      }
+    }
 
-    dataLayer.push(g_cart);
+    dataLayer.push({
+      cartItems: g_cartItems,
+      totalAmount: _g_cart && _g_cart.total_price || 0,
+      cartTotal: _g_cart && _g_cart.total_price || 0,
+      itemsCount: _g_cart && _g_cart.item_count || 0,
+      discountAmounts: _g_cart && _g_cart.total_discount || 0,
+      cartId: _g_cart && _g_cart.token || 'NotAvailable',
+      pageType: 'Global Cart',
+      event: 'Global Cart'
+    });
+
     if(__bva__.debug){
       console.log("Global Cart"+" :"+JSON.stringify(g_cart, null, " "));
     }
 
-    __bva__.cart = g_cart.cartItems;
+    __bva__.cart = g_cartItems;
 
 
     /*DATALAYER: Global
@@ -1066,12 +1081,12 @@ __bva__.helpers = (function () {
     $(document).on('click', '.product-quickview', function () {
       var viewedElementId = $(this).closest('.product-index').attr('id');
       viewedElementId = viewedElementId.toString();
-      console.log('Quick View:', viewedElementId);
 
       var productList = [];
       for (var dlIndex = 0; dlIndex < dataLayer.length; dlIndex++) {
         if (dataLayer[dlIndex].products && dataLayer[dlIndex].products.length) {
           productList = dataLayer[dlIndex].products;
+          break;
         }
       }
 
@@ -1183,7 +1198,7 @@ __bva__.helpers = (function () {
         var viewedElementId = $(this).data('id');
         var viewedProduct = $(this).data('product');
         viewedElementId = viewedElementId.toString();
-        console.log('Quick View:', viewedElementId);
+//        console.log('Quick View:', viewedElementId);
 
         dataLayer.push({
           event: 'Quick View',
@@ -1196,7 +1211,7 @@ __bva__.helpers = (function () {
       });
 
       if (sessionStorage.getItem('clicked_next_or_prev_on_quickview')) {
-        console.log('Quick View by next or prev');
+//        console.log('Quick View by next or prev');
 
         dataLayer.push({
           event: 'Quick View',
@@ -1222,6 +1237,7 @@ __bva__.helpers = (function () {
         'variant'  : '{{line_item.variant_id}}',
         'name'     : '{{line_item.title}}',
         'price'    : '{{line_item.price | money_without_currency | remove: ',' }}',
+        'salePrice': '{{line_item.final_price | money_without_currency | remove: ',' }}',
         'quantity' : '{{line_item.quantity}}',
         'brand'    : {{ line_item.vendor | default: shop.name | json }},
         'categories': {% assign categorie_title = '"no category"' %}
@@ -1259,7 +1275,7 @@ __bva__.helpers = (function () {
       __bva__.helpers.fireEmptyCartPixel()
     }
 
-    __bva__.cart = cart.products;
+    __bva__.cart = cart;
 
     function checkProducts() {
       var allQty = []
@@ -1284,7 +1300,7 @@ __bva__.helpers = (function () {
             console.log('Seems like the product is empty.');
           }
           if (initialQuantity < qty && product) {
-            __bva__.helpers.fireAddToCartPixel(product)
+            __bva__.helpers.fireAddToCartPixel(product, true)
           }
         })
       }
@@ -1351,6 +1367,7 @@ __bva__.helpers = (function () {
       'name'        : {{ line_item.title | json }},
       'productType' : {{ line_item.product.type | json }},
       'price'       : {{ line_item.price | money_without_currency | remove: "," | json }},
+      'salePrice'       : {{ line_item.final_price | money_without_currency | remove: "," | json }},
       'comparePrice'  : {{ line_item.compare_at_price_max | money_without_currency | remove: "," | json}},
       'totalDiscount' : {{ line_item.total_discount | money_without_currency| remove: "," | json }},
       'quantity'    : {{ line_item.quantity | json }},
@@ -1420,6 +1437,7 @@ __bva__.helpers = (function () {
                   'variant'  : '{{line_item.variant_id}}',
                   'name'     : '{{line_item.product.title}}',
                   'price'    : {{line_item.final_price | money_without_currency | remove: "," | default: '0.0' | json }},
+                  'salePrice': {{line_item.price | money_without_currency | remove: "," | default: '0.0' | json }},
                   'quantity' : '{{line_item.quantity}}',
                   'brand'    : {{ line_item.vendor | default: shop.name | json }},
                   'categories' : {{line_item.product.collections | map: 'title' | default: [] | json }},
@@ -1439,7 +1457,7 @@ __bva__.helpers = (function () {
                 'event'    : 'Checkout Start',
               };
 
-              console.log('Checkout Start:');
+//              console.log('Checkout Start:');
               dataLayer.push(checkout);
 //            dataLayer.push(transactionData,{
 //              'event'    :'Customer Information',
@@ -1607,9 +1625,10 @@ __bva__.helpers = (function () {
             variant: lineItem.variant_id,
             name: lineItem.title,
             price: lineItem.price / 100,
+            salePrice: lineItem.discounted_price / 100,
             quantity: lineItem.quantity,
             brand: lineItem.vendor,
-            category: lineItem.properties && typeof lineItem.properties == 'object' ? lineItem.properties._collection_private : '',
+            category: lineItem.properties && typeof lineItem.properties == 'object' ? lineItem.properties._collection_private : 'No category',
             url: lineItem.url,
             image: lineItem.image,
             description: lineItem.product_description,
@@ -1672,7 +1691,8 @@ __bva__.helpers = (function () {
               'sku'      : line_item.sku,
               'variant'  : line_item.variant_id,
               'name'     : line_item.title,
-              'price'    : (line_item.price/100),
+              'price'    : line_item.price / 100,
+              'salePrice': line_item.discounted_price / 100,
               'quantity' : line_item.quantity,
               'image'    : line_item.image,
               'url'      : {{ shop.secure_url | json }} + line_item.url,
@@ -1680,7 +1700,7 @@ __bva__.helpers = (function () {
               'productType' : line_item.product_type,
               'brand'     : {{ line_item.vendor | default: shop.name | json }},
               'options'   : options,
-              'category'  : line_item.properties && line_item.properties._collection_private,
+              'category'  : line_item.properties && typeof line_item.properties == 'object' && line_item.properties._collection_private || 'No category'
             }
 
             return ret
@@ -1731,18 +1751,19 @@ __bva__.helpers = (function () {
               'products': __bva__.cart.items.map(function (line_item) {
                 var options = optionsByVariantId[line_item.variant_id.toString()];
                 var ret = {
-                  'id'       : line_item.id,
+                  'id'       : line_item.variant_id || line_item.id,
                   'sku'      : line_item.sku,
                   'variant'  : line_item.variant_id,
                   'name'     : line_item.product_title ? line_item.product_title : line_item.title,
-                  'price'    : (line_item.price/100),
+                  'price'    : line_item.price / 100,
+                  'salePrice': line_item.discounted_price / 100,
                   'quantity' : line_item.quantity,
                   'image'    : line_item.image,
                   'url'      : {{ shop.secure_url | json }} + line_item.url,
                   'description' : line_item.product_description,
                   'productType' : line_item.product_type,
                   'options'   : options,
-                  'category'  : line_item.properties && line_item.properties._collection_private,
+                  'category'  : line_item.properties && typeof line_item.properties == 'object' && line_item.properties._collection_private || 'No category'
                 }
 
                 {% comment %}
@@ -1800,7 +1821,7 @@ __bva__.helpers = (function () {
                 if (__bva__.debug) {
                   console.log("Add to Cart template collection"+" :"+JSON.stringify(product, null, " "));
                 }
-                console.log('ATC2:', product);
+//                console.log('ATC2:', product);
               }
             }
             // --------------------------------------------- get Json response
@@ -1897,7 +1918,7 @@ __bva__.helpers = (function () {
           }
 
           var p = {
-            id: {{ product.id | downcase | json }},
+            id: productFromForm.variant || {{ product.id | downcase | json }},
             sku: sku,
             name: {{ product.title | json }},
             price: {{ product.price | money_without_currency | divided_by: 100.0 | json }},
@@ -1912,7 +1933,7 @@ __bva__.helpers = (function () {
           if (__bva__.debug) {
             console.log("Add to Cart"+" :"+JSON.stringify(p, null, " "));
           }
-          console.log('ATC3:', product);
+//          console.log('ATC3:', product);
         })
       }
 
@@ -2081,7 +2102,7 @@ ready(function () {
   $(document).on('click', '#swym-anchor', function (e) {
     var checkLoadedSwym = setInterval(function () {
       if ($('#swym-item-grid li.swym-item .swym-information').length) {
-        console.log('wishlist-view');
+//        console.log('wishlist-view');
         var wishListedItems = [];
         var pushedIndex = 0;
 
@@ -2104,6 +2125,7 @@ ready(function () {
           if (listItemUri && pushedIndex === i) {
             pushedIndex++;
             wishListedItems.push({
+              id: listItemVId,
               url: listItemUri,
               image: listItemImg,
               variant: listItemVId,
@@ -2115,7 +2137,6 @@ ready(function () {
         });
         if (wishListedItems.length === pushedIndex) {
           // cordial track wishlist-view
-          console.log('Wishlist:', wishListedItems);
           dataLayer.push(
             {
               'products': wishListedItems,
@@ -2156,31 +2177,107 @@ ready(function () {
     });
   });
 
-  // add to cart on quick-view modal
-  $(document).on('click', '.product-quick-view input.AddtoCart', function (e) {
-    console.log('ATC on QuickView:');
-
-    var quickViewedProduct = {};
-    for (var dlIndex = dataLayer.length -1; dlIndex >= 0; dlIndex--) {
-      if (dataLayer[dlIndex].quickViewedProducts && dataLayer[dlIndex].quickViewedProducts.length) {
-        quickViewedProduct = dataLayer[dlIndex].quickViewedProducts[0];
-        quickViewedProduct.quantity = 1;
-        break;
-      }
-    }
-
-    dataLayer.push({
-      pageType: 'Add to Cart',
-      event: 'Add to Cart',
-      products: [quickViewedProduct]
-    });
-  });
+  // add to cart on quick-view modal :: this is deprecated
+//  $(document).on('click', '.product-quick-view input.AddtoCart', function (e) {
+//    console.log('ATC on QuickView:');
+//
+//    var quickViewedProduct = {};
+//    for (var dlIndex = dataLayer.length -1; dlIndex >= 0; dlIndex--) {
+//      if (dataLayer[dlIndex].quickViewedProducts && dataLayer[dlIndex].quickViewedProducts.length) {
+//        quickViewedProduct = dataLayer[dlIndex].quickViewedProducts[0];
+//        quickViewedProduct.quantity = '1';
+//        break;
+//      }
+//    }
+//
+//    dataLayer.push({
+//      pageType: 'Add to Cart',
+//      event: 'Add to Cart',
+//      products: [quickViewedProduct]
+//    });
+//  });
 
   // watch clicking next/prev product
   $(document).on('click', '.next_product, .previous_product', function (e) {
-    console.log('Clicking next/prev product on QuickView:');
+//    console.log('Clicking next/prev product on QuickView:');
     sessionStorage.setItem("clicked_next_or_prev_on_quickview", "true");
   });
-});
 
+  /**
+   * Cart Change
+   */
+  // remove item from standard cart page
+  // please confirm this function was removed from cart.liquid page
+  function remove_item(id) {
+    dataLayer.push({
+      pageType: 'Remove from Cart',
+      event: 'Remove from Cart',
+      id: id
+    });
+
+    document.getElementById('updates_'+id).value = 0;
+    $('#cartform').trigger('submit', {
+      ignore: true
+    });
+  }
+
+  $(document).on('click', '.remove-item', function (e) {
+    remove_item($(this).data('id'));
+  });
+
+  // preventing update cart by pressing enter key
+  $(document).on('keypress', '.cart-qty', function (e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
+  });
+
+  $(document).on('submit', '#cartform', function (e, obj) {
+    if (obj && obj.ignore) {
+      return;
+    }
+    e.preventDefault();
+    var cartItems = $(this).find('.cart-qty');
+    if (cartItems && cartItems.length) {
+      var cartItemObj = {};
+      $.each(cartItems, function(index, cartItem) {
+        var lineQty = $(cartItem).val();
+        var itemId = $(cartItem).attr('id');
+        var itemIdArr = itemId.split('updates_');
+        cartItemObj[itemIdArr[1]] = lineQty;
+      });
+
+      var isUpdated = false;
+      var totalAmount = 0;
+      var updatedItems = [];
+      for (var i=0; i<dataLayer.length; i++) {
+        if (dataLayer[i].pageType === 'Global Cart') {
+          for (var j=0; j<dataLayer[i].cartItems.length; j++) {
+            var cId = dataLayer[i].cartItems[j].id.toString();
+            if (cartItemObj[cId] && cartItemObj[cId] != dataLayer[i].cartItems[j].qty) {
+              dataLayer[i].cartItems[j].qty = cartItemObj[cId];
+              isUpdated = true;
+            }
+            totalAmount += dataLayer[i].cartItems[j].qty * dataLayer[i].cartItems[j].itemPrice;
+          }
+          updatedItems = dataLayer[i].cartItems;
+        }
+      }
+
+      if (isUpdated) {
+        dataLayer.push({
+          pageType: 'Update Cart',
+          event: 'Update Cart',
+          cartItems: updatedItems,
+          totalAmount: totalAmount
+        });
+      }
+
+      $('#cartform').trigger('submit', {
+        ignore: true
+      });
+    }
+  });
+
+});
 </script>
