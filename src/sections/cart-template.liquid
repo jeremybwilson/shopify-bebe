@@ -176,7 +176,7 @@
                 {% assign property_size = item.properties | size %}
                 {% if property_size > 0 %}
                   {% for p in item.properties %}
-                    {% unless p.first contains 'discountItem' or p.last == blank %}
+                    {% unless p.first contains 'discountItem' or p.last == blank or p.first contains '_private' %}
                       {{ p.first }}:
 
                       {% comment %}
