@@ -52,6 +52,11 @@
               {% endfor %}
             {% endif %}
 
+            {% comment %} :: CART SUBTOTAL :: {% endcomment %}
+            {% if isGiftItem == false %}
+              {% assign cart_subtotal = cart_subtotal | plus: item.final_line_price %}
+            {% endif %}
+
 
             <div class="cartform--item bfx-product">
 
@@ -227,7 +232,7 @@
         {% comment %} CART :: TOTALS {% endcomment %}
         <div id="basket-right" class="desktop-4 tablet-6 mobile-3">
           <h3>{{ 'cart.general.order_summary' | t }}</h3>
-          <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart.total_price | money }}</span></h4>
+          <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart_subtotal | money }}</span></h4>
           
           {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
           <div id="checkout" class="button">{{ 'cart.general.checkout' | t }}</div>
