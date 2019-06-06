@@ -2098,11 +2098,11 @@ function ready(fn) {
 
 // Custom event tracking
 ready(function () {
+
   // viewing wishlist popup by swym
   $(document).on('click', '#swym-anchor', function (e) {
     var checkLoadedSwym = setInterval(function () {
       if ($('#swym-item-grid li.swym-item .swym-information').length) {
-//        console.log('wishlist-view');
         var wishListedItems = [];
         var pushedIndex = 0;
 
@@ -2177,29 +2177,9 @@ ready(function () {
     });
   });
 
-  // add to cart on quick-view modal :: this is deprecated
-//  $(document).on('click', '.product-quick-view input.AddtoCart', function (e) {
-//    console.log('ATC on QuickView:');
-//
-//    var quickViewedProduct = {};
-//    for (var dlIndex = dataLayer.length -1; dlIndex >= 0; dlIndex--) {
-//      if (dataLayer[dlIndex].quickViewedProducts && dataLayer[dlIndex].quickViewedProducts.length) {
-//        quickViewedProduct = dataLayer[dlIndex].quickViewedProducts[0];
-//        quickViewedProduct.quantity = '1';
-//        break;
-//      }
-//    }
-//
-//    dataLayer.push({
-//      pageType: 'Add to Cart',
-//      event: 'Add to Cart',
-//      products: [quickViewedProduct]
-//    });
-//  });
 
   // watch clicking next/prev product
   $(document).on('click', '.next_product, .previous_product', function (e) {
-//    console.log('Clicking next/prev product on QuickView:');
     sessionStorage.setItem("clicked_next_or_prev_on_quickview", "true");
   });
 
@@ -2216,10 +2196,8 @@ ready(function () {
     });
 
     document.getElementById('updates_'+id).value = 0;
-    $('#cartform').trigger('submit', {
-      ignore: true
-    });
-  }
+    $( '#cartform' ).submit(); // Refreshes form since action = '/cart'
+  } 
 
   $(document).on('click', '.remove-item', function (e) {
     remove_item($(this).data('id'));
@@ -2232,13 +2210,15 @@ ready(function () {
     }
   });
 
-  $(document).on('submit', '#cartform', function (e, obj) {
-    if (obj && obj.ignore) {
-      return;
-    }
-    e.preventDefault();
-    var cartItems = $(this).find('.cart-qty');
+
+  // CART : TRACK : Function takes the cart form and checks it for updates to push to GTM
+  function trackCartUpdatesOnSubmit( $form ) {
+    var cartItems = $form.find('.cart-qty');
+
+    // CHECK : Iterate cart items and check for updates against data-layer cart copy
     if (cartItems && cartItems.length) {
+
+      // BUILD : Gather cart items
       var cartItemObj = {};
       $.each(cartItems, function(index, cartItem) {
         var lineQty = $(cartItem).val();
@@ -2247,24 +2227,39 @@ ready(function () {
         cartItemObj[itemIdArr[1]] = lineQty;
       });
 
+      // PREP : Setup default values before checking cart items
       var isUpdated = false;
       var totalAmount = 0;
       var updatedItems = [];
-      for (var i=0; i<dataLayer.length; i++) {
-        if (dataLayer[i].pageType === 'Global Cart') {
-          for (var j=0; j<dataLayer[i].cartItems.length; j++) {
-            var cId = dataLayer[i].cartItems[j].id.toString();
-            if (cartItemObj[cId] && cartItemObj[cId] != dataLayer[i].cartItems[j].qty) {
-              dataLayer[i].cartItems[j].qty = cartItemObj[cId];
-              isUpdated = true;
+
+      // ITERATE : Check cart items against data layer for discrepancies and store them
+      for ( var i=0; i < dataLayer.length; i++ ) {
+
+        // CART CHECK : Ensure correct object being looked at, then iterate
+        if ( dataLayer[i] && dataLayer[i].pageType === 'Global Cart' && dataLayer[i].cartItems ) {
+          
+          // ITERATE : Cart Items from found data-layer object
+          for ( var j=0; j < dataLayer[i].cartItems.length; j++ ) {
+            var dataLayerItem = dataLayer[i].cartItems[j];
+
+            // SAFETY : Intercepting cart submission is dangerous, ensure all values to prevent crashing.
+            if ( dataLayerItem && dataLayerItem.id ) {
+              var cId = dataLayerItem.id.toString();
+
+              if ( cartItemObj[cId] && cartItemObj[cId] != dataLayerItem.qty ) {
+                dataLayerItem.qty = cartItemObj[cId];
+                isUpdated = true;
+              }
+              totalAmount += dataLayerItem.qty * dataLayerItem.itemPrice;
             }
-            totalAmount += dataLayer[i].cartItems[j].qty * dataLayer[i].cartItems[j].itemPrice;
           }
+
+          // UPDATE : Store updated items from iteration
           updatedItems = dataLayer[i].cartItems;
         }
       }
 
-      if (isUpdated) {
+      if ( isUpdated ) {
         dataLayer.push({
           pageType: 'Update Cart',
           event: 'Update Cart',
@@ -2272,12 +2267,23 @@ ready(function () {
           totalAmount: totalAmount
         });
       }
-
-      $('#cartform').trigger('submit', {
-        ignore: true
-      });
     }
-  });
+  }
 
+  // CART : SUBMIT : Check / Track any cart updates to GTM and submit our cart
+  $(document).on( 'click', '#cartform #checkout', function (e) {
+    var $form = $( '#cartform' );
+
+    // DEFER : Prevent inital submission
+    e.preventDefault();
+
+    // TRACK : Ensure updates desired are tracked in case user updated quantity and hit checkout
+    trackCartUpdatesOnSubmit( $form );
+
+    /* SUBMIT : Click the hidden submit button to submit form
+        Must click submit button manually since shopify doc says form MUST have action '/cart', 
+        and that's what causes the page reload when doing simply '$form.submit()' */
+    $( '#hidden-checkout-button' ).click();
+  });
 });
 </script>
