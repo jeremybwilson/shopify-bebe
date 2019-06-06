@@ -941,49 +941,54 @@ __bva__.helpers = (function () {
     /*DATALAYER: Cart
      --------------------------- */
     var _g_cart = {{ cart | json }}
-    var g_cartItems = [];
-    if (_g_cart && typeof _g_cart === 'object') {
-      for (var i=0; i<_g_cart.items.length; i++) {
-        var variantOptions = {};
-        var cartItem = _g_cart.items[i];
-        if (cartItem.variant_options && cartItem.variant_options.length) {
-          for (var i = 0; i < cartItem.variant_options.length; i++) {
-            variantOptions['option' + (i + 1).toString()] = cartItem.variant_options[i];
+    var g_cart = {
+      'cartItems':[
+        {% for line_item in cart.items %}
+        {
+          'productID': '{{line_item.variant_id}}',
+          'id': '{{line_item.variant_id}}',
+          'sku': '{{line_item.sku}}',
+          'category':
+            {% if line_item.properties and line_item.properties._collection_private %}
+              '{{ line_item.properties._collection_private }}',
+            {% else %}
+              'No category',
+            {% endif %}
+          'name': '{{line_item.product.title}}',
+          'images': ['{{line_item.image}}'],
+          'description': {{line_item.product.description | escape | json }},
+          'qty': '{{line_item.quantity}}',
+          'itemPrice': {{line_item.original_price | money_without_currency | remove: "," | json }},
+          'salePrice': {{line_item.final_price | money_without_currency | remove: "," | json }},
+          'url': '{{line_item.url}}',
+          'attr': {
+            {% for variant in line_item.product.variants %}
+              {% if variant.id == line_item.variant_id %}
+                {% for option in line_item.product.options %}
+                  {{ option | json }}: {{ variant.options[forloop.index0] | json }},
+                {% endfor %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
           }
-        }
-        g_cartItems.push({
-          productID: cartItem.variant_id.toString(),
-          id: cartItem.variant_id,
-          sku: cartItem.sku || '',
-          category: cartItem.properties && typeof cartItem.properties == 'object' && cartItem.properties._collection_private || 'No category',
-          name: cartItem.product_title,
-          images: [cartItem.image],
-          description: cartItem.product_description,
-          qty: cartItem.quantity,
-          itemPrice: cartItem.price/100,
-          salePrice: cartItem.discounted_price/100,
-          url: cartItem.url,
-          attr: variantOptions,
-        });
-      }
-    }
+        },
+        {% endfor %}
+      ],
+      'cartTotal': {{ cart.total_price | money_without_currency | remove: ',' | json }},
+      'totalAmount': {{ cart.total_price | money_without_currency | remove: ',' | json }},
+      'itemsCount': {{ cart.item_count | downcase | json }},
+      'discountAmounts': {{ cart.total_discount | money_without_currency | remove: ',' | json }},
+      'cartId': _g_cart && typeof _g_cart === 'object' ? _g_cart.token : 'NotAvailable',
+      'pageType': 'Global Cart',
+      'event': 'Global Cart'
+    };
 
-    dataLayer.push({
-      cartItems: g_cartItems,
-      totalAmount: _g_cart && _g_cart.total_price || 0,
-      cartTotal: _g_cart && _g_cart.total_price || 0,
-      itemsCount: _g_cart && _g_cart.item_count || 0,
-      discountAmounts: _g_cart && _g_cart.total_discount || 0,
-      cartId: _g_cart && _g_cart.token || 'NotAvailable',
-      pageType: 'Global Cart',
-      event: 'Global Cart'
-    });
-
+    dataLayer.push(g_cart);
     if(__bva__.debug){
       console.log("Global Cart"+" :"+JSON.stringify(g_cart, null, " "));
     }
 
-    __bva__.cart = g_cartItems;
+    __bva__.cart = g_cart.cartItems;
 
 
     /*DATALAYER: Global
