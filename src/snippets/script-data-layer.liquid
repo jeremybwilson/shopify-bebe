@@ -2279,5 +2279,19 @@ ready(function () {
         and that's what causes the page reload when doing simply '$form.submit()' */
     $( '#hidden-checkout-button' ).click();
   });
+
+  // Update CART : SUBMIT : Check / Track any cart updates to GTM and submit our cart
+  $(document).on( 'click', '#cartform #update-cart', function (e) {
+    var $form = $( '#cartform' );
+
+    // DEFER : Prevent inital submission
+    e.preventDefault();
+
+    // TRACK : Ensure updates desired are tracked in case user updated quantity and hit checkout
+    trackCartUpdatesOnSubmit( $form );
+
+    // SUBMIT :
+    $form.submit();
+  });
 });
 </script>
