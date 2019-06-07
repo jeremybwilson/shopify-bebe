@@ -407,7 +407,7 @@
           "announcement_text_one": "FREE U.S. SHIPPING OVER $100",
           "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "shopify://collections/new",
-          "announcement_text_two": "CLUBBEBE EXCLUSIVE: 25% OFF $150 WITH CODE <b>JUNE25</b>,  30% OFF $200 WITH CODE <b>JUNE30</b>",
+          "announcement_text_two": "CLUBBEBE EXCLUSIVE: 25% OFF $150 WITH CODE <b>JUNE25</b>,<br>30% OFF $200 WITH CODE <b>JUNE30</b>",
           "announcement_popup_two_content": "clubbebe-exclusive",
           "announcement_link_two": "shopify://pages/coupons-discounts",
           "announcement_height": 35,
