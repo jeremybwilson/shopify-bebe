@@ -374,8 +374,17 @@ __bva__.helpers = (function () {
       return regex.test(email);
     }
 
+    // check customer logged in via his/her amazon account
+    function isAmazonCustomer() {
+      var $amazonElement = $('#amazon_payments_order_reference_id');
+      return $amazonElement && $amazonElement.length;
+    }
+
     $(document.body).on('submit', 'form[data-customer-information-form]', function (e) {
-      e.preventDefault()
+      if (isAmazonCustomer()) {
+        return;
+      }
+      e.preventDefault();
       var errMsg = 'Enter an email';
       var email = $('#checkout_email_or_phone, #checkout_email').val();
       if (email) {
@@ -391,17 +400,20 @@ __bva__.helpers = (function () {
         }
         return false;
       }
-      firePixel()
-      $(document.body).unbind('submit')
-      $('form[data-customer-information-form]')[0].submit()
-    })
+      firePixel();
+      $(document.body).unbind('submit');
+      $('form[data-customer-information-form]')[0].submit();
+    });
 
     $('button[data-trekkie-id="continue_to_shipping_method_button"]').on('click', function (e) {
-      e.preventDefault()
-      firePixel()
-      $(this).unbind('click')[0].click()
-    })
-  }
+      if (isAmazonCustomer()) {
+        return;
+      }
+      e.preventDefault();
+      firePixel();
+      $(this).unbind('click')[0].click();
+    });
+  };
 
   Helpers.prototype.watchCheckoutShippingField = function () {
     var self = this
