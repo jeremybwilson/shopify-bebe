@@ -34,8 +34,8 @@
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
-                      {% comment %} if final_sale is exist then display the text  {% endcomment %}
-                        {{#ifEquals @key 'final_sale'}}
+                      {%endraw%}{% comment %} if final_sale is exist then display the text  {% endcomment %}{%raw%}
+                        {{#if_eq @key 'final_sale'}}
                           <span class="ajaxcart__product-meta">{{this}}</span>
                         {{else}}	
                           {{#if_not_eq @key '_discountItem'}}
@@ -43,7 +43,7 @@
                             <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
                           {{/unless_contains}}
                         {{/if_not_eq}}
-                        {{/ifEquals}}
+                        {{/if_eq}}
                       {{/if}}
                     {{/each}}
                   {{/properties}}
