@@ -71,7 +71,25 @@
 
     {% include 'script-google-tag-body' %}
     {% include 'checkout-customization-script' %}
-
+    <script>
+    $(window).bind("load", function() {
+      $( ".product__description__property" ).each(function( index ) {
+        var my_html = $(this).html();
+        if (my_html.indexOf("final_sale") > -1){
+            $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
+        }
+      });
+    });
+    setInterval(function(){ 
+      $( ".product__description__property" ).each(function( index ) {
+        var my_html = $(this).html();
+        if (my_html.indexOf("final_sale") > -1){
+            $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
+        }
+      });
+      }, 2000) 
+      // to adding the final Sale string dynamically
+    </script>
   </body>
 </html>
 
