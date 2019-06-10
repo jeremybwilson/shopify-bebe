@@ -1444,8 +1444,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/clubbebe-exclusive-25-off-150-30-off-200-or-more-code-june30-desktop.jpg",
-              "mobile_image": "shopify://shop_images/clubbebe-exclusive-25-off-150-30-off-200-or-more-code-june30-mobile.jpg",
+              "image": "shopify://shop_images/ends-tonight-5-off-30-off.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-5-off-30-off-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
@@ -1466,7 +1466,7 @@
               "caption_horizontal": "center",
               "caption_horizontal_offset": 33,
               "caption_vertical": 68,
-              "caption_vertical_mobile": 80,
+              "caption_vertical_mobile": 77,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
