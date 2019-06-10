@@ -29,7 +29,7 @@
         <span class="money bfx-price">{{ compare_price }}</span>
       </span>
     </div>
-    
+
     {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
 
     {% assign add_final_sale_text = false %}
@@ -55,6 +55,11 @@
     </div>
 
   {% endif %}
+
+  {% comment %}  :: Promo code / Sale callout - PDM-637 ::  {% endcomment %}
+  {%- if product.tags contains 'SALE_PROMO_CALLOUT' and section.settings.sale_callout != '' -%}
+    <div id="desktop-sale-callout" class="final_sale sale_product">{{section.settings.sale_callout}}</div>
+  {%- endif -%}
 
   <div class="clear"></div>
 
@@ -176,4 +181,11 @@
   {% endif %}
 
   <div class="clear"></div>
+
+  {% comment %}{- Record collection -}{% endcomment %}
+  <input
+    readonly
+    type="hidden"
+    name="properties[_collection_private]"
+    value="{{ collection.title }}">
 {% endform %}

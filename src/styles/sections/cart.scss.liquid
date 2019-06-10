@@ -262,9 +262,9 @@ body.cart {
   }
 
   &#checkout {
-    //background-color: $color--primary-1;
     background: $button--main-mobile-bg;
     color: $button--main-mobile-text;
+
     @include mq('phone'){
       background: $button--main-mobile-bg;
       color: $button--main-mobile-text;
@@ -273,5 +273,9 @@ body.cart {
       background-color: $color--accent-1;
     }
   }  
+
+  &.hidden {
+    display: none;
+  }
 }
 

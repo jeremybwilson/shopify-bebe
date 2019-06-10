@@ -158,7 +158,9 @@ if (window.NodeList && !NodeList.prototype.forEach) {
         this.$activeSource = $(evt.currentTarget);
       }
 
-      if (this.drawerIsOpen && !externalCall) {
+      // CHECK : see if we are already on cart page, and therefore don't need to open the drawer
+      var onCartPage = window.location.pathname.indexOf( '/cart' ) !== -1;
+      if (onCartPage || ( this.drawerIsOpen && !externalCall )) {
         return this.close();
       }
 

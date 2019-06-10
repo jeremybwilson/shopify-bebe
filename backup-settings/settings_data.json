@@ -360,6 +360,14 @@
               "nav_promo_link": "shopify://collections/jewelry"
             }
           },
+          "1559544597998": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Bebe Girls",
+              "nav_image": "shopify://shop_images/bebe-girls-nav.jpg",
+              "nav_promo_link": "shopify://collections/girls"
+            }
+          },
           "1542669025513": {
             "type": "mega_menu",
             "settings": {
@@ -374,14 +382,6 @@
               "menu_item": "Flash Sale",
               "nav_image": "",
               "nav_promo_link": "shopify://collections/flash-sale"
-            }
-          },
-          "1559544597998": {
-            "type": "mega_menu",
-            "settings": {
-              "menu_item": "Bebe Girls",
-              "nav_image": "shopify://shop_images/bebe-girls-nav.jpg",
-              "nav_promo_link": "shopify://collections/girls"
             }
           }
         },
@@ -404,12 +404,12 @@
           "full_width_header": false,
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
-          "announcement_text_one": "BUY 1 SALE ITEM, GET AN EXTRA 40% OFF A 2ND SALE ITEM",
-          "announcement_popup_one_content": "additional-40-discount",
-          "announcement_link_one": "shopify://collections/limited-time-40-off",
-          "announcement_text_two": "BUY 1 SALE ITEM, GET AN EXTRA 40% OFF A 2ND SALE ITEM",
-          "announcement_popup_two_content": "additional-40-discount",
-          "announcement_link_two": "shopify://collections/limited-time-40-off",
+          "announcement_text_one": "FREE U.S. SHIPPING OVER $100",
+          "announcement_popup_one_content": "announcement-1",
+          "announcement_link_one": "shopify://collections/new",
+          "announcement_text_two": "CLUBBEBE EXCLUSIVE: 25% OFF $150 WITH CODE <b>JUNE25</b>,<br>30% OFF $200 WITH CODE <b>JUNE30</b>",
+          "announcement_popup_two_content": "clubbebe-exclusive",
+          "announcement_link_two": "shopify://pages/coupons-discounts",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
           "top_left_highlight_link": "http://www.instagram.com/bebe_stores",
@@ -485,6 +485,7 @@
         "settings": {
           "grid": 4,
           "rows": 10,
+          "static_product_limit": "",
           "sort_by": true,
           "filter_1_title": "Filter by X",
           "sort_a": "",
@@ -497,6 +498,7 @@
       "product-template": {
         "type": "product-template",
         "settings": {
+          "sale_callout": "CLUBBEBE EXCLUSIVE: 25% off $150 or more with code JUNE25, 30% off $200 or more with code JUNE30",
           "product_nav": false,
           "vendor": false,
           "show_quantity": false,
@@ -595,70 +597,39 @@
       "1535728526385": {
         "type": "slideshow",
         "blocks": {
-          "1535728526385-0": {
+          "1559631201439": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/select-summer-styles-40-off-limited-time-desktop.jpg",
-              "mobile_image": "shopify://shop_images/select-summer-styles-40-off-limited-time-mobile.jpg",
-              "cta_full_image": "shopify://collections/limited-time-40-off",
-              "heading": "<br><br>",
-              "hide_header_desktop": true,
+              "image": "shopify://shop_images/bebe-girls-hp-desktop.jpg",
+              "mobile_image": "shopify://shop_images/bebe-girls-hp-mobile.jpg",
+              "cta_full_image": "shopify://collections/girls",
+              "heading": "",
+              "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "shopify://collections/limited-time-40-off",
-              "cta_one_button_text": "SHOP NOW",
+              "cta_one_link": "shopify://collections/girls",
+              "cta_one_button_text": "Shop Girls",
               "cta_two_link": "",
-              "cta_two_button_text": "",
+              "cta_two_button_text": "Add a button",
               "cta_three_link": "",
-              "cta_three_button_text": "SEE DETAILS",
+              "cta_three_button_text": "Add a button",
               "cta_four_link": "",
-              "cta_four_button_text": "",
+              "cta_four_button_text": "Add a button",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": true,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 35.5,
-              "caption_vertical": 55,
-              "caption_vertical_mobile": 70,
-              "caption_background": "rgba(0,0,0,0)",
-              "caption_opacity": "0.2"
-            }
-          },
-          "1558595972454": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile.jpg",
-              "cta_full_image": "shopify://collections/sale",
-              "heading": "<br><br>",
-              "hide_header_desktop": false,
-              "subheading": "",
-              "cta_one_link": "shopify://collections/sale",
-              "cta_one_button_text": "SHOP SALE",
-              "cta_two_link": "",
-              "cta_two_button_text": "",
-              "cta_three_link": "shopify://pages/coupons-discounts",
-              "cta_three_button_text": "see details",
-              "cta_four_link": "",
-              "cta_four_button_text": "",
-              "hide_buttons_desktop": false,
-              "hide_buttons_mobile": false,
-              "caption_color_scheme": "custom",
-              "custom_slide_main_color": "#ffffff",
-              "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 64,
-              "caption_vertical_mobile": 69,
+              "caption_horizontal_offset": 35,
+              "caption_vertical": 62,
+              "caption_vertical_mobile": 55,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
           }
         },
         "block_order": [
-          "1535728526385-0",
-          "1558595972454"
+          "1559631201439"
         ],
         "settings": {
           "full_width": true,
@@ -671,24 +642,24 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/shop-white-always-nice-for-summer-desktop_06d024d4-3b00-43a0-8837-f8554520f0b3.jpg",
+              "image": "shopify://shop_images/shop-new-arrivals-new-things-to-look-cute-in-desktop.jpg",
               "mobile_image": "",
-              "link": "shopify://collections/white-hot",
-              "heading_text": "White: Always Nice for Summer",
+              "link": "shopify://collections/new",
+              "heading_text": "New Things to Look Cute In",
               "text": "",
-              "cta_text": "SHOP WHITE",
+              "cta_text": "SHOP NEW ARRIVALS",
               "cta_style": "button"
             }
           },
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/shop-new-arrivals-lookin-for-that-new-stuff-desktop.jpg",
+              "image": "shopify://shop_images/shop-dresses-gotta-dress-up-desktop.jpg",
               "mobile_image": "",
-              "link": "shopify://collections/new",
-              "heading_text": "Lookin’ for That New Stuff?",
+              "link": "shopify://collections/dresses",
+              "heading_text": "Gotta Dress Up?",
               "text": "",
-              "cta_text": "SHOP NOW",
+              "cta_text": "SHOP DRESSES",
               "cta_style": "button"
             }
           }
@@ -1333,26 +1304,26 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
-          "1557385376991": {
+          "1559631965043": {
             "type": "text_block",
             "settings": {
-              "heading_text": "40% OFF SELECT SUMMER STYLES",
-              "text": "<p>Enjoy 40% off select items for a limited time. Priced as marked.</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/limited-time-40-off",
-              "details_text": "<p>Online only. Priced as marked. Final sale.</p>",
+              "heading_text": "CLUBBEBE EXCLUSIVE: 25% OFF $150, 30% OFF $200",
+              "text": "<p>Save on your entire regular-priced purchase. Use JUNE25 for 25% off. Use JUNE30 for 30% off.</p>",
+              "cta_text": "Shop New Arrivals",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. Valid for clubbebe members only. To redeem 25% off any regular-priced purchase of $150 or more, enter code JUNE25 at checkout. To redeem 30% off any regular-priced purchase of $200 or more, enter code JUNE30 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 6/10/19 at 11:59 pm PDT.&nbsp;</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
           },
-          "1558598416156": {
+          "1559632012621": {
             "type": "text_block",
             "settings": {
-              "heading_text": "BUY 1 SALE ITEM, GET AN ADDITIONAL 40% OFF A 2ND SALE ITEM",
-              "text": "<p>Discount taken at checkout for qualifying orders. Excludes limited time 40% off styles.</p>",
+              "heading_text": "ADDITIONAL 40% OFF ALL SALE",
+              "text": "<p>Enjoy extra savings for a limited time.</p>",
               "cta_text": "SHOP SALE",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Additional 40% discount will be applied to sale item of equal or lesser value at checkout when two sale items are purchased. If an odd number of three or more sale items are purchased, additional 40% discount will be applied to the item(s) of least value. Only valid on sale merchandise with prices ending in .99 on bebe.com. Not valid at bebe stores. Discount will be applied at checkout automatically for qualifying orders. Cannot be used in conjunction with any other offer. Not valid on regular-priced items, limited time promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer expires 6/2/19 at 11:59 pm PDT.</p>",
+              "link": "shopify://collections/all-products-excluding-flash-sale",
+              "details_text": "<p>Online only. Discount taken at checkout. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1388,15 +1359,15 @@
               "text": "<p>Earn points on every purchase &amp; be rewarded.</p>",
               "cta_text": "Join the Club",
               "link": "/account/login",
-              "details_text": "<p>Valid online only. Priced as marked. Final sale.</p>",
+              "details_text": "<p>Enjoy 20% off your first regular-priced purchase as a clubbebe member. One-time use only. Only valid on bebe.com. To redeem online, enter code provided in email at checkout. Not valid on sale items, promotions, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
           }
         },
         "block_order": [
-          "1557385376991",
-          "1558598416156",
+          "1559631965043",
+          "1559632012621",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1438,7 +1409,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify://shop_images/clubbebe-exclusive-banner.jpg",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1473,29 +1444,29 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/stay-cute-while-its-hot-desktop.jpg",
-              "mobile_image": "shopify://shop_images/stay-cute-while-its-hot-mobile_9c772899-0fb7-4595-a85a-892366be198c.jpg",
-              "cta_full_image": "shopify://collections/summer-dresses",
-              "heading": "",
+              "image": "shopify://shop_images/ends-tonight-5-off-30-off.jpg",
+              "mobile_image": "shopify://shop_images/ends-tonight-5-off-30-off-mobile.jpg",
+              "cta_full_image": "shopify://collections/new",
+              "heading": "<br>",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/summer-dresses",
-              "cta_one_button_text": "SHOP SUMMER DRESSES",
+              "cta_one_link": "shopify://collections/new",
+              "cta_one_button_text": "SHOP NOW",
               "cta_two_link": "",
               "cta_two_button_text": "",
-              "cta_three_link": "",
-              "cta_three_button_text": "",
+              "cta_three_link": "shopify://pages/coupons-discounts",
+              "cta_three_button_text": "SEE DETAILS",
               "cta_four_link": "",
               "cta_four_button_text": "",
               "hide_buttons_desktop": false,
-              "hide_buttons_mobile": true,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 19.5,
-              "caption_vertical": 64,
-              "caption_vertical_mobile": 75,
+              "caption_horizontal": "center",
+              "caption_horizontal_offset": 33,
+              "caption_vertical": 68,
+              "caption_vertical_mobile": 77,
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1554,14 +1525,13 @@
       },
       "1547711858918": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1547711858918-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/free-shipping-desktop_8abaa847-7b8f-40f8-bb33-8ecd32eb137a.jpg",
-              "mobile_image": "shopify://shop_images/free-shipping-desktop-mobile.jpg",
-              "cta_full_image": "shopify://pages/coupons-discounts",
+              "image": "shopify://shop_images/sign-up-for-rewards-and-save-desktop.jpg",
+              "mobile_image": "shopify://shop_images/sign-up-for-rewards-and-save-mobile.jpg",
+              "cta_full_image": "/account/login",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
@@ -1597,13 +1567,12 @@
       },
       "1548306390190": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/shop-sale-up-to-50-off-desktop_5308f733-a2ed-417d-965c-8a34f1363f95.jpg",
-              "mobile_image": "shopify://shop_images/shop-sale-up-to-50-off-mobile_41ab2789-03b8-40a6-8b43-25136e77470a.jpg",
+              "image": "shopify://shop_images/limited-time-additional-40-off-all-sale-banner-desktop.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-additional-40-off-all-sale-banner-mobile.jpg",
               "cta_full_image": "shopify://collections/sale",
               "heading": "",
               "hide_header_desktop": false,
@@ -1723,64 +1692,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_3e8b3b55-40cb-463f-bad0-ac12d0b883cd.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "sale-dresses",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_ce605a6d-277b-4b9b-a674-aa254a0f05f5.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_511eef0e-1cc0-4eb5-af79-261c131b19b3.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_85274143-08f6-418e-b505-e181368ce151.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_0b74c023-a53a-4f05-9254-1e9c3bf702fa.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_ed615ca2-4561-4979-87b3-afee7021c07c.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_28e504d2-a85e-4f48-a373-e551c2f19cdd.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_4541ac88-8db1-4a42-9309-5a5aab51c134.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_2aa294e0-e1fb-4cb4-bf53-3ad1422a1f81.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_2da26e9f-4b32-4978-8b97-84210436c284.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_e1509519-17b2-4680-abdc-eb417d012f90.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_33d6f922-566d-4d7b-b4c2-62fe71ec1b19.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_c851d35a-4b95-4396-b565-fe34b0280a18.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_087356d0-9223-4288-8f21-c5e950d4693b.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_517ec813-2b4c-4326-b317-e6e42c0014c7.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_f70cdb99-249d-4b91-9799-c7b5e59fa43d.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_45b31aa2-9d1b-410f-9588-d6b3c88bce27.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_8c38838b-1840-4490-a1c1-7afcc767c367.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_809a053c-ea11-47b0-a408-4963ceaceb1f.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_1bd74b51-86bd-4727-b63d-47e97bf3a06c.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_a09dc254-e3b6-4af7-9658-6573d8cc286b.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_4847ca56-464e-4bea-bb2f-e899f6f2490b.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_aae52b24-f4af-4c6e-98b0-5de3a77c6b28.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_49a0b59c-e2fb-4b1b-90c5-e8fa54c1e52e.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_c78dc2dd-bb8d-4b6c-9a0a-a90cb52f44d1.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-desktop-banner_4cda017f-9bd5-4028-9cce-cfdec3b52d4a.jpg",
-              "mobile_image": "shopify://shop_images/buy-1-get-40-off-2nd-sale-item-mobile-banner_d3749a59-6e20-441d-8ed5-c582173987f7.jpg"
+              "image": "shopify://shop_images/additional-40-off-banner_74889577-7c42-4c00-978d-2d746c6f6c22.jpg",
+              "mobile_image": "shopify://shop_images/additional-40-off-banner_cb07ebbb-0995-4773-900d-b153517c262f.jpg"
             }
           },
           "1554769189117": {
@@ -1850,9 +1819,9 @@
           "1559112979283": {
             "type": "image",
             "settings": {
-              "collection": "limited-time-40-off",
-              "image": "shopify://shop_images/select-summer-styles-40-off-limited-time-desktop-banner.jpg",
-              "mobile_image": "shopify://shop_images/select-summer-styles-40-off-limited-time-mobile-banner.jpg"
+              "collection": "3-for-99",
+              "image": "shopify://shop_images/3-for-99-plp.jpg",
+              "mobile_image": "shopify://shop_images/3-for-99-plp-mobile.jpg"
             }
           }
         },
@@ -1891,11 +1860,11 @@
       }
     },
     "content_for_index": [
-      "1535728526385",
-      "1547711858918",
       "1548306390190",
-      "1536251685211",
       "1547557172846",
+      "1547711858918",
+      "1536251685211",
+      "1535728526385",
       "1551244191226",
       "1547557568724",
       "1547175141098",
