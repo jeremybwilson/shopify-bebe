@@ -37,6 +37,7 @@
     {% for tag in product.tags %}
       {% if tag contains 'returnly_no_refund' %}
         {% assign add_final_sale_text = true %}
+        {% comment %} this property for final sale exist for product or not {% endcomment %}
         <input type="hidden" name="properties[final_sale]" value="{{settings.final_sale}}">
       {% endif %}
     {% endfor %}
