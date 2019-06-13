@@ -165,11 +165,23 @@
           </li>
           <style>
             .flex-caption.slide-{{ block.id }} {
+              {% comment %}  PDM-642 :: removing vertical position slider {% endcomment %}
+              {% comment %} top: {{ block.settings.caption_vertical }}%; {% endcomment %}
+              {% if block.settings.caption_vertical != blank %}
               top: {{ block.settings.caption_vertical }}%;
+              {% else %}
+              top: 50%;
+              {% endif %}
             }
             @media screen and (max-width: 767px) {
               .flex-caption.slide-{{ block.id }} {
+                {% comment %} PDM-642 :: removing vertical position slider {% endcomment %}
+                {% comment %} top: {{ block.settings.caption_vertical_mobile }}%; {% endcomment %}
+                {% if block.settings.caption_vertical_mobile != blank %}
                 top: {{ block.settings.caption_vertical_mobile }}%;
+                {% else %}
+                top: 50%;
+                {% endif %}
                 {% if block.settings.hide_buttons_mobile %}
                 display: none;
                 {% endif %}
@@ -177,18 +189,18 @@
             }
             @media screen and (min-width: 768px) {
               .flex-caption.slide-{{ block.id }} {
-                {% if block.settings.caption_horizontal_offset %}
-                margin-left: {{ block.settings.caption_horizontal_offset }}%;
+                {% if block.settings.caption_horizontal_offset != blank %}
+                left: {{ block.settings.caption_horizontal_offset }}%;
+                {% else %}
+                left: 50%;
                 {% endif %}
                 {% if block.settings.hide_buttons_desktop %}
                 display: none;
                 {% endif %}
               }
-              {% if block.settings.caption_horizontal_offset and block.settings.caption_horizontal_offset > 0 %}
               .flex-caption.slide-{{ block.id }} .caption-inners {
-                transform: translateX({% if block.settings.caption_horizontal_offset > 0%}-{% endif %}{{ block.settings.caption_horizontal_offset }}%);
+                transform: translateX(-50%);
               }
-              {% endif %}
             }
             .flex-caption.slide-{{ block.id }} .caption-inners {
               {% assign bg_color = block.settings.caption_background %}
@@ -458,34 +470,22 @@
           "content": "Text Box - Position"
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "caption_horizontal_offset",
-          "min": 0,
-          "max": 100,
-          "step": 1.0,
-          "unit": "%",
-          "label": "Horizontal offset (desktop only)",
-          "default": 50
+          "label":  "Horizontal offset, enter % value 0 - 100 (desktop only)",
+          "default": "50"
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "caption_vertical",
-          "min": 5,
-          "max": 70,
-          "step": 1,
-          "unit": "%",
-          "label": "Vertical position",
-          "default": 50
+          "label":  "Vertical position, enter % value 0 - 88",
+          "default": "50"
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "caption_vertical_mobile",
-          "min": 5,
-          "max": 80,
-          "step": 1,
-          "unit": "%",
-          "label": "Vertical position (mobile)",
-          "default": 50
+          "label":  "Vertical position, enter % value 5 - 80 (mobile)",
+          "default": "65"
         },
         {
           "type": "header",
