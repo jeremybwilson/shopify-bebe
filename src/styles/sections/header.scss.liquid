@@ -130,7 +130,7 @@ $color--super-hot-neon-pink: #ff009c;
             color: $color--primary-1;
             @include fontDim( 12px, 12px, .04em );
             font-weight: $font-weight--medium;
-            text-transform: uppercase;
+            text-transform: lowercase;
             white-space: nowrap;
         }
 
@@ -800,7 +800,7 @@ $color--super-hot-neon-pink: #ff009c;
             //@include h5;
             height: 100%;
             text-decoration: none;
-            text-transform: uppercase;
+            text-transform: capitalize;
             color: $navHeaderColor;
         }
     }
@@ -852,7 +852,7 @@ $color--super-hot-neon-pink: #ff009c;
 
                     @include mq( 'lap-and-up' ) {
                         @include fontSize( 13px );
-                        font-weight: $font-weight--medium;
+                        font-weight: $font-weight--book;
                     }
                 }
 
@@ -1049,7 +1049,7 @@ $color--super-hot-neon-pink: #ff009c;
                 .nav-sub-header a {
                     @include fontSize(13px);
                     letter-spacing: 0; // Slightly thinner
-                    text-transform: uppercase;
+                    text-transform: capitalize;
                     color: $navSubHeaderColor;
                 }
             }
@@ -1173,9 +1173,9 @@ $color--super-hot-neon-pink: #ff009c;
             .accordion-header,
             .link-header {
                 padding: 0;
-                font-weight: $font-weight--bold;
+                font-weight: $font-weight--book;
                 color: $color--text-1;
-                text-transform: uppercase;
+                text-transform: capitalize;
                 letter-spacing: 4px;
                 padding-left: 35px;
 
@@ -1221,7 +1221,7 @@ $color--super-hot-neon-pink: #ff009c;
                     position: relative;
                     text-decoration: none;
                     color: $color--text-1;
-                    font-weight: $font-weight--medium;
+                    font-weight: $font-weight--book;
 
                     &.custom-sub-header {
                         margin-top: 20px;
@@ -1230,6 +1230,7 @@ $color--super-hot-neon-pink: #ff009c;
                     }
 
                     a {
+                        text-transform: capitalize;
                         color: $color--text-1;
                     }
 
