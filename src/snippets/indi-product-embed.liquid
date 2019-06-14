@@ -1,33 +1,24 @@
-<script type="text/javascript" src="https://embed.indi.com/widgets/v1/indi-embed.js"></script>
-
-<div id="indi-forum-root"></div>
-<script>
-  var indi_forum = new indi.forum("#indi-forum-root", {
-    title: "Share Your Thoughts",
-    description: "Upload your photo or video review about this product",
-    submit_button_text: "Upload Photo / Video",
-    submit_button_url: "https://indi.com/Submit/ForumTerms?id=a77d0fdb-66d5-492f-9d79-49f947116d62",
-    thumbnail_url: "https://images.indi.com/s3/indi-upload-us-west-1/Image/14141c52ff98e0e36fc2d0fb729f1871.jpg",
-    keywords: "{{ product.handle }}",
-    return_url: "{{ shop.url }}{{ product.url }}"
-
-  });
-</script>
-
-
-<div id="indi-carousel-root"></div>
-<script>
-  var indi_carousel = new indi.carousel("#indi-carousel-root", {
-    apikey: "EERIxwXF644c1E1To5puL8xNP5PvLHSv240PyNYf",
-    id: "a77d0fdb-66d5-492f-9d79-49f947116d62",
-    size: "medium",
-    theme: "light",
-    round_corners: false,
-    show_title: false,
-    show_views: false,
-    show_likes: false,
-    show_buzz: false,
-    animate: true,
-    keywords: "{{ product.handle }}"
-  });
-</script>
+<script src="https://embed.indi.com/widgets/v1/indi-embed.js"></script>
+    <div id="indi-reviews-root"></div>
+    <script>
+      var indi_reviews = new indi.reviews("#indi-reviews-root", {
+        apikey: "EERIxwXF644c1E1To5puL8xNP5PvLHSv240PyNYf",
+        id: "a77d0fdb-66d5-492f-9d79-49f947116d62",
+        size: "small",
+        theme: "light",
+        reviews_title: "Customer Photos & Videos",
+        round_corners: false,
+        show_title: false,
+        show_views: false,
+        show_likes: false,
+        show_buzz: false,
+        animate: true,
+        keywords: "{{ product.handle }}",
+        submit_link_label: "+ Add Photo or Video",
+        allowanon: true,
+        return_url: "{{ shop.url }}{{ product.url }}",
+        show_submit_thumbnail: true,
+        submit_prompt_title: "#bebebabe?",
+        submit_prompt_desc: "Upload your photos & videos to share your style!"
+      });
+    </script>

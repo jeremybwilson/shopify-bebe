@@ -1,205 +1,268 @@
   
-{% comment %} CART BANNER IMAGE {% endcomment %}
+{% comment %} :: CART BANNER IMAGE :: {% endcomment %}
 {% if section.settings.image != blank %}
-
   <div class="cart-banner">
 
-    {% if section.settings.link != blank %}<a href="{{ section.settings.link }}">{% endif %}
+    {% if section.settings.link != blank %}
+      <a href="{{ section.settings.link }}">
+    {% endif %}
 
-      {% include 'advanced-responsive-image' | default_image: section.settings.image, mobile_image: section.settings.mobile_image, block_id: block.id %}
-      <noscript>
+    {% include 'advanced-responsive-image' | default_image: section.settings.image, mobile_image: section.settings.mobile_image, block_id: block.id %}
+    <noscript>
       <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.image.alt }}">
-      </noscript>
+    </noscript>
 
-    {% if section.settings.link != blank %}</a>{% endif %}
+    {% if section.settings.link != blank %}
+      </a>
+    {% endif %}
       
   </div>
-
 {% endif %}
 
-<div class="row">
 
+
+{% comment %} :: CART FORM :: {% endcomment %}
+<div class="row">
   <div id="shopping-cart" class="desktop-12 tablet-6 mobile-3">
 
     <h2>{{ 'cart.general.title' | t }}</h2>
     {% if cart.item_count == 0 %}
-    <p>{{ 'cart.general.empty' | t }}</p>
+      <p>{{ 'cart.general.empty' | t }}</p>
 
     {% else %}
-    <script type="text/javascript">
-      function remove_item(id) {
-        document.getElementById('updates_'+id).value = 0;
-        document.getElementById('cartform').submit();
-      }
-    </script>
-    <form action="/cart" method="post" id="cartform" class="bfx-checkout-container">
-      <div id="cartform--table " class="desktop-8 tablet-6 mobile-3">
+      <form action="/cart" method="post" id="cartform" class="bfx-checkout-container">
+        <div id="cartform--table " class="desktop-8 tablet-6 mobile-3">
 
-       <span class="hide bfx-customData-label">userAgent</span>
-      <span class="hide bfx-customData-value" id="orderUserAgent"></span>
+          <span class="hide bfx-customData-label">userAgent</span>
+          <span class="hide bfx-customData-value" id="orderUserAgent"></span>
 
-        {% for item in cart.items %}
           {% comment %} CART : LOOP {% endcomment %}
-          {% assign item_name = item.title | split: ' - ' | first %}
-          {% assign item_props = item.title | split: ' - ' | last %}
+          {% for item in cart.items %}
+            {% assign item_name = item.title | split: ' - ' | first %}
+            {% assign item_props = item.title | split: ' - ' | last %}
 
-          <div class="cartform--item bfx-product">
-            {% comment %} CART : LOOP : Image {% endcomment %}
-            <div class="cart-image">
-                <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
-                  <img src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}" />
-                </a>
-            </div>
-
-            {% comment %} CART : LOOP : Info {% endcomment %}
-            <div class="cart-item-properties">
-              <div class="cart-item-info">
-                {% if settings.vendor %}<p>{{ item.vendor }}</p>{% endif %}
-                <span class="cart-title">
-                  <a class="bfx-product-name" href="{{ item.url }}" title="{{ item.product.title | escape }}">{{ item_name }}</a>
-                </span>
-                <span class="cart-props">
-                  {{ item_props }}
-                </span>
-
-                <span class="cart-sku">
-                  SKU: {{ item.sku }}
-                </span>
-
-                <span class="bfx-sku hide">
-                {{ item.variant_id }}
-                </span>
-
-                <span class="bfx-product-customData-label hide">variant_id</span>
-                <span class="bfx-product-customData-value hide">{{ item.variant_id }}</span>
-
-                {% comment %} CART : ITEM : Price {% endcomment %}
-
-                <div class="cart-price">
-                
-                  <span class="cart-price-label">{{ 'cart.general.price' | t }}</span>
-
-                {% if item.variant.compare_at_price > item.price %}
-                  <div class="onsale">
-                    <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
-                  </div>
-                  <div class="was">
-                    <span class="money bfx-price">{{ item.variant.compare_at_price | money }}</span>
-                  </div>
-
-                {% else %}
-
-                  <div class="prod-price">
-                    <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
-                  </div>
-
-                {% endif %}
-                </div> 
-
-                {% comment %} CART : ITEM : Quantity {% endcomment %}
-
-                <div class="cart-quantity">
-                  <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
-                  <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
-                </div>                
-
-              </div>
-
-              {%comment%}
-                Final sale text for all sale product
-                //template == 'cart' and 
-              {%endcomment%}
-              
-              {% assign add_final_sale_text = false %}
-              {% assign itemprice = item.price | money  %}
-
-              {% for tag in item.product.tags %}
-                {% if tag contains 'returnly_no_refund' %}
-                  {% assign add_final_sale_text = true %}
+            {% comment %} GIFT WITH PURCHASE : Flag to Check when to hide props on gift items {% endcomment %}
+            {% assign isGiftItem = false %}
+            {% assign property_size = item.properties | size %}
+            {% if property_size > 0 %}
+              {% for p in item.properties %}
+                {% if p.first contains 'discountItem' %}
+                  {% assign isGiftItem = true %}
                 {% endif %}
               {% endfor %}
+            {% endif %}
 
-              {% if add_final_sale_text == true or itemprice contains '.99' %}
-                <div class="final_sale sale_product">{{settings.final_sale}}</div>
-              {%- endif -%}
+            {% comment %} :: CART SUBTOTAL :: {% endcomment %}
+            {% if isGiftItem == false %}
+              {% assign cart_subtotal = cart_subtotal | plus: item.final_line_price %}
+            {% endif %}
 
-              <div class="cart-item-actions">
-                <div class="cart-remove">
-                  <a href="#" onclick="remove_item({{ item.variant.id }}); return false;"><i class="fa fa-times"></i><span class="remove-text">{{ 'cart.general.remove' | t }}</span></a>
-                </div>         
 
+            <div class="cartform--item bfx-product">
+
+              {% comment %} CART : LOOP : IMAGE {% endcomment %}
+              <div class="cart-image">
+
+                {% comment %} :: GWP - Prevent picture linking to hidden gift item :: {% endcomment %}
+                {% if isGiftItem %}
+                  <img title="{{ item.product.title | escape }}" src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}" />
+                
+                {% comment %} :: REGULAR ITEM IMAGE :: {% endcomment %}
+                {% else %}
+                  <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
+                    <img src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}" />
+                  </a>
+                {% endif %}
               </div>
 
-              {% assign property_size = item.properties | size %}
-              {% if property_size > 0 %}
-                {% for p in item.properties %}
-                  {% unless p.last == blank %}
-                    {{ p.first }}:
 
-                    {% comment %}
-                      Check if there was an uploaded file associated
-                    {% endcomment %}
-                    {% if p.last contains '/uploads/' %}
-                      <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+              {% comment %} CART : LOOP : INFO {% endcomment %}
+              <div class="cart-item-properties">
+                <div class="cart-item-info">
+                  {% if settings.vendor %}<p>{{ item.vendor }}</p>{% endif %}
+
+                  {% comment %} :: PRODUCT - NAME :: {% endcomment %}
+                  <span class="cart-title">
+
+                    {% comment %} :: GWP - Prevent picture linking to hidden gift item :: {% endcomment %}
+                    {% if isGiftItem %}
+                      <div class="product-name bfx-product-name" title="{{ item.product.title | escape }}">{{ item_name }}</div>
+
+                    {% comment %} :: REGULAR NAME LINK :: {% endcomment %}
                     {% else %}
-                      {{ p.last }}
+                      <a class="product-name bfx-product-name" href="{{ item.url }}" title="{{ item.product.title | escape }}">{{ item_name }}</a>
                     {% endif %}
+                  </span>
 
-                  <br>
-                  {% endunless %}
+                  {% comment %} :: PRODUCT - PROP (Usually Color) :: {% endcomment %}
+                  <span class="cart-props">
+                    {{ item_props }}
+                  </span>
+
+                  {% comment %} :: PRODUCT - SKU :: {% endcomment %}
+                  {% if isGiftItem == false %}
+                    <span class="cart-sku">
+                      SKU: {{ item.sku }}
+                    </span>
+                  {% endif %}
+
+                  <span class="bfx-sku hide">
+                    {{ item.variant_id }}
+                  </span>
+
+                  <span class="bfx-product-customData-label hide">variant_id</span>
+                  <span class="bfx-product-customData-value hide">{{ item.variant_id }}</span>
+
+                  {% comment %} CART : ITEM : PRICE {% endcomment %}
+                  <div class="cart-price">
+
+                    {% comment %} :: PRICE : GIFT ITEM - Hide Price :: {% endcomment %}
+                    {% if isGiftItem %}
+                      <div class="prod-price">
+                        <span class="money">Gift Item</span>
+                      </div>
+
+                    {% comment %} :: PRICE : REGULAR ITEM :: {% endcomment %}
+                    {% else %}
+
+                      {% comment %} :: PRICE - Regular, On Sale :: {% endcomment %}
+                      {% if item.variant.compare_at_price > item.price %}
+                        <div class="onsale">
+                          <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
+                        </div>
+                        <div class="was">
+                          <span class="money bfx-price">{{ item.variant.compare_at_price | money }}</span>
+                        </div>
+
+                      {% comment %} :: PRICE - Regular, Full Price :: {% endcomment %}
+                      {% else %}
+                        <div class="prod-price">
+                          <span class="money bfx-price bfx-list-price">{{ item.price | money }}</span>
+                        </div>
+
+                      {% endif %}
+                    {% endif %}
+                  </div>
+
+                  {% comment %} CART : ITEM : QUANTITY {% endcomment %}
+                  {% if isGiftItem == false %}
+                    <div class="cart-quantity">
+                      <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
+                      <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
+                    </div>
+                  {% endif %}
+
+                </div>
+
+                {%comment%}
+                  Final sale text for all sale product
+                  //template == 'cart' and 
+                {%endcomment%}
+                
+                {% assign add_final_sale_text = false %}
+                {% assign itemprice = item.price | money  %}
+
+                {% for tag in item.product.tags %}
+                  {% if tag contains 'returnly_no_refund' %}
+                    {% assign add_final_sale_text = true %}
+                  {% endif %}
                 {% endfor %}
-              {% endif %}
 
+                {% if add_final_sale_text == true or itemprice contains '.99' %}
+                  <div class="final_sale sale_product">{{settings.final_sale}}</div>
+                {%- endif -%}
+
+                <div class="cart-item-actions">
+                  <div class="cart-remove">
+                    <a href="#" class="remove-item" data-id="{{ item.variant.id }}"><i class="fa fa-times"></i><span class="remove-text">{{ 'cart.general.remove' | t }}</span></a>
+                  </div>
+                </div>
+
+                {% assign property_size = item.properties | size %}
+                {% if property_size > 0 %}
+                  {% for p in item.properties %}
+                    {% comment %} if property is final_sale then don't show  {% endcomment %}
+                    {% unless p.first contains 'discountItem' or p.first == 'final_sale' or p.last == blank or p.first contains '_private' %}
+                      {{ p.first }}:
+
+                      {% comment %}
+                        Check if there was an uploaded file associated
+                      {% endcomment %}
+                      {% if p.last contains '/uploads/' %}
+                        <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                      {% else %}
+                        {{ p.last }}
+                      {% endif %}
+
+                      <br>
+                    {% endunless %}
+                  {% endfor %}
+                {% endif %}
+
+              </div>
+              <div class="cart--total-price">
+                {% comment %} :: PRICE : GIFT ITEM - Hide Price :: {% endcomment %}
+                {% if isGiftItem %}
+                  <div class="prod-price">
+                    <span class="money">Gift Item</span>
+                  </div>
+
+                {% comment %} :: PRICE : REGULAR ITEM :: {% endcomment %}
+                {% else %}
+                  <span class="money bfx-price bfx-product-subtotal">{{ item.line_price | money }}</span>
+                {% endif %}
+              </div>
             </div>
-            <div class="cart--total-price">
-              <span class="money bfx-price bfx-product-subtotal">{{ item.line_price | money }}</span>
-            </div>
+          {% endfor %}
+
+          {% comment %} CART :: Bottom Actions {% endcomment %}
+          <div class="cartform--table--bottom-actions">
+
+            {% if section.settings.cart_bottom_block != blank %}
+              <div class="cartform--table--bottom-block">
+                {{ section.settings.cart_bottom_block }}
+              </div>
+            {% endif %}
+
+            <input type="submit" name="update" id="update-cart" value="{{ 'cart.general.update' | t }}" class="button" />
           </div>
-        {% endfor %}
 
-        {% comment %} CART :: Bottom Actions {% endcomment %}
-
-        <div class="cartform--table--bottom-actions">
-
-          {% if section.settings.cart_bottom_block != blank %}
-            <div class="cartform--table--bottom-block">
-              {{ section.settings.cart_bottom_block }}
-            </div>
-
-          {% endif %}
-
-          <input type="submit" name="update" id="update-cart" value="{{ 'cart.general.update' | t }}" class="button" />
         </div>
 
-      </div>
 
-      {% comment %} CART :: TOTALS {% endcomment %}
-
-      <div id="basket-right" class="desktop-4 tablet-6 mobile-3">
-        <h3>{{ 'cart.general.order_summary' | t }}</h3>
-        <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart.total_price | money }}</span></h4>
-        <input type="submit" name="checkout" id="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout" />
-        <div class="clear"></div>
-        {% if additional_checkout_buttons %}
-          {{ content_for_additional_checkout_buttons }}
+        {% comment %} CART :: TOTALS {% endcomment %}
+        <div id="basket-right" class="desktop-4 tablet-6 mobile-3">
+          <h3>{{ 'cart.general.order_summary' | t }}</h3>
+          <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart_subtotal | money }}</span></h4>
+          
+          {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
+          <div id="checkout" class="button">{{ 'cart.general.checkout' | t }}</div>
+          <input type="submit" id="hidden-checkout-button" name="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout hidden" />
+          
           <div class="clear"></div>
-        {% endif %}
+          {% if additional_checkout_buttons %}
+            {{ content_for_additional_checkout_buttons }}
+            <div class="clear"></div>
+          {% endif %}
 
-        {% if settings.cart_notes_enable %}
-          <div id="cart-notes">
-            <label for="note"><strong>{{ 'cart.general.note' | t }}</strong></label>
-            <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>
-          </div>
-        {% endif %}        
-      </div>
+          {% if settings.cart_notes_enable %}
+            <div id="cart-notes">
+              <label for="note"><strong>{{ 'cart.general.note' | t }}</strong></label>
+              <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>
+            </div>
+          {% endif %}        
+        </div>
 
-    </form>
+      </form>
     {% endif %}
 
   </div>
-
 </div>
 
+
+
+
+{% comment %} :: NOSTO BLOCKS :: {% endcomment %}
 {% for block in section.blocks %}
   {% if block.settings.nosto_id != blank %}
     <div class="row">

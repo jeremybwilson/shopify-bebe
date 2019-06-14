@@ -55,6 +55,16 @@
         "id": "yotpo_id",
         "label": "Yotpo Account ID",
         "info": "(Ex: ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt)"
+      },
+      {
+        "type": "header",
+        "content": "Yottaa Rapid CTRL"
+      },
+      {
+        "type": "text",
+        "id": "yottaa_key",
+        "label": "Yottaa Key",
+        "info": "Enter a key for Rapid."
       }
     ]
   },
@@ -583,6 +593,52 @@
         "id": "gdpr_alt_button_bg_hover",
         "label": "GDPR Alt Button Hover",
         "default": "#d6d6d6"
+      },
+      {
+        "type": "header",
+        "content": "Gift w/ Purchase Modal"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_bg",
+        "label": "BG of Modal Body",
+        "default": "#fefffe"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_text",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_header",
+        "label": "Header Text Color",
+        "default": "#164732"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_bg",
+        "label": "Primary Button BG",
+        "default": "#164732"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_text",
+        "label": "Primary button Text",
+        "default": "#fefffe"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_alt_bg",
+        "label": "Secondary Button BG",
+        "default": "#ab5232"
+      },
+      {
+        "type": "color",
+        "id": "discount_modal_button_alt_text",
+        "label": "Secondary button Text",
+        "default": "#fefffe"
       },
       {
         "type": "header",

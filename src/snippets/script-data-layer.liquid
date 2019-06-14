@@ -50,7 +50,7 @@ customBindings = {
   // Qty inputs on cart page
   cartQty: ['.cart-qty'],
   viewCart: [],
-  removeCartTrigger: ['.cart-remove a'],
+  removeCartTrigger: [],
   cartVisableSelector: [],
   promoSubscriptionsSelectors: [],
   promoSuccess: [],
@@ -130,9 +130,13 @@ __bva__.helpers = (function () {
     }
   }
 
-  Helpers.prototype.fireAddToCartPixel = function (product) {
+  Helpers.prototype.fireAddToCartPixel = function (product, isUpdate) {
     if (!product) {
       throw new Error('Missing product object')
+    }
+
+    if (isUpdate) {
+      return;
     }
 
     var variant = product.variant || product.variant_id
@@ -147,14 +151,19 @@ __bva__.helpers = (function () {
     }
 
     var payload = {
-      'id': product.id.toString(),
+      'id': variant.toString() || product.id.toString(),
       'sku': product.sku,
       'variant': variant.toString(),
       'name': product.product_title,
       'price': parseFloat(product.price.toString().replace('.', ''), 10) / 100,
+      'salePrice': parseFloat(product.discounted_price.toString().replace('.', ''), 10) / 100,
       'quantity': quantity,
       'brand': brand,
-      'options': variantOptions
+      'options': variantOptions,
+      'url': product.url,
+      'image': product.image,
+      'description': product.product_description,
+      'category': product.properties && typeof product.properties == 'object' && product.properties._collection_private || 'No category'
     }
 
     if (this.template.indexOf('collection') !== -1) {
@@ -168,7 +177,7 @@ __bva__.helpers = (function () {
     })
 
     this.log('Add to Cart', payload)
-    console.log('ATC1:', product);
+//    console.log('ATC1:', product);
   }
 
   Helpers.prototype.fireEmptyCartPixel = function () {
@@ -205,29 +214,31 @@ __bva__.helpers = (function () {
 
   Helpers.prototype.monkeyPatchShopifyAPI = function () {
     if (typeof ShopifyAPI === 'undefined') {
-      return null
+      return null;
     }
 
-    var self = this
+    var self = this;
 
     if (typeof ShopifyAPI.changeItem !== 'undefined') {
       var changeItemMethod = ShopifyAPI.changeItem
       ShopifyAPI.changeItem = function () {
-        var line = arguments[0]
-        var quantityChange = arguments[1]
-        var callback = arguments[2]
-        var initialItem = self.cart.items[line - 1]
+        var line = arguments[0];
+        var quantityChange = arguments[1];
+        var callback = arguments[2];
+        var initialItem = self.cart.items[line - 1];
 
         arguments[2] = function (cart) {
-          self.cart = cart
-          var product = cart.items[line - 1]
-          if (product && initialItem.quantity < product.quantity) {
-            self.fireAddToCartPixel(product)
+          self.cart = cart;
+          var product = cart.items[line - 1];
+
+          // Have to account for initialItem being 0 when GWP items are added to cart.
+          if (product && initialItem && initialItem.quantity < product.quantity) {
+            self.fireAddToCartPixel(product);
           }
 
-          return callback.apply(this, arguments)
+          return callback.apply(this, arguments);
         }
-        changeItemMethod.apply(ShopifyAPI, arguments)
+        changeItemMethod.apply(ShopifyAPI, arguments);
       }
     }
 
@@ -358,19 +369,51 @@ __bva__.helpers = (function () {
       }
     }
 
+    function validateEmail(email) {
+      var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+
+    // check customer logged in via his/her amazon account
+    function isAmazonCustomer() {
+      var $amazonElement = $('#amazon_payments_order_reference_id');
+      return $amazonElement && $amazonElement.length;
+    }
+
     $(document.body).on('submit', 'form[data-customer-information-form]', function (e) {
-      e.preventDefault()
-      firePixel()
-      $(document.body).unbind('submit')
-      $('form[data-customer-information-form]')[0].submit()
-    })
+      if (isAmazonCustomer()) {
+        return;
+      }
+      e.preventDefault();
+      var errMsg = 'Enter an email';
+      var email = $('#checkout_email_or_phone, #checkout_email').val();
+      if (email) {
+        errMsg = 'Enter a valid email';
+      }
+      if (!validateEmail(email)) {
+        if ($('#error-for-email_or_phone').length) {
+          $('#error-for-email_or_phone').html(errMsg);
+        } else {
+          $('#checkout_email_or_phone, #checkout_email')
+            .closest('.field--show-floating-label')
+            .append('<p class="field__message field__message--error" id="error-for-email_or_phone" style="display: block;">' + errMsg + '</p>');
+        }
+        return false;
+      }
+      firePixel();
+      $(document.body).unbind('submit');
+      $('form[data-customer-information-form]')[0].submit();
+    });
 
     $('button[data-trekkie-id="continue_to_shipping_method_button"]').on('click', function (e) {
-      e.preventDefault()
-      firePixel()
-      $(this).unbind('click')[0].click()
-    })
-  }
+      if (isAmazonCustomer()) {
+        return;
+      }
+      e.preventDefault();
+      firePixel();
+      $(this).unbind('click')[0].click();
+    });
+  };
 
   Helpers.prototype.watchCheckoutShippingField = function () {
     var self = this
@@ -716,8 +759,8 @@ __bva__.helpers = (function () {
           name: product.title,
           price: parseFloat(product.price, 10) / 100,
           description: product.description,
-          imageURL: 'https:' + product.featured_image_src,
-          productURL: self.shop.url + product.url,
+          image: 'https:' + product.featured_image_src,
+          url: self.shop.url + product.url,
           brand: product.vendor || self.shop.name,
           comparePrice: parseFloat(product.compare_at_price_max, 10) / 100,
           categories: product.collections || [],
@@ -911,31 +954,45 @@ __bva__.helpers = (function () {
      --------------------------- */
     var _g_cart = {{ cart | json }}
     var g_cart = {
-      'cartItems':[{% for line_item in cart.items %}{
-        'id'       : '{{line_item.product_id}}',
-        'sku'      : '{{line_item.sku}}',
-        'variant'  : '{{line_item.variant_id}}',
-        'name'     : '{{line_item.title}}',
-        'price'    : '{{line_item.price | money_without_currency | remove: "," | json }}',
-        'quantity' : '{{line_item.quantity}}',
-        'brand'    : {{ line_item.vendor | default: shop.name | json }},
-        'options'  : {
-          {% for variant in line_item.product.variants %}
-            {% if variant.id == line_item.variant_id %}
-              {% for option in line_item.product.options %}
-                {{ option | json }}: {{ variant.options[forloop.index0] | json }},
-              {% endfor %}
-              {% break %}
+      'cartItems':[
+        {% for line_item in cart.items %}
+        {
+          'productID': '{{line_item.variant_id}}',
+          'id': '{{line_item.variant_id}}',
+          'sku': '{{line_item.sku}}',
+          'category':
+            {% if line_item.properties and line_item.properties._collection_private %}
+              '{{ line_item.properties._collection_private }}',
+            {% else %}
+              'No category',
             {% endif %}
-          {% endfor %}
+          'name': '{{line_item.product.title}}',
+          'images': ['{{line_item.image}}'],
+          'description': {{line_item.product.description | escape | json }},
+          'qty': '{{line_item.quantity}}',
+          'itemPrice': {{line_item.original_price | money_without_currency | remove: "," | json }},
+          'salePrice': {{line_item.final_price | money_without_currency | remove: "," | json }},
+          'url': '{{line_item.url}}',
+          'attr': {
+            {% for variant in line_item.product.variants %}
+              {% if variant.id == line_item.variant_id %}
+                {% for option in line_item.product.options %}
+                  {{ option | json }}: {{ variant.options[forloop.index0] | json }},
+                {% endfor %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          }
         },
-      },{% endfor %}],
+        {% endfor %}
+      ],
       'cartTotal': {{ cart.total_price | money_without_currency | remove: ',' | json }},
+      'totalAmount': {{ cart.total_price | money_without_currency | remove: ',' | json }},
       'itemsCount': {{ cart.item_count | downcase | json }},
       'discountAmounts': {{ cart.total_discount | money_without_currency | remove: ',' | json }},
       'cartId': _g_cart && typeof _g_cart === 'object' ? _g_cart.token : 'NotAvailable',
-      'pageType' : 'Global Cart',
-      'event'    : 'Global Cart',
+      'pageType': 'Global Cart',
+      'event': 'Global Cart'
     };
 
     dataLayer.push(g_cart);
@@ -1007,13 +1064,13 @@ __bva__.helpers = (function () {
         'productType'     : "{{product.type | escape }}",
         'name'            : "{{product.title | escape }}",
         'price'           : '{{product.price | money_without_currency | remove: "," | divided_by: 100.0 }}',
-        'imageURL'        : "https:{{product.featured_image.src|img_url:'grande'}}",
-        'productURL'      : '{{shop.secure_url}}{{product.url}}',
+        'image'        : "https:{{product.featured_image.src|img_url:'grande'}}",
+        'url'      : '{{shop.secure_url}}{{product.url}}',
         'brand'           : '{{product.vendor | default: shop.name}}',
         'comparePrice'    : '{{product.compare_at_price_max|money_without_currency | divided_by: 100.0 }}',
         'categories'      : {{product.collections|map:"title"|json}},
         'currentCategory' : "{{collection.title}}",
-        'productOptions'  : {
+        'options'  : {
           {% for option in product.options_with_values %}
           {% for value in option.values %}
           {% if option.selected_value == value %}
@@ -1041,12 +1098,12 @@ __bva__.helpers = (function () {
     $(document).on('click', '.product-quickview', function () {
       var viewedElementId = $(this).closest('.product-index').attr('id');
       viewedElementId = viewedElementId.toString();
-      console.log('Quick View:', viewedElementId);
 
       var productList = [];
       for (var dlIndex = 0; dlIndex < dataLayer.length; dlIndex++) {
         if (dataLayer[dlIndex].products && dataLayer[dlIndex].products.length) {
           productList = dataLayer[dlIndex].products;
+          break;
         }
       }
 
@@ -1116,15 +1173,15 @@ __bva__.helpers = (function () {
           'name'            : "{{product.title | escape }}",
           'price'           : '{{product.price | money_without_currency | remove: "," | divided_by: 100.0 }}',
           'description'     : "{{product.description | strip_newlines | strip_html | escape }}",
-          'imageURL'        : "https:{{product.featured_image.src|img_url:'grande'}}",
-          'productURL'      : '{{shop.secure_url}}{{product.url}}',
+          'image'        : "https:{{product.featured_image.src|img_url:'grande'}}",
+          'url'      : '{{shop.secure_url}}{{product.url}}',
           'brand'           : '{{product.vendor | default: shop.name}}',
           'comparePrice'    : '{{product.compare_at_price_max|money_without_currency | divided_by: 100.0 }}',
           'categories'      : {{product.collections|map:"title"|json}},
           'currentCategory' : "{{collection.title}}"
           {% if product.selected_variant != nil %}
           ,
-          'productOptions'  : {
+          'options'  : {
             {% for option in product.options_with_values %}
               {% for value in option.values %}
                 {% if option.selected_value == value %}
@@ -1158,17 +1215,30 @@ __bva__.helpers = (function () {
         var viewedElementId = $(this).data('id');
         var viewedProduct = $(this).data('product');
         viewedElementId = viewedElementId.toString();
-        console.log('Quick View:', viewedElementId);
+//        console.log('Quick View:', viewedElementId);
 
         dataLayer.push({
           event: 'Quick View',
           pageType: 'Product',
           pageTitle: product.products[0].name,
-          pageURL: product.products[0].productURL,
+          pageURL: product.products[0].url,
           quickViewedIds: viewedElementId,
           quickViewedProducts: [viewedProduct]
         });
       });
+
+      if (sessionStorage.getItem('clicked_next_or_prev_on_quickview')) {
+//        console.log('Quick View by next or prev');
+
+        dataLayer.push({
+          event: 'Quick View',
+          pageType: 'Product',
+          pageTitle: product.products[0].name,
+          pageURL: product.products[0].url,
+          quickViewedProducts: [product.products[0]]
+        });
+        sessionStorage.removeItem('clicked_next_or_prev_on_quickview');
+      }
     }
 
     /* DATALAYER: Cart View
@@ -1184,15 +1254,16 @@ __bva__.helpers = (function () {
         'variant'  : '{{line_item.variant_id}}',
         'name'     : '{{line_item.title}}',
         'price'    : '{{line_item.price | money_without_currency | remove: ',' }}',
+        'salePrice': '{{line_item.final_price | money_without_currency | remove: ',' }}',
         'quantity' : '{{line_item.quantity}}',
         'brand'    : {{ line_item.vendor | default: shop.name | json }},
-        'productCategories': {% assign categorie_title = '"no category"' %}
+        'categories': {% assign categorie_title = '"no category"' %}
           {% for line_item_c in line_item.product.collections %}
             {% assign categorie_title = line_item_c.title | json %}{% break %}
           {% endfor %}{{categorie_title}},
-        'productURL': '{{line_item.product.url}}',
-        'productImages': {{line_item.product.images | json }},
-        'productDescription': {{ line_item.product.description | escape | json }},
+        'url': '{{line_item.product.url}}',
+        'images': {{line_item.product.images | json }},
+        'description': {{ line_item.product.description | escape | json }},
         'options'  : {
           {% for variant in line_item.product.variants %}
             {% if variant.id == line_item.variant_id %}
@@ -1221,7 +1292,7 @@ __bva__.helpers = (function () {
       __bva__.helpers.fireEmptyCartPixel()
     }
 
-    __bva__.cart = cart.products;
+    __bva__.cart = cart;
 
     function checkProducts() {
       var allQty = []
@@ -1246,7 +1317,7 @@ __bva__.helpers = (function () {
             console.log('Seems like the product is empty.');
           }
           if (initialQuantity < qty && product) {
-            __bva__.helpers.fireAddToCartPixel(product)
+            __bva__.helpers.fireAddToCartPixel(product, true)
           }
         })
       }
@@ -1313,13 +1384,14 @@ __bva__.helpers = (function () {
       'name'        : {{ line_item.title | json }},
       'productType' : {{ line_item.product.type | json }},
       'price'       : {{ line_item.price | money_without_currency | remove: "," | json }},
+      'salePrice'       : {{ line_item.final_price | money_without_currency | remove: "," | json }},
       'comparePrice'  : {{ line_item.compare_at_price_max | money_without_currency | remove: "," | json}},
       'totalDiscount' : {{ line_item.total_discount | money_without_currency| remove: "," | json }},
       'quantity'    : {{ line_item.quantity | json }},
       'description' : {{ line_item.product.description | strip_newlines | strip_html | escape | json }},
-      'imageURL'    : {{ line_item.product.featured_image.src|img_url:'grande' | prepend: 'https:' | json }},
-      'productURL'  : {{ shop.secure_url | append: line_item.url | json }},
-      'productCategories': {% assign categorie_title = '"no category"' %}
+      'image'    : {{ line_item.product.featured_image.src|img_url:'grande' | prepend: 'https:' | json }},
+      'url'  : {{ shop.secure_url | append: line_item.url | json }},
+      'categories': {% assign categorie_title = '"no category"' %}
         {% for line_item_c in line_item.product.collections %}
           {% assign categorie_title = line_item_c.title | json %}{% break %}
         {% endfor %}{{categorie_title}},
@@ -1375,12 +1447,38 @@ __bva__.helpers = (function () {
         if(Shopify.Checkout.step){
           if(Shopify.Checkout.step.length > 0){
             if (Shopify.Checkout.step === 'contact_information'){
-              dataLayer.push({
-                'event'    :'Checkout Start',
-                'pageType' :'Checkout Start'});
-//              dataLayer.push(transactionData,{
-//                'event'    :'Customer Information',
-//                'pageType' :'Customer Information'});
+              var checkout = {
+                'lineItems':[{% for line_item in checkout.line_items %}{
+                  'id'       : '{{line_item.product_id}}',
+                  'sku'      : '{{line_item.sku}}',
+                  'variant'  : '{{line_item.variant_id}}',
+                  'name'     : '{{line_item.product.title}}',
+                  'price'    : {{line_item.final_price | money_without_currency | remove: "," | default: '0.0' | json }},
+                  'salePrice': {{line_item.price | money_without_currency | remove: "," | default: '0.0' | json }},
+                  'quantity' : '{{line_item.quantity}}',
+                  'brand'    : {{ line_item.vendor | default: shop.name | json }},
+                  'categories' : {{line_item.product.collections | map: 'title' | default: [] | json }},
+                  'url' : '{{shop.secure_url}}{{line_item.url}}',
+                  'image': '{{ line_item.image }}',
+                  'description': '{{ line_item.product.description | escape | json }}',
+                  'options'  : {
+                    {% for option in line_item.product.options %}
+                      {{ option | json }}: {{ line_item.variant.options[forloop.index0] | json }},
+                    {% endfor %}
+                  },
+                },{% endfor %}],
+                'checkoutTotal': {{ checkout.total_price | money_without_currency | remove: ',' | json }},
+                'discountAmounts': {{ checkout.discounts_amount | money_without_currency | remove: ',' | json }},
+                'checkoutId': '{{checkout.id}}',
+                'pageType' : 'Checkout Start',
+                'event'    : 'Checkout Start',
+              };
+
+//              console.log('Checkout Start:');
+              dataLayer.push(checkout);
+//            dataLayer.push(transactionData,{
+//              'event'    :'Customer Information',
+//              'pageType' :'Customer Information'});
 
               if(__bva__.debug == true){
                 console.log("Customer Information - Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
@@ -1544,12 +1642,13 @@ __bva__.helpers = (function () {
             variant: lineItem.variant_id,
             name: lineItem.title,
             price: lineItem.price / 100,
+            salePrice: lineItem.discounted_price / 100,
             quantity: lineItem.quantity,
             brand: lineItem.vendor,
-            productCategories: lineItem.properties && typeof lineItem.properties == 'object' ? lineItem.properties._collection_private : '',
-            productURL: lineItem.url,
-            productImages: [lineItem.image],
-            productDescription: lineItem.product_description,
+            category: lineItem.properties && typeof lineItem.properties == 'object' ? lineItem.properties._collection_private : 'No category',
+            url: lineItem.url,
+            image: lineItem.image,
+            description: lineItem.product_description,
             options: variantOptions
           }
         })
@@ -1609,7 +1708,8 @@ __bva__.helpers = (function () {
               'sku'      : line_item.sku,
               'variant'  : line_item.variant_id,
               'name'     : line_item.title,
-              'price'    : (line_item.price/100),
+              'price'    : line_item.price / 100,
+              'salePrice': line_item.discounted_price / 100,
               'quantity' : line_item.quantity,
               'image'    : line_item.image,
               'url'      : {{ shop.secure_url | json }} + line_item.url,
@@ -1617,7 +1717,7 @@ __bva__.helpers = (function () {
               'productType' : line_item.product_type,
               'brand'     : {{ line_item.vendor | default: shop.name | json }},
               'options'   : options,
-              'category'  : line_item.properties && line_item.properties._collection_private,
+              'category'  : line_item.properties && typeof line_item.properties == 'object' && line_item.properties._collection_private || 'No category'
             }
 
             return ret
@@ -1668,18 +1768,19 @@ __bva__.helpers = (function () {
               'products': __bva__.cart.items.map(function (line_item) {
                 var options = optionsByVariantId[line_item.variant_id.toString()];
                 var ret = {
-                  'id'       : line_item.id,
+                  'id'       : line_item.variant_id || line_item.id,
                   'sku'      : line_item.sku,
                   'variant'  : line_item.variant_id,
                   'name'     : line_item.product_title ? line_item.product_title : line_item.title,
-                  'price'    : (line_item.price/100),
+                  'price'    : line_item.price / 100,
+                  'salePrice': line_item.discounted_price / 100,
                   'quantity' : line_item.quantity,
                   'image'    : line_item.image,
                   'url'      : {{ shop.secure_url | json }} + line_item.url,
                   'description' : line_item.product_description,
                   'productType' : line_item.product_type,
                   'options'   : options,
-                  'category'  : line_item.properties && line_item.properties._collection_private,
+                  'category'  : line_item.properties && typeof line_item.properties == 'object' && line_item.properties._collection_private || 'No category'
                 }
 
                 {% comment %}
@@ -1737,7 +1838,7 @@ __bva__.helpers = (function () {
                 if (__bva__.debug) {
                   console.log("Add to Cart template collection"+" :"+JSON.stringify(product, null, " "));
                 }
-                console.log('ATC2:', product);
+//                console.log('ATC2:', product);
               }
             }
             // --------------------------------------------- get Json response
@@ -1834,7 +1935,7 @@ __bva__.helpers = (function () {
           }
 
           var p = {
-            id: {{ product.id | downcase | json }},
+            id: productFromForm.variant || {{ product.id | downcase | json }},
             sku: sku,
             name: {{ product.title | json }},
             price: {{ product.price | money_without_currency | divided_by: 100.0 | json }},
@@ -1849,7 +1950,7 @@ __bva__.helpers = (function () {
           if (__bva__.debug) {
             console.log("Add to Cart"+" :"+JSON.stringify(p, null, " "));
           }
-          console.log('ATC3:', product);
+//          console.log('ATC3:', product);
         })
       }
 
@@ -2014,11 +2115,11 @@ function ready(fn) {
 
 // Custom event tracking
 ready(function () {
+
   // viewing wishlist popup by swym
   $(document).on('click', '#swym-anchor', function (e) {
     var checkLoadedSwym = setInterval(function () {
-      if ($('#swym-item-grid li.swym-item').length) {
-        console.log('wishlist-view');
+      if ($('#swym-item-grid li.swym-item .swym-information').length) {
         var wishListedItems = [];
         var pushedIndex = 0;
 
@@ -2041,8 +2142,9 @@ ready(function () {
           if (listItemUri && pushedIndex === i) {
             pushedIndex++;
             wishListedItems.push({
+              id: listItemVId,
               url: listItemUri,
-              images: listItemImg,
+              image: listItemImg,
               variant: listItemVId,
               name: listItemTitle,
               price: listItemPrice,
@@ -2052,7 +2154,6 @@ ready(function () {
         });
         if (wishListedItems.length === pushedIndex) {
           // cordial track wishlist-view
-          console.log('Wishlist:', wishListedItems);
           dataLayer.push(
             {
               'products': wishListedItems,
@@ -2069,6 +2170,145 @@ ready(function () {
         clearInterval(checkLoadedSwym);
       }
     }, 5000);
+  });
+
+  $(document).on('click', '.swym-add-to-cart', function (e) {
+    var variantId = $(this).closest('.swym-item').data('epi');
+    var wishListedProduct = {};
+    for (var dlIndex = dataLayer.length -1; dlIndex >= 0; dlIndex--) {
+      if (dataLayer[dlIndex].event === 'Wishlist' && dataLayer[dlIndex].products.length) {
+        for (var i = 0; i < dataLayer[dlIndex].products.length; i++) {
+          if (dataLayer[dlIndex].products[i].variant === variantId) {
+            wishListedProduct = dataLayer[dlIndex].products[i];
+            break;
+          }
+        }
+        break;
+      }
+    }
+
+    dataLayer.push({
+      pageType: 'Add to Cart',
+      event: 'Add to Cart',
+      products: [wishListedProduct]
+    });
+  });
+
+
+  // watch clicking next/prev product
+  $(document).on('click', '.next_product, .previous_product', function (e) {
+    sessionStorage.setItem("clicked_next_or_prev_on_quickview", "true");
+  });
+
+  /**
+   * Cart Change
+   */
+  // remove item from standard cart page
+  // please confirm this function was removed from cart.liquid page
+  function remove_item(id) {
+    dataLayer.push({
+      pageType: 'Remove from Cart',
+      event: 'Remove from Cart',
+      id: id
+    });
+
+    document.getElementById('updates_'+id).value = 0;
+    $( '#cartform' ).submit(); // Refreshes form since action = '/cart'
+  } 
+
+  $(document).on('click', '.remove-item', function (e) {
+    remove_item($(this).data('id'));
+  });
+
+
+
+  // CART : TRACK : Function takes the cart form and checks it for updates to push to GTM
+  function trackCartUpdatesOnSubmit( $form ) {
+    var cartItems = $form.find('.cart-qty');
+
+    // CHECK : Iterate cart items and check for updates against data-layer cart copy
+    if (cartItems && cartItems.length) {
+
+      // BUILD : Gather cart items
+      var cartItemObj = {};
+      $.each(cartItems, function(index, cartItem) {
+        var lineQty = $(cartItem).val();
+        var itemId = $(cartItem).attr('id');
+        var itemIdArr = itemId.split('updates_');
+        cartItemObj[itemIdArr[1]] = lineQty;
+      });
+
+      // PREP : Setup default values before checking cart items
+      var isUpdated = false;
+      var totalAmount = 0;
+      var updatedItems = [];
+
+      // ITERATE : Check cart items against data layer for discrepancies and store them
+      for ( var i=0; i < dataLayer.length; i++ ) {
+
+        // CART CHECK : Ensure correct object being looked at, then iterate
+        if ( dataLayer[i] && dataLayer[i].pageType === 'Global Cart' && dataLayer[i].cartItems ) {
+          
+          // ITERATE : Cart Items from found data-layer object
+          for ( var j=0; j < dataLayer[i].cartItems.length; j++ ) {
+            var dataLayerItem = dataLayer[i].cartItems[j];
+
+            // SAFETY : Intercepting cart submission is dangerous, ensure all values to prevent crashing.
+            if ( dataLayerItem && dataLayerItem.id ) {
+              var cId = dataLayerItem.id.toString();
+
+              if ( cartItemObj[cId] && cartItemObj[cId] != dataLayerItem.qty ) {
+                dataLayerItem.qty = cartItemObj[cId];
+                isUpdated = true;
+              }
+              totalAmount += dataLayerItem.qty * dataLayerItem.itemPrice;
+            }
+          }
+
+          // UPDATE : Store updated items from iteration
+          updatedItems = dataLayer[i].cartItems;
+        }
+      }
+
+      if ( isUpdated ) {
+        dataLayer.push({
+          pageType: 'Update Cart',
+          event: 'Update Cart',
+          cartItems: updatedItems,
+          totalAmount: totalAmount
+        });
+      }
+    }
+  }
+
+  // CART : SUBMIT : Check / Track any cart updates to GTM and submit our cart
+  $(document).on( 'click', '#cartform #checkout', function (e) {
+    var $form = $( '#cartform' );
+
+    // DEFER : Prevent inital submission
+    e.preventDefault();
+
+    // TRACK : Ensure updates desired are tracked in case user updated quantity and hit checkout
+    trackCartUpdatesOnSubmit( $form );
+
+    /* SUBMIT : Click the hidden submit button to submit form
+        Must click submit button manually since shopify doc says form MUST have action '/cart', 
+        and that's what causes the page reload when doing simply '$form.submit()' */
+    $( '#hidden-checkout-button' ).click();
+  });
+
+  // Update CART : SUBMIT : Check / Track any cart updates to GTM and submit our cart
+  $(document).on( 'click', '#cartform #update-cart', function (e) {
+    var $form = $( '#cartform' );
+
+    // DEFER : Prevent inital submission
+    e.preventDefault();
+
+    // TRACK : Ensure updates desired are tracked in case user updated quantity and hit checkout
+    trackCartUpdatesOnSubmit( $form );
+
+    // SUBMIT :
+    $form.submit();
   });
 });
 </script>

@@ -8,20 +8,24 @@
 
     <title>{{ page_title }}</title>
 
+    <!-- Data Layer for GTM
+    ================================================== -->
+    {{ 'jquery-2.2.4.min.js' | asset_url | script_tag }}
+
+    {%- if settings.enable_script_data_layer -%}
+      {% include 'script-data-layer' %}
+    {%- endif -%}
+    {% include 'script-google-tag-head' %}
+
     {{ content_for_header }}
 
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
 
-    <!-- Data Layer for GTM
-    ================================================== -->
-    {% include 'script-google-tag-head' %}
-    {%- if settings.enable_script_data_layer -%}
-      {% include 'script-data-layer' %}
-    {%- endif -%}
-
   </head>
   <body>
+    {% include 'script-google-tag-body' %}
+
     {{ skip_to_content_link }}
 
     <div class="banner" data-header>
@@ -68,5 +72,25 @@
     {% include 'script-google-tag-body' %}
     {% include 'checkout-customization-script' %}
     {% include 'swell-checkout' %}
+    <script>
+    $(window).bind("load", function() {
+      $( ".product__description__property" ).each(function( index ) {
+        var my_html = $(this).html();
+        if (my_html.indexOf("final_sale") > -1){
+            $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
+        }
+      });
+    });
+    setInterval(function(){ 
+      $( ".product__description__property" ).each(function( index ) {
+        var my_html = $(this).html();
+        if (my_html.indexOf("final_sale") > -1){
+            $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
+        }
+      });
+      }, 2000) 
+      // to adding the final Sale string dynamically
+    </script>
   </body>
 </html>
+

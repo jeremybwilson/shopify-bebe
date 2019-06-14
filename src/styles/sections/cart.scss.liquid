@@ -112,6 +112,10 @@ body.cart {
   text-align: left;
   width: 90%;
 
+  .product-name {
+    color: $color--accent-1;
+  }
+
   @include mq('tablet-and-up') {
     @include fontSize(16px);
     width: auto;
@@ -258,9 +262,9 @@ body.cart {
   }
 
   &#checkout {
-    //background-color: $color--primary-1;
     background: $button--main-mobile-bg;
     color: $button--main-mobile-text;
+
     @include mq('phone'){
       background: $button--main-mobile-bg;
       color: $button--main-mobile-text;
@@ -269,5 +273,9 @@ body.cart {
       background-color: $color--accent-1;
     }
   }  
+
+  &.hidden {
+    display: none;
+  }
 }
 

@@ -138,6 +138,12 @@
 @import url('../snippets/product-images.scss.liquid');
 
 
+#desktop-sale-callout{
+  @include mq('phone') {
+    display: none;
+  }  
+}
+
 #product-price {
   border-bottom: none;
   color: $color--primary-2;

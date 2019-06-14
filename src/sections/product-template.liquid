@@ -242,8 +242,6 @@
       {% endfor %}
     {% endif %}
 
-    {% include 'indi-product-embed' %}
-
     {% comment %} :: REVIEWS :: {% endcomment %}
     {% include 'yotpo-reviews' %}
 
@@ -338,6 +336,11 @@
       {
         "type": "header",
         "content": "Product form"
+      },
+      {
+        "type": "text",
+        "id": "sale_callout",
+        "label": "Promo code / sale callout"
       },
       {
         "type": "checkbox",

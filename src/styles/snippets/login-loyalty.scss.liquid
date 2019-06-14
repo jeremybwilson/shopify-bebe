@@ -54,22 +54,22 @@
 
 .clubrowcon {
   @include flexbox;
-  @include justify-content( center );
+  @include justify-content( space-evenly );
 
   span{
     display:block;
   }
-  table { 
+  table {
     border-collapse: collapse;
     width: 95%;
     margin: 8% 5%;
 
     tr {
-      border: none; 
+      border: none;
       height:50px;
-    }    
+    }
     td {
-      border-right: solid 1px {{ settings.dotted_color }}; 
+      border-right: solid 1px {{ settings.dotted_color }};
       border-left: solid 1px {{ settings.dotted_color }};
       font-size: 13px;
       text-align: center;
@@ -83,11 +83,11 @@
       &:last-child {
         border-right: 0;
       }
-  
+
       span{
-        display: block; 
+        display: block;
       }
-    }    
+    }
   }
   .clubfirstrow {
     vertical-align: top;
@@ -95,12 +95,13 @@
 
     span {
       line-height: 18px;
-    }    
+    }
   }
   .perks{
-    @include flex-basis( 130px );
-    margin: 2% 5%;
+    // @include flex-basis( 65px );
     @include fontSize( 12px );
+    margin: 10px;
+    max-width: 130px;
     text-align: center;
 
     .perks-pts{
@@ -150,7 +151,7 @@
     @include mq('phone') {
       display: none;
     }
-  }  
+  }
 }
 .clubiconimg{
   width:60%;
@@ -168,6 +169,7 @@
 .club-title{
   font-weight: $font-weight--medium;
   @include fontSize( 18px );
+  text-transform: capitalize;
 }
 .clubsubcopy-con{
   width:50%;
@@ -210,6 +212,7 @@
 }
 .row-dt{
   @include flexbox;
+  @include flex-wrap( wrap );
 }
 
 // :: LOYALTY :: Dashboard ::
@@ -222,7 +225,7 @@
 }
 #club--main-info {
   width: 100%;
-  
+
   @include mq('lap-and-up') {
     width: 75%;
     border-right: solid 1px $color--field-1;
@@ -251,7 +254,7 @@
 
     &:first-child {
       border-left: none;
-    } 
+    }
   }
 }
 .club--big-number {
@@ -267,7 +270,7 @@
   text-transform: uppercase;
 }
 
-// DASHBOARD :: Redeem Award 
+// DASHBOARD :: Redeem Award
 
 #club--redeem-award {
 
@@ -280,7 +283,7 @@
     @include flex-direction( column );
     @include justify-content( center );
     @include align-items( center );
-  
+
     @include mq( 'lap-and-up' ) {
       padding-bottom: 20px;
     }
@@ -355,12 +358,12 @@
     width: 180px;
     height: 180px;
     position: absolute;
-    clip: rect(0,180px,180px,90px); 
+    clip: rect(0,180px,180px,90px);
   }
     &.over50 .left-half-clipper {
       clip: rect(auto,auto,auto,auto)
     }
-  
+
   .points-info {
     // magic numbers
     @include flexbox;
@@ -382,7 +385,7 @@
     border: 40px solid $color--accent-1;
     box-sizing: border-box;
   }
-  
+
   &.over50 .first50-bar {
     // when the progress is over 50, show a duplicate shape to denote the first half
     position: absolute;
@@ -398,17 +401,17 @@
   &.p0 .value-bar {
     display: none;
   }
-  
+
   @for $i from 1 through 100 {
     &.p#{$i} .value-bar {
       transform: rotate( ( $i / 100 ) * 360deg );
     }
-  }  
+  }
 }
 
+
 // DASHBOARD :: Rewards History
-div#club--rewards-history {
-  display: none;
+div#club--points-panel-title, div#club--rewards-history {
   width: 100%;
   padding: 10px 20px;
 
@@ -419,10 +422,13 @@ div#club--rewards-history {
     text-align: center;
   }
 }
+div#club--rewards-history {
+  display: none;
+}
 #club--rewards-history--list {
   width: 100%;
   margin: 0 auto;
-  list-style: none;  
+  list-style: none;
 
   li {
     @include flexbox;
@@ -444,10 +450,17 @@ div#club--rewards-history {
 // :: DASHBOARD :: VIP Tiers Breakdown
 
 #club--vip-tiers {
-  margin-top: 2em; 
+  margin-top: 2em;
 
   @include mq('lap-and-up') {
     margin-top: 5em;
+  }
+
+  h2 {
+    color: $color--accent-1;
+    margin: 0 0 12px;
+    @include fontSize( 18px );
+    text-align: center;
   }
 
   #club--vip-tiers--mobile-chart {
@@ -504,6 +517,10 @@ div#club--rewards-history {
       dd {
         font-style: normal;
         @include fontSize( 26px );
+
+        span {
+          @include fontSize( 15px );
+        }
       }
     }
   }
@@ -514,7 +531,7 @@ div#club--rewards-history {
     border-bottom: none;
 
     @include mq('lap-and-up') {
-      display: inherit;      
+      display: inherit;
     }
     th, td {
       background: none;
@@ -538,6 +555,7 @@ div#club--rewards-history {
         .club-title {
           display: block;
           font-weight: $font-weight--medium;
+          text-transform: capitalize;
         }
       }
     }
@@ -572,7 +590,7 @@ body.customers-login {
     padding-right: 2%;
   }
   #club--vip-tiers {
-    margin-bottom: 60px; 
+    margin-bottom: 60px;
 
     #club--vip-tiers--mobile-chart {
       margin-left: 0.5rem;
@@ -585,7 +603,7 @@ body.customers-login {
 
         &.club--tier-active:after {
           display: none;
-        }        
+        }
       }
     }
 
@@ -631,7 +649,7 @@ body.customers-login {
   & > div {
     padding: 20px;
     border-bottom: solid 1px $color--field-1;
-    
+
     &:last-child {
       border-bottom: none;
     }
@@ -643,7 +661,7 @@ body.customers-login {
   @include mq( 'lap-and-up' ) {
     @include flexbox;
     @include flex-wrap( wrap );
-    @include justify-content( center );  
+    @include justify-content( center );
   }
 }
 #club--mini-vip-tier {
@@ -660,7 +678,7 @@ body.customers-login {
       border-right: 5px solid transparent;
       border-bottom: 5px solid transparent;
       display: inline-block;
-      content: '';      
+      content: '';
       opacity: 0;
     }
 
@@ -676,7 +694,7 @@ body.customers-login {
 #club--vip-unlock-message {
   width: 100%;
   text-align: center;
-  
+
   .unlock-points {
     color: $color--accent-1;
   }
@@ -690,7 +708,7 @@ body.customers-login {
   @include fontSize( 12px );
 
   & > span {
-    
+
   }
   #total-points-number {
     color: $color--accent-1;

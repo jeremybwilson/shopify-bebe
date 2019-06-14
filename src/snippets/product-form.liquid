@@ -29,7 +29,7 @@
         <span class="money bfx-price">{{ compare_price }}</span>
       </span>
     </div>
-    
+
     {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
 
     {% assign add_final_sale_text = false %}
@@ -37,6 +37,8 @@
     {% for tag in product.tags %}
       {% if tag contains 'returnly_no_refund' %}
         {% assign add_final_sale_text = true %}
+        {% comment %} this property for final sale exist for product or not {% endcomment %}
+        <input type="hidden" name="properties[final_sale]" value="{{settings.final_sale}}">
       {% endif %}
     {% endfor %}
 
@@ -55,9 +57,17 @@
 
   {% endif %}
 
+  {% comment %}  :: Promo code / Sale callout - PDM-637 ::  {% endcomment %}
+  {%- if product.tags contains 'SALE_PROMO_CALLOUT' and section.settings.sale_callout != '' -%}
+    <div id="desktop-sale-callout" class="final_sale sale_product">{{section.settings.sale_callout}}</div>
+  {%- endif -%}
+
   <div class="clear"></div>
 
   {% comment %} REVIEWS - STAR RATING {% endcomment %}
+  <div id="desktop-yotpo-star-rating">
+    {% include 'yotpo-star-rating' %}  
+  </div>
 
   {% comment %}
   SWATCHES
@@ -172,4 +182,11 @@
   {% endif %}
 
   <div class="clear"></div>
+
+  {% comment %}{- Record collection -}{% endcomment %}
+  <input
+    readonly
+    type="hidden"
+    name="properties[_collection_private]"
+    value="{{ collection.title }}">
 {% endform %}

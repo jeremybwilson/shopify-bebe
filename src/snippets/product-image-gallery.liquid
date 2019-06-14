@@ -94,4 +94,10 @@
     {{ product_video }}
 
   </div>
+  {% comment %}
+    INDI CAROUSEL - Rendered indi product carousel
+  {% endcomment %}
+  {% unless template == 'product.quick' %}
+    {% include 'indi-product-embed' %}
+  {% endunless %}
 </div>
