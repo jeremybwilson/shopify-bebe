@@ -165,8 +165,6 @@
           </li>
           <style>
             .flex-caption.slide-{{ block.id }} {
-              {% comment %}  PDM-642 :: removing vertical position slider {% endcomment %}
-              {% comment %} top: {{ block.settings.caption_vertical }}%; {% endcomment %}
               {% if block.settings.caption_vertical != blank %}
               top: {{ block.settings.caption_vertical }}%;
               {% else %}
@@ -175,8 +173,6 @@
             }
             @media screen and (max-width: 767px) {
               .flex-caption.slide-{{ block.id }} {
-                {% comment %} PDM-642 :: removing vertical position slider {% endcomment %}
-                {% comment %} top: {{ block.settings.caption_vertical_mobile }}%; {% endcomment %}
                 {% if block.settings.caption_vertical_mobile != blank %}
                 top: {{ block.settings.caption_vertical_mobile }}%;
                 {% else %}
