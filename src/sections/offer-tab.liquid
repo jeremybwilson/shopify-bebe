@@ -1,7 +1,13 @@
-{%- if section.settings.show and section.settings.label != blank -%}
+{%- if section.settings.show -%}
   {%- if section.settings.homepage_only == false or template.name == 'index' -%}
     <div class="offer-tab" data-section-id="{{ section.id }}" data-section-type="offer-tab-section">
-      <a href="#newsletter-modal" class="js-offer-tab offer-tab__label">{{ section.settings.label }}</a>
+      <a href="#newsletter-modal" class="js-offer-tab offer-tab__label">
+        {% if customer %}
+        {{ section.settings.member_offer }}
+        {% else %}
+          {{ section.settings.non_member_offer }}
+        {% endif %}
+      </a>
       <span class="offer-tab__cross js-offer-tab-close">{% include 'svg-icon-x' %}</span>
     </div>
 
@@ -27,8 +33,14 @@
       },
       {
         "type": "text",
-        "id": "label",
-        "label": "Label",
+        "id": "non_member_offer",
+        "label": "Non Member Offer",
+        "default": "GET 20% OFF"
+      },
+      {
+        "type": "text",
+        "id": "member_offer",
+        "label": "Member Offer",
         "default": "GET 20% OFF"
       }
     ]
