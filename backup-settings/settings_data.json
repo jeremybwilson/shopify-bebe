@@ -407,9 +407,9 @@
           "announcement_text_one": "FREE U.S. SHIPPING OVER $100",
           "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "shopify://collections/new",
-          "announcement_text_two": "BUY 1 SALE ITEM, GET AN ADDITIONAL 50% OFF A 2ND SALE ITEM",
-          "announcement_popup_two_content": "announcement-3-promo",
-          "announcement_link_two": "https://www.bebe.com/account/login",
+          "announcement_text_two": "20% OFF $150 OR MORE WITH CODE <strong>JUNE2019</strong>",
+          "announcement_popup_two_content": "june2019",
+          "announcement_link_two": "shopify://pages/coupons-discounts",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
           "top_left_highlight_link": "http://www.instagram.com/bebe_stores",
@@ -498,7 +498,7 @@
       "product-template": {
         "type": "product-template",
         "settings": {
-          "sale_callout": "Buy 1 sale item, get an additional 50% off a 2nd sale item. Discount taken at checkout.",
+          "sale_callout": "Use code JUNE2019 for 20% off any purchase of $150 or more.",
           "product_nav": false,
           "vendor": false,
           "show_quantity": false,
@@ -600,27 +600,27 @@
           "1559631201439": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/additional-50-off-2nd-sale-hp.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-2nd-sale-hp-mobile.jpg",
+              "image": "shopify://shop_images/bebe-girls-desktop_24023080-873d-49ca-bc18-497195fabfcf.jpg",
+              "mobile_image": "shopify://shop_images/bebe-girls-hp-mobile_767x_40ebf680-a21e-4adf-a0f8-cd26bcf611bc.jpg",
               "cta_full_image": "shopify://collections/sale",
-              "heading": "<br><br>",
+              "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "shopify://collections/sale",
-              "cta_one_button_text": "Shop  Sale",
+              "cta_one_link": "shopify://collections/girls",
+              "cta_one_button_text": "Shop  Girls",
               "cta_two_link": "",
               "cta_two_button_text": "Add a button",
-              "cta_three_link": "shopify://pages/coupons-discounts",
+              "cta_three_link": "",
               "cta_three_button_text": "See Details",
               "cta_four_link": "",
               "cta_four_button_text": "Add a button",
               "hide_buttons_desktop": false,
-              "hide_buttons_mobile": false,
+              "hide_buttons_mobile": true,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
               "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
+              "caption_horizontal_offset": 33,
               "caption_vertical": 69,
               "caption_vertical_mobile": 70,
               "caption_background": "rgba(0,0,0,0)",
@@ -654,12 +654,12 @@
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/bebe-girls-twin.jpg",
+              "image": "shopify://shop_images/shop-jumpsuits-the-chic-ones-desktop_bf835e00-772b-41ab-bc75-1e5c92454d22.jpg",
               "mobile_image": "",
-              "link": "shopify://collections/girls",
-              "heading_text": "bebe Girls",
+              "link": "shopify://collections/jumpsuits",
+              "heading_text": "The Chic Ones",
               "text": "",
-              "cta_text": "SHOP Girls",
+              "cta_text": "SHOP JUMPSUITS",
               "cta_style": "button"
             }
           }
@@ -1307,11 +1307,11 @@
           "1559631965043": {
             "type": "text_block",
             "settings": {
-              "heading_text": "BUY 1 SALE ITEM, GET AN ADDITIONAL 50% OFF A 2ND SALE ITEM",
-              "text": "<p>Discount taken at checkout for qualifying orders.</p>",
-              "cta_text": "SHOP SALE",
-              "link": "shopify://collections/sale",
-              "details_text": "<p>Additional 50% discount will be applied to sale item of equal or lesser value at checkout when two sale items are purchased. If an odd number of three or more sale items are purchased, additional 50% discount will be applied to the item(s) of least value. Only valid on sale merchandise with prices ending in .99 on bebe.com. Not valid at bebe stores. Discount will be applied at checkout automatically for qualifying orders. Cannot be used in conjunction with any other offer. Not valid on regular-priced items, limited time promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer expires 6/13/19 at 11:59 pm PDT.</p>",
+              "heading_text": "20% OFF $150 OR MORE",
+              "text": "<p>Save on regular-priced &amp; sale styles with code JUNE2019.</p>",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code JUNE2019 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 6/17/19 at 11:59 pm PDT. &nbsp;</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1396,7 +1396,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "",
+          "image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-banner.jpg",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1431,8 +1431,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/shop-new-arrivals-pretty-new-things-waiting-for-you-like-desktop.jpg",
-              "mobile_image": "shopify://shop_images/shop-new-arrivals-pretty-new-things-waiting-for-you-like-mobile.jpg",
+              "image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-desktop.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
@@ -1612,7 +1612,7 @@
       "1549408161041": {
         "type": "indi-forum",
         "settings": {
-          "title": "#BEBEBABE? GET PAID.",
+          "title": "#bebebabe? GET PAID.",
           "description": "Upload your photos & videos to earn commission on all bebe.com sales you influence.",
           "submit_button_text": "Upload Photo / Video",
           "submit_button_url": "https://indi.com/Submit/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
@@ -1681,64 +1681,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/additional-50-off-plp_23a3a4a7-19f6-49fe-b899-c0e48c992bf4.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_a2131282-a2db-42d7-8c7a-cce445c244dd.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_4d613246-29db-495b-90fe-ae5183a6906c.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_98259f04-28cb-4378-9c6e-3de0d5ecfb9d.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "sale-dresses",
-              "image": "shopify://shop_images/additional-50-off-plp_e78d95ac-8fa4-442c-a168-8ccf0aedbe9e.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_53c0e02d-f24c-4c4a-8905-278ea827a3d0.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_53466c78-7e74-4c3b-b998-4f76a39f3d4d.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_d3fd88d4-284c-4ffb-89a3-82b5406978d8.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/additional-50-off-plp_939035af-5167-4e4c-8ea3-f55002532db2.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_36ffb50a-e491-4f23-a277-16ec66ae257c.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_2a3e9f30-9da4-4492-9118-1114578062a9.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_471df05c-dacb-4bec-ac4d-dc4c1c0fc52f.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/additional-50-off-plp_9377b930-3887-42d9-9d41-dbdabed49966.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_55af53a8-d8da-49e4-a36d-b24d73ef79a1.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_47a32797-9b27-4c90-8c58-f34b66833d24.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_8deb9231-6f38-4c78-837a-c428947d8301.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/additional-50-off-plp_ee107b65-59a9-4516-96ec-5938b0ea7c6f.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_22e7f6b5-15c4-4f32-9818-1e61108bc015.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_d0ab9920-58c1-413b-82db-74a2798abdf0.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_1aa3b4d7-ea01-4e52-af91-9b0227e70d61.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/additional-50-off-plp_aeaabc56-bff5-486a-892d-9c7a407f388d.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_bec99e03-05b3-4759-8139-de64a128d479.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_6d35656a-5999-4faf-a261-49f68da8ca03.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_f9aa088d-e64a-4db4-9c76-24b871d3fc60.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/additional-50-off-plp_17d61fd9-5a47-432f-9181-fe7f71dde46b.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_17ab73c5-f887-4f26-9a2e-c026d12cde98.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_129ed170-fe18-41c8-8a60-5be6fd6e11bc.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_18938b66-84c0-4261-be93-29c9f88b4fff.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/additional-50-off-plp_8d50958e-4679-4978-818b-0f5b34344b7c.jpg",
-              "mobile_image": "shopify://shop_images/additional-50-off-plp-mobile_3d63cfd8-9c07-41f4-acf9-3d5621fc1d3f.jpg"
+              "image": "shopify://shop_images/bebe-sale-desktop_373afdcb-67eb-497f-8219-594da0dd2441.jpg",
+              "mobile_image": "shopify://shop_images/bebe-sale-mobile_5d2a4f5d-d153-497d-b2cf-12b3cdd15f3f.jpg"
             }
           },
           "1554769189117": {
@@ -1849,11 +1849,11 @@
       }
     },
     "content_for_index": [
-      "1535728526385",
+      "1547557172846",
       "1548306390190",
       "1547711858918",
       "1536251685211",
-      "1547557172846",
+      "1535728526385",
       "1551244191226",
       "1547557568724",
       "1547175141098",
