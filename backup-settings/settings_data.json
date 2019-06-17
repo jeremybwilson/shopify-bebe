@@ -1432,8 +1432,8 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-desktop.jpg",
-              "mobile_image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-mobile.jpg",
+              "image": "shopify://shop_images/20-off-150-ends-tonight-use-code-june2019-desktop.jpg",
+              "mobile_image": "shopify://shop_images/20-off-150-ends-tonight-use-code-june2019-mobile.jpg",
               "cta_full_image": "shopify://collections/new",
               "heading": "<br>",
               "hide_header_desktop": true,
