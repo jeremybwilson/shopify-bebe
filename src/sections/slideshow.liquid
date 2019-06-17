@@ -11,7 +11,7 @@
 
       {% if section.blocks.size > 0 %}
 
-        {% comment %} Add a class for sliders with solo images {% endcomment %}      
+        {% comment %} Add a class for sliders with solo images {% endcomment %}
 
         {% if section.blocks.size == 1 %}
           {% assign solo_class = 'one-image-only' %}
@@ -27,7 +27,7 @@
             data-block-id="{{ block.id }}"
             class="slide--{{ block.id }} slide_image"
             data-flexslider-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
-  
+
             {% comment %} :: IMAGES - MOBILE AND DESKTOP :: {% endcomment %}
 
             {% if block.settings.image != blank %}
@@ -48,8 +48,8 @@
 
                   {% assign desktop_img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
-                  <img class="slideshow__image slideshow__image__{{ block.id }} lazyload lazyload-fade" 
-                    data-src="{{ desktop_img_url }}" 
+                  <img class="slideshow__image slideshow__image__{{ block.id }} lazyload lazyload-fade"
+                    data-src="{{ desktop_img_url }}"
                     data-sizes="auto"
                     data-parent-fit="cover"
                     alt="{{ block.settings.image.alt | escape }}">
@@ -87,7 +87,7 @@
                     }
                   }
                 {% endif %}
-                
+
               </style>
 
             {% endif %}
@@ -102,7 +102,7 @@
 
             {% comment %} :: CAPTION BLOCK :: {% endcomment %}
 
-            <div class="flex-caption slide-{{ block.id }} caption-align-{{ block.settings.caption_horizontal }}">
+            <div class="flex-caption slide-{{ block.id }}">
               <div class="caption-inners">
                 {% if block.settings.heading != blank %}
                 <h2 class="slide-title{% if block.settings.hide_header_desktop %} hide-desktop{% endif %}">{{ block.settings.heading }}</h2>
@@ -125,13 +125,13 @@
                   {% comment %} CTA TWO - Only show if link exists. Duplicate this and the necessary schema code if client asks for more buttons. {% endcomment %}
 
                   {% if block.settings.cta_two_link != blank and block.settings.cta_two_button_text != blank %}
-                  
+
                     <div class="cta" id="cta-one-{{ block.id }}">
                       <a href="{{ block.settings.cta_two_link }}">
                       {{ block.settings.cta_two_button_text }}
                       </a>
                     </div>
-                  
+
                   {% endif %}
 
                   {% comment %} THIRD AND FOURTH CTA ROW {% endcomment %}
@@ -165,11 +165,19 @@
           </li>
           <style>
             .flex-caption.slide-{{ block.id }} {
+              {% if block.settings.caption_vertical != blank %}
               top: {{ block.settings.caption_vertical }}%;
+              {% else %}
+              top: 50%;
+              {% endif %}
             }
             @media screen and (max-width: 767px) {
               .flex-caption.slide-{{ block.id }} {
+                {% if block.settings.caption_vertical_mobile != blank %}
                 top: {{ block.settings.caption_vertical_mobile }}%;
+                {% else %}
+                top: 50%;
+                {% endif %}
                 {% if block.settings.hide_buttons_mobile %}
                 display: none;
                 {% endif %}
@@ -177,18 +185,18 @@
             }
             @media screen and (min-width: 768px) {
               .flex-caption.slide-{{ block.id }} {
-                {% if block.settings.caption_horizontal_offset %}
-                margin-left: {{ block.settings.caption_horizontal_offset }}%;
+                {% if block.settings.caption_horizontal_offset != blank %}
+                left: {{ block.settings.caption_horizontal_offset }}%;
+                {% else %}
+                left: 50%;
                 {% endif %}
                 {% if block.settings.hide_buttons_desktop %}
                 display: none;
                 {% endif %}
               }
-              {% if block.settings.caption_horizontal_offset and block.settings.caption_horizontal_offset > 0 %}
               .flex-caption.slide-{{ block.id }} .caption-inners {
                 transform: translateX(-50%);
               }
-              {% endif %}
             }
             .flex-caption.slide-{{ block.id }} .caption-inners {
               {% assign bg_color = block.settings.caption_background %}
@@ -199,7 +207,7 @@
               background: {{ bg_color | color_modify: 'alpha', caption_opacity }};
               {% endif %}
               display: inline-block;
-              padding: 10px 20px;
+              {% comment %} padding: 10px 20px; {% endcomment %}
             }
             {% comment %} COLOR SCHEME STYLING {% endcomment %}
             {% if block.settings.caption_color_scheme == 'white' %}
@@ -306,7 +314,7 @@
         {
           "type": "header",
           "content": "Images"
-        },      
+        },
         {
           "type": "image_picker",
           "id": "image",
@@ -439,7 +447,7 @@
               "value": "custom",
               "label": "Custom"
             }
-          ] 
+          ]
         },
         {
           "type": "color",
@@ -458,53 +466,22 @@
           "content": "Text Box - Position"
         },
         {
-          "type": "select",
-          "id": "caption_horizontal",
-          "label": "Horizontal position",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ]
-        },
-        {
-          "type": "range",
+          "type": "text",
           "id": "caption_horizontal_offset",
-          "min": 0,
-          "max": 50,
-          "step": 0.50,
-          "unit": "%",
-          "label": "Horizontal offset (desktop only)",
-          "default": 0
+          "label":  "Horizontal offset, enter % value 0 - 100 (desktop only)",
+          "default": "50"
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "caption_vertical",
-          "min": 5,
-          "max": 70,
-          "step": 1,
-          "unit": "%",
-          "label": "Vertical position",
-          "default": 50
+          "label":  "Vertical position, enter % value 0 - 88",
+          "default": "50"
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "caption_vertical_mobile",
-          "min": 5,
-          "max": 80,
-          "step": 1,
-          "unit": "%",
-          "label": "Vertical position (mobile)",
-          "default": 50
+          "label":  "Vertical position, enter % value 5 - 80 (mobile)",
+          "default": "65"
         },
         {
           "type": "header",
