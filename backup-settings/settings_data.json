@@ -407,8 +407,8 @@
           "announcement_text_one": "FREE U.S. SHIPPING OVER $100",
           "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "shopify://collections/new",
-          "announcement_text_two": "20% OFF $150 OR MORE WITH CODE <strong>JUNE2019</strong>",
-          "announcement_popup_two_content": "june2019",
+          "announcement_text_two": "20% OFF WITH CLUBBEBE REWARDS SIGN-UP DETAILS",
+          "announcement_popup_two_content": "announcement-2",
           "announcement_link_two": "shopify://pages/coupons-discounts",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
@@ -498,7 +498,7 @@
       "product-template": {
         "type": "product-template",
         "settings": {
-          "sale_callout": "Use code JUNE2019 for 20% off any purchase of $150 or more.",
+          "sale_callout": "",
           "product_nav": false,
           "vendor": false,
           "show_quantity": false,
@@ -596,34 +596,32 @@
       },
       "1535728526385": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "1559631201439": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/bebe-girls-desktop_24023080-873d-49ca-bc18-497195fabfcf.jpg",
-              "mobile_image": "shopify://shop_images/bebe-girls-hp-mobile_767x_40ebf680-a21e-4adf-a0f8-cd26bcf611bc.jpg",
-              "cta_full_image": "shopify://collections/sale",
+              "image": "shopify://shop_images/hot-dresses-for-hot-nights-hp.jpg",
+              "mobile_image": "shopify://shop_images/hot-dresses-for-hot-nights-hp-mobile.jpg",
+              "cta_full_image": "shopify://collections/cocktail-evening-dresses",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
-              "cta_one_link": "shopify://collections/girls",
-              "cta_one_button_text": "Shop  Girls",
+              "cta_one_link": "shopify://collections/cocktail-evening-dresses",
+              "cta_one_button_text": "Shop Now",
               "cta_two_link": "",
-              "cta_two_button_text": "Add a button",
+              "cta_two_button_text": "",
               "cta_three_link": "",
-              "cta_three_button_text": "See Details",
+              "cta_three_button_text": "",
               "cta_four_link": "",
-              "cta_four_button_text": "Add a button",
+              "cta_four_button_text": "",
               "hide_buttons_desktop": false,
               "hide_buttons_mobile": true,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 33,
-              "caption_vertical": 69,
-              "caption_vertical_mobile": 70,
+              "caption_horizontal_offset": "68",
+              "caption_vertical": "62",
+              "caption_vertical_mobile": "70",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -643,24 +641,24 @@
           "1536251685211-0": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/shop-back-in-stock-so-hot-we-had-to-restock-desktop.jpg",
+              "image": "shopify://shop_images/twin-jumpsuit.jpg",
               "mobile_image": "",
-              "link": "shopify://collections/back-in-stock",
-              "heading_text": "So Hot We Had to Restock",
+              "link": "shopify://collections/white-hot",
+              "heading_text": "Your Favorite Summer Neutral",
               "text": "",
-              "cta_text": "SHOP BACK IN STOCK",
+              "cta_text": "SHOP WHITE",
               "cta_style": "button"
             }
           },
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/shop-jumpsuits-the-chic-ones-desktop_bf835e00-772b-41ab-bc75-1e5c92454d22.jpg",
+              "image": "shopify://shop_images/twin-bodysuit.jpg",
               "mobile_image": "",
-              "link": "shopify://collections/jumpsuits",
-              "heading_text": "The Chic Ones",
+              "link": "shopify://collections/bodysuits",
+              "heading_text": "Keepin’ It Sleek",
               "text": "",
-              "cta_text": "SHOP JUMPSUITS",
+              "cta_text": "SHOP BODYSUITS",
               "cta_style": "button"
             }
           }
@@ -753,10 +751,9 @@
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#164732",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 50,
-              "caption_vertical_mobile": 50,
+              "caption_horizontal_offset": "0",
+              "caption_vertical": "50",
+              "caption_vertical_mobile": "50",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -912,6 +909,15 @@
               "title": "Ordering/Shipping Questions",
               "answer": "",
               "anchor": "ordershipping"
+            }
+          },
+          "1560816199257": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "CAN I CANCEL AN ORDER?",
+              "answer": "Please be advised that once an order is “In Process” it can’t be canceled or changed. You’ll have to wait until you receive your purchase and then return it. For complete details on returning an item, please see our <a href=\"https://www.bebe.com/pages/returns\">Returns</a> page.",
+              "anchor": ""
             }
           },
           "1542219298126": {
@@ -1222,6 +1228,7 @@
           "1545695624500",
           "1545695760166",
           "1545689790310",
+          "1560816199257",
           "1542219298126",
           "1542220082322",
           "1542220259294",
@@ -1308,11 +1315,11 @@
           "1559631965043": {
             "type": "text_block",
             "settings": {
-              "heading_text": "20% OFF $150 OR MORE",
-              "text": "<p>Save on regular-priced &amp; sale styles with code JUNE2019.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code JUNE2019 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 6/17/19 at 11:59 pm PDT. &nbsp;</p>",
+              "heading_text": "$29 TOPS, $49 BOTTOMS, $69 DRESSES",
+              "text": "<p>Enjoy fabulous deals for a limited time.</p>",
+              "cta_text": "SHOP NOW",
+              "link": "shopify://collections/fabulous-deals",
+              "details_text": "<p>Online only. Select styles. Priced as marked. Final sale.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
@@ -1397,7 +1404,7 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-banner.jpg",
+          "image": "",
           "mobile_image": "",
           "link": "shopify://pages/coupons-discounts",
           "cart_bottom_block": ""
@@ -1432,29 +1439,28 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/20-off-150-ends-tonight-use-code-june2019-desktop.jpg",
-              "mobile_image": "shopify://shop_images/20-off-150-ends-tonight-use-code-june2019-mobile.jpg",
-              "cta_full_image": "shopify://collections/new",
+              "image": "shopify://shop_images/limited-time-fabulous-hp.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-fabulous-hp-mobile.jpg",
+              "cta_full_image": "shopify://collections/fabulous-deals",
               "heading": "<br>",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/new",
-              "cta_one_button_text": "SHOP NEW ARRIVALS",
-              "cta_two_link": "",
-              "cta_two_button_text": "",
-              "cta_three_link": "",
-              "cta_three_button_text": "",
-              "cta_four_link": "",
-              "cta_four_button_text": "",
+              "cta_one_link": "shopify://collections/29-tops",
+              "cta_one_button_text": "SHOP $29 Tops",
+              "cta_two_link": "shopify://collections/49-bottoms",
+              "cta_two_button_text": "Shop $49 Bottoms",
+              "cta_three_link": "shopify://collections/69-dresses",
+              "cta_three_button_text": "Shop $69 Dresses",
+              "cta_four_link": "shopify://collections/fabulous-deals",
+              "cta_four_button_text": "Shop all deals",
               "hide_buttons_desktop": false,
-              "hide_buttons_mobile": true,
+              "hide_buttons_mobile": false,
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 68,
-              "caption_vertical_mobile": 77,
+              "caption_horizontal_offset": "50",
+              "caption_vertical": "80",
+              "caption_vertical_mobile": "64",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1494,10 +1500,9 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 13.5,
-              "caption_vertical": 57,
-              "caption_vertical_mobile": 72,
+              "caption_horizontal_offset": "13.5",
+              "caption_vertical": "57",
+              "caption_vertical_mobile": "72",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1537,10 +1542,9 @@
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#e41c39",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 50,
-              "caption_vertical_mobile": 50,
+              "caption_horizontal_offset": "0",
+              "caption_vertical": "50",
+              "caption_vertical_mobile": "50",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1580,10 +1584,9 @@
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#e41c39",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 50,
-              "caption_vertical_mobile": 50,
+              "caption_horizontal_offset": "0",
+              "caption_vertical": "50",
+              "caption_vertical_mobile": "50",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1813,6 +1816,38 @@
               "image": "shopify://shop_images/3-for-99-plp.jpg",
               "mobile_image": "shopify://shop_images/3-for-99-plp-mobile.jpg"
             }
+          },
+          "1560838014107": {
+            "type": "image",
+            "settings": {
+              "collection": "fabulous-deals",
+              "image": "shopify://shop_images/fabulous-deals-plp.jpg",
+              "mobile_image": "shopify://shop_images/fabulous-deals-plp_1bb4940e-fd75-4fe4-8f8a-3e827fe9c20c.jpg"
+            }
+          },
+          "1560838061578": {
+            "type": "image",
+            "settings": {
+              "collection": "29-tops",
+              "image": "shopify://shop_images/29-tops-plp.jpg",
+              "mobile_image": "shopify://shop_images/29-tops-plp_6f5f17c6-bd61-4a99-8b08-5482ad125b79.jpg"
+            }
+          },
+          "1560838080099": {
+            "type": "image",
+            "settings": {
+              "collection": "49-bottoms",
+              "image": "shopify://shop_images/49-bottoms-plp.jpg",
+              "mobile_image": "shopify://shop_images/49-bottoms-plp_8f0a7789-5fca-462c-b089-7be5bf48b165.jpg"
+            }
+          },
+          "1560838111294": {
+            "type": "image",
+            "settings": {
+              "collection": "69-dresses",
+              "image": "shopify://shop_images/69-dresses-plp.jpg",
+              "mobile_image": "shopify://shop_images/69-dresses-plp_235d5f09-66d0-461b-bcca-62e609d8c621.jpg"
+            }
           }
         },
         "block_order": [
@@ -1832,7 +1867,11 @@
           "1554769523049",
           "1554769543881",
           "1554769568607",
-          "1559112979283"
+          "1559112979283",
+          "1560838014107",
+          "1560838061578",
+          "1560838080099",
+          "1560838111294"
         ],
         "settings": {}
       },
