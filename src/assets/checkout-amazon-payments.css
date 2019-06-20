@@ -1,0 +1,12 @@
+#payment-gateway-subfields-28878405696 .blank-slate p {
+	visibility: hidden;
+	position: relative;
+}
+
+#payment-gateway-subfields-28878405696 .blank-slate p:after {
+	visibility: visible;
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: "After clicking “Complete order”, you will be redirected to Amazon to complete your purchase securely.";
+}

@@ -22,6 +22,9 @@
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
 
+    <!--PDM-675-->
+    {{ 'checkout-amazon-payments.css' | asset_url | stylesheet_tag }} 
+    <!--PDM-675-->
   </head>
   <body>
     {% include 'script-google-tag-body' %}
