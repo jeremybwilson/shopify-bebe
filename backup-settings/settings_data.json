@@ -407,7 +407,7 @@
           "announcement_text_one": "FREE U.S. SHIPPING OVER $100",
           "announcement_popup_one_content": "announcement-1",
           "announcement_link_one": "shopify://collections/new",
-          "announcement_text_two": "20% OFF WITH CLUBBEBE REWARDS SIGN-UP DETAILS",
+          "announcement_text_two": "20% OFF WITH CLUBBEBE REWARDS SIGN-UP",
           "announcement_popup_two_content": "announcement-2",
           "announcement_link_two": "shopify://pages/coupons-discounts",
           "announcement_height": 35,
@@ -1312,6 +1312,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1561099347309": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "40% OFF SELECT SUMMER STYLES",
+              "text": "<p>Enjoy 40% off select items for a limited time. Priced as marked.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/limited-time-40-off",
+              "details_text": "<p>Online only. Priced as marked.&nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "light"
+            }
+          },
           "1559631965043": {
             "type": "text_block",
             "settings": {
@@ -1356,18 +1368,6 @@
               "cta_text": "Join the Club",
               "link": "/account/login",
               "details_text": "<p>Enjoy 20% off your first regular-priced purchase as a clubbebe member. One-time use only. Only valid on bebe.com. To redeem online, enter code provided in email at checkout. Not valid on sale items, promotions, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.</p>",
-              "coupon_size": "full",
-              "coupon_color": "light"
-            }
-          },
-          "1561099347309": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "40% OFF SELECT SUMMER STYLES",
-              "text": "<p>Enjoy 40% off select items for a limited time. Priced as marked.</p>",
-              "cta_text": "Shop Now",
-              "link": "shopify://collections/limited-time-40-off",
-              "details_text": "<p>Online only. Priced as marked.&nbsp;</p>",
               "coupon_size": "full",
               "coupon_color": "light"
             }
