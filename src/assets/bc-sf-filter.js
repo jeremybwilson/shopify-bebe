@@ -481,9 +481,29 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
 
     if (data && data.products && data.products.length) {
         if (data.event_type === 'page') {
-            productsCount += data.products.length;
+            if(this.queryParams.page == 1){
+                productsCount = data.products.length;
+            }else{
+                var total_product = bcSfFilterConfig.custom.products_per_page;
+                var to_count = total_product * this.queryParams.page;
+                var from_count = total_product * (this.queryParams.page-1);
+                if(to_count > data.total_product){
+                    to_count = data.total_product;
+                }
+                productsCount = from_count + " to " + to_count;
+            }
         } else {
-            productsCount = data.products.length;
+            if(this.queryParams.page == 1){
+                productsCount = data.products.length;
+            }else{
+                var total_product = bcSfFilterConfig.custom.products_per_page;
+                var to_count = total_product * this.queryParams.page;
+                var from_count = total_product * (this.queryParams.page-1);
+                if(to_count > data.total_product){
+                    to_count = data.total_product;
+                }
+                productsCount = from_count + " to " + to_count;
+            }
         }
     }
     document.getElementById( ui.currentCount ).innerHTML = productsCount;
