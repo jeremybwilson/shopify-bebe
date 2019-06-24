@@ -48,6 +48,26 @@
       },
       {
         "type": "header",
+        "content": "Google Optimize"
+      },
+      {
+        "type": "checkbox",
+        "id": "google_optimize_antiflicker_enabled",
+        "label": "Enable Google Optimize - Antiflicker Code"
+      },      
+      {
+        "type": "range",
+        "id": "google_optimize_antiflicker_amount",
+        "min": 0,
+        "max": 9000,
+        "step": 500,
+        "unit": "ms",
+        "label": "Delay amount",
+        "info": "(in milliseconds)",
+        "default": 2000
+      },      
+      {
+        "type": "header",
         "content": "Yotpo Reviews"
       },
       {
