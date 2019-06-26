@@ -407,8 +407,8 @@
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
           "announcement_text_one": "ADDITIONAL 50% OFF ALL SALE",
-          "announcement_popup_one_content": "",
-          "announcement_link_one": "",
+          "announcement_popup_one_content": "additional-off-sale",
+          "announcement_link_one": "shopify://pages/coupons-discounts",
           "announcement_text_two": "20% OFF $125 WITH CODE <strong>SAVE20</strong>, 30% OFF $225 WITH CODE <strong>SAVE30</strong>",
           "announcement_popup_two_content": "save20-save30",
           "announcement_link_two": "shopify://pages/coupons-discounts",
@@ -1314,6 +1314,18 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
+          "1561443189365": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF $125, 30% OFF $225",
+              "text": "<p>Save on your entire regular-priced purchase. Use SAVE20 for 20% off. Use SAVE30 for 30% off.</p>",
+              "cta_text": "Shop New Arrivals",
+              "link": "shopify://collections/new",
+              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off any regular-priced purchase of $125 or more, enter code SAVE20 at checkout. To redeem 30% off any regular-priced purchase of $225 or more, enter code SAVE30 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 6/28/19 at 11:59 pm PDT. &nbsp;</p>",
+              "coupon_size": "full",
+              "coupon_color": "medium"
+            }
+          },
           "1561099347309": {
             "type": "text_block",
             "settings": {
@@ -1360,18 +1372,6 @@
               "details_text": "<p>Enjoy 20% off your first regular-priced purchase as a clubbebe member. One-time use only. Only valid on bebe.com. To redeem online, enter code provided in email at checkout. Not valid on sale items, promotions, gift cards, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
-            }
-          },
-          "1561443189365": {
-            "type": "text_block",
-            "settings": {
-              "heading_text": "20% OFF $125, 30% OFF $225",
-              "text": "<p>Save on your entire regular-priced purchase. Use SAVE20 for 20% off. Use SAVE30 for 30% off.</p>",
-              "cta_text": "Shop New Arrivals",
-              "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem 20% off any regular-priced purchase of $125 or more, enter code SAVE20 at checkout. To redeem 30% off any regular-priced purchase of $225 or more, enter code SAVE30 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on sale items, promotional items, gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 6/28/19 at 11:59 pm PDT. &nbsp;</p>",
-              "coupon_size": "full",
-              "coupon_color": "medium"
             }
           }
         },
