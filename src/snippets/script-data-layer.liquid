@@ -274,15 +274,20 @@ __bva__.helpers = (function () {
           self.cart = cart;
           var product = getCartItem(cart.items, vId);
           // Have to account for initialItem being 0 when GWP items are added to cart.
+          // Product quantity increased
           if (product && initialItem && initialItem.quantity < product.quantity) {
             var addQuantity = product.quantity - initialItem.quantity;
             product.addQuantity = addQuantity;
             self.fireAddToCartPixel(product);
 
             // removing cart items action
+            // Product completely removed from cart
           } else if (initialItem && !product) {
             var removeQuantity = quantityChange;
+            initialItem.removeQuantity = quantityChange;
             self.fireRemoveFromCartPixel(initialItem);
+
+            // Product is still in cart, but quantity decreased
           } else if (product && initialItem && initialItem.quantity > product.quantity) {
             var removeQuantity = initialItem.quantity - product.quantity;
             initialItem.removeQuantity = removeQuantity;
@@ -1122,7 +1127,7 @@ __bva__.helpers = (function () {
         __bva__.helpers.fireEmptyCartPixel()
       } else {
         allQty.forEach(function (qty, i) {
-          var product = __bva__.cart.products[i]
+          var product = __bva__.cart.cartItems[i]
           var initialQuantity = 0;
           try {
             initialQuantity = parseInt(product.quantity, 10)
@@ -1621,6 +1626,66 @@ ready(function () {
     sessionStorage.setItem("clicked_next_or_prev_on_quickview", "true");
   }); {% endcomment %}
 
+  var fireAddToCartPixel = function (product, callback) {
+    if (!product) {
+      throw new Error('Missing product object');
+    }
+
+    var productUrl = product.url;
+    if(typeof product.properties == 'object' && product.properties._collection_handle_private){
+      productUrl = "/collections/" + product.properties._collection_handle_private + productUrl;
+    }
+    if(productUrl.indexOf("?") == -1){
+      productUrl += "?view=datalayer";
+    } else {
+      productUrl += "&view=datalayer";
+    }
+
+    jQuery.get(productUrl, function(response){
+      var payload = {};
+      var addedProduct = JSON.parse(response);
+      addedProduct.quantity = product.addQuantity;
+      payload.products = [addedProduct];
+      payload.event = "Add to Cart";
+      payload.pageType = "Add to Cart";
+      dataLayer.push(payload);
+
+      if ((typeof callback) === 'function') {
+        callback();
+      }
+    });
+  };
+
+  var fireRemoveFromCartPixel = function (product, callback) {
+    if (!product) {
+      throw new Error('Missing product object');
+    }
+
+    var productUrl = product.url;
+    if(typeof product.properties == 'object' && product.properties._collection_handle_private){
+      productUrl = "/collections/" + product.properties._collection_handle_private + productUrl;
+    }
+    if(productUrl.indexOf("?") == -1){
+      productUrl += "?view=datalayer";
+    } else {
+      productUrl += "&view=datalayer";
+    }
+
+    jQuery.get(productUrl, function(response){
+      var payload = {};
+      var removedProduct = JSON.parse(response);
+      removedProduct.quantity = product.removeQuantity;
+      payload.products = [removedProduct];
+      payload.event = "Remove from Cart";
+      payload.pageType = "Remove from Cart";
+      dataLayer.push(payload);
+
+      if ((typeof callback) === 'function') {
+        callback();
+      }
+    });
+  };
+
   /**
    * Cart Change
    */
@@ -1634,6 +1699,7 @@ ready(function () {
         for (var i = 0; i < dataLayer[dlIndex].cartItems.length; i++) {
           if (dataLayer[dlIndex].cartItems[i].variantId == id) {
             payload = dataLayer[dlIndex].cartItems[i];
+            payload.removeQuantity = payload.quantity;
             break;
           }
         }
@@ -1641,14 +1707,10 @@ ready(function () {
       }
     }
 
-    dataLayer.push({
-      pageType: 'Remove from Cart',
-      event: 'Remove from Cart',
-      products: [payload]
+    fireRemoveFromCartPixel(payload, function () {
+      document.getElementById('updates_'+id).value = 0;
+      $( '#cartform' ).submit(); // Refreshes form since action = '/cart'
     });
-
-    document.getElementById('updates_'+id).value = 0;
-    $( '#cartform' ).submit(); // Refreshes form since action = '/cart'
   }
 
   $(document).on('click', '.remove-item', function (e) {
@@ -1681,7 +1743,6 @@ ready(function () {
 
       // PREP : Setup default values before checking cart items
       var isUpdated = false;
-      var totalAmount = 0;
 
       // ITERATE : Check cart items against data layer for discrepancies and store them
       for ( var i = dataLayer.length -1; i >= 0; i-- ) {
@@ -1699,28 +1760,20 @@ ready(function () {
               var cId = dataLayerItem.variantId.toString();
 
               if ( cartItemObj[cId] || cartItemObj[cId] === 0 ) {
-                if (dataLayerItem.quantity < cartItemObj[cId]) {
+                if (dataLayerItem.quantity > cartItemObj[cId]) {
 
                   // for Remove from Cart event, product's quantity
-                  dataLayerItem.quantity = cartItemObj[cId] - dataLayerItem.quantity;
-                  dataLayer.push({
-                    pageType: 'Remove from Cart',
-                    event: 'Remove from Cart',
-                    products: [JSON.parse(JSON.stringify(dataLayerItem))]
-                  });
+                  dataLayerItem.removeQuantity = dataLayerItem.quantity - cartItemObj[cId];
+                  fireRemoveFromCartPixel(dataLayerItem);
 
                   // for Update Cart event, product's quantity need to be changed again by latest quantity.
                   dataLayerItem.quantity = cartItemObj[cId];
                   isUpdated = true;
-                } else if (dataLayerItem.quantity > cartItemObj[cId]) {
+                } else if (dataLayerItem.quantity < cartItemObj[cId]) {
 
                   // for Add to Cart event, product's quantity
-                  dataLayerItem.quantity = dataLayerItem.quantity - cartItemObj[cId];
-                  dataLayer.push({
-                    pageType: 'Add to Cart',
-                    event: 'Add to Cart',
-                    products: [JSON.parse(JSON.stringify(dataLayerItem))]
-                  });
+                  dataLayerItem.addQuantity = cartItemObj[cId] - dataLayerItem.quantity;
+                  fireAddToCartPixel(dataLayerItem);
 
                   // for Update Cart event, product's quantity need to be changed again by latest quantity.
                   dataLayerItem.quantity = cartItemObj[cId];
