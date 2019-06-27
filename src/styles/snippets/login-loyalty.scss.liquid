@@ -104,6 +104,12 @@
     max-width: 130px;
     text-align: center;
 
+    @include mq('tablet-and-up'){
+      max-width: none;
+      width: 30%;
+      margin-bottom: 20px;
+    }
+
     .perks-pts{
       @include fontDim( 48px, 35px, 0em );
     }
@@ -197,13 +203,12 @@
 }
 .club-dis{
   width: 100%;
-  padding: 0 20px;
-  margin: 0 auto;
-  text-align:center;
+  margin: 1em auto;
+  text-align: center;
   @include fontSize( 11px );
 
   @include mq( 'lap-and-up' ) {
-    width:50%;
+    width: 50%;
   }
 
   p {
@@ -444,8 +449,8 @@ div#club--rewards-history {
 }
 .club--rewards-history--date { width: 20%; }
 .club--rewards-history--action { width: 45%; }
-.club--rewards-history--points { width: 15%; text-align: right; }
-.club--rewards-history--status { width: 20%; text-align: right; }
+.club--rewards-history--points { width: auto; text-align: right; }
+.club--rewards-history--status { display: none; width: 20%; text-align: right; }  // Removed per PDM-655
 
 // :: DASHBOARD :: VIP Tiers Breakdown
 
@@ -461,6 +466,11 @@ div#club--rewards-history {
     margin: 0 0 12px;
     @include fontSize( 18px );
     text-align: center;
+  }
+
+  p {
+    text-align: center;
+    margin: 1em auto;
   }
 
   #club--vip-tiers--mobile-chart {
