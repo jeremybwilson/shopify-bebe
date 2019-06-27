@@ -184,7 +184,15 @@
   <div id="DrawerPageContainer" class="drawer-content">
     {% section 'offer-tab' %}
     {% include 'script-google-tag-body' %}
-
+    {% if template contains 'index' or template contains 'collection' or template contains 'product' %}
+      {% section 'super-banner-home' %}
+    {% endif %}
+    {% if template contains 'collection' %}
+      {% section 'super-banner-plp' %}
+    {% endif %}
+    {% if template contains 'product' %}
+      {% section 'super-banner-pdp' %}
+    {% endif %}
     {% comment %} :: Fixed header cannot be wrapped in a transitional container. :: {% endcomment %}
     {% section 'header' %}
 

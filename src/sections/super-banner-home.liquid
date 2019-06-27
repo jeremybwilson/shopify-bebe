@@ -1,0 +1,96 @@
+{% if section.settings.check_banner_status and section.blocks.size > 0 %}
+<div id="super-banner-wrap" class="super-banner-background">
+  <div class="row">  
+    <div class="super-banner-slider super-banner-desktop">
+        {% for block in section.blocks limit: section.blocks.size %}
+            <div class="super-banner-lopp">
+                {% if block.settings.link_action_select != "link" %}
+                    {% assign page_content = pages[block.settings.popup_page].content %}
+                    <div class="super-banner">
+                        <a href="#superbanner-popup-content--{{block.id}}"><p>{{ block.settings.banner_text }}</p></a>
+                    </div>
+                    <div id="superbanner-popups">
+                        <div id="superbanner-popup-content--{{block.id}}">
+                            {{ page_content }}
+                        </div>
+                    </div>
+                {% else %}
+                    {% assign link_url = block.settings.link_url %}
+                    <a href="{{link_url}}"><p>{{ block.settings.banner_text }}</p></a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="super-banner-slider super-banner-mobile">
+        {% for block in section.blocks limit: section.blocks.size %}
+            <div class="super-banner-lopp">
+                {% if block.settings.link_action_select != "link" %}
+                    {% assign page_content = pages[block.settings.popup_page].content %}
+                    <div class="super-banner">
+                        <a href="#superbanner-popup-content--{{block.id}}"><p>{{ block.settings.banner_text }}</p></a>
+                    </div>
+                    <div id="superbanner-popups">
+                        <div id="superbanner-popup-content--{{block.id}}">
+                            {{ page_content }}
+                        </div>
+                    </div>
+                {% else %}
+                    {% assign link_url = block.settings.link_url %}
+                    <a href="{{link_url}}"><p>{{ block.settings.banner_text }}</p></a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Super Banner Home",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "check_banner_status",
+            "default": true,
+            "label": "Enable/Disable"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Home Banners",
+            "type": "home_banner",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "banner_text",
+                    "label": "Banner Text"
+                },
+                {
+                    "type": "select",
+                    "id": "link_action_select",
+                    "label": "Link Action",
+                    "options": [
+                        { "value": "link", "label": "Link"},
+                        { "value": "popup", "label": "Popup"}
+                    ],
+                    "default": "link"
+                },
+                {
+                    "id": "popup_page",
+                    "type": "page",
+                    "label": "Popup Content",
+                    "info": "Populates lightbox with Page content"
+                },
+                {
+                    "id": "link_url",
+                    "type": "url",
+                    "label": "Link"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}

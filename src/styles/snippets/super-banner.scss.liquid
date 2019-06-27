@@ -1,0 +1,62 @@
+#superbanner-popups {
+    display: none;
+}
+.super-banner-background{ 
+    min-height: 50px;
+    height: 100%;
+    overflow: hidden;
+    background-color:#efefef;
+
+    p{
+        margin: 0 0 0 0;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 1.5px;
+        line-height: 18px;
+        color: #363636;
+
+        strong{
+           color:#000;
+           font-size: 13px;
+        }
+    }
+
+    .super-banner-slider {
+        padding:9px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } 
+}
+.super-banner-lopp {
+    text-align: center;
+    width: 33%;
+    display: inline-block;
+    
+    a{
+       text-decoration: none !important;
+    }
+}     
+.super-banner-mobile {
+    display:none !important;
+}
+@include mq('phone') {
+   .super-banner-mobile {
+        display: block !important;
+        max-height: 50px;
+
+        .slick-arrow {
+            display: none !important;
+        }
+    }
+    .super-banner-desktop{
+        display:none !important;
+    }
+    .super-banner-background .slick-track {
+        height: 100%;
+        max-height: 32px;
+    }
+}
