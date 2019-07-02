@@ -184,9 +184,7 @@
   <div id="DrawerPageContainer" class="drawer-content">
     {% section 'offer-tab' %}
     {% include 'script-google-tag-body' %}
-    {% if template contains 'index' or template contains 'collection' or template contains 'product' %}
-      {% section 'super-banner-home' %}
-    {% endif %}
+    {% section 'super-banner-global' %}
     {% if template contains 'collection' %}
       {% section 'super-banner-plp' %}
     {% endif %}

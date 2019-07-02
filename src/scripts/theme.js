@@ -1080,10 +1080,12 @@ theme.Header = (function() {
       infinite: true,
       autoplaySpeed: 2000,
       slidesToShow: 1, 
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+      fade: true
     });
     if($.trim($("#shopify-section-super-banner-plp").html()) != '' || $.trim($("#shopify-section-super-banner-pdp").html()) != '') {
-      $("#shopify-section-super-banner-home").remove();
+      $("#shopify-section-super-banner-global").remove();
     }
 
   }
