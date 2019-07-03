@@ -1,0 +1,33 @@
+<div class="order-summary__section order-summary__section--swell" style="display:none;" id="swell-checkout">
+   <div style="display:none;">
+      <span id="swell-checkout-customer-id">{{ customer.id }}</span>
+      <span id="swell-checkout-customer-email">{{ customer.email }}</span>
+      <span id="swell-checkout-customer-tags">{{ customer.tags | json }}</span>
+   </div>
+   <h3>Redeem Reward Points Here</h3>
+   <div class="swell-wrapper" style="line-height: 22px;">
+      <div class="balance">
+         <strong>You have <span class="swell-point-balance"></span> points to use.</strong>
+      </div>
+   </div>
+   <div class="swell-checkout-error-message" id="swell-checkout-error-message-amount" style="display:none;color:red;">Oops, You don't have enough points to redeem yet.</div>
+   <div class="swell-checkout-error-message" id="swell-checkout-error-message-general" style="display:none;color:red;">Sorry something went wrong.  Try again and if the problem persists please contact support.</div>
+   <div class="fieldset" style="margin-top: 15px;">
+      <div class="field">
+         <div class="field__input-btn-wrapper">
+            <div class="field field--show-floating-label">
+               <div class="field__input-wrapper field__input-wrapper--select">
+                  <label class="field__label">Redeem Points</label>
+                  <select class="field__input field__input--select" id="swell-checkout-redemption-options"></select>
+               </div>
+            </div>
+            <button type="submit" id="swell-checkout-redeem-btn" style="height:45px;margin-top:5px;" class="field__input-btn btn btn--default swell-button">
+            <span class="btn__content visually-hidden-on-mobile">Apply</span>
+            <i class="btn__content shown-on-mobile icon icon--arrow"></i>
+            <i style="display:none;" class="fa fa-spinner fa-spin"></i>
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
+<script type="text/javascript" async="" src="https://cdn.swellrewards.com/loader/msrX3pZA7wZvzTquxrSL2Q.js?shop=bebe-prod.myshopify.com"></script>
