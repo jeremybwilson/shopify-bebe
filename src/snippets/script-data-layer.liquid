@@ -296,7 +296,7 @@ __bva__.helpers = (function () {
             console.log('Not enough in stock.');
           }
 
-          return callback.apply(this, cart);
+          return callback.apply(this, arguments);
         };
 
         changeItemMethod.apply(ShopifyAPI, arguments);
