@@ -106,6 +106,13 @@
       <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
     </div>
 
+    <div id="customer_subscribe" class="clearfix large_form" style="margin-bottom: 1em;">
+      <input type="hidden" name="customer[accepts_marketing]" value="" />
+      <input type="checkbox" name="customer[accepts_marketing]" checked="checked" />
+      {% comment %} Make this configurable in the settings {% endcomment %}
+      <label for="accepts_marketing" class="login" style="display:inline; margin-left: .25em;"> Subscribe to our newsletter </label>
+    </div>
+
 
     <div class="action_bottom">
       <input class="secondary button" type="submit" value="{{ 'customer.register.submit' | t }}"/>
@@ -133,5 +140,4 @@
 
   if (window.location.hash == '#recover') { showRecoverPasswordForm() }
 </script>
-
 
