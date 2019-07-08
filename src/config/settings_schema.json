@@ -34,6 +34,13 @@
       },
       {
         "type": "checkbox",
+        "id": "enable_newsletter_subscribe",
+        "label": "Enable Subscribing Newsletter",
+        "info": "You'll see the checkbox on our login/signup form",
+        "default": true
+      },
+      {
+        "type": "checkbox",
         "id": "enable_script_data_layer",
         "label": "Enable/Disable dataLayer",
         "info": "For Dev testing - PLEASE DO NOT DISABLE",
