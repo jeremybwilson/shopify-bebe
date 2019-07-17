@@ -8,14 +8,19 @@
 
     {% comment %} ..:: ONE PROMO BANNER ::.. {% endcomment %}
     {%- if section.settings.num_of_promo_banners == "1" -%}
-      <div id="single-promo-wrapper" class="desktop-12 tablet-6 mobile-3">
-        
+      <div id="single-promo-wrapper" class="promo-banner one desktop-12 tablet-6 mobile-3">
         {%- if section.settings.announcement_link_one -%}
           <a href="{{ section.settings.announcement_link_one }}">{{ section.settings.announcement_text_one }}</a>
         {%- else -%}
-          {{ section.settings.announcement_text_one }}
+          <a href="#announcement-popup-content--one">{{ section.settings.announcement_text_one }} <span class="details-link">Details</a>
         {%- endif -%}
-
+      </div>
+      <div id="announcement-popups">
+          {% if section.settings.announcement_popup_one_content != blank %}
+            <div id="announcement-popup-content--one">
+              {{ pages[section.settings.announcement_popup_one_content].content }}
+            </div>
+          {% endif %}
       </div>
     {%- endif -%}
 
@@ -31,17 +36,17 @@
 
         <div class="promo-banner one">
           {%- if section.settings.announcement_link_one -%}
-            <a href="#announcement-popup-content--one">{{ section.settings.announcement_text_one }} <span class="details-link">Details</a>
+            <a href="{{ section.settings.announcement_link_one }}">{{ section.settings.announcement_text_one }}</a>
           {%- else -%}
-            {{ section.settings.announcement_text_one }}
+            <a href="#announcement-popup-content--one">{{ section.settings.announcement_text_one }} <span class="details-link">Details</a>
           {%- endif -%}
         </div>
 
         <div class="promo-banner two">
           {%- if section.settings.announcement_link_two -%}
-            <a href="#announcement-popup-content--two">{{ section.settings.announcement_text_two }} <span class="details-link">Details</a>
+            <a href="{{ section.settings.announcement_link_two }}">{{ section.settings.announcement_text_two }}</a>
           {%- else -%}
-            {{ section.settings.announcement_text_two }}
+            <a href="#announcement-popup-content--two">{{ section.settings.announcement_text_two }} <span class="details-link">Details</a>
           {%- endif -%}
         </div>
 
