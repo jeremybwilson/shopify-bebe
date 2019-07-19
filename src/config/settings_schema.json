@@ -1448,6 +1448,20 @@
     "name": "Newsletter popup",
     "settings": [
       {
+        "type": "checkbox",
+        "id": "enable_newsletter_signup",
+        "label": "Enable Newsletter Signup",
+        "default": true
+      },
+      {
+        "type": "range",
+        "min": 1,
+        "max": 100,
+        "default": 30,
+        "id": "newsletter_signup_cookie_days",
+        "label": "Cookie Expires In (# of Days)"
+      },
+      {
         "type": "header",
         "content": "EMAIL SIGNUP FORM SETTINGS"
       },

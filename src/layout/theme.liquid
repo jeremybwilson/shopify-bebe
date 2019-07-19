@@ -182,7 +182,9 @@
 <body class="gridlock shifter bfx-price-container bfx-remove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
   {% include 'timber-cart' %}
   <div id="DrawerPageContainer" class="drawer-content">
-    {% section 'offer-tab' %}
+    {% if settings.enable_newsletter_signup %}
+      {% section 'offer-tab' %}
+    {% endif %}
     {% include 'script-google-tag-body' %}
 
     {% comment %} :: Fixed header cannot be wrapped in a transitional container. :: {% endcomment %}
