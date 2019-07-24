@@ -144,6 +144,12 @@
   }  
 }
 
+#desktop-yotpo-star-rating{
+  @include mq('phone') {
+    display: none;
+  }  
+}
+
 #product-price {
   border-bottom: none;
   color: $color--primary-2;
@@ -333,6 +339,7 @@
 
   ul {
     margin-top: 0;
+    padding-left: 20px;
   }
 
 }

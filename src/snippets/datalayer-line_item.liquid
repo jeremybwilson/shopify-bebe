@@ -1,0 +1,37 @@
+{
+  "id"            : {{ line_item.id | json }},
+  "productId"     : {{ line_item.product_id | json}},
+  "sku"           : {{ line_item.sku | json }},
+  "variantId"     : {{ line_item.variant_id | json }},
+  "name"          : {{ line_item.title | json }},
+  "price"         : {{ line_item.original_price | money_without_currency | remove: ',' | json}},
+  "finalPrice"    : {{ line_item.final_price | money_without_currency | remove: ',' | json }},
+  "comparePrice"  : {{ line_item.product.compare_at_price_max | money_without_currency | remove: ',' | json}},
+  "lineTotal"     : {{ line_item.final_line_price | money_without_currency | remove: ',' | json }},
+  "totalDiscount" : {{ line_item.total_discount | money_without_currency| remove: "," | json }},
+  "quantity"      : "{{ line_item.quantity | remove: ',' }}",
+  "image"         : "https:{{ line_item.image | img_url:'grande' }}",
+  "url"           : "{% if line_item.product.url %}{{ shop.secure_url}}{{ line_item.product.url }}{% endif %}",
+  "description"   : {{ line_item.product.description | strip_html | json}},
+  "productType"   : {{ line_item.product.type | json }},
+  "brand"         : {{ line_item.product.vendor | default: shop.name | json }},
+  "options"       : {
+    {%- for option in line_item.product.options -%}
+      {% capture optionIndex %}option{{forloop.index}}{% endcapture %}
+      "{{ option }}" : "{{ line_item.variant[optionIndex] }}"{%- unless forloop.last -%},{%- endunless -%}
+    {% endfor %}
+  },
+  "categories": {{line_item.product.collections|map:"title"|json}},
+  "category":
+    {%- if line_item.properties and line_item.properties._collection_private -%}
+      "{{ line_item.properties._collection_private }}"
+    {%- else -%}
+      ""
+    {% endif %},
+  "categoryPath":
+    {%- if line_item.properties and line_item.properties._collection_handle_private -%}
+      "{{ line_item.properties._collection_handle_private }}"
+    {%- else -%}
+      ""
+    {% endif %}
+}

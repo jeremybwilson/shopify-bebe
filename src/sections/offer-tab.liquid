@@ -1,11 +1,15 @@
 {%- if section.settings.show -%}
   {%- if section.settings.homepage_only == false or template.name == 'index' -%}
     <div class="offer-tab" data-section-id="{{ section.id }}" data-section-type="offer-tab-section">
-      <a href="#newsletter-modal" class="js-offer-tab offer-tab__label">
+
+      <a href="#newsletter-modal"
+         class="js-offer-tab offer-tab__label"
+         data-cookie-days="{{ settings.newsletter_signup_cookie_days }}"
+      >
         {% if customer %}
-        {{ section.settings.member_offer }}
+            {{ section.settings.member_offer }}
         {% else %}
-          {{ section.settings.non_member_offer }}
+            {{ section.settings.non_member_offer }}
         {% endif %}
       </a>
       <span class="offer-tab__cross js-offer-tab-close">{% include 'svg-icon-x' %}</span>

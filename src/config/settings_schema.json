@@ -34,6 +34,13 @@
       },
       {
         "type": "checkbox",
+        "id": "enable_newsletter_subscribe",
+        "label": "Enable Subscribing Newsletter",
+        "info": "You'll see the checkbox on our login/signup form",
+        "default": true
+      },
+      {
+        "type": "checkbox",
         "id": "enable_script_data_layer",
         "label": "Enable/Disable dataLayer",
         "info": "For Dev testing - PLEASE DO NOT DISABLE",
@@ -46,6 +53,26 @@
         "info": "You'll see debugging information via console.log",
         "default": false
       },
+      {
+        "type": "header",
+        "content": "Google Optimize"
+      },
+      {
+        "type": "checkbox",
+        "id": "google_optimize_antiflicker_enabled",
+        "label": "Enable Google Optimize - Antiflicker Code"
+      },      
+      {
+        "type": "range",
+        "id": "google_optimize_antiflicker_amount",
+        "min": 0,
+        "max": 9000,
+        "step": 500,
+        "unit": "ms",
+        "label": "Delay amount",
+        "info": "(in milliseconds)",
+        "default": 2000
+      },      
       {
         "type": "header",
         "content": "Yotpo Reviews"
@@ -1420,6 +1447,20 @@
   {
     "name": "Newsletter popup",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_newsletter_signup",
+        "label": "Enable Newsletter Signup",
+        "default": true
+      },
+      {
+        "type": "range",
+        "min": 1,
+        "max": 100,
+        "default": 30,
+        "id": "newsletter_signup_cookie_days",
+        "label": "Cookie Expires In (# of Days)"
+      },
       {
         "type": "header",
         "content": "EMAIL SIGNUP FORM SETTINGS"

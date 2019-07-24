@@ -51,6 +51,7 @@
             <span class="club--rewards-history--date">Date</span>
             <span class="club--rewards-history--action">Action</span>
             <span class="club--rewards-history--points">Points</span>
+            {% comment %} Removed per PDM-655 {% endcomment %}
             <span class="club--rewards-history--status">Status / Code</span>
           </li>
         </ul>
@@ -60,6 +61,7 @@
 
         <div id="club--vip-tiers">
           <h2>clubbebe Perks</h2>
+            <p>$1 spent = 1 point earned at Member, Insider & Elite levels. $1 spent = 1.5 points earned at Icon level. </p>
             <ul id="club--vip-tiers--mobile-chart">
               <li class="club-tier--Member">
                 <h4>
@@ -102,7 +104,7 @@
                   <dt>Level-up offer<sup>*</sup></dt>
                   <dd>20% off</dd>
                   <dt>Free Shipping<sup>**</sup></dt>
-                  <dd>Standard</dd>
+                  <dd><span>●</span></dd>
                 </dl>
               </li>
 
@@ -119,7 +121,7 @@
                   <dt>Level-up offer<sup>*</sup></dt>
                   <dd>25% off</dd>
                   <dt>Free Shipping<sup>**</sup></dt>
-                  <dd>Express</dd>
+                  <dd><span>●</span></dd>
                 </dl>
               </li>
 
@@ -161,8 +163,8 @@
                   <th><span>Free shipping**</span></th>
                   <td></td>
                   <td></td>
-                  <td class="club-tier--Elite"><span class="tb-txt-lg">Standard</span></td>
-                  <td class="club-tier--Icon"><span class="tb-txt-lg">Express</span></td>
+                  <td class="club-tier--Elite"><span class="clubdot tb-txt-lg">●</span></td>
+                  <td class="club-tier--Icon"><span class="clubdot tb-txt-lg">●</span></td>
                 </tr>
               </tbody>
             </table>

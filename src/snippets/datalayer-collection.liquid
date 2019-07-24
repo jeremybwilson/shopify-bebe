@@ -1,0 +1,6 @@
+[
+  {%- for product in collection.products -%}
+    {% include "datalayer-product" %}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+]
+

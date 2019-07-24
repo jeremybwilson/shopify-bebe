@@ -5,6 +5,8 @@
     "google_tag_manager_id": "GTM-MX9MWW2",
     "enable_script_data_layer": true,
     "data_layer_debugging": false,
+    "google_optimize_antiflicker_enabled": false,
+    "google_optimize_antiflicker_amount": 2000,
     "yotpo_id": "ysdDdOTclZVygIz6P1JFXOBAPs6PC2cYWoYLnTIt",
     "yottaa_key": "6wlTRCPAhuhb1Q",
     "announcement_text_color": "#000000",
@@ -404,12 +406,12 @@
           "full_width_header": false,
           "show_announcement_text": true,
           "num_of_promo_banners": "2",
-          "announcement_text_one": "FREE U.S. SHIPPING OVER $100",
-          "announcement_popup_one_content": "announcement-1",
-          "announcement_link_one": "shopify://collections/new",
-          "announcement_text_two": "20% OFF $150 OR MORE WITH CODE <strong>JUNE2019</strong>",
-          "announcement_popup_two_content": "june2019",
-          "announcement_link_two": "shopify://pages/coupons-discounts",
+          "announcement_text_one": "END OF SEASON SALE: UP TO 70% OFF",
+          "announcement_popup_one_content": "additional-off-sale",
+          "announcement_link_one": "shopify://pages/coupons-discounts",
+          "announcement_text_two": "20% OFF WHEN YOU JOIN CLUBBEBE",
+          "announcement_popup_two_content": "announcement-2",
+          "announcement_link_two": "shopify://pages/login-content",
           "announcement_height": 35,
           "announcement_swap_rate": 5,
           "top_left_highlight_link": "http://www.instagram.com/bebe_stores",
@@ -498,7 +500,7 @@
       "product-template": {
         "type": "product-template",
         "settings": {
-          "sale_callout": "Use code JUNE2019 for 20% off any purchase of $150 or more.",
+          "sale_callout": "",
           "product_nav": false,
           "vendor": false,
           "show_quantity": false,
@@ -597,21 +599,21 @@
       "1535728526385": {
         "type": "slideshow",
         "blocks": {
-          "1559631201439": {
+          "1562048779941": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/bebe-girls-desktop_24023080-873d-49ca-bc18-497195fabfcf.jpg",
-              "mobile_image": "shopify://shop_images/bebe-girls-hp-mobile_767x_40ebf680-a21e-4adf-a0f8-cd26bcf611bc.jpg",
-              "cta_full_image": "shopify://collections/sale",
+              "image": "shopify://shop_images/3-for-99-promo.jpg",
+              "mobile_image": "shopify://shop_images/3-for-99-promo-mobile.jpg",
+              "cta_full_image": "shopify://collections/3-for-99",
               "heading": "",
-              "hide_header_desktop": false,
+              "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/girls",
-              "cta_one_button_text": "Shop  Girls",
+              "cta_one_link": "shopify://collections/3-for-99",
+              "cta_one_button_text": "Shop Now",
               "cta_two_link": "",
               "cta_two_button_text": "Add a button",
               "cta_three_link": "",
-              "cta_three_button_text": "See Details",
+              "cta_three_button_text": "Add a button",
               "cta_four_link": "",
               "cta_four_button_text": "Add a button",
               "hide_buttons_desktop": false,
@@ -619,17 +621,76 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 33,
-              "caption_vertical": 69,
-              "caption_vertical_mobile": 70,
+              "caption_horizontal_offset": "50",
+              "caption_vertical": "73",
+              "caption_vertical_mobile": "65",
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          },
+          "1562002351753": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-desktop.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-mobile_be1d29b2-4afb-4bf0-989b-c19d7f3b7ef5.jpg",
+              "cta_full_image": "shopify://collections/sale",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "shopify://collections/sale",
+              "cta_one_button_text": "Shop Sale",
+              "cta_two_link": "",
+              "cta_two_button_text": "Add a button",
+              "cta_three_link": "",
+              "cta_three_button_text": "Add a button",
+              "cta_four_link": "",
+              "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": false,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#000000",
+              "caption_horizontal_offset": "50",
+              "caption_vertical": "73",
+              "caption_vertical_mobile": "80",
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_opacity": "0.1"
+            }
+          },
+          "1561704711324": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/limited-time-20-off-25-off-30-off-use-code-july20-july25-july30-desktop_d2bdaf76-d717-4aaa-97d7-a5219f345932.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-20-off-25-off-30-off-use-code-july20-july25-july30-mobile_79877a2e-b37a-4227-bb9b-9f9b0a4180f1.jpg",
+              "cta_full_image": "shopify://collections/sale",
+              "heading": "",
+              "hide_header_desktop": false,
+              "subheading": "",
+              "cta_one_link": "shopify://collections/new",
+              "cta_one_button_text": "shop now",
+              "cta_two_link": "",
+              "cta_two_button_text": "Add a button",
+              "cta_three_link": "",
+              "cta_three_button_text": "Add a button",
+              "cta_four_link": "",
+              "cta_four_button_text": "Add a button",
+              "hide_buttons_desktop": false,
+              "hide_buttons_mobile": true,
+              "caption_color_scheme": "custom",
+              "custom_slide_main_color": "#ffffff",
+              "custom_slide_alt_color": "#000000",
+              "caption_horizontal_offset": "75",
+              "caption_vertical": "82",
+              "caption_vertical_mobile": "80",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
           }
         },
         "block_order": [
-          "1559631201439"
+          "1562048779941",
+          "1562002351753",
+          "1561704711324"
         ],
         "settings": {
           "full_width": true,
@@ -639,25 +700,25 @@
       "1536251685211": {
         "type": "twin-promos",
         "blocks": {
-          "1536251685211-0": {
-            "type": "text_block",
-            "settings": {
-              "image": "shopify://shop_images/shop-back-in-stock-so-hot-we-had-to-restock-desktop.jpg",
-              "mobile_image": "",
-              "link": "shopify://collections/back-in-stock",
-              "heading_text": "So Hot We Had to Restock",
-              "text": "",
-              "cta_text": "SHOP BACK IN STOCK",
-              "cta_style": "button"
-            }
-          },
           "1536251685211-1": {
             "type": "text_block",
             "settings": {
-              "image": "shopify://shop_images/shop-jumpsuits-the-chic-ones-desktop_bf835e00-772b-41ab-bc75-1e5c92454d22.jpg",
+              "image": "shopify://shop_images/shop-new-arrivals-summer-sexy-summer-comfy-desktop_b5474992-ef22-498f-980d-2628d8abb505.jpg",
+              "mobile_image": "",
+              "link": "shopify://collections/new",
+              "heading_text": "Summer Sexy, Summer Comfy",
+              "text": "",
+              "cta_text": "SHOP NEW ARRIVALS",
+              "cta_style": "button"
+            }
+          },
+          "1536251685211-0": {
+            "type": "text_block",
+            "settings": {
+              "image": "shopify://shop_images/shop-jumpsuits-twin_10a2ba9e-dec6-46dc-a34e-a6ffabce68a0.jpg",
               "mobile_image": "",
               "link": "shopify://collections/jumpsuits",
-              "heading_text": "The Chic Ones",
+              "heading_text": "Full Body Fabulous",
               "text": "",
               "cta_text": "SHOP JUMPSUITS",
               "cta_style": "button"
@@ -665,8 +726,8 @@
           }
         },
         "block_order": [
-          "1536251685211-0",
-          "1536251685211-1"
+          "1536251685211-1",
+          "1536251685211-0"
         ],
         "settings": {
           "full_width": false
@@ -752,10 +813,9 @@
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#164732",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 50,
-              "caption_vertical_mobile": 50,
+              "caption_horizontal_offset": "0",
+              "caption_vertical": "50",
+              "caption_vertical_mobile": "50",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -911,6 +971,15 @@
               "title": "Ordering/Shipping Questions",
               "answer": "",
               "anchor": "ordershipping"
+            }
+          },
+          "1560816199257": {
+            "type": "html",
+            "settings": {
+              "heading_only": false,
+              "title": "CAN I CANCEL AN ORDER?",
+              "answer": "Please be advised that once an order is “In Process” it can’t be canceled or changed. You’ll have to wait until you receive your purchase and then return it. For complete details on returning an item, please see our <a href=\"https://www.bebe.com/pages/returns\">Returns</a> page.",
+              "anchor": ""
             }
           },
           "1542219298126": {
@@ -1221,6 +1290,7 @@
           "1545695624500",
           "1545695760166",
           "1545689790310",
+          "1560816199257",
           "1542219298126",
           "1542220082322",
           "1542220259294",
@@ -1304,16 +1374,40 @@
       "coupon": {
         "type": "coupon",
         "blocks": {
-          "1559631965043": {
+          "1562048619545": {
             "type": "text_block",
             "settings": {
-              "heading_text": "20% OFF $150 OR MORE",
-              "text": "<p>Save on regular-priced &amp; sale styles with code JUNE2019.</p>",
-              "cta_text": "SHOP NEW ARRIVALS",
+              "heading_text": "SELECT STYLES 3 FOR $99",
+              "text": "<p>Enjoy super-hot deals on sale items through July 4th.</p>",
+              "cta_text": "Shop Now",
+              "link": "shopify://collections/3-for-99",
+              "details_text": "<p>Online only. Select styles. Priced as marked. Final sale.</p>",
+              "coupon_size": "full",
+              "coupon_color": "medium"
+            }
+          },
+          "1561705330970": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "20% OFF 1 ITEM, 25% OFF 2 ITEMS, 30% OFF 3+ ITEMS",
+              "text": "<p>Valid for all regular-priced styles. 20% off with JULY20. 25% off with JULY25. 30% off with JULY30.</p>",
+              "cta_text": "Shop New Arrivals",
               "link": "shopify://collections/new",
-              "details_text": "<p>Valid on bebe.com only. Not valid at bebe stores. To redeem, enter code JUNE2019 at checkout. Limit one per client. Non-transferable. Offer is invalid upon redemption. No cash or credit back. Cannot be used in conjunction with any other offer. Not valid on gift cards, shipping, prior purchases or price adjustments. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Minimum purchase required; minimum purchase does not include tax, gift cards, shipping or handling. Offer expires 6/17/19 at 11:59 pm PDT. &nbsp;</p>",
+              "details_text": "<p>Enjoy 20% off any 1 regular-priced item, 25% off any 2 regular-priced items or 30% off any 3 or more regular-priced items. Valid on bebe.com only. Not valid at bebe stores. Valid on U.S. orders only. To redeem 20% off, enter code JULY20 at checkout. To redeem 25% off, enter code JULY25 at checkout. To redeem 30% off, enter code JULY30 at checkout. Not valid on sale items, shipping, prior purchases or price adjustments. Cannot be used in conjunction with any other discount or offer. Associates of bebe stores, inc. and affiliates are not eligible. Other restrictions may apply. Offer may be modified or discontinued at any time without notice. Offer expires 7/4/19 at 11:59 pm PST.</p>",
               "coupon_size": "full",
               "coupon_color": "light"
+            }
+          },
+          "1562041979883": {
+            "type": "text_block",
+            "settings": {
+              "heading_text": "END OF SEASON SALE: UP TO 70% OFF",
+              "text": "<p>Get the best deals of the year.</p>",
+              "cta_text": "Shop Sale",
+              "link": "shopify://collections/sale",
+              "details_text": "<p>Online only. Select styles. Priced as marked. Final sale.</p>",
+              "coupon_size": "full",
+              "coupon_color": "medium"
             }
           },
           "1545990628348": {
@@ -1354,7 +1448,9 @@
           }
         },
         "block_order": [
-          "1559631965043",
+          "1562048619545",
+          "1561705330970",
+          "1562041979883",
           "1545990628348",
           "1545990640803",
           "1545991169940"
@@ -1396,9 +1492,9 @@
           "1547175360441"
         ],
         "settings": {
-          "image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-banner.jpg",
+          "image": "shopify://shop_images/limited-time-20-off-25-off-30-off-use-code-july20-july25-july30-sbb_46809b61-16e2-4339-b8ec-e9631309adfb.jpg",
           "mobile_image": "",
-          "link": "shopify://pages/coupons-discounts",
+          "link": "",
           "cart_bottom_block": ""
         }
       },
@@ -1431,14 +1527,14 @@
           "1547557172846-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-desktop.jpg",
-              "mobile_image": "shopify://shop_images/limited-time-20-off-150-use-code-june2019-mobile.jpg",
-              "cta_full_image": "shopify://collections/new",
-              "heading": "<br>",
+              "image": "shopify://shop_images/need-cute-suit-desktop.jpg",
+              "mobile_image": "shopify://shop_images/need-cute-suit-desktop-mobile.jpg",
+              "cta_full_image": "shopify://collections/swim",
+              "heading": "",
               "hide_header_desktop": true,
               "subheading": "",
-              "cta_one_link": "shopify://collections/new",
-              "cta_one_button_text": "SHOP NEW ARRIVALS",
+              "cta_one_link": "shopify://collections/swim",
+              "cta_one_button_text": "SHOP swim",
               "cta_two_link": "",
               "cta_two_button_text": "",
               "cta_three_link": "",
@@ -1450,10 +1546,9 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#000000",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 68,
-              "caption_vertical_mobile": 77,
+              "caption_horizontal_offset": "75",
+              "caption_vertical": "60",
+              "caption_vertical_mobile": "70",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1493,10 +1588,9 @@
               "caption_color_scheme": "custom",
               "custom_slide_main_color": "#000000",
               "custom_slide_alt_color": "#ffffff",
-              "caption_horizontal": "center",
-              "caption_horizontal_offset": 13.5,
-              "caption_vertical": 57,
-              "caption_vertical_mobile": 72,
+              "caption_horizontal_offset": "13.5",
+              "caption_vertical": "57",
+              "caption_vertical_mobile": "72",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1536,10 +1630,9 @@
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#e41c39",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 50,
-              "caption_vertical_mobile": 50,
+              "caption_horizontal_offset": "0",
+              "caption_vertical": "50",
+              "caption_vertical_mobile": "50",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1560,9 +1653,9 @@
           "1548306390190-0": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/earn-clubbebe-triple-points-tuesday-sign-up-here-desktop.jpg",
-              "mobile_image": "shopify://shop_images/earn-clubbebe-triple-points-tuesday-sign-up-here-mobile.jpg",
-              "cta_full_image": "https://www.bebe.com/account/login",
+              "image": "shopify://shop_images/additional-50-off-all-sale-desktop.jpg",
+              "mobile_image": "shopify://shop_images/additional-50-off-all-sale-mobile.jpg",
+              "cta_full_image": "shopify://collections/sale",
               "heading": "",
               "hide_header_desktop": false,
               "subheading": "",
@@ -1579,10 +1672,9 @@
               "caption_color_scheme": "white",
               "custom_slide_main_color": "#ffffff",
               "custom_slide_alt_color": "#e41c39",
-              "caption_horizontal": "left",
-              "caption_horizontal_offset": 0,
-              "caption_vertical": 50,
-              "caption_vertical_mobile": 50,
+              "caption_horizontal_offset": "0",
+              "caption_vertical": "50",
+              "caption_vertical_mobile": "50",
               "caption_background": "rgba(0,0,0,0)",
               "caption_opacity": "0.1"
             }
@@ -1681,64 +1773,64 @@
             "type": "image",
             "settings": {
               "collection": "sale",
-              "image": "shopify://shop_images/bebe-sale-desktop_4d613246-29db-495b-90fe-ae5183a6906c.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_98259f04-28cb-4378-9c6e-3de0d5ecfb9d.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545328366": {
             "type": "image",
             "settings": {
               "collection": "sale-dresses",
-              "image": "shopify://shop_images/bebe-sale-desktop_53466c78-7e74-4c3b-b998-4f76a39f3d4d.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_d3fd88d4-284c-4ffb-89a3-82b5406978d8.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545376044": {
             "type": "image",
             "settings": {
               "collection": "sale-tops",
-              "image": "shopify://shop_images/bebe-sale-desktop_2a3e9f30-9da4-4492-9118-1114578062a9.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_471df05c-dacb-4bec-ac4d-dc4c1c0fc52f.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545404155": {
             "type": "image",
             "settings": {
               "collection": "sale-bottoms",
-              "image": "shopify://shop_images/bebe-sale-desktop_47a32797-9b27-4c90-8c58-f34b66833d24.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_8deb9231-6f38-4c78-837a-c428947d8301.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545429217": {
             "type": "image",
             "settings": {
               "collection": "sale-jackets-coats",
-              "image": "shopify://shop_images/bebe-sale-desktop_d0ab9920-58c1-413b-82db-74a2798abdf0.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_1aa3b4d7-ea01-4e52-af91-9b0227e70d61.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545456944": {
             "type": "image",
             "settings": {
               "collection": "sale-shoes",
-              "image": "shopify://shop_images/bebe-sale-desktop_6d35656a-5999-4faf-a261-49f68da8ca03.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_f9aa088d-e64a-4db4-9c76-24b871d3fc60.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545493897": {
             "type": "image",
             "settings": {
               "collection": "sale-accessories",
-              "image": "shopify://shop_images/bebe-sale-desktop_129ed170-fe18-41c8-8a60-5be6fd6e11bc.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_18938b66-84c0-4261-be93-29c9f88b4fff.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1552545525530": {
             "type": "image",
             "settings": {
               "collection": "sale-last-chance",
-              "image": "shopify://shop_images/bebe-sale-desktop_373afdcb-67eb-497f-8219-594da0dd2441.jpg",
-              "mobile_image": "shopify://shop_images/bebe-sale-mobile_5d2a4f5d-d153-497d-b2cf-12b3cdd15f3f.jpg"
+              "image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg",
+              "mobile_image": "shopify://shop_images/end-of-season-sale-up-to-70-off-plp.jpg"
             }
           },
           "1554769189117": {
@@ -1805,12 +1897,36 @@
               "mobile_image": "shopify://shop_images/flash-sale-plp-mobile.gif"
             }
           },
-          "1559112979283": {
+          "1561099535283": {
             "type": "image",
             "settings": {
-              "collection": "3-for-99",
-              "image": "shopify://shop_images/3-for-99-plp.jpg",
-              "mobile_image": "shopify://shop_images/3-for-99-plp-mobile.jpg"
+              "collection": "limited-time-40-off",
+              "image": "shopify://shop_images/limited-time-40-off-select-styles-plp.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-40-off-select-styles-plp_02b7aae3-4f8a-4543-bd7d-2c6ad68f52c2.jpg"
+            }
+          },
+          "1561099589908": {
+            "type": "image",
+            "settings": {
+              "collection": "limited-time-40-off-bottoms",
+              "image": "shopify://shop_images/limited-time-40-off-select-styles-plp_4fa2494d-452d-4d15-9973-d3c6cf26f05a.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-40-off-select-styles-plp_45e441a2-d4aa-4a59-8ad6-85bf01cd5e75.jpg"
+            }
+          },
+          "1561099610470": {
+            "type": "image",
+            "settings": {
+              "collection": "limited-time-40-off-dresses",
+              "image": "shopify://shop_images/limited-time-40-off-select-styles-plp_d0078218-c1ad-4b16-b533-af1c33a85faf.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-40-off-select-styles-plp_ab52eada-6da2-4965-ad55-83c134689ac7.jpg"
+            }
+          },
+          "1561099636097": {
+            "type": "image",
+            "settings": {
+              "collection": "limited-time-40-off-tops",
+              "image": "shopify://shop_images/limited-time-40-off-select-styles-plp_bb44b12f-2889-4f0f-b351-511192cb90a8.jpg",
+              "mobile_image": "shopify://shop_images/limited-time-40-off-select-styles-plp_f1d7d59f-894f-4907-9076-1f30af151a47.jpg"
             }
           }
         },
@@ -1831,7 +1947,10 @@
           "1554769523049",
           "1554769543881",
           "1554769568607",
-          "1559112979283"
+          "1561099535283",
+          "1561099589908",
+          "1561099610470",
+          "1561099636097"
         ],
         "settings": {}
       },
@@ -1849,11 +1968,11 @@
       }
     },
     "content_for_index": [
-      "1547557172846",
       "1548306390190",
+      "1535728526385",
       "1547711858918",
       "1536251685211",
-      "1535728526385",
+      "1547557172846",
       "1551244191226",
       "1547557568724",
       "1547175141098",

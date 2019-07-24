@@ -1,7 +1,7 @@
 {% include "indi-global" %}
 
 <div style="background-color: {{ section.settings.background_color }};">
-	<div id="indi-forum-{{ section.id }}" style="margin-left: auto; margin-right: auto;"></div>
+	<div id="indi-forum-{{ section.id }}" class="hide" style="margin-left: auto; margin-right: auto;"></div>
 </div>
 <div id="div_btn_cta">
   <button class="btn btn--secondary" type="button" onclick="window.location='{{ section.settings.submit_button1_url }}'">{{ section.settings.submit_button1_text }}</button>
@@ -21,6 +21,9 @@
       $(document).on('click', ".indi-forum-thumbnail", function(){
         window.location = "{{ section.settings.thumbnail_redirect_url }}";
       })
+      setTimeout(function(){
+        $("#indi-forum-{{ section.id }}").show();
+      }, 2000);
     });
 </script>
 

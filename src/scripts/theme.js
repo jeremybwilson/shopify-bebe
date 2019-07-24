@@ -3367,6 +3367,14 @@ theme.OfferTab = (function () {
         }
       }, 250 ) );
     }
+
+    setTimeout(function () {
+      if (!$.cookie('newsletter_popup_shown')) {
+        var expirationDays = $('.js-offer-tab').attr('data-cookie-days');
+        $('.js-offer-tab').trigger('click');
+        $.cookie('newsletter_popup_shown', 'true', { expires: Number(expirationDays) });
+      }
+    }, 5000);
   }
 
   return OfferTab;

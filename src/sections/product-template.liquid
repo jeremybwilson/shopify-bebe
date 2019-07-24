@@ -3,6 +3,12 @@
   {% assign use_swatches = true %}
 {% endif %}
 
+{% comment %}
+    INDI CAROUSEL - JS
+{% endcomment %}
+ {% unless template == 'product.quick' %}
+<script src="https://embed.indi.com/widgets/v1/indi-embed.js"></script>
+ {% endunless %}
 
 <div itemscope itemtype="http://schema.org/Product"
   id="product-{{ product.id }}"
@@ -44,7 +50,12 @@
     <a class="mobile-product-carousel--next">
       {% include 'svg-icon-caret-right' %}
     </a>
-
+    {% comment %}
+    INDI CAROUSEL - Rendered indi product carousel
+    {% endcomment %}
+    {% unless template == 'product.quick' %}
+      {% include 'indi-product-mobile-embed' %}
+    {% endunless %} 
   </div>
 
 

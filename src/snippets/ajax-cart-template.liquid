@@ -17,7 +17,7 @@
       <div class="ajaxcart__inner">
         {{#items}}
         <div class="ajaxcart__product">
-          <div class="ajaxcart row" data-line="{{line}}">
+          <div class="ajaxcart row" data-line="{{line}}" data-id="{{id}}">
 
               {{!-- :: PRODUCT IMAGE :: --}}
               <div class="grid__item desktop-4 tablet-2 mobile-1">
@@ -69,7 +69,7 @@
                 {{#if properties._discountItem }}
                   <div class="display-table">
                     <div class="qty-remove-wrap display-table-cell">
-                      <a class="ajaxcart__remove" data-line="{{line}}">Remove</a>
+                      <a class="ajaxcart__remove" data-line="{{line}}" data-id="{{id}}">Remove</a>
                     </div>
                   </div>
 
@@ -85,7 +85,7 @@
                           <span>+</span>
                         </button>
                       </div>
-                      <a class="ajaxcart__remove" data-line="{{line}}">Remove</a>
+                      <a class="ajaxcart__remove" data-line="{{line}}" data-id="{{id}}">Remove</a>
                     </div>
                   </div>
                 {{/if}}
@@ -151,3 +151,4 @@
     </div>
   {% endraw %}
   </script>
+
