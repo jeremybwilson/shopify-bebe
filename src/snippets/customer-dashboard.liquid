@@ -178,12 +178,12 @@
             </div>
 
             <div class="clubrowcon row-dt">
-                <div class="perks"><span class="perks-pts">200</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per referred friend***</p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_friend }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per referred friend***</p></div>
                 {% comment %} <div class="perks"><span class="perks-pts">20</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per Instagram photo<span>tagged with #bebebabe<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">#</sup></span></p></div> {% endcomment %}
-                <div class="perks"><span class="perks-pts">20</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per Instagram photo tagged with #bebebabe<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">#</sup></p></div>
-                <div class="perks"><span class="perks-pts">20</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per social media connect<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">✝</sup></p></div>
-                <div class="perks"><span class="perks-pts">1</span><span class="perk-sub-copy">Point</span><span class="pt-line"></span><p>per bebe.com visit<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">‡</sup></p></div>
-                <div class="perks"><span class="perks-pts">15</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per item review<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">§</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_ig_photo }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per Instagram photo tagged with #bebebabe<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">#</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_soc_med_connect }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per social media connect<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">✝</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_visit }}</span><span class="perk-sub-copy">Point</span><span class="pt-line"></span><p>per bebe.com visit<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">‡</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_item_review }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per item review<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">§</sup></p></div>
             </div>
 
             {% comment %} <div class="clubrowcon row-dt">
@@ -193,7 +193,7 @@
             </div> {% endcomment %}
 
             <div class="club-dis">
-              <p><sup>*</sup>One-time use. <sup>**</sup>Free standard shipping to 50 United States only. <sup>***</sup>Limit 2 times per month. Referred friends must be new clubbebe customers. 200-point reward only valid if friend makes purchase on bebe.com &amp; not valid if friend's purchase is returned. <sup>#</sup>Limit 2 times per month. Must connect with bebe on Instagram via clubbebe account dashboard on bebe.com to earn points. <sup>✝</sup>Facebook, Instagram &amp; Twitter. Must connect via clubbebe account dashboard on bebe.com. <sup>‡</sup>Limit 10 times. <sup>§</sup>Limit 3 times per month. Review must be for an item you have purchased.</p>
+              <p><sup>*</sup>One-time use. <sup>**</sup>Free standard shipping to 50 United States only. <sup>***</sup>Limit 2 times per month. Referred friends must be new clubbebe customers. {{ settings.clubbebe_pts_per_friend }}-point reward only valid if friend makes purchase on bebe.com &amp; not valid if friend's purchase is returned. <sup>#</sup>Limit 2 times per month. Must connect with bebe on Instagram via clubbebe account dashboard on bebe.com to earn points. <sup>✝</sup>Facebook, Instagram &amp; Twitter. Must connect via clubbebe account dashboard on bebe.com. <sup>‡</sup>Limit 10 times. <sup>§</sup>Limit 3 times per month. Review must be for an item you have purchased.</p>
             </div>
 
             <a id="cbbTClink" style="display:block;text-align:center;" href="/pages/rewards-conditions" target="_blank">CLUBBEBE TERMS &amp; CONDITIONS</a>
@@ -298,7 +298,7 @@
             We want to see your style. Follow bebe on Instagram by connecting from your clubbebe dashboard below. Then tag a photo of yourself wearing bebe with #BeIconic to earn 20 points. Limit: 2 times per month.
         </div>
         <div id="club--info--refer">
-            Share clubbebe and be rewarded. Click the "Refer a Friend" link in your clubbebe account to get started. Send friends an invite, and earn 200 points when each of them joins clubbebe and makes a first-time clubbebe purchase. Please note: 200-point reward not valid if friend's purchase is returned. Limit: 2 times per month.
+            Share clubbebe and be rewarded. Click the "Refer a Friend" link in your clubbebe account to get started. Send friends an invite, and earn {{ settings.clubbebe_pts_per_friend }} points when each of them joins clubbebe and makes a first-time clubbebe purchase. Please note: {{ settings.clubbebe_pts_per_friend }}-point reward not valid if friend's purchase is returned. Limit: 2 times per month.
         </div>
         <div id="club--info--connect">
             Connect with us for extra points. Earn 20 points each by connecting with bebe on Facebook, Twitter and Instagram from your clubbebe dashboard. Limit: 1 time per channel.
