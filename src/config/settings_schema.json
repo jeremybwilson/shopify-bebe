@@ -1698,5 +1698,15 @@
         "default": "FINAL SALE.No returns or exchanges."
       }
     ]
+  },
+  {
+    "name": "Preorder App : Simple Pre-order",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_simple_preorder",
+        "label": "Enable Simple Preorder App"
+      }
+    ]
   }
 ]
