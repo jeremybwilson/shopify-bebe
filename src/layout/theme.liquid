@@ -177,9 +177,11 @@
     {% include 'yottaa-script' %}
   {% endif %}
 
-  <!-- Snippet for Simple Preorder app -->
   {% if settings.enable_simple_preorder %}
-    {% include 'simple-preorder-bootstrap' %}
+    {% unless template contains 'cart' %}
+      <!-- Snippet for Simple Preorder app -->
+      {% include 'simple-preorder-bootstrap' %}
+    {% endunless %}  
   {% endif %}
 
 </head>
