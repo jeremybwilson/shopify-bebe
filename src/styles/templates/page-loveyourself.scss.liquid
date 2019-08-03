@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'Domaine';
+    src: url( "{{ 'DomaineDispSemibold.woff2' | asset_url }}" ) format('woff2'),
+        url( "{{ 'DomaineDispSemibold.woff' | asset_url }}" ) format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Domaine';
+    src: url( "{{ 'DomaineDisp-Regular.woff2' | asset_url }}" ) format('woff2'),
+        url( "{{ 'DomaineDisp-Regular.woff' | asset_url }}" ) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Moderat';
+    src: url( "{{ 'Moderat-Regular.woff2' | asset_url }}" ) format('woff2'),
+        url( "{{ 'Moderat-Regular.woff' | asset_url }}" ) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Moderat';
+    src: url( "{{ 'Moderat-Bold.woff2' | asset_url }}" ) format('woff2'),
+        url( "{{ 'Moderat-Bold.woff' | asset_url }}" ) format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+$dom: 'Domaine';
+$mod: 'Moderat';
+
+.page-loveyourself {
+    h1 {
+        border-bottom: none;
+        position: fixed;
+        left: -999em;
+    }
+    #content {
+        background: #000;
+        padding: 0;
+    }
+    #loyo--opening {
+        text-align: center;
+
+        blockquote {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        p {
+            color: #fff;
+            font-family: $dom;
+            font-style: normal;
+            @include fontDim( 36px, 46px, .02em );
+
+            em {
+                font-style: italic;
+                text-decoration: underline;
+            }
+        }
+
+        footer {
+            background: transparent;
+
+        }
+    }
+
+
+    #loyo--video {
+
+        .row {
+            max-width: 1150px;
+        }
+
+    }
+
+    #loyo--middle {
+        position: relative;
+        width: 100vw;
+        height: 73vw;
+        
+        & > * {
+            position: absolute;
+        }
+        #loyo--middle-1 {
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 46.54%;
+        }
+        .content--promo {
+            z-index: 1;
+            bottom: 0;
+            right: 0;
+            width: 41.50%;
+        }
+        .content--text {
+            z-index: 2;
+            top: 20%;
+            left: 36%;
+            width: 27%;
+
+            h2, p {
+                color: #fff;
+            }
+            h2 {
+                font-family: $mod;
+                @include fontDim(18px, 1px, -.02em);
+                text-transform: none;
+            }
+            p {
+                font-family: $mod;
+                @include fontDim(18px, 33px, -.02em);
+            }
+            
+        }
+    }
+
+    #loyo--quads {
+
+        .quads--wrapper {
+            @include flexbox;
+        }
+        .quad {
+            width: 25%;
+        }
+        .quad--text {
+            @include flexbox;
+            @include align-items(center);
+            padding: 32px;
+            
+
+            p {
+                color: #fff;
+                font-family: $mod;
+                @include fontDim(18px, 33px, -.02em);
+            }
+        }
+    }
+}
+
