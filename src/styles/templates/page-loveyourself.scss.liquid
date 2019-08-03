@@ -42,37 +42,76 @@ $mod: 'Moderat';
         background: #000;
         padding: 0;
     }
-    #loyo--opening {
-        text-align: center;
-
-        blockquote {
-            max-width: 750px;
-            margin: 0 auto;
-        }
+    .slideshow-section .cta a {
+        padding: 0 50px;
+    }
+    blockquote {
+        margin: 0 auto;
+        padding: 0;
 
         p {
             color: #fff;
             font-family: $dom;
             font-style: normal;
-            @include fontDim( 36px, 46px, .02em );
-
+    
             em {
                 font-style: italic;
                 text-decoration: underline;
             }
         }
-
+    
         footer {
             background: transparent;
-
+            font-style: normal;
+    
+            p {
+                color: #fff;
+                margin-bottom: 0;
+            }
+            .q-name {
+                font-family: $sans;
+                font-weight: $font-weight--bold;
+                text-transform: uppercase;
+            }
+            .q-attr {
+                margin-top: 5px;
+                font-family: $dom;
+            }
         }
+    
     }
 
+    #loyo--opening {
+        padding: 90px 0; 
+        text-align: center;
+
+        blockquote {
+            width: 56.26%;
+            max-width: 900px;
+
+            p {
+                @include fontDim( 44px, 56px, -.02em );
+            }
+    
+            footer {
+    
+                .q-name {
+                    @include fontDim(26px,26px,.08em);
+                }
+                .q-attr {
+                    @include fontDim(27px,27px,-.02em);
+                }
+            }    
+        }
+
+    }
 
     #loyo--video {
+        margin-bottom: 110px;
 
         .row {
-            max-width: 1150px;
+            width: 88.75%;
+            max-width: 1420px;
         }
 
     }
@@ -96,6 +135,40 @@ $mod: 'Moderat';
             bottom: 0;
             right: 0;
             width: 41.50%;
+
+            .promo--text {
+                position: absolute;
+                @include flexbox;
+                @include flex-direction(column);
+                @include justify-content(center);
+                @include align-items(center);
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                z-index: 3;
+                width: 62%;
+                
+                svg {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 15px;
+                }
+
+                a {
+                    @include buttonDefaultStyle;
+                    background-color: #000;
+                    padding-left: 50px !important;
+                    padding-right: 50px !important;
+                    color: #fff;
+                }
+            }
+
+            img {
+                width: 100%;
+                bottom: 0;
+                right: 0;
+            }
+
         }
         .content--text {
             z-index: 2;
@@ -103,23 +176,33 @@ $mod: 'Moderat';
             left: 36%;
             width: 27%;
 
-            h2, p {
-                color: #fff;
+            svg {
+                width: 100%;
+                height: auto;
+                margin-bottom: 30px;
             }
-            h2 {
-                font-family: $mod;
-                @include fontDim(18px, 1px, -.02em);
-                text-transform: none;
-            }
+
             p {
+                color: #fff;
                 font-family: $mod;
-                @include fontDim(18px, 33px, -.02em);
+                @include fontDim(22px, 40px, -.02em);
             }
             
         }
     }
 
     #loyo--quads {
+        padding-top: 65px;
+
+        h2 {
+            margin-bottom: 30px;
+            color: #fff;
+            font-family: $dom;
+            font-weight: $font-weight--book;
+            @include fontDim(32px,32px,-.02em);
+            text-align: center;
+            text-transform: none;
+        }
 
         .quads--wrapper {
             @include flexbox;
@@ -136,9 +219,60 @@ $mod: 'Moderat';
             p {
                 color: #fff;
                 font-family: $mod;
-                @include fontDim(18px, 33px, -.02em);
+                @include fontDim(22px, 40px, -.02em);
+            }
+        }
+    }
+    #loyo--bottom {
+        padding: 190px 100px 180px;
+
+        .content--background {
+            position: relative;
+        }
+
+        .content--text {
+            position: absolute;
+            width: 41%;
+            max-width: 590px;
+            text-align: center;
+            padding-left: 50px;
+            padding-right: 50px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+            blockquote {
+                margin-bottom: 60px;
+
+                p {
+                    @include fontDim( 44px, 56px, -.02em );
+                }        
+                footer {
+
+                    .q-name {
+                        @include fontDim(26px,26px,.08em);
+                    }
+                    .q-attr {
+                        @include fontDim(27px,27px,-.02em);
+                    }
+                }    
+            }
+            .cta {
+                width: 100%;
+
+                svg {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 20px;
+                }
+                a {
+                    display: inline-block;
+                    @include buttonDefaultStyle;
+                    padding: 0 50px !important;
+                    background-color: #000;
+                    color: #fff;
+                }
             }
         }
     }
 }
-

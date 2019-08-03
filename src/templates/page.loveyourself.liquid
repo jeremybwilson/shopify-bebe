@@ -9,8 +9,8 @@
 
 
       <footer>
-        <span class="q-name">Bebe Rexha</span>
-        <span class="q-attr">2xGrammy&reg;-nominated artist</span>
+        <p class="q-name">Bebe Rexha</p>
+        <p class="q-attr">2xGrammy&reg;-nominated artist</p>
       </footer>
     </blockquote>
   </section>
@@ -24,13 +24,19 @@
     <img id="loyo--middle-1" src="{{ 'loveyourself-desktop-1.jpg' | file_url }}" />
 
     <div class="content--text">
-      <h2>#loveyourself</h2>
+      {% include 'svg-icon-loveyourself', text_color: "#fff" %}
 
       <p>The campaign was inspired by Bebe Rexha’s honest unveiling of the fashion community and their injustice when she was nominated for a Grammy earlier this year. In an empowering video on Instagram, Rexha called out designers who failed to dress all celebrities, and those who do not fit “a runway size.” Rexha urged women and men to love their bodies and feel beautiful at any size, hence the campaign hashtag <strong>#LoveYourself</strong>.</p>
 
     </div>
 
     <div class="content--promo">
+
+      <div class="promo--text">
+        {% include 'svg-icon-loveyourself' %}
+
+        <a href="/collections/loveyourself" title="Shop the Collection">Shop the Collection</a>
+      </div>
     
       <img src="{{ 'loveyourself-desktop-2.jpg' | file_url }}">
     
@@ -79,6 +85,32 @@
     
     <script src="https://player.vimeo.com/api/player.js"></script>
 
+  </section>
+
+  <section id="loyo--bottom">
+    <div class="content--background">
+
+      <div class="content--text">
+        <blockquote>
+          <p>“I grew up wearing bebe. It was the coolest piece of fashion you could have, so to be able to mix fashion and my music is so fun.”</p>
+
+          <footer>
+            <p class="q-name">Bebe Rexha</p>
+            <p class="q-attr">2xGrammy&reg;-nominated artist</p>
+          </footer>
+
+        </blockquote>
+
+        <div class="cta">
+          {% include 'svg-icon-loveyourself', text_color: '#fff' %}
+          <a href="/collections/loveyourself" title="Shop the Collection">shop the collection</a>
+        </div>
+
+      </div>
+
+
+      <img src="{{ 'loyo-bottom-desktop.jpg' | file_url }}" />
+    </div>   
   </section>
 
 </div>
