@@ -33,6 +33,9 @@ $dom: 'Domaine';
 $mod: 'Moderat';
 
 .page-loveyourself {
+    #page {
+        margin-bottom: 0;
+    }
     h1 {
         border-bottom: none;
         position: fixed;
@@ -42,8 +45,14 @@ $mod: 'Moderat';
         background: #000;
         padding: 0;
     }
+
+    // general styles
+
     .slideshow-section .cta a {
         padding: 0 50px;
+    }
+    .flex-caption {
+        width: auto;
     }
     blockquote {
         margin: 0 auto;
@@ -61,8 +70,13 @@ $mod: 'Moderat';
         }
     
         footer {
+            padding-top: 12px;
             background: transparent;
             font-style: normal;
+
+            @include mq( 'tablet-and-up' ) {
+                padding-top: 30px;
+            }
     
             p {
                 color: #fff;
@@ -72,81 +86,151 @@ $mod: 'Moderat';
                 font-family: $sans;
                 font-weight: $font-weight--bold;
                 text-transform: uppercase;
+                @include fontDim(21px,16px,.08em);
+
+                @include mq('tablet-and-up') {
+                    @include fontDim(22px,22px,.08em);
+                }
+                @include mq('tablet-and-up') {
+                    @include fontDim(26px,26px,.08em);
+                }
+
             }
             .q-attr {
                 margin-top: 5px;
                 font-family: $dom;
-            }
-        }
-    
-    }
 
-    #loyo--opening {
-        padding: 90px 0; 
-        text-align: center;
+                @include fontDim(22px,17px,-.02em);
 
-        blockquote {
-            width: 56.26%;
-            max-width: 900px;
-
-            p {
-                @include fontDim( 44px, 56px, -.02em );
-            }
-    
-            footer {
-    
-                .q-name {
-                    @include fontDim(26px,26px,.08em);
+                @include mq('tablet-and-up') {
+                    margin-top: 0;
+                    @include fontDim(23px,23px,-.02em);
                 }
-                .q-attr {
+                @include mq('desk-and-up') {
                     @include fontDim(27px,27px,-.02em);
                 }
-            }    
+
+            }
+        }
+    }
+
+    // opening quote
+
+    #loyo--opening {
+        padding: 40px 35px;
+        background-image: url( {{ 'opening-bg-mobile.jpg' | file_url }});
+        background-position: top center;
+        background-size: contain;
+        text-align: center;
+
+        @include mq( 'tablet-and-up' ) {
+            padding: 90px 0; 
+            background: none;
+        }
+        @include mq( 'desk-and-up' ) {
+            padding: 50px 0;
+        }
+
+        blockquote {
+            max-width: 900px;
+
+            @include mq( 'tablet-and-up' ) {
+                width: 80%;
+            }
+
+            @include mq( 'desk-and-up' ) {
+                width: 56.26%;
+            }
+
+            p {
+                @include fontDim( 25px, 30px, -.02em );
+
+                @include mq( 'tablet-and-up' ) {
+                    @include fontDim( 32px, 46px, -.02em );
+                }
+                @include mq( 'desk-and-up' ) {
+                    @include fontDim( 44px, 56px, -.02em );
+                }
+
+            }
+
         }
 
     }
 
     #loyo--video {
-        margin-bottom: 110px;
-
-        .row {
-            width: 88.75%;
-            max-width: 1420px;
+        @include mq( 'tablet-and-up' ) {
+            margin-bottom: 80px;
+        }        
+        @include mq( 'desk-and-up' ) {
+            margin-bottom: 110px;
         }
 
+        .row {
+            width: 100%;
+            max-width: 1420px;
+
+            @include mq('desk-and-up') {
+                width: 88.75%;
+            }
+        }
     }
 
     #loyo--middle {
         position: relative;
         width: 100vw;
-        height: 73vw;
-        
+
+        @include mq('tablet-and-up') {
+            height: 73vw;
+        }
         & > * {
-            position: absolute;
+            position: relative;
+
+            @include mq('tablet-and-up') {
+                position: absolute;
+            }
         }
         #loyo--middle-1 {
+            width: 100%;
             z-index: 1;
-            top: 0;
-            left: 0;
-            width: 46.54%;
+
+            @include mq( 'tablet-and-up' ) {
+                top: 0;
+                left: 0;
+                width: 46.54%;    
+            }
         }
         .content--promo {
-            z-index: 1;
-            bottom: 0;
-            right: 0;
-            width: 41.50%;
+            z-index: 2;
+
+            @include mq( 'tablet-and-up' ) {
+                z-index: 1;
+                bottom: 0;
+                right: 0;
+                padding: 0;
+                width: 41.50%;
+            }
 
             .promo--text {
+                z-index: 3;
                 position: absolute;
+
                 @include flexbox;
                 @include flex-direction(column);
                 @include justify-content(center);
                 @include align-items(center);
+
+                width: 78%;
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%,-50%);
-                z-index: 3;
-                width: 62%;
+
+                @include mq( 'tablet-and-up' ) {
+                    width: 75%;    
+                }
+                @include mq( 'desk-and-up' ) {
+                    width: 62%;    
+                }                
                 
                 svg {
                     width: 100%;
@@ -160,6 +244,16 @@ $mod: 'Moderat';
                     padding-left: 50px !important;
                     padding-right: 50px !important;
                     color: #fff;
+
+                    @include mq('tablet-and-up') {
+                        padding-left: 24px !important;
+                        padding-right: 24px !important;
+                    }
+                    @include mq('desk-and-up') {
+                        padding-left: 50px !important;
+                        padding-right: 50px !important;
+                    }
+
                 }
             }
 
@@ -172,59 +266,156 @@ $mod: 'Moderat';
         }
         .content--text {
             z-index: 2;
-            top: 20%;
-            left: 36%;
-            width: 27%;
+            margin-top: -26vh;
+            padding: 22px 22px 40px;
+
+            @include mq('tablet-and-up') {
+                top: 10%;
+                left: 30%;
+                width: 30%;
+                margin: 0;
+                padding: 0;    
+            }
+            @include mq('desk-and-up') {
+                top: 20%;
+                left: 36%;
+                width: 27%;
+                padding: 0;    
+            }            
 
             svg {
-                width: 100%;
+                display: block;
+                width: 85%;
                 height: auto;
-                margin-bottom: 30px;
+                margin: 0 auto 6px;
+
+                @include mq( 'tablet-and-up' ) {
+                    width: 100%;
+                    margin: 0px 0px 12px;
+                }
             }
 
             p {
                 color: #fff;
                 font-family: $mod;
-                @include fontDim(22px, 40px, -.02em);
+                @include fontDim(20px,37px,-.02em);
+
+                @include mq( 'tablet-and-up' ) {
+                    @include fontDim(16px, 24px, -.02em);
+                }
+                @include mq( 'desk-and-up' ) {
+                    @include fontDim(22px, 40px, -.02em);
+                }                
             }
             
         }
     }
 
     #loyo--quads {
-        padding-top: 65px;
+        padding-top: 85px;
+
+        @include mq('tablet-and-up') {
+            padding-top: 65px;
+        }
 
         h2 {
             margin-bottom: 30px;
             color: #fff;
             font-family: $dom;
             font-weight: $font-weight--book;
-            @include fontDim(32px,32px,-.02em);
+            @include fontDim(35px,35px,-.02em);
             text-align: center;
             text-transform: none;
+
+            @include mq('tablet-and-up') {
+                @include fontDim(32px,32px,-.02em);                
+            }
         }
 
         .quads--wrapper {
             @include flexbox;
+            @include flex-direction(column);
+            
+            @include mq('tablet-and-up') {
+                @include flex-direction(row);
+            }
         }
         .quad {
-            width: 25%;
+            display: none;
+            width: 100%;
+            
+            @include mq('tablet-and-up') {
+                width: 33.33%;
+            }
+            @include mq('desk-and-up') {
+                width: 25%;
+                display: block;
+            }
+
+            &.quad--visible-mobile {
+                display: block;
+            }
+            &.quad--visible-tablet-and-up {
+                @include mq('tablet-and-up') {
+                    display: block;
+                }
+            }
         }
         .quad--text {
-            @include flexbox;
-            @include align-items(center);
-            padding: 32px;
-            
+            padding: 38px;
+            background-size: contain;
+            background-position: center center;
 
+            @include mq('tablet-and-up') {
+                padding: 32px;
+                @include flexbox;
+                @include align-items(center);
+            }
+
+            &.quad--visible-mobile {
+                @include flexbox;
+                @include flex-direction(column);
+
+                @include mq('tablet-and-up') {
+                    @include flex-direction(row);                    
+                }
+            }
+            &.quad--visible-tablet-and-up {
+                @include mq('tablet-and-up') {
+                    @include flexbox;
+                }
+            }
+        
             p {
                 color: #fff;
                 font-family: $mod;
-                @include fontDim(22px, 40px, -.02em);
+                @include fontDim(20px, 36px, -.02em);
+
+                @include mq('tablet-and-up') {
+                    @include fontDim(15px, 24px, -.02em);                    
+                }
+                @include mq('desk-and-up') {
+                    @include fontDim(22px, 40px, -.02em);                    
+                }                
+
+                &.quad--hidden-desktop-text {
+                    margin-top: 20px;
+
+                    @include mq('tablet-and-up') {
+                        display: none;
+                    }
+                }
             }
         }
     }
     #loyo--bottom {
-        padding: 190px 100px 180px;
+
+        @include mq('tablet-and-up') {
+            padding: 50px 0px 50px;
+        }
+        @include mq('desk-and-up') {
+            padding: 190px 100px 180px;
+        }        
 
         .content--background {
             position: relative;
@@ -232,47 +423,120 @@ $mod: 'Moderat';
 
         .content--text {
             position: absolute;
-            width: 41%;
+            bottom: 30px;
+            width: 100%;
             max-width: 590px;
+            padding-left: 25px;
+            padding-right: 25px;
             text-align: center;
-            padding-left: 50px;
-            padding-right: 50px;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
 
-            blockquote {
-                margin-bottom: 60px;
-
-                p {
-                    @include fontDim( 44px, 56px, -.02em );
-                }        
-                footer {
-
-                    .q-name {
-                        @include fontDim(26px,26px,.08em);
-                    }
-                    .q-attr {
-                        @include fontDim(27px,27px,-.02em);
-                    }
-                }    
+            @include mq('tablet-and-up') {
+                width: 41%;
+                padding-left: 20px;
+                padding-right: 50px;
+                right: 0;
+                bottom: auto;
+                top: 50%;
+                transform: translateY(-50%);                        
             }
-            .cta {
-                width: 100%;
+            @include mq('desk-and-up') {
+                padding-left: 50px;
 
-                svg {
+            }
+        }
+        blockquote {
+            margin-bottom: 40px;
+
+            @include mq('tablet-and-up') {
+                margin-bottom: 30px;
+            }
+            @include mq('desk-and-up') {
+                margin-bottom: 60px;
+            }            
+
+            p {
+                @include fontDim( 30px, 48px, -.02em );
+                
+                @include mq('tablet-and-up') {
+                    @include fontDim( 22px, 32px, -.02em );
+                }
+                @include mq('desk-and-up') {
+                    @include fontDim( 44px, 56px, -.02em );
+                }                
+            }        
+            .q-name {
+                @include fontDim(21px,16px,.08em);
+
+                @include mq('tablet-and-up') {
+                    @include fontDim(18px,18px,.08em);
+                }
+                @include mq('desk-and-up') {
+                    @include fontDim(26px,26px,.08em);
+                }                
+
+            }
+            .q-attr {
+                margin-top: 10px;
+                @include fontDim(22px,17px,-.02em);
+
+                @include mq('tablet-and-up') {
+                    @include fontDim(19px,19px,-.02em);
+                }
+                @include mq('desk-and-up') {
+                    @include fontDim(27px,27px,-.02em);
+                }                
+            }
+
+        }
+
+        .cta {
+            width: 100%;
+
+            svg {
+                display: block;
+                width: 85%;
+                margin: 0 auto 12px;
+                height: auto;
+
+                @include mq('tablet-and-up') {
                     width: 100%;
-                    height: auto;
                     margin-bottom: 20px;
                 }
-                a {
-                    display: inline-block;
-                    @include buttonDefaultStyle;
+            }
+            a {
+                display: inline-block;
+                @include buttonDefaultStyle;
+                padding: 0 50px !important;
+                background-color: #000;
+                color: #fff;
+
+                @include mq('tablet-and-up') {
+                    padding: 0 24px !important;
+                }
+                @include mq('desk-and-up') {
                     padding: 0 50px !important;
-                    background-color: #000;
-                    color: #fff;
+                }
+            }
+        }
+        img {
+            display: none;
+
+            &.loyo--bottom--mobile-image {
+                display: block;
+
+                @include mq('tablet-and-up') {
+                    display: none;
+                }
+            }
+            &.loyo--bottom--desktop-image {
+                @include mq('tablet-and-up') {
+                    display: block;
                 }
             }
         }
     }
+}
+
+#preview-bar-iframe {
+    display: none !important;
 }
