@@ -29,8 +29,8 @@
     font-style: normal;
 }
 
-$dom: 'Domaine';
-$mod: 'Moderat';
+$dom: 'Domaine', serif;
+$mod: 'Moderat', sans-serif;
 
 .page-loveyourself {
     #page {
@@ -42,7 +42,7 @@ $mod: 'Moderat';
         left: -999em;
     }
     #content {
-        background: #000;
+        background: $color--primary-1;
         padding: 0;
     }
 
@@ -56,7 +56,7 @@ $mod: 'Moderat';
         padding: 0;
 
         p {
-            color: #fff;
+            color: $color--reverse-1;
             font-family: $dom;
             font-style: normal;
     
@@ -76,7 +76,7 @@ $mod: 'Moderat';
             }
     
             p {
-                color: #fff;
+                color: $color--reverse-1;
                 margin-bottom: 0;
             }
             .q-name {
@@ -148,8 +148,32 @@ $mod: 'Moderat';
                 @include mq( 'desk-and-up' ) {
                     @include fontDim( 44px, 56px, -.02em );
                 }
+            }
+            .q-name {
+                @include fontDim(21px,16px,.08em);
+
+                @include mq('tablet-and-up') {
+                    @include fontDim(22px,22px,.08em);
+                }
+                @include mq('tablet-and-up') {
+                    @include fontDim(26px,26px,.08em);
+                }
 
             }
+            .q-attr {
+                font-family: $dom;
+
+                @include fontDim(22px,17px,-.02em);
+
+                @include mq('tablet-and-up') {
+                    margin-top: 0;
+                    @include fontDim(23px,23px,-.02em);
+                }
+                @include mq('desk-and-up') {
+                    @include fontDim(27px,27px,-.02em);
+                }
+
+            }            
 
         }
 
@@ -237,10 +261,10 @@ $mod: 'Moderat';
 
                 a {
                     @include buttonDefaultStyle;
-                    background-color: #000;
+                    background-color: $color--primary-1;
                     padding-left: 50px !important;
                     padding-right: 50px !important;
-                    color: #fff;
+                    color: $color--reverse-1;
 
                     @include mq('tablet-and-up') {
                         padding-left: 24px !important;
@@ -252,6 +276,16 @@ $mod: 'Moderat';
                     }
 
                 }
+            }
+
+            .available--text {
+                z-index: 3;
+                position: absolute;
+                bottom: 18px;
+                right: 25px;
+                color: $color--reverse-1;
+                text-transform: uppercase;
+                @include fontSize(16px);
             }
 
             img {
@@ -293,7 +327,7 @@ $mod: 'Moderat';
             }
 
             p {
-                color: #fff;
+                color: $color--reverse-1;
                 font-family: $mod;
                 @include fontDim(20px,37px,-.02em);
 
@@ -317,7 +351,7 @@ $mod: 'Moderat';
 
         h2 {
             margin-bottom: 30px;
-            color: #fff;
+            color: $color--reverse-1;
             font-family: $dom;
             font-weight: $font-weight--book;
             @include fontDim(35px,35px,-.02em);
@@ -384,7 +418,7 @@ $mod: 'Moderat';
             }
         
             p {
-                color: #fff;
+                color: $color--reverse-1;
                 font-family: $mod;
                 @include fontDim(20px, 36px, -.02em);
 
@@ -504,8 +538,8 @@ $mod: 'Moderat';
                 display: inline-block;
                 @include buttonDefaultStyle;
                 padding: 0 50px !important;
-                background-color: #000;
-                color: #fff;
+                background-color: $color--primary-1;
+                color: $color--reverse-1;
 
                 @include mq('tablet-and-up') {
                     padding: 0 24px !important;
