@@ -949,7 +949,8 @@ theme.Header = (function() {
       mobileSubHeaders: $('#accordion').find('.accordion-sub-header'),
       swapRate: $container.attr('data-swap-rate'),
       promoWrap: $( '#double-promo-wrapper' ),
-      promoTrigger: $( '.promo-banner > a' )
+      promoTrigger: $( '.promo-banner > a' ),
+      superTrigger: $( '.super-banner > a' )
     }
     const self = this;
 
@@ -1061,6 +1062,31 @@ theme.Header = (function() {
         live: true
       });
     });
+    ui.superTrigger.each(function() {
+      $(this).fancybox({
+        href: $(this).attr('href'),
+        wrapCSS: 'fancybox-promo-popup',
+        openEffect: 'none',
+        closeEffect: 'none',
+        autoHeight: true,
+        maxWidth: 400,
+        maxHeight: 400,
+        padding: 30,
+        live: true
+      });
+    });
+    $('.super-banner-mobile').slick({
+      autoplay: true,
+      infinite: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 1, 
+      slidesToScroll: 1,
+      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+      fade: true
+    });
+    if($.trim($("#shopify-section-super-banner-plp").html()) != '' || $.trim($("#shopify-section-super-banner-pdp").html()) != '') {
+      $("#shopify-section-super-banner-global").remove();
+    }
 
   }
   Header.prototype = _.assignIn({}, Header.prototype, {});

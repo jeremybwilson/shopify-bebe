@@ -197,7 +197,13 @@
       {% section 'offer-tab' %}
     {% endif %}
     {% include 'script-google-tag-body' %}
-
+    {% section 'super-banner-global' %}
+    {% if template contains 'collection' %}
+      {% section 'super-banner-plp' %}
+    {% endif %}
+    {% if template contains 'product' %}
+      {% section 'super-banner-pdp' %}
+    {% endif %}
     {% comment %} :: Fixed header cannot be wrapped in a transitional container. :: {% endcomment %}
     {% section 'header' %}
 
