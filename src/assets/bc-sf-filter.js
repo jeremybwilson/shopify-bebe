@@ -186,8 +186,9 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
 
         itemPriceHtml += '</div>';
     }
-    itemHtml = itemHtml.replace('{{itemPrice}}', itemPriceHtml);
-
+    // PDM-868 : Patch for mobile Safari regex bug
+    var itemPriceRegEx = new RegExp( '{{itemPrice}}', 'g'); 
+    itemHtml = itemHtml.replace(itemPriceRegEx, function(match) { return itemPriceHtml }); 
 
     // QUICK VIEW : Add quickview template and setup for fancybox usage
     var itemQuickviewHtml = '';
