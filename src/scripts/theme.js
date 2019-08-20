@@ -3490,13 +3490,3 @@ $(document).ready(function(){
   }
 
 });
-// window.remove_extra_cart_flag = true;
-// $(document).on('DOMSubtreeModified', "#AddToCartForm #product-add", function() {
-//   if($("#AddToCartForm #product-add .AddtoCart").length > 1 && window.remove_extra_cart_flag){
-//     $('#AddToCartForm #product-add .AddtoCart').hide();
-//     window.remove_extra_cart_flag = false;
-//     setTimeout(() => {
-//       $('#AddToCartForm #product-add .AddtoCart:first').show();
-//     }, 1000);
-//   }
-// });
