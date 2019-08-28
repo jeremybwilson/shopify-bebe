@@ -6,7 +6,11 @@
     {%- endif -%}
 
     {%- if settings.newsletter_popup_promotion != blank -%}
-      <h2 class="newsletter-modal__promotion">{{ settings.newsletter_popup_promotion }}</h2>
+      <h2 class="newsletter-modal__promotion">{% if customer %}
+          {{ section.settings.member_offer }}
+        {% else %}
+          {{ section.settings.non_member_offer }}
+        {% endif %}</h2>
     {%- endif -%}
 
     {%- if settings.newsletter_popup_body != blank -%}
