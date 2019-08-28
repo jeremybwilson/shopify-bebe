@@ -403,6 +403,7 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
  * ------------------------------------------------------------------------- */
  $phone:            "screen and (max-width: 767px)";
  $phone-portrait:   "screen and (max-width: 479px)";
+ $phone-portrait2:   "screen and (max-width: 415px)";
  $phone-landscape:  "screen and (min-width: 480px) and (max-width: 767px)";
  $tablet:           "screen and (min-width: 768px) and (max-width: 1023px)";
  $tablet-and-up:    "screen and (min-width: 768px)";
@@ -425,7 +426,11 @@ $button--alt-border-hover: {{ settings.alt_button_border_width }}px solid {{ set
      @media #{$phone-portrait} {
        @content;
      }
-   } @else if $alias == "phone-landscape" {
+   } @else if $alias == "phone-portrait2" {
+     @media #{$phone-portrait2} {
+       @content;
+     }
+   }@else if $alias == "phone-landscape" {
      @media #{$phone-landscape} {
        @content;
      }

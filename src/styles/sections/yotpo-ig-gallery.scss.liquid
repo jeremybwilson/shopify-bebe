@@ -256,6 +256,42 @@ div.yotpo {
         }
     }
 }
+@include mq('phone-portrait2'){
+ .index {
+      .yotpo{
+        .yotpo-pictures-collage-wrapper
+        {
+          .yotpo-pictures-gallery-images-wrapper.row-size-1
+          {
+           .yotpo-pictures-collage-row ~ .yotpo-pictures-collage-row
+           {
+             margin-top: calc(-100% / 1.5);
+             .yotpo-pictures-collage-big-image.row-size-1
+             {
+               width: calc(100% / 1.5) !important;
+             }
+           }
+           .yotpo-pictures-collage-small-images-wrapper.row-size-1 .yotpo-single-image-container
+           {
+              width: 100% !important;
+           }
+          }
+        }         
+        .yotpo-pictures-collage-big-image.row-size-1
+         {
+          width: calc(100% / 1.5) !important;
+         }
+        .yotpo-pictures-collage-wrapper .yotpo-pictures-collage-big-image.row-size-1
+        { 
+         width:calc(100% * 2) !important
+        }
+        .yotpo-pictures-widget .yotpo-single-image-container .yotpo-video
+        {
+         background-size: cover !important;
+        }
+      } 
+  }
+}
 
 // Yotpo Modal (because of course there is!)
 
