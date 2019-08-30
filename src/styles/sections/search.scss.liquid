@@ -56,7 +56,7 @@ body.search {
             position: absolute;
             width: 320px;
             top: 13px;
-            right: 0;
+            left: 0;
         }
 
         input#q {
@@ -68,11 +68,17 @@ body.search {
             border-bottom: $searchBorder; 
         }
 
+        form{
+            position:relative;
+        }
+
         svg.icon.icon-search {
             width: 16px;
             position: absolute;
             right: 10px;
             top: 12px;
+            top: 0;
+            height: 100%;
         }
     }
 
