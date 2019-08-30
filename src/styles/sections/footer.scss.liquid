@@ -85,7 +85,7 @@
       height: 46px;
       padding: 20px 68px 20px 5px;
       @include fontSize(16px);
-      line-height: 16px;
+      line-height: 16px;      
     }
   }
 
@@ -745,3 +745,18 @@
     }
   }
 }
+
+ //Safari Browser 
+  @media not all and (min-resolution:.001dpcm)
+    { 
+      @supports (-webkit-appearance:none)
+       {
+        .site-footer input[type="email"] 
+         { 
+           @include mq('tablet-and-up') 
+           {
+            padding: 23px 68px 20px 5px;
+           } 
+          }
+       }
+    }
