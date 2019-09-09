@@ -52,11 +52,11 @@ body.search {
         float: none;
 
         @include mq( 'lap-and-up' ) {
-            display: block;
+            display: none;
             position: absolute;
             width: 320px;
             top: 13px;
-            left: 0;
+            right: 0;
         }
 
         input#q {
@@ -68,17 +68,11 @@ body.search {
             border-bottom: $searchBorder; 
         }
 
-        form{
-            position:relative;
-        }
-
         svg.icon.icon-search {
             width: 16px;
             position: absolute;
             right: 10px;
             top: 12px;
-            top: 0;
-            height: 100%;
         }
     }
 

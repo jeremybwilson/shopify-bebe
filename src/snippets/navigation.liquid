@@ -179,7 +179,7 @@
           </li>
 
 
-{% comment %} :: SINGLE LINK : One lonely weeb link :: {% endcomment %}
+  {% comment %} :: SINGLE LINK : One lonely weeb link :: {% endcomment %}
         {% else %}
           <li class="nav-primary-link {{ link.title | replace: ' ', '-' | downcase }}">
             <a class="nav-category-header" href="{{ link.url }}">{{ link.title }}</a>
@@ -190,7 +190,12 @@
     </ul>
   </div>
 </nav>
-
+{% comment %} ..:: SEARCH ::.. {% endcomment %}
+{% if section.settings.show_search %}
+  <div id="nav-search-form" class="nav-item nav-search searchbox">
+    {% include 'nav-search-input' %}           
+  </div>
+{% endif %}
 
 
 
