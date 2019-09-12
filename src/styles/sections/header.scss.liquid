@@ -526,11 +526,24 @@ $color--super-hot-neon-pink: #ff009c;
 
     // SEARCH : Input on mobile-navigation.liquid + header.liquid (desktop)
     .nav-search {
-        position: relative;
+        position:absolute;
         @include align-items( flex-start );
+        padding-right: 23px;
+        right: -13px;
+        bottom: 10px;
 
         width: 140px;
         padding-right: 23px;
+        display:none;
+
+        @include mq( 'lap' ) {
+            bottom: 21px;
+            width: 128px;
+        }
+
+        @include mq('lap-and-up'){
+            display:block;
+        }
 
         @include mq( 'desk-and-up' ) {
             width: 160px;
@@ -599,7 +612,7 @@ $color--super-hot-neon-pink: #ff009c;
             padding-right: 10px;
 
             @include mq( 'lap-and-up' ) {
-                top: 9px;
+                top:0px;
                 right: 0;
             }
 
@@ -1400,3 +1413,8 @@ $color--super-hot-neon-pink: #ff009c;
 /* SNIPPET : Enhanced Search Module
  * ---------------------------------------------- */
  @import url('../snippets/enhanced-search.scss.liquid');
+
+.bc-sf-search-suggestion{
+    left: auto !important;
+    right: 0;
+}
