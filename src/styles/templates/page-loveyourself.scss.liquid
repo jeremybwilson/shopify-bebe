@@ -197,6 +197,56 @@ $mod: 'Moderat', sans-serif;
         }
     }
 
+    #loyo--image img {
+        display: block;
+        width: 100%;
+    }
+
+    #loyo--instagram {
+        padding: 80px 0;
+        background: $color--reverse-1;
+
+        text-align: center;
+
+        header {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 40px;
+            padding-right: 40px;
+            max-width: 1420px;
+
+            svg {
+                max-width: 340px;
+                margin-bottom: 20px;
+            }    
+
+            p {
+                @include fontSize(12px);
+                
+                @include mq('tablet-and-up') {
+                    @include fontSize(18px);
+                }
+            }
+        }
+        .shop-collection--btn {
+            display: inline-block;
+            @include buttonDefaultStyle;
+            background-color: $color--primary-1;
+            padding-left: 50px !important;
+            padding-right: 50px !important;
+            color: $color--reverse-1;
+
+            @include mq('tablet-and-up') {
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+            }
+            @include mq('desk-and-up') {
+                padding-left: 50px !important;
+                padding-right: 50px !important;
+            }
+        }
+    }
+
     #loyo--middle {
         position: relative;
         width: 100vw;
