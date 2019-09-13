@@ -19,7 +19,27 @@
     {% section 'video' %}
   </section>  
 
-  <section id="loyo--middle">
+  <section id="loyo--image">
+    <img src="{{ 'bebelovesbebe4-LP_05.jpg' | file_img_url: 'master' }}" alt="Bebe Rexha" />
+  </section>
+
+  <section id="loyo--instagram">
+    <header>
+      {% include 'svg-icon-loveyourself', text_color: "#000" %}
+      <p>The campaign was inspired by Bebe Rexha’s honest unveiling of the fashion community and their injustice when she was nominated for a Grammy earlier this year. In an empowering video on Instagram, Rexha called out designers who failed to dress all celebrities, and those who do not fit “a runway size.” Rexha urged women and men to love their bodies and feel beautiful at any size, hence the campaign hashtag <strong>#loveyourself</strong>.</p>
+    </header>
+  
+    <div
+     class="yotpo yotpo-pictures-widget"
+     data-gallery-id="5c3c6b7432a3a44146eaaa9e">
+    </div> 
+
+    <a class="shop-collection--btn" href="/collections/new" title="Shop the Collection">Shop the Collection</a>
+
+  </section>
+
+  {% comment %}
+  <section id="loyo--middle" >
 
     <img id="loyo--middle-1" src="{{ 'loveyourself-desktop-1.jpg' | file_url }}" />
 
@@ -46,6 +66,8 @@
 
 
   </section>
+
+  {% endcomment %}
 
   <section id="loyo--quads">
     <h2>Backstage with Bebe</h2>
