@@ -3124,6 +3124,10 @@ theme.Product = (function () {
 
     // BADGES : BUILD : Method to build react-badges component on collection updates (rebuilt in JS)
     const buildBadges = require('./react-components/badges/BadgeParent.js');
+    $(window).on('load', function() {
+      $('#AddToCartForm #product-add .AddtoCart').hide();
+      $('#AddToCartForm #product-add .AddtoCart:first').show();
+    });
     $(document).ready( () => {
 
       // BADGES : Generate badge in div slot if present
