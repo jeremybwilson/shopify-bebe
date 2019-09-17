@@ -118,6 +118,15 @@ $resultsTextColor: {{ settings.filter_text_color }};
         & > .row {
             padding-left: 10px;
             padding-right: 10px;
+
+            width:100%;
+
+            #collection--main{
+                @include mq('lap-and-up'){
+                   width: 86.4%;
+                   margin-right: 0px;
+                }
+            }
         }
 
         @import url('../snippets/product-grid.scss.liquid');
