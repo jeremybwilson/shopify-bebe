@@ -80,7 +80,7 @@
           {% if shop.customer_accounts_enabled %}
             <li class="nav-item nav-account-item">
               {% if customer %}
-                <a class="swell--club" href="/account">{% include 'svg-icon-account' %}<span class="my-account-text">HEY,</span><span>{{ customer.first_name }}</span></a>
+                <a class="swell--club" href="/account">{% include 'svg-icon-account' %}<span>HEY, {{ customer.first_name }}</span></a>
               {% else %}
                 <a href="/account/login">{% include 'svg-icon-account' %}<span>Log In</span></a>
               {% endif %}
