@@ -530,7 +530,7 @@ $color--super-hot-neon-pink: #ff009c;
         @include align-items( flex-start );
         padding-right: 23px;
         right: -13px;
-        bottom: 10px;
+        bottom: 12px;
 
         width: 140px;
         padding-right: 23px;
@@ -821,6 +821,13 @@ $color--super-hot-neon-pink: #ff009c;
             color: $navHeaderColor;
         }
     }
+   
+    @include mq('lap-and-up'){
+         #nav-collections{
+             min-height:45px;
+         }
+    }
+
     #nav-menu-desktop {
         position: relative;
         height: 100%;
