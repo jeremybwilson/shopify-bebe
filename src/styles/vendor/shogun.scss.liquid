@@ -1,0 +1,142 @@
+#page .shogun-root {
+
+// elements 
+
+.shg-row {
+	margin: 15px 0;
+
+	@include mq('phone') {
+		margin: 0;
+	}
+}
+
+.shg-row > div {
+	@include mq('phone') {
+		margin: 10px 0 !important;
+	}	
+}
+
+.shogun-heading-component {
+
+	h1 {
+		@include fontSize(30px);
+		// color: $color--dark-green-2 !important;
+		// font-weight: $font-weight--bold;
+		text-transform: uppercase;
+		letter-spacing: .25em;
+		border-bottom: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	h2 {
+      // color: $color--dark-green-2 !important;
+      @include fontSize(20px);
+      // font-weight: $font-weight--bold;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      line-height: 24px / 20px * 1em;
+      margin: 30px auto 0;
+	}
+
+	h3 {
+      // color: $color--dark-green-2 !important;
+      @include fontSize(20px);
+      // font-weight: $font-weight--bold;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      line-height: 24px / 20px * 1em;
+      margin: 30px auto 0;
+	}
+
+}
+
+.shg-rich-text {
+	p {
+	    @include fontSize(16px);
+	    line-height: 26px / 16px * 1em;
+	    margin: 0;
+	}
+}
+
+.shg-btn-wrapper {
+	margin-top: 12px;
+  	@include fontSize(16px);
+  	letter-spacing: .2em;
+  	// font-weight:  $font-weight--medium;
+  	text-transform: uppercase;
+  	display: block;
+
+  	@include mq('phone') {
+		margin-bottom: 30px;
+	}
+
+	a {
+		// color: $color--white;
+		text-decoration: none;
+		letter-spacing: inherit;
+		// background-color: $color--orange-1;
+		// border: 1px solid $color--orange-1;
+	}
+}
+
+// modules
+
+	.main-hero {
+		margin: 15px 0;
+	}
+
+	.twin-promo {
+
+		.shg-btn-wrapper {
+
+	      	a {
+	      		// color: $color--dark-green-2;
+				background-color: transparent !important;
+				// border: 1px solid $color--orange-1;
+		     }
+		}
+
+	}
+
+	.trio-promo {
+
+	}
+
+	.img-txt {
+		display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 20px;
+		margin: 30px 0;
+
+		.shogun-image-container {
+			width: 70%;
+			margin: 0 auto;
+		}
+
+		.text-container {
+		    min-height: auto !important;
+		    height: auto;
+		    width: 30%;
+		    padding: 50px;
+		    text-align: center;
+		}
+
+		.shg-btn-wrapper {
+			margin-top: 12px;
+	      	@include fontSize(16px);
+	      	letter-spacing: .2em;
+	      	// font-weight:  $font-weight--medium;
+	      	text-transform: uppercase;
+	      	display: block;
+		}
+
+	}
+
+	.sub-hero {
+		img {
+			margin: 15px 0;
+		}
+	}
+}
