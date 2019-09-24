@@ -54,6 +54,12 @@ jobs:
               theme_id: "66250145856"
               store: bebe-prod.myshopify.com
               ignore_files:
+                - theme.shogun.landing.liquid
+                - page.shogun.default.liquid 
+                - page.shogun.landing.liquid
+                - product.shogun.custom.liquid
+                - shogun-head.liquid
+                - shogun-products.liquid
                 # - settings_data.json #This is commented out so we keep in sync with repo
                 - settings_data.presets-portion.bak.json' > ./config.yml
       - run:
@@ -77,6 +83,12 @@ jobs:
               store: bebe-prod.myshopify.com
               ignore_files:
                 - settings_data.json
+                - theme.shogun.landing.liquid
+                - page.shogun.default.liquid 
+                - page.shogun.landing.liquid
+                - product.shogun.custom.liquid
+                - shogun-head.liquid
+                - shogun-products.liquid
                 - en.default.json' > ./config.yml
       - run:
           name: Deploy
