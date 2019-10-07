@@ -65,4 +65,3 @@ _site
 secrets.json
 .jekyll-metadata
 .ruby-version
-package-lock.json
