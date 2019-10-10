@@ -942,7 +942,7 @@ theme.Header = (function() {
       body: $( 'body' ),
       containerId: $container.attr('data-section-id'),
       html: $( 'html' ),
-      mobileNavButton: $( '#icon-nav-mobile-menu-btn' ),
+      mobileNavButton: $( '#icon-nav-mobile-menu-btn, .nav-side__overlay' ),      
       mobileNavMenu: $( '#nav-menu-mobile' ),
       mobileHeaders: $('#accordion').find('.accordion-header'),
       mobileSitesPicker: $( '#nav-sites-picker-mobile' ),
@@ -997,6 +997,11 @@ theme.Header = (function() {
       var clickedata = $(this).data('mainmenu');console.log(clickedata);
       $('.sub-menu__wrapper[data-submenu='+clickedata+']').removeClass('sub-nav-opened');
       $('.main-menu__wrapper .nav-side__item').removeClass('open-sub-nav');
+      if ($(this).data('gotomain')) {
+        var subclickedata = $(this).data('secondmenu');console.log(subclickedata);
+        $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').removeClass('sub-sub-nav-opened');
+        $('.nav-side__item[data-submenu-open='+subclickedata+']').removeClass('open-sub-sub-nav');
+      }
       
     });
      
