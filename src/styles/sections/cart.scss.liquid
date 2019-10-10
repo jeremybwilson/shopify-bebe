@@ -272,10 +272,26 @@ body.cart {
     &:hover {
       background-color: $color--accent-1;
     }
-  }  
+  } 
 
   &.hidden {
     display: none;
   }
+
+
 }
 
+ .faster_checkout{
+   text-decoration: none;
+    @include mq('tablet-and-up'){
+      padding: 0 16px;
+    }
+     @include mq('phone'){
+      padding: 0 12px;
+    }
+    
+    &:hover {
+      background-color: $color--accent-1 !important;
+      text-decoration: none;
+    }
+  } 

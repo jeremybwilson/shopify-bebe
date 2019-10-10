@@ -236,9 +236,18 @@
           <h3>{{ 'cart.general.order_summary' | t }}</h3>
           <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart_subtotal | money }}</span></h4>
           
+          {% if customer %}
           {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
           <div id="checkout" class="button">{{ 'cart.general.checkout' | t }}</div>
           <input type="submit" id="hidden-checkout-button" name="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout hidden" />
+          {% else %}
+              {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
+            <div id="checkout" class="button">{{ 'cart.general.checkout_as_guest' | t }}</div>
+            <input type="submit" id="hidden-checkout-button" name="checkout" value="{{ 'cart.general.checkout_as_guest' | t }}" class="button bfx-checkout hidden" />      
+            {% comment %} Sign in for fast checkout {% endcomment %}
+            {% comment %}<div id="fast_checkout" class="button">{{ 'cart.general.signin_faster_checkout' | t }}</div> {% endcomment %}           
+            <a class="faster_checkout button" href="{{ shop.url }}/account/login?checkout_url={{ shop.url }}/cart">{{ 'cart.general.signin_faster_checkout' | t }}</a>
+          {% endif %}
           
           <div class="clear"></div>
           {% if additional_checkout_buttons %}

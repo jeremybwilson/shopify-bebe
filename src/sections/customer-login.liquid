@@ -17,7 +17,7 @@
     <div id="template" class="desktop-5 desktop-push-1 tablet-3 mobile-3">
 
       {% comment %} :: LEFT : Guest Checkout Login {% endcomment %}
-      {% if shop.checkout.guest_login %}
+      {% comment %}{% if shop.checkout.guest_login %}
         <div id="guest">
           <div class="template_header">
             <h2>{{ 'customer.login.guest_title' | t }}</h2>
@@ -26,7 +26,7 @@
             {% endform %}
           </div>
         </div>
-      {% endif %}	
+      {% endif %}	{% endcomment %}
 
       {% comment %} :: LEFT : Login {% endcomment %}
       <div id="customer">
