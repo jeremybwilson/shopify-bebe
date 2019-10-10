@@ -2998,7 +2998,7 @@ theme.ProductGallery = function (context, events) {
           arrows: true,
           infinite: false,
           nextArrow: '<button type="button" class="slick-next"><div class="bar-left"><span class="sr-only">Next</span></div><div class="bar-right"></div></button>',
-          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"><span class="sr-only>Previous</span></div><div class="bar-right"></div></button>',
+          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"><span class="sr-only">Previous</span></div><div class="bar-right"></div></button>',
           slidesToShow: 5,
           slidesToScroll: 3,
           // slide: '.product-thumbnail',

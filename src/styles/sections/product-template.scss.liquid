@@ -94,6 +94,21 @@
   //   position: relative;
   //   top: 40px;
   // }
+  @include mq('phone'){
+    div#product-details--wrapper {
+        padding: 0 12px;
+    }
+
+    .row.pdp-nosto-row{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .row.product-details--top{
+      padding-left:0px;
+        padding-right:0px;
+    }
+  }
 }
 
 .row.product-details--top {
@@ -313,6 +328,15 @@
       @include fontSize( 15px );
     }
   }
+}
+div#indi-mobile-reviews-root{
+      border-top: 1px solid #e6e6e6;
+    margin-top: 0;
+    padding-top: 20px;
+    display:none;
+    @include mq('phone'){
+      display:block;
+    }
 }
 
 /* Product Description

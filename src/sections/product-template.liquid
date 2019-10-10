@@ -20,10 +20,6 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}">
 
-  {% unless template == 'product.quick' %}
-    {% include 'product-mobile-header' %}
-  {% endunless %}
-
   {% include 'product-video' %}
 
   <div class="mobile-product-photos--wrapper">
@@ -50,11 +46,8 @@
     <a class="mobile-product-carousel--next">
       {% include 'svg-icon-caret-right' %}
     </a>
-    {% comment %}
-    INDI CAROUSEL - Rendered indi product carousel
-    {% endcomment %}
     {% unless template == 'product.quick' %}
-      {% include 'indi-product-mobile-embed' %}
+      {% include 'product-mobile-header' %}
     {% endunless %} 
   </div>
 
@@ -162,6 +155,13 @@
                 <dd id="shipping--accordion-content" class="product-accordion--content">{{ section.settings.shipping_text }}</dd>
               </dl>
             {% endif %}
+
+            {% comment %}
+            INDI CAROUSEL - Rendered indi product carousel
+            {% endcomment %}
+            {% unless template == 'product.quick' %}
+              {% include 'indi-product-mobile-embed' %}
+            {% endunless %}
 
             {% comment %} :: SOCIAL LINKS :: {% endcomment %}
             {% if section.settings.show_social %}
