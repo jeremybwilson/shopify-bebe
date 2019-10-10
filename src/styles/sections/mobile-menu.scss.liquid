@@ -1,0 +1,134 @@
+.mobile-menu{ 
+    display: block;
+    position: fixed;
+    z-index: 13000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 75%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff;
+    backface-visibility: hidden;
+    transform: translate3d(-105%,0,0);
+    transition: -webkit-transform .4s ease-in-out,transform .4s ease-in-out;
+    margin: 0px !important;
+  
+    #rich-nav-container{
+        height: 100%;
+        position: relative;
+
+        .main-menu__wrapper,.sub-menu__wrapper  {
+            height: 100%;
+
+            ul{
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                display: inline-block;
+                width: 100%;
+
+                li{
+                   list-style: none;
+                   display: inline-block;
+                   width: 100%;
+                   border-bottom:1px solid $color--light-gray;
+                   margin: 0px;
+                   padding:15px 15px;
+                   position: relative;
+
+                   .mobile_subnav,.mobile_sub_subnav,.mobile_backto_nav {
+                        position: absolute;
+                        right: 5px;
+                        top: 9px;
+                        text-indent: -9999px;
+                        background-image: url(https://cdn.shopify.com/s/files/1/0033/7939/6672/files/arrow-mobile-menu.svg?323806);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        background-size: 20px;
+                        background-position: center;
+                    }
+
+                    .mobile_backto_nav{
+                        transform: rotate(180deg);   
+                    }
+
+                   a,.av-side__link--main{
+                    font-weight: $font-weight--book;
+                    color: $color--text-1;
+                    text-transform: capitalize;
+                    letter-spacing: 4px;
+                    width: 100%;
+                    display:inline-block;
+                    line-height: 22px;
+                    font-size: 1rem;
+                   }
+
+                   .av-side__link--main{
+                       font-weight:$font-weight--bold;
+                   }
+                }
+            }
+        }
+
+        .sub-menu__wrapper {
+            position: absolute;
+            top: 0;
+            background-color: #f3f3f3;
+            right: 0;
+            left: 0;
+            min-height: 100%;
+            -webkit-transform: -webkit-translate3d(100%,0,0);
+            -ms-transform: translate3d(100%,0,0);
+            transform: translate3d(100%,0,0);
+            -webkit-transition: -webkit-transform .4s ease-in-out,transform .4s ease-in-out;
+            -ms-transition: -ms-transform .4s ease-in-out,transform .4s ease-in-out;
+            transition: transform .4s ease-in-out,transform .4s ease-in-out;
+
+            &.sub-nav-opened{
+                -webkit-transform: -webkit-translate3d(0,0,0);
+                -ms-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-transition: -webkit-transform .4s;
+                -ms-transition: transform .4s;
+                transition: transform .4s;
+                overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+    }
+
+}
+
+.nav-side__overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -22.5rem;
+    z-index: 12000;
+    background-color: transparent;
+    height: 0;
+    transition: left .4s,background .4s;
+}
+
+.menu-open{
+    .mobile-menu{    
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        transition: transform .4s;
+    }
+
+    .nav-side__overlay{
+        left: 0;
+        background-color: rgba(0,0,0,.8);
+        height: 90rem;
+        transition: left .4s,background .4s;
+    }
+}
