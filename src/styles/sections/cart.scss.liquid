@@ -218,9 +218,11 @@ body.cart {
     font-weight: $font-weight--medium;
     @include fontDim( 18px, 18px, .04em );
     text-transform: uppercase;
+    text-align:center;
   }
   h4 {
     color: $color--primary-1;
+    text-align:center;
 
     .subtotal-header {
       margin-right: 5em;
@@ -268,6 +270,7 @@ body.cart {
     @include mq('phone'){
       background: $button--main-mobile-bg;
       color: $button--main-mobile-text;
+      margin-top:25px;
     }
     &:hover {
       background-color: $color--accent-1;
