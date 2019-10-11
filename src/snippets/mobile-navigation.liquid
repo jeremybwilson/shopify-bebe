@@ -1,88 +1,85 @@
-<nav id="nav-menu-mobile">
+<nav id="js-rich-nav" class="mobile-menu" role="navigation">
+  <div id="rich-nav-container">
+    
+    <div class="main-menu__wrapper js-menu-wrapper">      
+        <ul class="js-global__customercare nav-side__list">
+         {% for link in linklists.main-menu.links %}
+           {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+           {% if hidden_nav_check != '_' %}
+            {% if link.links == blank %}
+              <li class="nav-side__item">
+                <a rel="external" href="{{ link.url }}" class="nav-side__link nav-side__link--main">{{ link.title }}</a>
+              </li>
+            {% else %}
+              <li class="mobile_subnav nav-side__item" data-mainmenu="{{ link.title | downcase | replace: ' ', '-' }}">
+                <a rel="external" href="javascript:void(0);" class="nav-side__link nav-side__link--main">{{ link.title }}</a>
+                <span class="mobile_subnav_arr"> &gt; </span>
+              </li>
+            {% endif %}           
+           {% endif %}           
+         {% endfor %}
+        </ul>
+    </div> 
 
-  {% comment %} :: MOBILE MENU :: {% endcomment %}
-  <ul id="accordion">
-    {% assign menu = linklists[settings.main_nav] %}
-    {% for link in menu.links %}
-      
-
-      {% comment %} :: LEVEL 1 : SUB-NAV : Accordion (Has nested menus) :: {% endcomment %}
-      {% if link.links != blank %}
-        <li class="accordion-header accordion-toggle {{ link.title | replace: '.', ' ' | handle }}" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</li>
-        
-        <li class="accordion-content">
-          <ul class="sub">
-            {% for sub_link in link.links %}
-
-              {% assign hidden_nav_check = sub_link.title | slice: 0 %}
-
-              {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
-
-              {% if hidden_nav_check != '_' %}
-
-                {% comment %} :: LEVEL 2 : SUB-NAV : First sub-nav has children nav elements :: {% endcomment %}
-                {% if sub_link.links != blank  %}
-                  
-                  {% comment %} :: LEVEL 2 : Title :: {% endcomment %}
-                  <li class="accordion-sub-header accordion-toggle" aria-haspopup="true" aria-expanded="false"><span>{{ sub_link.title | escape }}</span></li>
-                  
-                  {% comment %} :: LEVEL 2 : Nested Sub-Sub-Nav Menu :: {% endcomment %}
-                  <li class="accordion-content2 accordion-second-level">
-                    <ul class="sub">
-                      {% for sub_sub_link in sub_link.links %}
-                        
-                        {% comment %} PREVENT : Entries that denote a gap for desktop (are named "-'){% endcomment %}
-                        {% if sub_sub_link.title != '-' %}
-
-                          {% comment %} PSEUDO HEADER : Adding "SUB-HEADER_ will cause entry to not link, but be a nested header" {% endcomment %}
-                          {% if sub_sub_link.title contains 'SUB-HEADER_' %}
-                            <li class="link-sub-header custom-sub-header">{{ sub_sub_link.title | replace: 'SUB-HEADER_', '' }}</li>
-                          {% else %}
-                            <li {% if sub_sub_link.title contains 'Shop All' %} class="shop-all" {% endif %}>
-                              <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
-                            </li>
-                          {% endif %}
-
-                        {% endif %}
-
-                      {% endfor %}
-                    </ul>
-                  </li>
-
-
-                {% comment %} 
-                  :: LEVEL 2 : FLAT : Sub-topic has no nested elements :: 
-                    * Hides menu elements that are titled as "-" which mark space gaps on desktop
-                {% endcomment %}
-                {% elsif sub_link.title != '-' %} 
-
-                  {% comment %}Prevent our pseudo-sub-headers from showing on mobile (name starts with "SUB-HEADER_") {% endcomment %}
-                  {% if sub_link.title contains 'SUB-HEADER_' %}{% else %}
-                    <li class="link-sub-header {% if sub_sub_link.title contains 'Shop All' %} shop-all {% endif %}">
-                      <a href="{{ sub_link.url }}">{{ sub_link.title | escape }}</a>
-                    </li>
-                  {% endif %}
-
-                {% endif %}
-
+    {% for link in linklists.main-menu.links %}
+    <div class="sub-menu__wrapper js-menu-wrapper" data-submenu="{{ link.title | downcase | replace: ' ', '-' }}">       
+      <ul class="nav-side__list sub-menu__list" data-id="sub-menu"  data-name-display="{{ link.title }}">
+        <li class="mobile_backto_nav nav-side__item back-button" data-mainmenu="{{ link.title | downcase | replace: ' ', '-' }}">
+            <span class="mobile_backto_nav_arr" > &lt; </span><span class="nav-side__link nav-side__link--main"> {{ link.title }}</span>
+          </li>
+        {% for sub_link in link.links %}
+          {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+           {% if hidden_nav_check != '_' %}        
+            {% if sub_link != blank %}
+              {% if sub_link.links == blank %}
+                <li class="nav-side__item" data-submenu-open="{{ sub_link.title }}">
+                  <a class="nav-side__link nav-side__link--main return-link js-rich-nav" href="{{ sub_link.url }}" >{{ sub_link.title}}</a>
+                </li>
+              {% else %}
+                <li class="mobile_sub_subnav nav-side__item" data-submenu-open="{{ sub_link.title }}" data-secondmenu="{{ sub_link.title | downcase | replace: ' ', '-' }}">
+                  <a class="nav-side__link nav-side__link--main return-link js-rich-nav" href="javascript:void(0);" >{{ sub_link.title}}</a>
+                  <span class="mobile_sub_subnav_arr"> &gt; </span>
+                </li>
               {% endif %}
-
-            {% endfor %}
-          </ul>
-        </li>
-
-
-      {% comment %} :: LEVEL 1 : FLAT : Simple Menu (has no nested children) :: {% endcomment %}
-      {% elsif link.title != '-' %}
-        <li class="link-header"><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-      {% endif %}
-
+            {% endif %}
+           {% endif %}         
+        {% endfor %}  
+      </ul>              
+    </div>
     {% endfor %}
-  </ul>
+  {% for link in linklists.main-menu.links %}     
+    {% for sub_link in link.links %}
+      {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+      {% if hidden_nav_check != '_' %}        
+      {% if sub_link.links != blank %}
+      <div class="sub-sub-menu__wrapper js-menu-wrapper" data-thirdmenu="{{ sub_link.title | downcase | replace: ' ', '-' }}"> 
+        <ul class="js-global__customercare nav-side__list">
+          <li class="mobile_backto_nav nav-side__item sub-back-button" data-mainmenu="{{ link.title | downcase | replace: ' ', '-' }}" data-secondmenu="{{ sub_link.title | downcase | replace: ' ', '-' }}" data-gotomain="true">
+            <span class="mobile_backto_nav_arr"> &lt; </span><span class="nav-side__link nav-side__link--main"> {{ link.title }}</span>
+          </li>
+          <li class="mobile_backto_subnav nav-side__item sub-back-button" data-secondmenu="{{ sub_link.title | downcase | replace: ' ', '-' }}">
+            <span class="mobile_backto_subnav_arr" > &lt; </span>
+            <span class="nav-side__link nav-side__link--main">{{ sub_link.title }}</span>
+          </li>
+          {% for sub_sub_link in sub_link.links %}
+            <li class="nav-side__item">
+              <a rel="external" href="{{ sub_sub_link.url }}" class="nav-side__link nav-side__link--main">{{ sub_sub_link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>           
+      {% endif %}
+      {% endif %}
+    {% endfor %} 
+  {% endfor %}
+  </div>  
+</nav>
 
-  {% comment %} ..:: SITE PICKER : (US, UK, EU, CAN) ::.. {% endcomment %}
-  {% if section.settings.show_site_picker %}
-    <div id="nav-sites-picker-mobile">{% include 'sites-picker', showFullName:true %}</div>
-  {% endif %}
+<div class="nav-side__overlay js-switch-class" data-switch-class="nav__sidebar--open" data-switch-target="#nav-side-page-wrapper"></div>
 
-</nav> 
+<style>
+.sub-menu__wrapper{display:none;}
+.sub-menu__wrapper.sub-nav-opened{display:block;}
+.sub-sub-menu__wrapper{display:none;}
+.sub-sub-menu__wrapper.sub-sub-nav-opened{display:block;}
+</style>

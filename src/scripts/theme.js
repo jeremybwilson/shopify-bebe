@@ -942,7 +942,7 @@ theme.Header = (function() {
       body: $( 'body' ),
       containerId: $container.attr('data-section-id'),
       html: $( 'html' ),
-      mobileNavButton: $( '#icon-nav-mobile-menu-btn' ),
+      mobileNavButton: $( '#icon-nav-mobile-menu-btn, .nav-side__overlay' ),      
       mobileNavMenu: $( '#nav-menu-mobile' ),
       mobileHeaders: $('#accordion').find('.accordion-header'),
       mobileSitesPicker: $( '#nav-sites-picker-mobile' ),
@@ -983,6 +983,41 @@ theme.Header = (function() {
 
       //Hide the other panels
       $(".accordion-content").not(header.next()).slideUp('fast');
+    });
+     
+    //New Mobile Navigation :: Open First level Nav
+    $(".mobile_subnav").on( 'click', function(){
+      $(this).parent('.nav-side__item').addClass('open-sub-nav');
+      var clickedata = $(this).data('mainmenu');
+      $('.sub-menu__wrapper[data-submenu='+clickedata+']').addClass('sub-nav-opened');
+    });
+
+    //New Mobile Navigation :: Close First level Nav
+    $(".mobile_backto_nav").on( 'click', function(){
+      var clickedata = $(this).data('mainmenu');
+      $('.sub-menu__wrapper[data-submenu='+clickedata+']').removeClass('sub-nav-opened');
+      $('.main-menu__wrapper .nav-side__item').removeClass('open-sub-nav');
+      if ($(this).data('gotomain')) {
+        var subclickedata = $(this).data('secondmenu');
+        $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').removeClass('sub-sub-nav-opened');
+        $('.nav-side__item[data-submenu-open='+subclickedata+']').removeClass('open-sub-sub-nav');
+      }
+      
+    });
+     
+    //New Mobile Navigation :: Open Second level Nav
+    $(".mobile_sub_subnav").on( 'click', function(){
+      $(this).parent('.nav-side__item').addClass('open-sub-sub-nav');
+      var subclickedata = $(this).data('secondmenu');
+      $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').addClass('sub-sub-nav-opened');
+    });
+
+    //New Mobile Navigation :: Close Second level Nav
+    $(".mobile_backto_subnav").on( 'click', function(){
+      var subclickedata = $(this).data('secondmenu');
+      $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').removeClass('sub-sub-nav-opened');
+      $('.nav-side__item[data-submenu-open='+subclickedata+']').removeClass('open-sub-sub-nav');
+      
     });
 
     // MOBILE NAV : LEVEL 2 - SUB-HEADER ACCORDION : Accordion Functionality
