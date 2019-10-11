@@ -146,7 +146,19 @@
 
     {% if section.settings.full_width_header %}</div>{% endif %}
   </header>
-
+  <div class="eagle" id="global-nav-div">
+      <div class="u-clear--both" id="global-nav-div">
+          <nav class="nav nav--justified nav--md-height" role="navigation">
+              <ul class="nav__wrapper container">   
+                  {% for link in linklists.top-navigation-menu-mobile.links %}
+                    {% if link.title != blank %}
+                      <li class="nav__item"><a class="nav__link" href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+              </ul>
+          </nav>
+      </div>
+  </div>
   
 
 
