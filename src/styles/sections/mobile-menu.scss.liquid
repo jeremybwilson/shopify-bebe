@@ -9,7 +9,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    background-color: #fff;
+    background-color: $color--reverse-1;
     backface-visibility: hidden;
     transform: translate3d(-105%,0,0);
     transition: -webkit-transform .4s ease-in-out,transform .4s ease-in-out;
@@ -39,7 +39,7 @@
                    padding:15px 15px;
                    position: relative;
 
-                   .mobile_subnav,.mobile_sub_subnav,.mobile_backto_nav,.mobile_backto_subnav {
+                   .mobile_subnav_arr,.mobile_sub_subnav_arr,.mobile_backto_subnav_arr,.mobile_backto_nav_arr {
                         position: absolute;
                         right: 5px;
                         top: 9px;
@@ -54,7 +54,7 @@
                         background-position: center;
                     }
 
-                    .mobile_backto_nav,.mobile_backto_subnav{
+                    .mobile_backto_nav,.mobile_backto_subnav_arr,.mobile_backto_nav_arr{
                         transform: rotate(180deg);   
                     }
 
@@ -78,7 +78,7 @@
                 padding-left: 20px
             }
 
-            .mobile_backto_nav,.mobile_backto_subnav {
+            .mobile_backto_nav,.mobile_backto_subnav_arr,.mobile_backto_nav_arr {
                 right: auto !important;
                 left: 0 !important;
             }
@@ -87,7 +87,7 @@
         .sub-menu__wrapper {
             position: absolute;
             top: 0;
-            background-color: #fff;
+            background-color: $color--reverse-1;
             right: 0;
             left: 0;
             min-height: 100%;
@@ -114,7 +114,7 @@
         .sub-sub-menu__wrapper{
             position: absolute;
             top: 0;
-            background-color: #f3f3f3;
+            background-color:$color--reverse-1;
             right: 0;
             left: 0;
             min-height: 100%;
