@@ -1425,7 +1425,7 @@ $color--super-hot-neon-pink: #ff009c;
     left: auto !important;
     right: 0;
 }
-@include mq( 'phone-landscape' ) {
+@include mq( 'phone' ) {
     a.nav__link{
         position: relative;
         padding-top: 1.16666667rem;
@@ -1434,7 +1434,8 @@ $color--super-hot-neon-pink: #ff009c;
         font-size: 1em;
         letter-spacing: .16666667em;
         text-transform: uppercase;
-        white-space: nowrap;   
+        white-space: nowrap;  
+        text-decoration: none; 
     }
     .eagle .nav {
     background-color: #000;
@@ -1443,33 +1444,108 @@ $color--super-hot-neon-pink: #ff009c;
     .eagle .nav__item{
     display: inline-block;
     padding: 0 .66666667rem;
+    position: relative;
+
+     &.active:before{
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background-color: #fff;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+     }
     }
     .eagle .nav--justified .nav__wrapper{
      display: flex;
     justify-content: space-between;       
     }
 }
-@include mq( 'phone-portrait3' ) {
-    a.nav__link{
-        position: relative;
-        padding-top: 1.16666667rem;
-        padding-bottom: .25rem;
-        color: #fff;
-        font-size: 1em;
-        letter-spacing: .16666667em;
-        text-transform: uppercase;
-        white-space: nowrap;   
+
+
+
+
+// mobile menu dropdown categories
+.mobile-menu-dropdown{
+    .category-dropdown__dropdown{
+       ul{
+            margin: 0px;
+
+          li{
+             list-style:none !important;
+             padding:15px;
+             border-bottom:1px solid $color--light-gray;
+
+            &:focus{
+                   background-color:$color--light-gray;
+            }
+            &:hover{
+               background-color:$color--light-gray;
+            }
+
+             a,.category-dropdown__sub-title{
+                padding: 0;
+                font-weight: 400;
+                color: #000;
+                text-transform: capitalize;
+                letter-spacing:1.5px;
+                font-size: 1rem;
+                line-height:22px;
+             }
+
+             .category-dropdown__sub-title{
+                font-weight:$font-weight--bold;
+                text-align:center;
+             }
+
+          }
+       }
     }
-    .eagle .nav {
-    background-color: #000;
-    overflow: hidden;
+}
+
+
+.category-dropdown__overlay {
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    padding-top: 0;
+    z-index: 1;
+    display: block;
+    opacity: 0;
+    transition: opacity .5s linear;
+    z-index: 8;
+}
+
+.category-dropdown__nav-list.is-active{
+    display:block !important;
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+}
+
+.eagle{
+   display:none;
+    @include mq('phone'){
+      display:block;
     }
-    .eagle .nav__item{
-    display: inline-block;
-    padding: 0 .66666667rem;
-    }
-    .eagle .nav--justified .nav__wrapper{
-     display: flex;
-    justify-content: space-between;       
-    }
+}
+
+.eagle.dropdown-open{
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
+    width: 100%;
+    margin-top: 81px;
+    top: 0;
+}
+
+.category-dropdown__nav-list.is-active~.category-dropdown__overlay {
+    opacity: 1;
+    padding-top: 300%;
+    transition: opacity .1s linear;
+}
+
+body.no-scroll{
+    position:fixed;
+    width:100%;
 }
