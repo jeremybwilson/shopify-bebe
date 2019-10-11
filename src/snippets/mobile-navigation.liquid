@@ -3,11 +3,14 @@
     
     <div class="main-menu__wrapper js-menu-wrapper">      
         <ul class="js-global__customercare nav-side__list">
-         {% for link in linklists.main-menu.links %}          
+         {% for link in linklists.main-menu.links %}
+           {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+           {% if hidden_nav_check != '_' %}           
             <li class="nav-side__item">
               <a rel="external" href="{{ link.url }}" class="nav-side__link nav-side__link--main">{{ link.title }}</a>
               {% if link.links != blank %} <span class="mobile_subnav" data-mainmenu="{{ link.title | downcase | replace: ' ', '-' }}"> &gt; </span>{% endif %}
-            </li>          
+            </li>
+           {% endif %}           
          {% endfor %}
         </ul>
     </div> 
@@ -19,18 +22,23 @@
             <span class="mobile_backto_nav" data-mainmenu="{{ link.title | downcase | replace: ' ', '-' }}"> &lt; </span><span class="nav-side__link nav-side__link--main"> {{ link.title }}</span>
           </li>
         {% for sub_link in link.links %}
+          {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+           {% if hidden_nav_check != '_' %}        
             {% if sub_link != blank %}
               <li class="nav-side__item" data-submenu-open="{{ sub_link.title }}">
                 <a class="nav-side__link nav-side__link--main return-link js-rich-nav" href="{{ sub_link.url }}" >{{ sub_link.title}}</a>
                 {% if sub_link.links != blank %} <span class="mobile_sub_subnav" data-secondmenu="{{ sub_link.title | downcase | replace: ' ', '-' }}"> &gt; </span>{% endif %}
               </li>
-            {% endif %}        
+            {% endif %}
+           {% endif %}         
         {% endfor %}  
       </ul>              
     </div>
     {% endfor %}
   {% for link in linklists.main-menu.links %}     
     {% for sub_link in link.links %}
+      {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+      {% if hidden_nav_check != '_' %}        
       {% if sub_link.links != blank %}
       <div class="sub-sub-menu__wrapper js-menu-wrapper" data-thirdmenu="{{ sub_link.title | downcase | replace: ' ', '-' }}"> 
         <ul class="js-global__customercare nav-side__list">
@@ -48,6 +56,7 @@
           {% endfor %}
         </ul>
       </div>           
+      {% endif %}
       {% endif %}
     {% endfor %} 
   {% endfor %}
