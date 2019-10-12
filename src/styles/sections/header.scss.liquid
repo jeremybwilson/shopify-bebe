@@ -1437,112 +1437,109 @@ $color--super-hot-neon-pink: #ff009c;
         white-space: nowrap;  
         text-decoration: none; 
     }
-    .eagle .nav {
-    background-color: #000;
-    overflow: hidden;
-    }
-    .eagle .nav__item{
-    display: inline-block;
-    padding: 0 .66666667rem;
-    position: relative;
 
-     &.active:before{
-        content: "";
-        position: absolute;
-        height: 2px;
-        width: 100%;
-        background-color: #fff;
-        bottom: -8px;
-        left: 0;
-        right: 0;
-     }
+    .eagle .nav {
+        background-color: #000;
+        overflow: hidden;
+    }
+    
+    .eagle .nav__item{
+        display: inline-block;
+        padding: 0;
+
+        @include mq('phone-portrait')  {
+            padding: 0 0.5rem;
+        }  
+     
+        &.active >a{
+            position: relative;
+            &:before{
+                content: "";
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                background-color: #fff;
+                bottom: -11px;
+                left: 0;
+                right: 0;
+            }
+        }
     }
     .eagle .nav--justified .nav__wrapper{
-     display: flex;
-    justify-content: space-between;       
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.58333333rem;
+        margin-left: 0px;
+        margin-right: 0px !important; 
+
+        @include mq('phone-portrait'){
+            padding: 0 0.8rem;
+        }    
     }
 }
-
-
-
 
 // mobile menu dropdown categories
-.mobile-menu-dropdown{
-    .category-dropdown__dropdown{
-       ul{
-            margin: 0px;
-
-          li{
-             list-style:none !important;
-             padding:15px;
-             border-bottom:1px solid $color--light-gray;
-
-            &:focus{
-                   background-color:$color--light-gray;
-            }
-            &:hover{
-               background-color:$color--light-gray;
-            }
-
-             a,.category-dropdown__sub-title{
-                padding: 0;
-                font-weight: 400;
-                color: #000;
-                text-transform: capitalize;
-                letter-spacing:1.5px;
-                font-size: 1rem;
-                line-height:22px;
-             }
-
-             .category-dropdown__sub-title{
-                font-weight:$font-weight--bold;
-                text-align:center;
-             }
-
-          }
-       }
-    }
-}
-
-
-.category-dropdown__overlay {
-    background: #fff;
-    position: absolute;
-    width: 100%;
-    padding-top: 0;
-    z-index: 1;
-    display: block;
-    opacity: 0;
-    transition: opacity .5s linear;
-    z-index: 8;
-}
-
-.category-dropdown__nav-list.is-active{
-    display:block !important;
-    height: calc(100vh - 125px);
-    overflow-y: auto;
-}
-
 .eagle{
-   display:none;
+    display:none;
     @include mq('phone'){
-      display:block;
+        display:block;
     }
-}
 
-.eagle.dropdown-open{
-    position: fixed;
-    background-color: rgb(255, 255, 255);
-    z-index: 999;
-    width: 100%;
-    margin-top: 81px;
-    top: 0;
-}
+    &.dropdown-open{
+        position: fixed;
+        background-color: rgb(255, 255, 255);
+        z-index: 999;
+        width: 100%;
+        margin-top: 81px;
+        top: 0;
+    }
 
-.category-dropdown__nav-list.is-active~.category-dropdown__overlay {
-    opacity: 1;
-    padding-top: 300%;
-    transition: opacity .1s linear;
+    .mobile-top-sub-menu-dropdown{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        background-color: #fff;
+        margin-top: 0;
+        top: 100%;
+        z-index:99;
+
+        .sub-nav-dropdown__dropdown{
+            height:100%;
+            ul{
+                height:100%;
+                margin: 0px;
+                li{
+                    list-style:none !important;
+                    padding:15px;
+                    border-bottom:1px solid $color--light-gray;
+                    &:focus{
+                        background-color:$color--light-gray;
+                    }
+                    &:hover{
+                        background-color:$color--light-gray;
+                    }
+                    a{
+                        padding: 0;
+                        font-weight: 400;
+                        color: #000;
+                        text-transform: capitalize;
+                        letter-spacing:1.5px;
+                        font-size: 1rem;
+                        line-height:22px;
+                        width: 100%;
+                        display: inline-block; 
+                        text-decoration:none !important;
+                    }
+                }
+            }
+        }
+
+        &.is-active{
+        height: calc(100vh - 125px);
+        overflow-y: auto; 
+        }
+    }
 }
 
 body.no-scroll{

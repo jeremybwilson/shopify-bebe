@@ -1,7 +1,7 @@
 <div id="header-section" 
   data-section-id="{{ section.id }}" 
   data-section-type="header-section" 
-  data-swap-rate="{{ section.settings.announcement_swap_rate }}">
+  data-swap-rate="{{ section.settings.announcement_swap_rate }}" >
 
   {% comment %}
     REMOVED THINGS :
@@ -146,120 +146,31 @@
 
     {% if section.settings.full_width_header %}</div>{% endif %}
   </header>
-  <div class="eagle" id="global-nav-div">
-      <div class="u-clear--both" id="global-nav-div">
-          <nav class="nav nav--justified nav--md-height" role="navigation">
-              <ul class="nav__wrapper container">   
-                  {% for link in linklists.top-navigation-menu-mobile.links %}
-                    {% if link.title != blank %}
-                      <li class="nav__item"><a class="nav__link" href="{{ link.url }}">{{ link.title }}</a></li>
-                    {% endif %}
-                  {% endfor %}
-              </ul>
-          </nav>
-      </div>
-      
-      <div class="category-dropdown">
-         <div class="category-dropdown__dropdown">
-            <ul class="ui-list category-dropdown__nav-list js-toggle-this-cat is-active" style="display: block; max-height: 366px;">
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/clothing/br/3699fc/?navsrc=main">
-                  Clothing
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/dresses/br/a8e981/?navsrc=main">
-                  Dresses
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/shoes/br/3f40a9/?navsrc=main">
-                  Shoes
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/content/lp/beauty/mobile/?navsrc=main">
-                  Beauty
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/bags/br/2df9df/?navsrc=main">
-                  Bags
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/jewelry-accessories/br/946fac/?navsrc=main">
-                  Jewelry &amp; Accessories
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/r/mobile/GiftCertificates.jsp?navsrc=main">
-                  Gift Certificates
-                  </a>
-               </li>
-               <li class="ui-list__item">
-                  <div class="category-dropdown__sub-title">
-                     Most Wanted
-                  </div>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/bestSeller/all-best-sellers/br/2022d4/?navsrc=main">
-                  Best Sellers
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/revolve-exclusives/br/2d0548/?navsrc=main">
-                  REVOLVE Exclusives
-                  </a>
-               </li>
-               <li class="ui-list__item">
-                  <div class="category-dropdown__sub-title">
-                     Featured Shops
-                  </div>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/collections/new-arrivals/br/7ab2dc/">
-                  Collections
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/content/products/editorial?prettyPath=/r/Editorials.jsp&amp;listname=Vacation%20Checklist&amp;cplid=16102">
-                  OOO: Vacay Checklist
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/content/products/editorial?prettyPath=/r/Editorials.jsp&amp;listname=ONGOING%20WEEKEND%20CASUAL%20&amp;cplid=16012">
-                  Weekend Plans
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/content/products/editorial?prettyPath=/r/Editorials.jsp&amp;listname=BRUNCH%20ONGOING&amp;cplid=16007">
-                  Brunch Bound
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/content/products/editorial?prettyPath=/r/Editorials.jsp&amp;listname=WORKWEAR%20ONGOING&amp;cplid=16112">
-                  Boss Babe
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/content/products/editorial?prettyPath=/r/Editorials.jsp&amp;listname=DATE%20NIGHT%20SEARCH&amp;cplid=16977">
-                  Date Night
-                  </a>
-               </li>
-               <li class="u-text--md ui-list__item">
-                  <a class="category-dropdown__link" href="/mobile/wedding/">
-                  Wedding Shop
-                  </a>
-               </li>
-            </ul>
-            <div class="category-dropdown__overlay"></div>
-         </div>
-      </div>
+  <div class="eagle" id="global-top-nav-div">
+    <nav class="nav nav--justified nav--md-height" role="navigation">
+        <ul class="nav__wrapper container">   
+            {% for link in linklists.top-navigation-menu-mobile.links %}
+              {% if link.title != blank %}
+                <li class="nav__item mobile-top-nav-item"><a class="nav__link" href="{{ link.url }}">{{ link.title }}</a>
+                    {% if link.levels > 0 %}
+                    <div class="sub_nav__wrapper mobile-top-sub-menu-dropdown js-toggle-this-cat" style="display: none;">
+                      <div class="sub-nav-dropdown__dropdown">
+                        <ul class="ui-list dropdown-sub-nav-list">
+                          {% for sub_link in link.links %}                    
+                            <li class="u-text--md ui-list__item">
+                              <a href="{{ sub_link.title }}">{{ sub_link.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  {% endif %}
+                </li>
+              {% endif %}                   
+            {% endfor %}
+        </ul>
+    </nav>
   </div>
-  
-
-
 
   <style>
     #top-bar, #top-bar-bg {

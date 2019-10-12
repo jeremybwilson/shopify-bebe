@@ -3524,4 +3524,32 @@ $(document).ready(function(){
     },1500);
   }
 
+  //Top global mobile navigation
+  $('.mobile-top-nav-item').on('click', function(){
+    if($(this).find('.mobile-top-sub-menu-dropdown').length == 0){
+      return true;
+    }
+    if($(this).hasClass('active')){
+      $('body').removeClass('no-scroll');
+      $(this).find('.mobile-top-sub-menu-dropdown').slideUp('slow');
+      $(this).removeClass('active');
+      $('.eagle').removeClass('dropdown-open');
+    }else{
+      $('body').addClass('no-scroll');
+      $('.active').find('.mobile-top-sub-menu-dropdown').slideUp('slow');
+      $('.active').removeClass('active');
+      $(this).addClass('active');
+      $(this).find('.mobile-top-sub-menu-dropdown').slideDown('slow');
+      $('.eagle').addClass('dropdown-open');
+    }
+  });
+
+  $(".page-header__dropdown-overlay").click(function(){
+    $("#collection-nav--mobile-dropdown").slideUp();
+    $("#collection-nav--mobile-trigger").removeClass("is-open");
+    $("body").removeClass("noscroll");
+  });
+  $("#collection-nav--mobile-trigger").click(function(){
+    $("body").toggleClass("noscroll");
+  });
 });
