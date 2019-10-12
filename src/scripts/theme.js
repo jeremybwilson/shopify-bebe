@@ -3552,4 +3552,11 @@ $(document).ready(function(){
   $("#collection-nav--mobile-trigger").click(function(){
     $("body").toggleClass("noscroll");
   });
+
+  if($(window).width() < 767){
+     $(document).ready(function(){
+      $(".collection--subnav--subnav").parent().addClass('border-bottom');
+    });
+  }
+
 });

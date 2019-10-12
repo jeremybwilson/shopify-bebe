@@ -26,7 +26,7 @@ body.noscroll{
         display: block;
         opacity: 0;
         transition: opacity .5s linear;
-        z-index: 99;
+        z-index: 9;
     }
 
     ul {
@@ -37,6 +37,10 @@ body.noscroll{
 
         @include mq( 'lap-and-up' ) {
             @include fontSize( 13px );
+        }
+
+        .border-bottom >a{
+           border-bottom: solid 1px $color--light-gray;
         }
 
         li {
@@ -81,6 +85,7 @@ body.noscroll{
             @include fontSize( 13px );
             padding:0px 0px;
             border-bottom:0px;
+            margin-bottom: 5px;
         }
     }
 
@@ -167,6 +172,13 @@ body.noscroll{
         display: block;
         position:unset;
     }
+
+    .collection--subnav--subnav{
+       padding: 0 15px;
+       @include mq( 'lap-and-up' ) {
+          padding: 0 0px;
+       }
+    }
 }
 
 #collection-nav--mobile-wrap {
@@ -176,18 +188,18 @@ body.noscroll{
     padding:0px 0;
     border: solid 0px $color--light-gray;
     border-top: none;
-    max-height: 22.66666667rem;
+    max-height:40vh;
     overflow-y: auto;
     background: #fff;
     position: absolute;
     width: 100% !important;
-    z-index: 999;
+    z-index: 99;
 
     @include mq( 'lap-and-up' ) {
         padding: 0;
         border: none;
         max-height: unset;
-        overflow: auto;
+        overflow:hidden;
         position:unset;
         z-index:9;
     }
