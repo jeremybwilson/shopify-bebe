@@ -21,6 +21,9 @@ $z-index-drawer: 1010;
   .js-drawer-open-right & {
     visibility: visible;
     opacity: 1;
+    @include mq('phone'){
+      background-color: rgba(0,0,0,.5);
+    }
   }
 }
 
@@ -34,6 +37,11 @@ $z-index-drawer: 1010;
   -ms-transform: translateX(-300px);
   -webkit-transform: translateX(-300px);
   transform: translateX(-300px);
+  @include mq( 'phone' ){
+    -ms-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
 }
 
 .is-moved-by-drawer {
@@ -45,6 +53,12 @@ $z-index-drawer: 1010;
   -ms-transform: translateX(-300px);
   -webkit-transform: translateX(-300px);
   transform: translateX(-300px);
+  @include mq( 'phone' ){
+    top: 50%;
+    -ms-transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .table-cell {
@@ -66,6 +80,9 @@ $z-index-drawer: 1010;
   margin-bottom: 15px;
   border-bottom: 1px solid {{ settings.dotted_color }};
   width: 270px;
+  @include mq('phone'){
+    width:100%;
+  }
 }
 
 span.fallback-text {
@@ -128,6 +145,11 @@ textarea#CartSpecialInstructions {
   width: 300px;
   right: -300px;
   border-left: 1px solid {{ settings.dotted_color }};
+  @include mq( 'phone' ){
+    border:none;
+    width:500px;
+    right: unset;
+  }
 }
 
 .drawer {
@@ -147,6 +169,15 @@ textarea#CartSpecialInstructions {
   color: {{ settings.text_color }};
   background-color: $color--reverse-1;
   transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
+  @include mq( 'phone' ){
+    transition: all 0.4s linear ;
+    top: 0;
+    bottom: unset;
+    padding: 15px;
+    transform: scale(0) translateX(-50%);
+    left: 50%;
+    max-height: calc(100vh - 100px);
+  }
 }
 
 // :: MINI-CART :: HEADER
