@@ -39,6 +39,7 @@ $color--super-hot-neon-pink: #ff009c;
     position: relative;
     //margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it.
     font-family: $sans--2;
+    
 }
 
 /* SNIPPET : Header-Announcement-Bar
@@ -62,7 +63,7 @@ $color--super-hot-neon-pink: #ff009c;
     //transition: $navShadowAni;
 
     @include mq( 'lap-and-up' ) {
-        background: $color--reverse-1;
+        background: $color--reverse-1;  
     }
 
     & > .row {
@@ -1540,4 +1541,9 @@ $color--super-hot-neon-pink: #ff009c;
         overflow-y: auto; 
         }
     }
+}
+
+body.no-scroll{
+    position:fixed;
+    width:100%;
 }

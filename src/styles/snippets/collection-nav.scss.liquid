@@ -47,6 +47,8 @@ body.noscroll{
             margin-left: 0;
             border-bottom: solid 1px $color--light-gray;
 
+            
+
             @include mq( 'lap-and-up' ) {
                 border-bottom:0px;
             }
@@ -63,10 +65,25 @@ body.noscroll{
             display: block;
             padding: 19px 15px;
             color: $color--primary-1;
+            text-decoration: none !important;
+
+            &:hover{
+               background-color:$color--field-2;
+            }
+            &:focus{
+               background-color:$color--field-2;
+            }
 
             @include mq( 'lap-and-up' ) {
                 display: inline-block;
                 padding: 0;
+
+                &:hover{
+                   background-color:transparent;
+                }
+                &:focus{
+                   background-color:transparent;
+                }
             }
         }
         li.active > a {

@@ -12,7 +12,6 @@
   {% endcomment %}
 
 
-
   {% comment %} ..:: NAVIGATION PORTION ::.. {% endcomment %}
   {% assign header_class_name = '' %}
   {% if section.settings.full_width_header %}
@@ -146,31 +145,6 @@
 
     {% if section.settings.full_width_header %}</div>{% endif %}
   </header>
-  <div class="eagle" id="global-top-nav-div">
-    <nav class="nav nav--justified nav--md-height" role="navigation">
-        <ul class="nav__wrapper container">   
-            {% for link in linklists.top-navigation-menu-mobile.links %}
-              {% if link.title != blank %}
-                <li class="nav__item mobile-top-nav-item"><a class="nav__link" href="{{ link.url }}">{{ link.title }}</a>
-                    {% if link.levels > 0 %}
-                    <div class="sub_nav__wrapper mobile-top-sub-menu-dropdown js-toggle-this-cat" style="display: none;">
-                      <div class="sub-nav-dropdown__dropdown">
-                        <ul class="ui-list dropdown-sub-nav-list">
-                          {% for sub_link in link.links %}                    
-                            <li class="u-text--md ui-list__item">
-                              <a href="{{ sub_link.title }}">{{ sub_link.title }}</a>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                    </div>
-                  {% endif %}
-                </li>
-              {% endif %}                   
-            {% endfor %}
-        </ul>
-    </nav>
-  </div>
 
   <style>
     #top-bar, #top-bar-bg {
@@ -214,6 +188,31 @@
     }
   </style>
 </div>
+ <div class="eagle" id="global-top-nav-div">
+    <nav class="nav nav--justified nav--md-height" role="navigation">
+        <ul class="nav__wrapper container">   
+            {% for link in linklists.top-navigation-menu-mobile.links %}
+              {% if link.title != blank %}
+                <li class="nav__item mobile-top-nav-item"><a class="nav__link" href="{{ link.url }}">{{ link.title }}</a>
+                    {% if link.levels > 0 %}
+                    <div class="sub_nav__wrapper mobile-top-sub-menu-dropdown js-toggle-this-cat" style="display: none;">
+                      <div class="sub-nav-dropdown__dropdown">
+                        <ul class="ui-list dropdown-sub-nav-list">
+                          {% for sub_link in link.links %}                    
+                            <li class="u-text--md ui-list__item">
+                              <a href="{{ sub_link.title }}">{{ sub_link.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  {% endif %}
+                </li>
+              {% endif %}                   
+            {% endfor %}
+        </ul>
+    </nav>
+  </div>
 
 
 
