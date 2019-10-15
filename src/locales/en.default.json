@@ -107,6 +107,8 @@
       "continue": "Continue Shopping",
       "update": "Update Bag",
       "checkout": "Check Out",
+      "checkout_as_guest": "CheckOut As Guest",
+      "signin_faster_checkout": "sign in for faster Checkout",
       "note": "Please leave special instructions below:",
       "recently_viewed": "You also Viewed",
       "discount_code_advisory": "Note: Discount codes can be entered on the checkout page"
