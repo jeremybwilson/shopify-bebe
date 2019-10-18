@@ -476,11 +476,15 @@ ul.mega-stack li.sub_link > ul.nested:before {
 
 /* megamenu */
 li.dropdown:hover > ul.megamenu {
-  display: block;
+  opacity: 1;
+  pointer-events: all;
 }
 
+
 ul.megamenu {
-  display: none;
+  transition:all 0.3s cubic-bezier(0.4, 0, 1, 1);
+  opacity: 0;
+  pointer-events: none;
 }
 
 ul.megamenu h4 {
