@@ -1,118 +1,136 @@
-#page .shogun-root {
+#shogun-landing {
 
-// elements 
+	//tools 
 
-.shg-row {
-	margin: 15px 0;
-
-	@include mq('phone') {
-		margin: 0;
-	}
-}
-
-.shg-row > div {
-	@include mq('phone') {
-		margin: 10px 0 !important;
-	}	
-}
-
-.shogun-heading-component {
-
-	h1 {
-		@include h1-alt;
-		@include fontSize (30px);
-		text-transform: uppercase;
-		border-bottom: none;
-		padding: 0;
+	.margin-center {
+		margin: 0 auto;
 	}
 
-	h2 {
-		@include h2-alt;
-		@include fontSize (20px);
-		line-height: 1.2em;
-    	letter-spacing: 0em;
+	.mobile-asset {
+		display: none;
+
+		@include mq("phone") {
+			display: block;
+		}
 	}
 
-	h3 {
-		@include h3;
+	.desktop-asset {
+		display: block;
+		
+		@include mq("phone") {
+			display: none;
+		}
 	}
 
-}
+	// elements 
 
-.shg-rich-text {
-	p {
-	    @include p;
-	}
-}
-
-.shg-btn-wrapper {
-	display: inline-block;
-	min-width: 230px;
-    margin: 10px 0;
-    @include fontDim(13px,13px,0);
-    font-weight:  $font-weight--bold;
-    text-transform: uppercase;
-
-  	@include mq('phone') {
-		margin-bottom: 30px;
-	}
-
-	a {
-		color: $color--white;
-		text-decoration: none;
-		background-color: $color--primary-1;
-		border: 1px solid $color--primary-1;
-	}
-}
-
-// modules
-
-	.main-hero {
+	.shg-row {
 		margin: 15px 0;
+
+		@include mq('phone') {
+			margin: 0;
+		}
 	}
 
-	.twin-promo {
+	.shg-row > div {
+		@include mq('phone') {
+			margin: 10px 0 !important;
+		}	
+	}
 
-		.shg-btn-wrapper {
+	.shogun-heading-component {
 
-	      	a {
-	      		color: $color--primary-1;
-				background-color: transparent !important;
-				border: 1px solid $color--primary-1;
-		     }
+		h1 {
+			@include h1-alt;
+			@include fontSize (30px);
+			text-transform: uppercase;
+			border-bottom: none;
+			padding: 0;
+		}
+
+		h2 {
+			@include h2-alt;
+			@include fontSize (20px);
+			line-height: 1.2em;
+	    	letter-spacing: 0em;
+		}
+
+		h3 {
+			@include h3;
 		}
 
 	}
 
-	.trio-promo {
-
+	.shg-rich-text {
+		p {
+		    @include p;
+		}
 	}
 
-	.img-txt {
-		display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    padding: 20px;
-		margin: 30px 0;
+	.shg-btn-wrapper {
+		display: inline-block;
+		min-width: 230px;
+	    margin: 10px 0;
+	    @include fontDim(13px,13px,0);
+	    font-weight:  $font-weight--bold;
+	    text-transform: uppercase;
 
-		.shogun-image-container {
-			width: 65%;
-			margin: 0 auto;
+	  	@include mq('phone') {
+			margin-bottom: 30px;
 		}
 
-		.text-container {
-		    min-height: auto !important;
-		    height: auto;
-		    width: 35%;
-		    padding: 50px;
-		    text-align: center;
+		a {
+			color: $color--white;
+			text-decoration: none;
+			background-color: $color--primary-1;
+			border: 1px solid $color--primary-1;
 		}
-
 	}
 
-	.sub-hero {
-		img {
+	// modules
+
+		.main-hero {
 			margin: 15px 0;
 		}
-	}
+
+		.twin-promo {
+
+			.shg-btn-wrapper {
+
+		      	a {
+		      		color: $color--primary-1;
+					background-color: transparent !important;
+					border: 1px solid $color--primary-1;
+			     }
+			}
+
+		}
+
+		.trio-promo {
+
+		}
+
+		.img-txt {
+			[class*="shg-c-"] {
+				display: flex;
+			    justify-content: center;
+			    align-items: center;
+			}
+
+			.shogun-image-container {
+				width: 100%;
+				margin: 0 auto;
+			}
+
+			.text-container {
+			    min-height: auto !important;
+			    height: auto;
+			    width: 100%;
+			    padding: 50px;
+			    text-align: center;
+			    @include mq("phone") {
+			    	padding-top: 0;
+			    }
+			}
+		}
 }
