@@ -51,7 +51,7 @@
                                 <li class="collection--sub-link{% if sub_link.active %} active{% endif %}">
                                     <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
 
-                                    {% if sub_link.links != blank %}
+                                    {% comment %}{% if sub_link.links != blank %}
 
                                         <ul class="collection--subnav--subnav">
 
@@ -65,7 +65,7 @@
 
                                         </ul>
 
-                                    {% endif %}
+                                    {% endif %}{% endcomment %}
                                 </li>
 
                             {% else %}
@@ -106,7 +106,7 @@
 
         </ul>
 
-        {{ featured_nav }}
+        {% comment %}{{ featured_nav }}{% endcomment %}
 
     </div>
 
