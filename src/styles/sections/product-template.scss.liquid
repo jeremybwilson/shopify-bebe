@@ -42,7 +42,6 @@
   position: relative;
   padding: 12px 10px 12px;
   margin-top: 15px;
-  margin-bottom: 25px;
 
   @include mq('tablet-and-up') {
     display: none;
@@ -55,6 +54,8 @@
 
     .header-text {
       padding-right: 10px;  
+      width: 100%;
+      text-align: center;
     }
   }  
 
@@ -94,6 +95,21 @@
   //   position: relative;
   //   top: 40px;
   // }
+  @include mq('phone'){
+    div#product-details--wrapper {
+        padding: 0 12px;
+    }
+
+    .row.pdp-nosto-row{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .row.product-details--top{
+      padding-left:0px;
+        padding-right:0px;
+    }
+  }
 }
 
 .row.product-details--top {
@@ -149,7 +165,10 @@
     display: none;
   }  
 }
-
+#product-price--mobile{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 #product-price {
   border-bottom: none;
   color: $color--primary-2;
@@ -313,6 +332,21 @@
       @include fontSize( 15px );
     }
   }
+}
+div#indi-mobile-reviews-root{
+    border-top: 1px solid #e6e6e6;
+    margin-top: 0;
+    padding-top: 20px;
+    display:none;
+    @include mq('phone'){
+      display:block;
+    }
+
+    @include mq('phone-portrait'){
+      .indi-reviews-item.indi-reviews-item-submit-prompt{
+        width:100%;
+      }
+    }
 }
 
 /* Product Description
