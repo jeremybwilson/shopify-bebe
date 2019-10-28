@@ -1,0 +1,52 @@
+{% if settings.google_analytics_id != blank %}
+  <script>
+    /**
+     * Google Analytics Enhanced Ecommerce - Checkout Labels
+     * - to be fired on all Checkout pages (after GA tag)
+     */
+
+    // looks at `Shopify.Checkout` to determine which checkout step we're on, then pushes that step info to Google Enhanced Ecommerce for Checkout Labeling
+
+    if (window.gtag && Shopify.Checkout) {
+      var ShopifyCheckoutstep = Shopify.Checkout.step;
+      switch (ShopifyCheckoutstep) {
+        case 'contact_information':
+          // Step 2: Shipping Addressss
+          gtag('event', 'checkout_progress', {
+            'send_to': '{{ settings.google_analytics_id }}',
+            'event_category': 'Checkout',
+            'event_action': 'Shipping Address',
+            'checkout_step': 2
+          });
+          break;
+        case 'shipping_method':
+          // Step 3: Shipping Method
+          gtag('event', 'checkout_progress', {
+            'send_to': '{{ settings.google_analytics_id }}',
+            'event_category': 'Checkout',
+            'event_action': 'Shipping Method',
+            'checkout_step': 3
+          });
+          break;
+        case 'payment_method':
+          // Step 4: Payment Method
+          gtag('event', 'checkout_progress', {
+            'send_to': '{{ settings.google_analytics_id }}',
+            'event_category': 'Checkout',
+            'event_action': 'Payment Method',
+            'checkout_step': 4
+          });
+          break;
+        case 'thank_you':
+          // Step 6: Thank You / Confirmation
+          gtag('event', 'checkout_progress', {
+            'send_to': '{{ settings.google_analytics_id }}',
+            'event_category': 'Checkout',
+            'event_action': 'Thank You',
+            'checkout_step': 5
+          });
+          break;
+      }
+    }
+  </script>
+{% endif %}
