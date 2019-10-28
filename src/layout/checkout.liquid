@@ -16,6 +16,7 @@
       {% include 'script-data-layer' %}
     {%- endif -%}
     {% include 'script-google-tag-head' %}
+    {% include 'script-google-analytics' %}
 
     {{ content_for_header }}
 
@@ -73,6 +74,7 @@
     {{ tracking_code }}
 
     {% include 'script-google-tag-body' %}
+    {% include 'script-ga-checkout-step-labels' %}
     {% include 'checkout-customization-script' %}
     {% include 'swell-checkout' %}
     <script>
