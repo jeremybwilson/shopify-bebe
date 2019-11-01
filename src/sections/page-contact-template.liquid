@@ -8,6 +8,7 @@
       {% if section.settings.show_contact_form != false %}
       <div id="bebe-form">
         {% include 'contact' %}
+        {% comment %} .: NOTE :: JOTFORM already removed prior to PDM-1268 task :. {% endcomment %}
         {% comment %} <script type="text/javascript" src="https://form.jotform.me/jsform/90502275900450"></script> {% endcomment %}
       </div>
       {% endif %}
