@@ -169,10 +169,22 @@
         transition: left .4s,background .4s;
     }
 
-    #shopify-section-header,#PageContainer{
-        left:75%;
-        overflow: hidden;
-        transition: left .2s;
-        position: relative;
+    // #shopify-section-header,#PageContainer{
+    //     left:75%;
+    //     overflow: hidden;
+    //     transition: left .2s;
+    //     position: relative;
+    // }
+    #nav-bar-wrapper {
+        #icon-nav-mobile-menu-btn {
+            -webkit-transform: translate(75vw,-50%);
+            -moz-transform: translate(75vw,-50%);
+            -ms-transform: translate(75vw,-50%);
+            transform: translate(75vw,-50%);
+            z-index: 13000;
+            .bar {
+                background: $color--white;
+            }
+        }
     }
 }

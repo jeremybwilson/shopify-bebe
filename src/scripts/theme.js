@@ -957,7 +957,7 @@ theme.Header = (function() {
     // MOBILE NAV : Attach menu toggle event
     if ( ui.mobileNavButton && ui.mobileNavMenu ) {
       ui.mobileNavButton.on( 'click', () => {
-        ui.mobileNavMenu.toggleClass( 'mobile-nav-open' ); // TOGGLE : Menu itself
+        ui.mobileNavMenu.toggleClass( 'mobile-nav-open' ); // TOGGLE : Menu itself 
         ui.body.toggleClass( 'js-drawer-open' ); // TOGGLE : Page scrolling (built in to a lib so tied to this classname)
         ui.html.toggleClass( 'menu-open' ); // TOGGLE : Html has some oddness from the theme, this clears it so iPoos can render right
       })
