@@ -773,10 +773,13 @@ $color--super-hot-neon-pink: #ff009c;
         width: 25px;
         height: 18px;
         top: 50%;
-        transform: translateY(-50%);
         cursor: pointer;
         z-index: $zIndexButtons; // 50
-
+        transition: transform 0.3s ease-out;
+        -webkit-transform: translate(0,-50%);
+        -moz-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        transform: translate(0,-50%);
         @include mq( 'lap-and-up' ) {
             display: none;
         }
