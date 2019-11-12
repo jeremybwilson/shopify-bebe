@@ -1,0 +1,95 @@
+<!-- categories menu section start -->
+<div id="categories-menu">
+    <ul class="ul nav clearfix nav-side__list">
+        {% for link in linklists[section.settings.main-menu].links  %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links == blank %}
+        <li class="mobile_subnav nav-side__item li{% if link.active %} active{% endif %} {% if link.title == 'Account' or link.title == 'ACCOUNT' %}account_li{% endif %}">
+            <div class="link">
+                <a href="{{link.url}}">
+                    {{link.title}}
+                </a>
+            </div>
+            <span class="mobile_subnav_arr"> &gt; </span>
+        </li> 
+        {% else %}
+        <li class="has_child li{% if link.active %} active{% endif %}">
+            <div class="link">
+                <div class="tab_title">
+                    {{link.title}}
+                </div>
+                <div class="arrow-icon">
+                    <i class="arrow right"></i>
+                </div>
+            </div>
+            <div class="child_menu">
+                <ul class="child_ul">
+                    {% for childlink in linklists[child_list_handle].links %}
+                    {% assign sub_child_list_handle = childlink.title | handleize %}
+                    {% if linklists[sub_child_list_handle].links == blank %}
+                    {% assign third_tire = false %}
+                    {% else %}
+                    {% assign third_tire = true %}
+                    {% endif %}
+                    {% if third_tire %}
+                    <li class="has_child child_li">
+                        <div class="link">
+                            <a {% unless childlink.url == blank %}href="{{ childlink.url }}{% endunless %}">{{ childlink.title | escape }}</a>
+                            <span class="icon_wrap">
+                                <i class="icon icon-plus" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="child_li">
+                        <div class="sub_link">
+                            <a {% unless childlink.url == blank %}href="{{ childlink.url }}{% endunless %}">{{ childlink.title | escape }}</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </li> 
+        {% endif %}
+        {% endfor %}
+        {% if settings.show_multiple_currencies %}
+        <li>{% include 'simply-currency' %}</li>
+        {% endif %}
+    </ul>
+</div>
+<!-- categories menu section End -->
+{% schema %}
+{
+    "name": "Categories menu",
+    "class": "index-section",
+    "settings": [
+    {
+        "type": "link_list",
+        "id": "main-menu",
+        "label": "Select menu"
+    }
+    ],
+    "presets": [
+    {
+        "name": "Categories menu",
+        "category": "Image"
+    }
+    ]
+}
+{% endschema %}
+
+
+<script type="text/javascript">
+    $("#categories-menu .has_child .link").on("click", function() {
+        if ($(this).parent('.has_child').hasClass("active")) {
+            $(this).parent('.has_child').removeClass("active");
+            $(this).parent('.has_child').find(".child_menu").slideUp(200);
+        } else {
+            $(".has_child").removeClass("active");
+            $(this).parent('.has_child').addClass("active");
+            $(".child_menu").slideUp(200);
+            $(this).parent('.has_child').find(".child_menu").slideDown(200);
+        }
+    });
+</script>
