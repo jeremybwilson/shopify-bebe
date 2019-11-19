@@ -3530,12 +3530,12 @@ $(document).ready(function(){
       return true;
     }
     if($(this).hasClass('active')){
-      $('body').removeClass('no-scroll');
+      $('body').removeClass('noscroll');
       $(this).find('.mobile-top-sub-menu-dropdown').slideUp('slow');
       $(this).removeClass('active');
       $('.eagle').removeClass('dropdown-open');
     }else{
-      $('body').addClass('no-scroll');
+      $('body').addClass('noscroll');
       $('.active').find('.mobile-top-sub-menu-dropdown').slideUp('slow');
       $('.active').removeClass('active');
       $(this).addClass('active');
