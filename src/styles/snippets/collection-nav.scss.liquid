@@ -1,5 +1,10 @@
 // COLLECTION :: Sidebar
 
+body.noscroll{
+    position: fixed;
+    width: 100%;
+}
+
 // COLLECTION :: SIDEBAR :: Global styles for nav
 #collection--sidebar {
     font-family: $font-stack--heading;
@@ -12,6 +17,22 @@
         margin-top: 10px;
     }
 
+    .page-header__dropdown-overlay {
+        background: #000;
+        position: absolute;
+        width: 100%;
+        padding-top: 0;
+        z-index: 1;
+        display: block;
+        opacity: 0;
+        transition: opacity .5s linear;
+        z-index: 99;
+
+        @include mq( 'lap-and-up' ) {
+           z-index: 9;
+        }
+    }
+
     ul {
         width: 100%;
         margin: 0 0 10px;
@@ -22,17 +43,51 @@
             @include fontSize( 13px );
         }
 
+        .border-bottom >a{
+           border-bottom: solid 1px $color--light-gray;
+        }
+
         li {
             margin-left: 0;
+            border-bottom: solid 1px $color--light-gray;
+
+            
+
+            @include mq( 'lap-and-up' ) {
+                border-bottom:0px;
+            }
+
+            ul{
+                li{
+                    &:last-child{
+                        border-bottom:0px;
+                    }
+                }
+            }
         }
         a {
             display: block;
-            padding: 5px 0;
+            padding: 19px 15px;
             color: $color--primary-1;
+            text-decoration: none !important;
+
+            &:hover{
+               background-color:$color--field-2;
+            }
+            &:focus{
+               background-color:$color--field-2;
+            }
 
             @include mq( 'lap-and-up' ) {
                 display: inline-block;
                 padding: 0;
+
+                &:hover{
+                   background-color:transparent;
+                }
+                &:focus{
+                   background-color:transparent;
+                }
             }
         }
         li.active > a {
@@ -43,9 +98,15 @@
         @include fontDim(16px,20px,.04em);
         font-weight: $font-weight--bold;
         text-transform: uppercase;
+        padding: 19px 15px;
+        margin: 0 0;
+        border-bottom: solid 1px $color--light-gray;
 
         @include mq( 'lap-and-up' ) {
             @include fontSize( 13px );
+            padding:0px 0px;
+            border-bottom:0px;
+            margin-bottom: 5px;
         }
     }
 
@@ -58,16 +119,38 @@
 
 #collection-nav--mobile-trigger {
     @include flexbox;
-    @include justify-content( space-between );
+    justify-content: center;
     align-items: center;
     width: 100%;
     margin-bottom: 0;
     margin-top: 0px;
-    border: solid 1px $color--primary-1;
+    border-bottom: solid 1px $color--light-gray;
     background: $color--reverse-1;
     font-family: $font-stack--heading;
     outline: 0;
     -moz-outline: 0;
+
+    .opener{
+        display: inline-block;
+        width: .53333333rem;
+        height: .53333333rem;
+        margin-top: 0;
+        margin-left: 0;
+        transform: translateY(-0.1rem) rotate(-45deg);
+        transition: transform .2s linear;
+        border-bottom: .16666667rem solid #000;
+        border-left: .16666667rem solid #000;
+
+        svg{
+            display:none;
+        }
+    }
+
+    .is-open{
+        .opener{
+             transform: translateY(35%) rotate(-225deg);
+        }
+    }
 
     @include mq( 'lap-and-up' ) {
         display: none;
@@ -90,17 +173,32 @@
     }
 
     .current-page {
-        margin: 0;
+       margin: 0 10px 0 0;
     }
+}
+
+.is-open~#collection-nav--mobile-dropdown .page-header__dropdown-overlay{
+    opacity: .8;
+    padding-top: 300%;
+    transition: opacity .1s linear;
 }
 
 // COLLECTION : Sidebar : Dropdown nav for mobile
 
 #collection-nav--mobile-dropdown {
     display: none;
+    position:relative;
     
     @include mq( 'lap-and-up' ) {
         display: block;
+        position:unset;
+    }
+
+    .collection--subnav--subnav{
+       padding: 0 15px;
+       @include mq( 'lap-and-up' ) {
+          padding: 0 0px;
+       }
     }
 }
 
@@ -108,12 +206,22 @@
     @include flexbox;
     @include flex-direction( column );
     width: 100%;
-    padding: 12px 12px 0;
-    border: solid 1px $color--primary-1;
+    padding:0px 0;
+    border: solid 0px $color--light-gray;
     border-top: none;
+    max-height:40vh;
+    overflow-y: auto;
+    background: #fff;
+    position: absolute;
+    width: 100% !important;
+    z-index:100;
 
     @include mq( 'lap-and-up' ) {
         padding: 0;
         border: none;
+        max-height: unset;
+        overflow:hidden;
+        position:unset;
+        z-index:9;
     }
 }

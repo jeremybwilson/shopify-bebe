@@ -6,7 +6,7 @@
             {% assign hidden_nav_check_main = link.title | slice: 0 %}
             {% if hidden_nav_check_main != '_' %}
                 {% if linklists[child_list_handle].links == blank %}
-                    <li class="mobile-subnav nav-side-item li{% if link.active %} active{% endif %} {% if link.title == 'Account' or link.title == 'ACCOUNT' %}account-li{% endif %}">
+                    <li class="menuitem mobile-subnav nav-side-item li{% if link.active %} active{% endif %} {% if link.title == 'Account' or link.title == 'ACCOUNT' %}account-li{% endif %}">
                         <div class="link">
                             <a href="{{link.url}}">
                                 {{link.title}}
@@ -14,7 +14,7 @@
                         </div>
                     </li> 
                 {% else %}
-                    <li class="has-child{% if link.active %} active{% endif %}">
+                    <li class="menuitem has-child{% if link.active %} active{% endif %}">
                         <div class="link icon-plus">
                             <div class="tab-title">
                                 {{link.title}}
@@ -36,7 +36,7 @@
 
                                 {% if hidden_nav_check != '_' %}
                                     {% if third_tire %}
-                                        <li class="third-has-child" >
+                                        <li class="menuitem third-has-child" >
                                             <div class="child-link icon-plus">
                                                 <a {% unless childlink.url == blank %}href="{{ childlink.url }}{% endunless %}"> {{ childlink.title | escape }}</a>
                                                 <div class="arrow-icon">
@@ -45,7 +45,7 @@
                                             </div>
                                             <ul class="third-child-menu">
                                                 {% for subchildlink in linklists[sub_child_list_handle].links %}
-                                                <li>
+                                                <li class="menuitem">
                                                     <div class="link">
                                                       <a href="{{ subchildlink.url }}">{{ subchildlink.title | escape }}</a>
                                                   </div>
