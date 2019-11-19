@@ -107,6 +107,23 @@
     ]
   },
   {
+    "name": "surefoot a/b test settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "sf-page-conceal-enabled",
+        "default": false,
+        "label": "Enable Page Conceal Anti-Flicker"
+      },
+      {
+        "type": "number",
+        "id": "sf-page-conceal-delay",
+        "default": 2000,
+        "label": "Page Conceal Delay in ms (1000 = 1 sec)"
+      }
+    ]
+  },  
+  {
     "name": "Colors",
     "settings": [
       {
