@@ -88,11 +88,11 @@
                                     {% endif %}{% endcomment %}
                                 </li>
 
-                            {% comment %}{% else %}{% endcomment %}
+                            {% else %}
 
                                 {% comment %} Construct the Featured Nav here {% endcomment %}
 
-                                {% comment %}{% capture featured_nav %}
+                                {% capture featured_nav %}
 
                                     <ul id="collection--featured-nav" class="sidebar-nav collection--sidebar-nav">
                                         <li>
@@ -110,7 +110,7 @@
                                         </li>
                                     </ul>
 
-                                {% endcapture %}{% endcomment %}
+                                {% endcapture %}
 
                             {% endif %}
 
@@ -131,7 +131,7 @@
 
         </ul>
 
-        {% comment %}{{ featured_nav }}{% endcomment %}
+        {{ featured_nav }}
 
     </div>
 
