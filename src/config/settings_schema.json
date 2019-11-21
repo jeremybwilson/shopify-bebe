@@ -103,6 +103,16 @@
         "id": "yottaa_key",
         "label": "Yottaa Key",
         "info": "Enter a key for Rapid."
+      },
+      {
+        "type": "header",
+        "content": "Klarna"
+      },
+      {
+        "type": "checkbox",
+        "id": "klarna_on_site_messaging_enabled",
+        "label": "Enable Klarna on-site-messaging",
+        "default": true
       }
     ]
   },
