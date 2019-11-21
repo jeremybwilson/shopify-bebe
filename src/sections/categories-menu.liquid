@@ -1,5 +1,5 @@
 <!-- categories menu section start -->
-<div id="categories-menu">
+<div id="categories-menu" class="mobile_show">
     <ul class="nav-side-list">
         {% for link in linklists[section.settings.main-menu].links  %}
             {% assign child_list_handle = link.title | handleize %}
@@ -16,9 +16,9 @@
                 {% else %}
                     <li class="menuitem has-child{% if link.active %} active{% endif %}">
                         <div class="link icon-plus">
-                            <div class="tab-title">
+                            <a href="{{link.url}}">
                                 {{link.title}}
-                            </div>
+                            </a>
                             <div class="arrow-icon">
                                 <i class="arrow right"></i>
                             </div>
@@ -78,17 +78,17 @@
     "name": "Categories menu",
     "class": "index-section",
     "settings": [
-    {
-        "type": "link_list",
-        "id": "main-menu",
-        "label": "Select menu"
-    }
+        {
+            "type": "link_list",
+            "id": "main-menu",
+            "label": "Select menu"
+        }
     ],
     "presets": [
-    {
-        "name": "Categories menu",
-        "category": "Image"
-    }
+        {
+            "category": "Menu",
+            "name": "Categories menu"
+        }
     ]
 }
 {% endschema %}

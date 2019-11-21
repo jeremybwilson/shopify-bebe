@@ -256,6 +256,15 @@
           {% endif %}
 
           <div class="clear"></div>
+
+          {% if settings.klarna_on_site_messaging_enabled %}
+            <!-- Placement v1 -->
+            <klarna-placement
+              data-id="b9031aac-87d5-4e28-8a32-2015e229f3af"
+            ></klarna-placement>
+            <!-- end Placement -->
+          {% endif %}
+
           {% if additional_checkout_buttons %}
             {{ content_for_additional_checkout_buttons }}
             <div class="clear"></div>
