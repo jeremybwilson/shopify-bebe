@@ -74,7 +74,9 @@
     {{ tracking_code }}
 
     {% include 'script-google-tag-body' %}
-    {% include 'script-ga-checkout-step-labels' %}
+    {% if settings.sf-checkout-enabled %}
+      {% include 'script-ga-checkout-step-labels' %}
+    {% endif %}
     {% include 'checkout-customization-script' %}
     {% include 'swell-checkout' %}
     <script>

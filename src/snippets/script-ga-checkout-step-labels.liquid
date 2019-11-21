@@ -8,8 +8,8 @@
     // setup recursive polling to wait for GA to be loaded by Shopify (i.e. after ga('create') call) before pushing event (check every 500ms, max of 20 attempts)
     var attempts = 0;
     var MAX_ATTEMPTS = 20;
-    var GOOGLE_OPTIMIZE_CONTAINER_ID = 'GTM-PRCK8XK';
-    var GA_CONTAINER_ID = 'UA-23045450-1';
+    var GOOGLE_OPTIMIZE_CONTAINER_ID = '{{ settings.sf-optimize-container }}';
+    var GA_CONTAINER_ID = '{{ settings.sf-ga-container }}';
 
     (function pollForGA() {
       if (DEBUG) console.log(Date.now().toString() + 'sf | GA Checkout Step debug | ' + ' Polling for "ga.loaded" - attempt ' + attempts + " of " + MAX_ATTEMPTS);
@@ -33,7 +33,7 @@
 
 
     function initializeGoogleOptimize() {
-      if (DEBUG) console.log('sf | GO initialized - container GTM-PRCK8XK');
+      if (DEBUG) console.log('sf | GO initialized - container' + GOOGLE_OPTIMIZE_CONTAINER_ID);
       ga('require', GOOGLE_OPTIMIZE_CONTAINER_ID);
     }
 
