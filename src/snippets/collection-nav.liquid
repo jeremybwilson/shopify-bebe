@@ -34,17 +34,17 @@
                 {% if link.child_active or link.active %}
                 
                     {% assign foundMatchItem = false %}
-                    {% if link.handle contains collHandle %}
+                    {% if link.handle == collHandle %}
                         {% assign foundMatchItem = true %}
                     {% endif %}
                     {% if link.links != blank %}
                         {% for sub_link in link.links %}
-                            {% if sub_link.handle contains collHandle %}
+                            {% if sub_link.handle == collHandle %}
                                 {% assign foundMatchItem = true %}
                             {% endif %}
                             {% if sub_link.links != blank %}
                                 {% for sub_sub_link in sub_link.links %}
-                                    {% if sub_sub_link.handle contains collHandle %}
+                                    {% if sub_sub_link.handle == collHandle %}
                                         {% assign foundMatchItem = true %}
                                     {% endif %}
                                 {% endfor %}
