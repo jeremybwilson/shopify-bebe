@@ -1,0 +1,86 @@
+<!-- homepage-offer-banner start-->
+
+<style type="text/css">
+    .banner-image-for-mobile-device{
+        display: block;
+    }
+    .hidden-mobile-banner{
+        display: none;
+    }
+    @media(min-width: 767px){
+        .banner-image-for-mobile-device{
+            display: none;
+        }
+    }   
+    .home-banner-img{
+        display: none;
+    }
+
+    .home-banner-img.active{
+        display: block;
+    }
+
+</style>
+
+<div class="{% if section.settings.banner_show %}hidden-mobile-banner{% endif %}">
+
+    <div class="container">
+        <div class="banner-image-for-mobile-device">
+            {% unless section.settings.android_banner_image == blank %}
+            <div class="android-os-image home-banner-img">
+                {% assign src_name = section.settings.android_banner_image %}
+                {% assign src_alt = section.settings.android_banner_image.alt %}
+                {% include 'srcset' %}
+            </div>
+            {% endunless%}
+
+            {% unless section.settings.ios_banner_image == blank %}
+            <div class="ios-os-image home-banner-img">
+                {% assign src_name = section.settings.ios_banner_image %}
+                {% assign src_alt = section.settings.ios_banner_image.alt %}
+                {% include 'srcset' %}
+            </div>
+            {% endunless %}
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- homepage-offer-banner end -->
+{%-  comment -%}
+<script>
+    {%- endcomment -%}
+    {% schema %}
+    {
+        "name": "Banner image for mobile",
+        "settings": [
+        {
+            "type": "checkbox",
+            "id": "banner_show",
+            "label": "Mobile banner hide"
+        },
+        {
+            "type": "image_picker",
+            "id": "android_banner_image",
+            "label": "Android banner image"
+        },
+        {
+            "type": "image_picker",
+            "id": "ios_banner_image",
+            "label": "iOS banner image"
+        }
+        ],
+        "presets": [
+        {
+            "name": "Mobile os banner image",
+            "category": "Banner image"
+        }
+        ]
+    }
+    {% endschema %}
+
+  {%  comment %}
+</script>
+{% endcomment %}
