@@ -816,6 +816,14 @@ $color--super-hot-neon-pink: #ff009c;
             display: block;
         }
 
+        @include mq(lap){
+            width:calc(100% - 130px);
+        }
+
+        @include mq(desk-and-up){
+            width:calc(100% - 160px);
+        }
+
         // Nav-Category-Header
         .nav-category-header {
             //@include h5;
@@ -829,6 +837,7 @@ $color--super-hot-neon-pink: #ff009c;
     @include mq('lap-and-up'){
          #nav-collections{
              min-height:45px;
+             width:100%;
          }
     }
 
