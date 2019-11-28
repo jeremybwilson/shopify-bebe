@@ -192,6 +192,23 @@
   }
 }
 
+#recipient-row{
+  
+  .form-field{
+    font-family: $sans--2;
+    @include fontSize(12px);
+  }
+
+  #recipient-message{
+    resize: none;
+    
+    &:focus{
+      min-height: 60px;
+    }
+  }
+
+}
+
 #product-right {
   margin-left: 0;
   margin-right: 0;
