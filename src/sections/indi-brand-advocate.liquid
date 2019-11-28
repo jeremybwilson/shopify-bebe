@@ -7,9 +7,10 @@
     description: "We want to see how you’re wearing bebe. Upload your photos, reviews, unboxing videos—we love it all! Then share links to the styles you feature to earn 5% commission on all sales you influence.",
     submit_button_text: "Upload Photo / Video",
     submit_button_url: "https://indi.com/Submit/ForumTerms?id=09f6b69d-ac75-40bc-88b6-0b9f565dbff4",
-    thumbnail_url: "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?8441798131703714205",
+    // thumbnail_url: "https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebe-ambassador.jpg?8441798131703714205",
+    thumbnail_url: "{{section.settings.brand_ambassador_img | default:'https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebebabe-get-paid-v2.jpg?327173' }}",
     return_url: window.location.href
-  });
+});
 </script>
 
 
@@ -26,5 +27,20 @@
     show_likes: false,
     show_buzz: false,
     animate: true
-  });
+});
 </script>
+{% schema %}
+    {
+        "name": "Brand ambassador image",
+        "class": "index-section",
+        "settings": [
+        {
+            "type": "text",
+            "id": "brand_ambassador_img",
+            "label": "Brand ambassador default image",
+            "default":"https://cdn.shopify.com/s/files/1/0033/7939/6672/files/bebebabe-get-paid-v2.jpg?327173"
+        }
+        ]
+    }
+{% endschema %}
+

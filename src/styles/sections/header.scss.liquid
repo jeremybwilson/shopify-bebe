@@ -530,8 +530,9 @@ $color--super-hot-neon-pink: #ff009c;
         position:absolute;
         @include align-items( flex-start );
         padding-right: 23px;
-        right: -13px;
+        /*right: -13px;*/
         bottom: 12px;
+        left: 100%;
 
         width: 140px;
         padding-right: 23px;
@@ -544,6 +545,7 @@ $color--super-hot-neon-pink: #ff009c;
 
         @include mq('lap-and-up'){
             display:block;
+            margin-left: 12px;
         }
 
         @include mq( 'desk-and-up' ) {
@@ -820,9 +822,9 @@ $color--super-hot-neon-pink: #ff009c;
             width:calc(100% - 130px);
         }
 
-        @include mq(desk-and-up){
+        /*@include mq(desk-and-up){
             width:calc(100% - 160px);
-        }
+        }*/
 
         // Nav-Category-Header
         .nav-category-header {
@@ -835,10 +837,11 @@ $color--super-hot-neon-pink: #ff009c;
     }
    
     @include mq('lap-and-up'){
-         #nav-collections{
-             min-height:45px;
-             width:100%;
-         }
+        #nav-collections{
+            min-height:45px;
+            /*width: 100%;*/
+            position: relative;
+        }
     }
 
     #nav-menu-desktop {

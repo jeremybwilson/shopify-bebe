@@ -1,0 +1,131 @@
+/* categories menu css start */
+.mobile_show {
+  @include mq(tablet-and-up){
+    display: none;
+  }
+}
+#categories-menu {
+    .menuitem {
+      position: relative;
+      line-height: 25px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .nav-side-list {
+      .child-ul {
+        list-style: none;
+        margin: 0px;
+        background: #fafafa;
+        display: none;
+        padding: 0px;
+        .sub-link {
+          a {
+            color: $color--primary-1;
+          }
+        }
+        .child-li {
+          border-bottom: 1px solid #dddddd;
+          margin: 0;
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li.active {
+        ul {
+          display: block;
+          padding: 0px;
+        }
+      }
+      & > li.menuitem:last-child {
+        border-bottom:0;
+      }
+    }
+    .menuitem.has-child.active {
+      padding-bottom: 0;
+    }
+    a, .tab-title {
+      color: $color--primary-1;
+      font-weight: 400;
+      text-decoration: none;
+      display: block;
+      padding: 15px 60px 15px 20px;
+      height: inherit;
+    }
+    .link.icon-plus,.child-link.icon-plus {
+      position:relative;
+      .arrow-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9;
+      }
+    }
+    .child-ul {
+      .third-has-child {
+        .child-link {
+          a {
+            color: $color--primary-1;
+            padding-left: 40px;
+          }
+        }
+      }
+      line-height: 25px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .third-has-child {
+      .third-child-menu {
+        display: none;
+      }
+    }
+    .third-child-menu {
+      .link {
+        a {
+          padding-left: 60px;
+        }
+      }
+    }
+    .arrow-icon {
+      i.arrow {
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+      }
+    }
+    li {
+      >.icon-plus {
+        i.arrow.right {
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          transition: transform 0.1s ease-in;
+        }
+      }
+    }
+    li.active {
+      >.icon-plus {
+        i.arrow.right {
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+}
+/* categories menu css end */
