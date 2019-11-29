@@ -1721,6 +1721,23 @@
     ]
   },
   {
+    "name": "Free Shipping Options",
+    "settings": [
+      {
+        "type": "number",
+        "id": "shipping_threshold",
+        "label": "Free shipping threshold"
+      },
+      {
+        "type": "text",
+        "id": "shipping_text",
+        "label": "Free shipping text",
+        "default": "You’re just $XX away from free shipping.",
+        "info": "The default currency for the threshold will be $."
+      }
+    ]
+  },
+  {
     "name": "Preorder App : Simple Pre-order",
     "settings": [
       {

@@ -225,7 +225,7 @@ var ajaxCart = (function(module, $) {
   var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
 
   // Private functions
-  var updateCountPrice, removeGiftItemsFromTotalPrice, checkGiftForm, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
+  var updateCountPrice, removeGiftItemsFromTotalPrice, checkGiftForm, formOverride, itemAddedCallback, itemErrorCallback, freeShipDiffCalc, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
 
   /*============================================================================
               Bind new addToCart buttons for cases like "Quickview" 
@@ -372,13 +372,14 @@ var ajaxCart = (function(module, $) {
           return false;
         }
       }     
-      ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
+      ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);      
     });
   };
 
   itemAddedCallback = function (product) {
     $addToCart.removeClass('is-adding').addClass('is-added');
     ShopifyAPI.getCart(cartUpdateCallback);
+    freeShipDiffCalc();
   };
 
   itemErrorCallback = function (XMLHttpRequest, textStatus) {
@@ -393,6 +394,21 @@ var ajaxCart = (function(module, $) {
     }
   };
 
+  freeShipDiffCalc = function() {
+    var note = $('.shipping-text-outer').val();
+    var threshold = $('.shipping-threshold').val();
+    jQuery.getJSON('/cart.js', function (cart) {
+      var cart_total = cart.total_price/100;
+      console.log(cart_total);
+      var diff = threshold - cart_total;
+      console.log(diff);
+      if(diff<0){
+        note = "You are eligible for free shipping."
+      }
+      note.replace("$XX", diff);
+      $('.free-ship-note').html(note);
+    });
+  }
 
   // RETURNS : Total price (in cents) sans items tagged with _discountItem property
   //    NOTE : The _discountItem property is only added via addItemById()
