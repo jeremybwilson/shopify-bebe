@@ -258,11 +258,12 @@
           <div class="clear"></div>
 
           {% if settings.klarna_on_site_messaging_enabled %}
-            <!-- Placement v1 -->
+            <!-- Note: it will be displayed only if the price is higher than $35 -->
             <klarna-placement
-              data-id="b9031aac-87d5-4e28-8a32-2015e229f3af"
+              data-id="b816a906-d282-4933-9230-8aa84045c2c5"
+              data-purchase_amount="{{ cart_subtotal | money_without_currency | times: 100 }}"
+              class="klarna-widget"
             ></klarna-placement>
-            <!-- end Placement -->
           {% endif %}
 
           {% if additional_checkout_buttons %}
