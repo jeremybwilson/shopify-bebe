@@ -152,6 +152,7 @@
                         {% endif %}
                       {% endfor %}
                     {% endif %}                    
+                    
                   </div>
 
                   {% comment %} CART : ITEM : QUANTITY {% endcomment %}
@@ -180,13 +181,34 @@
 
                 {% if add_final_sale_text == true or itemprice contains '.99' %}
                   <div class="final_sale sale_product">{{settings.final_sale}}</div>
-                {%- endif -%}
+                {%- endif -%}                
 
                 <div class="cart-item-actions">
                   <div class="cart-remove">
                     <a href="#" class="remove-item" data-id="{{ item.variant.id }}"><i class="fa fa-times"></i><span class="remove-text">{{ 'cart.general.remove' | t }}</span></a>
                   </div>
                 </div>
+
+                {% assign property_size = item.properties | size %}
+                {% if property_size > 0 %}
+                  {% for p in item.properties %}
+                    {% comment %} if property is final_sale then don't show  {% endcomment %}
+                    {% unless p.first contains 'discountItem' or p.first == 'final_sale' or p.last == blank or p.first contains '_private' or p.first contains 'persistent_note' %}
+                      {{ p.first }}:
+
+                      {% comment %}
+                        Check if there was an uploaded file associated
+                      {% endcomment %}
+                      {% if p.last contains '/uploads/' %}
+                        <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                      {% else %}
+                        {{ p.last }}
+                      {% endif %}
+
+                      <br>
+                    {% endunless %}
+                  {% endfor %}
+                {% endif %}
 
               </div>
               <div class="cart--total-price">

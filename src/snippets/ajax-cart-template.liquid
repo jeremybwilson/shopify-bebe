@@ -43,9 +43,11 @@
                           <span class="ajaxcart__product-meta">{{this}}</span>
                         {{else}}	
                           {{#if_not_eq @key '_discountItem'}}
-                          {%endraw%}{% comment %}{{#unless_contains @key '_private'}}
+                          {{#unless_contains @key '_private'}}
+                            {{#unless_contains @key 'persistent_note'}}
                             <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
-                          {{/unless_contains}}{% endcomment %}{% raw %}
+                            {{/unless_contains}}
+                          {{/unless_contains}}
                         {{/if_not_eq}}
                         {{/if_eq}}
                       {{/if}}
