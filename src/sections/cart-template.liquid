@@ -143,6 +143,16 @@
 
                       {% endif %}
                     {% endif %}
+
+                    {% assign property_size = item.properties | size %}
+                    {% if property_size > 0 %}
+                      {% for p in item.properties %}
+                        {% if p.first contains 'persistent_note' %}
+                          <p class="persistent-note">{{ p.last }}</p>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}                    
+                    
                   </div>
 
                   {% comment %} CART : ITEM : QUANTITY {% endcomment %}
@@ -171,7 +181,7 @@
 
                 {% if add_final_sale_text == true or itemprice contains '.99' %}
                   <div class="final_sale sale_product">{{settings.final_sale}}</div>
-                {%- endif -%}
+                {%- endif -%}                
 
                 <div class="cart-item-actions">
                   <div class="cart-remove">
@@ -183,7 +193,7 @@
                 {% if property_size > 0 %}
                   {% for p in item.properties %}
                     {% comment %} if property is final_sale then don't show  {% endcomment %}
-                    {% unless p.first contains 'discountItem' or p.first == 'final_sale' or p.last == blank or p.first contains '_private' %}
+                    {% unless p.first contains 'discountItem' or p.first == 'final_sale' or p.last == blank or p.first contains '_private' or p.first contains 'persistent_note' %}
                       {{ p.first }}:
 
                       {% comment %}
