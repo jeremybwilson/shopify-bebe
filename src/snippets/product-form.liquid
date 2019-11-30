@@ -62,6 +62,11 @@
     <div id="desktop-sale-callout" class="final_sale sale_product">{{section.settings.sale_callout}}</div>
   {%- endif -%}
 
+  {% comment %} PERSISTENT NOTE {% endcomment %}
+
+  {% include 'product-persistent-note' %}
+
+
   <div class="clear"></div>
 
   {% comment %} REVIEWS - STAR RATING {% endcomment %}

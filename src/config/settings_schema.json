@@ -552,6 +552,13 @@
         "default": "#9a9a9a"
       },
       {
+        "type": "color",
+        "id": "persistent_note_color",
+        "label": "Persistent Note",
+        "info": "Text that appears from PLP to checkout",
+        "default": "#F90020"
+      },
+      {
         "type": "header",
         "content": "Modals + Fancybox"
       },

@@ -1,0 +1,11 @@
+{% for tag in product.tags %}
+
+    {% if tag contains 'persistent_note' %}
+
+        {% assign note = tag | remove: 'persistent_note_' %}
+
+        <h4 class="persistent-note">{{ note }}</h4>
+        <input type="hidden" name="properties[persistent_note]" value="{{ note }}">        
+    {% endif %}
+
+{% endfor %} 

@@ -274,6 +274,11 @@ textarea#CartSpecialInstructions {
 .ajaxcart__product-meta {
   color: $color--primary-2;
   display: block;
+
+  &.persistent-note {
+    color: {{ settings.persistent_note_color }};
+    font-size: 12px;
+  }
 }
 
 .ajaxcart__product-image {
@@ -298,6 +303,8 @@ textarea#CartSpecialInstructions {
     color: $color--white;
   }
 }
+
+
 
 .ajaxcart__product.is-loading {
   pointer-events: none;
