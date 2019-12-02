@@ -37,7 +37,7 @@
                       {%endraw%}{% comment %} if final_sale is exist then display the text  {% endcomment %}{%raw%}
                         {{#if_eq @key 'final_sale'}}
                           <span class="ajaxcart__product-meta">{{this}}</span>
-                        {{else}}	
+                        {{else}}    
                           {{#if_not_eq @key '_discountItem'}}
                           {{#unless_contains @key '_private'}}
                             <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
@@ -112,7 +112,7 @@
             <p class="text-right"><strong class="bfx-price bfx-minicart-subtotal">{{{totalPrice}}}</strong></p>
           </div>
 
-          {%comment%}{% include 'free-ship-note' %}{%endcomment%}
+          {% endraw %}{% include 'free-ship-note' %}{% raw %}
 
         <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
         <button type="submit" class="cart__checkout js-cart-drawer-checkout" name="checkout">

@@ -1729,11 +1729,17 @@
         "label": "Free shipping threshold"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "shipping_text",
         "label": "Free shipping text",
         "default": "You’re just $XX away from free shipping.",
         "info": "The default currency for the threshold will be $."
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_text_free_ship",
+        "label": "Free shipping text for cart value above threshold",
+        "default": "You’re eligible for free shipping."
       }
     ]
   },

@@ -235,6 +235,8 @@
         <div id="basket-right" class="desktop-4 tablet-6 mobile-3">
           <h3>{{ 'cart.general.order_summary' | t }}</h3>
           <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart_subtotal | money }}</span></h4>
+
+          {% include 'free-ship-note' %}
           
           {% if customer %}
           {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}

@@ -225,7 +225,7 @@ var ajaxCart = (function(module, $) {
   var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
 
   // Private functions
-  var updateCountPrice, removeGiftItemsFromTotalPrice, checkGiftForm, formOverride, itemAddedCallback, itemErrorCallback, freeShipDiffCalc, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
+  var updateCountPrice, removeGiftItemsFromTotalPrice, checkGiftForm, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
 
   /*============================================================================
               Bind new addToCart buttons for cases like "Quickview" 
@@ -327,6 +327,7 @@ var ajaxCart = (function(module, $) {
   loadCart = function () {
     $body.addClass('drawer--is-loading');
     ShopifyAPI.getCart(cartUpdateCallback);
+    window.freeShipDiffCalc();
   };
 
   updateCountPrice = function (cart) {
@@ -342,7 +343,7 @@ var ajaxCart = (function(module, $) {
 
     if ( $cartCostSelector && $cartCostSelector.length > 0 ) {
       $cartCostSelector.html(Shopify.formatMoney(cart.total_price, settings.moneyFormat));
-    }
+    }    
   };
   checkGiftForm = function() {
     let email = $(".gift-card-details #recipient-email").val();
@@ -379,7 +380,7 @@ var ajaxCart = (function(module, $) {
   itemAddedCallback = function (product) {
     $addToCart.removeClass('is-adding').addClass('is-added');
     ShopifyAPI.getCart(cartUpdateCallback);
-    freeShipDiffCalc();
+    window.freeShipDiffCalc();
   };
 
   itemErrorCallback = function (XMLHttpRequest, textStatus) {
@@ -393,22 +394,6 @@ var ajaxCart = (function(module, $) {
       }
     }
   };
-
-  freeShipDiffCalc = function() {
-    var note = $('.shipping-text-outer').val();
-    var threshold = $('.shipping-threshold').val();
-    jQuery.getJSON('/cart.js', function (cart) {
-      var cart_total = cart.total_price/100;
-      console.log(cart_total);
-      var diff = threshold - cart_total;
-      console.log(diff);
-      if(diff<0){
-        note = "You are eligible for free shipping."
-      }
-      note.replace("$XX", diff);
-      $('.free-ship-note').html(note);
-    });
-  }
 
   // RETURNS : Total price (in cents) sans items tagged with _discountItem property
   //    NOTE : The _discountItem property is only added via addItemById()
@@ -618,8 +603,8 @@ var ajaxCart = (function(module, $) {
 
       // Slight delay to make sure removed animation is done
       setTimeout(function() {
-        ShopifyAPI.changeItem(vId, qty, adjustCartCallback);
-      }, 250);
+        ShopifyAPI.changeItem(vId, qty, adjustCartCallback);                
+      }, 250);      
     }
 
     // Save note anytime it's changed
@@ -627,8 +612,8 @@ var ajaxCart = (function(module, $) {
       var newNote = $(this).val();
 
       // Update the cart note in case they don't click update/checkout
-      ShopifyAPI.updateCartNote(newNote, function(cart) {});
-    });
+      ShopifyAPI.updateCartNote(newNote, function(cart) {});      
+    });    
   };
 
   adjustCartCallback = function (cart) {
@@ -647,6 +632,7 @@ var ajaxCart = (function(module, $) {
     // Reprint cart on short timeout so you don't see the content being removed
     setTimeout(function() {
       ShopifyAPI.getCart(buildCart);
+      window.freeShipDiffCalc();
     }, 150);
 
     // UPDATE : Event trigger for the Discounts Engine (React Component)
