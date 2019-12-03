@@ -13,6 +13,12 @@
       <a href="/cart">{% endraw %}{{ 'cart.general.view_cart' | t }}{% raw %}</a>
     </div>
 
+    {% endraw %}
+    {% if settings.shipping_note_position == 'top' %}
+    {% include 'free-ship-note' %}
+    {% endif %}
+    {% raw %}
+
     <form action="/cart" method="post" novalidate class="cart ajaxcart">
       <div class="ajaxcart__inner">
         {{#items}}
@@ -112,7 +118,11 @@
             <p class="text-right"><strong class="bfx-price bfx-minicart-subtotal">{{{totalPrice}}}</strong></p>
           </div>
 
-          {% endraw %}{% include 'free-ship-note' %}{% raw %}
+          {% endraw %}
+          {% if settings.shipping_note_position == 'bottom' %}
+          {% include 'free-ship-note' %}
+          {% endif %}
+          {% raw %}
 
         <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
         <button type="submit" class="cart__checkout js-cart-drawer-checkout" name="checkout">

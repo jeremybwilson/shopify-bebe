@@ -1,8 +1,26 @@
  .free-shipping-wrapper{
     display: block;
+    padding-top: 35px;
+    padding-bottom: 15px;
     .free-shipping-note{
       font-weight: $font-weight--medium;
       text-align: center;
       @include fontSize(14px);
     }
+  }
+
+  .top{
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    background: $color--primary-1;
+    .free-shipping-note{
+      font-weight: $font-weight--bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: $color--reverse-1;
+      margin-bottom: 0;
+      @include fontSize(10px);
+    } 
   }

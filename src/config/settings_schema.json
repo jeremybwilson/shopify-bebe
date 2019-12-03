@@ -1724,6 +1724,11 @@
     "name": "Free Shipping Options",
     "settings": [
       {
+        "type": "header",
+        "content": "Free shipping options",
+        "info": "All of these options are for the US store only."
+      },
+      {
         "type": "number",
         "id": "shipping_threshold",
         "label": "Free shipping threshold"
@@ -1740,6 +1745,16 @@
         "id": "shipping_text_free_ship",
         "label": "Free shipping text for cart value above threshold",
         "default": "You’re eligible for free shipping."
+      },
+      {
+        "type": "select",
+        "id": "shipping_note_position",
+        "label": "Position of the free shipping text",
+        "options": [
+         { "value": "top", "label": "Top"},
+         { "value": "bottom", "label": "Bottom"}
+        ],       
+        "default": "top"
       }
     ]
   },
