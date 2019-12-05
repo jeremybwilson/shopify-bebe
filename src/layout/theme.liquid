@@ -336,12 +336,6 @@
 <!--begin-bc-sf-filter-js-->
   {% include 'bc-sf-filter' %}
 <!--end-bc-sf-filter-js-->
-  
-  {% if template == 'product' %}
-  <!--size-chart-order-js-->
-    {{ 'size-chart-order.js' | asset_url | script_tag }}
-  <!--end-size-chart-order-js-->
-  {% endif %}
 
   {% include 'nosto-tagging' %}
   {% include 'borderfree-custom-selector' %}
