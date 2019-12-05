@@ -1,0 +1,101 @@
+<!-- categories menu section start -->
+<div id="categories-menu" class="mobile_show">
+    <ul class="nav-side-list">
+        {% for link in linklists[section.settings.main-menu].links  %}
+            {% assign child_list_handle = link.title | handleize %}
+            {% assign hidden_nav_check_main = link.title | slice: 0 %}
+            {% if hidden_nav_check_main != '_' %}
+                {% if linklists[child_list_handle].links == blank %}
+                    <li class="menuitem mobile-subnav nav-side-item li{% if link.active %} active{% endif %} {% if link.title == 'Account' or link.title == 'ACCOUNT' %}account-li{% endif %}">
+                        <div class="link">
+                            <a href="{{link.url}}">
+                                {{link.title}}
+                            </a>
+                        </div>
+                    </li> 
+                {% else %}
+                    <li class="menuitem has-child{% if link.active %} active{% endif %}">
+                        <div class="link icon-plus">
+                            <a href="{{link.url}}">
+                                {{link.title}}
+                            </a>
+                            <div class="arrow-icon">
+                                <i class="arrow right"></i>
+                            </div>
+                        </div>
+                        <ul class="child-ul">
+                            {% for childlink in linklists[child_list_handle].links %}
+                                {% assign sub_child_list_handle = childlink.title | handleize %}
+                                {% assign hidden_nav_check = childlink.title | slice: 0 %}
+                            
+                                {% if linklists[sub_child_list_handle].links == blank %}
+                                    {% assign third_tire = false %}
+                                {% else %}
+                                    {% assign third_tire = true %}
+                                {% endif %}
+
+                                {% if hidden_nav_check != '_' %}
+                                    {% if third_tire %}
+                                        <li class="menuitem third-has-child" >
+                                            <div class="child-link icon-plus">
+                                                <a {% unless childlink.url == blank %}href="{{ childlink.url }}{% endunless %}"> {{ childlink.title | escape }}</a>
+                                                <div class="arrow-icon">
+                                                    <i class="arrow right"></i>
+                                                </div>
+                                            </div>
+                                            <ul class="third-child-menu">
+                                                {% for subchildlink in linklists[sub_child_list_handle].links %}
+                                                <li class="menuitem">
+                                                    <div class="link">
+                                                      <a href="{{ subchildlink.url }}">{{ subchildlink.title | escape }}</a>
+                                                  </div>
+                                              </li>
+                                              {% endfor %}
+                                          </ul>
+                                      </li>
+                                  {% else %}
+                                        <li class="child-li">
+                                            <div class="sub-link">
+                                                <a {% unless childlink.url == blank %}href="{{ childlink.url }}{% endunless %}">{{ childlink.title | escape }}</a>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li> 
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
+</div>
+<!-- categories menu section End -->
+{% schema %}
+{
+    "name": "Categories menu",
+    "class": "index-section",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "main-menu",
+            "label": "Select menu"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Menu",
+            "name": "Categories menu"
+        }
+    ]
+}
+{% endschema %}
+
+
+<script type="text/javascript">
+    window.addEventListener('load',function(){
+        $(document).on('click', '.icon-plus', function () {
+            $(this).parent().toggleClass('active').find(' > ul').stop().slideToggle();
+            $(this).parent().siblings('li').removeClass('active').find('> ul').stop().slideUp();
+        });
+    });
+</script>

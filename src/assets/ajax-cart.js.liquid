@@ -225,7 +225,7 @@ var ajaxCart = (function(module, $) {
   var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
 
   // Private functions
-  var updateCountPrice, removeGiftItemsFromTotalPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
+  var updateCountPrice, removeGiftItemsFromTotalPrice, checkGiftForm, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
 
   /*============================================================================
               Bind new addToCart buttons for cases like "Quickview" 
@@ -300,7 +300,12 @@ var ajaxCart = (function(module, $) {
       return l.indexOf(r) === -1
         ? opts.fn(this)
         : null
-    })
+    });
+    Handlebars.registerHelper('if_contains', function (l, r, opts) {
+      return l.indexOf(r) === -1
+        ? null
+        : opts.fn(this)
+    });    
 
     // Select DOM elements
     $formContainer     = $(settings.formSelector);
@@ -344,7 +349,20 @@ var ajaxCart = (function(module, $) {
       $cartCostSelector.html(Shopify.formatMoney(cart.total_price, settings.moneyFormat));
     }
   };
-
+  checkGiftForm = function() {
+    let email = $(".gift_card_details #recipient-email").val();
+    let confemail = $(".gift_card_details #recipient-email-verify").val();
+    if(email != confemail){
+      $(".gift_card_details #recipient-email").addClass('gift-form-error');
+      $(".gift_card_details #recipient-email-verify").addClass('gift-form-error');
+      return false;
+    }
+    else{
+      $(".gift_card_details #recipient-email").removeClass('gift-form-error');
+      $(".gift_card_details #recipient-email-verify").removeClass('gift-form-error');
+      return true;
+    }
+  };
   formOverride = function () {
     $formContainer.on('submit', function(evt) {
       evt.preventDefault();
@@ -354,6 +372,11 @@ var ajaxCart = (function(module, $) {
 
       // Remove any previous quantity errors
       $('.qty-error').remove();
+      if($('.gift_card_details').length > 0){
+        if(!checkGiftForm()){
+          return false;
+        }
+      }     
       ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
     });
   };

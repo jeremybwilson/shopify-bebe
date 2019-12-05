@@ -1,4 +1,5 @@
 {% comment %} :: COLLECTION SIDEBAR :: DROPDOWN {% endcomment %}
+{% assign collHandle = collection.handle %}
 <button id="collection-nav--mobile-trigger">
     <h1 class="current-page">
         {{ collection.title }}
@@ -6,8 +7,7 @@
     <span class="opener">{% include 'svg-icon-caret-down' %}</span>
 </button>
 
-<div id="collection-nav--mobile-dropdown">
-
+<div id="collection-nav--mobile-dropdown"> 
     <div id="collection-nav--mobile-wrap">
 
         {% assign main_nav = 'main-menu' %}
@@ -24,7 +24,7 @@
         {% assign featured_nav = '' %}
 
         {% assign menu = linklists[main_nav] %}
-
+        
         <ul id="collection--nav" class="sidebar-nav collection--sidebar-nav">
             {% for link in menu.links %}
 
@@ -32,7 +32,27 @@
                 {% comment %} Only pull the active nav item {% endcomment %}
 
                 {% if link.child_active or link.active %}
-
+                
+                    {% assign foundMatchItem = false %}
+                    {% if link.handle == collHandle %}
+                        {% assign foundMatchItem = true %}
+                    {% endif %}
+                    {% if link.links != blank %}
+                        {% for sub_link in link.links %}
+                            {% if sub_link.handle == collHandle %}
+                                {% assign foundMatchItem = true %}
+                            {% endif %}
+                            {% if sub_link.links != blank %}
+                                {% for sub_sub_link in sub_link.links %}
+                                    {% if sub_sub_link.handle == collHandle %}
+                                        {% assign foundMatchItem = true %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                
+                {% capture side_navitem %}
                 <li class="nav-link">
                     <h3>{{ link.title }}</h3>
 
@@ -96,18 +116,24 @@
 
                         {% endfor %}
 
-                    </ul>
-                    
+                    </ul> 
                 </li>
-
+                {% endcapture %}
+                
+                {% if foundMatchItem %}
+                    {{side_navitem}}
+                    {% comment %}{% break %}{% endcomment %}
+                {% endif %}
+                
                 {% endif %}
 
             {% endfor %}
 
         </ul>
 
-        {% comment %}{{ featured_nav }}{% endcomment %}
+        {{ featured_nav }}
 
     </div>
 
+    <div class="js-page-header-overlay page-header__dropdown-overlay"></div>
 </div>

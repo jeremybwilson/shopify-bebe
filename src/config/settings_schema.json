@@ -103,6 +103,16 @@
         "id": "yottaa_key",
         "label": "Yottaa Key",
         "info": "Enter a key for Rapid."
+      },
+      {
+        "type": "header",
+        "content": "Klarna"
+      },
+      {
+        "type": "checkbox",
+        "id": "klarna_on_site_messaging_enabled",
+        "label": "Enable Klarna on-site-messaging",
+        "default": true
       }
     ]
   },
@@ -540,6 +550,13 @@
         "label": "Swatch Outline Color",
         "info": "(For React Swatches on Collection Views)",
         "default": "#9a9a9a"
+      },
+      {
+        "type": "color",
+        "id": "persistent_note_color",
+        "label": "Persistent Note",
+        "info": "Text that appears from PLP to checkout",
+        "default": "#F90020"
       },
       {
         "type": "header",
@@ -1719,5 +1736,48 @@
         "label": "Enable Simple Preorder App"
       }
     ]
-  }
+  },
+  {
+    "name": "surefoot",
+    "settings": [
+      {
+        "type": "header",
+        "content": "a/b test settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "sf-page-conceal-enabled",
+        "default": false,
+        "label": "Enable Page Conceal Anti-Flicker"
+      },
+      {
+        "type": "number",
+        "id": "sf-page-conceal-delay",
+        "default": 2000,
+        "label": "Page Conceal Delay in ms (1000 = 1 sec)"
+      },
+      {
+        "type": "header",
+        "content": "Checkout scripts"
+      },
+      {
+        "type": "checkbox",
+        "id": "sf-checkout-enabled",
+        "default": false,
+        "label": "Enable Checkout Script"
+      },
+      {
+        "type": "text",
+        "id": "sf-optimize-container",
+        "default": "GTM-PRCK8XK",
+        "label": "Google Optimize Container ID"
+      },
+      {
+        "type": "text",
+        "id": "sf-ga-container",
+        "default": "UA-23045450-1",
+        "label": "GA Container ID"
+      }
+    ]
+  }  
 ]
