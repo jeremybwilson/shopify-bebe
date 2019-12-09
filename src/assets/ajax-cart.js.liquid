@@ -348,7 +348,7 @@ var ajaxCart = (function(module, $) {
 
     if ( $cartCostSelector && $cartCostSelector.length > 0 ) {
       $cartCostSelector.html(Shopify.formatMoney(cart.total_price, settings.moneyFormat));
-    }    
+    }
   };
   checkGiftForm = function() {
     let email = $(".gift-card-details #recipient-email").val();
@@ -378,7 +378,7 @@ var ajaxCart = (function(module, $) {
           return false;
         }
       }     
-      ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);      
+      ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
     });
   };
 
@@ -608,8 +608,8 @@ var ajaxCart = (function(module, $) {
 
       // Slight delay to make sure removed animation is done
       setTimeout(function() {
-        ShopifyAPI.changeItem(vId, qty, adjustCartCallback);                
-      }, 250);      
+        ShopifyAPI.changeItem(vId, qty, adjustCartCallback);
+      }, 250);
     }
 
     // Save note anytime it's changed
@@ -617,8 +617,8 @@ var ajaxCart = (function(module, $) {
       var newNote = $(this).val();
 
       // Update the cart note in case they don't click update/checkout
-      ShopifyAPI.updateCartNote(newNote, function(cart) {});      
-    });    
+      ShopifyAPI.updateCartNote(newNote, function(cart) {});
+    });
   };
 
   adjustCartCallback = function (cart) {

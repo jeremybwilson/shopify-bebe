@@ -338,11 +338,9 @@
 <!--end-bc-sf-filter-js-->
   {% include 'nosto-tagging' %}
   {% include 'borderfree-custom-selector' %}
-
 <!-- Free-ship-note-js -->
   {{ 'free-ship-note.js' | asset_url | script_tag }}
 <!-- Free-ship-note-js-ends -->
-
   <script src="{{ 'borderfree.js' | asset_url }}"></script>
   <script>
     const isProd = {{ isProd | json }};
