@@ -1736,6 +1736,11 @@
         "info": "All of these options are for the US store only."
       },
       {
+        "type": "checkbox",
+        "id": "shipping_tracking_enable",
+        "label": "Enable free shipping threshold tracking?"
+      },
+      {
         "type": "number",
         "id": "shipping_threshold",
         "label": "Free shipping threshold"

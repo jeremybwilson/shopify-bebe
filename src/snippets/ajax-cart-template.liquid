@@ -6,6 +6,11 @@
   handlebar.js template tags as available hooks.
 
 {% endcomment %}
+{% assign isFreeShipTrack = false %}
+{% if settings.shipping_tracking_enable %}
+{% assign isFreeShipTrack = true %}
+{% endif %}
+
   <script id="CartTemplate" type="text/template">
 
   {% raw %}
@@ -13,8 +18,10 @@
       <a href="/cart">{% endraw %}{{ 'cart.general.view_cart' | t }}{% raw %}</a>
     </div>
     {% endraw %}
+    {% if isFreeShipTrack %}
     {% if settings.shipping_note_position == 'top' %}
     {% include 'free-ship-note' %}
+    {% endif %}
     {% endif %}
     {% raw %}
     <form action="/cart" method="post" novalidate class="cart ajaxcart">
@@ -122,8 +129,10 @@
             <p class="text-right"><strong class="bfx-price bfx-minicart-subtotal">{{{totalPrice}}}</strong></p>
           </div>
           {% endraw %}
+          {% if isFreeShipTrack %}
           {% if settings.shipping_note_position == 'bottom' %}
           {% include 'free-ship-note' %}
+          {% endif %}
           {% endif %}
           {% raw %}
         <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
