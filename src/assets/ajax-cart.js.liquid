@@ -300,7 +300,12 @@ var ajaxCart = (function(module, $) {
       return l.indexOf(r) === -1
         ? opts.fn(this)
         : null
-    })
+    });
+    Handlebars.registerHelper('if_contains', function (l, r, opts) {
+      return l.indexOf(r) === -1
+        ? null
+        : opts.fn(this)
+    });    
 
     // Select DOM elements
     $formContainer     = $(settings.formSelector);

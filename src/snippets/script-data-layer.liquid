@@ -130,7 +130,7 @@ __bva__.helpers = (function () {
     }
   }
 
-  Helpers.prototype.sendCart = function (event = "Update Cart", pageType = "Update Cart") {
+  Helpers.prototype.sendCart = function (event, pageType) {
     var clearCart = {
           cartTotal: 0,
           itemsCount: 0,
@@ -143,8 +143,8 @@ __bva__.helpers = (function () {
     // we should update the cart to the most recent items
     jQuery.get("/cart?view=datalayer", function(response){
       var cart = JSON.parse(response);
-      cart.event = event;
-      cart.pageType = pageType;
+      cart.event = event || 'Update Cart';
+      cart.pageType = pageType || 'Update Cart';
       dataLayer.push(cart);
     });
   };

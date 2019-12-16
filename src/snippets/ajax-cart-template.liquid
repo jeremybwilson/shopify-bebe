@@ -34,13 +34,19 @@
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
+	                      {{#if_contains @key 'persistent_note'}}
+                          <span class="ajaxcart__product-meta persistent-note">{{this}}</span>
+                        {{/if_contains}}
+
                       {%endraw%}{% comment %} if final_sale is exist then display the text  {% endcomment %}{%raw%}
                         {{#if_eq @key 'final_sale'}}
                           <span class="ajaxcart__product-meta">{{this}}</span>
                         {{else}}	
                           {{#if_not_eq @key '_discountItem'}}
                           {{#unless_contains @key '_private'}}
+                            {{#unless_contains @key 'persistent_note'}}
                             <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                            {{/unless_contains}}
                           {{/unless_contains}}
                         {{/if_not_eq}}
                         {{/if_eq}}

@@ -760,3 +760,18 @@
           }
        }
     }
+
+.freshwidget-button {
+  @include mq('phone') {  
+    left: 75% !important;
+  }
+}
+.responsive {
+  .mobile-widget-close{
+    @include mq('phone') { 
+      font-size: 22px !important;
+      right: 30px !important;
+      left: auto !important;
+    }
+  }
+}    
