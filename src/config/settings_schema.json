@@ -1731,16 +1731,42 @@
     "name": "Free Shipping Options",
     "settings": [
       {
+        "type": "header",
+        "content": "Free shipping options",
+        "info": "All of these options are for the US store only."
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_tracking_enable",
+        "label": "Enable free shipping threshold tracking?"
+      },
+      {
         "type": "number",
         "id": "shipping_threshold",
         "label": "Free shipping threshold"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "shipping_text",
         "label": "Free shipping text",
         "default": "You’re just $XX away from free shipping.",
         "info": "The default currency for the threshold will be $."
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_text_free_ship",
+        "label": "Free shipping text for cart value above threshold",
+        "default": "You’re eligible for free shipping."
+      },
+      {
+        "type": "select",
+        "id": "shipping_note_position",
+        "label": "Position of the free shipping text",
+        "options": [
+         { "value": "top", "label": "Top"},
+         { "value": "bottom", "label": "Bottom"}
+        ],       
+        "default": "top"
       }
     ]
   },

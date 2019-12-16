@@ -6,13 +6,24 @@
   handlebar.js template tags as available hooks.
 
 {% endcomment %}
+{% assign isFreeShipTrack = false %}
+{% if settings.shipping_tracking_enable %}
+{% assign isFreeShipTrack = true %}
+{% endif %}
+
   <script id="CartTemplate" type="text/template">
 
   {% raw %}
     <div class="ajaxcart__view-cart-link">
       <a href="/cart">{% endraw %}{{ 'cart.general.view_cart' | t }}{% raw %}</a>
     </div>
-
+    {% endraw %}
+    {% if isFreeShipTrack %}
+    {% if settings.shipping_note_position == 'top' %}
+    {% include 'free-ship-note' %}
+    {% endif %}
+    {% endif %}
+    {% raw %}
     <form action="/cart" method="post" novalidate class="cart ajaxcart">
       <div class="ajaxcart__inner">
         {{#items}}
@@ -41,7 +52,7 @@
                       {%endraw%}{% comment %} if final_sale is exist then display the text  {% endcomment %}{%raw%}
                         {{#if_eq @key 'final_sale'}}
                           <span class="ajaxcart__product-meta">{{this}}</span>
-                        {{else}}	
+                        {{else}}
                           {{#if_not_eq @key '_discountItem'}}
                           {{#unless_contains @key '_private'}}
                             {{#unless_contains @key 'persistent_note'}}
@@ -117,9 +128,13 @@
           <div class="desktop-half tablet-half mobile-half">
             <p class="text-right"><strong class="bfx-price bfx-minicart-subtotal">{{{totalPrice}}}</strong></p>
           </div>
-
-          {%comment%}{% include 'free-ship-note' %}{%endcomment%}
-
+          {% endraw %}
+          {% if isFreeShipTrack %}
+          {% if settings.shipping_note_position == 'bottom' %}
+          {% include 'free-ship-note' %}
+          {% endif %}
+          {% endif %}
+          {% raw %}
         <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
         <button type="submit" class="cart__checkout js-cart-drawer-checkout" name="checkout">
           {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}
