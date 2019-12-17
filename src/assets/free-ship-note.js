@@ -1,7 +1,7 @@
 window.freeShipDiffCalc = function() {
-    var note = $('.shipping-text-outer').val();
-    var note_free_ship = $('.shipping-text-free-ship').val();
-    var threshold = $('.shipping-threshold').val();
+    var note = window.shipData.shipText;
+    var note_free_ship = window.shipData.freeShipText;
+    var threshold = window.shipData.threshold;
     jQuery.getJSON('/cart.js', function (cart) {
       var cart_total = cart.total_price/100;
       var diff = threshold - cart_total;

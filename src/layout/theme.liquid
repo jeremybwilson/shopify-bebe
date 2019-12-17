@@ -3,6 +3,11 @@
   TEMPLATE CODE :: ASSIGNMENTS
 
 {% endcomment %}
+  
+{% assign isFreeShipTrack = false %}
+{% if settings.shipping_tracking_enable %}
+{% assign isFreeShipTrack = true %}
+{% endif %}
 
 {% comment %} Simple Layout : No Wrapper or Breadcrumbs {% endcomment %}
 {% assign simple_layout = false %}
@@ -339,7 +344,16 @@
   {% include 'nosto-tagging' %}
   {% include 'borderfree-custom-selector' %}
 <!-- Free-ship-note-js -->
+  {% if isFreeShipTrack %}
+  <script>
+    window.shipData = {
+      shipText: "{{ settings.shipping_text }}",
+      freeShipText: "{{ settings.shipping_text_free_ship }}",
+      threshold: "{{ settings.shipping_threshold }}"
+    }
+  </script>
   {{ 'free-ship-note.js' | asset_url | script_tag }}
+  {% endif %}
 <!-- Free-ship-note-js-ends -->
   <script src="{{ 'borderfree.js' | asset_url }}"></script>
   <script>
