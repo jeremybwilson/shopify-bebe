@@ -7,7 +7,9 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ settings.google_analytics_id }}');
+    gtag('config', '{{ settings.google_analytics_id }}', {
+      'linker': {'domains': ['bebe.com']}      
+    });
   </script>
 
 {% endif %}

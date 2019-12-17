@@ -162,7 +162,7 @@
                   {% if isGiftItem == false %}
                     <div class="cart-quantity">
                       <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
-                      <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
+                      <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
                     </div>
                   {% endif %}
 
