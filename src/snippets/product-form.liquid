@@ -131,31 +131,31 @@
     {% endif %}
 
     {% comment %} Gift Card Feilds for gift card page {% endcomment %}
-
-    {% if product.handle contains 'gift-card' %}
-      <div class="gift-card-details">
-        <div id="recipient-row" class="form-row">
+    {% assign type = product.type | handleize %}
+    <input type="hidden" class="product-type" value="{{type}}">
+    {% if type == 'gift-card' %}
+      <p class="gift-card-details">
+        <div class="form-row">
           <label class="form-label" for="recipient">Recipient First Name*</label>
-          <input id="recipient-name" required class="form-field" maxlength="75" name="properties[Recipient Name]" placeholder="" type="text">
+          <input required class="form-field" maxlength="75" name="properties[Recipient Name]" placeholder="" type="text">
         </div>
-        <div id="recipient-row" class="form-row">
+        <div class="form-row">
           <label class="form-label" for="recipient">Recipient Last Name</label>
-          <input id="recipient-last-name" class="form-field" maxlength="75" name="properties[Recipient Last Name]" placeholder="" type="text">
+          <input class="form-field" maxlength="75" name="properties[Recipient Last Name]" placeholder="" type="text">
         </div>
-        <div id="recipient-row" class="form-row">
+        <div class="form-row">
           <label class="form-label" for="recipient">Recipient Email*</label>
           <input id="recipient-email" required class="form-field" maxlength="75" name="properties[Recipient Email]" placeholder="" type="email">
         </div>
-        <div id="recipient-row" class="form-row">
+        <div class="form-row">
           <label class="form-label" for="recipient">Confirm Recipient Email*</label>
           <input id="recipient-email-verify" required class="form-field" maxlength="75" placeholder="" type="email">
         </div>
-        <div id="recipient-row" class="form-row">
+        <div class="form-row">
           <label class="form-label" for="recipient">Message For Recipient</label>
-          <textarea id="recipient-message" class="form-field" maxlength="150" name="properties[Message For Recipient]" placeholder=""></textarea>
+          <textarea class="form-field" maxlength="150" name="properties[Message For Recipient]" placeholder=""></textarea>
         </div>
-      </div>
-
+      </p>
     {% endif %}
 
   {% comment %}

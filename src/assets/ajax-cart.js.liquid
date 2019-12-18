@@ -373,11 +373,12 @@ var ajaxCart = (function(module, $) {
 
       // Remove any previous quantity errors
       $('.qty-error').remove();
-      if($('.gift-card-details').length > 0){
+      if($('.product-type').val() == 'gift-card'){
+        checkGiftForm();
         if(!checkGiftForm()){
           return false;
         }
-      }     
+      }
       ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
     });
   };
