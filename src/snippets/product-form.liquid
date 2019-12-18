@@ -105,36 +105,37 @@
     CONDITION #2 - If there is only one product option (Color), but multiple variants under that option (Red, Blue, Green).
   {% endcomment %}
   {% elsif product.options.size == 1 and product.variants.size > 1 %}
-
+  <div>
     <div class="select" {% if section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
       <label>{{ product.options[0] }}</label>
       <select id="product-select-{{ product.id }}" name='id'>
         {% for variant in product.variants %}
-          <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
-            {{ variant.title }} - {{ variant.price | money }}
-          </option>
+        <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+          {{ variant.title }} - {{ variant.price | money }}
+        </option>
         {% endfor %}
       </select>
     </div><!-- .select -->
     {% if section.settings.product_variants == 'swatches' %}
 
-      {% comment %} Option Loop
+          {% comment %} Option Loop
 
-      This is the first of 3 sets of loops that determine the render of the product swatches. See 'swatch.liquid' for the other two.
+          This is the first of 3 sets of loops that determine the render of the product swatches. See 'swatch.liquid' for the other two.
 
-      CYCLE #1 - Cycle through the available options {% endcomment %}
+          CYCLE #1 - Cycle through the available options {% endcomment %}
 
-      {% for option in product.options_with_values %}
-        {% include 'swatch' with option %}
-      {% endfor %}
+          {% for option in product.options_with_values %}
+          {% include 'swatch' with option %}
+          {% endfor %}
 
-    {% endif %}
-
+          {% endif %}
+        </div>
+        <div>
     {% comment %} Gift Card Feilds for gift card page {% endcomment %}
     {% assign type = product.type | handleize %}
     <input type="hidden" class="product-type" value="{{type}}">
     {% if type == 'gift-card' %}
-      <p class="gift-card-details">
+      <div class="gift_card_details">
         <div class="form-row">
           <label class="form-label" for="recipient">Recipient First Name*</label>
           <input required class="form-field" maxlength="75" name="properties[Recipient Name]" placeholder="" type="text">
@@ -155,8 +156,9 @@
           <label class="form-label" for="recipient">Message For Recipient</label>
           <textarea class="form-field" maxlength="150" name="properties[Message For Recipient]" placeholder=""></textarea>
         </div>
-      </p>
+      </div>
     {% endif %}
+  </div>
 
   {% comment %}
 
