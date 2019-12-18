@@ -29,6 +29,11 @@
   </head>
   <body>
     {% include 'script-google-tag-body' %}
+    
+    {% comment %} Surefoot - Page Conceal Snippet  {% endcomment %}
+    {% if settings.sf-page-conceal-enabled %}
+      {% include 'anti-flicker-page' %}
+    {% endif %}        
 
     {{ skip_to_content_link }}
 
