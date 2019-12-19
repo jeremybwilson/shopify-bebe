@@ -143,6 +143,7 @@
                   <h3>{{ section.settings.size_chart_header_text }}</h3>
                 </dt>
               </dl>
+              <input type="hidden" value="{{ section.settings.size_chart_order }}" class="size-chart--order">
             {% endif %}
 
             {% comment %} :: SHIPPING & RETURNS :: {% endcomment %}
@@ -533,6 +534,11 @@
         "type": "page",
         "id": "size_chart_page",
         "label": "Size Chart Page"
+      },
+      {
+        "type": "text",
+        "id": "size_chart_order",
+        "label": "Size Chart Order"
       },
       {
         "type": "header",
