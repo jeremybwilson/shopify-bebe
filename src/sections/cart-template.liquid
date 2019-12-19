@@ -1,4 +1,7 @@
-  
+{% assign isFreeShipTrack = false %}
+{% if settings.shipping_tracking_enable %}
+{% assign isFreeShipTrack = true %}
+{% endif %}
 {% comment %} :: CART BANNER IMAGE :: {% endcomment %}
 {% if section.settings.image != blank %}
   <div class="cart-banner">
@@ -246,6 +249,10 @@
           <h3>{{ 'cart.general.order_summary' | t }}</h3>
           <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart_subtotal | money }}</span></h4>
           
+          {% if isFreeShipTrack %}
+          {% include 'free-ship-note' %}
+          {% endif %}
+
           {% if customer %}
           {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
           <div id="checkout" class="button">{{ 'cart.general.checkout' | t }}</div>
