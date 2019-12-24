@@ -28,6 +28,10 @@ html .yotpo {
     padding: 15px 0 25px;
     max-width: 1220px;
 
+    @include mq('phone'){
+       padding: 15px 12px 25px;
+    }
+
     // Yotpo Logo on widget
     .yotpo-label {
         display: none;
@@ -376,4 +380,13 @@ html .yotpo {
             transition: opacity 0.25s ease-in-out;
         }
     }
+}
+.yotpo-bottomline.pull-left.star-clickable {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    width:100%;
+}
+.text-m.write-review-btn-hidden{
+    margin-right: 15px;
 }

@@ -1,0 +1,107 @@
+<script>
+  /**
+   * Google Analytics Enhanced Ecommerce - Checkout Labels & Google Optimize Initializer
+   * - to be added to the checkout.liquid template
+   */
+  (function checkoutStepLabels() {
+    var DEBUG = window.location.href.indexOf('debug') > -1;
+    // setup recursive polling to wait for GA to be loaded by Shopify (i.e. after ga('create') call) before pushing event (check every 500ms, max of 20 attempts)
+    var attempts = 0;
+    var MAX_ATTEMPTS = 20;
+    var GOOGLE_OPTIMIZE_CONTAINER_ID = '{{ settings.sf-optimize-container }}';
+    var GA_CONTAINER_ID = '{{ settings.sf-ga-container }}';
+
+    (function pollForGA() {
+      if (DEBUG) console.log(Date.now().toString() + 'sf | GA Checkout Step debug | ' + ' Polling for "ga.loaded" - attempt ' + attempts + " of " + MAX_ATTEMPTS);
+      setTimeout(function () {
+        if (window.ga && window.ga.loaded && typeof window.ga.getAll === 'function') {
+          // GA has been loaded, proceed with Checkout Label push
+          if (DEBUG) console.log(Date.now().toString(), 'sf | GA Checkout Step debug | ' + ' Polling for "ga.loaded" SUCCESS!');
+          initializeGoogleOptimize();
+          pushCheckoutStepLabel();
+        } else if (attempts < MAX_ATTEMPTS) {
+          // GA not loaded yet, wait and try again
+          if (DEBUG) console.log(Date.now().toString(), 'sf | GA Checkout Step debug | ' + ' GA not loaded yet, trying again...');
+          attempts++;
+          pollForGA();
+        } else {
+          // waited for number of seconds and still no GA, abandon polling
+          if (DEBUG) console.error('sf | GA Checkout Step debug | polling timeout (waited but still no GA)');
+        }
+      }, 500);
+    })();
+
+
+    function initializeGoogleOptimize() {
+      if (DEBUG) console.log('sf | GO initialized - container' + GOOGLE_OPTIMIZE_CONTAINER_ID);
+      ga('require', GOOGLE_OPTIMIZE_CONTAINER_ID);
+    }
+
+    // looks at `Shopify.Checkout` to determine which checkout step we're on, then pushes that step info to Google Enhanced Ecommerce for Checkout Labeling
+    function pushCheckoutStepLabel() {
+      if (window.ga && window.ga.loaded && Shopify.Checkout && typeof window.ga.getAll === 'function') {
+        // Google Analytics ID (for fetching correct GA tracker)
+        var PROD_TRACKING_ID = GA_CONTAINER_ID;
+        var EVENT_CATEGORY = 'Checkout';
+        var EVENT_ACTION = 'Progress'
+
+        var trackerSend = 'send'
+        var ShopifyCheckoutstep = Shopify.Checkout.step;
+
+        // must fetch custom tracker name for their instance of GA 
+        // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/accessing-trackers
+        trackerSend = window.ga.getAll().reduce(function (acc, tracker) {
+          var thisTrackerId = tracker.get('trackingId');
+
+          if (thisTrackerId === PROD_TRACKING_ID) {
+            acc = tracker.get('name') + '.send';
+          }
+          return acc;
+        }, 'send');
+
+        window.ga('require', 'ec');
+
+        var EVENT_LABEL;
+
+        switch (ShopifyCheckoutstep) {
+          case 'contact_information':
+            // Step 2: Shipping Address
+            EVENT_LABEL = 'Shipping Address'
+            window.ga('ec:setAction', 'checkout', {
+              'step': 2,
+              'option': EVENT_LABEL
+            });
+            break;
+          case 'shipping_method':
+            // Step 3: Shipping Method
+            EVENT_LABEL = 'Shipping Method';
+            window.ga('ec:setAction', 'checkout', {
+              'step': 3,
+              'option': EVENT_LABEL
+            });
+            break;
+          case 'payment_method':
+            // Step 4: Payment Method
+            EVENT_LABEL = 'Payment Method';
+            window.ga('ec:setAction', 'checkout', {
+              'step': 4,
+              'option': EVENT_LABEL
+            });
+            break;
+          case 'thank_you':
+            // Step 6: Thank You / Confirmation    
+            EVENT_LABEL = 'Thank You';
+            window.ga('ec:setAction', 'checkout', {
+              'step': 5,
+              'option': EVENT_LABEL
+            });
+            break;
+        }
+      }
+
+      // must push GA event to send Checkout Label to GA
+      window.ga(trackerSend, 'event', EVENT_CATEGORY, EVENT_ACTION, EVENT_LABEL)
+
+    }
+  })();
+</script>

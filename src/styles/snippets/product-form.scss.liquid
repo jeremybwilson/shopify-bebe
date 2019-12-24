@@ -109,7 +109,7 @@
       min-width: {{ width }};
       height: {{ height }};
       margin: 0 10px 5px 0;
-      padding:0;
+      padding:0 5px;
       border: solid 2px {{ settings.size_border }};
       color: {{ settings.size_text }};
       background: {{ settings.size_bg }};
@@ -316,6 +316,16 @@
         transform: translate(-50%,0px);
       }
   }
+}
+
+.form-row{
+  .form-label{
+    padding: 5px 0;
+  }
+}
+.gift-form-error{
+  border: 1px solid $color--error !important;
+  box-shadow: 0 0 3px $color--error;
 }
 
 #product-add {

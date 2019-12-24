@@ -72,7 +72,18 @@
         "label": "Delay amount",
         "info": "(in milliseconds)",
         "default": 2000
-      },      
+      },
+      {
+        "type": "header",
+        "content": "Google Analytics"
+      },
+      {
+        "type": "text",
+        "id": "google_analytics_id",
+        "label": "Google Analytics ID",
+        "info": "(Ex: UA-41750265-8)",
+        "default": "UA-41750265-8"
+      },
       {
         "type": "header",
         "content": "Yotpo Reviews"
@@ -92,6 +103,16 @@
         "id": "yottaa_key",
         "label": "Yottaa Key",
         "info": "Enter a key for Rapid."
+      },
+      {
+        "type": "header",
+        "content": "Klarna"
+      },
+      {
+        "type": "checkbox",
+        "id": "klarna_on_site_messaging_enabled",
+        "label": "Enable Klarna on-site-messaging",
+        "default": true
       }
     ]
   },
@@ -529,6 +550,13 @@
         "label": "Swatch Outline Color",
         "info": "(For React Swatches on Collection Views)",
         "default": "#9a9a9a"
+      },
+      {
+        "type": "color",
+        "id": "persistent_note_color",
+        "label": "Persistent Note",
+        "info": "Text that appears from PLP to checkout",
+        "default": "#F90020"
       },
       {
         "type": "header",
@@ -1700,6 +1728,49 @@
     ]
   },
   {
+    "name": "Free Shipping Options",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Free shipping options",
+        "info": "All of these options are for the US store only."
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_tracking_enable",
+        "label": "Enable free shipping threshold tracking?"
+      },
+      {
+        "type": "number",
+        "id": "shipping_threshold",
+        "label": "Free shipping threshold"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_text",
+        "label": "Free shipping text",
+        "default": "You’re just $XX away from free shipping.",
+        "info": "The default currency for the threshold will be $."
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_text_free_ship",
+        "label": "Free shipping text for cart value above threshold",
+        "default": "You’re eligible for free shipping."
+      },
+      {
+        "type": "select",
+        "id": "shipping_note_position",
+        "label": "Position of the free shipping text",
+        "options": [
+         { "value": "top", "label": "Top"},
+         { "value": "bottom", "label": "Bottom"}
+        ],       
+        "default": "top"
+      }
+    ]
+  },
+  {
     "name": "Preorder App : Simple Pre-order",
     "settings": [
       {
@@ -1708,5 +1779,48 @@
         "label": "Enable Simple Preorder App"
       }
     ]
-  }
+  },
+  {
+    "name": "surefoot",
+    "settings": [
+      {
+        "type": "header",
+        "content": "a/b test settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "sf-page-conceal-enabled",
+        "default": false,
+        "label": "Enable Page Conceal Anti-Flicker"
+      },
+      {
+        "type": "number",
+        "id": "sf-page-conceal-delay",
+        "default": 2000,
+        "label": "Page Conceal Delay in ms (1000 = 1 sec)"
+      },
+      {
+        "type": "header",
+        "content": "Checkout scripts"
+      },
+      {
+        "type": "checkbox",
+        "id": "sf-checkout-enabled",
+        "default": false,
+        "label": "Enable Checkout Script"
+      },
+      {
+        "type": "text",
+        "id": "sf-optimize-container",
+        "default": "GTM-PRCK8XK",
+        "label": "Google Optimize Container ID"
+      },
+      {
+        "type": "text",
+        "id": "sf-ga-container",
+        "default": "UA-23045450-1",
+        "label": "GA Container ID"
+      }
+    ]
+  }  
 ]

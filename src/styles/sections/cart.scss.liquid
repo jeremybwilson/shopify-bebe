@@ -218,9 +218,11 @@ body.cart {
     font-weight: $font-weight--medium;
     @include fontDim( 18px, 18px, .04em );
     text-transform: uppercase;
+    text-align:center;
   }
   h4 {
     color: $color--primary-1;
+    text-align:center;
 
     .subtotal-header {
       margin-right: 5em;
@@ -268,14 +270,31 @@ body.cart {
     @include mq('phone'){
       background: $button--main-mobile-bg;
       color: $button--main-mobile-text;
+      margin-top:25px;
     }
     &:hover {
       background-color: $color--accent-1;
     }
-  }  
+  } 
 
   &.hidden {
     display: none;
   }
+
+
 }
 
+ .faster_checkout{
+   text-decoration: none;
+    @include mq('tablet-and-up'){
+      padding: 0 16px;
+    }
+     @include mq('phone'){
+      padding: 0 12px;
+    }
+    
+    &:hover {
+      background-color: $color--accent-1 !important;
+      text-decoration: none;
+    }
+  } 

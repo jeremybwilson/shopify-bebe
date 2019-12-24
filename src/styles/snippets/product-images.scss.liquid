@@ -216,10 +216,10 @@ $arrowColorMobile: $color--dark-gray;
 .play-overlay {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 42%;
   transform: translate(-50%,-50%);
-  color: $color--white;
-  @include fontDim(8px,8px,.2em);
+  color: $color--primary-1;
+  @include fontDim(6px,8px,.2em);
   font-weight: $font-weight--black;
   text-transform: uppercase;
   text-align: center;
@@ -229,14 +229,15 @@ $arrowColorMobile: $color--dark-gray;
 .play-overlay-box {
   position: absolute;
   content: '';
-  top: 50%;
+  top: 42%;
   left: 50%;
-  width: 35px;
-  height: 35px;
-  background: $color--accent-1;  
+  width: 30px;
+  height: 30px;
+  background: $color--reverse-1;  
   z-index: 2;
-  transform-origin: top left;
-  transform: rotate(45deg) translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  border: 1px solid $color--primary-1;
 }
 
 .product-video {

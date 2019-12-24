@@ -957,7 +957,7 @@ theme.Header = (function() {
     // MOBILE NAV : Attach menu toggle event
     if ( ui.mobileNavButton && ui.mobileNavMenu ) {
       ui.mobileNavButton.on( 'click', () => {
-        ui.mobileNavMenu.toggleClass( 'mobile-nav-open' ); // TOGGLE : Menu itself
+        ui.mobileNavMenu.toggleClass( 'mobile-nav-open' ); // TOGGLE : Menu itself 
         ui.body.toggleClass( 'js-drawer-open' ); // TOGGLE : Page scrolling (built in to a lib so tied to this classname)
         ui.html.toggleClass( 'menu-open' ); // TOGGLE : Html has some oddness from the theme, this clears it so iPoos can render right
       })
@@ -987,18 +987,18 @@ theme.Header = (function() {
      
     //New Mobile Navigation :: Open First level Nav
     $(".mobile_subnav").on( 'click', function(){
-      var clickedata = $(this).data('mainmenu');console.log(clickedata);
       $(this).parent('.nav-side__item').addClass('open-sub-nav');
+      var clickedata = $(this).data('mainmenu');
       $('.sub-menu__wrapper[data-submenu='+clickedata+']').addClass('sub-nav-opened');
     });
 
     //New Mobile Navigation :: Close First level Nav
     $(".mobile_backto_nav").on( 'click', function(){
-      var clickedata = $(this).data('mainmenu');console.log(clickedata);
+      var clickedata = $(this).data('mainmenu');
       $('.sub-menu__wrapper[data-submenu='+clickedata+']').removeClass('sub-nav-opened');
       $('.main-menu__wrapper .nav-side__item').removeClass('open-sub-nav');
       if ($(this).data('gotomain')) {
-        var subclickedata = $(this).data('secondmenu');console.log(subclickedata);
+        var subclickedata = $(this).data('secondmenu');
         $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').removeClass('sub-sub-nav-opened');
         $('.nav-side__item[data-submenu-open='+subclickedata+']').removeClass('open-sub-sub-nav');
       }
@@ -1007,14 +1007,14 @@ theme.Header = (function() {
      
     //New Mobile Navigation :: Open Second level Nav
     $(".mobile_sub_subnav").on( 'click', function(){
-      var subclickedata = $(this).data('secondmenu');console.log(subclickedata);
       $(this).parent('.nav-side__item').addClass('open-sub-sub-nav');
+      var subclickedata = $(this).data('secondmenu');
       $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').addClass('sub-sub-nav-opened');
     });
 
     //New Mobile Navigation :: Close Second level Nav
     $(".mobile_backto_subnav").on( 'click', function(){
-      var subclickedata = $(this).data('secondmenu');console.log(subclickedata);
+      var subclickedata = $(this).data('secondmenu');
       $('.sub-sub-menu__wrapper[data-thirdmenu='+subclickedata+']').removeClass('sub-sub-nav-opened');
       $('.nav-side__item[data-submenu-open='+subclickedata+']').removeClass('open-sub-sub-nav');
       
@@ -2774,6 +2774,34 @@ theme.ProductForm = function (context, events) {
       return Shopify.formatMoney(cents, config.money_format);
     }
   }
+  if($('.product-type').val() != 'gift-card'){
+    (function checkSizeOrder() {
+      let order_string = $('#product-details--wrapper .size-chart--order').val().toLowerCase();
+      let order_array = order_string.split(";");
+      var swatch_order = [];
+      $(".size .swatch-element-list input").each(function() { 
+        swatch_order.push($(this).val().toLowerCase().split("(")[0]);
+      });
+      for( let i=0; i<order_array.length; i++ ) {
+          if(jQuery.inArray(order_array[i], swatch_order) == -1) {
+              order_array.splice(i, 1);
+          }
+      }
+      order_array.reverse();
+      function compareArrays(arr1, arr2) {
+        return $(arr1).not(arr2).length == 0 && $(arr2).not(arr1).length == 0
+      }
+      if(!compareArrays(order_array, swatch_order)){
+        if(order_array.length){
+            for(let key in order_array){
+                let size = order_array[key];
+                $(".swatch.size .swatch-element-list .size-swatch-"+size)
+                .insertBefore($('.swatch.size .swatch-element-list > .swatch-element:first-child'));
+            }
+        }
+      } 
+    })();
+  }
 
 };
 
@@ -3033,7 +3061,7 @@ theme.ProductGallery = function (context, events) {
           arrows: true,
           infinite: false,
           nextArrow: '<button type="button" class="slick-next"><div class="bar-left"><span class="sr-only">Next</span></div><div class="bar-right"></div></button>',
-          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"><span class="sr-only>Previous</span></div><div class="bar-right"></div></button>',
+          prevArrow: '<button type="button" class="slick-prev"><div class="bar-left"><span class="sr-only">Previous</span></div><div class="bar-right"></div></button>',
           slidesToShow: 5,
           slidesToScroll: 3,
           // slide: '.product-thumbnail',

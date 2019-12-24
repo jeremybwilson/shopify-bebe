@@ -1,4 +1,7 @@
-  
+{% assign isFreeShipTrack = false %}
+{% if settings.shipping_tracking_enable %}
+{% assign isFreeShipTrack = true %}
+{% endif %}
 {% comment %} :: CART BANNER IMAGE :: {% endcomment %}
 {% if section.settings.image != blank %}
   <div class="cart-banner">
@@ -143,13 +146,23 @@
 
                       {% endif %}
                     {% endif %}
+
+                    {% assign property_size = item.properties | size %}
+                    {% if property_size > 0 %}
+                      {% for p in item.properties %}
+                        {% if p.first contains 'persistent_note' %}
+                          <p class="persistent-note">{{ p.last }}</p>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}                    
+                    
                   </div>
 
                   {% comment %} CART : ITEM : QUANTITY {% endcomment %}
                   {% if isGiftItem == false %}
                     <div class="cart-quantity">
                       <label for="updates_{{ item.variant.id }}">{{ 'cart.general.qty' | t }}</label>
-                      <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
+                      <input type="text" class="cart-qty bfx-product-qty" size="4" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
                     </div>
                   {% endif %}
 
@@ -171,7 +184,7 @@
 
                 {% if add_final_sale_text == true or itemprice contains '.99' %}
                   <div class="final_sale sale_product">{{settings.final_sale}}</div>
-                {%- endif -%}
+                {%- endif -%}                
 
                 <div class="cart-item-actions">
                   <div class="cart-remove">
@@ -183,7 +196,7 @@
                 {% if property_size > 0 %}
                   {% for p in item.properties %}
                     {% comment %} if property is final_sale then don't show  {% endcomment %}
-                    {% unless p.first contains 'discountItem' or p.first == 'final_sale' or p.last == blank or p.first contains '_private' %}
+                    {% unless p.first contains 'discountItem' or p.first == 'final_sale' or p.last == blank or p.first contains '_private' or p.first contains 'persistent_note' %}
                       {{ p.first }}:
 
                       {% comment %}
@@ -236,11 +249,40 @@
           <h3>{{ 'cart.general.order_summary' | t }}</h3>
           <h4><span class="subtotal-header">{{ 'cart.general.subtotal' | t }}</span> <span class="money bfx-price bfx-total-subtotal">{{ cart_subtotal | money }}</span></h4>
           
+          {% if isFreeShipTrack %}
+          {% include 'free-ship-note' %}
+          {% endif %}
+
+          {% if customer %}
           {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
           <div id="checkout" class="button">{{ 'cart.general.checkout' | t }}</div>
           <input type="submit" id="hidden-checkout-button" name="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout hidden" />
-          
+          {% else %}
+              {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
+            <div id="checkout" class="button">{{ 'cart.general.checkout_as_guest' | t }}</div>
+            <input
+              type="submit"
+              id="hidden-checkout-button"
+              name="checkout"
+              value="{{ 'cart.general.checkout_as_guest' | t }}"
+              class="button bfx-checkout hidden" />
+            {% comment %} Sign in for fast checkout {% endcomment %}
+            {% comment %}<div id="fast_checkout" class="button">{{ 'cart.general.signin_faster_checkout' | t }}</div> {% endcomment %}
+            <a class="faster_checkout button"
+              href="{{ shop.url }}/account/login?checkout_url={{ shop.url }}/cart">{{ 'cart.general.signin_faster_checkout' | t }}</a>
+          {% endif %}
+
           <div class="clear"></div>
+
+          {% if settings.klarna_on_site_messaging_enabled %}
+            <!-- Note: it will be displayed only if the price is higher than $35 -->
+            <klarna-placement
+              data-id="b816a906-d282-4933-9230-8aa84045c2c5"
+              data-purchase_amount="{{ cart_subtotal | money_without_currency | times: 100 }}"
+              class="klarna-widget"
+            ></klarna-placement>
+          {% endif %}
+
           {% if additional_checkout_buttons %}
             {{ content_for_additional_checkout_buttons }}
             <div class="clear"></div>
