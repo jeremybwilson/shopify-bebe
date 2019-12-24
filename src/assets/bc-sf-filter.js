@@ -27,6 +27,9 @@ var bcSfFilterTemplate = {
                                             '{{itemFlipImage}}' +
                                         '</div>' +
                                     '</div>' +
+                                    '<div class="inner-product-img">' +
+                                        '<div>{{itemInnerBanner}}</div>' +
+                                    '</div>' + 
                                 '</div>' +
 
                                 '<div class="product-info">' +
@@ -200,6 +203,39 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
         itemQuickviewHtml += '<a class="fancybox.ajax product-modal product-quickview" href="{{itemUrl}}?view=quick">' + bcSfFilterConfig.label.quick_view + '</a>';
     }
     itemHtml = itemHtml.replace(/{{itemQuickview}}/g, itemQuickviewHtml);
+
+    // Add Inner banner image to product on collection page
+    //console.log(data.tags);
+    var itemExtraInnerHtml = '';
+    if ( data.tags ) {
+        var findTag = function(searchString) {
+            var foundTags = data.tags.filter( function( tag ) {
+                return tag.indexOf( searchString ) >= 0;
+            });
+
+            return foundTags || [];
+        };
+
+        // POPULATE : Build array of tags with only the ones we want
+        var innerProductTags = findTag( 'plpextraimg_' );   
+        if ( innerProductTags.length > 0 ) {
+            var extraInnerImage = [];
+            var file_name = innerProductTags.toString().split('_')[1] + '.png'; 
+            // RENDER : Drop populated product inner image template into itemHtml template
+            var innerExtraImgUrl = bcSfFilterConfig.general.product_inner_img.replace('product_inner_url_source_do_not_remove.png', file_name.toLowerCase());
+            
+            var innerExtraImg = {
+                innerExtraImgUrl: innerExtraImgUrl  // Add Extra inner image source url
+            }
+            extraInnerImage.push(innerExtraImg);
+            var extraInnerImageString = JSON.stringify(extraInnerImage);   
+            itemExtraInnerHtml = '<img src='+ innerExtraImgUrl +' alt="image" data-src =' + extraInnerImageString + '/>'; 
+            itemHtml = itemHtml.replace( /{{itemInnerBanner}}/g, itemExtraInnerHtml );
+        } else {
+            itemHtml = itemHtml.replace(/{{itemInnerBanner}}/g, '' );
+        }
+    }
+    // End
 
 
     // SWATCHES : Build data object for usage in react-swatches
