@@ -63,7 +63,14 @@ var bcSfFilterTemplate = {
     'mobileApplyBtnHtml': '<button class="mobile-apply-button" onClick="$(\'#bc-sf-filter-tree-mobile-button\').click()">Apply</button>'
 };
 
+// Tag function 
+var findTag = function(searchString) {
+    var foundTags = data.tags.filter( function( tag ) {
+        return tag.indexOf( searchString ) >= 0;
+    });
 
+    return foundTags || [];
+}; 
 
 BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) {
     /*** Prepare data ***/
@@ -203,14 +210,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
     itemHtml = itemHtml.replace(/{{itemQuickview}}/g, itemQuickviewHtml);
 
     // Add Inner banner image to product on collection page
-    var findTag = function(searchString) {
-        var foundTags = data.tags.filter( function( tag ) {
-            return tag.indexOf( searchString ) >= 0;
-        });
-
-        return foundTags || [];
-    }; 
-
+    
     var itemExtraInnerHtml = '';
     if ( data.tags ) {
         
