@@ -27,9 +27,7 @@ var bcSfFilterTemplate = {
                                             '{{itemFlipImage}}' +
                                         '</div>' +
                                     '</div>' +
-                                    '<div class="inner-product-img">' +
-                                        '<div>{{itemInnerBanner}}</div>' +
-                                    '</div>' + 
+                                    '{{itemInnerBanner}}' + 
                                 '</div>' +
 
                                 '<div class="product-info">' +
@@ -205,21 +203,23 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
     itemHtml = itemHtml.replace(/{{itemQuickview}}/g, itemQuickviewHtml);
 
     // Add Inner banner image to product on collection page
+    var findTag = function(searchString) {
+        var foundTags = data.tags.filter( function( tag ) {
+            return tag.indexOf( searchString ) >= 0;
+        });
+
+        return foundTags || [];
+    }; 
+
     var itemExtraInnerHtml = '';
     if ( data.tags ) {
-        var findTag = function(searchString) {
-            var foundTags = data.tags.filter( function( tag ) {
-                return tag.indexOf( searchString ) >= 0;
-            });
-
-            return foundTags || [];
-        };
-
+        
         // POPULATE : Build array of tags with only the ones we want
         var innerProductTags = findTag( 'plpextraimg_' );   
         if ( innerProductTags.length > 0 ) {
             var extraInnerImage = [];
-            var file_name = innerProductTags.toString().split('_')[1] + '.png'; 
+            var innerProductTagName = innerProductTags.toString().split('_')[1];  // Add Alt tag for image
+            var file_name = innerProductTagName + '.png';
             // RENDER : Drop populated product inner image template into itemHtml template
             var innerExtraImgUrl = bcSfFilterConfig.general.product_inner_img.replace('product_inner_url_source_do_not_remove.png', file_name.toLowerCase());
             
@@ -227,8 +227,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
                 innerExtraImgUrl: innerExtraImgUrl  // Add Extra inner image source url
             }
             extraInnerImage.push(innerExtraImg);
-            var extraInnerImageString = JSON.stringify(extraInnerImage);   
-            itemExtraInnerHtml = '<img src='+ innerExtraImgUrl +' alt="image" data-src =' + extraInnerImageString + '/>'; 
+            itemExtraInnerHtml = '<div class="inner-product-img"><div><img src='+ innerExtraImgUrl +' alt=' + innerProductTagName + ' /></div></div>'; 
             itemHtml = itemHtml.replace( /{{itemInnerBanner}}/g, itemExtraInnerHtml );
         } else {
             itemHtml = itemHtml.replace(/{{itemInnerBanner}}/g, '' );
