@@ -205,7 +205,6 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
     itemHtml = itemHtml.replace(/{{itemQuickview}}/g, itemQuickviewHtml);
 
     // Add Inner banner image to product on collection page
-    //console.log(data.tags);
     var itemExtraInnerHtml = '';
     if ( data.tags ) {
         var findTag = function(searchString) {
