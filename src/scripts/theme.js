@@ -3476,6 +3476,21 @@ theme.OfferTab = (function () {
 // regex for valid email - moved outside of theme sections and defined globally here
 const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i);
 
+
+theme.getMobileOperatingSystem = function() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Android detection
+    if (/android/i.test(userAgent)) {
+        $(".banner-image-for-mobile-device .android-os-image.home-banner-img").addClass('active');
+    }
+
+    // iOS detection
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        $(".banner-image-for-mobile-device .ios-os-image.home-banner-img").addClass('active');
+    }
+};
+
 /*============================================================================
   Registering Sections
 ==============================================================================*/
@@ -3496,6 +3511,7 @@ $(document).ready(function() {
   sections.register('product-section', theme.Product);
   sections.register('search-template', theme.Search);
   sections.register('offer-tab-section', theme.OfferTab);
+  theme.getMobileOperatingSystem();
 });
 
 /*============================================================================
