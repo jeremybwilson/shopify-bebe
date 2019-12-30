@@ -3,6 +3,11 @@
   TEMPLATE CODE :: ASSIGNMENTS
 
 {% endcomment %}
+  
+{% assign isFreeShipTrack = false %}
+{% if settings.shipping_tracking_enable %}
+{% assign isFreeShipTrack = true %}
+{% endif %}
 
 {% comment %} Simple Layout : No Wrapper or Breadcrumbs {% endcomment %}
 {% assign simple_layout = false %}
@@ -191,7 +196,18 @@
 </head>
 
 <body class="gridlock shifter bfx-price-container bfx-remove-element-container body-{{ template.name }} {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | replace: '.', ' ' | handle }}{% endif %}">
+
+  {% comment %} Surefoot - Page Conceal Snippet  {% endcomment %}
+  {% if settings.sf-page-conceal-enabled %}
+    {% include 'anti-flicker-page' %}
+  {% endif %}
+  
+  {% comment %} Klarna Payments  {% endcomment %}
+  {% if settings.klarna_on_site_messaging_enabled %}
+    {% include 'script-klarna-on-site-messaging' %}
+  {% endif %}
   {% include 'timber-cart' %}
+
   <div id="DrawerPageContainer" class="drawer-content">
     {% if settings.enable_newsletter_signup %}
       {% section 'offer-tab' %}
@@ -327,7 +343,18 @@
 <!--end-bc-sf-filter-js-->
   {% include 'nosto-tagging' %}
   {% include 'borderfree-custom-selector' %}
-
+<!-- Free-ship-note-js -->
+  {% if isFreeShipTrack %}
+  <script>
+    window.shipData = {
+      shipText: "{{ settings.shipping_text }}",
+      freeShipText: "{{ settings.shipping_text_free_ship }}",
+      threshold: "{{ settings.shipping_threshold }}"
+    }
+  </script>
+  {{ 'free-ship-note.js' | asset_url | script_tag }}
+  {% endif %}
+<!-- Free-ship-note-js-ends -->
   <script src="{{ 'borderfree.js' | asset_url }}"></script>
   <script>
     const isProd = {{ isProd | json }};

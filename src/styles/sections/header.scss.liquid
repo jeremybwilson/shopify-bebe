@@ -39,6 +39,7 @@ $color--super-hot-neon-pink: #ff009c;
     position: relative;
     //margin-top: 0 !important; //The sticky nav plugin adds margin to the parent but isn't necessary, this prevents it.
     font-family: $sans--2;
+    
 }
 
 /* SNIPPET : Header-Announcement-Bar
@@ -529,8 +530,9 @@ $color--super-hot-neon-pink: #ff009c;
         position:absolute;
         @include align-items( flex-start );
         padding-right: 23px;
-        right: -13px;
+        /*right: -13px;*/
         bottom: 12px;
+        left: 100%;
 
         width: 140px;
         padding-right: 23px;
@@ -543,6 +545,7 @@ $color--super-hot-neon-pink: #ff009c;
 
         @include mq('lap-and-up'){
             display:block;
+            margin-left: 12px;
         }
 
         @include mq( 'desk-and-up' ) {
@@ -773,10 +776,13 @@ $color--super-hot-neon-pink: #ff009c;
         width: 25px;
         height: 18px;
         top: 50%;
-        transform: translateY(-50%);
         cursor: pointer;
         z-index: $zIndexButtons; // 50
-
+        transition: transform 0.3s ease-out;
+        -webkit-transform: translate(0,-50%);
+        -moz-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        transform: translate(0,-50%);
         @include mq( 'lap-and-up' ) {
             display: none;
         }
@@ -812,6 +818,14 @@ $color--super-hot-neon-pink: #ff009c;
             display: block;
         }
 
+        @include mq(lap){
+            width:calc(100% - 130px);
+        }
+
+        /*@include mq(desk-and-up){
+            width:calc(100% - 160px);
+        }*/
+
         // Nav-Category-Header
         .nav-category-header {
             //@include h5;
@@ -823,9 +837,11 @@ $color--super-hot-neon-pink: #ff009c;
     }
    
     @include mq('lap-and-up'){
-         #nav-collections{
-             min-height:45px;
-         }
+        #nav-collections{
+            min-height:45px;
+            /*width: 100%;*/
+            position: relative;
+        }
     }
 
     #nav-menu-desktop {
@@ -869,9 +885,9 @@ $color--super-hot-neon-pink: #ff009c;
                     border-bottom: 3px solid transparent;
                     white-space: nowrap;
 
-                    @include mq( 'lap' ) {
-                        padding-left: 6px;
-                        padding-right: 6px;
+                    @include mq( 'lap-and-desk' ) {
+                        padding-left: 8px;
+                        padding-right: 8px;
                     }
 
                     @include mq( 'lap-and-up' ) {
@@ -1424,4 +1440,121 @@ $color--super-hot-neon-pink: #ff009c;
 .bc-sf-search-suggestion{
     left: auto !important;
     right: 0;
+}
+@include mq( 'phone' ) {
+    a.nav__link{
+        position: relative;
+        padding-top: 1.16666667rem;
+        padding-bottom: .25rem;
+        color: #fff;
+        font-size: 1em;
+        letter-spacing: .16666667em;
+        text-transform: uppercase;
+        white-space: nowrap;  
+        text-decoration: none; 
+    }
+
+    .eagle .nav {
+        background-color: #000;
+        overflow: hidden;
+    }
+    
+    .eagle .nav__item{
+        display: inline-block;
+        padding: 0;
+
+        @include mq('phone-portrait')  {
+            padding: 0 0.5rem;
+        }  
+     
+        &.active >a{
+            position: relative;
+            &:before{
+                content: "";
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                background-color: #fff;
+                bottom: -11px;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+    .eagle .nav--justified .nav__wrapper{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.58333333rem;
+        margin-left: 0px;
+        margin-right: 0px !important; 
+
+        @include mq('phone-portrait'){
+            padding: 0 0.8rem;
+        }    
+    }
+}
+
+// mobile menu dropdown categories
+.eagle{
+    display:none;
+    @include mq('phone'){
+        display:block;
+    }
+
+    &.dropdown-open{
+        position: fixed;
+        background-color: rgb(255, 255, 255);
+        z-index: 999;
+        width: 100%;
+        margin-top: 81px;
+        top: 0;
+    }
+
+    .mobile-top-sub-menu-dropdown{
+        position: absolute;
+        width: 100%;
+        height: calc(100vh - 120px);
+        left: 0;
+        background-color: #fff;
+        margin-top: 0;
+        top: 100%;
+        z-index:99;
+
+        .sub-nav-dropdown__dropdown{
+            height:100%;
+            ul{
+                height:100%;
+                margin: 0px;
+                overflow: auto;
+                li{
+                    list-style:none !important;
+                    padding:15px;
+                    border-bottom:1px solid $color--light-gray;
+                    &:focus{
+                        background-color:$color--light-gray;
+                    }
+                    &:hover{
+                        background-color:$color--light-gray;
+                    }
+                    a{
+                        padding: 0;
+                        font-weight: 400;
+                        color: #000;
+                        text-transform: capitalize;
+                        letter-spacing:1.5px;
+                        font-size: 1rem;
+                        line-height:22px;
+                        width: 100%;
+                        display: inline-block; 
+                        text-decoration:none !important;
+                    }
+                }
+            }
+        }
+
+        &.is-active{
+        height: calc(100vh - 125px);
+        overflow-y: auto; 
+        }
+    }
 }

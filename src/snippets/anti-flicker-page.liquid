@@ -1,0 +1,19 @@
+ <style class="conceal-page-css">
+  /* CSS to conceal Page so that our A/B test can load */
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+ <script>
+ (function antiFlicker() {
+    var DEBUG = window.location.href.indexOf('debug') > -1
+    if (DEBUG) console.log('Page Conceal anti-flicker CSS - installed');
+    var stylesEl = document.querySelector('.conceal-page-css');
+    var navDelay = parseInt('{{ settings.sf-page-conceal-delay }}');
+    setTimeout(function() {
+      if (DEBUG) console.log('Page Conceal anti-flicker CSS - removed');
+      if (stylesEl) stylesEl.parentElement.removeChild(stylesEl);
+    }, navDelay)
+  })()
+</script>

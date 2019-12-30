@@ -16,6 +16,7 @@
       {% include 'script-data-layer' %}
     {%- endif -%}
     {% include 'script-google-tag-head' %}
+    {% include 'script-google-analytics' %}
 
     {{ content_for_header }}
 
@@ -28,6 +29,11 @@
   </head>
   <body>
     {% include 'script-google-tag-body' %}
+    
+    {% comment %} Surefoot - Page Conceal Snippet  {% endcomment %}
+    {% if settings.sf-page-conceal-enabled %}
+      {% include 'anti-flicker-page' %}
+    {% endif %}        
 
     {{ skip_to_content_link }}
 
@@ -73,6 +79,9 @@
     {{ tracking_code }}
 
     {% include 'script-google-tag-body' %}
+    {% if settings.sf-checkout-enabled %}
+      {% include 'script-ga-checkout-step-labels' %}
+    {% endif %}
     {% include 'checkout-customization-script' %}
     {% include 'swell-checkout' %}
     <script>
@@ -93,7 +102,22 @@
       });
       }, 2000) 
       // to adding the final Sale string dynamically
+
+      // Persistent Note editing
+      $( ".product__description__property" ).each(function( index ) {
+        var html_property = $.trim($(this).html());
+        if(html_property.indexOf('persistent_note:') > -1){
+          var persistent_note = html_property.replace('persistent_note:','');
+          $(this).html('<span class="persistent-note">' + persistent_note + '</span>');
+        }
+      });      
     </script>
+    <style>
+      .persistent-note {
+        font-weight: 700;
+        color: {{ settings.persistent_note_color }};
+      }
+    </style>
   </body>
 </html>
 
