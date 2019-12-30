@@ -27,19 +27,23 @@
     <div class="container">
         <div class="banner-image-for-mobile-device">
             {% unless section.settings.android_banner_image == blank %}
-            <div class="android-os-image home-banner-img">
-                {% assign src_name = section.settings.android_banner_image %}
-                {% assign src_alt = section.settings.android_banner_image.alt %}
-                {% include 'srcset' %}
-            </div>
+                <div class="android-os-image home-banner-img">
+                    <a href="{{ section.settings.android_banner_url | default:'javascript:void(0)' }}">
+                    {% assign src_name = section.settings.android_banner_image %}
+                    {% assign src_alt = section.settings.android_banner_image.alt %}
+                    {% include 'srcset' %}
+                    </a>
+                </div>
             {% endunless%}
-
+ 
             {% unless section.settings.ios_banner_image == blank %}
-            <div class="ios-os-image home-banner-img">
-                {% assign src_name = section.settings.ios_banner_image %}
-                {% assign src_alt = section.settings.ios_banner_image.alt %}
-                {% include 'srcset' %}
-            </div>
+                <div class="ios-os-image home-banner-img">
+                    <a href="{{ section.settings.ios_banner_url | default:'javascript:void(0)' }}">
+                    {% assign src_name = section.settings.ios_banner_image %}
+                    {% assign src_alt = section.settings.ios_banner_image.alt %}
+                    {% include 'srcset' %}
+                    </a>
+                </div>
             {% endunless %}
         </div>
     </div>
@@ -67,9 +71,19 @@
             "label": "Android banner image"
         },
         {
+            "type": "url",
+            "id": "android_banner_url",
+            "label": "Android banner URL"
+        },
+        {
             "type": "image_picker",
             "id": "ios_banner_image",
             "label": "iOS banner image"
+        },
+        {
+            "type": "url",
+            "id": "ios_banner_url",
+            "label": "iOS banner URL"
         }
         ],
         "presets": [
