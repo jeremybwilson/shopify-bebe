@@ -232,6 +232,8 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index, totalProduct) 
         } else {
             itemHtml = itemHtml.replace(/{{itemInnerBanner}}/g, '' );
         }
+    } else {
+        itemHtml = itemHtml.replace(/{{itemInnerBanner}}/g, '' );   
     }
     // End
 
