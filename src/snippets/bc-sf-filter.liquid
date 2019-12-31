@@ -15,6 +15,7 @@
     },
     general: {
       file_url: "{{ '' | file_url }}",
+      product_inner_img: "{{ 'product_inner_url_source_do_not_remove.png' | file_url }}",
       swatch_replace_url: "{{ 'swatch_url_source_do_not_remove.png' | file_url }}", // new field to accommodate swatches
       asset_url: "{{ 'bc-sf-filter.js' | asset_url }}",
       collection_id: {{ collection.id | default: 0 }},
