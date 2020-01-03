@@ -3478,16 +3478,16 @@ const regexEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]
 
 
 theme.getMobileOperatingSystem = function() {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-    // Android detection
-    if (/android/i.test(userAgent)) {
-        $(".banner-image-for-mobile-device .android-os-image.home-banner-img").addClass('active');
-    }
-
-    // iOS detection
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        $(".banner-image-for-mobile-device .ios-os-image.home-banner-img").addClass('active');
+    if($('.banner-image-for-mobile-device').length > 0){
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // Android detection
+        if (/android/i.test(userAgent)) {
+            $(".banner-image-for-mobile-device .android-os-image.home-banner-img").addClass('active');
+        }
+        // iOS detection
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            $(".banner-image-for-mobile-device .ios-os-image.home-banner-img").addClass('active');
+        }
     }
 };
 
