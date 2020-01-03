@@ -1822,5 +1822,31 @@
         "label": "GA Container ID"
       }
     ]
+  },
+  {
+    "name": "Custom Checkout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Attentive"
+      },
+      {
+        "type": "text",
+        "id": "chekout_label",
+        "label": "Checkout label"
+      },
+      {
+        "type": "text",
+        "id": "chekout_subheader",
+        "label": "Checkout sub header"
+      },
+      {
+        "type": "html",
+        "id": "chekout_desc",
+        "label": "Checkout description"
+      }
+    ]
   }  
 ]
+
+
