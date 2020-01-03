@@ -332,6 +332,7 @@ var ajaxCart = (function(module, $) {
   loadCart = function () {
     $body.addClass('drawer--is-loading');
     ShopifyAPI.getCart(cartUpdateCallback);
+    window.freeShipDiffCalc();
   };
 
   updateCountPrice = function (cart) {
@@ -372,11 +373,11 @@ var ajaxCart = (function(module, $) {
 
       // Remove any previous quantity errors
       $('.qty-error').remove();
-      if($('.gift_card_details').length > 0){
+      if($('.product-type').val() == 'gift-card'){
         if(!checkGiftForm()){
           return false;
         }
-      }     
+      }
       ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
     });
   };
@@ -384,6 +385,7 @@ var ajaxCart = (function(module, $) {
   itemAddedCallback = function (product) {
     $addToCart.removeClass('is-adding').addClass('is-added');
     ShopifyAPI.getCart(cartUpdateCallback);
+    window.freeShipDiffCalc();
   };
 
   itemErrorCallback = function (XMLHttpRequest, textStatus) {
@@ -397,7 +399,6 @@ var ajaxCart = (function(module, $) {
       }
     }
   };
-
 
   // RETURNS : Total price (in cents) sans items tagged with _discountItem property
   //    NOTE : The _discountItem property is only added via addItemById()
@@ -636,6 +637,7 @@ var ajaxCart = (function(module, $) {
     // Reprint cart on short timeout so you don't see the content being removed
     setTimeout(function() {
       ShopifyAPI.getCart(buildCart);
+      window.freeShipDiffCalc();
     }, 150);
 
     // UPDATE : Event trigger for the Discounts Engine (React Component)

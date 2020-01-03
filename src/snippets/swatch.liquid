@@ -70,7 +70,7 @@
       {% capture sold_out_image %}
         <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" alt="Sold out" />
       {% endcapture %}
-
+      {% assign class_value = value | escape | split: "(" | first | downcase %}
       {% capture regular_swatch %}
         {% assign sizeValueLength = value | size %}
         {% if sizeValueLength > 4 %}
@@ -78,7 +78,7 @@
         {% else %}
           {% assign sizeClass = 'short-label' %}
         {% endif %}
-        <div class="swatch-element {{ sizeClass }} {% unless available %}soldout{% endunless %}{% if available == false and section.settings.show_sold_out == false %} hide{% endif %}">
+        <div class="swatch-element {{ sizeClass }} size-swatch-{{class_value}} {% unless available %}soldout{% endunless %}{% if available == false and section.settings.show_sold_out == false %} hide{% endif %}">
           {{ radio_button }}
 
           <label for="{{ id }}">
