@@ -18,4 +18,10 @@
 	maxList.forEach( function( el ) {
 		setMax( el );
 	});
+
+	if(window.Shopify.Checkout && window.Shopify.Checkout.step === 'contact_information') {
+		$(document).on('page:load page:change', function() {
+			$('#attentiveOptIn').insertAfter('.step__sections');
+		});
+	}
 </script>

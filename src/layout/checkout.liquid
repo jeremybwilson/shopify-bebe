@@ -26,6 +26,11 @@
     <!--PDM-675-->
     {{ 'checkout-amazon-payments.css' | asset_url | stylesheet_tag }} 
     <!--PDM-675-->
+
+    <!--PDM-1188-->
+    {{ 'checkout-attentive.scss.css' | asset_url | stylesheet_tag }}
+    <script src="https://cdn.attn.tv/bebe/checkout/checkout.js"></script>
+    <!--PDM-1188-->
   </head>
   <body>
     {% include 'script-google-tag-body' %}
@@ -60,6 +65,9 @@
             </div>
           {%- endif -%}
             {{ content_for_layout }}
+            <!-- PDM-1188 -->
+            {% include 'attentive' %}
+            <!-- PDM-1188 -->
           </div>
           <div class="main__footer">
             {{ content_for_footer }}
