@@ -18,5 +18,7 @@
 	maxList.forEach( function( el ) {
 		setMax( el );
 	});
-	$('#attentiveOptIn').insertAfter('.step__sections');
+	jquery(document).on('page:load page:change', function() {
+		$('#attentiveOptIn').insertAfter('.step__sections');
+	})
 </script>
