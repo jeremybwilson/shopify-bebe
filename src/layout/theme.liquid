@@ -358,9 +358,12 @@
   <script src="{{ 'borderfree.js' | asset_url }}"></script>
   <script>
     const isProd = {{ isProd | json }};
-    (function() {
-      Borderfree.init(isProd);
-    }());
+    // Borderfree must wait for DOM ready because it tries to access things before it is ready.
+    $(document).ready(function () {
+      (function() {
+        Borderfree.init(isProd);
+      }());
+    });
   </script>
 
   {% section 'gift-with-purchase' %}
