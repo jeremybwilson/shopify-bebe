@@ -93,21 +93,21 @@
     {% include 'checkout-customization-script' %}
     {% include 'swell-checkout' %}
     <script>
-    $(window).bind("load", function() {
-      $( ".product__description__property" ).each(function( index ) {
-        var my_html = $(this).html();
-        if (my_html.indexOf("final_sale") > -1){
-            $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
-        }
+      $(window).bind("load", function() {
+        $( ".product__description__property" ).each(function( index ) {
+          var my_html = $(this).html();
+          if (my_html.indexOf("final_sale") > -1){
+              $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
+          }
+        });
       });
-    });
-    setInterval(function(){ 
-      $( ".product__description__property" ).each(function( index ) {
-        var my_html = $(this).html();
-        if (my_html.indexOf("final_sale") > -1){
-            $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
-        }
-      });
+      setInterval(function(){ 
+        $( ".product__description__property" ).each(function( index ) {
+          var my_html = $(this).html();
+          if (my_html.indexOf("final_sale") > -1){
+              $(this).html('<div class="final_sale sale_product">{{settings.final_sale}}</div>');
+          }
+        });
       }, 2000) 
       // to adding the final Sale string dynamically
 
@@ -118,7 +118,58 @@
           var persistent_note = html_property.replace('persistent_note:','');
           $(this).html('<span class="persistent-note">' + persistent_note + '</span>');
         }
+      });  
+
+      // Updates to checkout verbiage - Surefoot
+
+      $(document).ready(function() {
+        /**
+        * form will revert if a coupon code is entered. we need to change it back!
+        */
+        function listenForStepChanges() {
+          $(document).on('page:load page:change', function () {
+            if (!$('.sf-altered').length) {
+              updateFormElements();
+            }
+          });
+        }
+
+        /**
+        * update email & phone placeholders + change marketing optin checkbox label
+        */
+        function updateFormElements() {
+          var $addressInfo = $('.section.section--shipping-address');
+          $addressInfo.addClass('sf-altered');
+
+          var $phoneInput = $('[name="checkout[shipping_address][phone]"]');
+          var $phoneLabel = $('[for="checkout_shipping_address_phone"]');
+          var $emailInput = $('[name="checkout[email]"]');
+          var $emailLabel = $('[for="checkout_email"]');
+
+          $('[for="checkout_buyer_accepts_marketing"]')
+            .text('I want to receive emails about new arrivals & promotions — unsubscribe any time.');
+
+          var labels = {
+            phone: 'Telephone (only used if there\'s a problem with your order)',
+            email: 'Email (only used for order updates)'
+          };
+
+          if ($(window).width() < 420) {
+            labels.phone = 'Telephone (for delivery contact purposes)';
+          }
+
+          $phoneInput.attr('placeholder', labels.phone);
+          $phoneLabel.text(labels.phone);
+
+          $emailInput.attr('placeholder', labels.email);
+          $emailLabel.text(labels.email);
+          
+          listenForStepChanges()
+        }
+        
+        updateFormElements()
       });      
+
     </script>
     <style>
       .persistent-note {
