@@ -33,7 +33,7 @@
     {% comment %}  :: FINAL SALE - moved here PDM-501 ::  {% endcomment %}
 
     {% assign add_final_sale_text = false %}
-
+    
     {% for tag in product.tags %}
       {% if tag contains 'returnly_no_refund' %}
         {% assign add_final_sale_text = true %}
@@ -57,15 +57,17 @@
 
   {% endif %}
 
-  {% comment %}  :: Promo code / Sale callout - PDM-637 ::  {% endcomment %}
-  {%- if product.tags contains 'SALE_PROMO_CALLOUT' and section.settings.sale_callout != '' -%}
-    <div id="desktop-sale-callout" class="final_sale sale_product">{{section.settings.sale_callout}}</div>
+  {% comment %}  
+    :: Promo code / Sale callout - PDM-637 ::  
+    :: Promo code / Sale callout - PDM-1151
+  {% endcomment %}
+  {%- if foundPromoTag -%}
+    <div id="desktop-sale-callout" class="final_sale sale_product">{{section.settings.promocallout_text}}</div>
   {%- endif -%}
 
   {% comment %} PERSISTENT NOTE {% endcomment %}
 
   {% include 'product-persistent-note' %}
-
 
   <div class="clear"></div>
 
