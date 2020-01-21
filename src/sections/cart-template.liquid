@@ -253,24 +253,26 @@
           {% include 'free-ship-note' %}
           {% endif %}
 
-          {% if customer %}
-          {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
-          <div id="checkout" class="button">{{ 'cart.general.checkout' | t }}</div>
-          <input type="submit" id="hidden-checkout-button" name="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout hidden" />
-          {% else %}
-              {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
-            <div id="checkout" class="button">{{ 'cart.general.checkout_as_guest' | t }}</div>
-            <input
-              type="submit"
-              id="hidden-checkout-button"
-              name="checkout"
-              value="{{ 'cart.general.checkout_as_guest' | t }}"
-              class="button bfx-checkout hidden" />
-            {% comment %} Sign in for fast checkout {% endcomment %}
-            {% comment %}<div id="fast_checkout" class="button">{{ 'cart.general.signin_faster_checkout' | t }}</div> {% endcomment %}
-            <a class="faster_checkout button"
-              href="{{ shop.url }}/account/login?checkout_url={{ shop.url }}/cart">{{ 'cart.general.signin_faster_checkout' | t }}</a>
-          {% endif %}
+          <div class="checkout-btn-wrapper-bfx" data-chkout-txt="{{ 'cart.general.checkout' | t }}" data-chkout-guest="{{ 'cart.general.checkout_as_guest' | t }}" data-customer-logged="{%-if customer-%}{{'true'}}{%-else-%}{{'false'}}{%-endif-%}">
+            {% if customer %}
+            {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
+            <div class="button" id="checkout">{{ 'cart.general.checkout' | t }}</div>
+            <input type="submit" name="checkout" value="{{ 'cart.general.checkout' | t }}" class="button bfx-checkout hidden" id="hidden-checkout-button" />
+            {% else %}
+                {% comment %} :: CHECKOUT :: (Hide actual submit, so we can intercept and ensure GTM tracking is accurate when hitting checkout button) {% endcomment %}
+              <div id="checkout" class="button">{{ 'cart.general.checkout_as_guest' | t }}</div>
+              <input
+                type="submit"
+                id="hidden-checkout-button"
+                name="checkout"
+                value="{{ 'cart.general.checkout_as_guest' | t }}"
+                class="button bfx-checkout hidden" />
+              {% comment %} Sign in for fast checkout {% endcomment %}
+              {% comment %}<div id="fast_checkout" class="button">{{ 'cart.general.signin_faster_checkout' | t }}</div> {% endcomment %}
+              <a class="faster_checkout button"
+                href="{{ shop.url }}/account/login?checkout_url={{ shop.url }}/cart">{{ 'cart.general.signin_faster_checkout' | t }}</a>
+            {% endif %}
+          </div>
 
           <div class="clear"></div>
 
@@ -282,11 +284,12 @@
               class="klarna-widget"
             ></klarna-placement>
           {% endif %}
-
-          {% if additional_checkout_buttons %}
-            {{ content_for_additional_checkout_buttons }}
-            <div class="clear"></div>
-          {% endif %}
+          <div class="additional-chkout-btn">
+            {% if additional_checkout_buttons %}
+              {{ content_for_additional_checkout_buttons }}
+              <div class="clear"></div>
+            {% endif %}
+          </div>
 
           {% if settings.cart_notes_enable %}
             <div id="cart-notes">
