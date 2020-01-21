@@ -2839,7 +2839,8 @@ theme.ProductGallery = function (context, events) {
           console.log(xhr); console.log(error);
         },
         success: function(data){
-          var thumbnail_src = data.thumbnail_url;
+          var thumbSize = data.thumbnail_url.split('_')[1];
+          var thumbnail_src = data.thumbnail_url.replace('_'+thumbSize,'.jpg');
           $vimeo_thumbnail.attr('src',thumbnail_src);
         }
       });
@@ -2958,6 +2959,7 @@ theme.ProductGallery = function (context, events) {
   (function main_images() {
     var $elements = $(".product-main-image", context);
 
+      
     if ( !$elements ) {
       return false;
     }
@@ -2972,7 +2974,6 @@ theme.ProductGallery = function (context, events) {
       if ( !image.length ) {
         return false;
       }
-
       $elements
         .removeClass("selected")
         .hide()
@@ -2981,7 +2982,11 @@ theme.ProductGallery = function (context, events) {
         .show();
     };
   })();
+  var width = $(window).width();
 
+  if( parseInt(width) >= 768 && parseInt(width) <= 1024) {
+    main_images();
+  }
   (function zoom() {
     var elements = context.querySelectorAll(".product-main-image");
 
