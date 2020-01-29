@@ -3,6 +3,24 @@
   {% assign use_swatches = true %}
 {% endif %}
 
+{% comment %}PDM-1151 Start{% endcomment %}
+{% assign promoNoSaleProductTag = section.settings.promocallout_no_sale_tag | downcase | strip %}
+{% assign promoSaleProductTag = section.settings.promocallout_sale_tag | downcase | strip %}
+{% assign foundPromoTag = false %}
+{% if section.settings.promocallout_enable %}
+  {% for tag in product.tags %}
+      {% if promoNoSaleProductTag != blank or promoSaleProductTag != blank %}
+        {% assign pTag = tag | downcase | strip %}
+        {% if pTag == promoSaleProductTag or pTag == promoNoSaleProductTag %}
+          {% assign foundPromoTag = true %}
+        {% endif %}
+      {% endif %}
+  {% endfor %}
+{% endif %}
+{% comment %}PDM-1151 End{% endcomment %}
+
+  
+
 {% comment %}
     INDI CAROUSEL - JS
 {% endcomment %}
@@ -346,13 +364,36 @@
     "name": "Product",
     "settings": [
       {
-        "type": "header",
-        "content": "Product form"
+        "type":"header",
+        "content":"Promo Callout"
+      },
+      {
+        "type":"checkbox",
+        "label":"Enable",
+        "id":"promocallout_enable",
+        "default": false
+      },
+      {
+        "type":"text",
+        "label":"Promo callout tag for non-sale prodcut",
+        "id":"promocallout_no_sale_tag",
+        "info":"Non-sale product tag"
+      },
+      {
+        "type":"text",
+        "label":"Promo callout tag sale prodcut",
+        "id":"promocallout_sale_tag",
+        "info":"Sale product tag"
       },
       {
         "type": "text",
-        "id": "sale_callout",
-        "label": "Promo code / sale callout"
+        "id": "promocallout_text",
+        "label": "Promo code / sale callout",
+        "info":"Callout text"
+      },
+      {
+        "type": "header",
+        "content": "Product form"
       },
       {
         "type": "checkbox",
