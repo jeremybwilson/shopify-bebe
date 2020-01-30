@@ -3609,3 +3609,25 @@ $(document).ready(function(){
   }
 
 });
+
+/*============================================================================
+  Borderfree : Check for cookie and enable cart
+==============================================================================*/
+theme.enableCheckoutButton = function( forceEnable ) {
+  let country = $ && $.cookie ? $.cookie('bfx.country') : null;
+  let isUS = country && country === 'US';
+  if ( forceEnable || isUS ) {
+    $(".bfx-checkout").removeClass( 'loading' );
+  }
+};
+
+$(window).load(function() {
+  let country = $ && $.cookie ? $.cookie('bfx.country') : null;
+  let isUS = country && country === 'US';
+  if(!isUS) {
+    var t = setInterval(function(){
+     $('.additional-chkout-btn a').addClass('bfx-checkout');
+      clearInterval(t);
+    }, 3000);
+  }
+});
