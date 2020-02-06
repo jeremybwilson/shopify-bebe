@@ -131,6 +131,9 @@
             if (!$('.sf-altered').length) {
               updateFormElements();
             }
+            if(Shopify.Checkout.step == "shipping_method") {
+              $('.section__content').append('<p class="shipping-method-text">Please note orders must be placed before 12 PM PT to qualify for next day shipping.</p>')
+            }
           });
         }
 
