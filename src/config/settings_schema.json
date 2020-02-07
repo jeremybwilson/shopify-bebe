@@ -1844,6 +1844,11 @@
         "type": "html",
         "id": "chekout_desc",
         "label": "Checkout description"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_method_text",
+        "label": "Shipping process text"
       }
     ]
   }  
