@@ -143,7 +143,10 @@
         */
         function addShippingMethodText(){
           if(Shopify.Checkout.step == "shipping_method") {
-            $('.step[data-step="shipping_method"] .step__sections .section--shipping-method .section__content').before('<p class="shipping-method-text">{{settings.shipping_method_text}}</p>');
+            var $shippingTextSelector = $('.step[data-step="shipping_method"] .section--shipping-method .shipping-method-text');
+            if($shippingTextSelector.length === 0){
+              $('.step[data-step="shipping_method"] .step__sections .section--shipping-method .section__content').before('<p class="shipping-method-text">{{settings.shipping_method_text}}</p>');
+            }
           }
         }
         {% endunless %}
