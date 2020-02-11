@@ -131,12 +131,22 @@
             if (!$('.sf-altered').length) {
               updateFormElements();
             }
-            if(Shopify.Checkout.step == "shipping_method") {
-              $('.section__content').before('<p class="shipping-method-text">{{settings.shipping_method_text}}</p>');
-            }
+            {% unless settings.shipping_method_text == blank %}
+              addShippingMethodText();    
+            {% endunless %}
           });
         }
 
+        {% unless settings.shipping_method_text == blank %}
+        /**
+        * Add shipping method text- PDM-1610
+        */
+        function addShippingMethodText(){
+          if(Shopify.Checkout.step == "shipping_method") {
+            $('.section__content').before('<p class="shipping-method-text">{{settings.shipping_method_text}}</p>');
+          }
+        }
+        {% endunless %}
         /**
         * update email & phone placeholders + change marketing optin checkbox label
         */
