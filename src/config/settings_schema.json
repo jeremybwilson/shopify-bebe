@@ -1844,6 +1844,16 @@
         "type": "html",
         "id": "chekout_desc",
         "label": "Checkout description"
+      },
+      {
+        "type": "header",
+        "content": "Shipping Step"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_method_text",
+        "label": "Shipping process text",
+        "default":"Please note orders must be placed before 12 PM PT to qualify for next day shipping."
       }
     ]
   }  

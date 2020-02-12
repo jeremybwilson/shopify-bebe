@@ -53,3 +53,13 @@
         font-weight: bold;
     }
 }
+/* PDM-1610-add text after shpping method on checkout page:: start */
+.section--shipping-method {
+    .shipping-method-text {
+        font-weight: 600;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-bottom: 3px;
+    }
+}
+/* PDM-1610- end */
