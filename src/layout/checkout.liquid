@@ -182,8 +182,18 @@
           
           listenForStepChanges()
         }
+
+        /**
+        * Expand Order Sumaary in Mobile - PDM-1631
+        */
+        function expandOrderSummaryInMobile(){
+          if($(window).width() < 768 && $('button.order-summary-toggle').length > 0){
+            $('button.order-summary-toggle.order-summary-toggle--show').click();  
+          }
+        }
         
         updateFormElements()
+        expandOrderSummaryInMobile();
       });      
 
     </script>
