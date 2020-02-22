@@ -1,0 +1,23 @@
+<div data-section-id="{{ section.id }}" class="collection-list-catchall-template">
+
+
+  <div id="content" class="row">
+    {% if settings.breadcrumb %}
+    {% include 'breadcrumb' %}
+    {% endif %}
+
+    <div id="catch-description" class="desktop-12 tablet-6 mobile-3">
+      <h1>{{ 'collections.general.all_collections' | t }}</h1>
+    </div>
+
+    <div id="collection-catch--loop" class="desktop-12 tablet-6 mobile-3">
+        
+        {% for collection in collections %}
+            {% unless collection.products.count < 1 %}
+                {% include 'collection-catchall-item' %}
+            {% endunless %}
+        {% endfor %}        
+    </div>
+
+  </div>
+</div>

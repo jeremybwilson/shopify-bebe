@@ -1,0 +1,32 @@
+{
+  "name": "Shopify-Muck",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@shopify/slate-tools": "0.14.0",
+    "babel-core": "~6.26.3",
+    "babel-preset-env": "~1.7.0",
+    "babel-preset-react": "~6.24.1",
+    "gulp-babel": "~7.0.1",
+    "gulp-browserify": "~0.5.1",
+    "reactify": "^1.1.1"
+  },
+  "dependencies": {
+    "@vimeo/player": "^2.6.3",
+    "bluebird": "^3.5.5",
+    "html-entities": "^1.2.1",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "~15.6.2",
+    "react": "~16.4.2",
+    "react-dom": "~16.4.2",
+    "slick-carousel": "^1.6.0",
+    "youtube-iframe": "^1.0.3"
+  },
+  "scripts": {
+    "bootstrap": "npm i && cp -fr ./.circleci/build-js.js ./node_modules/@shopify/slate-tools/lib/tasks",
+    "build": "slate build",
+    "deploy": "slate deploy",
+    "start": "slate deploy && slate watch",
+    "watch": "slate watch"
+  }
+}

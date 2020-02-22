@@ -1,0 +1,88 @@
+<nav id="nav-menu-mobile">
+
+  {% comment %} :: MOBILE MENU :: {% endcomment %}
+  <ul id="accordion">
+    {% assign menu = linklists[settings.main_nav] %}
+    {% for link in menu.links %}
+      
+
+      {% comment %} :: LEVEL 1 : SUB-NAV : Accordion (Has nested menus) :: {% endcomment %}
+      {% if link.links != blank %}
+        <li class="accordion-header accordion-toggle {{ link.title | replace: '.', ' ' | handle }}" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</li>
+        
+        <li class="accordion-content">
+          <ul class="sub">
+            {% for sub_link in link.links %}
+
+              {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+
+              {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
+
+              {% if hidden_nav_check != '_' %}
+
+                {% comment %} :: LEVEL 2 : SUB-NAV : First sub-nav has children nav elements :: {% endcomment %}
+                {% if sub_link.links != blank  %}
+                  
+                  {% comment %} :: LEVEL 2 : Title :: {% endcomment %}
+                  <li class="accordion-sub-header accordion-toggle" aria-haspopup="true" aria-expanded="false"><span>{{ sub_link.title | escape }}</span></li>
+                  
+                  {% comment %} :: LEVEL 2 : Nested Sub-Sub-Nav Menu :: {% endcomment %}
+                  <li class="accordion-content2 accordion-second-level">
+                    <ul class="sub">
+                      {% for sub_sub_link in sub_link.links %}
+                        
+                        {% comment %} PREVENT : Entries that denote a gap for desktop (are named "-'){% endcomment %}
+                        {% if sub_sub_link.title != '-' %}
+
+                          {% comment %} PSEUDO HEADER : Adding "SUB-HEADER_ will cause entry to not link, but be a nested header" {% endcomment %}
+                          {% if sub_sub_link.title contains 'SUB-HEADER_' %}
+                            <li class="link-sub-header custom-sub-header">{{ sub_sub_link.title | replace: 'SUB-HEADER_', '' }}</li>
+                          {% else %}
+                            <li {% if sub_sub_link.title contains 'Shop All' %} class="shop-all" {% endif %}>
+                              <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                            </li>
+                          {% endif %}
+
+                        {% endif %}
+
+                      {% endfor %}
+                    </ul>
+                  </li>
+
+
+                {% comment %} 
+                  :: LEVEL 2 : FLAT : Sub-topic has no nested elements :: 
+                    * Hides menu elements that are titled as "-" which mark space gaps on desktop
+                {% endcomment %}
+                {% elsif sub_link.title != '-' %} 
+
+                  {% comment %}Prevent our pseudo-sub-headers from showing on mobile (name starts with "SUB-HEADER_") {% endcomment %}
+                  {% if sub_link.title contains 'SUB-HEADER_' %}{% else %}
+                    <li class="link-sub-header {% if sub_sub_link.title contains 'Shop All' %} shop-all {% endif %}">
+                      <a href="{{ sub_link.url }}">{{ sub_link.title | escape }}</a>
+                    </li>
+                  {% endif %}
+
+                {% endif %}
+
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+        </li>
+
+
+      {% comment %} :: LEVEL 1 : FLAT : Simple Menu (has no nested children) :: {% endcomment %}
+      {% elsif link.title != '-' %}
+        <li class="link-header"><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+      {% endif %}
+
+    {% endfor %}
+  </ul>
+
+  {% comment %} ..:: SITE PICKER : (US, UK, EU, CAN) ::.. {% endcomment %}
+  {% if section.settings.show_site_picker %}
+    <div id="nav-sites-picker-mobile">{% include 'sites-picker', showFullName:true %}</div>
+  {% endif %}
+
+</nav> 

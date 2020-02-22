@@ -1,0 +1,129 @@
+{% include "indi-global" %}
+
+{% if section.settings.collection_id %}
+
+<div class="indi-carousel--wrapper">
+
+	<div style="background-color: {{ section.settings.background_color }};">
+		<div id="indi-carousel-{{ section.id }}" style="margin-left: auto; margin-right: auto;"></div>
+	</div>
+
+</div>
+<script>
+	var indi_carousel_{{ section.id | replace: '-', '_' }} = new indi.carousel("#indi-carousel-{{ section.id }}", {
+        apikey: "{{ indi_apikey }}",
+        id: "{{ section.settings.collection_id }}",
+        size: "{{ section.settings.size }}",
+        theme: "{{ section.settings.theme }}",
+        round_corners: {{ section.settings.round_corners }},
+        show_title: {{ section.settings.show_title }},
+        show_views: {{ section.settings.show_views }},
+        show_likes: {{ section.settings.show_likes }},
+        show_buzz: {{ section.settings.show_buzz }},
+        animate: {{ section.settings.animate }}
+    });
+</script>
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Indi Carousel",
+    "settings": [
+		{
+          "id": "collection_id",
+          "type": "text",
+          "label": "Collection ID"
+      	},
+		{
+          "id": "size",
+          "type": "select",
+          "label": "Size",
+		  "default": "medium",
+		  "options": [
+		  	{
+              "value": "small",
+              "label": "Small"
+			},
+			{
+              "value": "medium",
+              "label": "Medium"
+			},
+			{
+              "value": "large",
+              "label": "Large"
+			}
+		  ]
+      	},
+		{
+          "id": "theme",
+          "type": "select",
+          "label": "Theme",
+		  "default": "light",
+		  "options": [
+		  	{
+              "value": "light",
+              "label": "Light"
+			},
+			{
+              "value": "dark",
+              "label": "Dark"
+			}
+		  ]
+      	},
+		{
+			"id": "background_color",
+			"type": "color",
+			"label": "Background Color"
+		},
+		{
+			"id": "show_title",
+			"type": "checkbox",
+			"label": "Show Title",
+			"default": false
+		},
+		{
+			"id": "show_views",
+			"type": "checkbox",
+			"label": "Show Views",
+			"default": false
+		},
+		{
+			"id": "show_likes",
+			"type": "checkbox",
+			"label": "Show Likes",
+			"default": false
+		},
+		{
+			"id": "show_buzz",
+			"type": "checkbox",
+			"label": "Show Buzz",
+			"default": false
+		},
+		{
+			"id": "round_corners",
+			"type": "checkbox",
+			"label": "Rounded Corners",
+			"default": false
+		},
+		{
+			"id": "animate",
+			"type": "checkbox",
+			"label": "Animate",
+			"default": true
+		}
+	],
+    "presets": [
+      {
+        "name": "Indi Carousel",
+        "category": "Indi"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

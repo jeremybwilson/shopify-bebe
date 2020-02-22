@@ -1,0 +1,109 @@
+/* SEO-PARAGRAPH : 
+ *    SEO Text paragraph for the collection page
+ *
+ * SNIPPET: collection-seo-block.liquid
+ * ---------------------------------------------- */
+$seoArrowColor: {{ settings.filter_arrow_color }};
+$seoFooterBg: {{ settings.collection_seo_footer_bg }};
+$seoTextColor: {{ settings.collection_seo_footer_text }};
+
+
+#collection-seo-wrap {
+    @include flexbox;
+    @include flex-direction( column );
+    @include align-items( flex-start );
+    background: $seoFooterBg;
+    width: 100%;
+    margin-bottom: 30px;
+
+    @include mq('lap-and-up') {
+        margin-left: 6px;
+    }
+
+    h3 {
+        @include p;
+        font-weight: $font-weight--medium;
+
+        span {
+            @include p;
+            font-weight: $font-weight--medium;
+            font-size: 12px !important;
+            font-size: .75rem !important;
+        }
+
+        + br {
+            display: none;
+        }
+    }
+
+    // CONTENT : Box that holds each content block (above x below button fold)
+    .collection-seo-content {
+        @include fontSize( 16px );
+        font-weight: $font-weight--book;
+        line-height: 40px;
+        text-align: center;
+        color: $seoTextColor;
+        max-width: 746px;
+        margin-bottom: 0;
+        transition: all 0.25s ease-in-out;
+    }
+
+    // MORE : Text below the "read more" button fold
+    .read-more-content {
+        height: 0;
+        opacity: 0;
+        margin: 0;
+        pointer-events: none;
+    }
+
+    // BUTTON : Reveal rest of the readable content
+    #collection-seo-read-more {
+        position: relative;
+        background: transparent;
+        color: $seoTextColor;
+        max-width: 746px;
+        font-weight: $font-weight--medium;
+        outline: none;
+        margin: 20px auto 0;
+
+        &:after {
+            position: absolute;
+            content: ' ';
+            right: 0;
+            top: 50%;
+            margin-top: -4px;
+            border-bottom: none;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid $seoArrowColor;
+            transition: all 0.25s ease-in-out;
+            transform: rotateX( 0deg ); // to reverse the animation
+        }
+    }
+
+
+    // OPEN - PART 1 : Expands the height before revealing content
+    &.seo-open {
+
+        // EXPAND CONTENT : Read More text content
+        .read-more-content {
+            height: auto;
+            margin-top: 35px;
+        }
+
+        // FLIP ARROW on "Read More"
+        #collection-seo-read-more {
+            &:after {
+                transform: rotateX( 180deg );
+            }
+        }
+    }
+
+    // OPEN - PART 2 : Reveals the text content visibly
+    &.seo-visible {
+        .read-more-content {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+
+{% comment %} 
+	REACT-BADGES :
+		- Liquid Template + Tag Parser Snippet
+
+	INFO :
+		- Builds array of item_badge_***** tags and appends to data attribute for component to read on mount in js
+		- BadgeParent.js requires the text to generate a badge, which comes from tag "item_badge_text_MY TEXT"
+{% endcomment %}
+{% capture badge_tags %}'[{% for tag in product.tags %}{% if tag contains 'item_badge_' %}"{{ tag }}",{% endif %}{% endfor %}]'{% endcapture %}
+{% if badge_tags != "'[]'" %} 
+<div class="react-badge" data-badge={{ badge_tags | replace: ',]', ']' }}></div>
+{% endif %}

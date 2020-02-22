@@ -1,0 +1,239 @@
+// CUSTOMERS :: Globals
+.customers-login,
+.customers-account,
+.customers-order,
+.customers-addresses,
+.customers-account-orders {
+  #content {
+    padding: 0;
+
+    @include mq( 'lap-and-up' ) {
+      padding: 25px 0;
+    }
+  }
+}
+
+#customer-wrapper {
+  min-height: 300px;
+  @include flexbox;
+  @include flex-wrap( wrap );
+
+  h1 {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .account-header {
+    border-bottom: solid 1px {{ settings.dotted_color }};
+  }
+  p {
+    margin: 0;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    margin-bottom: 8px;
+  }
+}
+
+// :: CUSTOMERS :: GLOBAL :: Sidebar 
+#customer_sidebar {
+  padding: 0 20px;
+
+  @include mq( 'lap-and-up' ) {
+    padding: 0;
+  }
+
+  h2,
+  #customer_detail {  
+    text-align: center;
+
+    @include mq( 'lap-and-up' ) {
+      text-align: left;
+    }
+  }
+  .email,
+  .address {
+    display: none;
+
+    @include mq( 'lap-and-up' ) {
+      display: inline-block;
+    }
+  }
+
+  h5 {
+    @include h3;
+  }
+
+  #account-nav {
+    @include flexbox;
+    @include justify-content( center );
+    @include align-items( flex-start );
+    @include flex-wrap( wrap );
+
+    margin-bottom: 30px;
+    border-top: solid 1px $color--field-1;
+    border-bottom: solid 1px $color--field-1;
+    list-style: none;
+    margin-left: 0;
+    padding-right: 0;    
+
+    @include mq( 'lap-and-up' ) {
+      border: none;
+    }
+    
+    li {
+      width: 50%;
+      margin-left: 0;
+      text-transform: uppercase;
+      text-align: center;
+
+      @include mq( 'lap-and-up' ) {
+        width: 100%;
+        text-align: left;
+      }
+
+      a {
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+
+        @include mq( 'lap-and-up' ) {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+// :: CUSTOMERS :: Login
+.customers-login {
+
+  // :: CUSTOMERS :: LOGIN : Header
+  #login-msg {
+    display: block;
+    width: 100%;
+    border-bottom: solid 1px {{ settings.dotted_color }};
+    text-align: center;
+
+    h1 {
+      @include fontSize( 18px );
+    }
+  }
+
+  // :: CUSTOMERS :: LOGIN :: Forms 
+  #customer--signup-options {
+    margin-bottom: 40px;
+
+  }
+  #customer,
+  #create-customer,
+  #recover-password {  
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  #forgot_password {
+    margin-bottom: 15px;
+  }
+}
+
+// LOGIN :: Loyalty Content
+@import url('../snippets/login-loyalty.scss.liquid');
+
+// :: CUSTOMERS :: Addresses
+.address_table {
+  margin-bottom: 20px;
+}
+.address_title {
+  @include h3;
+}
+.action_link {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.action_edit {
+  padding: 0 10px;
+  border-left: 1px solid {{ settings.dotted_color }};
+  border-right: 1px solid {{ settings.dotted_color }};
+  margin: 0 10px;
+}
+
+// :: CUSTOMER :: ADDRESSES :: Edit Address
+#add_address_title {
+  @include h2;
+}
+.customer_address_table {
+  border: solid 1px {{ settings.dotted_color }};
+  tbody tr:nth-child(odd) td {
+    background: none;
+  }
+}
+
+// :: CUSTOMERS :: ACCOUNT :: Orders
+.customers-account-orders {
+
+  #customer_orders {
+    h5 {
+      @include p;
+      text-transform: none;
+
+      &.name {
+        @include h2;
+      }
+    }
+
+    table {
+      @include mq( 'phone' ) {
+        thead {
+          display: none;
+        }
+        tr {
+          display: block;
+          padding: 25px;
+
+          &:nth-child(odd) {
+            background: $color--field-1;
+
+            td {
+              background: none;
+            }
+          }
+        }
+        td {
+          display: block;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+// :: CUSTOMER :: Order Status Page
+.order_date {
+  padding: 20px 4px; 
+  @include h2;
+
+  @include mq( 'lap-and-up' ) {
+    padding: 20px 8px;
+  }
+}
+.order_section_title {
+  @include h3;
+}
+#order_payment,
+#order_shipping {
+  margin-bottom: 20px;
+}
+#order_details {
+  float: left;
+  
+  td {
+    vertical-align: top;
+  }
+
+  .order_summary .label {
+    text-align: right;
+  }
+}
+

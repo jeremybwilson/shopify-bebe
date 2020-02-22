@@ -1,0 +1,35 @@
+  <div id="customer_sidebar" class="desktop-2 tablet-6 mobile-3">
+    <h2>{{ 'customer.account.sidebar_title' | t }}</h2>
+
+    <div id="customer_detail" class="group">
+      <h5 class="name">{{ customer.name }}</h5>
+      <p class="email note">{{ customer.email }}</p>
+      <div class="address note">
+        {% if customer.default_address != nil %}
+        <p>{{ customer.default_address.address1 }}</p>
+        {% if customer.default_address.address2 != "" %}
+        <p>{{ customer.default_address.address2 }}</p>
+        {% endif %}
+        <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+        <p>{{ customer.default_address.zip}}</p>
+        <p>{{ customer.default_address.phone }}</p>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+    {% assign main_nav = 'account-sidebar' %}
+    {% assign menu = linklists[main_nav] %}  
+
+
+
+    <ul id="account-nav">
+      {% for link in menu.links %}
+          <li class="nav-link">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+      {% endfor %}
+    </ul>
+  
+  </div>

@@ -1,0 +1,72 @@
+$swatchOutlineColor: {{ settings.react_swatch_outline_color }};
+
+
+// Styles for React-Swatches component
+.swatch-list,
+.swatch-spacer {
+    @include inline-flex;
+    @include justify-content( center );
+    @include align-items( center );
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    height: 25px;
+    margin: 5px 0;
+}
+.swatch-spacer {
+    height: 0;
+}
+
+.swatch-list {
+
+    .swatch-item-wrap {
+        position: relative;
+        width: 22px;
+        height: 22px;
+        margin: 0 2px;
+
+        &:hover,
+        &.active {
+            .swatch-highlight {
+                opacity: 1;
+            }
+        }
+
+        .swatch-highlight {
+            position: absolute;
+            width: 19px;
+            height: 19px;
+            border: 1px solid $swatchOutlineColor;
+            border-radius: 20px;
+            left: 50%;
+            top: 50%;
+            transform: translate( -50%, -50% );
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+
+        .swatch-item {
+            position: relative;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            transform: translate( -50%, -50% );
+            background-color: #999999;
+            border-radius: 50%;
+            cursor: pointer;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            // STUBS, Don't use this fully
+            &.red       { background-color: #e80076; }
+            &.orange    { background-color: #e88000; }
+            &.yellow    { background-color: #fff707; }
+            &.green     { background-color: #07ff5f; }
+            &.blue      { background-color: #0ff0ff; }
+            &.indigo    { background-color: #5b07ff; }
+            &.violet    { background-color: #ab07ff; }
+        }
+    }
+}

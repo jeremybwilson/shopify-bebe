@@ -1,0 +1,846 @@
+#login-psa {
+  width: 100%;
+  background-color: #2C2D30;
+  margin-top: -12px;
+  margin-bottom: 12px;
+  padding: 12px 40px 30px;
+  text-align: center;
+
+  h2 {
+    color: #fff;
+    font-size: 1.3em;
+  }
+  p {
+    color: #fff;
+  }
+}
+.page-resetpassword {
+  #content #recover_email {
+    label {
+      display: none;
+    }
+  }
+}
+#password-reset-submit-success {
+  width: 100%;
+  padding: 20px;
+  margin-top: -1px;
+  border: solid 1px $color--field-1;
+  text-align: center;
+  text-transform: uppercase;
+
+  h3 {
+    color: $color--accent-1;
+  }
+}
+
+.announcement--box {
+  width: 100%;
+  margin-bottom: 40px;
+  border: solid 1px $color--field-1;
+
+  h2 {
+    @include fontSize( 20px );
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: $color--accent-1;
+  }
+  h3 {
+    @include fontSize( 16px );
+    margin-bottom: 0;
+    font-weight: $font-weight--book;
+  }
+}
+
+.clubrowcon {
+  @include flexbox;
+  @include justify-content( space-evenly );
+
+  span{
+    display:block;
+  }
+  table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 8% 5%;
+
+    tr {
+      border: none;
+      height:50px;
+    }
+    td {
+      border-right: solid 1px {{ settings.dotted_color }};
+      border-left: solid 1px {{ settings.dotted_color }};
+      font-size: 13px;
+      text-align: center;
+      vertical-align: middle;
+
+      &:first-child {
+        text-align: left;
+        border-left: 0;
+        width:25%;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+
+      span{
+        display: block;
+      }
+    }
+  }
+  .clubfirstrow {
+    vertical-align: top;
+    height:25px;
+
+    span {
+      line-height: 18px;
+    }
+  }
+  .perks{
+    // @include flex-basis( 65px );
+    @include fontSize( 12px );
+    margin: 10px;
+    max-width: 130px;
+    text-align: center;
+
+    @include mq('tablet-and-up'){
+      max-width: none;
+      width: 30%;
+      margin-bottom: 20px;
+    }
+
+    .perks-pts{
+      @include fontDim( 48px, 35px, 0em );
+    }
+    .perk-sub-copy{
+      @include fontSize( 13px );
+      font-weight: $font-weight--bold;
+    }
+    .pt-line{
+      border-bottom: 1px solid {{ settings.dotted_color }};
+      width: 35%;
+      margin: 10px auto;
+    }
+  }
+}
+
+.clubrowbox {
+  width: 165px;
+  @include flex-basis( auto );
+  text-align: center;
+
+  @include mq('phone') {
+    width: auto;
+  }
+
+  h2 {
+    letter-spacing: 2px;
+    @include fontSize( 24px );
+    text-align:center;
+    margin-bottom: 2%;
+
+    @include mq('phone') {
+      @include fontSize( 16px );
+    }
+  }
+  p {
+    text-align:center;
+    font-size: 12px;
+  }
+  hr{
+    margin-top:30%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid {{ settings.dotted_color }};
+
+    @include mq('phone') {
+      display: none;
+    }
+  }
+}
+.clubiconimg{
+  width:60%;
+  height:auto;
+}
+.clubicons{
+  margin-top: 2%;
+}
+.tb-txt-lg{
+  @include fontSize( 15px );
+}
+.clubdot{
+  color: $color--accent-1;
+}
+.club-title{
+  font-weight: $font-weight--medium;
+  @include fontSize( 18px );
+  text-transform: capitalize;
+}
+.clubsubcopy-con{
+  width:50%;
+  margin:0 auto 5%;
+
+  @include mq('phone') {
+    width: 100%;
+  }
+
+  h3{
+    text-align: center;
+    border-top: 1px solid $color--field-1;
+    line-height: 0;
+    padding: 0;
+
+    span{
+      background: $color--reverse-1;
+      padding: 0 5%;
+      font-size: 3em;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--light;
+    }
+  }
+}
+.club-dis{
+  width: 100%;
+  margin: 1em auto;
+  text-align: center;
+  @include fontSize( 11px );
+
+  @include mq( 'lap-and-up' ) {
+    width: 50%;
+  }
+
+  p {
+    font-size: inherit;
+  }
+}
+.row-dt{
+  @include flexbox;
+  @include flex-wrap( wrap );
+}
+
+// :: LOYALTY :: Dashboard ::
+
+#club--dashboard {
+  @include flexbox;
+  @include align-items( flex-start );
+  @include flex-wrap( wrap );
+  width: 100%;
+}
+#club--main-info {
+  width: 100%;
+
+  @include mq('lap-and-up') {
+    width: 75%;
+    border-right: solid 1px $color--field-1;
+  }
+}
+
+// :: DASHBOARD :: Top Panel
+
+#club--points-panel {
+  @include flexbox;
+  @include align-items( stretch );
+  @include flex-wrap( wrap );
+  @include justify-content( space-between );
+  width: 100%;
+  margin-bottom: 20px;
+
+  & > div {
+    @include flexbox;
+    @include align-items( center );
+    @include justify-content( center );
+    @include flex-grow(1);
+
+    @include mq('lap-and-up') {
+      border-left: solid 1px $color--field-1;
+    }
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
+.club--big-number {
+  margin-bottom: 0.25em;
+  color: $color--accent-1;
+  font-weight: $font-weight--bold;
+  @include fontSize( 24px );
+}
+.club--desc {
+  max-width: 100px;
+  @include fontDim( 10px, 11px, 0em );
+  text-align: center;
+  text-transform: uppercase;
+}
+
+// DASHBOARD :: Redeem Award
+
+#club--redeem-award {
+
+  .club--redeem__eligible {
+    display: none;
+  }
+
+  .club--redeem-content {
+    @include flexbox;
+    @include flex-direction( column );
+    @include justify-content( center );
+    @include align-items( center );
+
+    @include mq( 'lap-and-up' ) {
+      padding-bottom: 20px;
+    }
+
+    .club--desc {
+      max-width: 150px;
+      margin-bottom: 12px;
+    }
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// DASHBOARD :: Current Points Total
+
+#club--current-points-total {
+
+  @include flexbox;
+  @include flex-direction( column );
+  @include justify-content( center );
+  @include align-items( center );
+
+  @include mq( 'lap-and-up' ) {
+    padding-bottom: 20px;
+  }
+}
+
+// DASHBOARD :: Points To Next Reward (AKA the circle)
+
+#club--points-to-next-reward {
+  width: 100%;
+
+  @include mq( 'lap-and-up' ) {
+    width: auto;
+  }
+}
+
+.progress-circle {
+  // the outer circle
+  font-size: 20px;
+  margin: 20px;
+  position: relative;
+  padding: 0;
+  width: 180px;
+  height: 180px;
+  background-color: $color--field-1;
+  border-radius: 50%;
+
+  &:after {
+    // the inner circle
+    border: none;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    background-color: #fff;
+    content: " ";
+  }
+  .left-half-clipper {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    clip: rect(0,180px,180px,90px);
+  }
+    &.over50 .left-half-clipper {
+      clip: rect(auto,auto,auto,auto)
+    }
+
+  .points-info {
+    // magic numbers
+    @include flexbox;
+    @include flex-direction( column );
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+  }
+  .value-bar {
+    // the shape that shows progress
+    position: absolute;
+    clip: rect(0,90px,180px,0);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 40px solid $color--accent-1;
+    box-sizing: border-box;
+  }
+
+  &.over50 .first50-bar {
+    // when the progress is over 50, show a duplicate shape to denote the first half
+    position: absolute;
+    clip: rect(0,180px,180px,90px);
+    background-color: $color--accent-1;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+  }
+  &:not(.over50) .first50-bar {
+    display: none;
+  }
+  &.p0 .value-bar {
+    display: none;
+  }
+
+  @for $i from 1 through 100 {
+    &.p#{$i} .value-bar {
+      transform: rotate( ( $i / 100 ) * 360deg );
+    }
+  }
+}
+
+
+// DASHBOARD :: Rewards History
+div#club--points-panel-title, div#club--rewards-history {
+  width: 100%;
+  padding: 10px 20px;
+
+  h2 {
+    color: $color--accent-1;
+    margin: 0 0 12px;
+    @include fontSize( 18px );
+    text-align: center;
+  }
+}
+div#club--rewards-history {
+  display: none;
+}
+#club--rewards-history--list {
+  width: 100%;
+  margin: 0 auto;
+  list-style: none;
+
+  li {
+    @include flexbox;
+  }
+  span {
+    padding: 5px 10px 3px;
+  }
+}
+#club--rewards-history--header {
+  font-weight: $font-weight--bold;
+  text-transform: uppercase;
+  border-bottom: solid 1px $color--field-1;
+}
+.club--rewards-history--date { width: 20%; }
+.club--rewards-history--action { width: 45%; }
+.club--rewards-history--points { width: auto; text-align: right; }
+.club--rewards-history--status { display: none; width: 20%; text-align: right; }  // Removed per PDM-655
+
+// :: DASHBOARD :: VIP Tiers Breakdown
+
+#club--vip-tiers {
+  margin-top: 2em;
+
+  @include mq('lap-and-up') {
+    margin-top: 5em;
+  }
+
+  h2 {
+    color: $color--accent-1;
+    margin: 0 0 12px;
+    @include fontSize( 18px );
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    margin: 1em auto;
+  }
+
+  #club--vip-tiers--mobile-chart {
+    @include flexbox;
+    @include flex-wrap( wrap );
+    list-style: none;
+
+    @include mq('lap-and-up') {
+      display: none;
+    }
+
+    & > li {
+      position: relative;
+      width: 50%;
+      padding: 20px 10px;
+      text-align: center;
+      color: $color--field-1;
+
+      &.club--tier-active {
+        color: $color--accent-1;
+        border: solid 1px $color--accent-1;
+        border-bottom-width: 4px;
+
+        &:after {
+          content: 'Current';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          padding: 3px;
+          background: $color--accent-1;
+          @include fontDim( 9px, 9px, 0em );
+          font-weight: $font-weight--bold;
+          text-transform: uppercase;
+          color: $color--reverse-1;
+        }
+      }
+
+      h4 {
+        color: inherit;
+        text-transform: none;
+      }
+      span {
+        display: block;
+      }
+
+      dt {
+        display: block;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        text-transform: uppercase;
+        @include fontDim( 10px, 12px, 0em );
+      }
+      dd {
+        font-style: normal;
+        @include fontSize( 26px );
+
+        span {
+          @include fontSize( 15px );
+        }
+      }
+    }
+  }
+
+  table {
+    display: none;
+    line-height: 1.4em;
+    border-bottom: none;
+
+    @include mq('lap-and-up') {
+      display: inherit;
+    }
+    th, td {
+      background: none;
+      border-right: solid 1px $color--field-1;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+    thead {
+      th {
+        text-align: center;
+
+        span {
+          color: $color--field-1;
+          font-weight: $font-weight--book;
+        }
+        &.club--tier-active span {
+          color: $color--accent-1;
+        }
+        .club-title {
+          display: block;
+          font-weight: $font-weight--medium;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    tbody {
+      th {
+        width: 25%;
+
+        span {
+          @include fontDim( 11px, 12px, 0 );
+          font-weight: $font-weight--book;
+        }
+      }
+      td {
+        text-align: center;
+        @include fontSize( 14px );
+
+        span {
+          color: $color--field-1;
+        }
+        &.club--tier-active span {
+          color: $color--accent-1;
+        }
+      }
+    }
+  }
+}
+
+body.customers-login {
+  .clubrowcon {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  #club--vip-tiers {
+    margin-bottom: 60px;
+
+    #club--vip-tiers--mobile-chart {
+      margin-left: 0.5rem;
+
+      & > li {
+        margin-left: 0;
+        color: $color--primary-1;
+        border: solid 1px $color--field-1;
+        padding: 20px;
+
+        &.club--tier-active:after {
+          display: none;
+        }
+      }
+    }
+
+    table {
+      thead {
+        th {
+          span {
+            color: $color--primary-1;
+          }
+        }
+      }
+      tbody {
+        td {
+          span {
+            color: $color--primary-1;
+          }
+        }
+      }
+    }
+  }
+
+  .cmsWrapper {
+    margin-bottom: 40px;
+  }
+}
+
+
+
+// :: DASHBOARD :: More Perks
+
+#club--more-perks {
+  margin-top: 5em;
+}
+
+// :: DASHBOARD :: Sidebar
+
+#club--sidebar {
+  width: 100%;
+
+  @include mq('lap-and-up') {
+    width: 25%;
+  }
+  & > div {
+    padding: 20px;
+    border-bottom: solid 1px $color--field-1;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+#club--level--container {
+  display: none;
+
+  @include mq( 'lap-and-up' ) {
+    @include flexbox;
+    @include flex-wrap( wrap );
+    @include justify-content( center );
+  }
+}
+#club--mini-vip-tier {
+  list-style: none;
+  margin: 20px 0 40px;
+
+  li {
+    color: $color--field-1;
+    text-transform: uppercase;
+
+    &:before {
+      border-left: 5px solid #9e6c30;
+      border-top: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      display: inline-block;
+      content: '';
+      opacity: 0;
+    }
+
+    &.club--tier-active {
+      color: $color--accent-1;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}
+#club--vip-unlock-message {
+  width: 100%;
+  text-align: center;
+
+  .unlock-points {
+    color: $color--accent-1;
+  }
+  .next-membership-level {
+    text-transform: uppercase;
+  }
+}
+#club--total-points-earned {
+  width: 100%;
+  text-align: center;
+  @include fontSize( 12px );
+
+  & > span {
+
+  }
+  #total-points-number {
+    color: $color--accent-1;
+  }
+}
+#club--view-rewards-history {
+  text-align: center;
+}
+
+#club--how-to-score-points {
+  text-align: center;
+
+  dl {
+    padding-bottom: 20px;
+    border-bottom: solid 1px $color--field-1;
+  }
+
+  dt {
+    position: relative;
+
+    &:before {
+      display: block;
+      position: absolute;
+      content: ' ';
+      width: 100%;
+      top: 50%;
+      border-top: solid 1px $color--field-1;
+      z-index: 1;
+    }
+
+    .club--big-number {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      background: $color--reverse-1;
+      margin-bottom: 0.05em;
+      padding: 5px 10px 0;
+    }
+    .club--desc {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  dd {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    @include fontDim( 10px, 10px, 0em );
+
+    strong {
+      display: block;
+      font-weight: $font-weight--medium;
+      text-transform: uppercase;
+    }
+
+    .i-con {
+      position: absolute;
+      bottom: -12px;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      color: $color--primary-1;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--bold;
+      @include fontSize( 10px );
+      line-height: 20px;
+      z-index: 2;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      color: $color--accent-1;
+      font-family: $serif;
+      font-style: italic;
+      font-weight: $font-weight--book;
+      @include fontSize( 18px );
+    }
+  }
+  #club--connect--icons {
+    @include flexbox;
+    @include justify-content( space-between );
+    padding: 0 10px;
+
+    a {
+      position: relative;
+
+      &:after {
+        content: '+';
+        position: absolute;
+        bottom: 0;
+        right: -4px;
+        color: $color--primary-1;
+        font-weight: $font-weight--bold;
+        @include fontSize( 18px );
+        text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+
+      }
+    }
+
+    svg {
+      height: 25px;
+
+      * {
+        fill: $color--accent-1;
+      }
+    }
+  }
+}
+#club--hidden-popups {
+  display: none;
+}
+#club--redemption-popup {
+  text-align: center;
+
+  .club--coupon-code {
+    font-weight: $font-weight--bold;
+  }
+}
+
+// Import Pikaday
+
+@import url('../vendor/pikaday.scss.liquid');

@@ -1,0 +1,78 @@
+  <div id="breadcrumb" class="desktop-12 row">
+    <a href="/" class="homepage-link" title="{{ 'general.breadcrumbs.home' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+    
+    {% if template contains "product" %}
+        {% if collection %}            
+            <span class="separator"> > </span> 
+            {% if collection.handle %}
+                {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                {{ collection.title | link_to: url }}
+
+            {% elsif collection.all_products_count > 0 and collection.products.first.type == collection.title %}
+                {{ collection.title | link_to_type }}
+
+            {% elsif collection.all_products_count > 0 and collection.products.first.vendor == collection.title %}
+                {{ collection.title | link_to_vendor }}
+
+            {% endif %}
+
+        {% else %}
+            <span class="separator"> > </span> 
+            {{ product.type | link_to_type }}
+        {% endif %}
+
+        <span class="separator"> > </span>
+        <span class="page-title">{{ page_title }}</span>
+
+    {% elsif template == "article" %}
+        <span class="separator"> > </span> 
+        {{ blog.title | link_to: blog.url }}
+        <span class="separator"> > </span> 
+        <span class="page-title">{{ page_title }}</span>
+    
+    {% elsif template contains "collection" %}
+        {% if current_tags.size > 0 %}
+            <span class="separator"> > </span>
+            {% comment %}
+                Collections are setup based on feature, style, topic, etc
+                and then filter using audience_GENDER tags via the nav "Main Menu".
+                This adds the middle subset gender to the breadcrumb trail.
+            {% endcomment %}
+            {% capture mergedTags %}
+                {{ current_tags }}
+            {% endcapture %}
+
+            {% if mergedTags contains '_women' and collection.title != 'Women' %}
+                <a href="/collections/women">Women</a>
+                <span class="separator"> > </span>
+
+            {% elsif mergedTags contains '_men' and collection.title != 'Men' %}
+                <a href="/collections/men">Men</a>
+                <span class="separator"> > </span> 
+
+            {% elsif mergedTags contains '_boys' 
+                or mergedTags contains '_girls' 
+                or mergedTags contains '_kids' 
+                and collection.title != 'Kids' %}
+
+                <a href="/collections/kids">Kids</a>
+                <span class="separator"> > </span> 
+            {% endif %}
+
+            {% comment %} :: COLLECTION NAME :: {% endcomment %}
+            <span class="page-title">{{ collection.title }}</span>
+
+        {% else %}
+            <span class="separator"> > </span> 
+            <span class="page-title">{{ page_title }}</span>
+
+        {% endif %}
+
+    {% else %}
+        <span class="separator"> > </span> 
+        <span class="page-title">{{ page_title }}</span>
+    {% endif %}
+
+    <div id="results-count"></div>
+  </div>
+<div class="clear"></div>

@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+#faq {
+
+  div.page-content-field {
+    @include mq('lap-and-up') {
+      @include flex-basis(100%);
+    }
+
+    h1 {
+      @include h1;
+      &.faq-title {
+        @include fontSize(16px);
+        margin-bottom: 10px;
+        color: $color--primary-1;
+        font-weight: $font-weight--bold;
+        line-height: 1.375em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 10px 0 14px;
+        border-bottom: dotted 1px #000;
+      }
+    }
+
+    h2 {
+      &.heading {
+        margin-top: 20px;
+        @include fontSize(12px);
+        color: $color--primary-1;
+      }
+    }
+
+    h3 {
+      text-transform: none;
+      margin-bottom: 0;
+    }
+
+    h4 {
+      @include fontSize(12px);
+      display: inline-block;
+      margin: 0;
+    }
+
+    p {
+      @include p;
+    }
+
+    ul.custfaq {
+      margin: 0.25rem 0;
+
+      li {
+        list-style-type: none;
+        margin-left: 0;
+      }
+    }
+  }
+
+  h3>a {
+    font-weight: $font-weight--book;
+    color: $color--accent-1;
+  }
+  .toggle .opener {
+    float: right;
+  }
+  .toggle .opener svg {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    transition: transform .25s ease;
+    transform-origin: center;
+  }
+  .toggle-title {
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+    cursor: pointer;
+
+    h4 {
+      width: calc(100% - 20px);
+    }
+
+    &:hover h4 {
+      color: $color--accent-1;
+    }
+  }
+  .toggle-title.active {
+    border-bottom: none;
+  }
+  .toggle-title.active h4 {
+    color: $color--accent-2;
+  }
+  .toggle-title.active svg {
+    transform: rotate(180deg);
+  }
+  .toggle-inner {
+    display: none;
+    //  margin: 10px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .fineprint {
+    margin-top: 30px;
+
+    p {
+      font-size: 11px;
+    }
+  }
+
+  // New responsive layout for FAQ :: How do I earn points? section
+  .rewards-table {
+    width: 100%;
+    margin-top: 30px;
+
+    @include mq('tablet-and-up'){
+
+      .rewards-row {
+        @include flexbox;
+        justify-content: flex-start;
+
+        &.rewards-row-first {
+          @include flexbox;
+        }
+        .rewards-cell {
+          padding: 10px;
+
+          span.rewards-mob-text {
+            display: none;
+          }
+
+          &:nth-child(1) {
+            width: 20%;
+          }
+          &:nth-child(2) {
+            width: 12%;
+          }
+          &:nth-child(3) {
+            width: 15%;
+          }
+          &:nth-child(4) {
+            width: 53%;
+          }
+        }
+      }
+    }
+    .rewards-row {
+      border-bottom: 1px solid #000;
+
+      .rewards-cell {
+        @include flexbox;
+        width: 100%;
+        padding-top: 10px 0 2px 0;
+
+        & > span {
+          display: block;
+
+          &:nth-child(1) {
+            width: 20%;
+            min-width: 100px;
+          }
+          &:nth-child(2) {
+            width: 80%;
+          }
+        }
+      }
+    }
+    .rewards-row-first {
+      display: none;
+    }
+  }
+
+  .holReturnTable {
+  	width: 48%;
+  	max-width: 350px;
+  	margin: 20px auto;
+  	padding: 0;
+  	border-bottom: 1px solid #ddd;
+  	position: relative;
+  	display: inline-block;
+  	vertical-align: top;
+  	margin-left: 4%;
+  }
+  .holReturnTable div.holReturnTableTitle {
+  	width: 100%;
+  	background: #c3934a;
+  	padding: 3%;
+  	color: #fff;
+  	font-weight: 700;
+  	text-transform: uppercase;
+  }
+  .holReturnTable div.holTableRow {
+  	padding: 1.5% 3%;
+  	width: 100%;
+  	display: block;
+  }
+  .holReturnTable div.holTableRow:nth-child(odd) {
+  	background: #eee;
+  }
+  .holReturnTable div.holTableRow div.holTableCol {
+  	display: inline-block;
+  }
+  .holReturnTable div.holTableRow div.holTableCol.col1 {
+  	width: 30%;
+  }
+  .holReturnTable div.holTableRow div.holTableCol.col2 {
+  	width: 65%;
+  }
+  body.mobile .holReturnTable {
+  	width: 100%;
+  	max-width: none;
+  	margin-right: 0;
+  	text-align: center;
+  }
+  .returnTable {
+  	width: 100%;
+  	margin: 20px auto;
+  	padding: 0;
+  	border-bottom: 1px solid #ddd;
+  	position: relative;
+  	display: inline-block;
+  	vertical-align: top;
+  	@include mq('tablet-and-up') {
+  		width: 48%;
+  		max-width: 350px;
+  	}
+  }
+  .returnTable div.returnTableTitle {
+  	width: 100%;
+  	background: #ddd;
+  	padding: 3%;
+  	text-transform: uppercase;
+  }
+  .returnTable div.tableRow {
+  	padding: 1.5% 3%;
+  	width: 100%;
+  	display: block;
+  }
+  .returnTable div.tableRow:nth-child(odd) {
+  	background: rgb(221, 209, 209);
+  }
+  .returnTable div.tableRow div.tableCol {
+  	display: inline-block;
+  }
+  .returnTable div.tableRow div.tableCol.col1 {
+  	width: 40%;
+  }
+  .returnTable div.tableRow div.tableCol.col1.col1Full {
+  	width: 100%;
+  }
+  .returnTable div.tableRow div.tableCol.col2 {
+  	width: 55%;
+  }
+  body.mobile .returnTable {
+  	width: 100%;
+  	max-width: none;
+  	text-align: center;
+  }
+}

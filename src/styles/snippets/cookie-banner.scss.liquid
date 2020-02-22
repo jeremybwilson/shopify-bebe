@@ -1,0 +1,122 @@
+$gdprBg: {{ settings.gdpr_bg }};
+$gdprText: {{ settings.gdpr_text }};
+$gdprBorder: {{ settings.gdpr_border_width }}px solid {{ settings.gdpr_border_color }};
+$gdprButtonBg: {{ settings.gdpr_button_bg }};
+$gdprButtonText: {{ settings.gdpr_button_text }};
+$gdprButtonBgHover: {{ settings.gdpr_button_bg_hover }};
+$gdprAltButtonBg: {{ settings.gdpr_alt_button_bg }};
+$gdprAltButtonText: {{ settings.gdpr_alt_button_text }};
+$gdprAltButtonBgHover: {{ settings.gdpr_alt_button_bg_hover }};
+
+#cookie-banner--popup-wrapper {
+  position: fixed !important;
+  width: 100% !important;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  border-top: $gdprBorder;
+  box-shadow: 0px 2px 25px 0px rgba(0,0,0,0.33);
+
+  .fancybox-inner {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .fancybox-close {
+    display: none;
+  }
+
+  .fancybox-skin {
+    background-color: $gdprBg;
+  } 
+
+  p {
+    margin-bottom: 0;
+    color: $gdprText;
+  }
+}
+
+#cookie-banner--popup--inner {
+  @include flexbox;
+  @include flex-direction(column);
+
+  @include mq('tablet-and-up') {
+    @include justify-content(space-between);
+    @include flex-direction(row);
+    @include align-items(center);
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+#cookie-banner--popup {
+  .mobile-text {
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      display: none;
+    }
+  }
+  .desktop-text {
+    max-width: 880px;
+    @include fontDim(12px,20px,.04em);
+
+    @include mq('phone') {
+      display: none;
+    }
+
+    a {
+      color: $gdprText;
+      text-decoration: underline;
+    }
+  }
+  .buttons {
+    @include flexbox;
+    @include justify-content(space-between);
+    @include mq('tablet-and-up') {
+      margin-left: 40px;
+    }
+
+    a {
+      text-decoration: none;
+
+      @include mq('phone') {
+        width: 46%;
+        height: 30px;
+        margin-left: 2%;
+        margin-right: 2%;
+        line-height: 30px;
+        @include fontSize(10px);
+        border: solid 2px transparent;
+      }
+    }
+    .more-info {
+      @include altButton;
+      background: $gdprAltButtonBg;
+      color: $gdprAltButtonText;
+
+      &:hover {
+        background: $gdprAltButtonBgHover;
+      }
+
+      @include mq('tablet-and-up') {
+        display: none;
+      }
+    }
+    .button-close {
+      @include mainButton;
+      background: $gdprButtonBg;
+      color: $gdprButtonText;
+
+      &:hover {
+        background: $gdprButtonBgHover;
+      }
+
+      @include mq('tablet-and-up') {
+        width: 210px;
+      }
+    }
+  }
+}

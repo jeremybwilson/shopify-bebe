@@ -1,0 +1,730 @@
+/*============================================================================
+  Ajax the add to cart experience by revealing it in a side drawer
+  Plugin Documentation - http://shopify.github.io/Timber/#ajax-cart
+  (c) Copyright 2015 Shopify Inc. Author: Carson Shold (@cshold). All Rights Reserved.
+
+  This file includes:
+    - Basic Shopify Ajax API calls
+    - Ajax cart plugin
+
+  This requires:
+    - jQuery 1.8+
+    - handlebars.min.js (for cart template)
+    - modernizer.min.js
+    - snippet/ajax-cart-template.liquid
+
+  Customized version of Shopify's jQuery API
+  (c) Copyright 2009-2015 Shopify Inc. Author: Caroline Schnapp. All Rights Reserved.
+==============================================================================*/
+if ((typeof ShopifyAPI) === 'undefined') { ShopifyAPI = {}; }
+
+/*============================================================================
+  API Helper Functions
+==============================================================================*/
+function attributeToString(attribute) {
+  if ((typeof attribute) !== 'string') {
+    attribute += '';
+    if (attribute === 'undefined') {
+      attribute = '';
+    }
+  }
+  return jQuery.trim(attribute);
+};
+
+/*============================================================================
+  API Functions
+==============================================================================*/
+ShopifyAPI.onCartUpdate = function(cart) {
+  // alert('There are now ' + cart.item_count + ' items in the cart.');
+};
+
+ShopifyAPI.updateCartNote = function(note, callback) {
+  var params = {
+    type: 'POST',
+    url: '/cart/update.js',
+    data: 'note=' + attributeToString(note),
+    dataType: 'json',
+    success: function(cart) {
+      if ((typeof callback) === 'function') {
+        callback(cart);
+      }
+      else {
+        ShopifyAPI.onCartUpdate(cart);
+      }
+    },
+    error: function(XMLHttpRequest, textStatus) {
+      ShopifyAPI.onError(XMLHttpRequest, textStatus);
+    }
+  };
+  jQuery.ajax(params);
+};
+
+ShopifyAPI.onError = function(XMLHttpRequest, textStatus) {
+  var data = eval('(' + XMLHttpRequest.responseText + ')');
+  if (!!data.message) {
+    alert(data.message + '(' + data.status  + '): ' + data.description);
+  }
+};
+
+/*============================================================================
+  POST to cart/add.js returns the JSON of the cart
+    - Allow use of form element instead of just id
+    - Allow custom error callback
+==============================================================================*/
+ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
+  var params = {
+    type: 'POST',
+    url: '/cart/add.js',
+    data: jQuery(form).serialize(),
+    dataType: 'json',
+    success: function(line_item) {
+      if ((typeof callback) === 'function') {
+        callback(line_item, form);
+      }
+      else {
+        ShopifyAPI.onItemAdded(line_item, form);
+      }
+    },
+    error: function(XMLHttpRequest, textStatus) {
+      if ((typeof errorCallback) === 'function') {
+        errorCallback(XMLHttpRequest, textStatus);
+      }
+      else {
+        ShopifyAPI.onError(XMLHttpRequest, textStatus);
+      }
+    }
+  };
+  jQuery.ajax(params);
+};
+
+
+/*============================================================================
+  POST to cart/add.js returns the JSON of the cart
+    - Direct add item call by Variant ID
+    - NOTE : the isGift prop is for Gift With Purchase usage when
+             react-discounts adds the item from its modal.
+
+    UNDERSCORE AS FIRST LETTER OF LINE ITEM PROP HIDES IT FROM CHECKOUT!!
+==============================================================================*/
+ShopifyAPI.addItemById = function( variantId, callback, errorCallback, isGift ) {
+  var bodyData = "form_type=product&utf8=%E2%9C%93&id=" + variantId;
+  bodyData = isGift ? bodyData + "&properties[_discountItem]=true" : bodyData;
+
+  // SETUP : Build the fetch call
+  var params = {
+    type: 'POST',
+    url: '/cart/add.js',
+    data: bodyData,
+    dataType: 'json',
+    success: function(line_item) {
+      
+      // CALLBACK : Fire any provided success callbacks
+      if ((typeof callback) === 'function') {
+        callback( line_item );
+      } 
+
+      // UPDATE : ALways inform Ajax Cart of the Additions
+      ajaxCart.itemAddedCallback( line_item );
+    },
+    error: function(XMLHttpRequest, textStatus) {
+      
+      // CALLBACK : Fire any provided error callbacks
+      if ((typeof errorCallback) === 'function') {
+        errorCallback(XMLHttpRequest, textStatus);
+
+      // DEFAULT : Flow through default error alert flow if no callback given
+      } else {
+        ShopifyAPI.onError(XMLHttpRequest, textStatus);
+      }
+    }
+  };
+
+  // FIRE : Submit our cart item to add
+  jQuery.ajax(params);
+};
+
+
+// Get from cart.js returns the cart in JSON
+ShopifyAPI.getCart = function(callback) {
+  jQuery.getJSON('/cart.js', function (cart, textStatus) {
+    if ((typeof callback) === 'function') {
+      callback(cart);
+    }
+    else {
+      ShopifyAPI.onCartUpdate(cart);
+    }
+  });
+};
+
+// POST to cart/change.js returns the cart in JSON
+ShopifyAPI.changeItem = function(vId, quantityChange, callback, errorCallback) {
+  var postData = 'quantity=' + quantityChange + '&id=' + vId;
+  var params = {
+    type: 'POST',
+    url: '/cart/change.js',
+    data: postData,
+    dataType: 'json',
+    success: function(cart) {
+
+      // CALLBACK : Custom callback function provided?
+      if ((typeof callback) === 'function') {
+
+        var cartItem;
+        if (cart.items && cart.items.length) {
+          for (var i = 0; i < cart.items.length; i++) {
+            if (vId == cart.items[i].variant_id) {
+              cartItem = cart.items[i];
+              break;
+            }
+          }
+        }
+
+        // NO MORE STOCK: 'cartItem' quantity < 'quantityChange' === no more units available
+        if (cartItem && quantityChange > cartItem.quantity) {
+          alert('{{ settings.ajax_cart_low_stock_text }}');
+          $('.ajaxcart.row[data-id="' + vId + '"]').parents('.ajaxcart__product').removeClass('is-loading');
+          return;
+        }
+
+        // CALLBACK : CUSTOM : Custom callback function provided
+        if ((typeof callback) === 'function') {
+          callback(cart);
+        }
+      }
+
+      // CALLBACK : Trigger standard cart update callback
+      ajaxCart.cartUpdateCallback( cart );
+    },
+
+    error: function(XMLHttpRequest, textStatus) {
+      if ((typeof errorCallback) === 'function') {
+        errorCallback( XMLHttpRequest, textStatus );
+
+      } else {
+        ShopifyAPI.onError(XMLHttpRequest, textStatus);
+      }
+    }
+  };
+  jQuery.ajax(params);
+};
+
+/*============================================================================
+  Ajax Shopify Add To Cart
+==============================================================================*/
+var ajaxCart = (function(module, $) {
+
+  'use strict';
+
+  // Public functions
+  var init, loadCart, initAddToCartButtons;
+
+  // Private general variables
+  var settings, isUpdating, $body;
+
+  // Private plugin variables
+  var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
+
+  // Private functions
+  var updateCountPrice, removeGiftItemsFromTotalPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, cordialAjaxCartUpdate, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
+
+  /*============================================================================
+              Bind new addToCart buttons for cases like "Quickview" 
+  ==============================================================================*/
+  initAddToCartButtons = function( options, calledFromInit ) {
+
+    // Default settings
+    if ( !calledFromInit ) {
+      settings = {
+        formSelector       : 'form[action^="/cart/add"]',
+        cartContainer      : '#CartContainer',
+        addToCartSelector  : 'input[type="submit"]',
+        disableAjaxCart    : false
+      };
+
+      // Override defaults with arguments
+      $.extend(settings, options);
+
+      // Select DOM elements
+      $formContainer = $(settings.formSelector);
+      $addToCart     = $formContainer.find(settings.addToCartSelector);
+    }
+
+    // Track cart activity status
+    isUpdating = false;
+
+    // Take over the add to cart form submit action if ajax enabled
+    if (!settings.disableAjaxCart && $addToCart.length) {
+      formOverride();
+    }
+  }
+
+
+  /*============================================================================
+    Initialise plugin + define global options   (DO NOT INVOKE MORE THAN ONCE!!)
+  ==============================================================================*/
+  init = function (options) {
+
+    // Default settings
+    settings = {
+      formSelector       : 'form[action^="/cart/add"]',
+      cartContainer      : '#CartContainer',
+      addToCartSelector  : 'input[type="submit"]',
+      cartCountSelector  : '.cart-count',
+      cartCostSelector   : null,
+      moneyFormat        : '${{amount}}',
+      disableAjaxCart    : false,
+      enableQtySelectors : true
+    };
+
+    // Override defaults with arguments
+    $.extend(settings, options);
+
+    // HANDLEBARS : Add our template helper functions to handlebars for cart logic
+    Handlebars.registerHelper('if_eq', function(a, b, opts) {
+      if (a == b) {
+          return opts.fn(this);
+      } else {
+          return opts.inverse(this);
+      }
+    });
+
+    Handlebars.registerHelper('if_not_eq', function(a, b, opts) {
+      if (a != b) {
+          return opts.fn(this);
+      } else {
+          return opts.inverse(this);
+      }
+    });
+
+    Handlebars.registerHelper('unless_contains', function (l, r, opts) {
+      return l.indexOf(r) === -1
+        ? opts.fn(this)
+        : null
+    })
+
+    // Select DOM elements
+    $formContainer     = $(settings.formSelector);
+    $cartContainer     = $(settings.cartContainer);
+    $addToCart         = $formContainer.find(settings.addToCartSelector);
+    $cartCountSelector = $(settings.cartCountSelector);
+    $cartCostSelector  = $(settings.cartCostSelector);
+
+    // General Selectors
+    $body = $('body');
+
+    // ADD TO CART : Initialize Add to cart buttons, method also used in quickview when initializing its cart buttons after initial.. init call :p 
+    initAddToCartButtons( options, true );
+
+    // Setup ajax quantity selectors on the any template if enableQtySelectors is true
+    if (settings.enableQtySelectors) {
+      qtySelectors();
+    }
+
+    // Run this function in case we're using the quantity selector outside of the cart
+    adjustCart();
+  };
+
+  loadCart = function () {
+    $body.addClass('drawer--is-loading');
+    ShopifyAPI.getCart(cartUpdateCallback);
+  };
+
+  updateCountPrice = function (cart) {
+    // HAVE CART + COUNT NODE?
+    if ( cart && $cartCountSelector && $cartCountSelector.length > 0 ) {
+      $cartCountSelector.html( cart.item_count ).removeClass('hidden-count');
+
+      // HIDE : Count hides when no items in cart
+      if ( cart.item_count === 0 ) {
+        $cartCountSelector.addClass('hidden-count');
+      }
+    }
+
+    if ( $cartCostSelector && $cartCostSelector.length > 0 ) {
+      $cartCostSelector.html(Shopify.formatMoney(cart.total_price, settings.moneyFormat));
+    }
+  };
+
+  formOverride = function () {
+    $formContainer.on('submit', function(evt) {
+      evt.preventDefault();
+
+      // Add class to be styled if desired
+      $addToCart.removeClass('is-added').addClass('is-adding');
+
+      // Remove any previous quantity errors
+      $('.qty-error').remove();
+      ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
+    });
+  };
+
+  itemAddedCallback = function (product) {
+    $addToCart.removeClass('is-adding').addClass('is-added');
+    ShopifyAPI.getCart(cartUpdateCallback);
+  };
+
+  itemErrorCallback = function (XMLHttpRequest, textStatus) {
+    var data = eval('(' + XMLHttpRequest.responseText + ')');
+    $addToCart.removeClass('is-adding is-added');
+
+    if (!!data.message) {
+      if (data.status == 422) {
+        $formContainer.after('<div class="errors qty-error">'+ data.description +'</div>');
+        $('.mobile-header--top').after('<div class="errors qty-error">'+ data.description +'</div>');
+      }
+    }
+  };
+
+
+  // RETURNS : Total price (in cents) sans items tagged with _discountItem property
+  //    NOTE : The _discountItem property is only added via addItemById()
+  removeGiftItemsFromTotalPrice = function( cart ) {
+    var cleanTotal = 0;
+
+    // SCAN CART ITEMS : Remove cost of gift items from total price (can't have 0 cost items due to SAP issue)
+    if ( cart.items && cart.items.length > 0 ) {
+
+      // CALC : Add cost of each item together, skipping the discount flagged items
+      cart.items.forEach( function( item ) {
+        if ( !item.properties || !item.properties._discountItem ) {
+          cleanTotal = cleanTotal + ( item.discounted_price * item.quantity );
+        }
+      });
+    }
+
+    return cleanTotal;
+  };
+
+  cartUpdateCallback = function (cart) {
+    // Ensure gift items are not counted in the cart total
+    cart.total_price = removeGiftItemsFromTotalPrice( cart );
+
+    // Update quantity and price
+    updateCountPrice(cart);
+    buildCart(cart);
+
+    // UPDATE : Event trigger for the Discounts Engine (React Component)
+    $.event.trigger({
+        type: "cartUpdated",
+        time: new Date(),
+        cart: cart
+    });
+  };
+
+  buildCart = function (cart, isUpdate) {
+    // Start with a fresh cart div
+    $cartContainer.empty();
+
+    // Show empty cart
+    if (cart.item_count === 0) {
+      $cartContainer
+        .append('<p>' + {{ 'cart.general.empty' | t | json }} + '</p>');
+      cartCallback(cart);
+
+      return;
+    }
+
+    // Handlebars.js cart layout
+    var items = [],
+      item = {},
+      data = {},
+      source = $("#CartTemplate").html(),
+      template = Handlebars.compile(source);
+
+    // Add each item to our handlebars.js data
+    $.each(cart.items, function(index, cartItem) {
+
+      /* Hack to get product image thumbnail
+       *   - If image is not null
+       *     - Remove file extension, add _small, and re-add extension
+       *     - Create server relative link
+       *   - A hard-coded url of no-image
+      */
+      if (cartItem.image != null){
+        var prodImg = cartItem.image.replace(/(\.[^.]*)$/, "_small$1").replace('http:', '');
+      } else {
+        var prodImg = "//cdn.shopify.com/s/assets/admin/no-image-medium-cc9732cb976dd349a0df1d39816fbcc7.gif";
+      }
+
+      // Create item's data object and add to 'items' array
+      item = {
+        id: cartItem.variant_id,
+        line: index + 1, // Shopify uses a 1+ index in the API
+        url: cartItem.url,
+        img: prodImg,
+        name: cartItem.product_title,
+        variation: cartItem.variant_title,
+        properties: cartItem.properties,
+        itemAdd: cartItem.quantity + 1,
+        itemMinus: cartItem.quantity - 1,
+        itemQty: cartItem.quantity,
+        price: Shopify.formatMoney(cartItem.price, settings.moneyFormat),
+        vendor: cartItem.vendor
+      };
+
+      items.push(item);
+
+    });
+
+    // Gather all cart data and add to DOM
+    data = {
+      items: items,
+      note: cart.note,
+      totalPrice: Shopify.formatMoney(cart.total_price, settings.moneyFormat)
+    }
+
+    $cartContainer.append(template(data));
+
+    cartCallback(cart);
+  };
+
+  cartCallback = function(cart) {
+    $body.removeClass('drawer--is-loading');
+    $body.trigger('ajaxCart.afterCartLoad', cart);
+
+    // Adds checkout buttons to mini cart
+    if (window.Shopify && Shopify.StorefrontExpressButtons) {
+      Shopify.StorefrontExpressButtons.initialize();
+    }
+  };
+
+  adjustCart = function () {
+    var removeText = '{{ settings.ajax_cart_remove_text }}';
+    // Delegate all events because elements reload with the cart
+
+    // off already binded event
+    $body.off('click', '.ajaxcart__qty-adjust');
+    // Add or remove from the quantity
+    $body.on('click', '.ajaxcart__qty-adjust', function() {
+      var $el = $(this),
+        line = $el.data('line'),
+        vId = $el.data('id'),
+        $qtySelector = $el.siblings('.ajaxcart__qty-num'),
+        qty = parseInt($qtySelector.val().replace(/\D/g, ''));
+
+      qty = validateQty(qty);
+
+      // Add or subtract from the current quantity
+      if ($el.hasClass('ajaxcart__qty--plus')) {
+        qty += 1;
+      
+      } else {
+        qty -= 1;
+        
+        if ( qty <= 0 ) { 
+          if ( confirm(removeText) ) {
+            qty = 0;
+          } else {
+            return false;
+          }
+        }
+      }
+
+      // If it has a data-line, update the cart.
+      // Otherwise, just update the input's number
+      if (vId) {
+        updateQuantity(vId, qty);
+      } else {
+        $qtySelector.val(qty);
+      }
+    });
+
+    // remove the item (by making the quantity 0);
+    $body.on('click', '.ajaxcart__remove', function() {
+      var $el = $(this),
+          line = $el.data('line'),
+          vId = $el.data('id');
+
+      if (confirm(removeText) && vId) {
+        updateQuantity(vId, 0);
+      } else {
+        return false;
+      }
+    });
+
+    // Update quantity based on input on change
+    $body.on('change', '.ajaxcart__qty-num', function() {
+      var $el = $(this),
+        line = $el.data('line'),
+        vId = $el.data('id'),
+        qty = parseInt($el.val().replace(/\D/g, ''));
+
+      qty = validateQty(qty);
+
+      // If it has a data-line, update the cart
+      if (vId) {
+        updateQuantity(vId, qty);
+      }
+    });
+
+    // Prevent cart from being submitted while quantities are changing
+    $body.on('submit', 'form.ajaxcart', function(evt) {
+      if (isUpdating) {
+        evt.preventDefault();
+      }
+    });
+
+    // Highlight the text when focused
+    $body.on('focus', '.ajaxcart__qty-adjust', function() {
+      var $el = $(this);
+      setTimeout(function() {
+        $el.select();
+      }, 50);
+    });
+
+    function updateQuantity(vId, qty) {
+      isUpdating = true;
+
+      // Add activity classes when changing cart quantities
+      var $row = $('.ajaxcart.row[data-id="' + vId + '"]').parents('.ajaxcart__product').addClass('is-loading');
+
+      if (qty === 0) {
+        $row.parent().addClass('is-removed');
+      }
+
+      // Slight delay to make sure removed animation is done
+      setTimeout(function() {
+        ShopifyAPI.changeItem(vId, qty, adjustCartCallback);
+      }, 250);
+    }
+
+    // Save note anytime it's changed
+    $body.on('change', 'textarea[name="note"]', function() {
+      var newNote = $(this).val();
+
+      // Update the cart note in case they don't click update/checkout
+      ShopifyAPI.updateCartNote(newNote, function(cart) {});
+    });
+  };
+
+  adjustCartCallback = function (cart) {
+    isUpdating = false;
+
+    /* TOTAL : Calculate cart total, subtracting gift item prices for safety
+       WHY: Removing items that drop you below threshold cause the ruby script to stop discounting
+        the item cost, so if the item itself that is a gift is set to a price higher than the threshold,
+        or ends up putting the user above the threshold it ends up thinking the cart total includes
+        the gift item, which causes the react app to not remove it. */
+    cart.total_price = removeGiftItemsFromTotalPrice( cart );
+
+    // Update quantity and price
+    updateCountPrice(cart);
+
+    // Reprint cart on short timeout so you don't see the content being removed
+    setTimeout(function() {
+      ShopifyAPI.getCart(buildCart);
+    }, 150);
+
+    // UPDATE : Event trigger for the Discounts Engine (React Component)
+    $.event.trigger({
+        type: "cartUpdated",
+        time: new Date(),
+        cart: cart
+    });
+  };
+
+  createQtySelectors = function() {
+    // If there is a normal quantity number field in the ajax cart, replace it with our version
+    if ($('input[type="number"]', $cartContainer).length) {
+      $('input[type="number"]', $cartContainer).each(function() {
+        var $el = $(this),
+            currentQty = $el.val();
+
+        var itemAdd = currentQty + 1,
+            itemMinus = currentQty - 1,
+            itemQty = currentQty;
+
+        var source   = $("#AjaxQty").html(),
+            template = Handlebars.compile(source),
+            data = {
+              id: $el.data('id'),
+              itemQty: itemQty,
+              itemAdd: itemAdd,
+              itemMinus: itemMinus
+            };
+
+        // Append new quantity selector then remove original
+        $el.after(template(data)).remove();
+      });
+    }
+  };
+
+  qtySelectors = function() {
+    // Change number inputs to JS ones, similar to ajax cart but without API integration.
+    // Make sure to add the existing name and id to the new input element
+    var numInputs = $('input[type="number"]');
+
+    if (numInputs.length) {
+      numInputs.each(function() {
+        var $el = $(this),
+            currentQty = $el.val(),
+            inputName = $el.attr('name'),
+            inputId = $el.attr('id');
+
+        var itemAdd = currentQty + 1,
+            itemMinus = currentQty - 1,
+            itemQty = currentQty;
+
+        var source   = $("#JsQty").html(),
+            template = Handlebars.compile(source),
+            data = {
+              id: $el.data('id'),
+              itemQty: itemQty,
+              itemAdd: itemAdd,
+              itemMinus: itemMinus,
+              inputName: inputName,
+              inputId: inputId
+            };
+
+        // Append new quantity selector then remove original
+        $el.after(template(data)).remove();
+      });
+
+      // Setup listeners to add/subtract from the input
+      $('.js-qty__adjust').on('click', function() {
+        var $el = $(this),
+            id = $el.data('id'),
+            $qtySelector = $el.siblings('.js-qty__num'),
+            qty = parseInt($qtySelector.val().replace(/\D/g, ''));
+
+        qty = validateQty(qty);
+
+        // Add or subtract from the current quantity
+        if ($el.hasClass('js-qty__adjust--plus')) {
+          qty += 1;
+        } else {
+          qty -= 1;
+          if (qty <= 1) qty = 1;
+        }
+
+        // Update the input's number
+        $qtySelector.val(qty);
+      });
+    }
+  };
+
+  validateQty = function (qty) {
+    if((parseFloat(qty) == parseInt(qty)) && !isNaN(qty)) {
+      // We have a valid number!
+    } else {
+      // Not a number. Default to 1.
+      qty = 1;
+    }
+    return qty;
+  };
+
+  module = {
+    init: init,
+    initAddToCartButtons: initAddToCartButtons,
+    itemAddedCallback: itemAddedCallback,
+    itemErrorCallback: itemErrorCallback,
+    cartUpdateCallback: cartUpdateCallback,
+    load: loadCart
+  };
+  
+  
+
+  return module;
+
+}(ajaxCart || {}, jQuery));
+

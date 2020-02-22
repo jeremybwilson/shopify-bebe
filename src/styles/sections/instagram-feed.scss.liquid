@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+.instagram-feed {
+  margin-bottom: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-image: url({{ 'bg-home-instagram-mobile.jpg' | asset_url }});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+
+  @include mq('tablet-and-up') {
+    padding-top: 115px;
+    padding-bottom: 145px;
+    background-image: url({{ 'bg-home-instagram.jpg' | asset_url }});
+  }
+
+  // text box
+
+  .text-box {
+    max-width: 360px;
+    margin: 0 auto 35px;
+
+    @include mq('tablet-and-up') {
+      margin-bottom: 45px;
+    }
+  }
+
+  h2 {
+    margin-bottom: 15px;
+    color: {{ settings.homepage_instagram_header }};
+    @include fontDim(22px,22px,.04em);
+    font-weight: $font-weight--black;
+    text-transform: uppercase;
+    
+    @include mq('tablet-and-up') {
+      @include fontSize(42px);
+      letter-spacing: 0;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+  .copy {
+    @include mq('tablet-and-up') {
+      margin-top: 12px;
+    }
+    p {
+      color: {{ settings.homepage_instagram_text }};
+      font-weight: $font-weight--bold;
+      @include fontDim(14px,22px,0);
+
+      @include mq('tablet-and-up') {
+        @include fontDim(16px,26px,0);
+      }
+    }
+  }
+  .cta {
+    display: inherit;
+    margin-top: 12px;
+    @include fontDim(13px,13px,.06em);
+    font-weight:  $font-weight--bold;
+    text-transform: uppercase;
+
+    @include mq('tablet-and-up') {
+      margin-top: 15px;
+      @include fontSize(16px);
+    }
+
+    a {
+      color: {{ settings.homepage_instagram_text }};
+      text-decoration: none;
+      letter-spacing: inherit;
+    }
+
+    svg {
+      width: 10px;
+      height: 10px;
+      margin-left: 4px;
+
+      @include mq('tablet-and-up') {
+        width: 12px;
+        height: 12px;
+      }
+
+      * {
+        fill: {{ settings.homepage_instagram_text }};
+      }
+    }
+    a:hover svg * {
+      fill: {{ settings.homepage_instagram_text }};
+    }
+  }
+
+  // item
+
+  .instagram-user-feed {
+    & > div {
+      @include flexbox;
+      @include flex-wrap(wrap);
+    }
+  }
+
+  .instagram-item {    
+    width: 50%;
+    padding: 5px;
+
+    @include mq('tablet-and-up') {
+      width: 25%;
+      padding: 3px;
+    }
+
+    img {
+      opacity: 0;
+    }
+  }
+
+  .instagram-image-container {
+    margin-bottom: 0;
+    background-size: cover;
+    background-position: center center;
+  }
+
+}

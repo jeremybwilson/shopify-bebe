@@ -1,0 +1,46 @@
+<div id="contact-bebe">
+  <div id="subpage">
+      {% include 'sidenav' %}
+    <div class="page-content-field">
+      {{ page.content }}
+
+    {% if section.settings.show_contact_form %}
+      {% if section.settings.show_contact_form != false %}
+      <div id="bebe-form">
+        {% include 'contact' %}
+        {% comment %} <script type="text/javascript" src="https://form.jotform.me/jsform/90502275900450"></script> {% endcomment %}
+      </div>
+      {% endif %}
+    {% endif %}
+
+    </div>
+  </div><!-- .subpage -->
+</div><!-- #contact-bebe -->
+
+{% schema %}
+  {
+  "name": "Contact Us Page Template",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contact Us Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_form",
+      "label": "Show contact us form",
+      "default": true,
+      "info": "Check this box to enable/disable the contact us form."
+    },
+    {
+      "type": "header",
+      "content": "Contact Us Page Content"
+    },
+    {
+      "type": "link_list",
+      "id": "landing_page_cs_nav",
+      "label": "Contact Us Navigation Customer Service Links"
+    }
+  ]
+  }
+{% endschema %}

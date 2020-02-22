@@ -1,0 +1,226 @@
+// COLLECTION.SCSS
+// -- sections/collection-template.liquid
+
+
+/*  COLLECTION: Core Variables
+ * ---------------------------------------------- */
+$resultsTextColor: {{ settings.filter_text_color }};
+
+#product-loop {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/*  COLLECTION: Banner
+ * ---------------------------------------------- */
+.collection-banner {
+    margin-top: 0;
+    
+    img {
+        width: 100%;
+    }
+
+    .asset-desk {
+        display: none;
+    }
+
+    @include mq( 'lap-and-up' ) {
+        .asset-mob {
+            display: none;
+        }
+        .asset-desk {
+            display: block;
+        }
+    }    
+}
+
+.gridlock .row .collection-banner--mobile {
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    margin-bottom: 10px;
+}
+
+.has--category-banner {
+    display: none;
+}
+.collection-banner + #breadcrumb {
+  @include mq( 'lap-and-up' ) {
+    padding-left: 0px;
+  }
+
+  @include mq( 'desk-and-up' ) {
+    padding-left: 0px;
+  }    
+}
+
+/*  COLLECTION : Title
+ * ---------------------------------------------- */
+.collection--title {
+    width: 100%;
+}
+
+/*  COLLECTION : Main styling block
+ * ---------------------------------------------- */
+#shopify-section-collection-template,
+#search-template {
+
+    /* COLLECTION : Sidebar
+     * ---------------------------------------------- */
+    @import url('../snippets/collection-nav.scss.liquid');
+
+    /* COLLECTION : Main
+     * ---------------------------------------------- */
+    #collection--main {
+        @include mq( 'phone' ) {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        @include mq( 'lap-and-up' ) {
+            width: 82.5%; // [FPO] number
+        }
+    }
+    h1 {
+        // display: none;
+        border: none;
+        @include fontDim(14px,14px,.04em);
+        font-weight: $font-weight--bold;
+
+        @include mq( 'lap-and-up' ) {
+            @include fontDim(21px,21px,.04em);
+        }
+
+        // @include mq( 'lap-and-up' ) {
+        //     display: block;
+        // }
+    }
+
+    #breadcrumb {
+        display: none;
+
+        @include mq( 'lap-and-up' ) {
+            display: block;
+        }
+    }
+
+    /* COLLECTION : Product Grid + Item View
+     * ---------------------------------------------- */
+    .collection-template {
+        
+        & > .row {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        @import url('../snippets/product-grid.scss.liquid');
+    }
+
+    /* FILTERS : Styling for filter sets
+     * ---------------------------------------------- */
+    @import url('../snippets/filters.scss.liquid');
+}
+
+
+/* RESULTS COUNT : 
+ *    # of results on a collection page, only shown
+ *    when filters are present so only applies here.
+ *
+ *    (NOTE: #results-count in breadcrumbs.liquid)
+ * ---------------------------------------------- */
+#results-count {
+    display: none;
+    @include h7;
+    @include fontSize( 16px );
+    position: static;
+    top: auto;
+    color: $resultsTextColor; //Imported from filters.scss.liquid
+    font-weight: $font-weight--bold;
+
+    @include mq( 'lap-and-up' ) {
+        position: absolute;
+        top: 0;
+        right: 2px;
+        left: auto;
+    }
+}
+
+// current listed products count on collection template
+// customize later
+#collection-current-products-count-widget {
+    display: none;
+    text-align: center;
+    color: $resultsTextColor; //Imported from filters.scss.liquid
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+// Footer results count on collection template
+.collection-results-count {
+    margin: 0 0 15px;
+    text-align: right;
+    color: $resultsTextColor; //Imported from filters.scss.liquid
+    font-weight: normal;
+}
+
+/* FOOTER : 
+ *    Includes Nosto recommendations and SEO text
+ * ---------------------------------------------- */
+.collection-footer {
+    @include mq('lap-and-up') {
+        position: relative;
+
+        // Magic number to align with bc-sf product cards
+
+        .collection-footer__elements {
+            width: 82.5% !important;
+            margin-left: 12.5% + $grid--gutter !important;
+            float: left;
+
+        }
+    }
+}
+
+// Nosto elements
+.collection-nosto {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include mq('lap-and-up') {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+
+.collection-nosto__element {
+
+    .gridlock .row & {
+        float: none;
+        margin-left: 0;
+        margin-right: 0;        
+    }
+
+    .nosto-block {
+        margin-bottom: 8px;
+
+        @include mq( 'lap-and-up' ) {
+            margin-bottom: 30px;
+        }
+    }
+}
+/****/
+.asset-mob {
+    float: left;
+}
+.asset-mob img{
+    float: left;
+    width: 100%;
+}
+.collection_img_hide{display:none !important;}

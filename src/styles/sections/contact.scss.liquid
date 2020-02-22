@@ -1,0 +1,219 @@
+@charset "UTF-8";
+
+// SUBPAGE : Mobile nav padding reduction for mobile
+
+#contact-bebe {
+
+  #subpage {
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(flex-end);
+
+    @include p;
+
+    @include mq( 'lap-and-up' ) {
+      @include flex-direction(row);
+    }
+    @include mq( 'tablet-and-up' ) {
+      padding-left: 0;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    h4 {
+        margin-bottom: 15px;
+    }
+
+    h5 {
+      margin: 10px 0;
+    }
+
+    table h5 {
+      margin-top: 0;
+      @include fontSize(17px);
+      color: $color--primary-1;
+      text-transform: capitalize;
+
+      @include mq( 'tablet-and-up' ) {
+        @include fontSize(22px);
+      }
+    }
+
+    h6 {
+      color: $color--primary-1;
+      @include fontSize(14px);
+
+      @include mq( 'tablet-and-up' ) {
+        @include fontSize(16px);
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    h5 ~ p {
+      color: $color--primary-2;
+      font-weight: $font-weight--black;
+    }
+
+    h6 ~ p {
+      margin-bottom: 20px;
+    }
+
+    hr {
+      margin: 25px 0;
+
+      @include mq( 'tablet-and-up' ) {
+        margin: 40px 0;
+      }
+    }
+
+    br {
+      @include mq( 'phone' ) {
+        display: none;
+      }
+      @include mq( 'tablet' ) {
+        display: none;
+      }
+    }
+
+    table {
+
+      td {
+        float: left;
+        border: none;
+        vertical-align: top;
+        padding: 0;
+
+        @include mq( 'phone' ) {
+          float: left;
+          width: 100% !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          border-left: none !important;
+          height: auto !important;
+        }
+      }
+    }
+
+    .page-content-field {
+
+      a {
+        font-weight: 700;
+      }
+
+      #bebe-form {
+        margin: 0 -28px 20px;
+        background-color: $color--light-gray;
+        margin-top: 15px;
+
+        @include mq( 'tablet-and-up' ) {
+          float: right;
+          width: 100%;
+          margin: 15px 0 50px;
+        }
+
+        h3 {
+          font-weight: $font-weight--bold;
+          @include fontSize(17px);
+          color: $color--primary-1;
+          margin: 25px 0 0;
+
+          @include mq( 'tablet-and-up' ) {
+            @include fontSize(16px);
+          }
+        }
+
+        form {
+          width: 80%;
+          margin: 0 auto;
+          padding: 15px 0;
+
+          @include mq('tablet-and-up') {
+            width: 90%;
+            padding: 50px;
+          }
+          label {
+            margin-bottom: 5px;
+            color: $color--primary-2;
+            font-weight: $font-weight--bold;
+            @include fontSize(12px);
+
+            .req {
+              color: $color--primary-1;
+              font-size: 19px;
+            }
+          }
+          input {
+            background: $color--white;
+            border-radius: 0;
+          }
+          input::placeholder {
+            color: transparent;
+            opacity: 0;
+          }
+          textarea {
+            background-color: $color--white;
+            border-radius: 0;
+          }
+          textarea::-webkit-input-placeholder {
+            color: transparent;
+          }
+          p.form-phone {
+            display: none;
+          }
+          p.form-type select{
+            background-color: #FFF;
+          }
+          p.form-name,
+          p.form-email {
+            display: inline-block;
+            width: 100%;
+
+            @include mq('tablet-and-up') {
+              width: 49%;
+            }
+          }
+          p.form-email {
+            margin-left: 1%;
+          }
+          p.form-submit {
+            text-align: center;
+          }
+          input[type="submit"] {
+            @include buttonDefaultStyle;
+            @include mainButton;
+            width: 200px;
+          }
+          .successForm p {
+            color: $color--primary-2;
+            border: 1px solid $color--primary-2;
+            padding: 5px 20px;
+          }
+        }
+      }
+
+      // CSS styles carried over from old site
+      .holReturnTable{margin:20px auto;padding:0;border-bottom:1px solid #ddd;position:relative;display:inline-block;vertical-align:top;margin-left:4%}
+      .holReturnTable div.holReturnTableTitle{width:100%;background:#c3934a;padding:3%;color:#fff;font-weight:700;text-transform:uppercase}
+      .holReturnTable div.holTableRow{padding:1.5% 3%;width:100%;display:block}
+      .holReturnTable div.holTableRow:nth-child(odd){background:#eee}
+      .holReturnTable div.holTableRow div.holTableCol{display:inline-block}
+      .holReturnTable div.holTableRow div.holTableCol.col1{width:30%}
+      .holReturnTable div.holTableRow div.holTableCol.col2{width:65%}
+      body.mobile .holReturnTable{width:100%;max-width:none;margin-right:0;text-align:center}
+      .returnTable{width: 100%;margin:20px auto;padding:0;border-bottom:1px solid #ddd;position:relative;display:inline-block;vertical-align:top}
+      .returnTable div.returnTableTitle{width:100%;background:#ddd;padding:3%;text-transform:uppercase}
+      .returnTable div.tableRow{width:100%;padding:1.5% 3%;display:block}
+      .returnTable div.tableRow:nth-child(odd){background:#eee}
+      .returnTable div.tableRow div.tableCol{display:inline-block}
+      .returnTable div.tableRow div.tableCol.col1{width:40%}
+      .returnTable div.tableRow div.tableCol.col1.col1Full{width:100%}
+      .returnTable div.tableRow div.tableCol.col2{width:55%}
+      body.mobile .returnTable{width:100%;max-width:none;text-align:center;}
+    }
+  }
+}

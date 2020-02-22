@@ -1,0 +1,210 @@
+<nav id="nav" {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
+  
+  <div id="nav-menu-desktop" class="row">
+    <ul id="nav-menu-desktop-list">
+      {% assign menu = linklists[section.settings.main_nav] %}
+      {% for link in menu.links %}
+
+        {% assign meganav = false %}
+        {% for block in section.blocks %}
+          {% if block.settings.menu_item == link.title %}
+            
+            {% comment %} :: MEGA-MENU - WRAPPER :: {% endcomment %}
+            {% capture megalink %}
+              <li class="nav-primary-link {{ link.title | replace: ' ', '-' | downcase }} dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">
+
+
+                {% comment %} :: CATEGORY HEADER :: {% endcomment %}
+                <a href="{{ link.url }}" class="nav-category-header">{{ link.title }}</a>
+                
+
+                {% comment %} :: MEGA-MENU - LIST :: {% endcomment %}
+                <ul class="megamenu">
+                  <div class="mega-container">
+
+                    {% comment %} NB. Thanks to the magic of Flexbox, container items with flex-direction: column and flex-wrap: wrap do NOT grow according to its children's sizes.
+                    So this workaround adds extra column-widths per column multiples (in this case, 5) {% endcomment %}
+                    {% assign columns_wide = '' %}
+                    {% if link.links.size > 5 %}
+                      {% assign columns_wide = 'columns-3-wide' %}
+                    {% elsif link.links.size < 6 %} 
+                      {% assign columns_wide = 'columns-1-wide' %}
+                    {% endif %}
+
+                    {% comment %} :: MEGA-MENU - LINKS :: {% endcomment %}
+                    <span class="mega-column-content {{ columns_wide }}">
+                      
+                      {% comment %} Determine column widths from number of items {% endcomment %}
+                      {% case link.links.size %}
+                        {% when 0 %}
+                        {% when 1 %}
+                        {% assign column_width = 'desktop-12 tablet-fourth' %}
+                        {% when 2 %}
+                        {% assign column_width = 'desktop-6 tablet-fourth' %}
+                        {% when 3 or 6 %}
+                        {% assign column_width = 'desktop-4 tablet-fourth' %}
+                        {% else %}
+                        {% assign column_width = 'desktop-3 tablet-fourth' %}
+                      {% endcase %}
+
+                      {% comment %} :: SUB-NAV - LINKS :: {% endcomment %}
+                      {% for sub_link in link.links %}
+                        {% assign hidden_nav_check = sub_link.title | slice: 0 %}
+
+                        {% comment %} If the title of the subnav shows "_", then hide the nav item. {% endcomment %}
+
+                        {% if hidden_nav_check != '_' %}
+
+                          <li class="nav-sub-item  {{ sub_link.title | replace: ' ', '-' | downcase }} {{ column_width }}">
+                            <h5 class="nav-sub-header"><a href="{{ sub_link.url }}">{{ sub_link.title }}</a></h4>
+                            
+                            {% if sub_link.links != blank %}
+                              <ul class="mega-stack">
+                                {% for sub_sub_link in sub_link.links %}
+                                  {% comment %} 
+                                    HEADINGS : Account for..
+                                      1. '-' (Entry in menu means make a gap)
+                                      2. 'SUB-HEADER_Somethin' (A Nested Sub-Header in the "sub-sub" list)
+                                      3. Regular Sub-Sub-List links
+                                  {% endcomment %}
+
+                                  {% comment %} :: #1 - Space Entry :: {% endcomment %}
+                                  {% if sub_sub_link.title == '-' %}
+                                    <li class="nav-list-space"></li>
+
+                                  {% comment %} :: #2 - Nested Sub-Sub Header :: {% endcomment %}
+                                  {% elsif sub_sub_link.title contains 'SUB-HEADER_' %}  
+                                    <h5 class="nav-sub-header inline-sub-header {{ sub_sub_link.title | replace: ' ', '-' | downcase }}">
+                                      <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title | replace:  'SUB-HEADER_', '' }}</a>
+                                    </h5>
+
+                                  {% comment %} :: #3 - Regular Sub-Sub Link (notice 'Shop All' Case in this also) :: {% endcomment %}
+                                  {% else %}
+                                    <li class="nav-sub-sub-item {{ sub_sub_link.title | replace: ' ', '-' | downcase }}">
+
+                                      <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                    </li>
+                                  {% endif %} 
+
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+
+                          </li>
+
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+
+
+                    {% comment %} :: MEGA-MENU - IMAGE :: {% endcomment %}
+                    {% if block.settings.nav_image != blank %}
+                      <span class="mega-image mm-image">
+                        <a href="{{ block.settings.nav_promo_link }}" style="background-image: url( '{{ block.settings.nav_image | img_url: '300x' }}' );" alt="block.settings.nav_image.alt"></a>
+                      </span>
+                    {% endif %}
+                    
+
+                  </div>
+                </ul>
+              </li>
+            {% endcapture %}
+            {% assign meganav = true %}
+          {% endif %}
+        {% endfor %}
+
+
+{% comment %} :: RENDER : MEGA-NAV :: {% endcomment %}
+        {% if meganav %}
+          {{ megalink }}
+
+
+
+{% comment %} :: PLAIN DROPDOWN (Dropdown with no megamenu) :: {% endcomment %}
+        {% elsif link.links != blank %}
+          
+          {% comment %} :: VAR : num : Links Per Column :: {% endcomment %}
+          {% assign num = section.settings.linklist_breakpoint | plus:0 %}
+
+          {% comment %} :: VAR : numx : How many links in this list :: {% endcomment %}
+          {% assign numx = linklists[link.handle].links.size %}
+
+          {% comment %} :: VAR : numy : Number of links divided by number per column :: {% endcomment %}
+          {% assign numy = numx | divided_by: num %}
+
+          {% comment %} :: VAR : mod : Modulo balance of total links divided by links per column :: {% endcomment %} 
+          {% assign mod = numx | modulo:num %}
+
+          {% comment %} :: VAR : mod_offset : Calculate the modulo offset :: {% endcomment %} 
+          {% assign mod_offset = numx | minus:mod %}
+
+          {% comment %}
+            REVIEW : 
+              {{ num }}  Chosen number of links per column
+              {{ numx }} Number of links in the linklist
+              {{ numy }} Columns needed
+              {{ mod }}  Balance for last column
+              {{ mod_offset }} Links to offset before adding mod
+          {% endcomment %}
+
+          {% comment %} :: Start math for calculated multi column dropdowns :: {% endcomment %}
+          <li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">{{ link.title | link_to: link.url }}
+            
+            {% comment %} :: PLAIN DROPDOWN : Multi-Columns :: {% endcomment %}
+            {% if link.links.size > num %}
+              {% include 'navigation-columns' %}
+            
+
+            {% comment %} :: PLAIN DROPDOWN : Single Column : List small enough to fit as 1 column :: {% endcomment %}
+            {% else %}
+              <ul class="submenu">
+                
+                {% for sub_link in link.links %}
+                  <li class="has_sub_menu" aria-haspopup="true" aria-expanded="false"><a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                    
+                    {% if sub_link.links != blank %}
+                      <ul class="nested">
+                        {% for sub_sub_link in sub_link.links %}
+                          <li class="{{ sub_sub_link.title | replace: ' ', '-' | downcase }}"><a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+
+                  </li>
+                {% endfor %}
+
+              </ul>
+            {% endif %}
+
+          </li>
+
+
+{% comment %} :: SINGLE LINK : One lonely weeb link :: {% endcomment %}
+        {% else %}
+          <li class="nav-primary-link {{ link.title | replace: ' ', '-' | downcase }}">
+            <a class="nav-category-header" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

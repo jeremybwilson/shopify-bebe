@@ -1,0 +1,38 @@
+{% comment %}
+	
+	FILES : Pull banners from collection handles
+
+{% endcomment%}
+{% assign query = collection-banner-image %}
+{% capture banner %}collection-banner-{{ collection.handle }}-desktop.jpg{% endcapture %}
+{% capture banner_mobile %}collection-banner-{{ collection.handle }}-mobile.jpg{% endcapture %}
+
+{% comment %} Desktop Image {% endcomment%}
+{%- capture desktop_banner -%}
+  <div class="asset-desk">
+    <img class="lazyload lazyload-fade"
+      data-src="{{ banner | file_img_url: '2000x' }}"
+      alt="{{ collection.title | escape }}">
+  </div>
+{%- endcapture -%}
+
+{% comment %} Mobile Image {% endcomment%}
+{%- capture mobile_image -%}
+  <div class="asset-mob">
+    <img class="lazyload lazyload-fade"
+      data-src="{{ banner_mobile | file_img_url: '800x' }}"
+      alt="{{ collection.title | escape }}">
+  </div>
+{%- endcapture -%}
+
+{% case query %}
+  {% when 'desktop' %}
+  {{ desktop_banner }}
+
+  {% when 'mobile' %}
+  {{ mobile_image }}
+
+  {% else %}
+  {{ desktop_banner }}
+  {{ mobile_image }}
+{% endcase %}

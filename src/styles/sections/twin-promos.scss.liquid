@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+.twin-promos {
+  @include mq('phone') {
+    margin-bottom: 0;
+
+    &.homepage-section {
+      .single-promo {
+        .cta a {
+          padding: 0;
+        }
+
+        h3 {
+          font-weight: normal;
+        }
+      }
+    }
+
+    .row.homepage-section {
+      margin-bottom: 0;
+      padding: 0;
+
+      .single-promo.mobile-3 {
+        position: relative;
+        margin-top: 5px;
+        margin-right: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        width: 100%;
+
+        .text-promo-content {
+          position: absolute;
+          bottom: 100px;
+          left: 50%;
+          width: 100%;
+          min-width: calc(100% - 64px);
+          max-width: calc(100% - 20px);
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+  @include mq('tablet-and-up') {
+    margin-top: 60px;
+  }
+  @include mq('lap-and-up') {
+    margin-top: 100px;
+  }
+
+  .single-promo {
+    margin-bottom: 40px;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      &:first-of-type { padding-right: 20px; }
+      &:last-of-type { padding-left: 20px; }
+      &:only-of-type { padding-left: 0; padding-right: 0;}
+    }
+    @include mq('lap-and-up') {
+      &:first-of-type { padding-right: 40px; }
+      &:last-of-type { padding-left: 40px; }
+      &:only-of-type { padding-left: 0; padding-right: 0;}
+    }
+
+    .text-promo-content {
+      margin-top: 24px;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      @include mq('tablet-and-up') {
+        width: 90%;
+        margin: 16px auto 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    h3 {
+      margin-bottom: 16px;
+      color: $color--white;
+      font-weight: $font-weight--medium;
+      @include fontDim(30px,36px,.0em);
+      //text-shadow: 1px 1px 1px #ccc;
+      // text-transform: uppercase;
+
+      @include mq('tablet-and-up') {
+        color: $color--primary-1;
+        @include fontSize(24px);
+      }
+    }
+    .copy {
+      @include mq('tablet-and-up') {
+        margin-top: 12px;
+      }
+      p {
+        font-weight: $font-weight--bold;
+        @include fontDim(14px,20px,0);
+
+        @include mq('tablet-and-up') {
+          @include fontDim(16px,24px,0);
+        }
+      }
+    }
+    .cta {
+      min-width: 230px;
+      margin-top: 0;
+      @include fontDim(13px,13px,0);
+      font-weight:  $font-weight--bold;
+      text-transform: uppercase;
+      display: inline-block;
+
+      @include mq('tablet-and-up') {
+        margin-top: 0;
+        @include fontSize(16px);
+      }
+
+      a {
+        width: 100%;
+        padding: 0;
+        color: $color--primary-2;
+        text-decoration: none;
+        letter-spacing: inherit;
+
+        &:hover {
+          color: $color--gray-1;
+        }
+
+        span.button {
+          width: 100%;
+          display: inline-block;
+          @include buttonDefaultStyle;
+
+          color: $color--white;
+
+          @include mq('phone') {
+            color: $color--primary-1;
+            background-color: $color--white;
+          }
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      svg {
+        width: 10px;
+        height: 10px;
+        margin-left: 20px;
+
+        @include mq('tablet-and-up') {
+          width: 12px;
+          height: 12px;
+        }
+
+        * {
+          fill: $color--accent-1;
+        }
+      }
+      a:hover svg * {
+        fill: $color--accent-1;
+      }
+    }
+  }
+}

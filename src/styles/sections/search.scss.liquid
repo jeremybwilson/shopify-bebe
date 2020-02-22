@@ -1,0 +1,142 @@
+// SEARCH.SCSS
+// -- templates/search.liquid
+
+
+/*  SEARCH : Core Variables
+ * ---------------------------------------------- */
+$searchMobileGutter: 10px;
+$searchBorder: 1px solid {{ settings.filter_divider_color }};
+
+
+/*  GLOBAL : 
+ *     - Items not in search.liquid that need adjustment
+ * ----------------------------------------------------- */
+body.search {
+    // BREADCRUMB : "Home / SEARCH TERM" Looks funky, hiding for search page
+    #breadcrumb {
+        display: none;
+    }
+
+    #content {
+        padding: 0 0 100px;
+    }
+}
+
+
+
+/* SEARCH: Page-specific styles for search.liquid
+ * ------------------------------------------------- */ 
+#search-template {
+
+    /* TITLE + SEARCH BAR : Header content w/ search bar
+     * ------------------------------------------------- */ 
+
+    .search-title {
+        @include fontSize( 20px );
+    }
+
+    .search--sidebar-title {
+        @include h1;
+
+        @include mq( 'lap-and-up') {
+            display: none;
+        }   
+    }
+
+    #search-bar {
+        display: none;
+        position: relative;
+        width: calc( 100% - ( #{$searchMobileGutter} * 2 ) );
+        margin: 0 $searchMobileGutter;
+        border: none;
+        float: none;
+
+        @include mq( 'lap-and-up' ) {
+            display: block;
+            position: absolute;
+            width: 320px;
+            top: 13px;
+            right: 0;
+        }
+
+        input#q {
+            @include h7;
+            width: 100%;
+            border: none;
+            font-weight: $font-weight--bold;
+            color: $color--primary-1;
+            border-bottom: $searchBorder; 
+        }
+
+        svg.icon.icon-search {
+            width: 16px;
+            position: absolute;
+            right: 10px;
+            top: 12px;
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

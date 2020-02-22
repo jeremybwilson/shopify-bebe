@@ -1,0 +1,61 @@
+{% for block in section.blocks %}
+  {% assign collection_handle = block.settings.collection %}
+  {% if collection_handle == collection.handle %}
+    {% comment %} Desktop Image {% endcomment%}
+    {% if block.settings.image != blank %}
+    <div class="collection-banner tablet-and-down--hide">
+      <div class="asset-desk test">
+        <img class="lazyload lazyload-fade"
+        data-src="{{ block.settings.image | img_url: '2000x' }}"
+        alt="{{ collection.title | escape }}">
+      </div>
+    </div>
+    {% endif %}
+
+    {% comment %} Mobile Image {% endcomment%}
+      {% if block.settings.mobile_image != blank %}
+      <div class="asset-mob collection_img collection_img_hide">
+        <img class="lazyload lazyload-fade"
+        data-src="{{ block.settings.mobile_image | img_url: '800x' }}"
+        alt="{{ collection.title | escape }}">
+      </div> 
+      {% endif %}
+      
+  {% endif %}
+{% endfor %}
+
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "class": "no_padding",
+  "settings": [
+          
+
+  ],
+  "blocks": [
+    {
+      "name": "Banner",
+      "type": "image",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select collection",
+          "info": "Specific banner image for collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

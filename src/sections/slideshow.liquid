@@ -1,0 +1,575 @@
+<div class="homepage-section slideshow-section no-fouc index-section" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+
+  {% comment %} If full width isn't selected, include these grid containers {% endcomment %}
+
+  {% unless section.settings.full_width %}
+  <div class="row">
+    <div class="desktop-12 tablet-6 mobile-3">
+      {% endunless %}
+
+      {% assign slider_speed = section.settings.slider_speed | times: 1000 %}
+
+      {% if section.blocks.size > 0 %}
+
+        {% comment %} Add a class for sliders with solo images {% endcomment %}
+
+        {% if section.blocks.size == 1 %}
+          {% assign solo_class = 'one-image-only' %}
+        {% else %}
+          {% assign solo_class = '' %}
+        {% endif %}
+
+      <div class="flexslider index_Slider {{ solo_class }}" id="Slideshow-{{ section.id }}" data-speed="{{ slider_speed }}">
+        <ul class="slides">
+          {% for block in section.blocks %}
+
+          <li id="slide--{{ block.id }}"
+            data-block-id="{{ block.id }}"
+            class="slide--{{ block.id }} slide_image"
+            data-flexslider-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+
+            {% comment %} :: IMAGES - MOBILE AND DESKTOP :: {% endcomment %}
+
+            {% if block.settings.image != blank %}
+
+              <div class="box-ratio">
+                {% if block.settings.cta_full_image != blank %}
+                <a href="{{ block.settings.cta_full_image }}" title="{{ block.settings.image.alt | escape }}">
+                {% endif %}
+                <picture>
+                  {% comment %} :: MOBILE IMAGE :: {% endcomment %}
+
+                  {% if block.settings.mobile_image != blank %}
+                    {% assign mobile_img_url = block.settings.mobile_image | img_url: '767x' %}
+
+                    <source srcset="{{ mobile_img_url }}" media="(max-width: 767px)">
+
+                  {% endif %}
+
+                  {% assign desktop_img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+                  <img class="slideshow__image slideshow__image__{{ block.id }} lazyload lazyload-fade"
+                    data-src="{{ desktop_img_url }}"
+                    data-sizes="auto"
+                    data-parent-fit="cover"
+                    alt="{{ block.settings.image.alt | escape }}">
+                </picture>
+                {% if block.settings.cta_full_image != blank %}
+                </a>
+                {% endif %}
+
+                <noscript>
+                  <img src="{{ block.settings.image | img_url: '1024x' }}" alt="{{ block.settings.image.alt | escape }}" class="slideshow__image slideshow__image--{{ block.id }}">
+                </noscript>
+
+              </div><!-- .box-ratio -->
+
+              {% comment %} Styling to accommodate the box ratio for lazy-loaded images {% endcomment %}
+
+              <style>
+                {% assign image_box_ratio = block.settings.image.height | append: ".0" | times: 1 | divided_by: block.settings.image.width | times: 100 | append: "%" %}
+                {% if block.settings.mobile_image != blank %}
+                  {% assign mobile_image_box_ratio = block.settings.mobile_image.height | append: ".0" | times: 1 | divided_by: block.settings.mobile_image.width | times: 100 | append: "%" %}
+                  /* Mobile */
+                  #slide--{{ block.id }} .box-ratio {
+                    padding-bottom: {{ mobile_image_box_ratio }};
+                  }
+                {% else %}
+                  #slide--{{ block.id }} .box-ratio {
+                    padding-bottom: {{ image_box_ratio }};
+                  }
+                {% endif %}
+                {% if block.settings.image != blank and block.settings.mobile_image != blank %}
+                  /* Tablet and up */
+                  @media screen and (min-width: 768px) {
+                    #slide--{{ block.id }} .box-ratio {
+                      padding-bottom: {{ image_box_ratio }};
+                    }
+                  }
+                {% endif %}
+
+              </style>
+
+            {% endif %}
+
+            {% comment %} :: NO IMAGE - PLACEHOLDER :: {% endcomment %}
+
+            {% if block.settings.image == blank %}
+              {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+              {%- assign placeholder = 'lifestyle-' | append: current -%}
+              {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+
+            {% comment %} :: CAPTION BLOCK :: {% endcomment %}
+
+            <div class="flex-caption slide-{{ block.id }}">
+              <div class="caption-inners">
+                {% if block.settings.heading != blank %}
+                <h2 class="slide-title{% if block.settings.hide_header_desktop %} hide-desktop{% endif %}">{{ block.settings.heading }}</h2>
+                {% endif %}
+                {% if block.settings.subheading != blank %}
+                <p class="caption">{{ block.settings.subheading }}</p>
+                {% endif %}
+
+                {% comment %} CTA BUTTONS {% endcomment %}
+
+                {% if block.settings.cta_one_link != blank and block.settings.cta_one_button_text != blank %}
+                <div class="buttons-row">
+
+                  <div class="cta" id="cta-one-{{ block.id }}">
+                    <a href="{{ block.settings.cta_one_link }}">
+                    {{ block.settings.cta_one_button_text }}
+                    </a>
+                  </div>
+
+                  {% comment %} CTA TWO - Only show if link exists. Duplicate this and the necessary schema code if client asks for more buttons. {% endcomment %}
+
+                  {% if block.settings.cta_two_link != blank and block.settings.cta_two_button_text != blank %}
+
+                    <div class="cta" id="cta-one-{{ block.id }}">
+                      <a href="{{ block.settings.cta_two_link }}">
+                      {{ block.settings.cta_two_button_text }}
+                      </a>
+                    </div>
+
+                  {% endif %}
+
+                  {% comment %} THIRD AND FOURTH CTA ROW {% endcomment %}
+                  {% if block.settings.cta_three_link != blank and block.settings.cta_three_button_text != blank
+                     or block.settings.cta_four_link != blank and block.settings.cta_four_button_text != blank %}
+                    <div>
+                      {% comment %} CTA THREE {% endcomment %}
+                      {% if block.settings.cta_three_link != blank and block.settings.cta_three_button_text != blank %}
+                        <div class="cta" id="cta-three-{{ block.id }}">
+                          <a href="{{ block.settings.cta_three_link }}">
+                          {{ block.settings.cta_three_button_text }}
+                          </a>
+                        </div>
+                      {% endif %}
+
+                      {% comment %} CTA FOUR {% endcomment %}
+                      {% if block.settings.cta_four_link != blank and block.settings.cta_four_button_text != blank %}
+                        <div class="cta" id="cta-four-{{ block.id }}">
+                          <a href="{{ block.settings.cta_four_link }}">
+                          {{ block.settings.cta_four_button_text }}
+                          </a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+          <style>
+            .flex-caption.slide-{{ block.id }} {
+              {% if block.settings.caption_vertical != blank %}
+              top: {{ block.settings.caption_vertical }}%;
+              {% else %}
+              top: 50%;
+              {% endif %}
+            }
+            @media screen and (max-width: 767px) {
+              .flex-caption.slide-{{ block.id }} {
+                {% if block.settings.caption_vertical_mobile != blank %}
+                top: {{ block.settings.caption_vertical_mobile }}%;
+                {% else %}
+                top: 50%;
+                {% endif %}
+                {% if block.settings.hide_buttons_mobile %}
+                display: none;
+                {% endif %}
+              }
+            }
+            @media screen and (min-width: 768px) {
+              .flex-caption.slide-{{ block.id }} {
+                {% if block.settings.caption_horizontal_offset != blank %}
+                left: {{ block.settings.caption_horizontal_offset }}%;
+                {% else %}
+                left: 50%;
+                {% endif %}
+                {% if block.settings.hide_buttons_desktop %}
+                display: none;
+                {% endif %}
+              }
+              .flex-caption.slide-{{ block.id }} .caption-inners {
+                transform: translateX(-50%);
+              }
+            }
+            .flex-caption.slide-{{ block.id }} .caption-inners {
+              {% assign bg_color = block.settings.caption_background %}
+              {% assign caption_opacity = block.settings.caption_opacity | plus: 0 %}
+              {% if block.settings.caption_background == 'rgba(0,0,0,0)' %}
+              background: transparent;
+              {% else %}
+              background: {{ bg_color | color_modify: 'alpha', caption_opacity }};
+              {% endif %}
+              display: inline-block;
+              {% comment %} padding: 10px 20px; {% endcomment %}
+            }
+            {% comment %} COLOR SCHEME STYLING {% endcomment %}
+            {% if block.settings.caption_color_scheme == 'white' %}
+              {% assign slide_text_color = '#ffffff' %}
+              {% assign cta_color = '#e41c39' %}
+              {% assign cta_hover_color = '#c1152e' %}
+            {% elsif block.settings.caption_color_scheme == 'dark' %}
+              {% assign slide_text_color = '#0a56a4' %}
+              {% assign cta_color = '#e41c39' %}
+              {% assign cta_hover_color = '#c1152e' %}
+            {% else %}
+              {% assign slide_text_color = block.settings.custom_slide_main_color %}
+              {% assign cta_color = block.settings.custom_slide_alt_color %}
+              {% assign cta_hover_color = block.settings.custom_slide_alt_color %}
+            {% endif %}
+            .flex-caption.slide-{{ block.id }} h2.slide-title {
+              color: {{ slide_text_color }};
+            }
+            @media screen and (max-width: 767px) {
+              .flex-caption.slide-{{ block.id }} h2.slide-title {
+                color: {{ cta_color }};
+              }
+            }
+            .flex-caption.slide-{{ block.id }} p {
+              color: {{ slide_text_color }};
+            }
+            .flex-caption.slide-{{ block.id }} .cta a {
+              color: {{ slide_text_color }};
+              background-color: {{ cta_color }};
+
+              {% comment %}
+	              color: $button--main-text;
+	              background-color: $button--main-bg;
+              {% endcomment %}
+            }
+            .flex-caption.slide-{{ block.id }} .cta a:hover {
+              background-color: {{ cta_hover_color }};
+            }
+            @media (max-width: 767px){
+              .flex-caption.slide-{{ block.id }} .cta a {
+                {% comment %}
+    	            background: $button--main-mobile-bg;
+	                color: $button--main-mobile-text;
+                {% endcomment %}
+              }
+            }
+          </style>
+          {% endfor %}
+        </ul>
+      </div><!-- .flexslider -->
+
+      {% comment %} New navigation {% endcomment %}
+
+      {% if section.blocks.size > 1 %}
+
+        <div class="slider--nav">
+          <a href="#" class="flex-prev">
+            <div class="desk-flex-prev">
+              {% include 'svg-icon-arrow-left' %}
+            </div>
+            <div class="mob-flex-prev">
+              {% include 'svg-icon-caret-left' %}
+            </div>
+          </a>
+          <div class="pagination">
+            <span class="flexslider--current-slide"></span>
+            <span class="slash">/</span>
+            <span class="flexslider--total-slides"></span>
+          </div>
+          <a href="#" class="flex-next">
+            <div class="desk-flex-next">
+              {% include 'svg-icon-arrow-right' %}
+            </div>
+            <div class="mob-flex-next">
+              {% include 'svg-icon-caret-right' %}
+            </div>
+          </a>
+        </div><!-- .slider--nav -->
+
+      {% endif %}
+
+      {% endif %}
+
+      {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+      {% endif %}
+
+      {% unless section.settings.full_width %}
+    </div>
+  </div>
+  {% endunless %}
+</div>
+<div class="clear"></div>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Images"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (Desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Image (Mobile)"
+        },
+        {
+          "type": "url",
+          "id": "cta_full_image",
+          "label": "Full image link"
+        },
+        {
+          "type": "header",
+          "content": "Text Box - Content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Add a title to your image"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_header_desktop",
+          "label": "Hide Heading on Desktop"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Tell your brand's story through images"
+        },
+        {
+          "type": "header",
+          "content": "Button 1"
+        },
+        {
+          "type": "url",
+          "id": "cta_one_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta_one_button_text",
+          "label": "Button text",
+          "default": "Add a button",
+          "info": "Visible only if a link is chosen"
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "url",
+          "id": "cta_two_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta_two_button_text",
+          "label": "Button text",
+          "default": "Add a button",
+          "info": "Visible only if a link is chosen"
+        },
+        {
+          "type": "header",
+          "content": "Button 3"
+        },
+        {
+          "type": "url",
+          "id": "cta_three_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta_three_button_text",
+          "label": "Button text",
+          "default": "Add a button",
+          "info": "Visible only if a link is chosen"
+        },
+        {
+          "type": "header",
+          "content": "Button 4"
+        },
+        {
+          "type": "url",
+          "id": "cta_four_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "cta_four_button_text",
+          "label": "Button text",
+          "default": "Add a button",
+          "info": "Visible only if a link is chosen"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_buttons_desktop",
+          "label": "Hide Buttons on Desktop"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_buttons_mobile",
+          "label": "Hide Buttons on Mobile"
+        },
+        {
+          "type": "header",
+          "content": "Text Box - Color Scheme"
+        },
+        {
+          "type": "select",
+          "id": "caption_color_scheme",
+          "label": "Color Scheme",
+          "info": "Choose a color scheme from the prescribed branding colors, or select CUSTOM to select your own colors",
+          "options": [
+            {
+              "value": "white",
+              "label": "White"
+            },
+            {
+              "value": "dark",
+              "label": "Dark"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "custom_slide_main_color",
+          "label": "Custom - Main Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "custom_slide_alt_color",
+          "label": "Custom - Alternate Color",
+          "default": "#e41c39"
+        },
+        {
+          "type": "header",
+          "content": "Text Box - Position"
+        },
+        {
+          "type": "text",
+          "id": "caption_horizontal_offset",
+          "label":  "Horizontal offset, enter % value 0 - 100 (desktop only)",
+          "default": "50"
+        },
+        {
+          "type": "text",
+          "id": "caption_vertical",
+          "label":  "Vertical position, enter % value 0 - 88",
+          "default": "50"
+        },
+        {
+          "type": "text",
+          "id": "caption_vertical_mobile",
+          "label":  "Vertical position, enter % value 5 - 80 (mobile)",
+          "default": "65"
+        },
+        {
+          "type": "header",
+          "content": "Text Box - Background"
+        },
+        {
+          "type": "color",
+          "id": "caption_background",
+          "label": "Background",
+          "default": "transparent"
+        },
+        {
+          "type": "select",
+          "id": "caption_opacity",
+          "label": "Background opacity",
+          "options": [
+            {
+              "value": "0.1",
+              "label": "10%"
+            },
+            {
+              "value": "0.2",
+              "label": "20%"
+            },
+            {
+              "value": "0.3",
+              "label": "30%"
+            },
+            {
+              "value": "0.4",
+              "label": "40%"
+            },
+            {
+              "value": "0.5",
+              "label": "50%"
+            },
+            {
+              "value": "0.6",
+              "label": "60%"
+            },
+            {
+              "value": "0.7",
+              "label": "70%"
+            },
+            {
+              "value": "0.8",
+              "label": "80%"
+            },
+            {
+              "value": "0.9",
+              "label": "90%"
+            },
+            {
+              "value": "1.0",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "label": "Slideshow speed (seconds)",
+      "default": 5
+    }
+  ],
+  "presets": [{
+    "name": "Slideshow",
+    "category": "Image",
+    "blocks": [
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}

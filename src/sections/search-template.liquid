@@ -1,0 +1,139 @@
+{%- assign product_limit = 50 -%}   
+
+<div id="search-template" class="desktop-12 tablet-6 mobile-3" data-section-id="{{ section.id }}" data-section-type="search-template">
+
+  <div class="collection-template row">
+  
+    {% comment %} :: COLLECTION SIDEBAR :: {% endcomment %}
+    <div id="collection--sidebar" class="mobile-3 desktop-2">
+
+      <h2 class="search--sidebar-title bc-sf-search-result-number"></h2>
+
+      {% comment %} :: FILTER - Mobile Component :: {% endcomment %}
+      <div id="filter-list-mobile-wrap">
+        <div id="filter-list-button-wrap">
+          
+          {% comment %} FILTER BUTTON {% endcomment %}
+          <div id="filter-button-mobile">
+            <div id="bc-sf-filter-tree-mobile"></div>
+            <div id="filter-button-arrow"></div>
+          </div>
+        </div>
+
+        {% comment %} FILTERS LIST {% endcomment %}
+        {% comment %} <div id="bc-sf-filter-tree"></div> {% endcomment %}
+      </div>
+
+      <div id="bc-sf-filter-tree" class="filter-list-desktop"></div>
+      
+    </div><!--#collection--sidebar-->
+
+    {% comment %} :: COLLECTION MAIN :: {% endcomment %}
+    <div id="collection--main" class="mobile-3 desktop-10">
+
+      <h1 class="collection--title bc-sf-search-result-number"></h1>
+
+      <div id="search-bar" class="desktop-12 mobile-3">
+        <form action="/search" method="get">
+          <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+          {% include 'svg-icon-search' %}
+        </form>
+      </div>
+
+      {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
+      <div id="full-width-filter" class="filter-wrap-desktop">
+        <ul id="sortme" class="sort-options animate25">
+          <li id="bc-sf-filter-top-sorting" class="clearfix filter"></li>
+        </ul>
+      </div>
+
+      {% comment %} :: PRODUCT LIST :: {% endcomment %}
+      <div id="product-loop" data-bc-sort="{{ collection.default_sort_by }}">
+
+        {% comment %} {% assign products-per-row = section.settings.products-per-row %}
+        {% if collection.image %}
+          <div class="product-index {{ grid_item_width }}" data-alpha="{{ collection.title }}">     
+              {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}     
+          </div>  
+        {% endif %}
+
+        {% for product in collection.products %}
+          <div class="product-index {{ grid_item_width }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">     
+            {% include 'product-listing' %}
+          </div>
+        {% endfor %} {% endcomment %}
+      </div>
+
+      <div id="bc-sf-filter-load-more"></div>
+
+      {% for block in section.blocks %}
+        {% if block.settings.nosto_id != blank %}
+          <div class="desktop-12 tablet-6 mobile-3">
+            {% include 'nosto-element' with block.settings.nosto_id %}
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} :: PAGINATION :: {% endcomment %}
+      <div id="pagination" class="desktop-12 tablet-6 mobile-3">
+        <div id="bc-sf-filter-bottom-pagination"></div>        
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collection page",
+    "blocks": [
+      {
+        "name": "Nosto element",
+        "type": "nosto_element",
+        "settings": [
+          {
+            "type": "text",
+            "id": "nosto_id",
+            "label": "Nosto id"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  // Declare bcSfFilterConfig variable
+  var bcSfFilterConfig = {
+    label: {
+      sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Sorting" {% endunless %},
+      sorting_best_selling: {% assign temp = 'collections.sorting.best_selling' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Best Selling" {% endunless %},
+      sorting_featured: {% assign temp = 'collections.sorting.featured' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Featured" {% endunless %},
+      sorting_title_ascending: {% assign temp = 'collections.sorting.az' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},
+      sorting_title_descending: {% assign temp = 'collections.sorting.za' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},
+      sorting_price_ascending: {% assign temp = 'collections.sorting.price_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Lowest Price" {% endunless %},
+      sorting_price_descending: {% assign temp = 'collections.sorting.price_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Highest Price" {% endunless %},
+      sorting_date_ascending: {% assign temp = 'collections.sorting.date_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},
+      sorting_date_descending: {% assign temp = 'collections.sorting.date_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, New to Old" {% endunless %},
+      sorting_sale_descending: {% assign temp = 'collections.sorting.sale_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "% Off" {% endunless %},
+      sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Relevance" {% endunless %},
+      
+      sale: {{ 'products.general.sale' | t | json }},
+      sold_out: {{ 'products.general.sold' | t | json }},
+      new: {{ 'products.general.new' | t | json }},
+      pre_order: {{ 'products.product.pre_order' | t | json }},
+      quick_view: {{ 'products.general.quick_view' | t | json }},
+      from_price: {{ 'products.general.from' | t | json }},
+      pagination_of: {{ 'general.pagination.of' | t | json }},
+      showing_items: {{ 'general.pagination.showing_items' | t | json }},
+    },
+    custom: {
+      products_per_page: {% if product_limit %} {{ product_limit | json }} {% else %} 36 {% endif %},
+      products_per_row: 3,
+      quick_view_enable: {% if settings.quickview %} {{ settings.quickview | json }} {% else %} false {% endif %},
+      image_flip: {% if settings.image-flip %} {{ settings.image-flip | json }} {% else %} false {% endif %},
+      alternate_colors: {% if settings.alternate_colors %} {{ settings.alternate_colors | json }} {% else %} false {% endif %},
+      vendor_enable: {% if settings.vendor %} {{ settings.vendor | json }} {% else %} false {% endif %},
+    }
+  };
+</script>

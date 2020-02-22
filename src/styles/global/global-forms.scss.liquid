@@ -1,0 +1,81 @@
+// FORMS
+form {
+  margin-bottom: 0;
+}
+fieldset {
+  margin-bottom: 20px;
+}
+
+// FORMS :: Labels & Legends
+label,
+legend {
+  display: block;
+  @include h7;
+  color: $color--primary-3;
+
+  span {
+    color: {{ settings.text_color }};
+    font-weight: $font-weight--book;
+    @include fontSize( 13px );
+  }
+}
+
+// FORMS :: Inputs
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: 40px;
+  outline: none;
+  margin: 0;
+
+  border: 1px solid {{ settings.dotted_color }};
+  border-radius: 0;
+  margin-bottom: 10px;
+  background: transparent;
+
+  color: $color--primary-3;
+  font-weight: $font-weight--medium;
+  @include fontDim( 13px, 40px, 0em );
+  text-indent: 10px;
+
+  &:hover {
+    border-color: $color--primary-1;
+  }
+
+  &:focus {
+    -moz-box-shadow: 0 0 3px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
+    box-shadow:  0 0 3px rgba(0,0,0,.2);
+    min-height: 32px;
+  }
+}
+select {
+  padding: 0;
+}
+textarea {
+  min-height: 60px;
+  min-width: 300px;
+  line-height: 1.4em;
+}
+input[type="checkbox"] {
+  display: inline;
+}
+
+.empty_a_link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

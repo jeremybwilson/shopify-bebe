@@ -1,0 +1,157 @@
+/* 
+  Typography :: Font Declarations
+================================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i');
+
+/* 
+  Typography :: Baseline styles
+================================================== */
+
+body { 
+  color: {{ settings.text_color }};
+  font-family: $font-stack--default;
+  background: {{ settings.background }};
+  @include p;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+p {
+  @include p;
+  margin-bottom: 10px;
+}
+a {
+  text-decoration: none;
+  color: $color--accent-1;
+  outline: 0;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    color: $color--accent-1;
+    text-decoration: underline;
+  }
+  &:focus {
+    color: $color--accent-1;
+    outline: none;
+  }
+  &:visited {
+    color: $color--accent-1;
+  }
+}
+strong {
+  font-weight: bold;
+}
+em { 
+  font-style: italic;
+}
+
+// Type :: Headings
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: {{ settings.header_color }};
+  font-family: $font-stack--heading;
+  line-height: normal;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p, dl, hr, ol, ul, pre, table, address, fieldset { margin-bottom: 5px; }
+
+h1 {
+  @include h1;
+
+  #content & {
+    padding: 10px 0 14px;
+    border-bottom: dotted 1px #000;
+  }
+}
+h2 { @include h2; }
+h3 { @include h3; }
+h4 { @include h4; }
+h5 { @include h5; }
+h6 { @include h6; }
+
+pre {
+  font-family: $font-stack--default;
+  font-size: 14px;
+  font-weight: $font-weight--book;
+}
+
+// Type :: Lists
+
+dt {
+  font-weight: $font-weight--bold;
+}
+ol, ul {
+  margin: 0.5rem;
+}
+ol {
+  margin-left: .75rem;
+  padding-left: 0;
+  list-style-position: outside;
+
+  li {
+    padding-left: .5rem;
+  }
+  ol {
+    margin-left: 1.2rem;
+  }
+}
+ul {
+  margin-left: 1.25rem;
+  padding-left: 0;
+  list-style: disc outside;
+
+  li {
+      margin-left: -.25rem;
+  }    
+}
+
+blockquote {
+  font-family: $font-stack--default;
+  font-size: 18px;
+  line-height: 24px;
+  font-style: italic;
+  padding-left: 35px;
+  color: $color--primary-3;
+  margin: .5em 0 .5em 0;
+}
+
+hr {
+  background:{{ settings.dotted_color }};
+  border: none;
+  color: {{ settings.dotted_color }};
+  display: block;
+  height: 1px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+// Type :: Tables;
+
+table {
+  @include p;
+  border-bottom: solid 1px $color--field-1;
+
+  // General Styles
+  th, td {
+    text-align: left;
+    padding: .5rem .75rem;
+  }
+  th {
+    background: $color--field-1;
+    font-weight: $font-weight--bold; 
+  }
+  tbody tr:nth-child(odd) td {
+    background: $color--field-3;
+  }
+}
+
+// Type :: Utility Classes;
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }

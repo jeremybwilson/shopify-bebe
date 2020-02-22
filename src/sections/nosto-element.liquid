@@ -1,0 +1,25 @@
+{% if section.settings.nosto_id != blank %}
+  <div class="index-section index-section--nosto-element" data-section-id="{{ section.id }}" data-section-type="nosto-section">
+    <div class="row">
+      {% include 'nosto-element' with section.settings.nosto_id %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Nosto element",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Nosto ID",
+        "id": "nosto_id",
+        "default": "frontpage-nosto-2"
+      }
+    ],
+    "presets": [{
+      "name": "Nosto element",
+      "category": "Collection"
+    }]
+  }
+{% endschema %}

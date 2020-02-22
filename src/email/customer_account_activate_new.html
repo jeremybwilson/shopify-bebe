@@ -1,0 +1,154 @@
+{% capture email_title %}Activate your account{% endcapture %}
+{% capture email_body %}
+  <p>You've created a new customer account at <a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate">bebe.com</a>. All you have to do is activate it.</p>
+{% endcapture %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>{{ email_title }}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="/assets/notifications/styles.css">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial;
+      font-size: 14px;
+    }
+
+    p, strong, a {
+      font-size: 1em;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #9d6d31;
+    }
+
+    a:visited {
+      color: #9d6d31;
+    }
+
+    .body {
+      border: 1px solid #d3dbe2;
+    }
+
+    .disclaimer__subtext,
+    .disclaimer__subtext a {
+      font-size: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <table class="body">
+    <tr>
+      <td>
+
+        {% comment %}{- LOGO -}{% endcomment %}
+        <table class="row">
+          <tr>
+            <td class="header__cell">
+              <center>
+                <table class="container" style="text-align:center;">
+                  <tr>
+                    <td style="padding:35px 0">
+                      <table class="row">
+                        <tr>
+                          <td class="shop-name__cell">
+                            {%- if shop.email_logo_url %}
+                              <img src="{{shop.email_logo_url}}" alt="bebe.com" width="{{ shop.email_logo_width }}">
+                            {%- else %}
+                              <h1 class="shop-name__text">
+                                <a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate">bebe.com</a>
+                              </h1>
+                            {%- endif %}
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+            </td>
+          </tr>
+        </table>{% comment %}{- END LOGO -}{% endcomment %}
+
+        {% comment %}{- BODY -}{% endcomment %}
+        <table class="row content" style="border-top: 1px solid #d3dbe2;">
+          <tr>
+            <td class="content__cell" style="padding-top:40px;">
+              <center>
+                <table class="container">
+                  <tr>
+                    <td>
+                      <p><strong>Hi {{ customer.name }},</strong></p>
+                      {% if custom_message != blank %}
+                        <p>{{ custom_message }}</p>
+                      {% else %}
+                        {{ email_body }}
+                      {% endif %}
+                      <p>
+                        Have a question or concern?
+                        Please <a href="mailto:{{ shop.email }}">Contact Us.</a>
+                        We're always happy to assist you.
+                      </p>
+                      <p>Fashionably yours,</p>
+                      <p>
+                        The bebe Team <br>
+                        877-bebe-777 (<a href="tel:877-232-3777">877-232-3777</a>) <br>
+                        <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+            </td>
+          </tr>
+        </table> {% comment %}{- END BODY -}{% endcomment %}
+
+        {% comment %}{- FOOTER -}{% endcomment %}
+        <table class="row footer">
+          <tr>
+            <td class="footer__cell">
+              <center>
+                <table class="container" style="text-align:center;margin-bottom:40px;">
+                  <tr>
+                    <td><a href="#" style="color:#000;text-decoration:none;letter-spacing:1px;">FIND A STORE</a></td>
+                    <td><a href="{{ shop.url }}/account?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate" style="color:#000;text-decoration:none;letter-spacing:1px;">MY ACCOUNT</a></td>
+                    <td><a href="{{ shop.url }}/pages/clubbebe?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate" style="color:#000;text-decoration:none;letter-spacing:1px;">CLUBBEBE</a></td>
+                  </tr>
+                </table>
+              </center>
+              <center>
+                <table class="container" style="text-align:center;">
+                  <tr>
+                    <td>
+                      <p class="disclaimer__subtext">
+                        Have a question? Call us at 877-bebe-777 (<a href="tel:877-232-37777">877-232-37777</a>).
+                      </p>
+                      <p class="disclaimer__subtext">
+                        To continue to receive <a href="{{ shop.url }}?utm_source=tran&utm_medium=email&utm_campaign=customer_account_activate">bebe.com</a> email,
+                        please add <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                        to your address book.
+                      </p>
+                      <p class="disclaimer__subtext">
+                        bebe Stores, Inc., 400 Valley Drive, Brisbane, CA 94005 <br>
+                        Copyright &copy; {{ 'now' | date: "%Y" }} bebe Stores, Inc. All rights reserved.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </center>
+            </td>
+          </tr>
+        </table> {% comment %}{- END FOOTER =}{% endcomment %}
+
+        <img src="{{ 'notifications/spacer.png' | shopify_asset_url }}" class="spacer" height="1" />
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

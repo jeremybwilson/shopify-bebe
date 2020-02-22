@@ -1,0 +1,122 @@
+{% comment %}
+
+  PRODUCT VIDEO - Inits
+  -----------------------------  
+{% endcomment %}
+
+{% for tag in product.tags %}
+
+  {% comment %} Check to see if tag exists {% endcomment %}
+
+  {% if tag contains 'product_video_url' %}
+
+    {% assign product_vid = tag | remove: 'product_video_url_' %}
+
+    {% if product_vid contains 'youtu' %}
+      {% comment %} YOUTUBE {% endcomment %}
+
+      {% assign product_vid_type = 'youtube' %}
+
+      {% comment %} Parse through YT code and pull the ID {% endcomment %}
+
+      {% if product_vid contains '?v=' %}
+        {% comment %}https://www.youtube.com/watch?v=dfDIvsmYla8{% endcomment %}
+
+        {% assign product_vid_array = product_vid | split: '=' %}
+        {% assign vid_id = product_vid_array[1] %}
+
+      {% elsif product_vid contains '.be/' %}
+        {% comment %}https://youtu.be/dfDIvsmYla8{% endcomment %}
+
+        {% assign product_vid_array = product_vid | split: '/' %}
+        {% assign vid_id = product_vid_array[3] %}
+
+      {% endif %}
+
+      {% comment %} Grab the thumbnail image for the thumbnail gallery {% endcomment %}
+
+      {% assign product_video_thumbnail = "//img.youtube.com/vi/" | append: vid_id | append: '/0.jpg' %}
+
+    {% elsif product_vid contains 'vimeo' %}
+
+      {% assign product_vid_type = 'vimeo' %}
+
+        {% assign product_vid_array = product_vid | split: '/' %}
+        {% comment %}https://player.vimeo.com/video/29180101{% endcomment %}
+        {% if product_vid contains 'player' %}
+          {% assign vid_id = product_vid_array[4] %}  
+        {% else %}
+          {% comment %}https://vimeo.com/291801018{% endcomment %}
+          {% assign vid_id = product_vid_array[3] %}
+        {% endif %}
+
+        {% assign product_video_thumbnail = vid_id %}
+
+    {% endif %}
+
+  {% endif %}
+
+{% endfor %}
+
+{% comment %}
+
+  PRODUCT VIDEO - Captures
+  -----------------------------  
+{% endcomment %}
+
+{% if product_vid != blank %}
+
+  {% comment %} Video {% endcomment %}
+
+  {% capture product_video %}
+
+    <div class="product-main-image product-video" data-image-id="video_thumbnail_id">
+
+      <div class="video-wrapper">
+        {% if product_vid_type != blank %}
+          {% if product_vid_type == "youtube" %}
+          <div id="product-video--youtube" data-src="{{ vid_id }}"></div>
+          {% endif %}
+          {% if product_vid_type == "vimeo" %}
+            <div id="product-video--vimeo"></div>
+          {% endif %}
+        {% endif %}
+      </div>  
+
+    </div>
+
+  {% endcapture %}
+
+  {% comment %} Video Thumbnail {% endcomment %}
+
+  {% capture product_video_thumbnail %}
+
+    <div class="product-thumbnail product-video-thumbnail active" data-image-id="video_thumbnail_id">
+      <span class="play-overlay">Play</span>
+      <span class="play-overlay-box"></span>
+      <img class="{% if product_vid_type == 'vimeo' %} vimeo-thumbnail {% else %} lazyload lazyload-fade {% endif %} {% if product_vid_type == 'youtube' %} youtube-thumbnail {% endif %}"
+        data-src="{{ product_video_thumbnail }}" />
+    </div>
+        
+  {% endcapture %}
+
+  {% comment %} Mobile Video {% endcomment %}
+
+  {% capture mobile_product_video %}
+
+  <div class="mthumb">
+    <div class="video-wrapper">
+      {% if product_vid_type != blank %}
+        {% if product_vid_type == "youtube" %}
+        <iframe src="//www.youtube.com/embed/{{ vid_id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+        {% if product_vid_type == "vimeo" %}
+          <iframe src="//player.vimeo.com/video/{{ vid_id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+      {% endif %}
+    </div>  
+  </div>
+
+  {% endcapture %}
+
+{% endif %}

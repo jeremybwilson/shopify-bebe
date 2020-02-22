@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+.flexslider li {
+  margin-left: 0;
+}
+
+.slideshow-section {
+  margin-bottom: 0;
+
+  &.homepage-section {
+    @include mq('phone') {
+      margin-top: 5px;
+    }
+
+    .slide-title {
+      font-weight: normal;
+    }
+
+  }
+
+  // image holder (for lazy-loading)
+
+  .box-ratio {
+    &.slideshow__image__mobile {
+      @include mq('tablet-and-up') {
+        display: none;
+      }
+    }
+    &.slideshow__image__desktop {
+      display: none;
+      @include mq('tablet-and-up') {
+        display: inherit;
+      }
+    }
+  }
+
+  // text-box
+
+  .flex-caption {
+    @include flexbox;
+    @include justify-content(center);
+    padding: 0;
+    transform: translateY(-50%);
+
+    /* PDM-642 - disabling horizontal position menu in customizer */
+    @include mq('tablet-and-up') {
+      /* set justify content to flex-start for desktop (by default) */
+      @include justify-content(flex-start);
+      /* removed these settigns with removal of left/center/right horizontal position dropdown */
+    //   &.caption-align-left {
+    //     @include justify-content(flex-start);
+    //   }
+    //   &.caption-align-right {
+    //     @include justify-content(flex-end);
+    //   }
+    }
+
+    .caption-inners {
+      display: inline-block;
+      padding: 10px 20px;
+      max-width: 700px;
+      text-align: center;
+
+      /* PDM-642 - removing padding around CTA button to tighten up horizontal offset */
+      @include mq('tablet-and-up') {
+        padding: 10px 0px;
+      }
+    }
+  }
+
+  ul.slides > li {
+    margin-left: 0;
+  }
+
+  .slide-title {
+    border-bottom: 0 !important;
+    font-weight: $font-weight--black;
+    @include fontDim(30px,36px,.04em);
+    text-transform: uppercase;
+
+    @include mq('phone') {
+      text-transform: none;
+    }
+    @include mq('tablet') {
+      @include fontSize(38px);
+    }
+    @include mq('tablet-and-up') {
+      @include fontDim(48px,57px,0);
+
+      &.hide-desktop {
+        text-indent: -9999px;
+      }
+    }
+
+    &:after {
+      display: none !important;
+    }
+  }
+
+  li.slide_image {
+    @include mq('phone') {
+      margin-left: 0;
+    }
+  }
+
+  // button / cta
+
+  .caption {
+    margin-top: 12px;
+    font-weight: $font-weight--bold;
+    @include fontDim(14px,22px,0);
+
+    @include mq('tablet-and-up') {
+      margin-top: 20px;
+      @include fontDim(16px,26px,0);
+    }
+  }
+
+  // text box
+
+  .cta {
+    display: inline-block;
+    margin: 10px 10px 0;
+    min-width: 230px;
+
+    @include mq('tablet-and-up') {
+      margin-top: 18px;
+    }
+
+    a {
+      display: inline-block;
+      @include buttonDefaultStyle;
+      color: $color--white;
+      width: 100%;
+
+    }
+  }
+
+  // navigation
+
+  .flexslider.one-image-only .slider--nav {
+    display: none;
+  }
+  .slider--nav {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    color: $color--white;
+
+    .desk-flex-next,.desk-flex-prev{
+      display: none;
+    }
+    .mob-flex-prev{
+      margin-left: 15px;
+      display: inline-block;
+    }
+    .mob-flex-next{
+      float: right;
+      margin-right: 15px;
+    }
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include justify-content(space-between);
+      @include align-items(center);
+      bottom: 40px;
+      left: 50%;
+      max-width: 220px;
+      transform: translateX(-50%);
+      top: inherit;
+      .mob-flex-next,.mob-flex-prev{
+        display: none;
+      }
+      .desk-flex-next,.desk-flex-prev{
+        display: block;
+      }
+    }
+
+    .hide-pagination & {
+      @include mq('tablet-and-up') {
+        display: none;
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 68px;
+      stroke: #fff;
+      @include mq('tablet-and-up') {
+        height: 20px;
+      }
+      margin-top: 7px;
+
+      * {
+        fill: $color--white;
+        stroke: $color--white;
+      }
+    }
+
+    // pager
+
+    .pagination {
+      display: none;
+
+      @include mq('tablet-and-up') {
+        @include flexbox;
+        @include justify-content(center);
+        position: relative;
+        padding: 10px;
+        background: $color--white;
+        color: $color--accent-1;
+        font-weight: $font-weight--black;
+        @include fontDim(14px,14px,0);
+        text-align: center;
+        @include mq('tablet-and-up') {
+          @include fontSize(14px);
+        }
+
+        span {
+          display: inline;
+          text-align: center;
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+}
+
+
+
+    /***Desktop slider navigation***/
+    .slideshow-section .slider--nav {
+        top: 50%;
+        bottom: auto;
+        max-width: 100%;
+    }
+    .pagination {
+        display: none !important;
+    }
+    .slideshow-section .slider--nav .mob-flex-next, .slideshow-section .slider--nav .mob-flex-prev{
+      display: inline-block;
+    }
+    .slideshow-section .slider--nav .desk-flex-next, .slideshow-section .slider--nav .desk-flex-prev{
+      display:none !important;
+    }
+    .slideshow-section .slider--nav svg {
+        height: 68px;
+        margin-top: -34px;
+    }
+    .slideshow-section .slider--nav a.flex-prev {
+        text-align: left !important;
+    }
+    .slideshow-section .slider--nav a.flex-next {
+        text-align: right !important;
+    }
+@media (max-width:767px){
+    .slideshow-section .slider--nav svg {
+        height: 40px;
+        margin-top: -20px;
+    }
+}

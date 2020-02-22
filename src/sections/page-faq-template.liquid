@@ -1,0 +1,156 @@
+<div id="faq">
+  <div id="subpage">
+    {% include 'sidenav' %}
+
+    <div class="page-content-field">
+      {% comment %} CONTENT :: Page Title - removing from Pre Questions field {% endcomment %}
+      {% if section.settings.section_title_top != blank %}
+          <h1 class="faq-title">{{ section.settings.section_title_top }}</h1>
+      {% endif %}
+
+        {{ page.content }}
+
+        {% comment %} CONTENT :: Before Questions {% endcomment %}
+        {% if section.settings.before_content != blank %}
+            {{ section.settings.before_content }}
+        {% endif %}
+
+        <h2>FAQs</h2>
+        {% for block in section.blocks %}
+          {% if block.settings.heading_only == true %}
+            <h3><a href="#{{ block.settings.anchor | escape }}">{{ block.settings.title }}</a></h3>
+          {% endif %}
+        {% endfor %}
+
+        {% comment %} FAQ :: Block loop {% endcomment %}
+        {% for block in section.blocks %}
+
+          {% if block.settings.heading_only != false %}
+
+            <h2 class="heading">{{ block.settings.title }}</h2>
+
+          {% else %}
+
+          <div class="toggle">
+            <div class="toggle-title">
+
+              <h4>{{ block.settings.title }}</h4>
+              <span class="opener">{% include 'svg-icon-caret-down' %}</span>
+
+            </div><!-- .toggle-title -->
+
+            {% if block.settings.anchor != blank %}
+            <a id="{{ block.settings.anchor | escape }}" style="display: block; position: relative; top: {{ section.settings.anchor_top_offset }}px; visibility: hidden;"></a>
+            {% endif %}
+
+            <div class="toggle-inner">
+                {{ block.settings.answer }}
+            </div><!-- .toggle-inner -->
+          </div><!-- .toggle -->
+      
+          {% endif %}
+        {% endfor %}
+
+        {% comment %} CONTENT :: After Questions {% endcomment %}
+        {% if section.settings.after_content != blank %}
+            {{ section.settings.after_content }}
+        {% endif %}
+
+    </div><!-- .page-content-field -->
+  </div><!-- .subpage -->
+</div><!-- #faq -->
+
+<script>
+$( document).ready(function() {
+	// Expand section if url contains a direct anchor reference
+	var targetSection = window.location.href.split( '#' )[1]; // undefined if not present, aka false
+	if ( targetSection ) {
+		$( '#' + targetSection ).parent('.toggle-title').addClass( 'active' );
+	}
+
+	if( $(".toggle .toggle-title").hasClass('active') ){
+      $(".toggle .toggle-title.active").closest('.toggle').find('.toggle-inner').show();
+    }
+
+    $(".toggle .toggle-title").click(function(){
+      if( $(this).hasClass('active') ){
+        $(this).removeClass("active").closest('.toggle').find('.toggle-inner').slideUp(200);
+        // console.log(`you opened this`, this);
+      }
+      else{
+        $(this).addClass("active").closest('.toggle').find('.toggle-inner').slideDown(200);
+        // console.log(`you opened this`, this);
+      }
+    });
+});
+</script>
+
+{% schema %}
+  {
+    "name": "FAQ page",
+    "settings": [
+    {
+        "type": "header",
+        "content": "FAQ Page Content"
+    },
+    {
+        "type": "range",
+        "id": "anchor_top_offset",
+        "min": -300,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Anchor - Top offset",
+        "default": -100
+    },
+    {
+        "type": "text",
+        "id": "section_title_top",
+        "label": "Sectional Title for Questions (text)"
+    },
+    {
+        "type": "html",
+        "id": "before_content",
+        "label": "Pre-questions content (HTML)"
+    },
+    {
+        "type": "html",
+        "id": "after_content",
+        "label": "Post-questions content (HTML)"
+    },
+    {
+        "type": "link_list",
+        "id": "landing_page_cs_nav",
+        "label": "FAQ Page Navigation Customer Service Links"
+    }
+    ], 
+    "blocks": [ 
+    {
+        "type": "html",
+        "name": "FAQ Question",
+        "settings":[
+            {
+                "type": "checkbox",
+                "id": "heading_only",
+                "label": "Check the box to enable section heading (optional)"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Question (FAQ section title if above box is checked)"
+            },
+            {
+                "type": "html",
+                "id": "answer",
+                "label": "Answer"
+            },
+            {
+                "type": "text",
+                "id": "anchor",
+                "label": "Anchor ID"
+            }
+        ]
+    }
+    ]
+  }
+{% endschema %}

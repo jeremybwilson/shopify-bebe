@@ -1,0 +1,424 @@
+// Not sure why the content block has a 100px top padding, but don't need it here on this page
+body[class*='size-chart'] #content {
+    padding-top: 0px;
+}
+
+#size-chart--wrapper {
+  position: relative;
+  text-align: center;
+  padding-top: 20px;
+  height: 100%;
+
+  @include mq( 'tablet-and-up' ) {
+    text-align: left;
+  }
+
+  h2 {
+    color: #000;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    margin-bottom: 15px;
+  }
+
+  // NAV : Anchor link menu for jumping to specific charts
+  #size-chart--nav {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+
+    ul {
+      width: 100%;
+      margin: 0 auto;
+      max-width: 400px;
+      list-style: none;
+      padding: 5px 10px;
+      @include inline-flex;
+      @include flex-wrap( wrap );
+      @include align-items( center );
+      @include justify-content( space-between );
+
+      @include mq( 'tablet-and-up' ) {
+        max-width: 100%;
+      }
+
+      li {
+        margin: 0 0 15px;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 150px;
+        text-align: left;
+
+        &:nth-child(2n) {
+          text-align: right;
+        }
+
+        @include mq( 'tablet-and-up' ) {
+          min-width: 30px;
+          text-align: center;
+
+          &:nth-child( 2n ) {
+            text-align: center;
+          }
+        }
+
+        a {
+          color: $color--primary-1;
+        }
+      }
+    }
+  }
+
+  #measure-guide--wrapper {
+    position: relative;
+    width: 100%;
+    height: 470px;
+    margin-top: 20px;
+
+    @include mq( 'tablet-and-up' ) {
+      height: 549px;
+    }
+
+    @include mq( 'lap-and-up' ) {
+      position: absolute;
+      right: 0;
+      width: 288px;
+      margin-top: 140px;
+    }
+
+    @include mq( 'desk-and-up' ) {
+      right: 120px;
+    }
+
+    #measure-guide {
+      width: 100%;
+      height: 100%;
+      background-image: url( {{ 'measurement-guide.png' | asset_url }} );
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50%, 50%;
+    }
+  }
+    
+}
+
+
+// CHARTS : Table Entities
+.size-chart--table {
+  height: 100%;
+
+  h4 {
+    @include fontSize( 18px );
+    text-align: left;
+    font-weight: $font-weight--medium;
+    margin-top: 25px;
+  }
+
+  // ADJUSTMENTS : Table adjustments to get them to play nicer on various screen sizes
+  #chart-dress-jumpsuits--us,
+  #chart-dress-jumpsuits--eu {
+
+    @include mq( 'lap-and-up' ) {
+      display: block;
+      width: 650px;
+      margin: 0 0 25px;
+
+      td {
+        padding: 16px 20px;
+      }
+    }
+
+    @include mq( 'wide-and-up' ) {
+      width: 910px;
+    }
+  }
+
+  #chart-dress-jumpsuits--eu {
+    @include mq( 'lap-and-up' ) {
+      td {
+        padding: 16px 12px;
+      }
+    }
+  } 
+
+  // MOBILE : This greatly helps mobile display these in a useful manner
+  .scroll-container {
+    display: block;
+
+    .scroll-content {
+      width: 100%;
+    }
+
+    table {
+      overflow-x: auto; // Let individual tables that are too large scroll sideways
+      border-bottom: none;
+      margin: 0 auto 25px;
+
+      @include mq( 'phone' ) {
+        display: block; //only way to make tables able to side scroll individually
+      }
+    }
+
+    @include mq( 'tablet-and-up' ) {
+      display: flex;
+      width: auto;
+    }
+  }
+
+  td, th {
+    padding: 8px;
+    text-align: center;
+
+    @include mq('lap-and-up') {
+      padding: 16px;
+    }
+  }
+
+  th {
+    font-weight: $font-weight--bold;
+    color: $color--primary-1;
+    @include fontDim(10px,12px,.2em);
+    text-transform: uppercase;
+
+    @include mq('lap-and-up') {
+      @include fontSize(16px);
+    }
+  }
+
+  thead {
+    th {
+      background: $color--primary-1;
+    }
+  }
+
+  tbody {
+    .th-odd {
+      background-color: $color--accent-1;
+    }
+
+    .th-even {
+      background-color: $color--accent-2;
+    }
+
+    td {
+      border-right: solid 1px $color--border-gray;
+      color: $color--primary-1;
+      @include fontDim(12px,12px,.025em);
+
+      @include mq('lap-and-up') {
+        @include fontSize(16px);
+      }
+    }
+
+    td:last-of-type {
+      border-right: none;
+    }
+    tr:nth-child(odd) td {
+      background-color: $color--white;
+    }
+    tr:nth-child(even) td {
+      background-color: #f2f2f2;
+    }
+  }
+}
+
+
+// POPUP
+.size-chart--trigger {
+  width: 100%;
+  text-align: center;
+  color: $color--accent-1;
+  font-weight: 600; // Inbetween according to
+  @include fontDim( 16px, 16px, .025em );
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover,
+  &:visited {
+    text-decoration: none;
+    color: $color--primary-2;
+  }
+}
+
+
+/*.product {
+  .fancybox-skin {
+    background: transparent;
+  }
+
+}*/
+
+
+// SIZE CHART - POPUP
+#size-chart--popup {
+  max-height: 80vh;
+  background: $color--white;
+  padding: 0;
+
+  @include mq('lap-and-up') {
+    max-width: 900px;
+    width: 100%;
+    overflow: auto;
+  }
+
+  #size-chart--wrapper {
+    padding: 15px;
+    background-color: $color--white;
+
+    #size-chart--nav {
+      ul {
+        padding: 0;
+
+        @include mq('desk-and-up') {
+          @include justify-content( flex-start );
+        }
+      
+        li {
+          margin: 4px 4px 4px 0;
+          font-weight: $font-weight--medium;
+          text-align: center !important;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          @include mq('desk-and-up') {
+            margin: 0 20px 8px 0;
+          }
+
+          @include mq( 'phone' ) {
+            font-size: 12px;
+            max-width: 100%;
+            margin-bottom: 8px;
+            font-size: 12px;
+
+            &:nth-child(1n) {
+              text-align: left !important;
+              // margin-left: 0;
+            }
+
+            &:nth-child(2n) {
+              text-align: right !important;
+              // margin-right: 0;
+            }
+          }
+
+          // Nav breaks at this point
+          @media (max-width: 415px) {
+            min-width: 100px;
+
+            &:nth-child(1n) {
+              margin-right: 2px;
+            }
+
+            &:nth-child(2n) {
+              margin-left: 2px;
+            }
+          }
+
+          @media (max-width: 364px) {
+            font-size: 10px;
+          }
+        }
+      }
+
+      p {
+        margin-top: -1%;
+      }
+    }
+  }
+  
+  h2 {
+    margin-top: 0;
+    @include fontSize( 26px );
+
+    @include mq( 'phone' ) {
+      @include fontSize( 22px );
+    }
+  }
+
+  .chart-wrapper {
+    @include flexbox;
+    @include flex-direction(row-reverse);
+    @include flex-wrap(nowrap);
+    padding-top: 15px;
+
+    @include mq('phone') {
+      display: block;
+    }
+  }
+
+  #measure-guide--wrapper {
+    @include flex(0, 0, 35%);
+    position: static;
+    margin-top: 0;
+    width: 35%;
+    height: 470px;
+
+    @include mq( 'phone' ) {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    #measure-guide {
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+  .size-chart--table {
+    @include flex(0, 0, 65%);
+    width: 65%;
+    overflow: auto;
+    height: 470px;
+
+    @include mq('phone') {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    h4 {
+      margin-bottom: 12px;
+      @include fontDim( 14px, 16px, 0 );
+
+      &:first-child {
+        margin-top: 0;        
+      }
+    }
+  }
+  
+  table {
+    width: 100% !important;
+
+    th, td {
+      @include mq('lap-and-up') {
+        padding: 8px 4px;
+      }  
+      td {
+        font-weight: $font-weight--book;
+      }
+    }
+  }
+  table th {
+    @include fontSize(10px);
+    letter-spacing: 0;
+  }
+  table td {
+    @include fontSize(10px);
+  }
+
+}
+
+
+// FAQ
+.faq-size-charts-wrapper {
+  position: relative;
+  margin: 15px 0 25px;
+
+  a {  
+    font-weight: $font-weight--medium;
+  }
+}
+

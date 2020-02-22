@@ -1,0 +1,103 @@
+{% assign product_image_box_ratio_max = 0 %}
+
+{% for image in product.images %}
+  {% assign image_box_ratio = image.height | append: ".0" | times: 1 | divided_by: image.width | times: 100 %}
+
+  {% if image_box_ratio > product_image_box_ratio_max %}
+    {% assign product_image_box_ratio_max = image_box_ratio %}
+  {% endif %}
+{% endfor %}
+
+{% assign product_image_box_ratio_max = product_image_box_ratio_max | append: "%" %}
+
+
+{% comment %} :: THUMBNAIL GALLERY :: {% endcomment %}
+{%- if product.images.size > 1 or product_vid != blank -%}
+  <div id="thumbnail-gallery" 
+    class="product-thumbnails {% if section.settings.thumbnails == 'bottom' %}desktop-12{% else %}{% endif %} mobile-3" 
+    data-slider-type="{% if section.settings.thumbnails == 'bottom' %}bottom{% elsif section.settings.thumbnails == 'left' %}left{% else %}right{% endif %}">
+   
+   {% if product.images.size > 2 %}<div class="thumbnail-slider">{% endif %}
+    {% for image in product.images %}
+      {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+      <div class="product-thumbnail {% if forloop.first %}selected{% endif %}{% if section.settings.thumbnails == 'bottom' %} desktop-2{% endif %}" 
+        data-image-id="{{ image.id }}" 
+        data-color-var="{{ image.alt | escape }}">
+
+        <img class="lazyload lazyload-fade"
+          src="{{ image | product_img_url: '200x' }}"
+          data-src="{{ img_url }}"
+          data-sizes="auto"
+          data-image-id="{{ image.id }}"
+          alt="{{ image.alt | escape }}">
+
+        <noscript>
+          <img src="{{ image | img_url: '200x' }}" alt="{{ image.alt | escape }}" />
+        </noscript>
+      </div>
+    {% endfor %}
+
+    {% comment %}:: THUMBNAIL :: (Rendered from 'product-video') {% endcomment %}
+    {{ product_video_thumbnail }}
+
+   {% if product.images.size > 2 %}</div>{% endif %}
+  </div>
+  {% if section.settings.show_controls %}
+    <div class="main-image-navigation">
+      <span class="prev-image"><i class="fa fa-angle-left"></i></span>
+      <span class="next-image"><i class="fa fa-angle-right"></i></span>
+    </div>
+  {% endif %}
+{%- endif -%}
+
+
+{% comment %} :: PRODUCT MAIN IMAGE :: {% endcomment %}
+<div class="product-main-images {% unless section.settings.show_zoom %}no-zoom {% endunless %}{% if section.settings.thumbnails == 'bottom' %}desktop-12{% else %}desktop-10{% endif %} mobile-3" >
+  <div class="product-image-container" style="padding-bottom: {{ product_image_box_ratio_max }};" >
+    {% for image in product.images %}
+      {% assign image_box_ratio = image.height | append: ".0" | times: 1 | divided_by: image.width | times: 100 | append: "%" %}
+      {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+      <div class="product-main-image {% if forloop.first %}selected{% endif %}" data-image-id="{{ image.id }}">
+      
+      {% comment %} :: ZOOM WRAPPER :: {% endcomment %}
+      {% if section.settings.show_zoom %}
+        <a class="product-fancybox" rel="product-images" title="product-images" href="{{ image | img_url: '1440x' }}">
+      {% endif %}
+
+          <div id="{{ product.id }}" 
+            class="product__image lazyload lazyload-fade"
+            
+            {% if section.settings.show_zoom %} 
+              data-zoom-src="{{ image | img_url: '1440x' }}" 
+            {% endif %}
+
+            style="background-image: url( '{{ image | product_img_url: '600x' }}' )"
+            alt="{{ image.alt | escape }}"></div>
+
+
+      {% comment %} :: ZOOM WRAPPER (Close) :: {% endcomment %}
+      {% if section.settings.show_zoom %}
+        </a>
+      {% endif %}
+        <noscript>
+          <img id="{{ product.id }}" class="product-main-image" src="{{ featured_image | product_img_url: '800x' }}" alt='{{ image.alt | escape }}'/>
+        </noscript>
+      </div>
+    {% endfor %}
+
+    {% comment %}
+      VIDEO - Rendered from 'product-video'
+    {% endcomment %}
+
+    {{ product_video }}
+
+  </div>
+  {% comment %}
+    INDI CAROUSEL - Rendered indi product carousel
+  {% endcomment %}
+  {% unless template == 'product.quick' %}
+    {% include 'indi-product-embed' %}
+  {% endunless %}
+</div>

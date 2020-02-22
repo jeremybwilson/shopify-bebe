@@ -1,0 +1,34 @@
+.homepage-section.rich-text {
+    h2.section-heading {
+        margin: 32px 0 16px 0;
+        padding: 0;
+        @include fontDim(16px, 18px, 0);
+        color: $color--primary-1;
+
+        &:after {
+            border: none;
+        }
+    }
+
+    @include mq('tablet-and-up') {
+        .rte {
+            p {
+                @include fontSize(12px);
+            }
+
+            &.col2 {
+                p {
+                    column-count: 2;
+                    column-gap: 70px;
+                }
+            }
+
+            &.col3 {
+                p {
+                    column-count: 3;
+                    column-gap: 70px;
+                }
+            }
+        }
+    }
+}

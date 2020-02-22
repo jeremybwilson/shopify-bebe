@@ -1,0 +1,183 @@
+// PRODUCT-QUICKVIEW.SCSS
+// -- sections/product-quickview.liquid
+
+
+/*  QUICKVIEW : Core Styles
+ * ---------------------------------------------- */
+
+.fancybox-quickview {
+	// Fancybox sucks at its job, it manually sets things when the box isn't fully loaded, slow devices will destroy this without hard sets.
+	position: fixed !important;
+	width: 720px !important;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate( -50%, -50% );
+	display: none;
+
+	+ .fancybox-overlay {
+		display: none;
+	}
+
+	.fancybox-inner {
+		max-width: 960px;
+		width: 100% !important;
+	}
+
+
+	@include mq( 'lap-and-up' ){
+		display: block;
+
+		+ .fancybox-overlay {
+			display: block;
+		}
+	}
+}
+
+#product-quick-view {
+	padding: 20px 20px 20px 20px;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+
+	#shopify-section-product-template {
+		margin-top: 0;
+		top: 0;
+
+		.product-details--top {
+			width: 100%;
+			margin: 0;
+		}
+
+
+		// IMAGES : LEFT SIDE : Left side of UI modal that holds image viewer
+		#product-photos {
+			max-height: 470px;
+			width: 500px;
+
+			.react-badge {
+				position: absolute;
+				right: 0;
+				top: 50px;
+			}
+
+			.product-main-images {
+				position: relative;
+				height: 100vh;
+				max-height: 470px;
+
+				.product-image-container {
+					height: 100%;
+					padding-bottom: 0 !important; // Override inline styles, plugin is rendering images in an ancient manner
+
+					.product-main-image {
+						width: 100%;
+						height: 100%;
+					}
+
+					.product__image {
+						max-height: 100%;
+						width: 100%;
+					    height: 100%;
+					    background-repeat: no-repeat;
+					    background-size: contain;
+					}
+				}
+			}
+
+			#thumbnail-gallery {
+				.bx-viewport {
+					height: 311px !important; // fancybox is an inline style nazi...
+				}
+			}
+		}
+
+		// DESCRIPTION : RIGHT SIDE : Right side of UI that houses product info and cart buttons
+		#product-right {
+			max-width: 340px;
+			margin-top: 20px;
+			margin-right: 0;
+
+			#product-description {
+				width: 100%;
+				padding: 0;
+				border: none;
+
+				h1 {
+					@include fontDim( 22px, 24px, 0 );
+					font-weight: $font-weight--medium;
+					color: $color--primary-1;
+				    text-transform: uppercase;
+				    text-align: center;
+				}
+
+				.desc {
+					border: none;
+					padding: 0;
+					margin: 0;
+				}
+
+				form {
+					float: none;
+				}
+
+				// PRODUCT FORM
+				#AddToCartForm {
+
+					// SIZE SQUARES :
+					.swatch.size {
+						width: calc( 100% + 5px ); // 100% + 5 so we can cheat the right margin to account for long and short size tags ("Youth 6" vs "5.5")
+
+						// Size : "5" or "5.5"
+						.swatch-element.short-label label {
+							width: 46px; //So half sizes = whole size boxes
+						}
+
+						// Size : "Youth 6" or "Wide 6"
+						.swatch-element.long-label label {
+							width: 97px; //So half sizes = whole size boxes
+						}
+					}
+				}
+
+				.product-sku--wrapper {
+					width: 100%;
+					color: $color--primary-3;
+					@include fontSize( 14px );
+					text-align: center;
+				}
+
+				// "View Full Details" Link
+				a.full-click {
+					@include fontSize( 14px );
+					color: $color--primary-1;
+					text-decoration: underline;
+					transition: color 0.25s ease-in-out;
+					text-align: center;
+					display: block;
+					margin-top: 20px;
+
+					&:hover {
+						color: $color--accent-1;
+					}
+				}
+			}
+		}
+	}
+}
+.final_sale {
+    color: #97281c;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    text-align: center;
+	&.sale_quikeview{
+    	text-align: center;
+		margin: 1.5em 0 0;
+	}
+	&.sale_product{
+		margin:0.5em 0 0.75em;
+	}
+	&.sale_cart{
+		margin-top:1em;
+	}
+}

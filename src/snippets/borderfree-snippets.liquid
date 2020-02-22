@@ -1,0 +1,23 @@
+  {% assign isProd = true %}
+  {% assign shop_domain = 'bebe-prod.myshopify.com' %}
+
+  {% if shop.domain contains shop_domain %}
+    {% assign isProd = true %}
+  {% endif %}
+
+  <!-- Borderfree ================================ -->
+  {% if settings.borderfree_enabled == true %}
+    {% if isProd %}
+    	{{ settings.borderfree_js_snippet_prod }}
+    {% else %}
+    	{{ settings.borderfree_js_snippet_dev }}
+    {% endif %}
+  {% endif %}
+
+  {% if settings.borderfree_enabled == true %}
+    {% if isProd %}
+    	{{ settings.borderfree_merchant_snippet_prod }}
+    {% else %}
+    	{{ settings.borderfree_merchant_snippet_dev }}
+    {% endif %}
+  {% endif %}

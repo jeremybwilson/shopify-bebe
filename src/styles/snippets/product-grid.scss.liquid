@@ -1,0 +1,222 @@
+/*  PRODUCT-GRID : Core Variables
+ * ---------------------------------------------- */
+$quickviewBtnBg: {{ settings.quickview_button_bg }};
+$quickviewBtnText: {{ settings.quickview_button_text }};
+
+$catalogItemTextColor: {{ settings.catalog_item_text_color }};
+$catalogItemPriceColor: {{ settings.catalog_item_price_color }};
+$catalogItemAccentColor: {{ settings.catalog_item_accent_color }};
+
+$loadMoreTextColor: {{ settings.collection_load_more_text }};
+$loadMoreBg: {{ settings.collection_load_more_bg }};
+$loadMoreBgHover: {{ settings.collection_load_more_bg_hover }};
+
+// CATALOG : Wrapper to the catalog items
+#product-loop {
+    position: relative;
+    clear: both;
+    //width: 110%; //Design has this wider than page edges, but the max-width will prevent page bound breakage
+    left: 50%;
+    transform: translateX( -50% );
+    max-width: 99vw; // Prevent breaking viewport bounds
+
+    @include mq( 'phone' ) {
+        padding-top: 0;
+    }    
+
+    // ITEM 
+    .product-index {
+        padding-left: 6px;
+        padding-right: 6px;
+        text-align: center;
+
+        @include mq ( 'phone' ) {
+            &:nth-child(2n-1) {
+                padding-left: 0;
+                padding-right: 5px;
+            }
+            &:nth-child(2n) {
+                padding-left: 5px;
+                padding-right: 0;
+            }
+        }
+    }
+
+    // IMAGE : Product Image containment and layers
+    .prod-container {
+        position: relative;
+        // height: 230px; // Adjust for mobile probs...
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        // @include mq( 'tablet-and-up' ){
+        //     height: 230px;
+        // }
+        // @include mq( 'lap-and-up' ) {
+        //     height: 290px;
+        // }
+        // @include mq( 'desk-and-up' ) {
+        //     height: 350px;
+        // }
+        // @include mq( 'wide-and-up' ) {
+        //     height: 432px;
+        // }
+
+        // IMAGE WRAPPER - OUTER : Extra layers to power some of UI features
+        .prod-image {
+            width: 100%;
+            height: 100%;
+
+            // IMAGE WRAPPER - INNER : inner wrap around the actual images themselves
+            .reveal {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    display: block;
+                    //max-height: 100%;
+                    margin: 0 auto;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    // QUICKVIEW BUTTON : Button to show the quickview
+    .product-index {
+        .product-info {
+            position: relative;
+            margin-top: 12px;
+            text-align: {{ settings.details_align }};
+        }
+        
+        .product-modal {
+            position: absolute;
+            top: -50px;
+            left: auto;
+            right: 8px;
+            width: 43px;
+            height: 40px;
+            padding: 9px 0;
+            box-sizing: border-box;
+            border-radius: 0;
+            background: $quickviewBtnBg;
+            color: $quickviewBtnText;
+            @include fontDim( 9px, 11px, 0em );
+            font-family: $font-stack--heading;
+            opacity: 0;
+        }
+
+        @include mq( 'lap-and-up' ) {
+            &:hover .product-modal {
+                display: block;
+                opacity: 0.9;
+                pointer-events: all;
+            }
+        }
+    }
+    
+
+    // TITLE : Wrapper around product title
+    .product-title-wrap {
+        text-decoration: none;
+
+        .product-title {
+            @include fontSize( 14px );
+            color: $catalogItemTextColor;
+            font-weight: $font-weight--book;
+            line-height: 1.2em;
+
+            @include mq( 'lap-and-up' ) {
+                @include fontSize( 15px );
+            }
+
+        }
+    }
+
+    .product-index:hover .product-title {
+        @include mq( 'lap-and-up' ) {
+            color: $color--accent-1;
+        }
+    }
+
+    // PRICE : Wrapper around price block
+    .product-price-wrap {
+        @include fontSize( 16px );
+        color: $catalogItemPriceColor;
+
+        .was,
+        .onsale {
+            display: inline-block;
+        }
+
+        .was {
+            color: $catalogItemPriceColor;
+        }
+
+        .onsale {
+            margin-right: 5px;
+            color: $catalogItemAccentColor;
+        }
+    }
+}
+
+.prod-container {
+
+
+    .icn {
+      line-height: 12px;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 11px;
+      padding: 5px 8px;
+      font-weight: bold;
+      font-size: 11px;
+      min-width: 60px;
+    }
+
+    .new {
+      z-index: 3;
+      background: {{ settings.new_background }};
+      color: {{ settings.new_text }};
+    }
+
+    .sale-item {
+      z-index: 3;
+      background: {{ settings.sale_background }};
+      color: {{ settings.sale_text }};
+    }
+
+    .so {
+      z-index: 4;
+      background: {{ settings.soldout_background }};
+      color: {{ settings.soldout_text }};
+    }
+
+    .pre-order {
+      z-index: 2;
+      background: {{ settings.soldout_background }};
+      color: {{ settings.soldout_text }};
+    }
+    
+}
+
+
+#pagination {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.bc-sf-filter-load-more-button {
+    display: inline-block;
+    @include mainButton;
+    @include buttonDefaultStyle;
+    height: 45px;
+}

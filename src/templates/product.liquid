@@ -1,0 +1,12 @@
+{% if product.tags contains 'hide_from_catalog' %}
+  {% include '404' %}
+  <script>
+    document.body.classList.remove('product')
+    var content = document.getElementById('content')
+    if (content) {
+      content.classList.add('row')
+    }
+  </script>
+{% else %}
+  {% section 'product-template' %}
+{% endif %}

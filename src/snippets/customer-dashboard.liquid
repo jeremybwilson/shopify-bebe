@@ -1,0 +1,319 @@
+<div id="club--dashboard">
+    {% comment %} <div class="announcement--box">
+        <h2 style="text-align: center;">Clubbebe Update</h2>
+        <h3 style="text-align: center; margin-bottom: 20px">We’re working on some improvements to bebe.com, so your clubbebe points &amp; rewards might look a little off right now.<br>Your clubbebe account will be fully updated by 1/31/19.</h3>
+    </div> {% endcomment %}
+
+    <div id="club--main-info">
+      {% comment %} POINTS Title - PDM-655 {% endcomment %}
+      <div id="club--points-panel-title" class="points-panel--panel">
+        <h2>clubbebe Points &amp; Rewards</h2>
+      </div>
+
+      {% comment %} POINTS TOP PANEL {% endcomment %}
+      <div id="club--points-panel">
+        {% comment %} Redeem Award {% endcomment %}
+        <div id="club--redeem-award" class="points-panel--panel" >
+          <div class="club--redeem__eligible"></div>
+          <div class="club--redeem__ineligible">
+            <div class="club--redeem-content">
+              <span class="club--desc">You have no available rewards at this time</span>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Current Points Total {% endcomment %}
+        <div id="club--current-points-total" class="points-panel--panel">
+          <span class="swell-point-balance club--big-number"><i class="fa fa-spin fa-spinner"></i></span>
+          <div class="club--desc">Current points balance</div>
+        </div>
+
+        {% comment %} Points To Next Reward {% endcomment %}
+        <div id="club--points-to-next-reward" class="points-panel--panel" >
+          <div id="progress-circle" class="progress-circle">
+            <div class="points-info">
+              <span class="points-to-next-reward club--big-number"></span>
+              <span class="club--desc">Points to next Reward</span>
+            </div>
+            <div class="left-half-clipper">
+              <div class="first50-bar"></div>
+              <div class="value-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Rewards History {% endcomment %}
+      <div id="club--rewards-history" class="points-panel--panel">
+        <h2>My Points History</h2>
+        <ul id="club--rewards-history--list">
+          <li id="club--rewards-history--header">
+            <span class="club--rewards-history--date">Date</span>
+            <span class="club--rewards-history--action">Action</span>
+            <span class="club--rewards-history--points">Points</span>
+            {% comment %} Removed per PDM-655 {% endcomment %}
+            <span class="club--rewards-history--status">Status / Code</span>
+          </li>
+        </ul>
+      </div>
+
+      {% comment %} VIP TIERS BREAKDOWN {% endcomment %}
+
+        <div id="club--vip-tiers">
+          <h2>clubbebe Perks</h2>
+            <p>$1 spent = 1 point earned at Member, Insider & Elite levels. $1 spent = 1.5 points earned at Icon level. </p>
+            <ul id="club--vip-tiers--mobile-chart">
+              <li class="club-tier--Member">
+                <h4>
+                  <span class="club-title">member</span>
+                  <span>0+ points</span>
+                </h4>
+                <dl>
+                  <dt>Reward for every 250 points</dt>
+                  <dd>$10</dd>
+                  <dt>Double & triple point days</dt>
+                  <dd><span>●</span></dd>
+                </dl>
+              </li>
+
+              <li class="club-tier--Insider">
+                <h4>
+                  <span class="club-title">insider</span>
+                  <span>500+ points</span>
+                </h4>
+                <dl>
+                  <dt>Reward for every 250 points</dt>
+                  <dd>$10</dd>
+                  <dt>Double & triple point days</dt>
+                  <dd><span>●</span></dd>
+                  <dt>Level-up offer<sup>*</sup></dt>
+                  <dd>15% off</dd>
+                </dl>
+              </li>
+
+              <li class="club-tier--Elite">
+                <h4>
+                  <span class="club-title">elite</span>
+                  <span>1000+ points</span>
+                </h4>
+                <dl>
+                  <dt>Reward for every 250 points</dt>
+                  <dd>$10</dd>
+                  <dt>Double & triple point days</dt>
+                  <dd><span>●</span></dd>
+                  <dt>Level-up offer<sup>*</sup></dt>
+                  <dd>20% off</dd>
+                  <dt>Free Shipping<sup>**</sup></dt>
+                  <dd><span>●</span></dd>
+                </dl>
+              </li>
+
+              <li class="club-tier--Icon">
+                <h4>
+                  <span class="club-title">icon</span>
+                  <span>2500+ points</span>
+                </h4>
+                <dl>
+                  <dt>Reward for every 250 points</dt>
+                  <dd>$10</dd>
+                  <dt>Double & triple point days</dt>
+                  <dd><span>●</span></dd>
+                  <dt>Level-up offer<sup>*</sup></dt>
+                  <dd>25% off</dd>
+                  <dt>Free Shipping<sup>**</sup></dt>
+                  <dd><span>●</span></dd>
+                </dl>
+              </li>
+
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="club-tier--Member"><span class="club-title">member</span><span>0+ points</span></th>
+                  <th class="club-tier--Insider"><span class="club-title">insider</span><span>500+ points</span></th>
+                  <th class="club-tier--Elite"><span class="club-title">elite</span><span>1000+ points</span></th>
+                  <th class="club-tier--Icon"><span class="club-title">icon</span><span>2500+ points</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th><span>Reward for every 250 points</span></th>
+                  <td class="club-tier--Member"><span class="tb-txt-lg">$10</span></td>
+                  <td class="club-tier--Insider"><span class="tb-txt-lg">$10</span></td>
+                  <td class="club-tier--Elite"><span class="tb-txt-lg">$10</span></td>
+                  <td class="club-tier--Icon"><span class="tb-txt-lg">$10</span></td>
+                </tr>
+                <tr>
+                  <th><span>Double &amp; triple point days</span></th>
+                  <td class="club-tier--Member"><span class="clubdot tb-txt-lg">●</span></td>
+                  <td class="club-tier--Insider"><span class="clubdot tb-txt-lg">●</span></td>
+                  <td class="club-tier--Elite"><span class="clubdot tb-txt-lg">●</span></td>
+                  <td class="club-tier--Icon"><span class="clubdot tb-txt-lg">●</span></td>
+                </tr>
+                <tr>
+                  <th><span>Level-up offer*</span></th>
+                  <td></td>
+                  <td class="club-tier--Insider"><span class="tb-txt-lg">15% Off</span></td>
+                  <td class="club-tier--Elite"><span class="tb-txt-lg">20% Off</span></td>
+                  <td class="club-tier--Icon"><span class="tb-txt-lg">25% Off</span></td>
+                </tr>
+                <tr>
+                  <th><span>Free shipping**</span></th>
+                  <td></td>
+                  <td></td>
+                  <td class="club-tier--Elite"><span class="clubdot tb-txt-lg">●</span></td>
+                  <td class="club-tier--Icon"><span class="clubdot tb-txt-lg">●</span></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        {% comment %} MORE PERKS {% endcomment %}
+
+        <div id="club--more-perks">
+            <div class="clubsubcopy-con">
+                <h3><span>More Perks...</span></h3>
+            </div>
+
+            <div class="clubrowcon row-dt">
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_friend }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per referred friend***</p></div>
+                {% comment %} <div class="perks"><span class="perks-pts">20</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per Instagram photo<span>tagged with #bebebabe<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">#</sup></span></p></div> {% endcomment %}
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_ig_photo }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per Instagram photo tagged with #bebebabe<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">#</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_soc_med_connect }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per social media connect<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">✝</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_visit }}</span><span class="perk-sub-copy">Point</span><span class="pt-line"></span><p>per bebe.com visit<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">‡</sup></p></div>
+                <div class="perks"><span class="perks-pts">{{ settings.clubbebe_pts_per_item_review }}</span><span class="perk-sub-copy">Points</span><span class="pt-line"></span><p>per item review<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">§</sup></p></div>
+            </div>
+
+            {% comment %} <div class="clubrowcon row-dt">
+                <div class="perks"><span class="perks-pts">1</span><span class="perk-sub-copy">POINT</span><span class="pt-line"></span><p>per bebe.com visit<sup style="vertical-align: super;font-size: smaller;margin-left: 2px">¶</sup></p></div> {% endcomment %}
+
+                {% comment %} <div class="perks"><span class="perks-pts"><img style="width:40px;margin-top:-8px;" src="//s7d9.scene7.com/is/image/bebe/clubpresenticon?$fullsize$&amp;qlt=90" alt="bebe" class="clubiconpres"></span><span class="perk-sub-copy">BIRTHDAY GIFT</span><span class="pt-line"></span><p><span>if you add your birthday</span><span>to your bebe.com profile</span></p></div>
+            </div> {% endcomment %}
+
+            <div class="club-dis">
+              <p><sup>*</sup>One-time use. <sup>**</sup>Free standard shipping to 50 United States only. <sup>***</sup>Limit 2 times per month. Referred friends must be new clubbebe customers. {{ settings.clubbebe_pts_per_friend }}-point reward only valid if friend makes purchase on bebe.com &amp; not valid if friend's purchase is returned. <sup>#</sup>Limit 2 times per month. Must connect with bebe on Instagram via clubbebe account dashboard on bebe.com to earn points. <sup>✝</sup>Facebook, Instagram &amp; Twitter. Must connect via clubbebe account dashboard on bebe.com. <sup>‡</sup>Limit 10 times. <sup>§</sup>Limit 3 times per month. Review must be for an item you have purchased.</p>
+            </div>
+
+            <a id="cbbTClink" style="display:block;text-align:center;" href="/pages/rewards-conditions" target="_blank">CLUBBEBE TERMS &amp; CONDITIONS</a>
+
+        </div>
+
+
+    </div>
+
+    {% comment %} RIGHT SIDE  {% endcomment %}
+    <div id="club--sidebar">
+        <div id="club--level--container">
+
+            {% comment %} Current Tier Level {% endcomment %}
+
+            <ul id="club--mini-vip-tier">
+
+                <li class="club-tier--Member"><span>member</span></li>
+                <li class="club-tier--Insider"><span>insider</span></li>
+                <li class="club-tier--Elite"><span>elite</span></li>
+                <li class="club-tier--Icon"><span>icon</span></li>
+
+            </ul>
+
+            <div id="club--vip-unlock-message">
+                <span class="unlock-points">
+                    <span class="points-left"></span> points
+                </span> to reach <span class="next-membership-level"></span>
+            </div>
+
+            <div id="club--total-points-earned">
+                <span class="total-points"><span id="total-points-number"></span> total points earned</span>
+            </div>
+
+        </div>
+
+        <div id="club--how-to-score-points">
+            <h2>How to Score Points</h2>
+            <dl>
+                {% comment %} :: HIDE FOR NOW Until you can get it to work ::
+                <dt>
+                    <span class="club--big-number">+1</span>
+                    <span class="club--desc">Per Visit</span>
+                </dt>
+                <dd>
+                    <strong>Visit Bebe.com</strong>
+                    <span>Limit 1 time per day</span>
+
+                    <a class="i-con" href="#club--info--visit">i</a>
+                </dd>
+
+
+                <dt>
+                    <span class="club--big-number">+20</span>
+                    <span class="club--desc">Per Photo</span>
+                </dt>
+                <dd>
+                    <strong>Tag #bebebabe on Instagram</strong>
+                    <span>Limit: 2 times per month.<br/>
+                        Must connect below with bebe on Instagram to earn points.
+                    </span>
+
+                    <a class="i-con" href="#club--info--instagram">i</a>
+                </dd>
+                {% endcomment %}
+
+                <dt>
+                    <span class="club--big-number">+200</span>
+                    <span class="club--desc">Per friend</span>
+                </dt>
+                <dd>
+                    <h3><a class="swell-share-referral-email" href="javascript:void(0)">Refer a friend</a></h3>
+                    <span>Limit: 2 times per month</span>
+
+                    <a class="i-con" href="#club--info--refer">i</a>
+                </dd>
+
+                <dt>
+                    <span class="club--big-number">+20</span>
+                    <span class="club--desc">Connect</span>
+                </dt>
+                <dd>
+                    <div id="club--connect--icons">
+                        <a class="swell-campaign-link" data-campaign-id="432867" data-display-mode="modal" href="javascript:void(0)">{% include 'svg-icon-instagram' %}</a>
+                        <a class="swell-campaign-link" data-campaign-id="432870" data-display-mode="modal" href="javascript:void(0)">{% include 'svg-icon-facebook' %}</a>
+                        <a class="swell-campaign-link" data-campaign-id="432871" data-display-mode="modal" href="javascript:void(0)">{% include 'svg-icon-twitter' %}</a>
+
+                    </div>
+                    <span>Limit: 1 time only</span>
+
+                    <a class="i-con" href="#club--info--connect">i</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div id="club--hidden-popups">
+        <div id="club--info--visit">
+            Earn a point per day just by visiting bebe.com. Sign in to your clubbebe account each day you're on the site and you'll receive 1 reward point.
+        </div>
+        <div id="club--info--instagram">
+            We want to see your style. Follow bebe on Instagram by connecting from your clubbebe dashboard below. Then tag a photo of yourself wearing bebe with #BeIconic to earn 20 points. Limit: 2 times per month.
+        </div>
+        <div id="club--info--refer">
+            Share clubbebe and be rewarded. Click the "Refer a Friend" link in your clubbebe account to get started. Send friends an invite, and earn {{ settings.clubbebe_pts_per_friend }} points when each of them joins clubbebe and makes a first-time clubbebe purchase. Please note: {{ settings.clubbebe_pts_per_friend }}-point reward not valid if friend's purchase is returned. Limit: 2 times per month.
+        </div>
+        <div id="club--info--connect">
+            Connect with us for extra points. Earn 20 points each by connecting with bebe on Facebook, Twitter and Instagram from your clubbebe dashboard. Limit: 1 time per channel.
+        </div>
+        <div id="club--redemption-popup">
+            <h2>Your reward is now available</h2>
+            <p>Your coupon code is:</p>
+            <p><span class="club--coupon-code"></span></p>
+            <p>250 points have been deducted from your point balance.</p>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+

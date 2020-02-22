@@ -1,0 +1,28 @@
+{%- layout none -%}
+
+{%- capture in_stock_variants -%}
+	[
+		{%- for variant in product.variants -%}
+			{%- if variant.available -%}
+				{
+					"variantId": {{- variant.id -}},
+					"imageUrl": "{{- variant.image.src | img_url: '400x' -}}",
+					"title": "{{ product.title | replace: '"', '\"' | strip }}"
+				},
+			{%- endif -%}
+		{%- endfor -%}
+	]
+{%- endcapture -%}
+
+{	
+
+	"available": {{ product.available | json }},
+	"availableVariants": {{ in_stock_variants | replace: ',]', ']' }},
+	"compareAtPrice": "{{ product.compare_at_price | money }}",
+	"handle": {{ product.handle | json }},
+	"productId": {{ product.id | json }},
+	"productImageUrl": "{{ product.featured_image.src | img_url: '220x220' }}",
+	"productPrice": "{{ product.price | money }}",
+	"tags": {{ product.tags | json }},
+	"title": "{{ product.title | replace: '"', '\"' | strip }}"
+}

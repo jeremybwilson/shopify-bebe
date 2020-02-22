@@ -1,0 +1,275 @@
+<div class="footer-section" data-section-id="{{ section.id }}" data-section-type="footer-section">
+  <footer class="site-footer">
+
+    <div class="row">
+
+      {% comment %} :: ROW #1 -- Newsletter signup :: {% endcomment %}
+      <div id="newsletter-social" class="newsletter-{{ section.id }}" data-section-id="{{ section.id }}"
+        data-section-type="newsletter-social">
+        <div class="newsletter-wrapper">
+
+          <div class="newsletter">
+            <div class="email-text">
+              <div class="foot-sub-emailtext">
+                <h3 class="newsletter-subheading">{{ section.settings.newsletter_subheading }}</h3>
+              </div><!-- .foot-sub-emailtext -->
+              <div class="foot-sub-emailform">
+                <form id="footer-newsletter"
+                      class="contact-form-footer">
+                  <label id="subscribe-footer-newsletter" for="footer-newsletter-email">
+                    <input class="form-control subscribe-form" type="email" id="footer-newsletter-email" name="Email Address" placeholder="{{ section.settings.newsletter_placeholder }}" aria-hidden="true">
+                  </label>
+                  <label id="button-footer-newsletter-submit" for="footer-newsletter-submit">
+                    <input id="footer-newsletter-submit" type="submit" value="{{ section.settings.newsletter_submit_button }}">
+                    {% comment %} {% include 'svg-icon-caret-right-submit' %} {% endcomment %}
+                  </label>
+                </form>
+              </div><!-- .foot-sub-emailform -->
+              <div id="newsletter-form--response">
+                <span id="newsletter-error-response" style="display:none;">{{ settings.newsletter_error }}</span>
+                <span id="newsletter-success-response" style="display:none;">
+                {{ settings.newsletter_success }}</span>
+              </div>
+            </div><!-- .email-text -->
+          </div><!-- .newsletter -->
+
+        {% comment %} :: ROW #2 -- FOOTER NAVIGATION :: {% endcomment %}
+        {% if section.blocks %}
+          <div class="footer-blocks">
+            {% assign menu = linklists[section.settings.footer_nav] %}
+
+            <div class="footer-nav">
+              <nav>
+              {% comment %} :: LINKS : Menu Content links :: {% endcomment %}
+                <ul>
+                {% for link in menu.links %}
+                  {% comment %} :: NESTED MENU :: {% endcomment %}
+                  {% if link.levels > 0 %}
+                    <li class="footer-sub-nav-wrapper" data-link-size="{{ link.links.size }}">
+                    {% comment %} nav-sub-header => accordion-header {% endcomment %}
+                    <h4 class="nav-sub-header">{{ link.title }}</h4>
+                      {% comment %} footer-sub-nav => accordion-content{% endcomment %}
+                      <ul class="footer-sub-nav slide">
+                      {% for sub_link in link.links %}
+                        <li>{{ sub_link.title | link_to: sub_link.url }}</li>
+                      {% endfor %}
+                      </ul>
+                    </li><!-- .footer-sub-nav-wrapper -->
+                  {% comment %} :: ELSE, REGULAR SINGLE LINK :: {% endcomment %}
+                  {% else %}
+                    <li>{{ link.title | link_to: link.url }}</li>
+                  {% endif %}
+
+                {% endfor %}
+                </ul>
+              </nav>
+            </div><!-- .footer-nav -->
+          </div><!-- .footer-blocks -->
+          {% endif %}
+        </div><!-- .newsletter-wrapper -->
+
+      {% comment %} :: Social Media Navigation :: {% endcomment %}
+      {% if section.blocks %}
+        <div class="social-wrapper">
+          <div class="social-inner">
+          {% unless section.settings.social_insta_hashtag == blank %}
+            <h4 class="section-title">{{ section.settings.social_insta_hashtag }}</h4>
+          {% endunless %}
+            <div class="social-image">
+              {% if section.settings.instagram_footer_image != blank %}
+                {% assign insta_img_url = section.settings.instagram_footer_image | img_url: '542x' %}
+                {% if section.settings.instagram_footer_link != blank %}<a href="{{ section.settings.instagram_footer_link }}" target="_blank">{% endif %}
+                  <img src="{{ insta_img_url }}" alt="{{ section.settings.social_insta_hashtag }}" />
+                {% if section.settings.instagram_footer_link != blank %}</a>{% endif %}
+              {% endif %}
+            </div>
+            <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
+              {% include 'social-icons' %}
+            </ul><!-- #social-icons -->
+          </div><!-- .social-inner -->
+        </div><!-- .social-wrapper -->
+      {% endif %}
+      </div><!-- .newsletter-social-->
+    </div>
+
+    {% comment %} :: ROW #3 -- Privacy Policy + Terms + Site Map :: {% endcomment %}
+    <div class="row">
+      <div class="foot-subfoot">
+        <div class="subfoot-links">
+          {% comment %} :: RAF Section hidden in footer comps :: {% endcomment %}
+          {% comment %}  <span class="raf-wrapper">
+            <a class="raf-footer" href="#">
+              <span class="raf-text">
+                  REFER A FRIEND &amp; GET
+                  <span class="strong">200 POINTS</span>
+              </span>
+              <span class="raf-separator"></span>
+              <span class="fo-how">FIND OUT HOW ►</span>
+            </a>
+          </span><!-- .raf-wrapper --> {% endcomment %}
+          <div class="copyright">
+            <span class="copyright-wrapper">&copy; {{ "now" | date: "%Y" }} {{ section.settings.copyright_footer_text }}</span>
+          </div>
+          {% comment %} :: LINKS : Copyright / privacy footer links :: {% endcomment %}
+          {% assign privacy_menu = linklists[section.settings.footer_privacy_nav] %}
+          <span>
+          {% for link in privacy_menu.links %}
+            <span class="link-wrap">{{ link.title | link_to: link.url }}</span>
+          {% endfor %}
+          </span>
+        </div><!-- .subfoot-links -->
+      </div><!-- .foot-subfoot -->
+    </div>
+
+  </footer>
+</div>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "tel_text",
+        "label": "Display Text",
+        "default": "855-377-BOOT (2668)",
+        "info": "This is the text that will be displayed on the site."
+      },
+      {
+        "type": "text",
+        "id": "tel_number",
+        "label": "Actual Number",
+        "default": "18553772668",
+        "info": "This is the number that will actually be dialed when the link is clicked on mobile. Do not include dashes or any punctuation."
+      },
+      {
+        "type": "header",
+        "content": "Payment Methods"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_credit_cards",
+        "label": "Show credit card icons",
+        "default": true,
+        "info": "The icons that show are determined by your store's payment settings."
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      },
+      {
+        "type": "header",
+        "content": "Newsletter API settings under Theme Settings"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading (deprecated)",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_subheading",
+        "label": "Newsletter sub-heading",
+        "default": "STAY IN TOUCH & GET 10% OFF"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_placeholder",
+        "label": "Form field placeholder",
+        "default": "Enter Email"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_submit_button",
+        "label": "Submit button text",
+        "default": "ENTER"
+      },
+      {
+        "type": "header",
+        "content": "Instagram Footer Image"
+      },
+      {
+        "type": "url",
+        "id": "instagram_footer_link",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "instagram_footer_image",
+        "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Trust Icons"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_one",
+        "label": "Logo #1"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_two",
+        "label": "Logo #2"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust_icon_image_three",
+        "label": "Logo #3"
+      },
+      {
+        "type": "text",
+        "id": "social_heading",
+        "label": "Social - Heading",
+        "default": "Connect With Us"
+      },
+      {
+        "type": "text",
+        "id": "social_insta_hashtag",
+        "label": "Social - Heading",
+        "default": "#Bebebabes"
+      },
+      {
+        "type": "text",
+        "id": "copyright_footer_text",
+        "label": "Footer - Copyright text",
+        "default": "&copy; 2018 BEBE STUDIO, INC.&nbsp; ALL RIGHTS RESERVED&nbsp;"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_nav",
+        "label": "Main Footer Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_privacy_nav",
+        "label": "Copyright Footer Navigation"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"link_list",
+        "name":"Menu",
+        "settings":[
+          {
+            "type": "link_list",
+            "id": "menu_id",
+            "label": "Footer Menu"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_headings",
+            "label": "Show Footer Menu Headers",
+            "default": false,
+            "info": "(Hidden by default)"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

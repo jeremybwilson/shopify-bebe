@@ -1,0 +1,204 @@
+$grid--columns-total--phone:    3;
+$grid--columns-total--tablet:   6;
+$grid--columns-total--desktop:  12;
+$grid--gutter: 	   1.0416666666666667%;
+
+// max widths
+$grid--site-width--tablet: 720px;
+$grid--site-width--lap:    960px;
+$grid--site-width--desk:  1200px;
+$grid--site-width--wide:  1440px;
+
+// COLUMN BUILDER MIXINS
+
+@mixin columnBuilderUtility($class-slug) {
+    
+    // fractioned columns
+
+    .#{$class-slug}-fifth           {   width: ( 100% / 5 ) - ($grid--gutter * 2);        &.contained { width: ( 100% / 5 ); }}
+    .#{$class-slug}-fourth          {   width: ( 100% / 4 ) - ($grid--gutter * 2);        &.contained { width: ( 100% / 4 ); }}
+    .#{$class-slug}-third           {   width: ( 100% / 3 ) - ($grid--gutter * 2);        &.contained { width: ( 100% / 3 ); }}
+    .#{$class-slug}-three-quarter   {   width: ( ( 100% / 4 ) * 3) - ($grid--gutter * 2); &.contained { width: ( 100% / 4 ) * 3; }}
+    .#{$class-slug}-two-thirds      {   width: ( ( 100% / 3 ) * 2) - ($grid--gutter * 2); &.contained { width: ( 100% / 3 ) * 2; }}
+    .#{$class-slug}-half            {   width: ( 100% / 2 ) - ($grid--gutter * 2);        &.contained { width: ( 100% / 2 ); }}
+    .#{$class-slug}-full            {   width: 100% - ($grid--gutter * 2);                &.contained { width: 100%; }}
+
+    // COLUMNS :: FRACTIONS :: PUSH
+
+    .#{$class-slug}-push-fifth      {   margin-left: ( 100% / 5 ) + $grid--gutter;  &.contained { margin-left: 100% / 5; }}
+    .#{$class-slug}-push-fourth     {   margin-left: ( 100% / 4 ) + $grid--gutter;  &.contained { margin-left: 100% / 4; }}
+    .#{$class-slug}-push-third      {   margin-left: ( 100% / 3 ) + $grid--gutter;  &.contained { margin-left: 100% / 3; }}
+    .#{$class-slug}-push-half       {   margin-left: ( 100% / 2 ) + $grid--gutter;  &.contained { margin-left: 100% / 2; }}
+
+    // COLUMNS :: CENTERED
+
+    [class*=#{$class-slug}-].centered {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // COLUMNS :: HIDE
+
+    .#{$class-slug}-hide {
+        display: none !important;
+    }
+}
+
+@mixin columnBuilder($grid--column-total, $class-slug) {
+    @for $i from 1 through $grid--column-total {
+        
+        // define each column
+        .#{$class-slug}-#{$i} { 
+            width: ( ( 100% / $grid--column-total ) * $i ) - ( $grid--gutter * 2 ) ;
+
+            // define the contained class (no margins)
+            &.contained {
+                width: ( ( 100% / $grid--column-total ) * $i );
+            }
+        }
+    }
+    @for $i from 1 through ($grid--column-total - 1) {
+
+        // define each push column
+        .#{$class-slug}-push-#{$i} { 
+            margin-left: ( ( 100% / $grid--column-total ) * $i ) + ( $grid--gutter ) ;
+
+            // define the contained class (no margins)
+            &.contained {
+                margin-left: ( ( 100% / $grid--column-total ) * $i );
+            }
+        }                
+    }
+    @include columnBuilderUtility($class-slug);
+}
+
+.gridlock {
+    .row {
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        &:after {
+            height: 0;
+            clear: both;
+            content: ".";
+            display: block;
+            line-height: 0;
+            visibility: hidden
+        }
+
+        // GLOBAL :: row widths
+
+        @include mq( 'tablet-and-up' ) {
+            width: $grid--site-width--tablet; }
+        @include mq( 'lap-and-up' ) {
+            width: $grid--site-width--lap; }
+        @include mq( 'desk-and-up' ) {
+            width: $grid--site-width--desk; }
+        @include mq( 'wide-and-up' ) {
+            width: $grid--site-width--wide; }
+
+        // nested rows 
+
+        .row {
+            width: 102.08333333%;
+            margin-left: -#{$grid--gutter};
+            margin-right: -#{$grid--gutter};
+        }
+        .contained .row {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0
+        }
+
+        // columns
+
+        [class*=all-], 
+        [class*=desktop-], 
+        [class*=max-], 
+        [class*=min-], 
+        [class*=mobile-], 
+        [class*=tablet-] {
+            float: left;
+            margin-left: $grid--gutter;
+            margin-right: $grid--gutter;
+
+            &.padded {
+                box-sizing: content-box;
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: $grid--gutter;
+                padding-right: $grid--gutter;
+            }
+            &.contained {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            &.right {
+                float: right;
+            }
+        }        
+
+        @include columnBuilderUtility( all );
+
+        // MEDIA QUERIES
+        // MQ :: PHONE
+
+        @include mq( 'phone' ) {
+            @include columnBuilder($grid--columns-total--phone, mobile);
+        }
+
+        // MQ :: MIN
+        @include mq( 'phone-portrait' ) {
+            @include columnBuilder($grid--columns-total--phone, min);
+        }
+          
+        // MQ :: TABLET
+        @include mq( 'tablet' ) {
+            @include columnBuilder($grid--columns-total--tablet, tablet);
+        }
+
+        // MQ : DESKTOP
+        @include mq( 'lap-and-up' ) {
+            @include columnBuilder($grid--columns-total--desktop, desktop);
+        }
+          
+        // MQ :: MAX
+        @include mq( 'wide-and-up' ) {
+            @include columnBuilder($grid--columns-total--desktop, max);
+        }
+    }
+}
+
+.gridlock-fluid .row {
+  width: 98%
+}
+
+// miscellaneous ones
+
+@media screen and (min-width:740px) {
+  .homepage-promo.desktop-12.tablet-6.mobile-3.centered {
+    width: 100% !important
+  }
+  .homepage-promo.desktop-6.tablet-3.mobile-3.centered {
+    width: 50% !important
+  }
+  .homepage-promo.desktop-4.tablet-2.mobile-3.centered, .notification.desktop-4.tablet-2.mobile-3.centered {
+    width: 33.33333333% !important
+  }
+  .homepage-promo.desktop-3.tablet-1.mobile-3.centered {
+    width: 25% !important
+  }
+}
+
+@media screen and (max-width:740px) {
+  .gridlock-fluid .mobile-3.centered {
+    float: left !important;
+    margin-left: 1.04166667% !important;
+    margin-right: 1.04166667% !important
+  }
+}
+.gridlock-fluid .centered {
+  display: inline-block
+}

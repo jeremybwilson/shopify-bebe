@@ -1,0 +1,487 @@
+@charset "UTF-8";
+
+// SUBPAGE : Mobile nav padding reduction for mobile
+
+#subpage {
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(flex-end);
+
+  margin-right: 27px;
+  margin-left: 27px;
+
+  @include p;
+
+  @include mq( 'lap-and-up' ) {
+    @include flex-direction(row);
+  }
+  @include mq( 'tablet-and-up' ) {
+    padding-left: 0;
+  }
+
+  // SUBPAGE : Left-nav
+
+  div.left-nav {
+    margin: 0 0 25px 0;
+
+
+    @include mq( 'lap-and-up' ) {
+      @include flex-basis(250px);
+      padding-right: 20px;
+    }
+
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include flex-direction(column);
+      @include flex-wrap(wrap);
+      @include justify-content(flex-start);
+      //  @include flex-basis(300px);
+    }
+
+    div.desktop-left-nav {
+      display: none;
+      margin-bottom: 40px;
+
+      @include mq('lap-and-up') {
+        @include flexbox;
+        @include flex-direction(column);
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.menu-cust-service > li {
+        list-style-type: none;
+        color: $color--primary-1;
+        cursor: pointer;
+        margin-bottom: 0px;
+        text-decoration: none;
+
+        @include mq('tablet-and-up'){
+          padding-top: 5px;
+          letter-spacing: 2px;
+        }
+
+        &:before {
+          content: " ";
+          margin-right: 0;
+        }
+
+        ul.menu-cust-service-sub > li {
+          list-style-type: none;
+          margin: 5px 0 0 0;
+
+          &.active {
+            text-decoration: underline;
+          }
+        }
+
+        h4 {
+          @include mq('lap-and-up'){
+            @include fontSize(12px);
+            font-weight:  $font-weight--bold;
+            margin-top: 10px;
+            padding: 0;
+            text-transform: uppercase;
+          }
+        }
+
+        a {
+          color: $color--primary-1;
+          cursor: pointer;
+          text-decoration: none;
+
+          @include mq('tablet-and-up'){
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  .left-nav--categories {
+    display: block;
+
+    @include mq("lap-and-up") {
+      display: none;
+    }
+
+    .opener {
+      @include flexbox;
+      @include justify-content(space-between);
+      @include align-items(center);
+      width: 100%;
+      padding: 10px 15px;
+      background: $color--gray-1;
+      color: $color--reverse-1;
+      font-weight: $font-weight--book;
+      @include fontSize(14px);
+
+      svg {
+        width: 10px;
+        transition: transform .25s ease;
+        * {
+          fill: $color--reverse-1;
+        }
+      }
+
+      &.is-on {
+        svg {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    div.dropdown {
+      display: none;
+      float: left;
+      width: 100%;
+      background: $color--light-gray;
+      padding: 10px 15px;
+
+      ul.menu-cust-service {
+        list-style-type: none;
+        padding: 0;
+
+        h4 {
+          font-weight:  $font-weight--bold;
+        }
+
+        a {
+          // float: left;
+          width: 100%;
+          color: $color--primary-2;
+          margin-bottom: 15px;
+        }
+
+        ul.menu-cust-service-sub > li {
+          list-style-type: none;
+          margin: 5px 0 0 0;
+
+          &.active {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  div.page-content-field {
+    @include mq('lap-and-up') {
+      @include flex-basis(100%);
+    }
+
+    h1 {
+      @include h1;
+    }
+
+    p {
+      @include p;
+    }
+
+    ul {
+      .custfaq{
+        margin: 0.25rem 0;
+      }
+    }
+
+    /* Mobile App Page CSS */
+    .app-page-wrapper {
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-direction(column);
+      @include align-items(center);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .on-the-go {
+      @include flexbox;
+      @include flex-direction(row);
+      @include justify-content(center);
+      @include align-items(center);
+      margin: 10px auto 35px;
+
+      span {
+        @include fontSize(22px);
+        font-weight: $font-weight--book;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      img {
+        margin: 0 5px;
+      }
+    }
+
+    .on-mob-wrapper {
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(center);
+      @include flex-wrap(wrap);
+      width: 100%;
+
+      @include mq('tablet-and-up'){
+        @include align-items(flex-start);
+      }
+
+      .on-mobile-devices-left, .on-mobile-devices-right {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        @include align-items(center);
+        width: 100%;
+        margin: 0;
+      }
+
+      .on-mobile-devices-left {
+        @include mq('lap-and-up'){
+        }
+        @include mq('tablet-and-up'){
+          width: 55%;
+        }
+        img {
+          @include mq('tablet-and-up'){}
+        }
+      }
+
+      .on-mobile-devices-mid {
+        display: none;
+
+        @include mq('tablet-and-up') {
+          display: flex;
+          margin: 0;
+          width: 10%;
+        }
+
+        img {
+          width: 90%;
+        }
+      }
+
+      .on-mobile-devices-right {
+        padding: 0;
+        margin-top: 20px;
+
+        @include mq('lap-and-up'){
+          // width: calc(40% - 10px);
+        }
+        @include mq('tablet-and-up') {
+          width: 35%;
+          padding-left: 10px;
+          margin-top: 0;
+        }
+
+        .bebe-mob-app {
+          @include flexbox;
+          @include align-items(center);
+          @include justify-content(center);
+          width: 100%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(flex-start);
+          }
+
+          span.heading {
+            @include fontSize(17px);
+            width: auto;
+          }
+        }
+
+        p, .app-store-logos {
+          @include flexbox;
+          @include justify-content(center);
+          @include fontSize(12px);
+          width: 100%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(flex-start);
+          }
+        }
+
+        .bullet-list {
+          display: block;
+
+          @include mq('tablet-and-up'){
+            width: 100%;
+          }
+        }
+
+        p, span {
+          text-transform: uppercase;
+        }
+
+        .app-store-logos {
+          width: 100%;
+        }
+      }
+    }
+
+
+    .us-ship-table {
+      display: none;
+      background-color: #eaeaea;
+      font-family: $sans--2;
+      @include fontSize(14px);
+
+      @include mq('tablet-and-up'){
+        display: table;
+        width: 100%;
+      }
+
+      .table-row-dark {
+        background: #dadada;
+      }
+
+      tbody {
+        .light-grey-override {
+          background: #eaeaea;
+        }
+
+        th {
+          background-color: #303030;
+          color: $color--reverse-1;
+          padding: 10px 20px;
+        }
+
+        td {
+          padding: 10px 20px;
+        }
+
+      }
+    }
+
+    .us-ship-table-mobile {
+      display: block;
+      border-collapse: collapse;
+      border-spacing: 0;
+      font-family: $sans--2;
+      @include fontSize(14px);
+
+      @include mq('tablet-and-up'){
+        display: none;
+      }
+
+      .table-row-dark {
+        background: #dadada;
+      }
+
+      tbody tr:nth-child(2n+1) td {
+        background: none;
+      }
+
+      th {
+        padding: 10px 20px;
+        border-style: solid;
+        border-width: 0;
+        border-color: #484848;
+        overflow: hidden;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      td {
+        width: 100%;
+        padding: 10px 20px;
+        border-style: solid;
+        border-width: 0;
+        border-color: #eaeaea;
+        background: #eaeaea;
+        overflow: hidden;
+        word-break: normal;
+      }
+    }
+
+    .canada-ship-table {
+      background: #eaeaea;
+
+      tbody {
+
+        .light-grey-override {
+          background: #eaeaea;
+        }
+
+        th {
+          background-color: #303030;
+          color: $color--reverse-1;
+          padding: 10px 20px;
+        }
+
+      }
+    }
+
+    // CSS styles carried over from old site
+    body.mobile .holReturnTable{width:100%;max-width:none;margin-right:0;text-align:center}
+    .returnTable{width: 100%;margin:20px auto;padding:0;border-bottom:1px solid #ddd;position:relative;display:inline-block;vertical-align:top}
+    .returnTable div.returnTableTitle{width:100%;background:#ddd;padding:3%;text-transform:uppercase}
+    .returnTable div.tableRow{width:100%;padding:1.5% 3%;display:block}
+    .returnTable div.tableRow:nth-child(odd){background:#eee}
+    .returnTable div.tableRow div.tableCol{display:inline-block}
+    .returnTable div.tableRow div.tableCol.col1{width:40%}
+    .returnTable div.tableRow div.tableCol.col1.col1Full{width:100%}
+    .returnTable div.tableRow div.tableCol.col2{width:55%}
+    body.mobile .returnTable{width:100%;max-width:none;text-align:center;}
+
+  }
+
+
+  // SUBPAGE : Content : Columns for Shipping
+  .shipping-guide-chart {
+    @include flexbox;
+    @include flex-direction(column);
+    margin: 10px 0 20px 0;
+
+    @include mq( 'tablet-and-up' ) {
+      @include flex-direction(row);
+    }
+
+    .col {
+      padding: 20px 30px;
+      border: 1px dotted $color--reverse-1;
+      background: $color--primary-1;
+      color: $color--reverse-1;
+      text-align: center;
+
+      @include mq("tablet-and-up") {
+        width: 33%;
+        padding: 20px;
+      }
+    }
+  }
+
+  .career-button, .return-button {
+    @include flexbox;
+    @include justify-content(center);
+    @include buttonDefaultStyle;
+    @include mainButton;
+    width: 100%;
+    margin: 20px 0;
+
+    @include mq('tablet-and-up'){
+      width: calc(240px - 5%);
+    }
+  }
+
+  .glassdoor-icon {
+    margin-top: 3px;
+  }
+
+  // CSS pulled from existing Bebe site to display LI icon using sprite image.
+  .li-connect-widget .li-connect-mark {
+    background:url(https://cdn.shopify.com/s/files/1/0033/7939/6672/files/sprite_li_connect_v14.png) -92px -42px no-repeat !important;
+    display:inline-block !important;
+    height:16px !important;
+    text-decoration:none !important;
+    width:16px !important;
+    vertical-align:middle !important;
+  }
+  .IN-widget .hovered .li-connect-mark {
+      cursor:pointer !important;
+  }
+  .li-connect-widget.pending .li-connect-mark {
+    background:url(data:image/gif;base64,R0lGODlhEAAQAKIAAP///+bm5s7OzpycnGNjYwAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAADgAQAAADNAi6MMNQOReBEG0CQta92cZ11seMZBlxClh55lu6Mi23GBQEsL3vOBDwx8MBiMei7ndLQhIAIfkEBQoAAAAsAgAAAA4ADgAAAyUIqiL7rzUIpRuDsouzVp33AdgIEYQJoKjJpi4cBOo8mzaN62MCACH5BAUKAAAALAAAAgAQAAwAAAMmCLoMIi2q92Sj0LK6QtDAMACeZ4li+UnoaGoiqBCEPNO1jOc6nwAAIfkEBQoAAAAsAgACAA4ADgAAAyUIEdD+ajH45KRu4Y2F4I3ngeJHmtswgICqYgTRulQcz7DN3lQCACH5BAUKAAAALAIAAAAMABAAAAMmCKoR+6w5GBtd9urNu/8XQVCCAIjiU5boOAzAaqbvG5tPDWv2kwAAIfkEBQoAAAAsAAACAA4ADgAAAyUIugwRLb4X2YR1UUBIXl33ceFImsswmKo6tqsgZK4sj/aM60sCACH5BAUKAAAALAAAAgAQAAwAAAMmCEqk/o8xSIFsFc7sxuBAEACel4li+VXoaHLiIwigM881cNM5DiYAIfkECQoAAAAsAAAAABAAEAAAAygIukDEkDkX1xhtVnBv3lwHMt4ICIKpoKjKpi6sjkEw17WK2zo//5EEADs=) no-repeat !important;
+    cursor:wait !important;
+  }
+}

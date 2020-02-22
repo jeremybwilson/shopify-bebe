@@ -1,0 +1,40 @@
+<div id="page" class="desktop-12 tablet-6 mobile-3 page-404">
+
+  {% comment %} :: LOGIN : Login Page Content :: {% endcomment %}
+  {{ pages[section.settings.fourohfour_content].content }}
+
+</div>
+
+{% for block in section.blocks %}
+  {% if block.settings.nosto_id != blank %}
+    <div class="desktop-12 tablet-6 mobile-3">
+      {% include 'nosto-element' with block.settings.nosto_id %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "404",
+    "settings": [
+      {
+        "type": "page",
+        "id": "fourohfour_content",
+        "label": "404 Content Page"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Nosto element",
+        "type": "nosto_element",
+        "settings": [
+          {
+            "type": "text",
+            "id": "nosto_id",
+            "label": "Nosto id"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

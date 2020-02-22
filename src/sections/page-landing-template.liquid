@@ -1,0 +1,20 @@
+<div id="subpage">
+  {% include 'sidenav' %}
+
+  <div class="page-content-field">
+  {{ page.content }}
+  </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Landing Page Template",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "landing_page_cs_nav",
+      "label": "Landing Page Navigation Customer Service Links"
+    }
+  ]
+  }
+{% endschema %}

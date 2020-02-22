@@ -1,0 +1,43 @@
+{%- if product.selected_variant == nil -%}
+  {% comment %}
+    This scenario covers when we view a parent product without selecting anything, essentially it is the main style.
+  {% endcomment %}
+  {% assign productId = product.id %}
+  {% assign skuParts = product.selected_or_first_available_variant.sku | split: "-" %}
+  {% assign sku = skuParts.first %}
+  {% assign variantId = "" %}
+  {% assign barcode = "" %}
+{%- else -%}
+  {% assign productId = product.id%}
+  {% assign sku = product.selected_variant.sku %}
+  {% assign variantId = product.selected_variant.id %}
+  {% assign barcode = product.selected_variant.barcode %}
+{%- endif -%}
+{
+  "id"              : {{product.id | json}},
+  "sku"             : {{sku | json}},
+  "barcode"         : {{barcode | json}},
+  "variantId"       : {{variantId | json}},
+  "productType"     : {{product.type | json }},
+  "name"            : {{product.title | json }},
+  "price"           : {{product.price | money_without_currency | remove: "," | json }},
+  "comparePrice"    : {{product.compare_at_price_max|money_without_currency | json}},
+  "description"     : {{product.description | strip_newlines | strip_html | escape | json}},
+  "image"           : "https:{{product.featured_image.src|img_url:"grande"}}",
+  "url"             : "{{shop.secure_url}}{{product.url}}",
+  "urlInCategory"   : "{{shop.secure_url}}{{product.url | within: collection }}",
+  "brand"           : {{product.vendor | default: shop.name | json }},
+  "categories"      : {{product.collections|map:"title"|json}},
+  "categoryPath"    : {{collection.handle | json }},
+  "category"        : {{collection.title | json }}
+  {%- if product.selected_variant != nil -%}
+  ,
+  "options"  : {
+    {%- for option in product.options -%}
+      {% capture optionIndex %}option{{forloop.index}}{% endcapture %}
+      {{ option | json }} : {{ product.selected_variant[optionIndex] | json}}{%- unless forloop.last -%},{%- endunless -%}
+    {% endfor %}
+  }
+  {% endif %}
+}
+

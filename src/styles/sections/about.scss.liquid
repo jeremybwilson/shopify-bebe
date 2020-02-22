@@ -1,0 +1,232 @@
+// ABOUT US : Slideshow
+
+.about--wrapper {
+  .slideshow-section {
+    .flex-caption {
+      .caption-inners {
+        background: none;
+
+        @include mq('lap-and-up') {
+          min-width: 930px;
+        }
+      }
+
+      h2.slide-title {
+        @include fontDim(30px,40px,.05em);
+
+        @include mq('tablet-and-up') {
+          @include fontDim(45px,60px,.05em);
+        }
+        @include mq('lap-and-up') {
+          @include fontDim(68px,90px,.05em);
+        }
+
+        &:after {
+          display: block !important;
+          content: '';
+          width: 50%;
+          margin: 20px auto 12px;
+          border-bottom: solid 2px $color--white;
+
+          @include mq('tablet-and-up') {
+            border-bottom-width: 3px;
+          }
+        }
+      }
+      .caption {
+        font-weight: $font-weight--bold;
+        @include fontDim(16px,26px,0);
+
+        @include mq('tablet-and-up') {
+          @include fontDim(18px,30px,0);
+        }
+        @include mq('lap-and-up') {
+          @include fontDim(22px,36px,0);
+        }
+      }
+
+    }
+  }
+}
+
+// ABOUT US : Content Modules
+
+.about-container {
+  position: relative;
+  z-index: 2;
+  @include mq('tablet-and-up') {
+    width: 83.33%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+.content-module {
+  @include flexbox;
+  @include flex-direction(column);
+  width: 100%;
+
+  @include mq('tablet-and-up') {
+    @include flex-direction(row);
+  }
+
+  .text-box {
+    @include flexbox;
+    @include align-items(center);
+    width: 100%;
+    padding: 45px 30px;
+    text-align: center;
+
+    @include mq('tablet-and-up') {
+      width: 50%;
+      padding-left: 7.5%;
+      padding-right: 7.5%;
+    }
+    p {
+      color: $color--primary-2;
+      font-weight: $font-weight--book;
+      @include fontDim(16px,26px,0);
+
+      @include mq('lap-and-up') {
+        @include fontDim(22px,36px,0);
+      }
+    }
+    strong {
+      color: $color--primary-1;
+      font-weight: $font-weight--black;
+      text-transform: uppercase;
+    }
+  }
+  .image-box {
+    width: 100%;
+
+    @include mq('tablet-and-up') {
+      width: 50%;
+    }    
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: none;
+      height: auto;
+    }
+  }
+}
+
+// ABOUT US : Content Modules : Variations
+
+.color-scheme--dark {
+  .text-box {
+    position: relative;
+    padding: 65px 30px;
+    background: $color--gray-1;
+
+    @include mq('desk-and-up') {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: 15px;
+      border: solid 4px rgba(255,255,255,.06);
+
+      @include mq('desk-and-up') {
+        margin: 30px;
+      }
+    }
+
+    p {
+      color: $color--white;
+    }
+    strong {
+      color: $color--white;
+    }
+  }
+}
+.content-module:first-child {
+  .image-box {
+    margin-top: -50px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include mq('tablet-and-up') {
+      margin-top: -70px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @include mq('lap-and-up') {
+      margin-top: -110px;
+    }    
+  }
+}
+
+.layout-mob--image_top {
+  .image-box {
+    order: 1;
+  }
+  .text-box {
+    order: 2;
+  }
+}
+.layout-mob--image_bottom {
+  .image-box {
+    order: 2;
+  }
+  .text-box {
+    order: 1;
+  }
+}
+
+@include mq('tablet-and-up') {
+  .layout-desk--image_right {
+    .image-box {
+      order: 2;
+    }
+    .text-box {
+      order: 1;
+    }
+  }
+  .layout-desk--image_left {
+    .image-box {
+      order: 1;
+    }
+    .text-box {
+      order: 2;
+    }
+  }  
+}
+
+// ABOUT US : Bottom Block
+
+.about-block {
+  padding: 40px;
+  text-align: center;
+
+  @include mq('lap-and-up') {
+    padding: 50px;
+  }
+
+  h2 {  
+    color: $color--primary-1;
+    font-weight: $font-weight--black;
+    @include fontDim(30px,44px,0);
+    text-transform: uppercase;
+
+    @include mq('lap-and-up') {
+      @include fontDim(42px,44px,0);  
+    }
+  }
+  p {
+    color: $color--primary-2;
+    @include fontDim(16px,26px,0);
+
+    @include mq('lap-and-up') {
+      @include fontDim(16px,26px,0);
+    }
+  }
+}

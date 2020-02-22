@@ -1,0 +1,122 @@
+{% assign option_name = option.name | downcase %}
+{% assign color_swatch_options = "color, colour" | split: ", " %}
+{% assign current_option = "option" | append: option.position %}
+{% assign other_options = "option1 option2 option3" | remove: current_option | strip | split: " " %}
+
+<div class="swatch clearfix {{ option.name | downcase }}" data-option-index="{{ option.position }}" data-other-options='{{ other_options | json }}'>
+  <div class="swatch-header">
+    
+    {% comment %} Option Name {% endcomment %}
+    <h5>{{ option.name }}:</h5>
+
+    {% comment %} Currently Selected Option {% endcomment %}
+    <h6 class="current-option">{{ current_variant[current_option] }}</h6>
+  </div><!-- .swatch-header-->
+
+  {% assign current_sku = current_variant.sku | split: '-' | first %}
+
+  {% comment %} Swatch Loop {% endcomment %}
+  {% comment %} Herein is the second level and third levels of a three-tiered cycling of product variants and options to determine the actual render of swatches. The "current_option" is determined by this snippet's parent loop.
+    CYCLE 2 - Cycle through the available values (ie: Color->Black, Color-> Red) {% endcomment %}
+  <div class="swatch-element-list">
+    {% for value in option.values %}
+
+      {% comment %} :: SWATCH IMG URL :: {% endcomment %}
+      {% assign color_slugified = value | replace: ' ', '-' | replace: '/', '-' | downcase %}
+      {% assign image_url = current_sku | prepend: 'product_' | append: '_' | append: color_slugified | append: '_swatch.jpg' | file_url %}
+
+      {% comment %} :: SWATCH IDENTIFIERS :: {% endcomment %}
+      {% assign css_color = value | split: ' ' | last | handle %}
+      {% capture id %}swatch-{{ option.position }}-{{ value | handle }}{% endcapture %}
+      {% assign available = false %}
+
+      {% comment %} CYCLE 3 - Cycle through the available product variants (ie: Black S, Red M) and if it matches a set filter, render the swatch {% endcomment %}
+      {% for variant in product.variants %}
+
+        {% comment %} if the variant is NOT available, skip to next variant {% endcomment %}
+        {% unless variant.available %}
+          {% continue %}
+        {% endunless %}
+
+        {% comment %} if variant's current option (for instance, Color->Black) does NOT match current value of this cycle, skip{% endcomment %}
+        {% unless variant[current_option] == value %}
+          {% continue %}
+        {% endunless %}
+
+        {% comment %} if variant's other options (as defined by "option1", "option2", and "option3" in the variant's JSON) do not match the currently selected variant's other options, then skip {% endcomment %}
+        {% unless variant[other_options[0]] == current_variant[other_options[0]] %}
+          {% continue %}
+        {% endunless %}
+
+        {% unless variant[other_options[1]] == current_variant[other_options[1]] %}
+          {% continue %}
+        {% endunless %}
+
+        {% assign available = true %}
+      {% endfor %}
+
+      {% comment %} Initializing snippets for the render {% endcomment %}
+      {% assign checked = "" %}
+
+      {% if current_variant[current_option] == value %}
+        {% assign checked = 'checked="checked"' %}
+
+      {% endif %}
+
+      {% capture radio_button %}
+        <input type="radio" id="{{ id }}" name="{{ option_name }}" value="{{ value | escape }}" data-position="{{ option.position }}" {{ checked }} />
+      {% endcapture %}
+
+      {% capture sold_out_image %}
+        <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" alt="Sold out" />
+      {% endcapture %}
+
+      {% capture regular_swatch %}
+        {% assign sizeValueLength = value | size %}
+        {% if sizeValueLength > 4 %}
+          {% assign sizeClass = 'long-label' %}
+        {% else %}
+          {% assign sizeClass = 'short-label' %}
+        {% endif %}
+        <div class="swatch-element {{ sizeClass }} {% unless available %}soldout{% endunless %}{% if available == false and section.settings.show_sold_out == false %} hide{% endif %}">
+          {{ radio_button }}
+
+          <label for="{{ id }}">
+            {{ value }}
+            {{ sold_out_image }}
+          </label>
+        </div>
+      {% endcapture %}
+
+      {% capture color_swatch %}
+        <div class="swatch-element color {% unless available %}soldout{% endunless %}{% if available == false and section.settings.show_sold_out == false %} hide{% endif %}" data-swatch-value="{{ value | esc }}">
+          <div class="tooltip">
+            {{ value }}
+          </div>
+
+          {{ radio_button }}
+
+          <label for="{{ id }}" style="background-color: {{ css_color }}; {% if settings.use_swatch_images or section.settings.use_swatch_images %}background-image: url({{ image_url }}){% endif %}">
+            {{ sold_out_image }}
+          </label>
+        </div>
+      {% endcapture %}
+
+      {% if color_swatch_options contains option_name %}
+        {{ color_swatch }}
+      {% else %}
+        {{ regular_swatch }}
+      {% endif %}
+      
+    {% endfor %}
+  </div>
+
+  {% comment %} :: SIZE CHART LINK :: {% endcomment %}
+  {% if option_name contains 'size' and template != 'product.quick' %}
+
+    {% comment %}
+      REPLACE WTIH A FIT-PREDICTOR APP WHEN READY (If thats still the plan)
+        Backup Popup Version: <a href="#size-chart--popup" class="fancybox size-chart--trigger">Size Chart</a>
+    {% endcomment %}
+  {% endif %}
+</div>

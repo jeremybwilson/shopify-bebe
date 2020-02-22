@@ -1,0 +1,1831 @@
+<script>
+
+__bva__jQueryinterval = setInterval(function(){
+// --------------------------------------------- wait for jQuery to load
+if(window.jQuery){
+// --------------- run script after jQuery has loaded
+
+// search parameters
+getURLParams = function(name, url){
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  };
+
+/* =====================
+| DYNAMIC DEPENDENCIES |
+--------------------- */
+/**
+ * Enum cart trigger actions.
+ * @readonly
+ * @enum {string}
+ */
+var cartTriggerEvents = {
+  CLICK: 'CLICK',
+  SUBMIT: 'SUBMIT',
+}
+
+/**
+* @namespace
+* @property {cartTriggerEvents}  cartTriggerAction - Event type to listen for
+*/
+__bva__ = {
+  dynamicCart: true,  // if cart is dynamic (meaning no refresh on cart add) set to true
+  debug: {{settings.data_layer_debugging}}, // if true, console messages will be displayed
+  cart: null,
+  wishlist: null,
+  removeCart: null,
+  cartTriggerEvent: cartTriggerEvents.SUBMIT,
+};
+
+customBindings = {
+  cartTriggers: [],
+  cartTriggerButtons: ['.add-to-cart, .cart-btn, .product-form__cart-submit'],
+  // Update buttons on cart page
+  updateCartTrigger: ['#update-cart, #checkout'],
+  // Qty inputs on cart page
+  cartQty: ['.cart-qty'],
+  viewCart: [],
+  removeCartTrigger: [],
+  cartVisableSelector: [],
+  promoSubscriptionsSelectors: [],
+  promoSuccess: [],
+  ctaSelectors: [],
+  newsletterSelectors: [],
+  newsletterSuccess: [],
+  searchPage: [],
+  wishlistSelector: ['.swym-add-to-wishlist'],
+  removeWishlist: [],
+  wishlistPage: [],
+  marketingOpIn: ['#footer-newsletter'],
+  searchTermQuery: [getURLParams('q')], // replace var with correct query
+};
+
+/* DO NOT EDIT */
+defaultBindings = {
+  cartTriggers: ['form[action="/cart/add"] [type="submit"]'],
+  viewCart: ['form[action="/cart"],.my-cart,.trigger-cart,#mobileCart'],
+  removeCartTrigger: ['[href*="/cart/change"]'],
+  cartVisableSelector: ['.inlinecart.is-active,.inline-cart.is-active'],
+  promoSubscriptionsSelectors: [],
+  promoSuccess: [],
+  ctaSelectors: [],
+  newsletterSelectors: ['input.contact_email, input[name="contact[email]"], input[type="email"]'],
+  newsletterSuccess: ['.success_message'],
+  searchPage: ['search'],
+  wishlistSelector: [],
+  removeWishlist: [],
+  wishlistPage: []
+};
+
+// stitch bindings
+objectArray = customBindings;
+outputObject = __bva__;
+
+applyBindings = function(objectArray, outputObject){
+  for (var x in objectArray) {
+    var key = x;
+    var objs = objectArray[x];
+    values = [];
+    if(objs.length > 0){
+      values.push(objs);
+      if(key in outputObject){
+        values.push(outputObject[key]);
+        outputObject[key] = values.join(",");
+      }else{
+        outputObject[key] = values.join(",");
+      }
+    }
+  }
+};
+
+applyBindings(defaultBindings, __bva__);
+applyBindings(customBindings, __bva__);
+
+__bva__.helpers = (function () {
+  'use strict'
+  var Helpers = function (shop, template, cart) {
+    this.shop = shop
+    this.template = template
+    this.cart = cart
+    this.state = {}
+  }
+
+  Helpers.prototype.log = function (event, message, force) {
+    if (__bva__.debug) {
+      var msg = message ? ': ' + JSON.stringify(message, null, 2) : ''
+      console.log(event, msg)
+    }
+  }
+
+  // Fire whatever is is supplied as argument
+  Helpers.prototype.firePixel = function (payload) {
+    dataLayer.push(payload)
+    if (payload.event || payload.pageType) {
+      this.log(payload.event || payload.pageType, payload)
+    }
+  }
+
+  Helpers.prototype.sendCart = function (event = "Update Cart", pageType = "Update Cart") {
+    var clearCart = {
+          cartTotal: 0,
+          itemsCount: 0,
+          discountAmounts: 0,
+          cartId: undefined,
+          cartItems: undefined,
+    };
+    dataLayer.push(clearCart);
+
+    // we should update the cart to the most recent items
+    jQuery.get("/cart?view=datalayer", function(response){
+      var cart = JSON.parse(response);
+      cart.event = event;
+      cart.pageType = pageType;
+      dataLayer.push(cart);
+    });
+  };
+
+  {% comment %}
+  /***
+  * fireAddToCartPixel takes the product that was added to the cart and does
+  * an async fetch of our standard product data model for the data layer.
+  * The public template is in templates/product.datalayer.liquid and the
+  * data model template is in snippets/datalayer-product.liquid.
+  * Since this is an async data push, it's possible that the cart view will be
+  * triggered before this one finishes.
+  ***/
+  {% endcomment %}
+  Helpers.prototype.fireAddToCartPixel = function (product, isUpdate) {
+    if (!product) {
+      throw new Error('Missing product object')
+    }
+
+    if (isUpdate) {
+      return;
+    }
+
+    var productUrl = product.url;
+    if(typeof product.properties == 'object' && product.properties._collection_handle_private){
+      productUrl = "/collections/" + product.properties._collection_handle_private + productUrl;
+    }
+    if(productUrl.indexOf("?") == -1){
+      productUrl += "?view=datalayer";
+    } else {
+      productUrl += "&view=datalayer";
+    }
+
+    jQuery.get(productUrl, function(response){
+      var payload = {};
+      var addedProduct = JSON.parse(response);
+      addedProduct.quantity = product.addQuantity;
+      payload.products = [addedProduct];
+      payload.event = "Add to Cart";
+      payload.pageType = "Add to Cart";
+      dataLayer.push(payload);
+    });
+  };
+
+  Helpers.prototype.fireRemoveFromCartPixel = function (product) {
+    if (!product) {
+      throw new Error('Missing Id')
+    }
+
+    var productUrl = product.url;
+    if(typeof product.properties == 'object' && product.properties._collection_handle_private){
+      productUrl = "/collections/" + product.properties._collection_handle_private + productUrl;
+    }
+    if(productUrl.indexOf("?") == -1){
+      productUrl += "?view=datalayer";
+    } else {
+      productUrl += "&view=datalayer";
+    }
+
+    jQuery.get(productUrl, function(response){
+      var payload = {};
+      var removedProduct = JSON.parse(response);
+      removedProduct.quantity = product.removeQuantity;
+      payload.products = [removedProduct];
+      payload.event = "Remove from Cart";
+      payload.pageType = "Remove from Cart";
+      dataLayer.push(payload);
+      if(__bva__.debug){
+        console.log('Remove from Cart', payload);
+      }
+    });
+  };
+
+  Helpers.prototype.fireEmailPixel = function (data) {
+    var payload = $.extend({}, data, { interaction: 'On Email' })
+
+    if (!payload.email) {
+      throw new Error('Email missing')
+    }
+
+    if (!payload.emailType) {
+      throw new Error('Email type missing')
+    }
+
+    dataLayer.push(payload)
+    dataLayer.push({ event: 'On Email' })
+    this.log('On Email', payload)
+  }
+
+  Helpers.prototype.fireCartPixel = function (data) {
+    var payload = data
+    dataLayer.push(payload)
+    dataLayer.push({ event: 'Cart', pageType: 'Cart' })
+    this.log('Cart', payload)
+  }
+
+  Helpers.prototype.monkeyPatchShopifyAPI = function () {
+    if (typeof ShopifyAPI === 'undefined') {
+      return null;
+    }
+
+    var self = this;
+    var getCartItem = function (cartItems, vId) {
+      var cartItem;
+      if (cartItems && cartItems.length) {
+        for (var i = 0; i < cartItems.length; i++) {
+          if (vId == cartItems[i].variant_id) {
+            cartItem = cartItems[i];
+            break;
+          }
+        }
+      }
+      return cartItem;
+    };
+
+    if (typeof ShopifyAPI.changeItem !== 'undefined') {
+      var changeItemMethod = ShopifyAPI.changeItem;
+      ShopifyAPI.changeItem = function () {
+
+        var vId = arguments[0];
+        var quantityChange = arguments[1];
+        var callback = arguments[2];
+        var initialItem = getCartItem(self.cart.items, vId);
+
+        arguments[2] = function (cart) {
+
+          self.cart = cart;
+          var product = getCartItem(cart.items, vId);
+          // Have to account for initialItem being 0 when GWP items are added to cart.
+          // Product quantity increased
+          if (product && initialItem && initialItem.quantity < product.quantity) {
+            var addQuantity = product.quantity - initialItem.quantity;
+            product.addQuantity = addQuantity;
+            self.fireAddToCartPixel(product);
+
+            // removing cart items action
+            // Product completely removed from cart
+          } else if (initialItem && !product) {
+            var removeQuantity = quantityChange;
+            initialItem.removeQuantity = quantityChange;
+            self.fireRemoveFromCartPixel(initialItem);
+
+            // Product is still in cart, but quantity decreased
+          } else if (product && initialItem && initialItem.quantity > product.quantity) {
+            var removeQuantity = initialItem.quantity - product.quantity;
+            initialItem.removeQuantity = removeQuantity;
+            self.fireRemoveFromCartPixel(initialItem);
+          } else {
+            console.log('Not enough in stock.');
+          }
+
+          return callback.apply(this, arguments);
+        };
+
+        changeItemMethod.apply(ShopifyAPI, arguments);
+      }
+    }
+
+    if (typeof ShopifyAPI.addItemFromForm !== 'undefined') {
+      var originalMethod = ShopifyAPI.addItemFromForm;
+      ShopifyAPI.addItemFromForm = function () {
+        var form = arguments[0];
+        var addQuantity = jQuery(form).find("input[name=quantity]").val();
+        {% comment %} We can rely on this value because it will throw a 422 error it cannot add that many items {% endcomment %}
+
+        var originalCallback = arguments[1];
+        arguments[1] = function (product) {
+          product.addQuantity = addQuantity;
+          self.fireAddToCartPixel(product)
+          return originalCallback.call(this, product);
+        }
+
+        originalMethod.apply(ShopifyAPI, arguments);
+      };
+    }
+
+    if (typeof ShopifyAPI.getCart !== 'undefined') {
+      var getCartMethod = ShopifyAPI.getCart
+      ShopifyAPI.getCart = function () {
+        var getCartCallback = arguments[0]
+        arguments[0] = function (cart) {
+          self.cart = cart;
+          $(document.body).trigger('ajaxCart.afterGetCart', cart)
+          getCartCallback.apply(this, arguments)
+        }
+
+        getCartMethod.apply(ShopifyAPI, arguments)
+      }
+    }
+  };
+
+  Helpers.prototype.watchCheckoutDiscountField = function () {
+    var EVENTS = {
+      GIFT: 'On Gift',
+      PROMO: 'On Promo',
+    }
+
+    var self = this
+    $(document.body).on('blur', '#checkout_reduction_code', function (e) {
+      var value = $(this).val().trim()
+
+      if (!value) {
+        return null
+      }
+
+      var payload = { id: '#checkout_reduction_code' }
+
+      $('button[data-trekkie-id="apply_discount_button"]').on('click', function (e) {
+        if (value.length > 12) {
+          payload.interaction = EVENTS.GIFT
+
+          var gettingGiftAmt = setInterval(function () {
+            var giftCardAmount = $('[data-checkout-applied-gift-card-amount-target]').data('checkout-applied-gift-card-amount-target');
+            if (giftCardAmount) {
+              giftCardAmount = parseFloat(giftCardAmount)/100;
+              payload.amount = giftCardAmount;
+              dataLayer.push(payload, { event: EVENTS.GIFT })
+              dataLayer.push({ giftCardAmount: payload.amount })
+              self.log(EVENTS.GIFT, payload)
+              clearInterval(gettingGiftAmt)
+            }
+          }, 500);
+          setTimeout(function () {
+            if (gettingGiftAmt) {
+              clearInterval(gettingGiftAmt)
+            }
+          }, 5000);
+        } else {
+          payload.interaction = EVENTS.PROMO
+          payload.code = value
+
+          var gettingPromoAmt = setInterval(function () {
+            var discountAmount = $('[data-checkout-discount-amount-target]').data('checkout-discount-amount-target');
+            if (discountAmount) {
+              discountAmount = parseFloat(discountAmount)/100;
+              payload.amount = discountAmount;
+              dataLayer.push(payload, { event: EVENTS.PROMO })
+              dataLayer.push({
+                promoCode: payload.code,
+                discount: payload.amount,
+              })
+              self.log(EVENTS.PROMO, payload)
+              clearInterval(gettingPromoAmt)
+            }
+          }, 500);
+          setTimeout(function () {
+            if (gettingPromoAmt) {
+              clearInterval(gettingPromoAmt)
+            }
+          }, 5000);
+        }
+      })
+    })
+  }
+
+  Helpers.prototype.watchCheckoutEmailOrPhoneField = function () {
+    var self = this
+    var state = { email: '' }
+    var fieldSelector = '#checkout_email_or_phone, #checkout_email'
+
+    function firePixel(email) {
+      if (email && email.indexOf('@') !== -1 && state.email !== email) {
+        state.email = email
+        self.fireEmailPixel({ email: email, emailType: 'transact' })
+
+        if (self.state.initialBuyerAcceptsMarketing) {
+          self.fireEmailPixel({ email: email, emailType: 'marketing' })
+          self.state.initialBuyerAcceptsMarketing = false
+        }
+      }
+    }
+
+    $(document.body).on('blur', fieldSelector, function () {
+      firePixel($(this).val())
+    })
+
+    firePixel($(fieldSelector).val())
+  }
+
+  Helpers.prototype.watchCheckoutShippingField = function () {
+    var self = this
+    var state = { method: '' }
+    var shippingRateSelector = '[id^="checkout_shipping_rate"]'
+
+    function firePixel(value) {
+      if (state.method !== value) {
+        state.method = value
+        var data = {
+          interaction: 'On Ship',
+          shippingInfo: {
+            method: value,
+          }
+        }
+
+        dataLayer.push(data, {
+          event:'Shipping Information',
+          pageType :'Shipping Information',
+        })
+
+        self.log('Shipping - Transaction Data', data)
+      }
+    }
+
+    function initObserver() {
+      if (typeof window.MutationObser === 'undefined') {
+        return null
+      }
+
+      var observer = new MutationObserver(function (mutations) {
+        var self = this
+        mutations.forEach(function (mutation) {
+          var $selectedInput = $(mutation.target).find(shippingRateSelector).filter(function () {
+            return $(this).prop('checked')
+          })
+
+          if ($selectedInput.length) {
+            var radioVal = $selectedInput.val()
+            var $label = $('.radio__label[for="' + $selectedInput.attr('id') + '"]')
+            var labelVal = $label.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title')
+//            firePixel(radioVal + '-' + labelVal)
+            firePixel(labelVal)
+            self.disconnect()
+          }
+        })
+      })
+
+      var element = document.querySelector('.main')
+      observer.observe(element, { childList: true, subtree: true })
+    }
+
+    $(document.body).on('change', shippingRateSelector, function (e) {
+      var radioVal = $(this).val()
+      var $label = $('.radio__label[for="' + $(this).attr('id') + '"]')
+      var labelVal = $label.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title')
+//      firePixel(radioVal + '-' + labelVal)
+      firePixel(labelVal)
+    })
+
+    var $initialCheckedRadio = $(shippingRateSelector).filter(function () {
+      return $(this).prop('checked')
+    })
+
+    if ($initialCheckedRadio.length) {
+      var initialRadioVal = $initialCheckedRadio.val()
+      var $initialLabel = $('.radio__label[for="' + $initialCheckedRadio.attr('id') + '"]')
+      var initialLabelVal = $initialLabel.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title')
+//      firePixel(initialRadioVal + '-' + initialLabelVal)
+      firePixel(initialLabelVal)
+    } else {
+      initObserver()
+    }
+  }
+
+  Helpers.prototype.watchCheckoutShippingFieldOnClick = function () {
+    var self = this;
+    var state = { method: '' };
+    var shippingRateSelector = '[id^="checkout_shipping_rate"]';
+
+    function firePixel(value) {
+      if (state.method !== value) {
+        state.method = value;
+        var data = {
+          interaction: 'On Ship',
+          shippingInfo: {
+            method: value,
+          }
+        };
+
+        dataLayer.push(data, {
+          event:'Shipping Information',
+          pageType :'Shipping Information',
+        });
+
+        self.log('Shipping - Transaction Data', data);
+      }
+    }
+
+    $('button[data-trekkie-id="apply_discount_button"]').click(function (e) {
+      var $initialCheckedRadio = $(shippingRateSelector).filter(function () {
+        return $(this).prop('checked');
+      });
+
+      if ($initialCheckedRadio.length) {
+        var initialRadioVal = $initialCheckedRadio.val();
+        var $initialLabel = $('.radio__label[for="' + $initialCheckedRadio.attr('id') + '"]');
+        var initialLabelVal = $initialLabel.find('[data-shipping-method-label-title]').attr('data-shipping-method-label-title');
+//      firePixel(initialRadioVal + '-' + initialLabelVal)
+        firePixel(initialLabelVal);
+      }
+    });
+  }
+
+  Helpers.prototype.watchCheckoutPaymentFields = function () {
+    var self = this
+    var event = { event: 'On Payment' }
+    var state = { paymentType: '' }
+
+    var PAYMENT_TYPES = {
+      CREDIT_CARD: 'cc',
+      PAYPAL: 'pp',
+      OTHER: 'other',
+    }
+
+    var INTERACTIONS = {
+      CARD_NUMBER: 'cn',
+      MM: 'em',
+      YY: 'ey',
+      CVV: 'cvv',
+    }
+
+    // Skip index 1, sicne we don't need it
+    var FIELD_ORDERS = {}
+    FIELD_ORDERS[0] = [INTERACTIONS.CARD_NUMBER]
+    FIELD_ORDERS[2] = [INTERACTIONS.MM, INTERACTIONS.YY]
+    FIELD_ORDERS[3] = [INTERACTIONS.CVV]
+
+    function getPaymentType(paymentType) {
+      return PAYMENT_TYPES[paymentType] || PAYMENT_TYPES.OTHER
+    }
+
+    function paymentTypeRoutine($el) {
+      if ($el.currentTarget) {
+        $el = $($el.currentTarget)
+      }
+
+      var label = $el
+        .closest('[data-gateway-group]')
+        .find('label')
+        .text()
+        .trim()
+        .toUpperCase()
+        .replace(/\s/g, '_')
+
+      var paymentType = getPaymentType(label)
+      var payload = { paymentType: paymentType, interaction: 'On Payment' }
+      state.paymentType = paymentType
+      dataLayer.push(payload, event)
+      self.log('On Payment', payload)
+    }
+
+    function setInitialPaymentType() {
+      var $selectedRadio = $('form.edit_checkout')
+        .find('[id^="checkout_payment_gateway"]')
+        .filter(function () {
+          return $(this).prop('checked')
+        })
+
+      paymentTypeRoutine($selectedRadio)
+    }
+
+    function bindUIEvents() {
+      $(document.body)
+        .on('change', '[id^="checkout_payment_gateway"]', paymentTypeRoutine)
+    }
+
+    function watchPaymentField(interactionTypes, el) {
+      if (!interactionTypes || !interactionTypes.length) {
+        return null
+      }
+
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          var classList = mutation.target.classList
+          var isActive = classList.contains('field--active')
+          var hasValue = classList.contains('field--show-floating-label')
+          if (isActive && hasValue) {
+            interactionTypes.forEach(function (interactionType) {
+              var payload = {
+                paymentType: state.paymentType,
+                interactionType: interactionType,
+                interaction: 'On Payment',
+              }
+              dataLayer.push(payload, event)
+              this.log('On Payment', payload)
+            }, __bva__.helpers)
+          }
+        }, __bva__.helpers)
+      })
+
+      observer.observe(el, { attributes: true, attributeFilter: ['class'] })
+    }
+
+    function setAndWatchFields(fields) {
+      ;[].slice.call(fields).forEach(function (field, i) {
+        var interactionKeys = FIELD_ORDERS[i]
+
+        if (interactionKeys) {
+          watchPaymentField(interactionKeys, field)
+        }
+      })
+    }
+
+    function initializeObservers() {
+      if (!window.MutationObserver) {
+        return null
+      }
+
+      var interval
+      interval = setInterval((function (cb) {
+        return function () {
+          var fields = document.querySelectorAll('[data-credit-card-fields] .field')
+          if (fields.length) {
+            clearInterval(interval)
+            cb(fields)
+          }
+        }
+      })(setAndWatchFields), 1000)
+    }
+
+    setInitialPaymentType()
+    bindUIEvents()
+    initializeObservers()
+  }
+
+  Helpers.prototype.watchCustomerAccountForm = function () {
+    var self = this
+    $('#create_customer, #customer_login').on('submit', function (e) {
+      e.preventDefault()
+      var email = $(this).find('input[name="customer[email]"]').val()
+
+      if (email) {
+        self.fireEmailPixel({ email: email, emailType: 'account' })
+      }
+
+      $(this).unbind('submit')[0].submit()
+    })
+  }
+
+  Helpers.prototype.watchCustomerAccountEmail = function () {
+    var self = this
+    $('#create_customer, #customer_login').on('blur', 'input[name="customer[email]"]', function (e) {
+      var email = $(this).val()
+      if (email.indexOf('@') !== -1) {
+        self.fireEmailPixel({ email: email, emailType: 'account' })
+      }
+    })
+  }
+
+  Helpers.prototype.watchEmailMarketingBySubmit = function (formSelector, inputSelector) {
+    var self = this
+    var state = { email: '' }
+
+    var handler = function (e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      var email = $(formSelector).find(inputSelector).val()
+      if (email && email !== state.email && email.indexOf('@') !== -1) {
+        state.email = email
+        self.fireEmailPixel({ email: email, emailType: 'marketing' })
+      }
+
+      $(document.body).unbind('submit', handler)
+      if ($(formSelector).length) {
+        $(formSelector)[0].submit()
+      }
+    }
+
+    $(document.body).on('submit', formSelector, handler)
+  }
+
+  Helpers.prototype.watchEmailMarketingByClick = function (buttonSelector, inputSelector, parentSelector) {
+    var self = this
+    var state = { email: '' }
+
+    var handler = function (e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      var email = $(parentSelector).find(inputSelector).val()
+      if (email && email !== state.email && email.indexOf('@') !== -1) {
+        self.fireEmailPixel({ email: email, emailType: 'marketing' })
+      }
+
+      $(parentSelector).unbind('click', handler)
+
+      if ($(buttonSelector).length) {
+        $(buttonSelector)[0].click()
+      }
+    }
+
+    $(parentSelector).on('click', buttonSelector, handler)
+  }
+
+  Helpers.prototype.watchEmailMarketingByChange = function (parentSelector, inputSelector) {
+    parentSelector = parentSelector || document.body
+    var self = this
+
+    $(parentSelector).on('change', inputSelector, function (e) {
+      var email = $(this).val()
+      if (email.indexOf('@') !== -1) {
+        self.fireEmailPixel({ email: email, emailType: 'marketing' })
+      }
+    })
+  }
+
+
+  return new Helpers({
+    name: {{ shop.name | json }},
+    url: {{ shop.secure_url | json }},
+  }, {{ template | json }}, {{ cart | json }})
+})();
+
+/* =======================
+| PREREQUISITE LIBRARIES |
+----------------------- */
+
+  clearInterval(__bva__jQueryinterval);
+
+    // jquery-cookies.js
+    if(typeof $.cookie!==undefined){(function(a){if(typeof define==='function'&&define.amd){define(['jquery'],a)}else if(typeof exports==='object'){module.exports=a(require('jquery'))}else{a(jQuery)}}(function($){var g=/\+/g;function encode(s){return h.raw?s:encodeURIComponent(s)}function decode(s){return h.raw?s:decodeURIComponent(s)}function stringifyCookieValue(a){return encode(h.json?JSON.stringify(a):String(a))}function parseCookieValue(s){if(s.indexOf('"')===0){s=s.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,'\\')}try{s=decodeURIComponent(s.replace(g,' '));return h.json?JSON.parse(s):s}catch(e){}}function read(s,a){var b=h.raw?s:parseCookieValue(s);return $.isFunction(a)?a(b):b}var h=$.cookie=function(a,b,c){if(arguments.length>1&&!$.isFunction(b)){c=$.extend({},h.defaults,c);if(typeof c.expires==='number'){var d=c.expires,t=c.expires=new Date();t.setMilliseconds(t.getMilliseconds()+d*864e+5)}return(document.cookie=[encode(a),'=',stringifyCookieValue(b),c.expires?'; expires='+c.expires.toUTCString():'',c.path?'; path='+c.path:'',c.domain?'; domain='+c.domain:'',c.secure?'; secure':''].join(''))}var e=a?undefined:{},cookies=document.cookie?document.cookie.split('; '):[],i=0,l=cookies.length;for(;i<l;i++){var f=cookies[i].split('='),name=decode(f.shift()),cookie=f.join('=');if(a===name){e=read(cookie,b);break}if(!a&&(cookie=read(cookie))!==undefined){e[name]=cookie}}return e};h.defaults={};$.removeCookie=function(a,b){$.cookie(a,'',$.extend({},b,{expires:-1}));return!$.cookie(a)}}))}
+
+    /* ======================
+    | Begin dataLayer Build |
+    ---------------------- */
+
+    // if debug
+    if(__bva__.debug){
+      console.log('=====================\n| DATALAYER SHOPIFY |\n---------------------');
+      console.log('Page Template: {{ template }}');
+    }
+
+    window.dataLayer = window.dataLayer || [];  // init data layer if doesn't already exist
+    dataLayer.push({'event': 'Begin DataLayer'}); // begin datalayer
+
+    var template = "{{template}}";
+
+
+
+    /* Landing Page Cookie
+    -----------------------
+    1. Detect if user just landed on the site
+    2. Only fires if Page Title matches website */
+
+    $.cookie.raw = true;
+    if ($.cookie('landingPage') === undefined || $.cookie('landingPage').length === 0) {
+      var landingPage = true;
+      $.cookie('landingPage', unescape);
+      $.removeCookie('landingPage', {path: '/'});
+      $.cookie('landingPage', 'landed', {path: '/'});
+    } else {
+      var landingPage = false;
+      $.cookie('landingPage', unescape);
+      $.removeCookie('landingPage', {path: '/'});
+      $.cookie('landingPage', 'refresh', {path: '/'});
+    }
+    if (__bva__.debug) {
+      console.log('Landing Page: ' + landingPage);
+    }
+
+    /* Log State Cookie
+    ------------------- */
+    {% if customer %}
+    var isLoggedIn = true;
+    {% else %}
+    var isLoggedIn = false;
+    {% endif %}
+    if (!isLoggedIn) {
+      $.cookie('logState', unescape);
+      $.removeCookie('logState', {path: '/'});
+      $.cookie('logState', 'loggedOut', {path: '/'});
+    } else {
+      if ($.cookie('logState') === 'loggedOut' || $.cookie('logState') === undefined) {
+        $.cookie('logState', unescape);
+        $.removeCookie('logState', {path: '/'});
+        $.cookie('logState', 'firstLog', {path: '/'});
+      } else if ($.cookie('logState') === 'firstLog') {
+        $.cookie('logState', unescape);
+        $.removeCookie('logState', {path: '/'});
+        $.cookie('logState', 'refresh', {path: '/'});
+      }
+    }
+
+    if ($.cookie('logState') === 'firstLog') {
+      var firstLog = true;
+    } else {
+      var firstLog = false;
+    }
+
+    /* ==========
+    | DATALAYERS |
+    ----------- */
+
+    /* DATALAYER: Initial cart state
+    --------------------------
+    Fires any time a user first lands on the site. */
+    {% if cart %}
+    var clearCart = {
+          cartTotal: 0,
+          itemsCount: 0,
+          discountAmounts: 0,
+          cartId: undefined,
+          cartItems: undefined,
+    };
+    dataLayer.push(clearCart);
+
+    var cart = {% include "datalayer-cart" %};
+    cart.event = "Cart Initialize";
+    cart.pageType = "Cart Initialize";
+    dataLayer.push(cart);
+
+    __bva__.cart = cart;
+  {% endif %}
+
+    /* DATALAYER: Landing Page
+    --------------------------
+    Fires any time a user first lands on the site. */
+
+    if ($.cookie('landingPage') === 'landed') {
+      dataLayer.push({
+        'pageType': 'Landing',
+        'event': 'Landing'
+      });
+
+      if (__bva__.debug) {
+        console.log('DATALAYER: Landing Page fired.');
+      }
+    }
+
+    /* DATALAYER: Log State
+    -----------------------
+    1. Determine if user is logged in or not.
+    2. Return User specific data. */
+
+    var logState = {
+      {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+      'userId'        : '{{customer.id}}',
+      'customerEmail' : '{{customer.email}}',
+      'logState'      : "Logged In",
+      'customerInfo'  : {
+        'firstName'   : '{{customer_address.first_name}}',
+        'lastName'    : '{{customer_address.last_name}}',
+        'address1'    : '{{customer_address.address1}}',
+        'address2'    : '{{customer_address.address2}}',
+        'street'      : '{{customer_address.street}}',
+        'city'        : '{{customer_address.city}}',
+        'province'    : '{{customer_address.province}}',
+        'zip'         : '{{customer_address.zip}}',
+        'country'     : '{{customer_address.country}}',
+        'phone'       : '{{customer_address.phone}}',
+        'totalOrders' : '{{customer.orders_count}}',
+        'totalSpent'  : '{{customer.total_spent}}'
+      },
+      {% else %}
+      'logState' : "Logged Out",
+      {% endif %}
+      {% endif %}
+      'firstLog'      : firstLog,
+      'customerEmail' : '{{customer.email}}',
+      'timestamp'     : Date.now(),
+      {% if customer.orders_count > 2 %}
+      'customerType'       : 'Returning',
+      'customerTypeNumber' : '0',
+      {% else %}
+      'customerType'       : 'New',
+      'customerTypeNumber' :'1',
+      {% endif %}
+      'shippingInfo' : {
+        'fullName'  : '{{checkout.shipping_address.name}}',
+        'firstName' : '{{checkout.shipping_address.first_name}}',
+        'lastName'  : '{{checkout.shipping_address.last_name}}',
+        'address1'  : '{{checkout.shipping_address.address1}}',
+        'address2'  : '{{checkout.shipping_address.address2}}',
+        'street'    : '{{checkout.shipping_address.street}}',
+        'city'      : '{{checkout.shipping_address.city}}',
+        'province'  : '{{checkout.shipping_address.province}}',
+        'zip'       : '{{checkout.shipping_address.zip}}',
+        'country'   : '{{checkout.shipping_address.country}}',
+        'phone'     : '{{checkout.shipping_address.phone}}',
+        'method'    : '{{checkout.shipping_method.handle}}',
+      },
+      'billingInfo' : {
+        'fullName'  : '{{checkout.billing_address.name}}',
+        'firstName' : '{{checkout.billing_address.first_name}}',
+        'lastName'  : '{{checkout.billing_address.last_name}}',
+        'address1'  : '{{checkout.billing_address.address1}}',
+        'address2'  : '{{checkout.billing_address.address2}}',
+        'street'    : '{{checkout.billing_address.street}}',
+        'city'      : '{{checkout.billing_address.city}}',
+        'province'  : '{{checkout.billing_address.province}}',
+        'zip'       : '{{checkout.billing_address.zip}}',
+        'country'   : '{{checkout.billing_address.country}}',
+        'phone'     : '{{checkout.billing_address.phone}}',
+      },
+      'checkoutEmail'    : '{{checkout.email}}',
+      'currency'         : '{{shop.currency}}',
+      'acceptsMarketing' : '{{checkout.buyer_accepts_marketing}}',
+      'pageType'         : 'Log State',
+      'event'            : 'Log State'
+    }
+
+    dataLayer.push(logState);
+    if(__bva__.debug){
+      console.log("Log State"+" :"+JSON.stringify(logState, null, " "));
+    }
+
+    /*DATALAYER: Cart
+     --------------------------- */
+
+
+
+    /*DATALAYER: Global
+    --------------------------- */
+    __bva__.helpers.watchEmailMarketingByClick('#sr_email_sign_up', '#sr_lm_email', '#sr_cart_runner');
+
+    /*DATALAYER: Homepage
+    --------------------------- */
+
+    if(document.location.pathname == "/"){
+      var homepage = {
+        'pageType' : 'Homepage',
+        'event'    : 'Homepage'
+      };
+      dataLayer.push(homepage);
+      if(__bva__.debug){
+        console.log("Homepage"+" :"+JSON.stringify(homepage, null, " "));
+      }
+    }
+
+    /* DATALAYER: CUSTOMERS
+    ---------------------------
+    Fire on Customer Pages */
+
+    {% if template contains 'customer' %}
+      // __bva__.helpers.watchCustomerAccountForm()
+      __bva__.helpers.watchCustomerAccountEmail()
+    {% endif %}
+
+    /* DATALAYER: Blog Articles
+    ---------------------------
+    Fire on Blog Article Pages */
+
+    {% if template contains 'article' %}
+    var blog = {
+      'author'      : '{{article.author}}',
+      'title'       : '{{article.title}}',
+      'dateCreated' : '{{article.created_at}}',
+      'pageType'    : 'Blog',
+      'event'       : 'Blog'
+    };
+    dataLayer.push(blog);
+    if(__bva__.debug){
+      console.log("Blog"+" :"+JSON.stringify(blog, null, " "));
+    }
+    {% endif %}
+
+    /* DATALAYER: Product List Page (Collections, Category)
+    -------------------------------------------------------
+    Fire on all product listing pages. */
+
+    {% if template contains 'collection' %}
+    {% comment %} Products are not loaded, but can be via including snippets/datalayer-collection.liquid {% endcomment %}
+
+    var collections = {
+      'collectionTitle' : {{collection.title | json }},
+      'handle'          : {{ collection.handle | json }},
+      'pageType'        : 'Collection',
+      'event'           : 'Collection'
+    };
+
+    dataLayer.push(collections);
+
+    if(__bva__.debug){
+      console.log("Collections"+" :"+JSON.stringify(collections, null, " "));
+    }
+
+    // watches for the quick view button
+    // we may want to bind to a dynamic button name
+    $(document).on('click', '.product-quickview', function () {
+      var productUrl = this.href;
+      productUrl = productUrl.replace("view=quick", "view=datalayer");
+      jQuery.get(productUrl, function(response){
+        var payload = {};
+        var quickViewProduct = JSON.parse(response);
+        payload.products = [quickViewProduct];
+        payload.event = "Quick View";
+        payload.pageType = "Collection";
+        dataLayer.push(payload);
+        if(__bva__.debug){
+          console.log('firepixel quickview:', quickViewProduct);
+        }
+      });
+    });
+
+    {% endif %}
+
+    /*DATALAYER: Custom collection
+    --------------------------- */
+    {% if template contains 'page' and template contains '-landing' %}
+      var collections = {
+        productList: {{ page.title | json }},
+        handle: {{ page.handle | json }},
+        pageType: 'Collection',
+        event: 'Collection',
+      }
+      dataLayer.push({ products: [null] })
+      dataLayer.push(collections)
+      if(__bva__.debug){
+        console.log("Collections"+" :"+JSON.stringify(product, null, " "));
+        console.log("Collections"+" :"+JSON.stringify(collections, null, " "));
+      }
+    {% endif %}
+
+    /* DATALAYER: Product Page / PDP
+    --------------------------
+    Fire on all Product View pages. */
+
+    if (template.match(/.*product.*/gi) && !template.match(/.*collection.*/gi)) {
+
+      var product = {% include 'datalayer-product' %};
+
+      function productView() {
+        dataLayer.push({
+          'pageType' : 'Product',
+          'event'    : 'Product',
+          'products' : [product]});
+
+        if(__bva__.debug){
+          console.log("Product"+" :"+JSON.stringify(product, null, " "));
+        }
+      }
+      productView();
+
+      $(document).on('click', '.product-quickview-button', function () {
+        {% comment %} TODO: Do we still need this? {% endcomment %}
+        var viewedElementId = $(this).data('id');
+        var viewedProduct = $(this).data('product');
+        viewedElementId = viewedElementId.toString();
+
+        dataLayer.push({
+          event: 'Quick View',
+          pageType: 'Product',
+          pageTitle: product.products[0].name,
+          pageURL: product.products[0].url,
+          quickViewedIds: viewedElementId,
+          quickViewedProducts: [viewedProduct]
+        });
+      });
+
+
+      {% comment %}
+        // Taking this out for now
+        if (sessionStorage.getItem('clicked_next_or_prev_on_quickview')) {
+//        console.log('Quick View by next or prev');
+
+        dataLayer.push({
+          event: 'Quick View',
+          pageType: 'Product',
+          pageTitle: product.products[0].name,
+          pageURL: product.products[0].url,
+          quickViewedProducts: [product.products[0]]
+        });
+        sessionStorage.removeItem('clicked_next_or_prev_on_quickview');
+      } {% endcomment %}
+    }
+
+    /* DATALAYER: Cart View
+    -----------------------
+    1. Fire anytime a user views their cart (non-dynamic) */
+
+    {% if template contains 'cart' %}
+
+    dataLayer.push({"event": "Cart", "pageType": "Cart"});
+
+    __bva__.cart = cart;
+
+    function checkProducts() {
+      var allQty = []
+      var isEmpty = true
+      $(__bva__.cartQty).each(function () {
+        var qty = parseInt($(this).val(), 10)
+        allQty.push(qty)
+        if (qty) {
+          isEmpty = false
+        }
+      })
+
+      if (isEmpty) {
+        __bva__.helpers.fireEmptyCartPixel()
+      } else {
+        allQty.forEach(function (qty, i) {
+          var product = __bva__.cart.cartItems[i]
+          var initialQuantity = 0;
+          try {
+            initialQuantity = parseInt(product.quantity, 10)
+          } catch(e) {
+            console.log('Seems like the product is empty.');
+          }
+          if (initialQuantity < qty && product) {
+            __bva__.helpers.fireAddToCartPixel(product, true)
+          }
+        })
+      }
+    }
+
+    $(__bva__.updateCartTrigger).on('click', function (e) {
+      console.log('updateCartTrigger');
+      e.preventDefault()
+      checkProducts()
+      $(e.currentTarget).unbind('click')[0].click()
+    })
+
+    $(__bva__.removeCartTrigger).on('click', function (event) {
+      event.preventDefault()
+      var $this = $(this)
+      // ------------------------------------------------------------------- remove from cart
+      return jQuery.getJSON("/cart", function (response) {
+      // --------------------------------------------- get Json response
+        __bva__.removeCart = response;
+        var removeFromCart = {
+          'products': __bva__.removeCart.items.map(function (line_item) {
+            return {
+              'id'       : line_item.product_id,
+              'sku'      : line_item.sku,
+              'variant'  : line_item.variant_id,
+              'name'     : line_item.title,
+              'price'    : (line_item.price/100),
+              'quantity' : line_item.quantity
+            }
+          }),
+          'pageType' : 'Remove from Cart',
+          'event'    : 'Remove from Cart'
+        };
+        __bva__.removeCart = removeFromCart;
+        var cartIDs = [];
+        var removeIDs = [];
+        var removeCart = [];
+
+        // remove from cart logic
+        for(var i=__bva__.cart.length-1;i>=0;i--){var x=parseFloat(__bva__.cart[i].variant);cartIDs.push(x)}for(var i=__bva__.removeCart.products.length-1;i>=0;i--){var x=parseFloat(__bva__.removeCart.products[i].variant);removeIDs.push(x)}function arr_diff(b,c){var a=[],diff=[];for(var i=0;i<b.length;i++){a[b[i]]=true}for(var i=0;i<c.length;i++){if(a[c[i]]){delete a[c[i]]}else{a[c[i]]=true}}for(var k in a){diff.push(k)}return diff};var x=arr_diff(cartIDs,removeIDs)[0];for(var i=__bva__.cart.length-1;i>=0;i--){if(__bva__.cart[i].variant==x){removeCart.push(__bva__.cart[i])}}
+
+        dataLayer.push(removeCart);
+        if (__bva__.debug) {
+          console.log("Cart"+" :"+JSON.stringify(removeCart, null, " "));
+        }
+
+        $this.unbind('click')[0].click()
+      // --------------------------------------------- get Json response
+      });
+      // ------------------------------------------------------------------- remove from cart
+    });
+
+    {% endif %}
+
+    /* DATALAYER Variable: Checkout & Transaction Data */
+
+    __bva__products = [
+      {% for line_item in checkout.line_items %}
+        {% include "datalayer-line_item" %}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ];
+
+    transactionData = {
+      'interaction'            : 'Transaction Data',
+      'checkoutId'             : {{ checkout.id | json }},
+      'transactionNumber'      : {{ checkout.order_id | json }},
+      'transactionId'          : {{ checkout.order_number | json }},
+      'transactionAffiliation' : {{ shop.name | json }},
+      'transactionTotal'       : {{ checkout.total_price | money_without_currency | remove: "," | json }},
+      'transactionTax'         : {{ checkout.tax_price |  money_without_currency | remove: "," | json }},
+      'transactionShipping'    : {{ checkout.shipping_price | money_without_currency | remove: "," | json }},
+      'transactionSubtotal'    : {{ checkout.subtotal_price | money_without_currency | remove: "," | json }},
+      'transactionGiftCardAmount': {{ checkout.gift_cards_amount | money_without_currency | remove: "," | json }},
+
+      {% comment %}
+      {%- if checkout.discount_applications.size > 0 -%}
+        'discountApplications': [
+          {%- for discount_application in checkout.discount_applications -%}
+            {
+              'code': {{ discount_application.title | json }},
+              'amount': {{ discount_application.total_allocated_amount | money_without_currency | remove "," | json }},
+            },
+          {%- endfor -%}
+        ],
+      {%- endif -%}
+      {% endcomment %}
+
+      {% for discount in checkout.discounts %}
+      'promoCode' : {{ discount.code | json }},
+      'discount'  : {{ discount.amount | money_without_currency | json }},
+      {% endfor %}
+
+      'cartItems': __bva__products
+    };
+
+    if(__bva__.debug == true){
+      /* DATALAYER: Transaction
+      -------------------------- */
+      if(document.location.pathname.match(/.*order.*/g)){
+        console.log("Transaction Data: Not sent "+" :"+JSON.stringify(transactionData, null, " "));
+      }
+    }
+
+    /* DATALAYER: Checkout
+    -------------------------- */
+
+    {% if checkout %}
+    {% comment %}
+    We want to wait for the Shopify.Checkout object to load first
+    {% endcomment %}
+    jQuery(function(){
+      if(Shopify.Checkout){
+        if(Shopify.Checkout.step){
+          if(Shopify.Checkout.step.length > 0){
+            dataLayer.push({'event': "In Checkout", 'pageType': "Checkout", "checkoutStep": Shopify.Checkout.step});
+
+            if (Shopify.Checkout.step === 'contact_information'){
+              transactionData.event = "Contact Information";
+              transactionData.pageType = "Contact Information";
+              dataLayer.push(transactionData);
+
+              if(__bva__.debug == true){
+                console.log("Customer Information - Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
+              }
+
+              __bva__.helpers.watchCheckoutDiscountField()
+              __bva__.helpers.watchCheckoutEmailOrPhoneField()
+
+            }else if (Shopify.Checkout.step === 'shipping_method'){
+              transactionData.event = "Shipping Method";
+              transactionData.pageType = "Shipping Method";
+              dataLayer.push(transactionData);
+
+              if(__bva__.debug == true){
+                console.log("Shipping - Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
+              }
+
+              __bva__.helpers.watchCheckoutShippingFieldOnClick()
+              __bva__.helpers.watchCheckoutDiscountField()
+
+            }else if( Shopify.Checkout.step === "payment_method" ){
+              transactionData.event = "Add Payment Info";
+              transactionData.pageType = "Add Payment Info";
+              dataLayer.push(transactionData);
+
+              if(__bva__.debug == true){
+                console.log("Payment - Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
+              }
+
+              __bva__.helpers.watchCheckoutDiscountField()
+              __bva__.helpers.watchCheckoutPaymentFields()
+            }
+          }
+
+          /* DATALAYER: Transaction
+          -------------------------- */
+          if(Shopify.Checkout.page == "thank_you" || Shopify.Checkout.isOrderStatusPage){
+
+            dataLayer.push(transactionData,{
+              'pageType' :'Transaction',
+              'event'    :'Transaction'
+            });
+
+            if(__bva__.debug == true){
+              console.log("Transaction Data"+" :"+JSON.stringify(transactionData, null, " "));
+            }
+          }
+        }
+
+        if(Shopify.Checkout.isOrderStatusPage) {
+
+          dataLayer.push(transactionData,{
+            'pageType' :'Order Status',
+            'event'    :'Order Status'
+          });
+
+          if(__bva__.debug == true){
+            console.log("Transaction Data for order page"+" :"+JSON.stringify(transactionData, null, " "));
+          }
+        }
+      }
+    });
+    {% endif %}
+
+    /* DATALAYER: All Pages
+    -----------------------
+    Fire all pages trigger after all additional dataLayers have loaded. */
+
+    dataLayer.push({
+      'event': 'DataLayer Loaded'
+    });
+
+    if(__bva__.debug){
+      console.log('DATALAYER: DataLayer Loaded.');
+    }
+
+    /*==========================
+    | dataLayer Event Bindings |
+    --------------------------*/
+
+    /* DATALAYER: Add to Cart / Dynamic Cart View
+    ---------------------------------------------
+    Fire all pages trigger after all additional dataLayers have loaded. */
+
+    $(document).ready(function() {
+
+      /* DATALAYER: Search Results
+      --------------------------- */
+
+      var searchPage = new RegExp(__bva__.searchPage, "g");
+      if(document.location.pathname.match(searchPage)){
+        var search = {
+          'searchTerm' : __bva__.searchTermQuery,
+          'pageType'   : "Search",
+          'event'      : "Search"
+        };
+
+        dataLayer.push(search);
+        if(__bva__.debug){
+          console.log("Search"+" :"+JSON.stringify(search, null, " "));
+        }
+      }
+
+      /* DATALAYER: Cart
+      ------------------- */
+
+      /* VIEW CART */
+
+      // End of DynamicCart Definition
+
+    if (__bva__.dynamicCart){
+
+      // Fires when ever we call ShopifyAPI.getCart (which is everytime we view / update the Ajax Cart)
+      {% comment %} $(document.body).on('ajaxCart.afterGetCart', function (e, cart) {
+        // now the cart is updated we can send an update cart event to the dataLayer
+        // due to the ajax flow of things, this gets called before the mini carts are rendered
+        if(__bva__.debug){
+          console.log("ajaxCart.afterGetCart");
+        }
+      }); {% endcomment %}
+
+      $(document.body).on('ajaxCart.afterCartLoad', function (e, cart) {
+        // now that the mini cart is rendered, we should trigger the Cart View event
+        // the cartItems data is populated by the afterGetCart
+        if(__bva__.debug){
+          console.log("ajaxCart.afterCartLoad");
+        }
+        __bva__.helpers.sendCart("Cart", "Cart");
+
+      });
+    } else {
+      {% comment %} Standard form adds are not currently supported {% endcomment %}
+    }
+
+    // The current dataLayer implementation does not support the normal form submission add to cart
+    // It only supports the basic shopify ajax add to cart
+    __bva__.helpers.monkeyPatchShopifyAPI()
+
+      /* DATALAYER: Newsletter Subscription
+      ------------------------------------- */
+      __bva__newsletter_fire = 0;
+      $(document).on('click', __bva__.newsletterSelectors, function () {
+        var $this = $(this)
+        if(__bva__newsletter_fire !== 1){
+        __bva__newsletter_fire = 1;
+        var newsletterCheck = setInterval(function () {
+          var value = $this.val()
+        // -------------------------------------- begin check interval
+          if ($(__bva__.newsletterSuccess).length > 0) {
+          // ------------------------------------------------------------------ check visible selectors
+            clearInterval(newsletterCheck);
+            dataLayer.push({ email: value, emailType: 'marketing' })
+            dataLayer.push({'event': 'On Email'});
+          // ------------------------------------------------------------------ check visible selectors
+          }
+        // -------------------------------------- begin check interval
+        },500);
+      }
+      });
+
+      /* DATALAYER: Wishlist
+      ------------------------------------- */
+      setTimeout( function(){
+
+        $(__bva__.wishlistSelector).on('click', function () {
+          dataLayer.push(product,
+            {'event': 'Add to Wishlist'});
+          if(__bva__.debug){
+            console.log("Wishlist"+" :"+JSON.stringify(product, null, " "));
+          }
+        });
+
+        if(document.location.pathname == __bva__.wishlistPage){
+          var __bva__productLinks = $('[href*="product"]');
+          var __bva__prods        = [];
+          var __bva__links        = [];
+          var __bva__count        = 1;
+
+          $(__bva__productLinks).each(function(){
+            var href = $(this).attr("href");
+            if(!__bva__links.includes(href)){
+              __bva__links.push(href);
+              $(this).attr("dataLayer-wishlist-item",__bva__count++);
+              jQuery.getJSON(href, function (response) {
+              // --------------------------------------------- get Json response
+                __bva__.wishlist = response;
+                var wishlistproducts = {
+                'id'   : __bva__.wishlist.product.id,
+                'name' : __bva__.wishlist.product.title,
+                };
+                __bva__prods.push(wishlistproducts);
+              // --------------------------------------------- get Json response
+              });
+            }
+          });
+
+          dataLayer.push({'products': __bva__prods,
+            'pageType' : 'Wishlist',
+            'event'    : 'Wishlist'});
+          }
+
+        var __bva__count = 1;
+        var wishlistDel  = $(__bva__.removeWishlist);
+        wishlistDel.each(function(){
+          $(this).attr("dataLayer-wishlist-item-del",__bva__count++);
+        });
+
+        $(__bva__.removeWishlist).on('click', function(){
+
+          var index = $(this).attr("dataLayer-wishlist-item-del");
+          var link  = $("[dataLayer-wishlist-item="+index+"]").attr("href");
+
+          jQuery.getJSON(link, function (response) {
+          // --------------------------------------------- get Json response
+            __bva__.wishlist     = response;
+            var wishlistproducts = {
+              'id'   : __bva__.wishlist.product.id,
+              'name' : __bva__.wishlist.product.title,
+            };
+
+            dataLayer.push({'products': wishlistproducts,
+            'pageType' : 'Wishlist',
+            'event'    : 'Wishlist Delete Product'});
+          // --------------------------------------------- get Json response
+          });
+        })
+      }, 3000);
+
+      /* DATALAYER: CTAs
+      ------------------ */
+      $(__bva__.ctaSelectors).on('click', function () {
+        var ctaCheck = setInterval(function () {
+        // -------------------------------------- begin check interval
+          if ($(__bva__.ctaSuccess).length > 0) {
+          // ------------------------------------------------------------------ check visible selectors
+            clearInterval(ctaCheck);
+            dataLayer.push({'event': 'CTA'});
+          // ------------------------------------------------------------------ check visible selectors
+          }
+        // -------------------------------------- begin check interval
+        },500);
+      });
+
+      /* DATALAYER: Promo Subscriptions
+      --------------------------------- */
+      $(__bva__.promoSubscriptionsSelectors).on('click', function () {
+        var ctaCheck = setInterval(function () {
+        // -------------------------------------- begin check interval
+          if ($(__bva__.promoSuccess).length > 0) {
+          // ------------------------------------------------------------------ check visible selectors
+            clearInterval(ctaCheck);
+            dataLayer.push({'event': 'Promo Subscription'});
+          // ------------------------------------------------------------------ check visible selectors
+          }
+        // -------------------------------------- begin check interval
+        },500);
+      });
+
+    }); // document ready
+
+  // --------------- run script after jQuery has loaded
+  if(__bva__.debug){
+    console.log(dataLayer.length + " objects in dataLayer");
+    for (var i=0; i<dataLayer.length; i++){
+      console.log("#" + i + "===> " + JSON.stringify(dataLayer[i]));
+    }
+  }
+
+
+  } // End window.jQuery
+// --------------------------------------------- wait for jQuery to load
+}, 500);
+
+function ready(fn) {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+// Custom event tracking
+ready(function () {
+
+  // viewing wishlist popup by swym
+  $(document).on('click', '#swym-anchor', function (e) {
+    var checkLoadedSwym = setInterval(function () {
+      if ($('#swym-item-grid li.swym-item .swym-information').length) {
+        var wishListedItems = [];
+        var pushedIndex = 0;
+
+        // scraping wishlisted product's data
+        $('#swym-item-grid li.swym-item').each(function(i, listItem) {
+          var listItemUri = $(listItem).data('uri');
+          var listItemVId = $(listItem).data('epi');
+          var listItemImg = $(listItem).find('.swym-image').find('img').attr('src');
+          var $listItemInfo = $(listItem).find('.swym-information');
+          var listItemTitle = $listItemInfo.find('.swym-title').find('a').text();
+          var listItemPrice = $listItemInfo.find('.swym-price').text();
+          var listItemComparePrice = $listItemInfo.find('.swym-price').find('.swym-old').text();
+          if (listItemComparePrice) {
+            listItemPrice = listItemPrice.replace(listItemComparePrice, '');
+            listItemComparePrice = listItemComparePrice.replace('$', '');
+            listItemComparePrice = listItemComparePrice.trim();
+          }
+          listItemPrice = listItemPrice.replace('$', '');
+          listItemPrice = listItemPrice.trim();
+          if (listItemUri && pushedIndex === i) {
+            pushedIndex++;
+            wishListedItems.push({
+              id: listItemVId,
+              url: listItemUri,
+              image: listItemImg,
+              variant: listItemVId,
+              name: listItemTitle,
+              price: listItemPrice,
+              compare_at_price: listItemComparePrice
+            });
+          }
+        });
+        if (wishListedItems.length === pushedIndex) {
+          // cordial track wishlist-view
+          dataLayer.push(
+            {
+              'products': wishListedItems,
+              'pageType' : 'Wishlist',
+              'event'    : 'Wishlist'
+            }
+          );
+        }
+        clearInterval(checkLoadedSwym);
+      }
+    }, 1000);
+    setTimeout(function () {
+      if (checkLoadedSwym) {
+        clearInterval(checkLoadedSwym);
+      }
+    }, 5000);
+  });
+
+  $(document).on('click', '.swym-add-to-cart', function (e) {
+    var variantId = $(this).closest('.swym-item').data('epi');
+    var wishListedProduct = {};
+    for (var dlIndex = dataLayer.length -1; dlIndex >= 0; dlIndex--) {
+      if (dataLayer[dlIndex].event === 'Wishlist' && dataLayer[dlIndex].products.length) {
+        for (var i = 0; i < dataLayer[dlIndex].products.length; i++) {
+          if (dataLayer[dlIndex].products[i].variant === variantId) {
+            wishListedProduct = dataLayer[dlIndex].products[i];
+            break;
+          }
+        }
+        break;
+      }
+    }
+
+    dataLayer.push({
+      pageType: 'Add to Cart',
+      event: 'Add to Cart',
+      products: [wishListedProduct]
+    });
+  });
+
+
+  // watch clicking next/prev product
+  {% comment %}
+  // Leaving out for now
+  $(document).on('click', '.next_product, .previous_product', function (e) {
+    sessionStorage.setItem("clicked_next_or_prev_on_quickview", "true");
+  }); {% endcomment %}
+
+  var fireAddToCartPixel = function (product, callback) {
+    if (!product) {
+      throw new Error('Missing product object');
+    }
+
+    var productUrl = product.url;
+    if(typeof product.properties == 'object' && product.properties._collection_handle_private){
+      productUrl = "/collections/" + product.properties._collection_handle_private + productUrl;
+    }
+    if(productUrl.indexOf("?") == -1){
+      productUrl += "?view=datalayer";
+    } else {
+      productUrl += "&view=datalayer";
+    }
+
+    jQuery.get(productUrl, function(response){
+      var payload = {};
+      var addedProduct = JSON.parse(response);
+      addedProduct.quantity = product.addQuantity;
+      payload.products = [addedProduct];
+      payload.event = "Add to Cart";
+      payload.pageType = "Add to Cart";
+      dataLayer.push(payload);
+
+      if ((typeof callback) === 'function') {
+        callback();
+      }
+    });
+  };
+
+  var fireRemoveFromCartPixel = function (product, callback) {
+    if (!product) {
+      throw new Error('Missing product object');
+    }
+
+    var productUrl = product.url;
+    if(typeof product.properties == 'object' && product.properties._collection_handle_private){
+      productUrl = "/collections/" + product.properties._collection_handle_private + productUrl;
+    }
+    if(productUrl.indexOf("?") == -1){
+      productUrl += "?view=datalayer";
+    } else {
+      productUrl += "&view=datalayer";
+    }
+
+    jQuery.get(productUrl, function(response){
+      var payload = {};
+      var removedProduct = JSON.parse(response);
+      removedProduct.quantity = product.removeQuantity;
+      payload.products = [removedProduct];
+      payload.event = "Remove from Cart";
+      payload.pageType = "Remove from Cart";
+      dataLayer.push(payload);
+
+      if ((typeof callback) === 'function') {
+        callback();
+      }
+    });
+  };
+
+  /**
+   * Cart Change
+   */
+  // remove item from standard cart page
+  // please confirm this function was removed from cart.liquid page
+  function remove_item(id) {
+    var payload = {};
+    for (var dlIndex = dataLayer.length -1; dlIndex >= 0; dlIndex--) {
+      if (dataLayer[dlIndex].event === 'Cart Initialize' &&
+        dataLayer[dlIndex].cartItems && dataLayer[dlIndex].cartItems.length) {
+        for (var i = 0; i < dataLayer[dlIndex].cartItems.length; i++) {
+          if (dataLayer[dlIndex].cartItems[i].variantId == id) {
+            payload = dataLayer[dlIndex].cartItems[i];
+            payload.removeQuantity = payload.quantity;
+            break;
+          }
+        }
+        break;
+      }
+    }
+
+    fireRemoveFromCartPixel(payload, function () {
+      document.getElementById('updates_'+id).value = 0;
+      $( '#cartform' ).submit(); // Refreshes form since action = '/cart'
+    });
+  }
+
+  $(document).on('click', '.remove-item', function (e) {
+    remove_item($(this).data('id'));
+  });
+
+  // preventing update cart by pressing enter key
+  $(document).on('keypress', '.cart-qty', function (e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
+  });
+
+
+  // CART : TRACK : Function takes the cart form and checks it for updates to push to GTM
+  function trackCartUpdatesOnSubmit( $form ) {
+    var cartItems = $form.find('.cart-qty');
+
+    // CHECK : Iterate cart items and check for updates against data-layer cart copy
+    if (cartItems && cartItems.length) {
+
+      // BUILD : Gather cart items
+      var cartItemObj = {};
+      $.each(cartItems, function(index, cartItem) {
+        var lineQty = $(cartItem).val();
+        var itemId = $(cartItem).attr('id');
+        var itemIdArr = itemId.split('updates_');
+        cartItemObj[itemIdArr[1]] = lineQty;
+      });
+
+      // PREP : Setup default values before checking cart items
+      var isUpdated = false;
+
+      // ITERATE : Check cart items against data layer for discrepancies and store them
+      for ( var i = dataLayer.length -1; i >= 0; i-- ) {
+
+        // CART CHECK : Ensure correct object being looked at, then iterate
+        if ( dataLayer[i] && dataLayer[i].event === 'Cart Initialize' &&
+          dataLayer[i].cartItems && dataLayer[i].cartItems.length ) {
+
+          // ITERATE : Cart Items from found data-layer object
+          for ( var j=0; j < dataLayer[i].cartItems.length; j++ ) {
+            var dataLayerItem = dataLayer[i].cartItems[j];
+
+            // SAFETY : Intercepting cart submission is dangerous, ensure all values to prevent crashing.
+            if ( dataLayerItem && dataLayerItem.variantId ) {
+              var cId = dataLayerItem.variantId.toString();
+
+              if ( cartItemObj[cId] || cartItemObj[cId] === 0 ) {
+                if (dataLayerItem.quantity > cartItemObj[cId]) {
+
+                  // for Remove from Cart event, product's quantity
+                  dataLayerItem.removeQuantity = dataLayerItem.quantity - cartItemObj[cId];
+                  fireRemoveFromCartPixel(dataLayerItem);
+
+                  // for Update Cart event, product's quantity need to be changed again by latest quantity.
+                  dataLayerItem.quantity = cartItemObj[cId];
+                  isUpdated = true;
+                } else if (dataLayerItem.quantity < cartItemObj[cId]) {
+
+                  // for Add to Cart event, product's quantity
+                  dataLayerItem.addQuantity = cartItemObj[cId] - dataLayerItem.quantity;
+                  fireAddToCartPixel(dataLayerItem);
+
+                  // for Update Cart event, product's quantity need to be changed again by latest quantity.
+                  dataLayerItem.quantity = cartItemObj[cId];
+                  isUpdated = true;
+                }
+              }
+
+            }
+          }
+
+          break;
+        }
+      }
+
+      if ( isUpdated ) {
+        dataLayer.push({
+          pageType: 'Update Cart',
+          event: 'Update Cart'
+        });
+      }
+    }
+  }
+
+  // CART : SUBMIT : Check / Track any cart updates to GTM and submit our cart
+  $(document).on( 'click', '#cartform #checkout', function (e) {
+    var $form = $( '#cartform' );
+
+    // DEFER : Prevent inital submission
+    e.preventDefault();
+
+    // TRACK : Ensure updates desired are tracked in case user updated quantity and hit checkout
+    trackCartUpdatesOnSubmit( $form );
+
+    /* SUBMIT : Click the hidden submit button to submit form
+        Must click submit button manually since shopify doc says form MUST have action '/cart',
+        and that's what causes the page reload when doing simply '$form.submit()' */
+    $( '#hidden-checkout-button' ).click();
+  });
+
+  // Update CART : SUBMIT : Check / Track any cart updates to GTM and submit our cart
+  $(document).on( 'click', '#cartform #update-cart', function (e) {
+    var $form = $( '#cartform' );
+
+    // DEFER : Prevent inital submission
+    e.preventDefault();
+
+    // TRACK : Ensure updates desired are tracked in case user updated quantity and hit checkout
+    trackCartUpdatesOnSubmit( $form );
+
+    // SUBMIT :
+    $form.submit();
+  });
+});
+</script>
+

@@ -1,0 +1,104 @@
+// COLLECTION-BADGE.SCSS
+// -- bc-sf-filter.js : BADGE TEMPLATE SECTION
+
+
+/*  BADGE : Core Styles
+ * ---------------------------------------------- */
+$shapeSquareBg: {{ settings.product_badge_square_bg }};
+$shapeCircleBg: {{ settings.product_badge_circle_bg }};
+$shapeDiamondBg: {{ settings.product_badge_diamond_bg }};
+$textColor: {{ settings.product_badge_text_color }};
+$badgeSizeMobile: 52px;
+$badgeSizeDesktop: 72px;
+
+.item-badge {
+    @include flexbox;
+    @include justify-content( center );
+    @include align-items( center );
+    position: absolute;
+    width: $badgeSizeMobile;
+    height: $badgeSizeMobile;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    background: $shapeSquareBg; //Fallback : If shape class is not recognized
+
+    @include mq( 'lap-and-up' ) {
+        width: $badgeSizeDesktop;
+        height: $badgeSizeDesktop;
+    }
+
+    .item-badge-text {
+        @include h6;
+    	color: $textColor;
+        text-align: center;
+
+        &.tiny { // (A.) 11+ chars -- (B.) Longest word 7+ chars
+            @include fontSize( 8px ); 
+            line-height: 0.75rem; // rem so font-sizing wont affect spacing
+        }
+        &.small { // (A.) 7-10 Chars -- (B.) Longest less than 7 chars
+            @include fontSize( 9px );
+            line-height: 0.85rem; 
+        }
+        &.medium { // 4-6 Letters
+            @include fontSize( 10px );
+        }
+        &.large { // 1-3 Letters
+            @include fontSize( 14px ); 
+        }
+
+
+        @include mq( 'lap-and-up' ) {
+            &.tiny { // (A.) 11+ chars -- (B.) Longest word 7+ chars
+                @include fontSize( 11px ); 
+                line-height: 0.9rem;
+            }
+            &.small { // (A.) 7-10 Chars -- (B.) Longest less than 7 chars
+                @include fontSize( 12px );
+                line-height: 0.95rem; 
+            }
+            &.medium { // 4-6 Letters
+                @include fontSize( 14px );
+                line-height: 1.15rem; 
+            }
+            &.large { // 1-3 Letters
+                @include fontSize( 16px ); 
+            }
+        }
+    }
+
+    &.circle {
+    	border-radius: calc( ( #{$badgeSizeMobile} + 8px ) / 2 );
+    	background: $shapeCircleBg;
+        width: calc( #{$badgeSizeMobile} + 8px ); // Circle is larger in mocks
+        height: calc( #{$badgeSizeMobile} + 8px ); // Circle is larger in mocks
+
+        @include mq( 'lap-and-up' ) {
+            border-radius: calc( ( #{$badgeSizeDesktop} + 8px ) / 2 );
+            width: calc( #{$badgeSizeDesktop} + 8px );
+            height: calc( #{$badgeSizeDesktop} + 8px );
+        }
+    }
+
+    &.diamond {
+    	transform: rotate( 45deg );
+    	background: $shapeDiamondBg;
+        width: calc( #{$badgeSizeMobile} - 8px ); // Diamond is smaller in mocks
+        height: calc( #{$badgeSizeMobile} - 8px ); // Diamond is smaller in mocks
+        right: 10px;
+        top: 10px;
+
+        @include mq( 'lap-and-up' ) {
+            right: 20px;
+            top: 20px;
+            width: calc( #{$badgeSizeDesktop} - 8px );
+            height: calc( #{$badgeSizeDesktop} - 8px );
+        }
+
+    	.item-badge-text {
+    		position: relative;
+		    transform: rotate( -45deg );
+    	}
+    }
+}

@@ -1,0 +1,85 @@
+{% comment %}
+
+PRODUCT DETAIL - POPUPS
+----------------------------
+
+Removed from the general Product Detail template.
+
+{% endcomment %}
+
+
+<ul id="popups">
+  {% if section.settings.popup_one != blank %}
+    <li class="first">
+      <a href="#pop-one" class="fancybox">
+        {{ pages[section.settings.popup_one].title }}
+      </a>
+    </li>
+  {% endif %}
+  {% if section.settings.popup_two != blank %}
+    <li>
+      <a href="#pop-two" class="fancybox">
+        {{ pages[section.settings.popup_two].title }}
+      </a>
+    </li>
+  {% endif %}
+  {% if section.settings.popup_three != blank %}
+    <li>
+      <a href="#pop-three" class="fancybox">
+        {{ pages[section.settings.popup_three].title }}
+      </a>
+    </li>
+  {% endif %}
+  {% if section.settings.popup_four %}
+    <li class="last">
+      <a href="#pop-four" class="fancybox">
+        {{ 'products.product.popup_question' | t }}
+      </a>
+    </li>
+  {% endif %}
+</ul>
+
+<div id="pop-one" class="product-page-popup" style="display: none">
+  {{ pages[section.settings.popup_one].content }}
+</div>
+
+<div id="pop-two" class="product-page-popup" style="display: none">
+  {{ pages[section.settings.popup_two].content }}
+</div>
+
+<div id="pop-three" class="product-page-popup" style="display: none">
+  {{ pages[section.settings.popup_three].content }}
+</div>
+
+<div id="pop-four" class="product-page-popup" style="display: none">
+  {% include 'question' %}
+</div>
+
+
+{% comment %}
+
+POPUP SCHEMA
+
+  {
+    "type": "page",
+    "id": "popup_one",
+    "label": "Popup 1 content"
+  },
+  {
+    "type": "page",
+    "id": "popup_two",
+    "label": "Popup 2 content"
+  },
+  {
+    "type": "page",
+    "id": "popup_three",
+    "label": "Popup 3 content"
+  },
+  {
+    "type": "checkbox",
+    "id": "popup_four",
+    "label": "Popup contact form",
+    "default": true
+  }
+
+{% endcomment %}

@@ -1,0 +1,38 @@
+{% layout none %}
+
+<div id="product-quick-view" class="row">
+  {% section 'product-template' %}
+</div>
+
+{% if settings.ajax_cart_method == 'drawer' %}
+  <script>
+    jQuery(function($) {
+      ajaxCart.initAddToCartButtons({
+        formSelector: '.product_form',
+        cartContainer: '#CartContainer',
+        addToCartSelector: '.AddtoCart'
+     });
+    });
+
+    jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+      $.fancybox.close(true);
+      // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
+      timber.RightDrawer.open();
+    });
+
+    {% if settings.show_multiple_currencies %}
+      jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+        // Convert currency when ajaxcart opens
+        if ( Currency && currency.convertAll ) {
+          Currency.convertAll(shopCurrency, Currency.currentCurrency);
+        } 
+      });
+    {% endif %}
+  </script>
+{% endif %}
+
+{% if section.settings.show_payment_button %}
+  <script>
+    Shopify.PaymentButton.init()
+  </script>
+{% endif %}

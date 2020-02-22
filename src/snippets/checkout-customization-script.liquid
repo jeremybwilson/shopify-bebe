@@ -1,0 +1,21 @@
+{% comment %} 
+	:: BEBE : Limit Address fields to 35 characters :: 
+		- There is an issue with the EDI File handoff that gives order to warehouse that truncates
+		  address field to 35 characters, causing broken ship addresses.
+{% endcomment %}
+<script type="text/javascript">
+	var address1 = document.getElementById( 'checkout_shipping_address_address1' ),
+		address2 = document.getElementById( 'checkout_shipping_address_address2' ),
+		maxChars = 35; // Character Max
+
+	function setMax( el ) {
+		if ( el ) {
+			el.maxLength = maxChars; // Character Count Limit
+		}
+	}
+
+	var maxList = [ address1, address2 ];
+	maxList.forEach( function( el ) {
+		setMax( el );
+	});
+</script>

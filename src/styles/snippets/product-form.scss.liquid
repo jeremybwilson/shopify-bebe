@@ -1,0 +1,354 @@
+{% assign width = '44px' %}
+{% assign height = '34px' %}
+
+
+.swatch {
+  @include flexbox;
+  @include flex-wrap(wrap);
+  margin: 0 0 20px;
+
+  // swatch header
+  .swatch-header {
+    width: 100%;
+    margin-bottom: 12px;
+    text-align:center;
+  }
+
+  h5, 
+  .current-option {
+    display: inline;
+    color: $color--dark-gray;    
+    @include fontDim(14px,16px,0);
+    text-transform: uppercase;
+  }
+
+  // swatch main label
+  h5 { 
+    font-weight: $font-weight--medium;
+  }
+
+  .swatch-element-list {
+    @include flexbox;
+    @include justify-content( center );
+    @include align-items( center );
+    width: 100%;
+}
+
+  // swatch current option 
+  .current-option { 
+    margin-left: .5em;
+    font-weight: $font-weight--medium;
+  }
+
+  // SIZE SQUARES : Improve size alignment for small and large size squares so they map cleanly into the spacing
+  &.size {
+    width: calc( 100% + 5px ); // 100% + 5 so we can cheat the right margin to account for long and short size tags ("Youth 6" vs "5.5")
+
+    // Size List Wrap
+    .swatch-element-list {
+      @include flex-wrap( wrap );
+      @include justify-content( center );
+    }
+
+    // Size : "5" or "5.5" or "10.5"
+    .swatch-element.short-label label {
+      width: 46px; //So half sizes = whole size boxes
+    }
+
+    // Size : "Youth 6" or "Wide 6"
+    .swatch-element.long-label label {
+      width: 97px; //So half sizes = whole size boxes
+    }
+
+    // BEBE Mock hides the text value, size square indicates it clear enough already
+    .swatch-header {
+      .current-option {
+        display: none;
+      }
+    }
+
+      // soldout 
+    .swatch-element.soldout {
+      label,
+      label:hover,
+      input:checked + label {
+        background-color: {{ settings.size_bg_soldout }};
+        border-color: {{ settings.size_border_soldout }};
+        color: {{ settings.size_text_soldout }};
+      }
+
+      label:hover,
+      input:checked + label {
+        border-color: {{ settings.size_border_selected }};
+      }
+    }
+  }
+
+  // swatch loop
+  .swatch-element {
+    display: inline-block;
+    -webkit-transform:translateZ(0); /* webkit flicker fix */
+    -webkit-font-smoothing:antialiased; /* webkit text rendering fix */
+    position:relative;  
+    cursor: pointer;
+
+    &.hide {
+      display: none;
+    }
+
+    input {
+      display: none;
+    }
+
+    & > label { // actual visible swatch
+      display:-moz-inline-stack;
+      display:inline-block;
+      zoom:1;
+      position: relative;
+      cursor: pointer;
+      min-width: {{ width }};
+      height: {{ height }};
+      margin: 0 10px 5px 0;
+      padding:0;
+      border: solid 2px {{ settings.size_border }};
+      color: {{ settings.size_text }};
+      background: {{ settings.size_bg }};
+      @include fontSize( 14px );
+      font-weight: $font-weight--book;
+      line-height: calc( {{ height }} - 5px );
+      letter-spacing: .025em;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: all 0.25s ease-in-out;
+    }
+    label:hover,
+    input:checked + label {
+      background-color: {{ settings.size_bg_selected }};
+      border-color: {{ settings.size_border_selected }};
+      color: {{ settings.size_text_selected }};
+    }
+
+  }
+
+  // soldout 
+  .swatch-element.soldout {
+    label,
+    label:hover,
+    input:checked + label {
+      background-color: $color--white;
+      border-color: $color--light-gray;
+      color: $color--gray-3;
+    }
+  }
+
+  // Color Swatches
+  .swatch-element.color {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    & > label {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      min-width: 0;
+      border: solid 2px {{ settings.swatch_border }};
+      border-radius: 50%;
+      background-color: $color--light-gray; // shows a default color until we get swatch images up
+      margin: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: border-color 0.25s ease-in-out;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        left: -4px;
+        top: -4px;
+        border: solid 2px transparent;
+        transition: border-color 0.25s ease-in-out;
+      }
+    }
+    label:hover {
+      border-color: {{ settings.swatch_selected_border }};
+      background-color: inherit;
+      box-shadow: none;
+
+      &:after {
+        border-color: {{ settings.swatch_selected_border }};
+      }
+    }
+    input:checked + label {
+      border-color: {{ settings.swatch_selected_border }};
+      background-color: none;
+      box-shadow: none;
+
+      &:after {
+        border-color: {{ settings.swatch_selected_border }};  
+      }
+    }
+  }
+
+  .swatch-element.color[data-swatch-value="white"] {
+    label {
+      border-color: $color--border-gray;
+    }
+  }
+
+  // image with cross
+  .crossed-out {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }  
+  .swatch-element.soldout .crossed-out {
+    display: none;
+  }
+
+  // error state 
+  &.error {
+    background-color: #E8D2D2 !important;
+    color: #333 !important;
+    padding: 1em;
+    border-radius: 5px;
+
+    p {
+      margin: 0.7em 0;
+    }
+    p:first-child {
+      margin-top: 0;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    code {
+      font-family: monospace;
+    }    
+  }
+
+  // Tooltip
+  .tooltip {
+    display:block;
+    position:absolute;
+    left: 50%;
+    margin-left: 0;
+    bottom: 100%;
+    z-index: 10000;
+
+    margin-bottom: 15px;
+    padding: 4px 6px;
+    background: $color--primary-1;
+
+    /* Make it invisible by default */
+    filter:alpha(opacity=0);
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+    opacity:0;
+    visibility:hidden;
+
+    color: $color--white;
+    @include fontSize(12px);
+    font-weight: $font-weight--medium;
+    text-align: center;
+
+    /* Animations */
+    -webkit-transform: translate(-50%, 10px);
+    -moz-transform: translate(-50%, 10px);
+    -ms-transform: translate(-50%, 10px);
+    -o-transform: translate(-50%, 10px);
+    transform: translate(-50%, 10px);
+
+    -webkit-transition: opacity .25s ease-out, transform .25s ease-out;
+    -moz-transition: opacity .25s ease-out, transform .25s ease-out;
+    -ms-transition: opacity .25s ease-out, transform .25s ease-out;
+    -o-transition: opacity .25s ease-out, transform .25s ease-out;
+    transition: opacity .25s ease-out, transform .25s ease-out;
+
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+
+    &:before {
+      bottom:-20px;
+      content:" ";
+      display: block;
+      height: 20px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }    
+    &:after {
+      border-left: solid transparent 10px;
+      border-right: solid transparent 10px;
+      border-top: solid $color--primary-1 10px;
+      bottom: -10px;
+      content: " ";
+      height: 0;
+      left: 50%;
+      margin-left: -10px;
+      position: absolute;
+      width: 0;
+    }
+  }
+
+  @include mq( 'lap-and-up' ) {
+      .swatch-element:hover .tooltip {
+        filter: alpha(opacity=100);
+        -khtml-opacity: 1;
+        -moz-opacity: 1;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: translate(-50%,0px);
+        -moz-transform: translate(-50%,0px);
+        -ms-transform: translate(-50%,0px);
+        -o-transform: translate(-50%,0px);
+        transform: translate(-50%,0px);
+      }
+  }
+}
+
+#product-add {
+  margin-top: 0;
+}
+input.add {
+  @include buttonDefaultStyle;
+  @include mainButton;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* Single option selector
+ * ---------------------------------------------- */
+.product-selector {
+  text-align: center;
+}
+
+.product-selector label {
+  margin-bottom: 5px;
+}
+
+.single-option-selector {
+  float: none;
+}
+
+// START RATING : Start rating block after price on PDP
+#desktop-yotpo-star-rating .yotpo.bottomLine.yotpo-small {
+  margin-bottom:18px;
+}
+#desktop-yotpo-star-rating .yotpo .pull-left{
+  float:none !important;
+}
+#desktop-yotpo-star-rating .yotpo-bottomline.pull-left {
+  text-align: center !important;
+} 

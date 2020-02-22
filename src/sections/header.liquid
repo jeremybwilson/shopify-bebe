@@ -1,0 +1,496 @@
+<div id="header-section" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="header-section" 
+  data-swap-rate="{{ section.settings.announcement_swap_rate }}">
+
+  {% comment %}
+    REMOVED THINGS :
+
+      - section.settings.logo_center
+      - section.settings.logo (hard set to svg snippet since logo was given as svg)
+        * alt="{{ section.settings.logo.alt | default: shop.name }}
+  {% endcomment %}
+
+
+
+  {% comment %} ..:: NAVIGATION PORTION ::.. {% endcomment %}
+  {% assign header_class_name = '' %}
+  {% if section.settings.full_width_header %}
+    {% assign header_class_name = 'gridlock-fluid' %}
+  {% endif %}
+
+  {% if settings.ajax_cart_method == 'drawer' %}
+    {% if header_class_name != blank %}
+      {% assign header_class_name = header_class_name | append: ' ' %}
+    {% endif %}
+    {% assign header_class_name = header_class_name | append: 'is-moved-by-drawer' %}
+  {% endif %}
+
+  <header id="nav-bar-wrapper"
+          {% if header_class_name != blank %}class="{{ header_class_name }}"{% endif %}>
+    {% if section.settings.full_width_header %}<div class="row">{% endif %}
+
+    <div id="nav-aux">
+    
+      {% comment %} ..:: TOP LEFT ::.. {% endcomment %}      
+      <div class="header--top-left--highlight">
+
+        {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
+        {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <ul class="currencies-picker-list">
+          <li class="nav-item nav-currencies-picker">
+            {% include 'borderfree-open-modal' %}
+          </li>
+          </ul>
+        {% endif %}
+
+        {% if section.settings.top_left_highlight_link != blank %}
+        <a href="{{ section.settings.top_left_highlight_link }}" target="_blank">
+          {% include 'svg-icon-instagram' %}
+          <span>{{ section.settings.top_left_highlight_text }}</span>
+        </a>
+        {% endif %}
+      </div>
+
+      {% comment %} ..:: PROMO BANNER PORTION ("Announcements") ::.. {% endcomment %}
+      {%- if section.settings.show_announcement_text -%}
+        {% include 'header-announcement-bar' %}
+      {%- endif -%}
+
+      {% comment %} ..:: NAV : ACCOUNT + CART + SEARCH (Right Elements) ::.. {% endcomment %}
+      <div id="nav-user">
+        <ul id="nav-user-list">
+
+
+          {% comment %} ..:: SEARCH ::.. {% endcomment %}
+          {% if section.settings.show_search %}
+            <li id="nav-search-form" class="nav-item nav-search searchbox">
+              {% include 'nav-search-input' %}           
+            </li>
+          {% endif %}
+          
+
+          {% comment %} ..:: SITE PICKER : (US, UK, EU, CAN) ::.. {% endcomment %}
+          {% if section.settings.show_site_picker %}
+            <li class="nav-item nav-sites">{% include 'sites-picker' %}</li>
+          {% endif %}
+
+
+          {% comment %} ..:: ACCOUNT ::.. {% endcomment %}
+          {% if shop.customer_accounts_enabled %}
+            <li class="nav-item nav-account-item">
+              {% if customer %}
+                <a class="swell--club" href="/account">{% include 'svg-icon-account' %}<span class="my-account-text">My Account</span><span class="swell-point-balance">0</span><span class="swell-label">Pts</span></a>
+              {% else %}
+                <a href="/account/login">{% include 'svg-icon-account' %}<span>Log In</span></a>
+              {% endif %}
+            </li>
+          {% endif %}
+
+          {% comment %} ..:: CART ::.. {% endcomment %}
+          <li class="nav-item nav-cart">
+            <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %} class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false" {% endif %} title="cart">
+              
+              {% if section.settings.cart_icon == 'cart' %}
+                {% include 'svg-icon-cart' %}
+              {% elsif section.settings.cart_icon == 'bag' %}
+                {% include 'svg-icon-shopping-bag' %}
+              {% endif %}
+              <span class="cart-count {% if cart.item_count == 0 %}hidden-count{% endif %}">{{ cart.item_count }}</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    {% comment %} ..:: NAV-BAR : BG + NAV-ITEMS WRAPPER ::.. {% endcomment %}
+    {% comment %} <div id="nav-bar-bg"></div> {% endcomment %}
+    <div id="nav-bar" class="row">
+
+      {% comment %} ..:: CURRENCY PICKER ::.. {% endcomment %}
+      {% if section.settings.show_multiple_currencies and settings.borderfree_enabled %}
+        <ul class="currencies-picker-list">
+        <li class="nav-item nav-currencies-picker">
+          {% include 'borderfree-open-modal' %}
+        </li>
+        </ul>
+      {% endif %}
+
+      {% comment %} ..:: NAV : BRAND LOGO ::.. {% endcomment %}
+      <div id="nav-logo">
+          <a href="/" title="{{ shop.name }}">
+            {% include 'svg-icon-header-logo' %}
+            <span class="sr-only">{{ shop.name }}</span>
+          </a>
+      </div>
+      <div id="nav-logo-backing"></div>
+
+      
+
+      {% comment %} ..:: NAV : SITE-COLLECTIONS (Left Elements) ::.. {% endcomment %}
+      <div id="nav-collections">
+        {% include 'icon-nav-mobile-menu' %}
+        {% include 'navigation' %}
+        {% include 'mobile-navigation' %}
+      </div>
+
+      {% comment %} ..:: MOBLE SEARCH ::.. {% endcomment %}
+      {% if section.settings.show_search %}
+        <div id="nav-search-mobile">
+          <div class="search">
+            <form action="/search" method="get">
+              <label for="bc-sf-search-box-1">
+                {% include 'svg-icon-search' %}
+                <input type="text" name="q" id="mob-search-q" placeholder="{{ 'general.search.placeholder' | t }}" />
+              </label>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+
+    {% if section.settings.full_width_header %}</div>{% endif %}
+  </header>
+
+  
+
+
+
+  <style>
+    #top-bar, #top-bar-bg {
+      height: {{ section.settings.announcement_height }}px;
+    }
+
+    /* NAV BAR PANE */
+    header #q { /* search panel */
+      font-size: {{ section.settings.cart_links_size }}px;
+    }
+
+    ul#cart li a {
+      font-size: {{ section.settings.cart_links_size }}px;
+      font-weight: {{ section.settings.cart_weight }};
+    }
+
+    select.currency-picker {
+      font-size: {{ section.settings.cart_links_size }}px;
+      font-weight: {{ section.settings.cart_weight }};
+    }
+
+    nav {
+       line-height: {{ section.settings.nav_height }}px;
+    }
+
+
+    /* MOBILE MENU : Height Setup
+        Notes :
+          - announcement_height default is 60px, and can be set to min of 40px
+          - actual navigation bar is 50px tall, and since scrolling hides promo, we have a "isStuck" condition which is 
+              basically an indicator for the user is scrolled down the page. 
+          - Why? Because we need users to be able to scroll the mobile menu, but not scroll backing content on page.
+    */
+    #nav-bar-wrapper #nav-menu-mobile {
+        height: calc( 100vh - ( {{ section.settings.announcement_height }}px + 50px ) );  /* Promo + Nav bar (50px) */
+    }
+
+    /* SCROLLING : Nav bar hides promo bar, so adjust menu height if the user opens menu scrolled down page */
+    #nav-bar-wrapper.isStuck #nav-menu-mobile {
+        height: calc( 100vh - 50px ); /* nav bar = 50px */
+    }
+  </style>
+</div>
+
+
+
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_width_header",
+        "label": "Enable full width"
+      },
+
+
+      {
+        "type": "header",
+        "content": "Announcement Bar"
+      },
+      {
+        "type": "checkbox",
+        "default": true,
+        "id": "show_announcement_text",
+        "label": "Show announcement text"
+      },
+      {
+        "type": "select",
+        "id": "num_of_promo_banners",
+        "label": "# of Announcement Slots",
+        "options": [
+          {
+            "label": "2",
+            "value": "2"
+          },
+          {
+            "label": "1",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Announcement #1"
+      },      
+      {
+        "type": "text",
+        "id": "announcement_text_one",
+        "label": "Announcement Text - #1",
+        "default": "<div class='bold'>FREE SHIPPING</div> ON ORDERS $50 OR MORE"
+      },
+      {
+        "type": "page",
+        "id": "announcement_popup_one_content",
+        "label": "Announcement #1 - Popup Content"
+      },
+      {
+        "type": "url",
+        "id": "announcement_link_one",
+        "label": "Announcement Link - #1"
+      },
+      {
+        "type": "header",
+        "content": "Announcement #2"
+      },            
+      {
+        "type": "text",
+        "id": "announcement_text_two",
+        "label": "Announcement Text - #2",
+        "default": "<div class='bold'>40% OFF YOUR PURCHASE.</div>NO CODE NEEDED."
+      },
+      {
+        "type": "page",
+        "id": "announcement_popup_two_content",
+        "label": "Announcement #2 - Popup Content"
+      },      
+      {
+        "type": "url",
+        "id": "announcement_link_two",
+        "label": "Announcement Link - #2"
+      },
+      {
+        "type":      "range",
+        "id":        "announcement_height",
+        "min":       30,
+        "max":       60,
+        "step":      1,
+        "unit":      "px",
+        "label":     "Announcement Height",
+        "default":   36
+      },
+      {
+        "type":      "range",
+        "id":        "announcement_swap_rate",
+        "min":       3,
+        "max":       30,
+        "step":      1,
+        "unit":      "sec",
+        "label":     "Mobile Banner Change Rate (2 must be enabled)",
+        "default":   5
+      },
+
+      {
+        "type": "header",
+        "content": "Top left Instagram highlight (Desktop Only)"
+      },
+      {
+        "type": "url",
+        "id": "top_left_highlight_link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "top_left_highlight_text",
+        "label": "Text",
+        "default": "#Bebebabes"
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_size",
+        "min": 12,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "label": "Logo text size",
+        "default": 18
+      },
+      {
+        "type": "select",
+        "id": "logo_transform",
+        "label": "Logo text case",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "none",
+            "label": "Normal"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "logo_weight",
+        "label": "Logo text weight",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "bold",
+            "label": "Bold"
+          }
+        ]
+      },
+
+
+      {
+        "type": "header",
+        "content": "Cart Link"
+      },
+	    {
+        "type": "select",
+        "id": "cart_icon",
+        "label": "Cart icon",
+        "options": [
+          {
+            "value": "cart",
+            "label": "Cart"
+          },
+          {
+            "value": "bag",
+            "label": "Bag"
+          }
+        ],
+	      "info":"You can change the text in your edit language section"
+      },
+
+
+      {
+        "type": "header",
+        "content": "Multi-Site Picker"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_site_picker",
+        "label": "Show International Site Picker",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "site_picker_manifest",
+        "label": "List of Sites to Include in Site Picker",
+        "default": "US|http://mysite.com,EU|http://eu.mysite.com,UK|http://uk.mysite.com,FR|http://fr.mysite.com"
+      },
+
+
+      {
+        "type": "header",
+        "content": "Nav Search"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show search bar",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Multiple currencies"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Show multiple currencies"
+      },
+      {
+        "type":"header",
+        "content": "navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "main_nav",
+        "label": "Menu",
+        "default":"main-menu"
+      },
+     {
+        "type": "checkbox",
+        "id": "nav_center",
+        "label": "Center align navigation"
+      },
+      {
+        "type": "range",
+        "id": "nav_height",
+        "min": 20,
+        "max": 60,
+        "step": 2,
+        "unit": "px",
+        "label": "Height",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "linklist_breakpoint",
+        "min": 4,
+        "max": 20,
+        "step": 1,
+        "label": "Links per column",
+	      "info": "Break long drop downs into multiple columns",
+        "default": 10
+      }
+    ],
+    "blocks": [
+      {
+        "type": "mega_menu",
+        "name": "Mega menu",
+        "settings": [
+          {
+            "type":"text",
+            "id":"menu_item",
+            "label":"Menu item",
+            "info":"Enter menu item to apply a mega menu"
+          },
+          {
+           "type": "image_picker",
+           "id": "nav_image",
+           "label": "Featured image"
+         },
+         {
+           "type": "url",
+           "id": "nav_promo_link",
+           "label": "Featured image link"
+         }
+        ]
+      },
+      {
+        "type": "simple_menu",
+        "name": "Simple Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "menu_item",
+            "label": "Menu Item"
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}

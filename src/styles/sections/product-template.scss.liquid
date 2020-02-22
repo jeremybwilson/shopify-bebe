@@ -1,0 +1,538 @@
+@charset "UTF-8";
+
+/*==================
+  PDP
+ ==================*/
+ .body-product #breadcrumb + .clear {
+  @include mq('tablet-and-up') {
+    margin-top: 40px;
+  }
+}
+
+.product {
+  #breadcrumb {
+    // @include fontSize(14px);
+    margin-top: 10px;
+
+    @include mq( 'phone' ) {
+      display: none;
+    }
+
+    // @include mq('tablet-and-up') {
+    //   @include fontSize(16px);
+    // }
+
+    // ALIGNMENT ADJUSTMENT
+    @include mq( 'wide-and-up' ) {
+      //padding-left: 100px;
+    }
+
+    & > *:nth-last-child(-n+3) {
+      // hides and shows the page-title, the separator before it, and the #results-count div
+      display: none;
+
+      @include mq('tablet-and-up') {
+        display: inline;
+      }
+    }
+  }
+}
+
+.product--mobile-header {
+  position: relative;
+  padding: 12px 10px 12px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+  @include mq('tablet-and-up') {
+    display: none;
+  }
+  
+  .mobile-header--top {
+    @include flexbox;
+    @include justify-content(space-between);
+    @include align-items(center);
+
+    .header-text {
+      padding-right: 10px;  
+    }
+  }  
+
+  .product-title {
+    color: $color--primary-2;
+    @include fontDim(16px,16px,0);
+    font-family: $sans--2;
+    font-weight: $font-weight--medium;
+    text-transform: uppercase;
+  }
+  .money {
+    @include fontSize(15px);
+  }
+
+  .add {
+    margin: 0;
+    max-width: 92px;
+    padding: 6px 8px;
+    @include fontSize(12px);
+    line-height: 14px / 12px * 1em;
+    outline: none;
+    white-space: normal;
+    @include align-self( flex-start );
+  }
+  .add[disabled] {
+    @include fontSize(8px);
+  }
+  .errors {
+    width: 100%;
+  }
+}
+
+#shopify-section-product-template {
+  margin-top: 0;
+
+  // @include mq('tablet-and-up') {
+  //   position: relative;
+  //   top: 40px;
+  // }
+}
+
+.row.product-details--top {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(flex-start);
+  @include justify-content(center);
+
+  @include mq('tablet-and-up') {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 72px;
+  }
+}
+
+.product {
+  #content {
+    h1 {
+      color: $color--primary-2;
+      @include fontDim(16px,18px,0);
+      font-weight: $font-weight--medium;
+      text-align: center;
+      text-transform: uppercase;
+
+      &.product-name {
+        padding-top: 0;
+      }
+
+      @include mq('phone') {
+        display: none;
+      }
+
+      @include mq('tablet-and-up') {
+        @include fontDim(20px,20px,0);
+      }
+    }
+  }
+}
+
+/* Product Images Snippet
+ * ---------------------------------------------- */
+@import url('../snippets/product-images.scss.liquid');
+
+
+#desktop-sale-callout{
+  @include mq('phone') {
+    display: none;
+  }  
+}
+
+#desktop-yotpo-star-rating{
+  @include mq('phone') {
+    display: none;
+  }  
+}
+
+#product-price {
+  border-bottom: none;
+  color: $color--primary-2;
+  font-weight: $font-weight--book;
+  @include fontDim( 16px, 16px, 0 );
+  text-align: center;
+  font-family: $sans--2;
+  margin-bottom: 18px;
+
+  @include mq('phone') {
+    display: none;
+  }
+
+  &.has-compare-price {
+    .product-price {
+      color: {{ settings.sale_color }}
+    }
+    .was {
+      color: $color--primary-2;      
+    }
+  }
+}
+
+#product-right {
+  margin-left: 0;
+  margin-right: 0;
+
+  @include mq('tablet-and-up') {
+    max-width: 500px;
+    margin-right: 15px;
+  }
+}
+
+
+#product-description {
+  position: relative;
+
+  form {
+    padding-top: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+
+/* Product Form Snippet
+ * ---------------------------------------------- */
+@import url('../snippets/product-form.scss.liquid');
+
+
+
+
+/* Product Accordions (Shipping / Size Chart)
+ * ---------------------------------------------- */
+.product-accordion {
+  @include flexbox;
+  @include flex-direction(column);
+  width: 100%;
+  padding: 10px 0;
+  margin: 0;
+  border-top: 1px solid $color--light-gray;
+
+  // header & accordion trigger
+  .product-accordion--header {
+    @include flexbox;
+    @include justify-content(space-between);
+    @include align-items(center);
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    & > svg {
+      width: 21px;
+      height: 21px;
+      margin-right: 5px;
+
+      @include mq('tablet-and-up') {
+        width: 36px;
+        height: 36px;
+        margin-right: 12px;
+      }
+
+      * {
+        fill: $color--primary-1;
+      }
+    }
+
+    h3 {
+      margin-top: 3px;
+      color: $color--primary-1;
+      @include fontDim(14px,14px,0);
+      font-weight: $font-weight--medium;
+      text-transform: uppercase;
+
+      @include mq('tablet-and-up') {
+        margin-top: 5px;
+        @include fontDim(16px,16px,0);
+      }
+    }
+
+    .opener {
+      @include flexbox();
+      @include justify-content(center);
+      @include align-items(center);
+      margin-left: auto;
+      width: 15px;
+      height: 15px;
+
+      &::before,
+      &::after {
+        content: "";
+        background: $color--primary-1;
+        position: absolute;
+      }
+
+      &::before {
+        transition: all 0.25s ease-in-out;
+        width: 3px;
+        height: 15px;
+      }
+
+      &::after {
+        transition: all 0.2s ease-in-out 0.1s;
+        width: 15px;
+        height: 3px;
+      }
+    }
+  }
+
+  .product-accordion--header.open .opener {
+    &::before {
+      transform: rotate(-90deg);
+      transition: all 0.25s ease-in-out;
+    }
+
+    &::after {
+      opacity: 0;
+      transition: all 0.15s ease-in-out;
+    }
+  }
+
+  // content
+  .product-accordion--content {
+    display: none;
+    margin-top: 16px;
+    padding-right: 10px;
+
+    @include mq('tablet-and-up') {
+      padding-right: 24px;
+    }
+    p {
+      @include fontSize( 15px );
+    }
+  }
+}
+
+/* Product Description
+ * ---------------------------------------------- */
+#product-description-body {
+  @include flexbox;
+  @include flex-wrap( wrap );
+  width: 100%;
+  margin-bottom: 12px;
+  font-family: $sans--2;
+  @include fontDim( 15px, 20px, 0 );
+
+  & > * {
+    width: 100%;
+  }
+
+  p {
+    // @include fontDim( 15px, 20px, 0 );
+    font-size: inherit;
+    margin-bottom: 1em;
+  }
+
+  a {
+    text-decoration: underline; // Ew.. 
+  }
+
+  ul, li {
+    line-height: 22px / 12px * 1em;
+  }
+
+  ul {
+    margin-top: 0;
+    padding-left: 20px;
+  }
+
+}
+#product-description--header {
+  @include flexbox;
+  @include justify-content( space-between );
+  @include align-items( center );
+  margin: 12px 0;
+  
+  h2 {
+    margin: 0;
+    color: $color--primary-1;
+    @include fontDim(14px,14px,0);
+    font-weight: $font-weight--medium;
+    text-transform: uppercase;
+  
+    @include mq('tablet-and-up') {
+      @include fontDim(16px,16px,0);
+    }  
+  }
+  
+  .product-sku--wrapper {
+    color: $color--primary-3;
+    @include fontSize( 14px );
+  }
+}
+
+/* Social Icons (Description)
+ * ---------------------------------------------- */
+#product-description-social {
+  @include flexbox;
+  @include justify-content( center );
+  position: relative;
+  width: 100%;
+  list-style: none;
+  margin: 20px 0;
+
+  @include mq( 'tablet-and-up' ) {
+    @include justify-content( flex-end );
+    right: -2px; //Slight alignment for visual 
+  }
+
+  > li {
+    width: 25px;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    .icon-android {
+      margin-top: -4px;
+    }
+
+    path, i {
+      fill: $color--primary-1;
+      color: $color--primary-1;
+      transition: all 0.25s ease-in-out;
+    }
+
+    &:hover {
+      path, i {
+        fill: $color--accent-1;
+        color: $color--accent-1;
+      }
+    }
+  }
+}
+
+#product-description-social a {
+  @include fontDim(25px, 16px, 0);
+  display: block;
+  line-height: 0;
+}
+
+#product-description-social svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: .75em;
+  height: .75em;
+  fill: currentColor;
+}
+
+.product-description--icons {
+  @include flexbox;
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  @include align-items(flex-start);
+  margin: 15px -10px; // neg margins to accommodate item padding
+
+  @include mq('tablet-and-up') {
+    @include justify-content(flex-start);
+    margin-top: 30px;
+  }
+
+  li {
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(center);
+    margin: 0 10px 20px;
+    max-width: 80px;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  img {
+    max-width: 54px;
+    margin: 0 auto 12px;
+  }
+  span {
+    color: $color--primary-2;
+    font-weight: $font-weight--bold;
+    @include fontDim(13px,18px,.025em);
+  }
+}
+
+
+
+
+/* Product Campaign Video
+ * ---------------------------------------------- */
+@import url('../snippets/product-campaign-video.scss.liquid');
+
+
+
+/* Recently Viewed Products
+ * ---------------------------------------------- */
+#recently-viewed-products--wrapper {
+  background: transparent;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 35px;
+
+  @include mq('tablet-and-up') {
+    padding-bottom: 70px;
+  }
+
+  .section-heading {
+    @include fontSize( 25px );
+    font-weight: $font-weight--medium;
+  }
+
+  .product-info {
+    margin-top: 15px;
+
+    h3 {
+      font-weight: $font-weight--medium;
+    }
+  }
+
+  .price {
+    margin-top: 5px;
+
+    & > div {
+      display: inline;
+    }
+    .onsale {
+      color: {{ settings.sale_color }}
+    }
+    .was {
+      color: $color--primary-2;
+    }
+  }  
+}
+
+/* Recommended Products
+ * ---------------------------------------------- */
+.pdp-nosto-row .nosto-block {
+  padding-bottom: 35px;
+
+  @include mq('tablet-and-up') {
+    padding-bottom: 70px;
+    margin-bottom: 60px;
+  }
+}
+
+ .pdp-nosto-row .nosto-block .title {
+  @include fontSize( 25px );
+  font-weight: $font-weight--medium;
+  margin-bottom: 12px;
+  line-height: 1.38095em;
+  letter-spacing: 0;
+}
+
+.pdp-nosto-row .nosto-carousel {
+  padding-top: 20px;
+}
+
+.pdp-nosto-row .nosto-block {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

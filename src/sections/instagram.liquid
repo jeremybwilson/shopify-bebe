@@ -1,0 +1,114 @@
+{% comment %} TEMPLATE {% endcomment %}
+
+<script id="instagram-template" type="text/template">
+  {% raw %}
+    <div class="instagram-item">
+      <a class="instagram-image-container" target="_blank" href="{{link}}" rel="ig" title="{{caption}}" style="background-image: url({{image}}); ">
+        
+        <img class="instagram-image" src="{{image}}" />
+      </a>
+    </div>
+  {% endraw %}
+</script>
+
+<div class="homepage-section instagram-feed no-fouc index-section" data-section-id="{{ section.id }}" data-section-type="instagram">
+  <section id="index-social" class="row">
+
+    {% if section.settings.heading != blank or section.settings.text != blank%}
+
+    <div class="text-box">
+      {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+      <div class="copy">{{ section.settings.text }}</div>
+      {% endif %}
+
+      {% comment %} CTA {% endcomment %}
+
+      {% if section.settings.cta_text != blank %}
+      <div class="cta">
+        {% if section.settings.link != blank %}<a href="{{ section.settings.link }}" target="_blank">{% endif %}
+          <span>{{ section.settings.cta_text }}</span> {% include 'svg-icon-caret-right' %}
+        {% if section.settings.link != blank %}</a>{% endif %}
+      </div>
+      {% endif %}
+
+    </div><!-- .text-box -->
+
+    {% endif %}
+
+    <div class="clear"></div>
+
+    {% assign token = section.settings.instagram_access_token %}
+    {% capture userid %}
+    {{- token | truncate: 9, "" -}}
+    {% endcapture %}
+
+    <div class="instagram-user-feed">
+
+      {% if section.settings.instagram_access_token != blank %}
+      <div id="instafeed-{{ section.id }}" data-access-token="{{ token }}"></div>
+      {% else %}
+
+      {% include 'onboard-instagram' %}
+      {% endif %}
+
+    </div>
+  </section>
+</div>
+
+<style>
+  .instagram-image-container {
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+</style>
+
+
+{% schema %}
+{
+	"name": "Instagram feed",
+	"settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Follow us on Instagram"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Lorem ipsum dolor sit amet, coasins ec tetur adipiscing elit</p>"
+    },
+    {
+       "type": "url",
+         "id": "link",
+      "label": "Link"
+    },
+    {
+       "type": "text",
+         "id": "cta_text",
+      "label": "CTA text",
+    "default": "View All"
+    },    
+    {
+        "type": "textarea",
+        "id": "instagram_access_token",
+        "label": "Instagram access token",
+    	  "info": "Required for permission to show your Instagram content [instructions here](http://support.undergroundmedia.co.uk/customer/en/portal/articles/2386318-home-page---instagram-feed) for setup."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram feed",
+      "category": "Social media"
+    }
+  ]
+}
+{% endschema %}

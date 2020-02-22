@@ -1,0 +1,50 @@
+{% if settings.popup %}
+
+
+  <div style="display:none">
+    <div id="subscribe--popup">
+
+      <a id="subscribe--close">
+        {% include 'svg-icon-x' %}
+      </a>
+
+
+      {% if settings.email_image != blank %}
+      {%- assign image_size = '600x' -%}
+      <p><img src="{{ settings.email_image | img_url: image_size }}"></p>
+      {% endif %}
+
+      <div id="subscribe--popup--header">
+
+        {% unless settings.email_popup_title == blank %}
+          <h3>{{ settings.email_popup_title }}</h3>
+        {% endunless %}
+        {% unless settings.email_popup_text == blank %}
+          <p>{{ settings.email_popup_text }}</p>
+        {% endunless %}
+
+      </div><!-- #subscribe--popup--header -->
+    
+      <form id="subscribe--popup--form">
+        <input class="form-control" type="email" id="email-popup" name="email_popup" placeholder="{{ settings.email_popup_input_placeholder }}">
+        <label id="subscribe--popup--button" for="subscribe--popup--submit">
+          <input id="subscribe--popup--submit" type="submit" value="Subscribe">
+          {% include 'svg-icon-caret-right-submit' %}
+        </label>
+
+      </form>
+      <div id="subscribe--popup--form-response">
+        <div id="subscribe--popup--error-response" style="display:none;">{{ settings.email_popup_error }}</div>
+        <div id="subscribe--popup--success-response" style="display:none;">
+        {{ settings.email_popup_success }}</div>
+      </div>
+
+      {% unless settings.email_popup_bottom_text == blank %}
+        <div class="fine-print">
+          {{ settings.email_popup_bottom_text }}
+        </div>
+      {% endunless %}
+
+    </div>
+  </div>
+{% endif %}  

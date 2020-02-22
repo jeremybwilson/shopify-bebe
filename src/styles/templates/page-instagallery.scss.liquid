@@ -1,0 +1,28 @@
+.page-instagallery {
+    #content {
+        padding: 20px 0;
+
+        h1 {
+            font-weight: $font-weight--medium;
+            color: $color--primary-1;
+            padding-bottom: 0;
+            border: none;
+            text-align: center;
+            @include fontSize(24px);    
+            text-transform: none;
+            letter-spacing: normal;
+
+            &:after {
+                background-image: url({{ 'instagram-icon.png' | asset_url }});
+                background-size: 40px 40px;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                content: '';
+                position: relative;
+                top: 10px;
+                right: -8px;
+            }                
+        }
+    }
+}

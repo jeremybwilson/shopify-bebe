@@ -1,0 +1,747 @@
+@charset "UTF-8";
+
+.site-footer {
+  background: {{ settings.footer_background }};
+  color: gray;
+  padding: 0 0 39px;
+
+  @include mq('tablet-and-up') {
+    padding: 0px 40px 39px;
+  }
+
+  // repeating elements
+
+  .row {
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 100%;
+
+    @include mq('tablet-and-up') {
+      @include flexbox;
+      @include flex-direction(row);
+      @include justify-content(space-between);
+      @include align-items(center);
+      max-width: 1100px;
+      margin-bottom: 20px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  a {
+    font-family: $sans--2;
+    color: $color--text-1;
+
+    &:hover {
+      color: $color--accent-1;
+      text-decoration: none;
+    }
+  }
+
+  h4 {
+    color: $color--text-1;
+    border-bottom: none;
+    text-transform: uppercase;
+  }
+
+  img,
+  svg {
+    width: auto;
+    margin: 0 10px;
+
+    @include mq('tablet-and-up') {
+      margin: 0 5px;
+    }
+  }
+
+  button, input, select {
+    @include fontSize(14px);
+    font-family: $sans--2;
+    outline: 0;
+  }
+
+  .fl-inline {
+    @include mq('phone') {
+      display: block;
+      margin: 0;
+      width: auto;
+    }
+  }
+
+  .container {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  input[type="email"] {
+    width: 100%;
+    height: 46px;
+    margin-bottom: 0;
+    padding: 15px 68px 15px 20px;
+    border: 1px solid black;
+    border-radius: 0;
+
+    @include mq('tablet-and-up') {
+      height: 46px;
+      padding: 20px 68px 20px 20px;
+      @include fontSize(16px);
+      line-height: 16px;
+    }
+  }
+
+  .email-text {
+    @include fontSize(14px);
+    @include flex-wrap(wrap);
+    margin: 0 auto;
+    width: 100%;
+
+    @include mq('tablet-and-up') {
+      width: 95%;
+    }
+
+    .foot-sub-emailtext {
+      @include flexbox;
+      @include justify-content(center);
+      width: 100%;
+
+      @include mq('tablet-and-up') {
+        @include justify-content(flex-start);
+      }
+
+      h3.newsletter-subheading {
+        @include fontSize(14px);
+        font-weight: $font-weight--bold;
+        letter-spacing: 1px;
+        margin: 10px 0;
+        width: auto;
+
+        @include mq('tablet-and up') {
+          width: 100%;
+        }
+      }
+    }
+
+    .foot-sub-emailform {
+      margin-bottom: 10px;
+
+      @include mq('tablet-and-up') {
+        @include flexbox;
+        margin-bottom: 0;
+      }
+
+      form#footer-newsletter {
+        border: 0;
+        margin-bottom: 0;
+        width: 100%;
+
+        @include mq('tablet-and-up'){
+          @include justify-content(flex-start);
+          width: 90%;
+        }
+
+        input.subscribe-form {
+          @include flexbox;
+          @include justify-content(flex-start);
+          width: 70%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(flex-start);
+          }
+        }
+
+        #subscribe-footer-newsletter {
+          width: 100%;
+        }
+
+        #button-footer-newsletter-submit {
+          @include flexbox;
+          @include justify-content(flex-start);
+          background-color: #000000;
+          border: 0;
+          border-radius: 0;
+          color: $color--white;
+          font-weight: $font-weight--book;
+          height: 46px;
+          padding: 4px 0;
+          margin-left: 0;
+          width: 30%;
+
+          @include mq('tablet-and-up'){
+            @include justify-content(center);
+            @include fontSize(15px);
+          }
+
+          input[type="submit"] {
+            @include flexbox;
+            @include justify-content(center);
+            @include fontSize(10px);
+            height: 46px;
+            margin-bottom: 0;
+            padding: 0;
+            width: calc(100% - 5px);
+
+            @include mq('tablet-and-up'){
+              @include fontSize(13px);
+            }
+          }
+        }
+      }
+    }
+
+    // response messages
+
+    #newsletter-form--response {
+      // color: $color--white;
+      color: $color--text-1;
+      margin-bottom: 15px;
+
+      #newsletter-error-response {
+        @include h7;
+        color: $color--error;
+      }
+      #newsletter-success-response {
+        text-transform: none;
+
+        p {
+          color: inherit;
+          @include fontSize(16px);
+        }
+      }
+    }
+  }
+
+  .foot-subfoot {
+    @include fontSize(12px);
+    font-weight: $font-weight--book;
+    color: #989798;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+    width: 100%;
+  }
+
+  .subfoot-links {
+    font-family: $font-stack--default;
+    margin-bottom: 10px;
+
+    .copyright {
+      @include flexbox;
+      @include justify-content(center);
+      @include fontSize(11px);
+
+      span.copyright-wrapper {
+        font-weight: $font-weight--bold;
+        color: $color--text-1;
+      }
+    }
+
+    span {
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-wrap(wrap);
+
+      @include mq('tablet-and-up'){
+
+      }
+
+      span.link-wrap {
+        @include fontSize(10px);
+        text-transform: uppercase;
+        word-spacing: 1px;
+        margin: 0 10px;
+
+        @include mq('tablet-and-up') {
+          margin: 0 15px;
+        }
+      }
+
+      .raf-footer {
+        margin: 0 5px;
+        text-align: center;
+        padding-bottom: 20px;
+        margin-bottom: 20px 0;
+        display: none;
+        color: #000;
+
+        @include mq('phone'){
+          margin: 0;
+        }
+
+        span.raf-text {
+          display: inline-block;
+          span {
+            display: inline-block;
+          }
+        }
+
+        @include mq('phone'){
+          span.fo-how {
+            display: block;
+          }
+        }
+
+        .raf-separator {
+          display: inline-block;
+          width: 1px;
+          background: black;
+          height: 17px;
+          margin: 0 13px;
+          vertical-align: middle;
+
+          @include mq('phone'){
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .newsletter-footer {
+    padding: 10px 0;
+    width: 100%;
+
+    .newsletter-wrapper {
+      background: transparent;
+      padding: 20px 0;
+      width: 100%;
+
+      @include mq('tablet-and-up') {
+        padding: 20px 25px;
+        text-align: left;
+        width: 69%;
+      }
+
+      .newsletter {
+        margin-bottom: 35px;
+
+        @include mq('tablet-and-up') {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .social-wrapper {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(center);
+    background:transparent;
+    padding: 10px 0;
+    margin: 0;
+
+    @include mq('tablet-and-up'){
+      @include justify-content(flex-start);
+    }
+
+    .social-inner {
+      @include flexbox;
+      @include flex-wrap(wrap);
+      width: 100%;
+
+      @include mq('tablet-and-up'){
+        @include justify-content(center);
+      }
+
+      .section-title {
+        text-transform: lowercase;
+        @include flexbox;
+        @include justify-content(flex-start);
+        @include fontSize(14px);
+        width: 100%;
+      }
+
+      .social-image img {
+        border: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      ul#social-icons {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(space-between);
+        margin: 10px 0 0;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+
+        @include mq('tablet-and-up') {
+          @include align-items(center);
+          margin-top: 0;
+        }
+
+        li {
+          display: inline-block;
+          padding: 0;
+        }
+        a {
+          position: relative;
+          top: 2px;
+          color: {{ settings.icons }};
+
+          svg {
+            width: 22px;
+            height: 22px;
+
+            @include mq('tablet-and-up') {
+              width: 20px;
+              height: 20px;
+            }
+
+            * {
+              transition: fill .3s ease;
+              fill: {{ settings.icons }};
+            }
+          }
+
+          &:hover {
+            svg * {
+              fill: {{ settings.icons_hover }};
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .footer-blocks {
+    width: 100%;
+
+    @include mq('tablet-and-up'){
+      @include flexbox;
+      @include justify-content(center);
+    }
+
+    // SINGLE BLOCKS : Individual menu blocks (should only need one with nesting support, but left as an option)
+    .footer-nav {
+      width: 100%;
+
+      @include mq('tablet-and-up') {
+        border-bottom: none;
+        width: 95%;
+      }
+
+      nav {
+        background: transparent;
+        font-family: $font-stack--default;
+        @include flexbox;
+        @include justify-content(center);
+        @include fontSize(14px);
+        line-height: initial;
+        width: 100%;
+
+        @include mq('tablet-and-up') {
+          @include justify-content(flex-start);
+          text-align: left;
+        }
+
+        ul {
+          @include flexbox;
+          @include flex-direction(column);
+          @include justify-content(center);
+          @include align-items(center);
+          @include fontSize(14px);
+          margin: 0;
+          width: 100%;
+
+          @include mq('tablet-and-up') {
+            @include flex-direction(row);
+            @include justify-content(flex-start);
+            @include align-items(flex-start);
+          }
+
+          li.footer-sub-nav-wrapper {
+            @include flex-direction(column);
+            @include justify-content(center);
+            @include align-items(center);
+            border-top: 2px solid black;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+
+            @include mq('tablet-and-up') {
+              @include flexbox;
+              border-top: 0px;
+              padding-top: 25px;
+              width: 33.333%;
+            }
+
+            @include mq('phone') {
+              height: 39px;
+
+              &.slide {
+                height: auto;
+                ul.footer-sub-nav {
+                  transform: translateY(0%);
+
+                  @include mq('tablet-and-up') {
+                    display: block;
+                  }
+                }
+
+                h4.nav-sub-header:after {
+                  padding-bottom: 5px;
+                  border-top: none;
+                  border-bottom: 9px solid {{ settings.nav_links_hover }};
+                }
+              }
+            }
+
+            h4.nav-sub-header {
+              @include fontSize(14px);
+              font-weight: $font-weight--bold;
+              position: relative;
+              margin: 0 5px;
+              padding: 10px 5px 7px;
+              z-index: 49;
+
+              @include mq('phone') {
+                background: {{ settings.footer_background }};
+
+                // TRIANGLE : CLOSED : Downward arrow in css
+                &:after {
+                  width: 0;
+                  height: 0;
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY( -50% );
+                  right: 35px;
+                  content: ""; // undo the preset arrow type
+                  border-left: 6px solid transparent;
+                  border-right: 6px solid transparent;
+                  border-top: 9px solid {{ settings.nav_links_hover }};
+                  transition: border 0.25s ease-in-out;
+                }
+              }
+
+              @include mq('tablet-and-up') {
+                width: 100%;
+                z-index: 0;
+              }
+            }
+
+            ul.footer-sub-nav {
+              @include align-items(center);
+              margin-bottom: 15px;
+              position: relative;
+              transform: translateY(-110%);
+              transition: all 0.2s ease-in-out;
+
+              @include mq('tablet-and-up'){
+                @include flexbox;
+                @include align-items(flex-start);
+                @include flex-direction(column);
+                transform: none;
+                margin-left: 0;
+                margin-bottom: 0;
+                padding-bottom: 20px;
+                width: 100%;
+              }
+
+              li {
+                columns: 1;
+                list-style-type: none;
+
+                @include mq('tablet-and-up'){
+                  font-weight: $font-weight--book;
+                  margin-left: .25rem;
+                }
+              }
+            }
+          }
+        }
+
+        a {
+          display: inline-block;
+          padding: 0;
+          // padding: 7px 12px 7px 0;
+          color: $color--primary-1;
+
+          @include mq('phone'){
+            font-weight: $font-weight--book;
+          }
+
+          @include mq('tablet-and-up') {
+            display: inline-block;
+            padding: 4px 0;
+          }
+
+          &:hover {
+            color: $color--accent-1;
+            text-decoration: none;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+.visit-our-brands {
+  padding: 45px 20px 33px;
+  text-align: center;
+
+  @include mq('tablet-and-up') {
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    margin: 21px -18px 0 auto;
+    padding: 0;
+  }
+
+  .section-title {
+    margin-bottom: 16px;
+
+    @include mq('tablet-and-up') {
+      margin-bottom: 18px;
+    }
+  }
+
+  .section-title h4 {
+    @include fontSize(14px);
+    font-weight: $font-weight--bold;
+    letter-spacing: .3em;
+
+    @include mq('tablet-and-up') {
+      @include fontSize(16px);
+      letter-spacing: .25em;
+    }
+  }
+  .brands--list {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+  img {
+    max-height: 40px;
+
+    @include mq('tablet-and-up') {
+      max-height: 55px;
+      max-width: none;
+      margin: 0 20px;
+    }
+  }
+}
+
+.row.footer--bottom-row {
+  @include mq('tablet-and-up') {
+    @include flex-direction(column);
+    margin-bottom: 0;
+    padding-top: 24px;
+    border-top: solid 1px {{ settings.footer_border }};
+  }
+  @include mq('lap-and-up') {
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+  }
+}
+
+.brands--telephone {
+  padding-bottom: 42px;
+  border-bottom: solid 1px {{ settings.footer_border }};
+
+  @include mq('tablet-and-up') {
+    margin-top: 7px;
+    margin-bottom: 18px;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  @include mq('lap-and-up') {
+    margin-bottom: 0;
+  }
+
+  a {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(flex-start);
+    @include fontSize(12px);
+    line-height: initial;
+    letter-spacing: .2em;
+
+    @include mq('tablet-and-up') {
+      @include fontSize(16px);
+    }
+  }
+  h4 {
+    margin: 0 7px 0 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: $font-weight--black;
+    letter-spacing: inherit;
+  }
+  span {
+    color: {{ settings.footer_color }};
+    font-size: inherit;
+    letter-spacing: inherit;
+  }
+}
+#payment {
+  padding-top: 36px;
+
+  @include mq('tablet-and-up') {
+    @include flexbox;
+    @include align-items(center);
+    padding-top: 6px;
+  }
+  @include mq('lap-and-up') {
+    margin-left: auto;
+  }
+  @include mq('desk-and-up') {
+    margin-right: auto;
+  }
+
+  .section-title {
+    margin-bottom: 16px;
+
+    @include mq('tablet-and-up') {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+
+  h4 {
+    color: {{ settings.footer_color }};
+    @include fontSize(14px);
+    font-weight: $font-weight--bold;
+    letter-spacing: .2em;
+
+    @include mq('tablet-and-up') {
+      @include fontSize(15px);
+      padding-bottom: 0;
+    }
+  }
+
+  svg {
+    height: 30px;
+
+    @include mq('tablet-and-up') {
+      margin: 0 10px;
+    }
+  }
+}
+
+#trust-icons {
+  padding-top: 18px;
+
+  @include mq('tablet-and-up') {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include mq('lap-and-up') {
+    padding-top: 0;
+    margin-right: -11px;
+  }
+
+  img {
+    max-height: 34px;
+
+    @include mq('tablet-and-up') {
+      margin: 0 7px;
+    }
+  }
+}

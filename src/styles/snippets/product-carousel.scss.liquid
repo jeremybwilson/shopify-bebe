@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+.featured-collection {
+  // top header 
+  text-align: center;
+
+  @include mq('tablet-and-up') {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  .row {
+    @include mq('phone') {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  .section-header {
+
+    h2 {
+      margin-bottom: 0px;
+      color: $color--primary-1;
+      font-weight: $font-weight--black;
+      @include fontDim(22px,28px,.04em);
+      text-transform: uppercase;
+
+      @include mq('tablet-and-up') {
+        margin-bottom: 12px;
+        @include fontDim(42px,58px,0);
+      }
+
+      &:after {
+        display: none;
+      }  
+    }
+    .cta {
+      display: block;
+    }
+    a {
+      display: block;
+      color: $color--primary-2;
+      font-weight: $font-weight--bold;
+      @include fontDim(13px,13px,0);
+      text-transform: uppercase;
+      text-decoration: none;
+
+      @include mq('tablet-and-up') {
+        @include fontSize(18px);
+      }
+
+      svg {
+        width: 9px;
+        margin-left: 18px;
+
+        @include mq('tablet-and-up') {
+          width: 12px;
+          margin-left: 15px;
+        }
+
+        * {
+          fill: $color--accent-1;
+        }
+      }
+    }    
+
+  }
+}
+
+.product-collection-carousel {
+  position: relative;
+
+  .owl-nav {
+    display: block;
+
+    button {
+      position: absolute;
+      top: 50%; 
+      transform: translateY(-50%);
+
+      &.disabled {
+        opacity: .3;
+      }
+    }
+    svg {
+      width: 18px;
+
+      @include mq('tablet-and-up') {
+        width: 20px;
+      }
+    }
+  }
+  .owl-prev {
+    left: 0;
+  }
+  .owl-next {
+    right: 0;
+  }
+
+  .owl-next:before {
+    display: none;
+  }
+  .owl-prev:before {
+    display: none;
+  }
+
+  // take this out when PLP styling is complete
+
+  .product-index {
+    margin-bottom: 0;
+  }
+
+  .icn {
+    display: none; // hide for now while we sort this out
+  }
+
+  .product-info {
+    a {
+      text-decoration: none;
+    }
+    h3 {
+      max-width: 250px;
+      margin: 0 auto;
+      color: $color--primary-2;
+      font-weight: $font-weight--black;
+      @include fontDim(16px,16px,0);
+      text-transform: uppercase;
+
+    }
+    .price {
+      margin-top: 0;
+      color: $color--primary-2;
+      @include fontDim(16px,16px,0);
+
+      @include mq('tablet-and-up') {
+        margin-top: 6px;
+      }
+      & > div {
+        display: inline;
+      }
+      .onsale {
+        color: {{ settings.sale_color }}
+      }
+      .was {
+        color: $color--primary-2;
+      }      
+    }
+  }
+  .product-modal {
+    @include h7;
+    @include fontSize( 16px );
+    background: $color--accent-1;
+    color: $color--white;
+    opacity: 0;
+    border-radius: 0;
+    transition: opacity .25s ease-in-out;
+  }
+
+  @include mq('lap-and-up') {
+    .product-index:hover .product-modal {
+      display: block;
+      opacity: 0.9;
+      pointer-events: all;
+    }
+    .product-index:hover .product-modal:hover {
+      opacity: 1;
+    }
+  }
+
+  .owl-dots {
+    display: none;
+  }
+}
+
+.product-carousel--nav {
+  display: none;
+}

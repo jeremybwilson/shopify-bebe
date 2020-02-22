@@ -1,0 +1,155 @@
+<div id="recently-viewed-products--wrapper" class="featured-collection">
+  <div class="row">
+    <div class="section-header">
+      <h2 class="section-heading">{{ 'cart.general.recently_viewed' | t }}</h2>
+    </div>
+
+    <div id="recently-viewed-products" class="product-collection-carousel collection clearfix owl-carousel" style="display:none"></div>
+
+    <div class="product-carousel--nav">
+      <a class="product-carousel--prev">
+        {% include 'svg-icon-caret-left' %}
+      </a>
+      <a class="product-carousel--next">
+        {% include 'svg-icon-caret-right' %}
+      </a>
+    </div>
+
+  </div><!--.row-->
+</div><!--#recently-viewed-products--wrapper-->
+
+{% raw %}
+<script id="recently-viewed-product-template"  type="text/x-jquery-tmpl">
+  <div class="product-car">
+    <div id="recently-product-${handle}" class="prod-container">
+      <div class="prod-image">
+        <a href="${url}" class="cy">
+          <img src="${Shopify.resizeImage(featured_image, "large")}" />
+        </a>
+      </div>
+      <div class="product-info">
+        <a href="${url}">
+          <h3>${title}</h3>
+        </a>
+        <div class="price">
+          {{if price < compare_at_price}}
+            <div class="onsale"><span class="money bfx-price bfx-list-price">${Shopify.formatMoney(price)}</span></div>
+            <div class="was"><span class="money bfx-price">${Shopify.formatMoney(compare_at_price)}</span></div>
+          {{else}}
+          <div class="prod-price"><span class="money bfx-price">${Shopify.formatMoney(price)}</span></div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+{% endraw %}
+
+<script type="text/javascript" charset="utf-8">
+  //<![CDATA[
+
+  // Including jQuery conditionnally.
+  if (typeof jQuery === 'undefined') {
+    document.write({{ "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" | script_tag | json }});
+    document.write('<script type="text/javascript">jQuery.noConflict();<\/script>');
+  }
+
+  // Including api.jquery.js conditionnally.
+  if (typeof Shopify.resizeImage === 'undefined') {
+    document.write({{ "api.jquery.js" | shopify_asset_url | script_tag | json }});
+  }
+
+  //]]>
+</script>
+
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+<script type="text/javascript" charset="utf-8">
+  //<![CDATA[
+
+  Shopify.Products.showRecentlyViewed( {
+    howManyToShow:6,
+    onComplete: function() {
+      $('#recently-viewed-products').owlCarousel({
+        responsive : {
+          0 : {
+            items: 1
+          },
+          767 : {
+            items: 3
+          }
+        },
+        nav: true,
+        navText: [$('.product-carousel--prev'),$('.product-carousel--next')]  
+      });      
+    }
+
+  } );
+
+  //]]>
+</script>
+
+<style>
+
+  /* Some styles to get you started */
+
+  .collection {
+    clear: both;
+    padding-top: 20px;
+  }
+
+  .collection .product {
+    float: left;
+    text-align: center;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative; /* used to display absolutely positioned sale tag */
+    overflow: hidden;
+  }
+
+  .collection .product.last {
+    margin-right: 0;
+  }
+
+  .collection .product .image {
+    border: 1px solid {{ settings.dotted_color }};
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .collection .product .cy {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .collection .product .image img {
+  }
+
+  .collection .product .title {
+    display: block;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .collection .product .price {
+    display: block;
+    line-height: 16px;
+    font-size: 11px;
+    font-weight: normal;
+  }
+
+  /* new clearfix */
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  * html .clearfix             { zoom: 1; } /* IE6 */
+  *:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+</style>

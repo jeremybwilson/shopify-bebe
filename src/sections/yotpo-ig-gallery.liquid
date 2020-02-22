@@ -1,0 +1,112 @@
+<div id="yotpo-ig-{{ section.id }}" data-section-id="{{ section.id }}" class="yotpo-ig-gallery{% if section.settings.full_width %} gridlock-fluid full-width{% endif %}">
+
+  <div class="row">
+
+    {% comment %} HEADER {% endcomment %}
+    {% if section.settings.show_header %}
+      <div class="insta-header {% if section.settings.show_icon %} show-icon {% endif %}"><span>{{ section.settings.header_text }}</span></div>
+    {% endif %}
+
+      {% if section.settings.header != blank %}
+        <div class="insta-copy">
+          {{ section.settings.header }}
+        </div>
+      {% endif %}
+
+    {% if section.settings.full_width %}    
+      </div>
+    {% endif %}
+
+    {% comment %} CONTENT {% endcomment %}
+    <div
+      class="yotpo yotpo-pictures-widget"
+      data-gallery-id="{{ section.settings.gallery_id }}">
+    </div>
+
+    {% comment %} FOOTER {% endcomment %}
+    {% comment %} Only show if there's a URL in the CTA field {% endcomment %}
+    {% if section.settings.cta_url != blank %}
+
+      {% if section.settings.full_width %}    
+        <div class="row">
+      {% endif %}
+
+        <div class="insta-footer">
+          <a class="button" href="{{ section.settings.cta_url }}" title="{{ section.settings.cta_text }}">{{ section.settings.cta_text }}</a>
+        </div>
+
+      {% if section.settings.full_width %}    
+        </div><!-- .row -->
+      {% endif %}
+    
+    {% endif %}
+
+  {% unless section.settings.full_width %}    
+  </div><!-- .row -->
+  {% endunless %}
+</div>
+
+<div class="clear"></div>
+
+{% schema %}
+{
+  "name": "Instagram Gallery Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "gallery_id",
+      "label": "Gallery ID (from Yotpo)"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show IG Header",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show IG Icon in header",
+      "default": true
+    },    
+    {
+      "type": "richtext",
+      "id": "header",
+      "label": "Header Copy"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Text",
+      "default": "View More"
+    },
+    {
+      "type" : "url",
+      "id" : "cta_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Gallery",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}
+

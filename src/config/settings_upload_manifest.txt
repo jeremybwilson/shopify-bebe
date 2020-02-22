@@ -1,0 +1,260 @@
+TL;DR : IMAGES STORED IN "FILES" IN ADMIN THAT NEED UPLOADING CROSS-STORE:
+
+
+WHAT THIS FOR?
+	- Images added via "Theme > Customize" in Shopify Admin are relative links with asset names,
+	  we need to upload these assets to each store (Dev, QA, Prod) so they appear. This is the manifest.
+
+
+
+
+
+/*  HEADER : Sections > "header"
+ * ---------------------------------------------------------------------- */
+		A. MEGA MENUS:
+			1. Navigation : Mega Menu : #1 (Women)
+				- Name: "nav-megamenu-1.jpg" 
+				- Setting Name: "nav_image" (Block "1522184323686" > "mega_menu")
+				- Dimension: 360 x 500 (width x height)
+
+			2. Navigation : Mega Menu : #2 (Men)
+				- Name: "nav-megamenu-2.jpg"
+				- Setting Name: "nav_image" (Block "1535652898841" > "mega_menu")
+				- Dimension: 360 x 500
+
+			3. Navigation : Mega Menu : #3 (Kids)
+				- Name: "nav-megamenu-3.jpg"
+				- Setting Name: "nav_image" (Block "1535652979932" > "mega_menu")
+				- Dimension: 360 x 500
+
+			4. Navigation : Mega Menu : #4 (IMAGE NOT USED CURRENTLY)
+				- Name: "nav-megamenu-4.jpg"
+				- Setting Name: "nav_image" (Block "1535653033501" > "mega_menu")
+				- Dimension: 360 x 500
+
+
+
+
+
+/*  HOME PAGE : (Blocks listed below)
+ * 	  Blocks: 1535728526385, 1536068961071, 1536251685211, 1536252750894
+ * ---------------------------------------------------------------------- */
+		A. HERO SLIDESHOW : ( Sections > "1535728526385" <-- Block ID )
+			1. Slideshow : Image #1 (2 PARTS)
+				- Name : DESKTOP : home-hero-desktop-slide-1.jpg
+				- Name : MOBILE  : home-hero-mobile-slide-1.jpg
+				- Setting Name: "image" + "mobile_image" (block "1535728526385-0")
+				- Dimension: 
+					Desktop : 1920 × 828 (Can be as small as 1440 × 620, but higher the better)
+					Mobile  : 768 × 835
+
+			2. Slideshow : Image #2 (2 PARTS)
+				- Name : DESKTOP : home-hero-desktop-slide-2.jpg
+				- Name : MOBILE  : home-hero-mobile-slide-2.jpg
+				- Setting Name: "image" + "mobile_image" (block "1537990277479")
+				- Dimension: 
+					Desktop : 1920 × 828
+					Mobile  : 768 × 835
+
+			3. Slideshow : Image #3 (2 PARTS)
+				- Name : DESKTOP : home-hero-desktop-slide-3.jpg
+				- Name : MOBILE  : home-hero-mobile-slide-3.jpg
+				- Setting Name: "image" + "mobile_image" (block "1537990398288")
+				- Dimension: 
+					Desktop : 1920 × 828
+					Mobile  : 768 × 835
+		
+
+
+		B. COLUMNS CAROUSEL : ( Sections > "1536068961071" <-- Block ID )
+			1. Column Carousel : Image #1
+				- Name : DESKTOP : home-column-carousel-desktop-slide-1.jpg
+				- Name : MOBILE  : home-column-carousel-mobile-slide-1.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536068961071-0")
+				- Dimension: 
+					Desktop : 480 x 1028 (more than 1 shown at a time on desktop, hence smaller width)
+					Mobile  : 640 x 1000
+
+			2. Column Carousel : Image #2
+				- Name : DESKTOP : home-column-carousel-desktop-slide-2.jpg
+				- Name : MOBILE  : home-column-carousel-mobile-slide-2.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536068961071-1")
+				- Dimension: 
+					Desktop : 480 x 1028
+					Mobile  : 640 x 1000
+
+			3. Column Carousel : Image #3
+				- Name : DESKTOP : home-column-carousel-desktop-slide-3.jpg
+				- Name : MOBILE  : home-column-carousel-mobile-slide-3.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536068961071-2")
+				- Dimension: 
+					Desktop : 480 x 1028
+					Mobile  : 640 x 1000
+					
+			4. Column Carousel : Image #4
+				- Name : DESKTOP : home-column-carousel-desktop-slide-4.jpg
+				- Name : MOBILE  : home-column-carousel-mobile-slide-4.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536068961071-3")
+				- Dimension: 
+					Desktop : 480 x 1028
+					Mobile  : 640 x 1000
+					
+			5. Column Carousel : Image #5
+				- Name : DESKTOP : home-column-carousel-desktop-slide-5.jpg
+				- Name : MOBILE  : home-column-carousel-mobile-slide-5.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536068961071-4")
+				- Dimension: 
+					Desktop : 480 x 1028
+					Mobile  : 640 x 1000
+
+			6. Column Carousel : Image #6
+				- Name : DESKTOP : home-column-carousel-desktop-slide-6.jpg
+				- Name : MOBILE  : home-column-carousel-mobile-slide-6.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536068961071-5")
+				- Dimension: 
+					Desktop : 480 x 1028
+					Mobile  : 640 x 1000
+
+
+
+		C. TWIN PROMOS : ( Sections > "1536251685211" <-- Block ID )
+			1. Twin Promo : Image #1
+				- Name : DESKTOP : home-twin-promo-desktop-1.jpg
+				- Name : MOBILE  : home-twin-promo-mobile-1.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536251685211-1")
+				- Dimension: 
+					Desktop : 533 x 355
+					Mobile  : 552 x 490 (doubled for retina)
+
+			2. Twin Promo : Image #2
+				- Name : DESKTOP : home-twin-promo-desktop-2.jpg
+				- Name : MOBILE  : home-twin-promo-mobile-2.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536251685211-0")
+				- Dimension: 
+					Desktop : 533 x 355
+					Mobile  : 552 x 490
+
+
+
+		D. ABOUT PROMO : ( Sections > "1536252750894" <-- Block ID )
+			1. Twin Promo : Image #1
+				- Name : DESKTOP : home-about-promo-desktop-1.jpg
+				- Name : MOBILE  : home-about-promo-mobile-1.jpg
+				- Setting Name: "image" + "mobile_image" (block "1536252750894-0")
+				- Dimension: 
+					Desktop : 1440 x 734
+					Mobile  : 640 x 624
+
+
+
+
+
+/*  FOOTER : Sections > "footer"
+ * ---------------------------------------------------------------------- */
+	A. BRAND LINKS:
+		1. Footer : Brand Link #1 
+			- Name: visit-brand-image-1.png
+			- Setting Name: "visit_brand_image_one"
+			- Dimension: 162 × 80 (Must be 80px tall)
+
+		2. Footer : Brand Link #2 
+			- Name: visit-brand-image-2.png
+			- Setting Name: "visit_brand_image_two"
+			- Dimension: 112 × 80 (Must be 80px tall)
+
+		3. Footer : Brand Link #3 
+			- Name: visit-brand-image-3.png
+			- Setting Name: "visit_brand_image_three"
+			- Dimension: 132 × 80 (Must be 80px tall)
+
+
+
+
+
+
+/*  ABOUT PAGE : Sections > "page-about-template"
+ *		NOTE: Also block "slideshow", careful when altering
+ * ---------------------------------------------------------------------- */
+	A. HERO SLIDESHOW : ( Sections > "slideshow" <-- Might rename for clarity )
+		1. Header Slideshow : Image #1
+			- Name : DESKTOP : about-hero-desktop-slide-1.jpg
+			- Name : MOBILE  : about-hero-mobile-slide-1.jpg
+			- Setting Name: "image" + "mobile_image" (block "1536252750894-0")
+			- Dimension: 
+				Desktop : 1440 x 734
+				Mobile  : 640 x 624
+
+
+
+	B.PAGE IMAGES : ( Sections > "page-about-template" )
+		1. Page : Image #1
+			- Name : about-image-1.png
+			- Setting Name: "image_picker_block" (block "1537319921572")
+			- Dimension: 613 × 663
+
+		2. Page : Image #2 (Video Still)
+			- Name : about-image-2-video-still.png
+			- Setting Name: "video_image_block" (block "1537487476214")
+			- Dimension: 776 × 596
+
+		3. Page : Image #3
+			- Name : about-image-3.png
+			- Setting Name: "image_picker_block" (block "1537482252402")
+			- Dimension: 620 × 700
+
+		4. Page : Image #4
+			- Name : about-image-4.png
+			- Setting Name: "image_picker_block" (block "1537483249387")
+			- Dimension: 594 × 558
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

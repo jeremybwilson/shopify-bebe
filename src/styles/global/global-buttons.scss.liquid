@@ -1,0 +1,66 @@
+/* GENERAL BUTTONS
+ *  Most of this is coiped from stylesheet.css,
+ *  so don't be nervous removing stuff no longer 
+ *  needed here.
+================================================== */
+
+@mixin buttonDefaultStyle {
+  // note: Do NOT include colors here!
+
+  height: 45px;
+  // need a flag to remove line-height if the button has multiple lines
+  line-height: 45px; 
+  padding: 0 15px;
+
+  border: none;
+  border-radius: 0;
+
+  font-family: $font-stack--default;
+  font-weight: $font-weight--bold;
+  @include fontSize( 14px ); // change this to a settings value
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition: all .25s ease-in-out;
+  -webkit-appearance: none;
+  cursor: pointer;
+
+  @include mq( 'tablet-and-up' ) {
+    padding: 0 24px;
+  }
+
+}
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  @include buttonDefaultStyle;
+  @include mainButton;
+  
+  display: inline-block;
+  width: auto;
+  margin-bottom: 10px;
+
+}
+a.button:visited {
+  @include mainButton;
+}
+
+
+.secondary-button {
+  color: {{ settings.alt_button_text }};
+  background: {{ settings.alt_button_bg }};
+}
+
+.secondary-button:hover {
+  color: {{ settings.alt_button_text_hover }};
+  background: {{ settings.alt_button_bg_hover }};
+}
+
+a.button:visited {
+  background: {{ settings.button_bg }};
+  color: {{ settings.button_text }};
+}

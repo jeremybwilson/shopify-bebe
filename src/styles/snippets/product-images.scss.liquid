@@ -1,0 +1,252 @@
+@charset "UTF-8";
+$arrowColorThumbnails: $color--primary-1;
+$arrowColorMobile: $color--dark-gray;
+
+
+
+
+/* 
+  PRODUCT PHOTOS - MOBILE 
+-------------------------------*/
+.mobile-product-photos--wrapper {
+  @include mq('tablet-and-up') {
+    display: none;
+  }
+}
+
+#mobile-product-photos {
+  width: 100%;
+
+  @include mq('tablet-and-up') {
+    display: none;
+  }
+
+  &.owl-carousel {
+    .owl-item img {
+      margin: 0 auto;
+    }
+
+    // NAV : Mobile arrows
+    .owl-nav {
+      display: block;
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY( -50% );
+        height: 65px;
+        width: 22px;
+        margin-bottom: 0;
+        outline: none;
+        transition: all 0.25s ease-in-out;
+
+        &.disabled {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &.owl-next:before,
+        &.owl-prev:before {
+          display: none;
+        }
+
+        &.owl-prev {
+          left: 20px;
+        }
+
+        &.owl-next {
+          right: 20px;
+        }
+
+        a {
+          outline: none;
+
+          svg {
+            width: 20px;
+
+            path {
+              stroke: $arrowColorMobile;
+            }
+          }
+        }
+      }
+    } // END : .owl-nav
+  } // END : .owl-carousel
+}
+
+
+/* 
+  PRODUCT PHOTOS - DESKTOP
+------------------------------- */
+#product-photos {
+  //width: 850 / 1350 * 100%;
+  width: 52.5%;
+  height: 100%;
+  max-height: 850px;
+
+
+  .product-main-images {
+    width: 724 / 856 * 100%;
+    height: 100%;
+
+    @include mq( 'lap-and-up' ) {
+      width: 81%;
+    }
+
+    @include mq( 'desk-and-up' ) {
+      width: 83%;
+    }
+
+    .product-image-container {
+      height: 100%;
+
+      .product-main-image {
+        width: 100%;
+        height: 100%;
+
+        img {
+          margin: 0; // Don't center so we get that nice alignment with thumbnail slider
+        }
+      }
+
+      .product__image {
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+    }
+  }
+}
+
+
+#thumbnail-gallery {
+  position: absolute;
+  float: none; //Override slickslider
+  height: 100%;
+  width: 11%;
+  margin-top: 0;
+  
+  @include mq('lap-and-up') {
+    width: 14%;
+  }
+  
+  @include mq('desk-and-up') {
+    width: 12%;
+  }
+
+  // THUMBNAILS : List wrapper
+  .thumbnail-slider {
+    height: 100%;
+
+    // THUMBNAILS : Inner List;
+    .slick-list {
+      height: 100% !important; // needed to override slick-slider inline styling set via js
+    }
+
+    // THUMBNAILS : Nav Arrows (vertically)
+    .slick-arrow {
+      position: absolute;
+      height: 20px;
+      z-index: 10;
+      background: transparent;
+      color: $arrowColorThumbnails;
+      font-size: 4rem;
+      outline: none;
+      width: 100%;
+      padding: 0;
+
+      &.slick-disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .bar-left,
+      .bar-right {
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        width: 1px;
+        height: 20px;
+        background: $arrowColorThumbnails;
+        transform: rotate(65deg) translate( -10px, 5px );
+      }
+
+      .bar-right {
+        transform: rotate(-65deg) translate( 10px, 5px );
+      }
+
+      &.slick-prev {
+        top: -20px;
+      }
+
+      &.slick-next {
+        transform: rotate( 180deg );
+      }
+    }
+
+    .slick-slide {
+      outline: none;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+// item 
+.product-thumbnail {
+  cursor: pointer;
+  display: inline-block;  
+  width: 100%;
+  opacity: .5;
+
+  &.selected,
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.product-video-thumbnail {
+  position: relative;
+}
+.play-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: $color--white;
+  @include fontDim(8px,8px,.2em);
+  font-weight: $font-weight--black;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 3;
+
+}
+.play-overlay-box {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  background: $color--accent-1;  
+  z-index: 2;
+  transform-origin: top left;
+  transform: rotate(45deg) translate(-50%,-50%);
+}
+
+.product-video {
+  position: relative;
+  padding-bottom: 100%;
+
+  .video-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+}

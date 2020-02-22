@@ -1,0 +1,334 @@
+
+
+<div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-template">
+  {% comment %} :: COLLECTION - Banner Image :: {% endcomment %}
+  {% comment %}
+  {% if has_banner %}
+    <div class="collection-banner tablet-and-down--hide">
+      {{desktop_banner}}
+    </div>
+  {% endif %}
+  {% endcomment %}
+
+  <div class="row">
+
+    {% comment %} :: COLLECTION SIDEBAR :: {% endcomment %}
+    <div id="collection--sidebar" class="mobile-3 desktop-2">
+
+      {% include 'collection-nav' %}
+
+      {% comment %} :: FILTER - Mobile Component :: {% endcomment %}
+      <div id="filter-list-mobile-wrap">
+        <div id="filter-list-button-wrap">
+          
+          {% comment %} FILTER BUTTON {% endcomment %}
+          <div id="filter-button-mobile">
+            <div id="bc-sf-filter-tree-mobile"></div>
+            <div id="filter-button-arrow"></div>
+          </div>
+        </div>
+
+        {% comment %} FILTERS LIST {% endcomment %}
+        <div id="mobile-sort-wrapper"></div>
+        {% comment %} <div id="bc-sf-filter-tree"></div> {% endcomment %}
+      </div>
+
+      <div id="bc-sf-filter-tree" class="filter-list-desktop"></div>
+      
+    </div><!--#collection--sidebar-->
+
+    {% comment %} :: COLLECTION MOBILE BANNER :: {% endcomment %}
+    
+    <div class="collection-banner collection-banner--mobile tablet-and-up--hide">
+     
+    </div>
+    
+
+    {% comment %} :: COLLECTION MAIN :: {% endcomment %}
+    <div id="collection--main" class="mobile-3 desktop-10">
+
+      <h1 class="collection--title tablet-and-down--hide">
+        {{ collection.title }}
+      </h1>
+
+      {% if settings.breadcrumb %}
+        <div class="desktop-8 collection-breadcrumb-wrapper">
+          {% include 'breadcrumb' %}
+        </div>
+      {% endif %}
+
+  
+      {% case section.settings.grid %}
+        {% when '2' or 2 %}
+        {%- assign grid_item_width = 'desktop-6 tablet-3 mobile-half' -%}
+        {% when '3' or 3 %}
+        {%- assign grid_item_width = 'desktop-4 tablet-2 mobile-half' -%}
+        {% when '4' or 4 %}
+        {%- assign grid_item_width = 'desktop-3 tablet-2 mobile-half' -%}
+      {% endcase %} 
+
+      {%- if section.settings.static_product_limit != blank -%}
+         {%- assign product_limit = section.settings.static_product_limit -%}   
+      {%- else -%} 
+        {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+      {%- endif -%}
+      
+
+      {% paginate collection.products by product_limit %}
+
+        {% comment %} :: DESCRIPTION - HIDE FOR NOW :: 
+          <div id="collection-description" class="desktop-12 mobile-3">
+            <h1 id="bc-sf-filter-collection-header">{{ collection.title }}</h1>
+            <div class="rte" id="bc-sf-filter-collection-description">{{ collection.description | remove: "[banner]" }}</div> 
+          </div>
+        {% endcomment %}
+
+        {% comment %} :: FILTER + SORT - Desktop Component :: {% endcomment %}
+        <div id="desktop-sort-wrapper" class="mobile-3 desktop-4">
+          <div id="full-width-filter" class="filter-wrap-desktop">
+              <ul id="sortme" class="sort-options animate25">
+              {% if section.settings.sort_by %} 
+                <li id="bc-sf-filter-top-sorting" class="clearfix filter"></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    
+      
+
+        {% comment %} :: PRODUCT LIST :: {% endcomment %}
+        <div id="product-loop" data-bc-sort="{{ collection.sort_by }}">
+          {% comment %} :: ORIGINAL TEMPLATE TRIGGER (bc-sf-filter.js Overwrites this) :: 
+
+          {% assign products-per-row = section.settings.products-per-row %}
+            {% if collection.image %}
+              <div class="product-index {{ grid_item_width }}" data-alpha="{{ collection.title }}">     
+                {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}     
+              </div>  
+            {% endif %}
+
+            {% for product in collection.products %}
+              <div class="product-index {{ grid_item_width }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">     
+                {% include 'product-listing' %}
+              </div>
+            {% endfor %}
+
+          {% endcomment %}
+        </div>
+
+        
+        <div id="bc-sf-filter-load-more"></div>
+
+        {% comment %} :: PAGINATION :: {% endcomment %}
+        <div id="pagination" class="desktop-12 tablet-6 mobile-3">
+          <div id="bc-sf-filter-bottom-pagination"></div>
+        </div>
+        <div class="desktop-12 tablet-6 mobile-3">
+          <div id="collection-current-products-count-widget">
+            Showing <span id="collection-current-products-count"></span>
+              of <span  id="collection-total-products-count"></span> items
+          </div>
+        </div>
+        <div class="desktop-12 tablet-6 mobile-3">
+          <div class="collection-results-count js-results-count"></div>
+        </div>
+
+      {% endpaginate %}
+
+    </div><!--#collection-main-->
+
+  </div><!--.row-->
+  
+  <div class="collection-footer row">
+    <div class="collection-footer__elements mobile-3 desktop-10">
+      {% comment %} :: COLLECTION - SEO FOOTER PARAGRAPH :: {% endcomment %}
+      {% if template contains 'collection' and settings.show_collection_seo_block == true %}
+        {% if collection.description != blank %}
+          {% unless collection.description contains "banner--only" %}
+            {% include 'collection-seo-block' %}
+          {% endunless %}
+        {% endif %}
+      {% endif %}
+
+      {% comment %} :: NOSTO RECOMMENDATIONS :: {% endcomment %}
+      <div class="collection-nosto">
+        {% for block in section.blocks %}
+          {% if block.type == 'nosto_element' and block.settings.nosto_id != blank %}
+            <div class="collection-nosto__element mobile-12">
+              {% include 'nosto-element' with block.settings.nosto_id %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div><!--.collection-footer__elements-->
+  </div><!--.collection-footer-->
+  
+</div><!--.collection-template-->
+
+<script>
+  // Declare bcSfFilterConfig variable
+  var bcSfFilterConfig = {
+    label: {
+
+      // ENABLED SORT OPTIONS
+      sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Sorting" {% endunless %},
+      sorting_featured: {% assign temp = 'collections.sorting.featured' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Featured" {% endunless %},
+      sorting_date_descending: {% assign temp = 'collections.sorting.date_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Newest" {% endunless %},
+      sorting_best_selling: {% assign temp = 'collections.sorting.best_selling' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Best Sellers" {% endunless %},
+      sorting_price_descending: {% assign temp = 'collections.sorting.price_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Price (Highest to Lowest)" {% endunless %},
+      sorting_price_ascending: {% assign temp = 'collections.sorting.price_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Price (Lowest to Highest)" {% endunless %},
+      
+      sorting_title_ascending: {% assign temp = 'collections.sorting.az' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},
+      sorting_title_descending: {% assign temp = 'collections.sorting.za' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},
+      sorting_date_ascending: {% assign temp = 'collections.sorting.date_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},
+      sorting_sale_descending: {% assign temp = 'collections.sorting.sale_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "% Off" {% endunless %},
+      sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Relevance" {% endunless %},
+      
+      sale: {{ 'products.general.sale' | t | json }},
+      sold_out: {{ 'products.general.sold' | t | json }},
+      new: {{ 'products.general.new' | t | json }},
+      pre_order: {{ 'products.product.pre_order' | t | json }},
+      quick_view: {{ 'products.general.quick_view' | t | json }},
+      from_price: {{ 'products.general.from' | t | json }},
+      pagination_of: {{ 'general.pagination.of' | t | json }},
+      showing_items: {{ 'general.pagination.showing_items' | t | json }},
+    },
+    custom: {
+      products_per_page: {% if product_limit %} {{ product_limit | json }} {% else %} 36 {% endif %},
+      products_per_row: {% if section.settings.grid %} {{ section.settings.grid }} {% else %} 3 {% endif %},
+      quick_view_enable: {% if settings.quickview %} {{ settings.quickview | json }} {% else %} false {% endif %},
+      image_flip: {% if settings.image_flip %} {{ settings.image_flip | json }} {% else %} false {% endif %},
+      alternate_colors: {% if settings.alternate_colors %} {{ settings.alternate_colors | json }} {% else %} false {% endif %},
+      vendor_enable: {% if settings.vendor %} {{ settings.vendor | json }} {% else %} false {% endif %},
+    }
+  };
+</script>
+
+
+
+
+{% schema %}  
+  {
+    "name": "Collection page",
+    "max_blocks":4,
+    "settings": [
+      {
+        "type": "range",
+        "id": "grid",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "label": "Rows",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "Static product limit"
+      },
+      {
+        "type": "text",
+        "id": "static_product_limit",
+        "label": "Product limit",
+        "info":"Once you set up static product limit then 'Products per row' and 'Rows' settings will be disable"
+      },
+      {
+        "type": "checkbox",
+        "id": "sort_by",
+        "label": "Show sort by",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "Your customers can filter collections using tags that you have added to your products. [See our setup instructions for these filters](http:\/\/support.undergroundmedia.co.uk\/customer\/en\/portal\/articles\/1348811-filter-collections-with-tags)."
+      },
+      {
+        "type": "text",
+        "id": "filter_1_title",
+        "label": "Filter 1 title",
+        "default": "Filter by X"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_a",
+        "label": "Filter 1 tags",
+        "info": "Comma separated"
+      },
+      {
+        "type": "text",
+        "id": "filter_2_title",
+        "label": "Filter 2 title",
+        "default": "Filter by Y"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_b",
+        "label": "Filter 2 tags",
+        "info": "Comma separated"
+      },
+      {
+        "type": "text",
+        "id": "filter_3_title",
+        "label": "Filter 3 title",
+        "default": "Filter by Z"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_c",
+        "label": "Filter 3 tags",
+        "info": "Comma separated"
+      }
+    ],
+    "blocks":[
+    {
+      "type": "nosto_element",
+      "name": "Nosto element",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nosto_id",
+          "label": "Nosto id"
+        }
+      ]
+    },
+    {
+      "type":"menu",
+      "name":"Menu",
+      "settings":[
+        {
+         "type": "link_list",
+         "id": "side_nav",
+         "label": "Sidebar menu"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Menu title",
+          "default": "Explore"
+        }
+      ]
+    },
+    {
+      "type":"vendor_list",
+      "name":"Vendor list",
+      "limit": 1,
+      "settings":[
+        {
+          "type": "text",
+          "id": "shop_by_designer_title",
+          "label": "Vendor list title",
+          "default": "Shop by Designer"
+        }
+      ]
+    }
+    ]
+  }
+{% endschema %}
